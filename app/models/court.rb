@@ -4,7 +4,7 @@ class Court < ActiveRecord::Base
   belongs_to :type, class_name: 'Court::Type', foreign_key: :court_type_id
 
   has_many :employments
-  has_many :judges, uniq: true, through: :employments
+  has_many :judges, -> { uniq }, through: :employments
 
   has_many :hearings
   has_many :decrees
