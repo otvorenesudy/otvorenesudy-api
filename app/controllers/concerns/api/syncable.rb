@@ -14,6 +14,8 @@ module Api::Syncable
       headers['Link'] = "<#{next_url}>; rel='next'"
     end
 
-    respond_with @records, each_serializer: syncable_serializer
+    respond_to do |format|
+      format.json { render json: @records }
+    end
   end
 end

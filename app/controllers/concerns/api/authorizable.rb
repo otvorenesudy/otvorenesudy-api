@@ -2,7 +2,7 @@ module Api::Authorizable
   extend ActiveSupport::Concern
 
   included do
-    before_filter :check_api_key
+    before_action :check_api_key
   end
 
   private
