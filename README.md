@@ -4,8 +4,8 @@ RESTful APIs for public data of the [Open Courts](https://github.com/otvorenesud
 
 ## Requirements
 
-* Ruby 2.1
-* Rails 4.2
+* Ruby 2.2
+* Rails 5 (currently on edge)
 * PostgreSQL 9.1
 
 See [requirements for Open Courts application](https://github.com/otvorenesudy/otvorenesudy#requirements)
