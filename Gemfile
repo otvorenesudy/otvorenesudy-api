@@ -32,6 +32,12 @@ group :development, :test do
   # Testing
   gem 'rspec-rails', '~> 3.0'
   gem 'fuubar'
+  gem 'database_cleaner'
+  gem 'factory_girl_rails', '~> 4.5'
+
+  # Configuration
+  gem 'dotenv-rails'
+  gem 'squire'
 end
 
 group :development do
