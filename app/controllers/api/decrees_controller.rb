@@ -7,10 +7,6 @@ class Api::DecreesController < Api::ApplicationController
     Decree
   end
 
-  def syncable_serializer
-    DecreeSerializer
-  end
-
   def next_sync_url(*args)
     sync_api_decrees_url(*args)
   end
