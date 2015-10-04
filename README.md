@@ -1,24 +1,33 @@
-## README
+# Open Courts API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+RESTful APIs for public data of the [Open Courts](https://github.com/otvorenesudy) project
 
-Things you may want to cover:
+## Requirements
 
-* Ruby version
+* Ruby 2.1
+* Rails 4.2
+* PostgreSQL 9.1
 
-* System dependencies
+See [requirements for Open Courts application](https://github.com/otvorenesudy/otvorenesudy#requirements)
 
-* Configuration
+## Installation
 
-* Database creation
+```
+git clone git://github.com/otvorenesudy/otvorenesudy-api.git
+cd otvorenesudy-api
+bin/setup
+```
 
-* Database initialization
+See [installation of Open Courts application](https://github.com/otvorenesudy/otvorenesudy#installation)
 
-* How to run the test suite
+## Contributing
 
-* Services (job queues, cache servers, search engines, etc.)
+1. Fork it
+2. Create your feature branch `git checkout -b new-feature`
+3. Commit your changes `git commit -am 'Add some feature'`
+4. Push to the branch `git push origin new-feature`
+5. Create new Pull Request
 
-* Deployment instructions
+## License
 
-* ...
+[Educational Community License 1.0](http://opensource.org/licenses/ecl1.php)
