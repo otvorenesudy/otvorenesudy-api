@@ -23,12 +23,15 @@ chdir APP_ROOT do
   #   cp 'config/database.yml.sample', 'config/database.yml'
   # end
 
-  puts "\n== Preparing database =="
-  system! 'ruby bin/rake db:setup'
+  # puts "\n== Preparing database =="
+  # system! 'ruby bin/rake db:setup'
 
   puts "\n== Removing old logs and tempfiles =="
   system! 'ruby bin/rake log:clear tmp:clear'
 
   puts "\n== Restarting application server =="
   system! 'ruby bin/rake restart'
+
+  puts "\n== Running specs =="
+  system! 'bundle exec rspec'
 end
