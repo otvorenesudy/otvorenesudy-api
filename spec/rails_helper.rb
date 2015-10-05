@@ -52,6 +52,11 @@ RSpec.configure do |config|
   # Factory syntax suggar
   config.include FactoryGirl::Syntax::Methods
 
+  # Controller helpers that are part of rails-controller-testing gem
+  config.include Rails::Controller::Testing::TestProcess
+  config.include Rails::Controller::Testing::TemplateAssertions
+  config.include Rails::Controller::Testing::Integration
+
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.

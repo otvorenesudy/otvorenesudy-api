@@ -34,6 +34,7 @@ group :development, :test do
   gem 'fuubar'
   gem 'database_cleaner'
   gem 'factory_girl_rails', '~> 4.5'
+  gem 'rails-controller-testing'
 
   # Configuration
   gem 'dotenv-rails'
