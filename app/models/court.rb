@@ -1,4 +1,6 @@
 class Court < ActiveRecord::Base
+  include Formattable
+
   belongs_to :source
 
   belongs_to :type, class_name: 'Court::Type', foreign_key: :court_type_id
@@ -21,4 +23,13 @@ class Court < ActiveRecord::Base
   has_many :expenses, class_name: 'Court::Expense'
 
   has_many :selection_procedures
+
+  formattable :address, default: '%s, %z %m', remove: /\,\s*\z/ do |court|
+    {
+      '%s' => court.street,
+      '%z' => court.municipality.zipcode,
+      '%m' => court.municipality.name,
+      '%c' => 'Slovenská republika'
+    }
+  end
 end
