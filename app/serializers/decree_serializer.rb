@@ -13,6 +13,10 @@ class DecreeSerializer < ActiveModel::Serializer
   has_many :opponents
   has_many :proposers
 
+  def text
+    object.pages.map(&:text).join
+  end
+
   def document_url
     # TODO if merging with main application, change this to routes url
     "http://otvorenesudy.sk/decrees/#{object.id}/document"

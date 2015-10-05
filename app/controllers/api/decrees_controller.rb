@@ -4,7 +4,20 @@ class Api::DecreesController < Api::ApplicationController
   protected
 
   def syncable_repository
-    Decree
+    Decree.includes(
+      :pages,
+      :court,
+      :form,
+      :legislation_area,
+      :legislation_subarea,
+      :natures,
+      :judges,
+      :legislations,
+      :proceeding,
+
+      court: [:municipality],
+      proceeding: [:hearings]
+    )
   end
 
   def next_sync_url(*args)

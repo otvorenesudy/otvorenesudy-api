@@ -23,8 +23,4 @@ class Decree < ActiveRecord::Base
   has_many :paragraphs, through: :paragraph_explanations
 
   has_many :pages, class_name: 'Decree::Page'
-
-  def text
-    @text ||= pages.pluck(:text).join
-  end
 end
