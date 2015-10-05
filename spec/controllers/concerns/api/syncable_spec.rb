@@ -15,14 +15,14 @@ RSpec.shared_examples_for Api::Syncable do
 
       json = adapter.new(serializer).to_json
 
-      get :sync, api_key: api_key.value, format: :json
+      get :sync, params: { api_key: api_key.value }, format: :json
 
       expect(response.headers['Content-Type']).to eql('application/json; charset=utf-8')
       expect(response.body).to eql(json)
     end
 
     it 'returns records sorted by updated_at and id' do
-      get :sync, api_key: api_key.value, format: :json
+      get :sync, params: { api_key: api_key.value }, format: :json
 
       result = assigns(:records)
 
@@ -30,7 +30,7 @@ RSpec.shared_examples_for Api::Syncable do
     end
 
     it 'provides hypermedia API' do
-      get :sync, api_key: api_key.value, format: :json
+      get :sync, params: { api_key: api_key.value }, format: :json
 
       link = url.call(since: records[99].updated_at.as_json, last_id: records[99].id, api_key: api_key.value)
 
@@ -43,7 +43,7 @@ RSpec.shared_examples_for Api::Syncable do
 
         other = 3.times.map { FactoryGirl.create factory, updated_at: date }
 
-        get :sync, since: date.as_json, api_key: api_key.value, format: :json
+        get :sync, params: { since: date.as_json, api_key: api_key.value }, format: :json
 
         result = assigns(:records)
 
@@ -57,8 +57,8 @@ RSpec.shared_examples_for Api::Syncable do
 
         3.times.map { FactoryGirl.create factory, updated_at: date }
 
-        get :sync, api_key: api_key.value, format: :json
-        get :sync, since: date.as_json, api_key: api_key.value, format: :json
+        get :sync, params: { api_key: api_key.value }, format: :json
+        get :sync, params: { since: date.as_json, api_key: api_key.value }, format: :json
 
         expect(response.headers['Link']).to be_nil
       end
