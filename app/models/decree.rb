@@ -13,14 +13,18 @@ class Decree < ActiveRecord::Base
   has_many :naturalizations, class_name: 'Decree::Naturalization'
   has_many :natures, class_name: 'Decree::Nature', through: :naturalizations
 
-  belongs_to :legislation_area, optional: true
-  belongs_to :legislation_subarea, optional: true
+  belongs_to :legislation_area, class_name: 'Legislation::Area', optional: true
+  belongs_to :legislation_subarea, class_name: 'Legislation::Subarea', optional: true
 
-  has_many :legislation_usages
+  has_many :legislation_usages, class_name: 'Legislation::Usage'
   has_many :legislations, through: :legislation_usages
 
-  has_many :paragraph_explanations, through: :legislations
+  has_many :paragraph_explanations, class_name: 'Paragraph::Explanation', through: :legislations
   has_many :paragraphs, through: :paragraph_explanations
 
   has_many :pages, class_name: 'Decree::Page'
+
+  def text
+    @text ||= pages.pluck(:text).join
+  end
 end
