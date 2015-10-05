@@ -4,15 +4,16 @@ RSpec.shared_examples_for Api::Syncable do
   let(:api_key) { create :api_key }
   let(:factory) { repository.name.underscore.to_sym }
   let!(:records) { 101.times.map { FactoryGirl.create(factory) }.sort_by { |r| [r.updated_at, r.id] }}
+  let(:adapter) { ActiveModel::Serializer.config.adapter }
 
   describe 'GET sync' do
     it 'returns records as json' do
-      json = ActiveModel::ArraySerializer.new(
+      serializer = ActiveModel::Serializer::ArraySerializer.new(
         records.first(100),
-        each_serializer: "#{repository}Serializer".constantize,
-        root: repository.name.underscore.pluralize.to_sym,
-        scope: controller
-      ).to_json
+        serializer: "#{repository}Serializer".constantize
+      )
+
+      json = adapter.new(serializer).to_json
 
       get :sync, api_key: api_key.value, format: :json
 
@@ -56,7 +57,7 @@ RSpec.shared_examples_for Api::Syncable do
 
         3.times.map { FactoryGirl.create factory, updated_at: date }
 
-        get :sync, api_key: api_key.value
+        get :sync, api_key: api_key.value, format: :json
         get :sync, since: date.as_json, api_key: api_key.value, format: :json
 
         expect(response.headers['Link']).to be_nil
