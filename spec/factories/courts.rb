@@ -4,12 +4,11 @@ FactoryGirl.define do
 
     association :source
     association :municipality
+    association :type, factory: :court_type
 
     sequence(:name) { |n| "Court #{n}" }
 
     street 'Street'
-
-    type { CourtType.all.sample }
 
     trait :with_employments do
       after :create do |court|

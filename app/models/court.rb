@@ -33,3 +33,5 @@ class Court < ActiveRecord::Base
     }
   end
 end
+
+require 'court/type'
