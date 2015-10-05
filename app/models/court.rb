@@ -9,14 +9,14 @@ class Court < ActiveRecord::Base
   has_many :hearings
   has_many :decrees
 
-  belongs_to :jurisdiction, class_name: 'Court::Jurisdiction'
+  belongs_to :jurisdiction, class_name: 'Court::Jurisdiction', optional: true
   belongs_to :municipality
 
   has_many :offices, class_name: 'Court::Office'
 
-  belongs_to :information_center,       class_name: 'Court::Office'
-  belongs_to :registry_center,          class_name: 'Court::Office'
-  belongs_to :business_registry_center, class_name: 'Court::Office'
+  belongs_to :information_center,       class_name: 'Court::Office', optional: true
+  belongs_to :registry_center,          class_name: 'Court::Office', optional: true
+  belongs_to :business_registry_center, class_name: 'Court::Office', optional: true
 
   has_many :expenses, class_name: 'Court::Expense'
 

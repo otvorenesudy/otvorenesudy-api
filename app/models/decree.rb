@@ -1,8 +1,9 @@
 class Decree < ActiveRecord::Base
   belongs_to :source
 
-  belongs_to :proceeding
-  belongs_to :court
+  # TODO consider this required in future
+  belongs_to :proceeding, optional: true
+  belongs_to :court, optional: true
 
   has_many :judgements
   has_many :judges, through: :judgements
@@ -12,8 +13,8 @@ class Decree < ActiveRecord::Base
   has_many :naturalizations, class_name: 'Decree::Naturalization'
   has_many :natures, class_name: 'Decree::Nature', through: :naturalizations
 
-  belongs_to :legislation_area
-  belongs_to :legislation_subarea
+  belongs_to :legislation_area, optional: true
+  belongs_to :legislation_subarea, optional: true
 
   has_many :legislation_usages
   has_many :legislations, through: :legislation_usages
