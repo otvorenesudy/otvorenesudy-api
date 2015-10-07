@@ -18,3 +18,5 @@ class Hearing < ActiveRecord::Base
 
   has_many :accusations, through: :defendants
 end
+
+require 'hearing/type'
