@@ -4,6 +4,7 @@ FactoryGirl.define do
 
     association :source
     association :court
+    association :proceeding
 
     sequence(:ecli)        { |n| "ECLI #{n}" }
     sequence(:file_number) { |n| "File Number #{n}" }
