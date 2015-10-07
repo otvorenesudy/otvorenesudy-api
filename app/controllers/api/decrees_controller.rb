@@ -13,11 +13,9 @@ class Api::DecreesController < Api::ApplicationController
       :natures,
       :judges,
       :legislations,
-      :proceeding,
 
       court: [:municipality],
       proceeding: [
-        :hearings,
         hearings: [:proposers, :defendants, :opponents]
       ]
     )
