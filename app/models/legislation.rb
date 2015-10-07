@@ -5,6 +5,9 @@ class Legislation < ActiveRecord::Base
   has_many :paragraph_explanations, as: :explainable
   has_many :paragraphs, through: :paragraph_explanations
 
+  def self.inheritance_column
+  end
+
   def external_url
     if year && number
       url =  "http://www.zakonypreludi.sk/zz/#{year}-#{number}#"
