@@ -6,6 +6,8 @@ RSpec.describe DecreeSerializer do
 
   context 'with json serializer' do
     it 'serializes decree correctly' do
+      proceeding = create(:proceeding)
+
       municipality = create(:municipality, name: 'Bratislava', zipcode: '123 45')
       court = create(:court, name: 'Krajský súd Bratislava', street: 'Kozia 20 3/4', municipality: municipality)
 
@@ -26,6 +28,8 @@ RSpec.describe DecreeSerializer do
 
         legislation_area: area,
         legislation_subarea: subarea,
+
+        proceeding: proceeding
       )
 
       create(:decree_page, decree: decree, number: 1, text: 'Text 1 ')
@@ -50,6 +54,12 @@ RSpec.describe DecreeSerializer do
         value_unprocessed: 'Unprocessed Value'
       )
       create(:legislation_usage, legislation: legislation, decree: decree)
+
+      hearing = create(:hearing, proceeding: proceeding)
+
+      create(:defendant, name: 'Peter', hearing: hearing)
+      create(:proposer, name: 'Janko', hearing: hearing)
+      create(:opponent, name: 'Juraj', hearing: hearing)
 
       hash = adapter.new(serializer.new(decree)).as_json
 
@@ -106,9 +116,15 @@ RSpec.describe DecreeSerializer do
             }
           ],
 
-          defendants: [],
-          opponents: [],
-          proposers: []
+          defendants: [
+            { name: 'Peter' }
+          ],
+          opponents: [
+            { name: 'Juraj' }
+          ],
+          proposers: [
+            { name: 'Janko' }
+          ]
         }
       })
     end
