@@ -3,8 +3,8 @@ FactoryGirl.define do
     uri
     source
 
-    sequence(:name)             { |n| "JUDr. Peter Retep #{n}" }
-    sequence(:name_unprocessed) { |n| "JUDr. Peter Retep #{n}" }
+    sequence(:name)             { |n| "#{prefix} #{first} #{middle} #{last}, #{suffix} #{addition}".strip.squeeze(' ') }
+    sequence(:name_unprocessed) { |n| name }
 
     prefix   'JUDr.'
     first    'Peter'

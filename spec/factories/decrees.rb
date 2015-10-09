@@ -13,8 +13,10 @@ FactoryGirl.define do
     form { create :decree_form }
     date { Time.now }
 
-    after :create do |decree|
-      3.times.map { create :judgement, decree: decree }
+    trait :with_judges do
+      after :create do |decree|
+        3.times.map { create :judgement, decree: decree }
+      end
     end
   end
 end
