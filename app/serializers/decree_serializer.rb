@@ -30,7 +30,7 @@ class DecreeSerializer < ActiveModel::Serializer
     return [] unless object.proceeding
     return [] unless object.proceeding.hearings.size > 0
 
-    proposers = object.proceeding.hearings.map(&:proposers).flatten.uniq
+    proposers = object.proceeding.hearings.map(&:proposers).flatten.uniq(&:name)
 
     return proposers
   end
@@ -39,7 +39,7 @@ class DecreeSerializer < ActiveModel::Serializer
     return [] unless object.proceeding
     return [] unless object.proceeding.hearings.size > 0
 
-    defendants = object.proceeding.hearings.map(&:defendants).flatten.uniq
+    defendants = object.proceeding.hearings.map(&:defendants).flatten.uniq(&:name)
 
     return defendants
   end
@@ -48,7 +48,7 @@ class DecreeSerializer < ActiveModel::Serializer
     return [] unless object.proceeding
     return [] unless object.proceeding.hearings.size > 0
 
-    opponents = object.proceeding.hearings.map(&:opponents).flatten.uniq
+    opponents = object.proceeding.hearings.map(&:opponents).flatten.uniq(&:name)
 
     return opponents
   end

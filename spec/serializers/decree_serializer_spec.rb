@@ -129,4 +129,73 @@ RSpec.describe DecreeSerializer do
       })
     end
   end
+
+  describe '#defendants' do
+    context 'with more than hearing' do
+      it 'unifies defendant by name' do
+        proceeding = create(:proceeding)
+        decree = create(:decree, proceeding: proceeding)
+
+        3.times.map do
+          hearing = create(:hearing, proceeding: proceeding)
+
+          create(:defendant, hearing: hearing, name: 'Peter Pan')
+
+          hearing
+        end
+
+        hash = adapter.new(serializer.new(decree)).as_json
+
+        expect(hash[:decree][:defendants]).to eql([{
+          name: 'Peter Pan'
+        }])
+      end
+    end
+  end
+
+  describe '#opponents' do
+    context 'with more than one hearing' do
+      it 'unifies opponents by name' do
+        proceeding = create(:proceeding)
+        decree = create(:decree, proceeding: proceeding)
+
+        3.times.map do
+          hearing = create(:hearing, proceeding: proceeding)
+
+          create(:opponent, hearing: hearing, name: 'Peter Parker')
+
+          hearing
+        end
+
+        hash = adapter.new(serializer.new(decree)).as_json
+
+        expect(hash[:decree][:opponents]).to eql([{
+          name: 'Peter Parker'
+        }])
+      end
+    end
+  end
+
+  describe '#proposers' do
+    context 'with more than one hearing' do
+      it 'unifies proposers by name' do
+        proceeding = create(:proceeding)
+        decree = create(:decree, proceeding: proceeding)
+
+        3.times.map do
+          hearing = create(:hearing, proceeding: proceeding)
+
+          create(:proposer, hearing: hearing, name: 'Peter Smith')
+
+          hearing
+        end
+
+        hash = adapter.new(serializer.new(decree)).as_json
+
+        expect(hash[:decree][:proposers]).to eql([{
+          name: 'Peter Smith'
+        }])
+      end
+    end
+  end
 end
