@@ -50,6 +50,7 @@ namespace :deploy do
   end
 
   task :restart do
-    invoke 'unicorn:legacy_restart'
+    invoke 'unicorn:stop'
+    invoke 'unicorn:start'
   end
 end
