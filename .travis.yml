@@ -1,0 +1,20 @@
+sudo: false
+language: ruby
+bundler_args: --without development
+
+before_install:
+  - gem install bundler
+
+env:
+  - OPENCOURTS_DATABASE_USER=postgres
+
+before_script:
+  - psql -c 'create database opencourts_test;' -U postgres
+  - bundle exec rake db:schema:load
+  - bundle exec rake db:seed
+
+script:
+  - bundle exec rspec spec
+
+addons:
+  postgresql: '9.1'

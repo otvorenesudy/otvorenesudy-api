@@ -1,5 +1,7 @@
 # Open Courts API
 
+[![Build Status](https://travis-ci.org/otvorenesudy/otvorenesudy-api.svg)](https://travis-ci.org/otvorenesudy/otvorenesudy-api)
+
 RESTful APIs for public data of the [Open Courts](https://github.com/otvorenesudy) project
 
 ## Requirements
