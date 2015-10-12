@@ -5,8 +5,8 @@ gem 'rails', github: 'rails/rails'
 gem 'sprockets-rails', github: 'rails/sprockets-rails'
 gem 'sprockets', github: 'rails/sprockets'
 gem 'sass-rails', github: 'rails/sass-rails'
-gem 'arel', github: "rails/arel"
-gem 'rack', github: "rack/rack"
+gem 'arel', github: 'rails/arel'
+gem 'rack', github: 'rack/rack'
 
 # Database
 gem 'pg'
@@ -31,7 +31,6 @@ gem 'squire'
 
 group :development, :test do
   # Debugging
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'pry'
 
@@ -51,9 +50,7 @@ group :development do
   gem 'capistrano-rvm'
   gem 'capistrano3-unicorn'
 
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  # Other
+  gem 'bump', github: 'pavolzbell/bump'
   gem 'spring'
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-# gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

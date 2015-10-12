@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/pavolzbell/bump.git
+  revision: 5a607237540812c4fcd75c72082b11f6c9880e42
+  specs:
+    bump (0.1.1)
+
+GIT
   remote: git://github.com/rack/rack.git
   revision: c617ea99c12a5bfe026e00476ff37e714e01891a
   specs:
@@ -222,6 +228,7 @@ DEPENDENCIES
   active_model_serializers (~> 0.10.0.rc2)
   arel!
   bcrypt (~> 3.1.7)
+  bump!
   byebug
   capistrano (~> 3.1)
   capistrano-bundler
