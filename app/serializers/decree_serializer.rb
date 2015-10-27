@@ -26,6 +26,20 @@ class DecreeSerializer < ActiveModel::Serializer
     object.date.try(:to_date)
   end
 
+  def judges
+    object.judgements.map { |judgement|
+      if judgement.judge_name_similarity.to_f == 1.0
+        judgement.judge
+      else
+        judge = Judge.new(name: judgement.judge_name_unprocessed)
+
+        judge.readonly!
+
+        judge
+      end
+    }.compact
+  end
+
   def proposers
     return [] unless object.proceeding
     return [] unless object.proceeding.hearings.size > 0

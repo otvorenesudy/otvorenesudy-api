@@ -130,6 +130,31 @@ RSpec.describe DecreeSerializer do
     end
   end
 
+  describe '#judges' do
+    let(:decree) { create(:decree) }
+    let(:judges) { 2.times.map { create(:judge) } }
+
+    it 'uses only exactly matched judges' do
+      create :judgement, decree: decree, judge: judges[0], judge_name_similarity: 0.8, judge_name_unprocessed: 'JuDR. Kralik'
+      create :judgement, decree: decree, judge: judges[1], judge_name_similarity: 1.0
+
+      expect(decree.judges.sort).to eql(judges.sort)
+
+      hash = adapter.new(serializer.new(decree)).as_json
+
+      expect(hash[:decree][:judges]).to eql([
+        {
+          id: nil,
+          name: 'JuDR. Kralik'
+        },
+        {
+          id: judges[1].id,
+          name: judges[1].name
+        }
+      ])
+    end
+  end
+
   describe '#defendants' do
     context 'with more than hearing' do
       it 'unifies defendant by name' do
