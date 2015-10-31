@@ -75,6 +75,7 @@ RSpec.describe DecreeSerializer do
           document_url: 'http://otvorenesudy.sk/decrees/3/document',
           created_at: decree.created_at,
           updated_at: decree.updated_at,
+          other_judges: [],
           court: {
             id: decree.court.id,
             name: 'Krajský súd Bratislava',
@@ -127,6 +128,28 @@ RSpec.describe DecreeSerializer do
           ]
         }
       })
+    end
+  end
+
+  describe '#judges' do
+    let(:decree) { create(:decree) }
+    let(:judges) { 2.times.map { create(:judge) } }
+
+    it 'uses only exactly matched judges' do
+      create :judgement, decree: decree, judge: judges[0], judge_name_similarity: 0.8, judge_name_unprocessed: 'JuDR. Kralik'
+      create :judgement, decree: decree, judge: judges[1], judge_name_similarity: 1.0
+
+      expect(decree.judges.sort).to eql(judges.sort)
+
+      hash = adapter.new(serializer.new(decree)).as_json
+
+      expect(hash[:decree][:judges]).to eql([
+        {
+          id: judges[1].id,
+          name: judges[1].name
+        }
+      ])
+      expect(hash[:decree][:other_judges]).to eql(['JuDR. Kralik'])
     end
   end
 

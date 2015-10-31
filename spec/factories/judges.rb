@@ -3,15 +3,16 @@ FactoryGirl.define do
     uri
     source
 
-    sequence(:name)             { |n| "#{prefix} #{first} #{middle} #{last}, #{suffix} #{addition}".strip.squeeze(' ') }
-    sequence(:name_unprocessed) { |n| name }
+    name { "#{prefix} #{first} #{middle} #{last}, #{suffix} #{addition}".strip.squeeze(' ') }
+    name_unprocessed { |n| name }
 
     prefix   'JUDr.'
     first    'Peter'
     middle   ''
-    last     'Retep'
     suffix   'PhD.'
     addition ''
+
+    sequence(:last) { |n| "Retep ##{n}" }
 
     trait :with_employments do
       after :create do |judge|
