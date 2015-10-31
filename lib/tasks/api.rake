@@ -9,14 +9,16 @@ namespace :api do
         :legislation_area,
         :legislation_subarea,
         :natures,
-        :judges,
         :legislations,
+        :inexact_judgements,
 
+        exact_judgements: [:judge],
         court: [:municipality],
         proceeding: [
           hearings: [:proposers, :defendants, :opponents]
         ]
       )
+
 
       directory = "api-decrees-#{Time.now.strftime('%Y%m%d%H%M')}"
       index = 0
