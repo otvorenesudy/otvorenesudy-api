@@ -1,5 +1,6 @@
 class DecreeSerializer < ActiveModel::Serializer
   attributes :id, :case_number, :file_number, :ecli, :text, :date, :uri, :document_url, :created_at, :updated_at
+  attributes :other_judges
 
   has_one :court
   has_one :form
@@ -27,17 +28,11 @@ class DecreeSerializer < ActiveModel::Serializer
   end
 
   def judges
-    object.judgements.map { |judgement|
-      if judgement.judge_name_similarity.to_f == 1.0
-        judgement.judge
-      else
-        judge = Judge.new(name: judgement.judge_name_unprocessed)
+    object.judgements.exact.map(&:judge)
+  end
 
-        judge.readonly!
-
-        judge
-      end
-    }.compact
+  def other_judges
+    object.judgements.inexact.map(&:judge_name_unprocessed)
   end
 
   def proposers

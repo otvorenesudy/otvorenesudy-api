@@ -75,6 +75,7 @@ RSpec.describe DecreeSerializer do
           document_url: 'http://otvorenesudy.sk/decrees/3/document',
           created_at: decree.created_at,
           updated_at: decree.updated_at,
+          other_judges: [],
           court: {
             id: decree.court.id,
             name: 'Krajský súd Bratislava',
@@ -144,14 +145,11 @@ RSpec.describe DecreeSerializer do
 
       expect(hash[:decree][:judges]).to eql([
         {
-          id: nil,
-          name: 'JuDR. Kralik'
-        },
-        {
           id: judges[1].id,
           name: judges[1].name
         }
       ])
+      expect(hash[:decree][:other_judges]).to eql(['JuDR. Kralik'])
     end
   end
 
