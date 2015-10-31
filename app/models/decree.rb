@@ -6,6 +6,8 @@ class Decree < ActiveRecord::Base
   belongs_to :court, optional: true
 
   has_many :judgements
+  has_many :exact_judgements, -> { exact }, class_name: :Judgement, source: :judge
+  has_many :inexact_judgements, -> { inexact }, class_name: :Judgement, source: :judge
   has_many :judges, through: :judgements
 
   belongs_to :form, class_name: 'Decree::Form', foreign_key: :decree_form_id

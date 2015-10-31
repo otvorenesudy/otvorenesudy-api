@@ -28,11 +28,11 @@ class DecreeSerializer < ActiveModel::Serializer
   end
 
   def judges
-    object.judgements.exact.map(&:judge)
+    object.exact_judgements.map(&:judge)
   end
 
   def other_judges
-    object.judgements.inexact.map(&:judge_name_unprocessed)
+    object.inexact_judgements.map(&:judge_name_unprocessed)
   end
 
   def proposers
