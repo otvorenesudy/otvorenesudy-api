@@ -11,9 +11,10 @@ class Api::DecreesController < Api::ApplicationController
       :legislation_area,
       :legislation_subarea,
       :natures,
-      :judges,
       :legislations,
+      :inexact_judgements,
 
+      exact_judgements: [:judge],
       court: [:municipality],
       proceeding: [
         hearings: [:proposers, :defendants, :opponents]

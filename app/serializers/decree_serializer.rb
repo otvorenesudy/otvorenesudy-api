@@ -1,5 +1,6 @@
 class DecreeSerializer < ActiveModel::Serializer
   attributes :id, :case_number, :file_number, :ecli, :text, :date, :uri, :document_url, :created_at, :updated_at
+  attributes :other_judges
 
   has_one :court
   has_one :form
@@ -24,6 +25,14 @@ class DecreeSerializer < ActiveModel::Serializer
 
   def date
     object.date.try(:to_date)
+  end
+
+  def judges
+    object.exact_judgements.map(&:judge)
+  end
+
+  def other_judges
+    object.inexact_judgements.map(&:judge_name_unprocessed)
   end
 
   def proposers

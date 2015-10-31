@@ -29,6 +29,9 @@ gem 'oj_mimic_json'
 gem 'dotenv-rails'
 gem 'squire'
 
+# Error reporting
+gem 'rollbar', '~> 2.4.0'
+
 group :development, :test do
   # Debugging
   gem 'byebug'
