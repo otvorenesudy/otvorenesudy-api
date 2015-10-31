@@ -46,6 +46,9 @@ group :development, :test do
 end
 
 group :development do
+  # Debugging
+  gem 'web-console', '~> 2.0'
+
   # Deployment
   gem 'capistrano', '~> 3.1'
   gem 'capistrano-rails', '~> 1.1'
