@@ -1,2 +1,7 @@
 en:
-
+  number:
+    human:
+      decimal_units:
+        units:
+          thousand: thsd.
+          million: m.

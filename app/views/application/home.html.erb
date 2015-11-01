@@ -5,6 +5,11 @@
         <%= image_tag 'logo.png' %>
       </a>
 
+      <ul class="locales list-inline pull-right">
+        <li><%= link_to 'SK', l: :sk %></li>
+        <li><%= link_to 'EN', l: :en %></li>
+      </ul>
+
       <div class="headline">
         <h1 class="title">
           <%= t('.title') %>
@@ -16,14 +21,14 @@
           <%= t('.description') %>
         </h2>
 
-        <div class="sign-up-form row">
+        <%= form_tag request_invite_path, method: :post, class: 'request-invite-form row', remote: true do |f| %>
           <div class="input-group col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-            <input type="text" class="form-control input-lg" placeholder="<%= t('.sign_up_placeholder') %>">
+            <%= text_field_tag 'email', nil, class: 'form-control input-lg', placeholder: t('.request_invite_placeholder') %>
             <span class="input-group-btn">
-              <button class="btn btn-lg btn-sign-up" type="button"><%= t('.sign_up_button')  %></button>
+              <%= button_tag t('.request_invite_button'), class: 'btn btn-lg' %>
             </span>
           </div>
-        </div>
+        <% end %>
       </div>
 
       <a class="btn-see-more" href="#">
@@ -95,13 +100,13 @@
     <div class="row testimonial">
 
       <div class="col-sm-9">
-        <h1>
+        <h2>
           <%= t('.testimonials.data.title') %>
 
           <small>
             <%= t('.testimonials.data.subtitle') %>
           </small>
-        </h1>
+        </h2>
 
         <%= t('.testimonials.data.content') %>
       </div>
@@ -115,13 +120,13 @@
 
     <div class="row testimonial">
       <div class="col-sm-9">
-        <h1>
+        <h2>
           <%= t('.testimonials.analysis.title') %>
 
           <small>
             <%= t('.testimonials.analysis.subtitle') %>
           </small>
-        </h1>
+        </h2>
 
         <%= t('.testimonials.analysis.content') %>
       </div>
@@ -135,13 +140,13 @@
 
     <div class="row testimonial">
       <div class="col-sm-9">
-        <h1>
+        <h2>
           <%= t('.testimonials.technologies.title') %>
 
           <small>
             <%= t('.testimonials.technologies.subtitle') %>
           </small>
-        </h1>
+        </h2>
 
         <%= t('.testimonials.technologies.content') %>
       </div>
@@ -171,15 +176,15 @@
     </div>
   </section>
 
-  <section id="sign-up">
-    <div class="sign-up-form row">
+  <section id="request-invite">
+    <%= form_tag request_invite_path, method: :post, class: 'request-invite-form row', remote: true do |f| %>
       <div class="input-group col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-        <input type="text" class="form-control input-lg" placeholder="<%= t('.sign_up_placeholder') %>">
+        <%= text_field_tag 'email', nil, class: 'form-control input-lg', placeholder: t('.request_invite_placeholder') %>
         <span class="input-group-btn">
-          <button class="btn btn-lg btn-sign-up" type="button"><%= t('.sign_up_button') %></button>
+          <%= button_tag t('.request_invite_button'), class: 'btn btn-lg' %>
         </span>
       </div>
-    </div>
+    <% end %>
   </section>
 
   <section id="contact">
