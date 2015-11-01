@@ -17,6 +17,7 @@ gem 'coffee-rails', github: 'rails/coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'bootstrap-sass', github: 'twbs/bootstrap-sass'
+gem 'font-awesome-rails', github: 'bokmann/font-awesome-rails'
 
 # Security
 gem 'bcrypt', '~> 3.1.7'

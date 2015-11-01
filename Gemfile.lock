@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/bokmann/font-awesome-rails.git
+  revision: 75d62a33c88f1b28865a58726ff6c692d7bdb055
+  specs:
+    font-awesome-rails (4.4.0.0)
+      railties (>= 3.2, < 5.0)
+
+GIT
   remote: git://github.com/pavolzbell/bump.git
   revision: 5a607237540812c4fcd75c72082b11f6c9880e42
   specs:
@@ -274,6 +281,7 @@ DEPENDENCIES
   database_cleaner
   dotenv-rails
   factory_girl_rails (~> 4.5)
+  font-awesome-rails!
   fuubar
   jquery-rails
   oj
