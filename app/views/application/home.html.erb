@@ -7,27 +7,27 @@
 
       <div class="headline">
         <h1 class="title">
-          Dáta o slovenskom súdnictve
+          <%= t('.title') %>
 
           <br />
         </h1>
 
         <h2 class="description">
-          Denne aktualizované informácie o súdnych rozhodnutiach a pojednávaniach s komplexnými analýzami.
+          <%= t('.description') %>
         </h2>
 
         <div class="sign-up-form row">
           <div class="input-group col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-            <input type="text" class="form-control input-lg" placeholder="Váš email">
+            <input type="text" class="form-control input-lg" placeholder="<%= t('.sign_up_placeholder') %>">
             <span class="input-group-btn">
-              <button class="btn btn-lg btn-sign-up" type="button">Požiadať o prístup</button>
+              <button class="btn btn-lg btn-sign-up" type="button"><%= t('.sign_up_button')  %></button>
             </span>
           </div>
         </div>
       </div>
 
       <a class="btn-see-more" href="#">
-        Dozvite sa viac<br/>
+        <%= t('.see_more') %><br/>
         <i class="fa fa-chevron-down"></i>
       </a>
     </div>
@@ -37,12 +37,12 @@
 <div class="container content">
   <section id="title">
     <h1>
-      Otvorené Súdy
+      <%= t('.content.title') %>
 
       <br />
 
       <small>
-        Pokročilé dáta o slovenskom súdnictve
+        <%= t('.content.subtitle') %>
       </small>
 
       <hr />
@@ -58,7 +58,7 @@
           <br />
 
           <small>
-            súdnych rozhodnutí
+            <%= t('.statistics.decrees') %>
           </small>
         </h1>
       </div>
@@ -70,7 +70,7 @@
           <br />
 
           <small>
-            sudcov
+            <%= t('.statistics.judges') %>
           </small>
         </h1>
       </div>
@@ -82,7 +82,7 @@
           <br />
 
           <small>
-            súdnych pojednávaní
+            <%= t('.statistics.hearings') %>
           </small>
         </h1>
       </div>
@@ -96,18 +96,19 @@
 
       <div class="col-sm-9">
         <h1>
-          Najnovšie dáta
+          <%= t('.testimonials.data.title') %>
 
-          <small>Každodenne</small>
+          <small>
+            <%= t('.testimonials.data.subtitle') %>
+          </small>
         </h1>
 
-        Každodenný sumár nových rozhodnutí, pojednávaní pre konkrétnych sudcov, súd alebo zákon.
+        <%= t('.testimonials.data.content') %>
       </div>
 
       <div class="col-sm-3 feature-icon">
         <i class="fa fa-files-o"></i>
       </div>
-
     </div>
 
     <hr />
@@ -115,12 +116,14 @@
     <div class="row testimonial">
       <div class="col-sm-9">
         <h1>
-          Analýzy dát
+          <%= t('.testimonials.analysis.title') %>
 
-          <small>Pre sudcov, súdy a rozhodnutia</small>
+          <small>
+            <%= t('.testimonials.analysis.subtitle') %>
+          </small>
         </h1>
 
-        Analýzy aktivity a práce súdov a sudcov a vyhľadanie podobných súdnych rozhodnutí.
+        <%= t('.testimonials.analysis.content') %>
       </div>
 
       <div class="col-sm-3 feature-icon">
@@ -133,12 +136,14 @@
     <div class="row testimonial">
       <div class="col-sm-9">
         <h1>
-          Moderné technológie
+          <%= t('.testimonials.technologies.title') %>
 
-          <small>Rýchly prístup</small>
+          <small>
+            <%= t('.testimonials.technologies.subtitle') %>
+          </small>
         </h1>
 
-        Môžeme vám ponúknuť rôzne formáty dát spolu s detailnými pohľadmi až po komplexné grafy a analytické nástroje.
+        <%= t('.testimonials.technologies.content') %>
       </div>
 
       <div class="col-sm-3 feature-icon">
@@ -148,17 +153,17 @@
   </section>
 
   <section id="partners">
-    <h1>Partneri</h1>
+    <h1><%= t('.partners.title') %></h1>
     <hr />
 
     <div class="row">
-      <div class="col-md-6 partner">
+      <div class="col-md-5 partner">
         <a href="http://transparency.sk" target="_blank">
           <%= image_tag 'partners/transparency-colored-280.png' %>
         </a>
       </div>
 
-      <div class="col-md-6 partner partner-index-podnikatela">
+      <div class="col-md-7 partner partner-index-podnikatela">
         <a href="https://indexpodnikatela.sk" target="_blank">
           <%= image_tag "partners/index-podnikatela.png" %>
         </a>
@@ -169,9 +174,9 @@
   <section id="sign-up">
     <div class="sign-up-form row">
       <div class="input-group col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-        <input type="text" class="form-control input-lg" placeholder="Váš email">
+        <input type="text" class="form-control input-lg" placeholder="<%= t('.sign_up_placeholder') %>">
         <span class="input-group-btn">
-          <button class="btn btn-lg btn-sign-up" type="button">Požiadať o prístup</button>
+          <button class="btn btn-lg btn-sign-up" type="button"><%= t('.sign_up_button') %></button>
         </span>
       </div>
     </div>
@@ -179,7 +184,7 @@
 
   <section id="contact">
     <h1 class="text-center text-muted">
-      <%= mail_to 'api@otvorenesudy.sk' %>
+      <%= mail_to 'api@otvorenesudy.sk', nil, target: :_blank %>
     </h1>
   </section>
 </div>

@@ -1,0 +1,39 @@
+sk:
+  application:
+    home:
+      title: "Dáta o slovenskom súdnictve"
+      description: "Denne aktualizované informácie o súdnych rozhodnutiach a pojednávaniach s komplexnými analýzami."
+
+      sign_up_placeholder: "Váš email"
+      sign_up_button: "Požiadať o prístup"
+
+      see_more: "Dozvite sa viac"
+
+      content:
+        title: "Otvorené Súdy"
+        subtitle: "Pokročilé dáta o slovenskom súdnictve"
+
+      statistics:
+        decrees: "súdnych rozhodnutí"
+        judges: "sudcov"
+        hearings: "súdnych pojednávaní"
+
+      testimonials:
+        data:
+          title: "Najnovšie dáta"
+          subtitle: "Každodenne"
+          content: "Každodenný sumár nových rozhodnutí, pojednávaní pre konkrétnych sudcov, súd alebo zákon."
+
+        analysis:
+          title: "Analýzy dát"
+          subtitle: "Pre sudcov, súdy a rozhodnutia"
+          content: "Analýzy aktivity a práce súdov a sudcov a vyhľadanie podobných súdnych rozhodnutí."
+
+        technologies:
+          title: "Moderné technológie"
+          subtitle: "Pre spracovanie dát"
+          content: "Môžeme vám ponúknuť rôzne formáty dát spolu s detailnými pohľadmi až po komplexné grafy a analytické nástroje."
+
+
+      partners:
+        title: 'Partneri'
