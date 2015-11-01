@@ -1,0 +1,7 @@
+sk:
+  number:
+    human:
+      decimal_units:
+        units:
+          thousand: tis.
+          million: mil.
