@@ -50,6 +50,8 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails', '~> 4.5'
   gem 'rails-controller-testing'
+  gem 'capybara'
+  gem 'poltergeist'
 end
 
 group :development do
