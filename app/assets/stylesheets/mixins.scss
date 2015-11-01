@@ -1,0 +1,27 @@
+@mixin transition($transition...) {
+    -moz-transition:    $transition;
+    -o-transition:      $transition;
+    -webkit-transition: $transition;
+    transition:         $transition;
+}
+
+@mixin linear-gradient($angle, $from, $to) {
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-color: $from;
+  background-origin: padding-box;
+  background-repeat: repeat-x;
+
+  background-image: -webkit-linear-gradient($angle, $from, $to); // Safari 5.1+, Chrome 10+
+  background-image:    -moz-linear-gradient($angle, $from, $to); // Firefox 3.6+
+  background-image:      -o-linear-gradient($angle, $from, $to); // Opera 11.10
+  background-image:         linear-gradient($angle, $from, $to); // Standard, Internet Explorer 10
+}
+
+@mixin animation($name, $time, $delay) {
+  -webkit-animation: $name $time;
+          animation: $name $time;
+
+  -webkit-animation-delay: $delay;
+          animation-delay: $delay;
+}

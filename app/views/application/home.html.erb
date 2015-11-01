@@ -1,0 +1,185 @@
+<div class="jumbotron">
+  <div class="pattern">
+    <div class="container">
+      <a class="logo" href="/">
+        <%= image_tag 'logo.png' %>
+      </a>
+
+      <div class="headline">
+        <h1 class="title">
+          Dáta o slovenskom súdnictve
+
+          <br />
+        </h1>
+
+        <h2 class="description">
+          Denne aktualizované informácie o súdnych rozhodnutiach a pojednávaniach s komplexnými analýzami.
+        </h2>
+
+        <div class="sign-up-form row">
+          <div class="input-group col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+            <input type="text" class="form-control input-lg" placeholder="Váš email">
+            <span class="input-group-btn">
+              <button class="btn btn-lg btn-sign-up" type="button">Požiadať o prístup</button>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <a class="btn-see-more" href="#">
+        Dozvite sa viac<br/>
+        <i class="fa fa-chevron-down"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="container content">
+  <section id="title">
+    <h1>
+      Otvorené Súdy
+
+      <br />
+
+      <small>
+        Pokročilé dáta o slovenskom súdnictve
+      </small>
+
+      <hr />
+    </h1>
+  </section>
+
+  <section id="statistics">
+    <div class="row">
+      <div class="col-sm-4">
+        <h1 class="statistic">
+          <%= number_to_human(1_623_000, separator: ',') %>
+
+          <br />
+
+          <small>
+            súdnych rozhodnutí
+          </small>
+        </h1>
+      </div>
+
+      <div class="col-sm-4">
+        <h1 class="statistic">
+          <%= number_to_human(2400, separator: ',') %>
+
+          <br />
+
+          <small>
+            sudcov
+          </small>
+        </h1>
+      </div>
+
+      <div class="col-sm-4">
+        <h1 class="statistic">
+          <%= number_to_human(1_110_000, separator: ',') %>
+
+          <br />
+
+          <small>
+            súdnych pojednávaní
+          </small>
+        </h1>
+      </div>
+    </div>
+  </section>
+
+  <hr />
+
+  <section id="testimonials">
+    <div class="row testimonial">
+
+      <div class="col-sm-9">
+        <h1>
+          Najnovšie dáta
+
+          <small>Každodenne</small>
+        </h1>
+
+        Každodenný sumár nových rozhodnutí, pojednávaní pre konkrétnych sudcov, súd alebo zákon.
+      </div>
+
+      <div class="col-sm-3 feature-icon">
+        <i class="fa fa-files-o"></i>
+      </div>
+
+    </div>
+
+    <hr />
+
+    <div class="row testimonial">
+      <div class="col-sm-9">
+        <h1>
+          Analýzy dát
+
+          <small>Pre sudcov, súdy a rozhodnutia</small>
+        </h1>
+
+        Analýzy aktivity a práce súdov a sudcov a vyhľadanie podobných súdnych rozhodnutí.
+      </div>
+
+      <div class="col-sm-3 feature-icon">
+        <i class="fa fa-area-chart"></i>
+      </div>
+    </div>
+
+    <hr />
+
+    <div class="row testimonial">
+      <div class="col-sm-9">
+        <h1>
+          Moderné technológie
+
+          <small>Rýchly prístup</small>
+        </h1>
+
+        Môžeme vám ponúknuť rôzne formáty dát spolu s detailnými pohľadmi až po komplexné grafy a analytické nástroje.
+      </div>
+
+      <div class="col-sm-3 feature-icon">
+        <i class="fa fa-server"></i>
+      </div>
+    </div>
+  </section>
+
+  <section id="partners">
+    <h1>Partneri</h1>
+    <hr />
+
+    <div class="row">
+      <div class="col-md-6 partner">
+        <a href="http://transparency.sk" target="_blank">
+          <%= image_tag 'partners/transparency-colored-280.png' %>
+        </a>
+      </div>
+
+      <div class="col-md-6 partner partner-index-podnikatela">
+        <a href="https://indexpodnikatela.sk" target="_blank">
+          <%= image_tag "partners/index-podnikatela.png" %>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="sign-up">
+    <div class="sign-up-form row">
+      <div class="input-group col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+        <input type="text" class="form-control input-lg" placeholder="Váš email">
+        <span class="input-group-btn">
+          <button class="btn btn-lg btn-sign-up" type="button">Požiadať o prístup</button>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h1 class="text-center text-muted">
+      <%= mail_to 'api@otvorenesudy.sk' %>
+    </h1>
+  </section>
+</div>
