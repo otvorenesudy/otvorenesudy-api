@@ -32,7 +32,7 @@ class DecreeSerializer < ActiveModel::Serializer
   end
 
   def other_judges
-    object.inexact_judgements.map(&:judge_name_unprocessed)
+    object.inexact_judgements.map(&:judge_name_unprocessed).uniq
   end
 
   def proposers
