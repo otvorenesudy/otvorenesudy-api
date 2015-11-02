@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Request Invite' do
+RSpec.describe 'Request Invite', type: :feature do
   it 'requests invite for email from main headline', js: true do
     visit root_path
 
