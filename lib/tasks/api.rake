@@ -1,7 +1,7 @@
 namespace :api do
   namespace :export do
     desc 'Export decrees'
-    task :decrees, [:batch_size, :limit] do |_, args|
+    task :decrees, [:batch_size, :limit] => [:environment] do |_, args|
       decrees = Decree.includes(
         :pages,
         :court,
