@@ -1,5 +1,5 @@
 class Judge::Designation < ActiveRecord::Base
-  include OpenCourts::Database
+  include OpenCourts::Model
 
   belongs_to :source
   belongs_to :judge

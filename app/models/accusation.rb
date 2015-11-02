@@ -1,5 +1,5 @@
 class Accusation < ActiveRecord::Base
-  include OpenCourts::Database
+  include OpenCourts::Model
 
   belongs_to :defendant
 

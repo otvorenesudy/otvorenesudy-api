@@ -1,5 +1,5 @@
 class Judgement < ActiveRecord::Base
-  include OpenCourts::Database
+  include OpenCourts::Model
 
   belongs_to :judge
   belongs_to :decree

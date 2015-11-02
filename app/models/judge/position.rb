@@ -1,5 +1,5 @@
 class Judge::Position < ActiveRecord::Base
-  include OpenCourts::Database
+  include OpenCourts::Model
 
   has_many :employments
   has_many :judges, through: :employments

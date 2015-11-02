@@ -1,5 +1,5 @@
 module OpenCourts
-  module Database
+  module Model
     extend ActiveSupport::Concern
 
     included do

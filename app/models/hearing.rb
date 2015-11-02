@@ -1,5 +1,5 @@
 class Hearing < ActiveRecord::Base
-  include OpenCourts::Database
+  include OpenCourts::Model
 
   belongs_to :source
 

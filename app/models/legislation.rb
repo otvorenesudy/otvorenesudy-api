@@ -1,5 +1,5 @@
 class Legislation < ActiveRecord::Base
-  include OpenCourts::Database
+  include OpenCourts::Model
 
   has_many :usages, class_name: :Usage
   has_many :decrees, through: :usages

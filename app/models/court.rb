@@ -1,5 +1,5 @@
 class Court < ActiveRecord::Base
-  include OpenCourts::Database
+  include OpenCourts::Model
   include Formattable
 
   belongs_to :source

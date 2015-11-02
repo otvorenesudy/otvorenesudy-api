@@ -1,3 +1,3 @@
 class Source < ActiveRecord::Base
-  include OpenCourts::Database
+  include OpenCourts::Model
 end

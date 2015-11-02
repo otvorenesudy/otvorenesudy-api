@@ -1,5 +1,5 @@
 class Employment < ActiveRecord::Base
-  include OpenCourts::Database
+  include OpenCourts::Model
 
   belongs_to :court
   belongs_to :judge
