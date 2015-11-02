@@ -192,6 +192,7 @@ ActiveRecord::Schema.define(version: 20151101174415) do
     t.index ["file_number"], name: "index_decrees_on_file_number", using: :btree
     t.index ["proceeding_id"], name: "index_decrees_on_proceeding_id", using: :btree
     t.index ["source_id"], name: "index_decrees_on_source_id", using: :btree
+    t.index ["updated_at"], name: "index_decrees_on_updated_at", using: :btree
     t.index ["uri"], name: "index_decrees_on_uri", unique: true, using: :btree
   end
 
@@ -277,8 +278,10 @@ ActiveRecord::Schema.define(version: 20151101174415) do
 
   create_table "invites", force: :cascade do |t|
     t.string   "email",      null: false
+    t.string   "locale",     null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email", "locale"], name: "index_invites_on_email_and_locale", unique: true, using: :btree
   end
 
   create_table "judge_designation_types", force: :cascade do |t|
@@ -685,7 +688,7 @@ ActiveRecord::Schema.define(version: 20151101174415) do
     t.string   "uri",        limit: 2048, null: false
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
-    t.index ["module"], name: "index_sources_on_module", using: :btree
+    t.index ["module"], name: "index_sources_on_module", unique: true, using: :btree
     t.index ["name"], name: "index_sources_on_name", unique: true, using: :btree
     t.index ["uri"], name: "index_sources_on_uri", unique: true, using: :btree
   end
