@@ -4,9 +4,6 @@ sk:
       title: "Dáta o slovenskom súdnictve"
       description: "Denne aktualizované informácie o súdnych rozhodnutiach a pojednávaniach s komplexnými analýzami."
 
-      invite_placeholder: "Váš email"
-      invite_button: "Požiadať o prístup"
-
       see_more: "Dozvite sa viac"
 
       content:
@@ -34,6 +31,9 @@ sk:
           subtitle: "Pre spracovanie dát"
           content: "Môžeme vám ponúknuť rôzne formáty dát spolu s detailnými pohľadmi až po komplexné grafy a analytické nástroje."
 
-
       partners:
         title: 'Partneri'
+
+    invite_form:
+      invite_placeholder: "Váš email"
+      invite_button: "Požiadať o prístup"

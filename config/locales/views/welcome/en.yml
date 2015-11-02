@@ -4,9 +4,6 @@ en:
       title: "Data on Slovak Judiciary"
       description: "Daily updated data on judicial decrees and judicial hearings with complex data analysis."
 
-      invite_placeholder: "Your Email"
-      invite_button: "Request an invite"
-
       see_more: "Find out more"
 
       content:
@@ -38,3 +35,7 @@ en:
 
       partners:
         title: 'Partners'
+
+    invite_form:
+      invite_placeholder: "Your Email"
+      invite_button: "Request an invite"
