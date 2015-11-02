@@ -43,7 +43,9 @@ namespace :deploy do
     on roles(:db) do
       within release_path do
         with rails_env: (fetch(:rails_env) || fetch(:stage)) do
-           # TODO now we connect to existing DB
+          execute :rake, 'db:create'
+          execute :rake, 'db:migrate'
+          execute :rake, 'db:seed'
         end
       end
     end
