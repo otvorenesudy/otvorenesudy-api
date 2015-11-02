@@ -3,3 +3,5 @@ $(document).ready ->
     $('html, body').animate({
       scrollTop: $('.content').offset().top
     }, 'slow')
+
+    false
