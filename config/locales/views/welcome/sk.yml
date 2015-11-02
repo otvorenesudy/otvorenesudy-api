@@ -4,8 +4,8 @@ sk:
       title: "Dáta o slovenskom súdnictve"
       description: "Denne aktualizované informácie o súdnych rozhodnutiach a pojednávaniach s komplexnými analýzami."
 
-      request_invite_placeholder: "Váš email"
-      request_invite_button: "Požiadať o prístup"
+      invite_placeholder: "Váš email"
+      invite_button: "Požiadať o prístup"
 
       see_more: "Dozvite sa viac"
 

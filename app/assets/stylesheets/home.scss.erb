@@ -81,12 +81,12 @@ ul.locales {
     margin-bottom: 50px;
   }
 
-  .request-invite-form {
+  .invite-form {
     @include animation(fade-in-up, 1.1s, 0s);
   }
 }
 
-.request-invite-form {
+.invite-form {
   input {
     border-radius: 30px;
     border-color: lighten($base-color, 5%);
@@ -127,7 +127,7 @@ ul.locales {
   position: absolute;
   bottom: 50px;
   left: 50%;
-  font-size: 2rem;
+  font-size: ceil(($font-size-h3 * 0.80));
   color: $gray-light;
   text-align: center;
   width: 140px;
