@@ -11,6 +11,17 @@ gem 'rack', github: 'rack/rack'
 # Database
 gem 'pg'
 
+# ActiveRecord
+gem 'symbolize'
+
+# Assets
+gem 'uglifier', '>= 1.3.0'
+gem 'coffee-rails', github: 'rails/coffee-rails'
+gem 'jquery-rails'
+gem 'turbolinks'
+gem 'bootstrap-sass', github: 'twbs/bootstrap-sass'
+gem 'font-awesome-rails', github: 'bokmann/font-awesome-rails'
+
 # Security
 gem 'bcrypt', '~> 3.1.7'
 
@@ -34,7 +45,6 @@ gem 'rollbar', '~> 2.4.0'
 
 group :development, :test do
   # Debugging
-  gem 'byebug'
   gem 'pry'
 
   # Testing
@@ -43,9 +53,15 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails', '~> 4.5'
   gem 'rails-controller-testing'
+  gem 'capybara'
+  gem 'poltergeist'
 end
 
 group :development do
+  # Debugging
+  # TODO wait for web-console to be ready for Rails 5
+  # gem 'web-console', github: 'rails/web-console'
+
   # Deployment
   gem 'capistrano', '~> 3.1'
   gem 'capistrano-rails', '~> 1.1'

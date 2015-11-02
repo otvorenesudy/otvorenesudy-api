@@ -1,4 +1,6 @@
 class Decree < ActiveRecord::Base
+  include OpenCourts::Database
+
   belongs_to :source
 
   # TODO consider this required in future

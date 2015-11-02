@@ -1,0 +1,181 @@
+<div class="jumbotron">
+  <div class="pattern">
+    <div class="container">
+      <a class="logo" href="/">
+        <%= image_tag 'logo.png' %>
+      </a>
+
+      <ul class="locales list-inline pull-right">
+        <li><%= link_to 'SK', l: :sk %></li>
+        <li><%= link_to 'EN', l: :en %></li>
+      </ul>
+
+      <div class="headline">
+        <h1 class="title">
+          <%= t('.title') %>
+
+          <br />
+        </h1>
+
+        <h2 class="description">
+          <%= t('.description') %>
+        </h2>
+
+        <%= render partial: 'invite_form' %>
+       </div>
+
+      <a class="btn-see-more" href="#">
+        <%= t('.see_more') %><br/>
+        <i class="fa fa-chevron-down"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="container content">
+  <section id="title">
+    <h1>
+      <%= t('.content.title') %>
+
+      <br />
+
+      <small>
+        <%= t('.content.subtitle') %>
+      </small>
+
+      <hr />
+    </h1>
+  </section>
+
+  <section id="statistics">
+    <div class="row">
+      <div class="col-sm-4">
+        <h1 class="statistic">
+          <%= number_to_human(Decree.count, separator: ',') %>
+
+          <br />
+
+          <small>
+            <%= t('.statistics.decrees') %>
+          </small>
+        </h1>
+      </div>
+
+      <div class="col-sm-4">
+        <h1 class="statistic">
+          <%= number_to_human(Judge.count, separator: ',') %>
+
+          <br />
+
+          <small>
+            <%= t('.statistics.judges') %>
+          </small>
+        </h1>
+      </div>
+
+      <div class="col-sm-4">
+        <h1 class="statistic">
+          <%= number_to_human(Hearing.count, separator: ',') %>
+
+          <br />
+
+          <small>
+            <%= t('.statistics.hearings') %>
+          </small>
+        </h1>
+      </div>
+    </div>
+  </section>
+
+  <hr />
+
+  <section id="testimonials">
+    <div class="row testimonial">
+
+      <div class="col-sm-9">
+        <h2>
+          <%= t('.testimonials.data.title') %>
+
+          <small>
+            <%= t('.testimonials.data.subtitle') %>
+          </small>
+        </h2>
+
+        <%= t('.testimonials.data.content') %>
+      </div>
+
+      <div class="col-sm-3 feature-icon">
+        <i class="fa fa-files-o"></i>
+      </div>
+    </div>
+
+    <hr />
+
+    <div class="row testimonial">
+      <div class="col-sm-9">
+        <h2>
+          <%= t('.testimonials.analysis.title') %>
+
+          <small>
+            <%= t('.testimonials.analysis.subtitle') %>
+          </small>
+        </h2>
+
+        <%= t('.testimonials.analysis.content') %>
+      </div>
+
+      <div class="col-sm-3 feature-icon">
+        <i class="fa fa-area-chart"></i>
+      </div>
+    </div>
+
+    <hr />
+
+    <div class="row testimonial">
+      <div class="col-sm-9">
+        <h2>
+          <%= t('.testimonials.technologies.title') %>
+
+          <small>
+            <%= t('.testimonials.technologies.subtitle') %>
+          </small>
+        </h2>
+
+        <%= t('.testimonials.technologies.content') %>
+      </div>
+
+      <div class="col-sm-3 feature-icon">
+        <i class="fa fa-server"></i>
+      </div>
+    </div>
+  </section>
+
+  <section id="partners">
+    <h1><%= t('.partners.title') %></h1>
+    <hr />
+
+    <div class="row">
+      <div class="col-md-5 partner">
+        <a href="http://transparency.sk" target="_blank">
+          <%= image_tag 'partners/transparency-colored-280.png' %>
+        </a>
+      </div>
+
+      <div class="col-md-7 partner partner-index-podnikatela">
+        <a href="https://indexpodnikatela.sk" target="_blank">
+          <%= image_tag "partners/index-podnikatela.png" %>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="invite">
+    <%= render partial: 'invite_form' %>
+  </section>
+
+  <section id="contact">
+    <h1 class="text-center text-muted">
+      <%= mail_to 'api@otvorenesudy.sk', nil, target: :_blank %>
+    </h1>
+  </section>
+</div>

@@ -1,4 +1,6 @@
 class Hearing < ActiveRecord::Base
+  include OpenCourts::Database
+
   belongs_to :source
 
   belongs_to :proceeding, optional: true

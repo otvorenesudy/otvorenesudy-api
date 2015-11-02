@@ -1,0 +1,41 @@
+en:
+  welcome:
+    home:
+      title: "Data on Slovak Judiciary"
+      description: "Daily updated data on judicial decrees and judicial hearings with complex data analysis."
+
+      see_more: "Find out more"
+
+      content:
+        title: "Open Courts API"
+        subtitle: "Pokročilé dáta o slovenskom súdnictve"
+        subtitle: "Complex data on slovak judiciary"
+
+      statistics:
+        decrees: "judicial decrees"
+        judges: "judges"
+        hearings: "judicial hearings"
+
+      testimonials:
+        data:
+          title: "Latest Data"
+          subtitle: "Everyday"
+          content: "Daily updated summary of latest judicial decrees and hearings for specific judges, court or law."
+
+        analysis:
+          title: "Data Analysis"
+          subtitle: "For judges, courts and decrees"
+          content: "Analysis of judges' and courts' activity and searching within similarity judicial decrees."
+
+        technologies:
+          title: "Modern Technologies"
+          subtitle: "For cruching data"
+          content: "We can offer you variety of data formats with detailed views and complex graphs and analytical tools."
+
+
+      partners:
+        title: 'Partners'
+
+    invite_form:
+      invite_placeholder: "Your Email"
+      invite_button: "Request an invite"

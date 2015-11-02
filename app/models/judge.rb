@@ -1,4 +1,6 @@
 class Judge < ActiveRecord::Base
+  include OpenCourts::Database
+
   belongs_to :source
 
   has_many :designations, class_name: 'Judge::Designation'

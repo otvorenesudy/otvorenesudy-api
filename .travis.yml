@@ -6,11 +6,12 @@ before_install:
   - gem install bundler
 
 env:
-  - OPENCOURTS_DATABASE_USER=postgres
+  - OPENCOURTS_DATABASE_USER=postgres OPENCOURTS_API_DATABASE_USER=postgres
 
 before_script:
   - psql -c 'create database opencourts_test;' -U postgres
-  - bundle exec rake db:schema:load
+  - psql -c 'create database opencourts_api_test;' -U postgres
+  - bundle exec rake db:test:load_schema
   - bundle exec rake db:seed
 
 script:

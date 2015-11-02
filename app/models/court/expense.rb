@@ -1,5 +1,6 @@
 class Court::Expense < ActiveRecord::Base
-  belongs_to :source
+  include OpenCourts::Database
 
+  belongs_to :source
   belongs_to :court
 end

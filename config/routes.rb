@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  root to: redirect('http://otvorenesudy.sk/api')
+  root 'welcome#home'
 
-  # TODO namespace this into subdomain: 'api' in case of merging with main application
+  resources :invites, only: [:create]
+
   namespace :api, path: '/', format: true, defaults: { format: :json } do
     resources :decrees, only: [] do
       get :sync, on: :collection
