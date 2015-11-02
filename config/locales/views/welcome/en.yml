@@ -1,5 +1,5 @@
 en:
-  application:
+  welcome:
     home:
       title: "Data on Slovak Judiciary"
       description: "Daily updated data on judicial decrees and judicial hearings with complex data analysis."

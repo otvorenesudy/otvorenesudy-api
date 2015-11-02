@@ -1,5 +1,5 @@
 sk:
-  application:
+  welcome:
     home:
       title: "Dáta o slovenskom súdnictve"
       description: "Denne aktualizované informácie o súdnych rozhodnutiach a pojednávaniach s komplexnými analýzami."

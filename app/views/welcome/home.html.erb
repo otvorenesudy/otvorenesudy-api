@@ -21,7 +21,7 @@
           <%= t('.description') %>
         </h2>
 
-        <%= form_tag request_invite_path, method: :post, class: 'request-invite-form row', remote: true do |f| %>
+        <%= form_tag invites_path, method: :post, class: 'request-invite-form row', remote: true do |f| %>
           <div class="input-group col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
             <%= text_field_tag 'email', nil, class: 'form-control input-lg', placeholder: t('.request_invite_placeholder') %>
             <span class="input-group-btn">
@@ -177,7 +177,7 @@
   </section>
 
   <section id="request-invite">
-    <%= form_tag request_invite_path, method: :post, class: 'request-invite-form row', remote: true do |f| %>
+    <%= form_tag invites_path, method: :post, class: 'request-invite-form row', remote: true do |f| %>
       <div class="input-group col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
         <%= text_field_tag 'email', nil, class: 'form-control input-lg', placeholder: t('.request_invite_placeholder') %>
         <span class="input-group-btn">

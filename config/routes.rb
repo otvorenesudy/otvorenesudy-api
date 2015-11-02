@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  root 'application#home'
+  root 'welcome#home'
 
-  match '/request_invite' => 'application#request_invite', via: :post
+  resources :invites, only: [:create]
 
   namespace :api, path: '/', format: true, defaults: { format: :json } do
     resources :decrees, only: [] do
