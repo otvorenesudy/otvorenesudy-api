@@ -32,7 +32,7 @@ namespace :api do
       end_at = args[:limit] ? decrees.order(:id).limit(args[:limit].to_i).last.id : nil
 
       decrees.find_in_batches(batch_size: batch_size, end_at: end_at)  do |batch|
-        File.open(Rails.root.join('tmp', directory, "%03d.json" % index), 'w') do |f|
+        File.open(Rails.root.join(path, "%03d.json" % index), 'w') do |f|
           serializer = ActiveModel::Serializer::ArraySerializer.new(batch, serializer: DecreeSerializer)
 
           f.write(adapter.new(serializer).to_json)
