@@ -7,6 +7,7 @@ before_install:
 
 env:
   - OPENCOURTS_DATABASE_USER=postgres
+  - OPENCOURTS_API_DATABASE_USER=postgres
 
 before_script:
   - psql -c 'create database opencourts_test;' -U postgres
