@@ -1,4 +1,6 @@
 class Accusation < ActiveRecord::Base
+  include OpenCourts::Database
+
   belongs_to :defendant
 
   has_many :paragraph_explanations, as: :explainable
