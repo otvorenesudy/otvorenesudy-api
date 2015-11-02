@@ -11,6 +11,9 @@ gem 'rack', github: 'rack/rack'
 # Database
 gem 'pg'
 
+# ActiveRecord
+gem 'symbolize'
+
 # Assets
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', github: 'rails/coffee-rails'

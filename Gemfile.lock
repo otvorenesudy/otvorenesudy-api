@@ -261,6 +261,10 @@ GEM
       colorize (>= 0.7.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    symbolize (4.5.2)
+      activemodel (>= 3.2, < 5)
+      activesupport (>= 3.2, < 5)
+      i18n
     thor (0.19.1)
     thread_safe (0.3.5)
     turbolinks (2.5.3)
@@ -317,6 +321,7 @@ DEPENDENCIES
   sprockets!
   sprockets-rails!
   squire
+  symbolize
   turbolinks
   uglifier (>= 1.3.0)
   unicorn
