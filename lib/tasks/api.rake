@@ -24,7 +24,7 @@ namespace :api do
       index = 0
       adapter = ActiveModel::Serializer.config.adapter
 
-      path = ENV['PATH'] || Rails.root.join('tmp')
+      path = ENV['STORE'] || Rails.root.join('tmp')
 
       FileUtils.mkdir_p("#{path}/#{directory}")
 
