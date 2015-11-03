@@ -24,9 +24,10 @@ namespace :api do
       index = 0
       adapter = ActiveModel::Serializer.config.adapter
 
-      path = ENV['STORE'] || Rails.root.join('tmp')
+      location = ENV['STORE'] || Rails.root.join('tmp')
+      path = "#{location}/#{directory}"
 
-      FileUtils.mkdir_p("#{path}/#{directory}")
+      FileUtils.mkdir_p(path)
 
       batch_size = args[:batch_size] ? args[:batch_size].to_i : 10_000
       end_at = args[:limit] ? decrees.order(:id).limit(args[:limit].to_i).last.id : nil
