@@ -6,6 +6,30 @@ RSpec.shared_examples_for Api::Syncable do
   let!(:records) { 101.times.map { FactoryGirl.create(factory) }.sort_by { |r| [r.updated_at, r.id] }}
   let(:adapter) { ActiveModel::Serializer.config.adapter }
 
+  describe 'GET show' do
+    let(:record) { create :decree }
+
+    it 'show record by id' do
+      serializer = "#{repository}Serializer".constantize.new(record)
+      json = adapter.new(serializer).to_json
+
+      get :show, params: { id: record.id, api_key: api_key.value }, format: :json
+
+      expect(response.body).to eql(json)
+    end
+
+    context 'when record does not exist' do
+      let(:records) { [] }
+
+      it 'throws an 404 error' do
+        get :show, params: { id: 2_000_0001, api_key: api_key.value }, format: :json
+
+        expect(response.code).to eql('404')
+        expect(response.body).to eql('{"success":false,"errors":["Resource does not exist."]}')
+      end
+    end
+  end
+
   describe 'GET sync' do
     it 'returns records as json' do
       serializer = ActiveModel::Serializer::ArraySerializer.new(

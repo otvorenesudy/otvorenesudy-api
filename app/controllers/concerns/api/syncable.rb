@@ -1,6 +1,14 @@
 module Api::Syncable
   extend ActiveSupport::Concern
 
+  def show
+    @record = syncable_repository.find(params[:id])
+
+    respond_to do |format|
+      format.json { render json: @record }
+    end
+  end
+
   def sync
     @records = syncable_repository.order(:updated_at, :id).limit(100)
 

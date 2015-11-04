@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :invites, only: [:create]
 
   namespace :api, path: '/', format: true, defaults: { format: :json } do
-    resources :decrees, only: [] do
+    resources :decrees, only: [:show] do
       get :sync, on: :collection
     end
   end
