@@ -8,7 +8,6 @@ en:
 
       content:
         title: "Open Courts API"
-        subtitle: "Pokročilé dáta o slovenskom súdnictve"
         subtitle: "Complex data on slovak judiciary"
 
       statistics:
@@ -31,7 +30,6 @@ en:
           title: "Modern Technologies"
           subtitle: "For cruching data"
           content: "We can offer you variety of data formats with detailed views and complex graphs and analytical tools."
-
 
       partners:
         title: 'Partners'
