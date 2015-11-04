@@ -4,7 +4,7 @@ module OpenCourtsApi
     MINOR = 0
     PATCH = 1
 
-    PRE = '0'
+    PRE = ''
 
     STRING = [MAJOR, MINOR, PATCH, PRE].compact * '.'
   end
