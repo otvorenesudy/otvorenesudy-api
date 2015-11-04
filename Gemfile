@@ -11,9 +11,6 @@ gem 'rack', github: 'rack/rack'
 # Database
 gem 'pg'
 
-# ActiveRecord
-gem 'symbolize'
-
 # Assets
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', github: 'rails/coffee-rails'
@@ -40,8 +37,11 @@ gem 'oj_mimic_json'
 gem 'dotenv-rails'
 gem 'squire'
 
-# Error reporting
+# Reporting
 gem 'rollbar', '~> 2.4.0'
+
+# Utilities
+gem 'symbolize'
 
 group :development, :test do
   # Debugging
