@@ -7,9 +7,9 @@ GIT
 
 GIT
   remote: git://github.com/pavolzbell/bump.git
-  revision: 32c256951f13d7e391803046cd0e366828b5f29f
+  revision: cdd02ddd94b22cb06eb8d2ca79e7e19006de5658
   specs:
-    bump (0.2.0)
+    bump (0.3.0)
 
 GIT
   remote: git://github.com/rack/rack.git
@@ -34,7 +34,7 @@ GIT
 
 GIT
   remote: git://github.com/rails/rails.git
-  revision: e8b2c0535c203119e6733a982dc22734f3da1219
+  revision: 23bb31b158fe10e5872dc80634a7ff172531c570
   specs:
     actionmailer (5.0.0.alpha)
       actionpack (= 5.0.0.alpha)
@@ -117,12 +117,12 @@ GIT
       rack (>= 1, < 3)
 
 GIT
-  remote: git://github.com/twbs/bootstrap-sass.git
-  revision: e15eef6a47ab94b15f80d44507859e4bc08ae965
+  remote: git://github.com/twbs/bootstrap-rubygem.git
+  revision: c00bd6966ae0e74c7ba16f4e2450a2a7b0289694
   specs:
-    bootstrap-sass (3.3.5.1)
-      autoprefixer-rails (>= 5.0.0.1)
-      sass (>= 3.3.0)
+    bootstrap (4.0.0.alpha1)
+      autoprefixer-rails (>= 6.0.3)
+      sass (>= 3.4.19)
 
 GEM
   remote: https://rubygems.org/
@@ -291,7 +291,7 @@ DEPENDENCIES
   active_model_serializers (~> 0.10.0.rc2)
   arel!
   bcrypt (~> 3.1.7)
-  bootstrap-sass!
+  bootstrap!
   bump!
   capistrano (~> 3.1)
   capistrano-bundler
