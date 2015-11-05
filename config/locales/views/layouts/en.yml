@@ -1,3 +1,6 @@
 en:
-  home:
+  welcome:
     title: "Open Courts API"
+    description: "RESTful APIs for public data of the Open Courts project"
+    keywords: "open courts, api, proceedings, decrees, hearings"
+    author: "Samuel Molnár and Pavol Zbell"

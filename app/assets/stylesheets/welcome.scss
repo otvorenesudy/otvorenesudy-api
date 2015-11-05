@@ -1,0 +1,133 @@
+@import 'animations';
+@import 'mixins';
+@import 'variables';
+
+@import 'bootstrap';
+
+html, body {
+  height: 100%;
+  font-family: 'Open Sans', sans-serif !important;
+}
+
+header {
+  nav {
+    border-bottom: 1px solid #252f61;
+    background-color: #202d5f;
+
+    a { @include highlight }
+    img { @include size(1.8505rem) }
+  }
+}
+
+.jumbotron {
+  margin: 0;
+  color: $gray-lightest;
+
+  &.massive {
+    margin-top: -1.8505rem;
+    height: 100%;
+    min-height: map-get($container-max-widths, md);
+    max-height: map-get($container-max-widths, xl);
+  }
+
+  @extend .text-center;
+  @include gradient-vertical(#202d5f, #614381);
+
+  h1 {
+    margin-top: 12rem;
+  }
+
+  .lead {
+    margin-bottom: 2rem;
+  }
+
+  .btn {
+    @include transition(all .33s ease);
+    @include hover-focus-active { color: #202d5f }
+  }
+
+  .form-control {
+    background-color: transparent;
+  }
+
+  .invite-created {
+    @include animation(fade-in, 1s, 0s);
+  }
+
+  #see-more {
+    display: block;
+    margin-top: 10rem;
+
+    @include highlight;
+    @include hover-focus-active { text-decoration: none }
+  }
+}
+
+.container {
+  h2 small {
+    font-weight: $headings-font-weight;
+  }
+}
+
+.headline {
+  margin-top: 4 * $spacer-y;
+
+  @extend .display-3;
+  @extend .text-center;
+  small { display: block }
+}
+
+.statistic {
+  @extend .text-center;
+  small { display: block }
+}
+
+.testimonial {
+}
+
+.partner {
+  display: block;
+  height: 10rem;
+  margin: 2 * $spacer-y 0 6 * $spacer-y;
+
+  @extend .text-center;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+
+    @include grayscale;
+    @include highlight(.33s);
+    @include hover-focus-active { @include unfilter }
+  }
+
+  .transparency-international {
+    margin-top: 0rem;
+  }
+
+  .index-podnikatela {
+    margin-top: 3rem;
+  }
+}
+
+.contact {
+  margin: (4 * $spacer-y) 0;
+
+  @extend .text-center;
+
+  a {
+    color: #202d5f;
+
+    @include hover-focus-active { text-decoration: none; }
+  }
+}
+
+footer {
+  margin: (4 * $spacer-y) 0;
+  font-size: $font-size-sm;
+
+  @extend .text-center;
+  @extend .text-muted;
+
+  a { @include plain-hover-focus { @extend .text-muted }}
+}

@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
-  layout 'home', only: :home
+  layout 'welcome', only: :home
 
   def home
   end

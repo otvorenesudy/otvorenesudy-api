@@ -32,8 +32,8 @@ sk:
           content: "Môžeme vám ponúknuť rôzne formáty dát spolu s detailnými pohľadmi až po komplexné grafy a analytické nástroje."
 
       partners:
-        title: 'Partneri'
+        title: "Partneri"
 
     invite_form:
-      invite_placeholder: "Váš email"
+      invite_placeholder: "Váš e-mail"
       invite_button: "Požiadať o prístup"

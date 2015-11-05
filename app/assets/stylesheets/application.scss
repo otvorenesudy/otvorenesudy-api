@@ -1,8 +1,11 @@
+// TODO resolve how to properly include libs here and not from welcome layout, also watch out for double bootstrap import!
 // Libraries
-@import 'variables';
-@import 'bootstrap-sprockets';
-@import 'bootstrap';
+//@import 'animations';
+//@import 'mixins';
+//@import 'variables';
+//
+//@import 'bootstrap';
 @import 'font-awesome';
 
 // Layout
-@import 'home';
+@import 'welcome';

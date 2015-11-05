@@ -32,8 +32,8 @@ en:
           content: "We can offer you variety of data formats with detailed views and complex graphs and analytical tools."
 
       partners:
-        title: 'Partners'
+        title: "Partners"
 
     invite_form:
-      invite_placeholder: "Your Email"
+      invite_placeholder: "Your E-mail"
       invite_button: "Request an invite"

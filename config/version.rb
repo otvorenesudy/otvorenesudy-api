@@ -1,10 +1,10 @@
 module OpenCourtsApi
   module VERSION
     MAJOR = 0
-    MINOR = 1
-    PATCH = 0
+    MINOR = 2
+    PATCH = 1
 
-    PRE = ''
+    PRE = nil
 
     STRING = [MAJOR, MINOR, PATCH, PRE].compact * '.'
   end
