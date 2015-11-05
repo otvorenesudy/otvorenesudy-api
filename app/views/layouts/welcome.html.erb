@@ -8,6 +8,12 @@
     <meta name="keywords" content="<%= t 'welcome.keywords' %>" />
     <meta name="author" content="<%= t 'welcome.author' %>" />
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&subset=latin' rel='stylesheet' type='text/css' />
+    <link rel="mask-icon" sizes="any" href="<%= asset_path 'icons/favicon.svg' %>" />
+    <link rel="apple-touch-icon" href="<%= asset_path 'icons/touchicon.png' %>" />
+    <link rel="icon" href="<%= asset_path 'icons/favicon.png' %>" />
+    <!--[if IE]><link rel="shortcut icon" href="<%= asset_path 'icons/favicon.ico' %>" /><![endif]-->
+    <meta name="msapplication-TileColor" content="#fff" />
+    <meta name="msapplication-TileImage" content="<%= asset_path 'icons/tileicon.png' %>" />
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
