@@ -25,11 +25,13 @@ header {
 }
 
 .jumbotron {
+  margin: 0;
   color: $gray-lightest;
 
   &.massive {
     height: 100%;
     min-height: map-get($container-max-widths, md);
+    max-height: map-get($container-max-widths, xl);
   }
 
   @extend .text-center;
