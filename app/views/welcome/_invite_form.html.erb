@@ -1,8 +1,8 @@
-<%= form_tag invites_path(l: params[:l]), method: :post, class: 'invite-form row', remote: true do |f| %>
+<%= form_tag invites_path(l: params[:l]), method: :post, class: 'invite-form row', remote: true do %>
   <div class="input-group col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-    <%= text_field_tag 'email', nil, class: 'form-control input-lg', placeholder: t('.invite_placeholder') %>
+    <%= text_field_tag 'email', nil, class: 'form-control btn-primary-outline', placeholder: t('.invite_placeholder') %>
     <span class="input-group-btn">
-      <%= button_tag t('.invite_button'), class: 'btn btn-lg' %>
+      <%= button_tag t('.invite_button'), class: 'btn btn-primary-outline' %>
     </span>
   </div>
 <% end %>

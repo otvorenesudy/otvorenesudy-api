@@ -1,4 +1,26 @@
-$base-color: #483578;
-$link-color: $base-color !default;
+// options
 
-@import 'bootstrap/variables';
+$enable-rounded: false;
+$enable-shadows: false;
+$enable-gradients: false;
+$enable-transitions: true;
+
+// colors
+
+$brand-primary: #f7f7f9;
+
+$btn-primary-color: $brand-primary;
+$input-color: $brand-primary;
+
+$navbar-dark-color: $brand-primary;
+$navbar-dark-hover-color: $brand-primary;
+$navbar-dark-active-color: $brand-primary;
+
+// fonts
+
+$display1-size: 4.5rem;
+$display2-size: 4.0rem;
+$display3-size: 3.5rem;
+$display4-size: 3.0rem;
+
+$headings-font-weight: 300 !important;

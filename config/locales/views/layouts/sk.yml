@@ -1,3 +1,6 @@
 sk:
-  home:
+  welcome:
     title: "Otvorené Súdy API"
+    description: "RESTful API pre verejné dáta projektu Otvorené Súdy"
+    keywords: "otvorené súdy, api, konania, rozhodnutia, pojednávania"
+    author: "Samuel Molnár a Pavol Zbell"

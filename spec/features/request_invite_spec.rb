@@ -4,7 +4,7 @@ RSpec.describe 'Request Invite', type: :feature do
   it 'requests invite for email from main headline', js: true do
     visit root_path
 
-    within '.jumbotron' do
+    within '.massive.jumbotron' do
       fill_in 'email', with: 'johny@example.com'
 
       click_button 'Request an invite'
@@ -21,7 +21,7 @@ RSpec.describe 'Request Invite', type: :feature do
   it 'requests invite for email from bottom', js: true do
     visit root_path
 
-    within '#invite' do
+    within '.humble.jumbotron' do
       fill_in 'email', with: 'johny@example.com'
 
       click_button 'Request an invite'
@@ -40,7 +40,7 @@ RSpec.describe 'Request Invite', type: :feature do
 
     click_link 'SK'
 
-    within '.jumbotron' do
+    within '.massive.jumbotron' do
       fill_in 'email', with: 'johny@example.com'
 
       click_button 'Požiadať o prístup'
@@ -58,7 +58,7 @@ RSpec.describe 'Request Invite', type: :feature do
     it 'shows error in form', js: true do
       visit root_path
 
-      within '.jumbotron' do
+      within '.massive.jumbotron' do
         click_button 'Request an invite'
       end
 
@@ -74,7 +74,7 @@ RSpec.describe 'Request Invite', type: :feature do
 
     visit root_path
 
-    within '.jumbotron' do
+    within '.massive.jumbotron' do
       fill_in 'email', with: 'johny@example.com'
 
       click_button 'Request an invite'
@@ -87,7 +87,7 @@ RSpec.describe 'Request Invite', type: :feature do
 
     click_link 'SK'
 
-    within '.jumbotron' do
+    within '.massive.jumbotron' do
       fill_in 'email', with: 'johny@example.com'
 
       click_button 'Požiadať o prístup'
