@@ -8,7 +8,7 @@
       <%= t('.description') %>
     </p>
 
-    <%= render partial: 'invite_form' %>
+    <%= render partial: 'invite_form', locals: { label: :massive } %>
 
     <a id="see-more" class="btn-link" href="#">
       <%= t('.see_more') %><br/>
@@ -120,7 +120,7 @@
 
 <div class="humble jumbotron">
   <div class="container">
-    <%= render partial: 'invite_form' %>
+    <%= render partial: 'invite_form', locals: { label: :humble } %>
   </div>
 </div>
 

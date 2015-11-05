@@ -39,6 +39,7 @@ gem 'squire'
 
 # Reporting
 gem 'rollbar', '~> 2.4.0'
+gem 'garelic'
 
 # Utilities
 gem 'symbolize'
