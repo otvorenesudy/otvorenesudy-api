@@ -11,16 +11,11 @@ html, body {
 
 header {
   nav {
-    background-color: #202d5f;
     border-bottom: 1px solid #252f61;
-
-    .navbar-brand {
-      padding-top: .425rem;
-      padding-bottom: .425rem;
-    }
+    background-color: #202d5f;
 
     a { @include highlight }
-    img { @include size(1.499rem) }
+    img { @include size(1.8505rem) }
   }
 }
 
@@ -29,6 +24,7 @@ header {
   color: $gray-lightest;
 
   &.massive {
+    margin-top: -1.8505rem;
     height: 100%;
     min-height: map-get($container-max-widths, md);
     max-height: map-get($container-max-widths, xl);
@@ -86,6 +82,9 @@ header {
   small { display: block }
 }
 
+.testimonial {
+}
+
 .partner {
   display: block;
   height: 10rem;
@@ -125,6 +124,7 @@ header {
 
 footer {
   margin: (4 * $spacer-y) 0;
+  font-size: $font-size-sm;
 
   @extend .text-center;
   @extend .text-muted;
