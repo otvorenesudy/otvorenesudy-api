@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'welcome#home'
+  root 'welcome#index'
 
   resources :invites, only: [:create]
 

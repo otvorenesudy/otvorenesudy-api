@@ -1,6 +1,6 @@
 en:
   welcome:
-    home:
+    index:
       title: "Data on Slovak Judiciary"
       description: "Daily updated data on judicial decrees and judicial hearings with advanced data analysis."
 
