@@ -19,11 +19,11 @@ sk:
       testimonials:
         data:
           title: "Najnovšie dáta"
-          content: "Môžeme vám pripraviť každodenne aktualizovaný sumár nových rozhodnutí a pojednávaní presne podľa vašej potreby &mdash; pre konkrétnych sudcov, súd alebo zákony."
+          content: "Môžeme vám ponúknuť každodenne aktualizovaný sumár nových rozhodnutí a pojednávaní podľa viacerých atribútov &mdash; pre konkrétnych sudcov, súd alebo zákony."
 
         analysis:
           title: "Analýzy rozhodnutí a sudcov"
-          content: "Pomocou algoritmov pre vyhľadávanie vieme nájsť podobnosti medzi rozhodnutiami podľa vašej potreby. Ďalej ponúkame analýzy o aktivite sudcov podľa ich vymenovaní, majetkových priznaní a štatistických výkazov."
+          content: "Pomocou algoritmov pre vyhľadávanie vieme nájsť podobnosti medzi rozhodnutiami podľa rôznych kritérii. Ďalej ponúkame analýzy o aktivite sudcov na základe ich majetkových priznaní a štatistických výkazov."
 
         technologies:
           title: "API a moderné technológie"

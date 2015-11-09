@@ -19,11 +19,11 @@ en:
       testimonials:
         data:
           title: "Latest Data"
-          content: "We can prepare daily summary of latest judicial decrees and judicial hearings carefully crafted for your needs &mdash; for specific judges, court or laws."
+          content: "We can provide you a daily summary of latest judicial decrees and judicial hearings carefully crafted by various attributes &mdash; by specific judges, court or laws."
 
         analysis:
           title: "Data Analysis"
-          content: "By leveraging search algorithms we can identify similarities among decrees for you. We also offer analysis of judges activity by their designations, property declarations and statistical summaries."
+          content: "By leveraging search algorithms we can identify similarities among decrees by various critiria. We also offer analysis of judges activity by their property declarations and statistical summaries."
 
         technologies:
           title: "API and Modern Technologies"
