@@ -1,8 +1,13 @@
 // Libraries
 @import 'variables';
-@import 'bootstrap-sprockets';
+@import 'bootstrap/variables';
 @import 'bootstrap';
 @import 'font-awesome';
+
+// Utilities
+@import 'fixes';
+@import 'mixins';
+@import 'animations';
 
 // Layout
 @import 'home';
