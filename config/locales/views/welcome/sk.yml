@@ -4,6 +4,7 @@ sk:
       title: "Dáta o slovenskom súdnictve"
       description: "Denne aktualizované informácie o súdnych rozhodnutiach a pojednávaniach s komplexnými analýzami."
 
+      see_invite_form: "Získať prístup"
       see_more: "Dozvite sa viac"
 
       content:
@@ -19,17 +20,15 @@ sk:
         data:
           title: "Najnovšie dáta"
           subtitle: "Každodenne"
-          content: "Každodenný sumár nových rozhodnutí, pojednávaní pre konkrétnych sudcov, súd alebo zákon."
+          content: "Môžeme vám pripraviť každodenne aktualizovaný sumár nových rozhodnutí a pojednávaní presne podľa vašej potreby &mdash; pre konkrétnych sudcov, súd alebo zákony."
 
         analysis:
-          title: "Analýzy dát"
-          subtitle: "Pre sudcov, súdy a rozhodnutia"
-          content: "Analýzy aktivity a práce súdov a sudcov a vyhľadanie podobných súdnych rozhodnutí."
+          title: "Analýzy rozhodnutí a sudcov"
+          content: "Pomocou komplexných algoritmov vieme pre vaše rozhodnutia nájsť ďalšie podobné. Ďalej ponúkame analýzy o aktivite súdov a sudcov podľa ich vymenovaní, majetkových priznaní a štatistických výkazov."
 
         technologies:
-          title: "Moderné technológie"
-          subtitle: "Pre spracovanie dát"
-          content: "Môžeme vám ponúknuť rôzne formáty dát spolu s detailnými pohľadmi až po komplexné grafy a analytické nástroje."
+          title: "API a Moderné technológie"
+          content: "Ponúkame priamy prístup k štrukturovaným dátam o rozhodnutiach, pojednávaniach, sudcoch a súdoch v rôznych formátoch spolu s ich dennými aktualizáciami."
 
       partners:
         title: 'Partneri'

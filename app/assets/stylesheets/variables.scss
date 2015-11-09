@@ -1,4 +1,10 @@
 $base-color: #483578;
 $link-color: $base-color !default;
+$btn-primary-bg: lighten($base-color, 15%) !default;
 
-@import 'bootstrap/variables';
+$enable-rounded: true;
+$enable-shadows: false;
+$enable-gradients: false;
+$enable-transitions: true;
+
+$headings-font-weight: 300 !important;
