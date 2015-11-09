@@ -39,6 +39,7 @@ gem 'squire'
 
 # Reporting
 gem 'rollbar', '~> 2.4.0'
+gem 'gabrake'
 
 # Utilities
 gem 'symbolize'
