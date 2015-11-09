@@ -1,4 +1,6 @@
 #= require jquery
 #= require jquery_ujs
-#= require turbolinks
+#= require gabrake/analytics
+#= require gabrake
+#= require analytics
 #= require welcome
