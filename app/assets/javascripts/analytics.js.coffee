@@ -6,6 +6,6 @@ $(document).ready ->
     if $(this).attr('data-track-label')
       label = $(this).attr('data-track-label')
     else
-      label = if (id = $(this).attr('id')) then id else nil
+      label = if (id = $(this).attr('id')) then id else null
 
     ga?('send', 'event', category, action, label)
