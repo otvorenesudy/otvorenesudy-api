@@ -16,7 +16,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', github: 'rails/coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
-gem 'bootstrap-sass', github: 'twbs/bootstrap-sass'
+gem 'bootstrap', github: 'twbs/bootstrap-rubygem'
 gem 'font-awesome-rails', github: 'bokmann/font-awesome-rails'
 
 # Security
@@ -39,6 +39,7 @@ gem 'squire'
 
 # Reporting
 gem 'rollbar', '~> 2.4.0'
+gem 'gabrake'
 
 # Utilities
 gem 'symbolize'

@@ -1,30 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe 'Request Invite', type: :feature do
-  it 'requests invite for email from main headline', js: true do
-    visit root_path
-
-    within '.jumbotron' do
-      fill_in 'email', with: 'johny@example.com'
-
-      click_button 'Request an invite'
-    end
-
-    expect(page).to have_content('Thank you for your interest. We\'ll be in touch with you very soon.')
-
-    invite = Invite.last
-
-    expect(invite.email).to eql('johny@example.com')
-    expect(invite.locale).to eql(:en)
-  end
-
   it 'requests invite for email from bottom', js: true do
     visit root_path
 
     within '#invite' do
       fill_in 'email', with: 'johny@example.com'
 
-      click_button 'Request an invite'
+      click_button 'Request an Invite'
     end
 
     expect(page).to have_content('Thank you for your interest. We\'ll be in touch with you very soon.')
@@ -40,7 +23,7 @@ RSpec.describe 'Request Invite', type: :feature do
 
     click_link 'SK'
 
-    within '.jumbotron' do
+    within '#invite' do
       fill_in 'email', with: 'johny@example.com'
 
       click_button 'Požiadať o prístup'
@@ -58,8 +41,8 @@ RSpec.describe 'Request Invite', type: :feature do
     it 'shows error in form', js: true do
       visit root_path
 
-      within '.jumbotron' do
-        click_button 'Request an invite'
+      within '#invite' do
+        click_button 'Request an Invite'
       end
 
       expect(page).not_to have_content('Thank you for your interest! We\'ll be in touch with you very soon.')
@@ -74,10 +57,10 @@ RSpec.describe 'Request Invite', type: :feature do
 
     visit root_path
 
-    within '.jumbotron' do
+    within '#invite' do
       fill_in 'email', with: 'johny@example.com'
 
-      click_button 'Request an invite'
+      click_button 'Request an Invite'
     end
 
     expect(page).not_to have_content('Thank you for your interest! We\'ll be in touch with you very soon.')
@@ -87,7 +70,7 @@ RSpec.describe 'Request Invite', type: :feature do
 
     click_link 'SK'
 
-    within '.jumbotron' do
+    within '#invite' do
       fill_in 'email', with: 'johny@example.com'
 
       click_button 'Požiadať o prístup'

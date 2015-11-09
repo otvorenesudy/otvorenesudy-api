@@ -1,6 +1,6 @@
 class WelcomeController < ApplicationController
-  layout 'home', only: :home
+  layout 'welcome'
 
-  def home
+  def index
   end
 end

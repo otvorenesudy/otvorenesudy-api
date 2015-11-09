@@ -2,7 +2,7 @@
   <div class="pattern">
     <div class="container">
       <a class="logo" href="/">
-        <%= image_tag 'logo.png' %>
+        <%= image_tag 'logo.svg' %>
       </a>
 
       <ul class="locales list-inline pull-right">
@@ -21,10 +21,10 @@
           <%= t('.description') %>
         </h2>
 
-        <%= render partial: 'invite_form' %>
-       </div>
+        <a id="see-invite" class="btn btn-primary btn-lg" href="#"><%= t('.see_invite_form') %></a>
+      </div>
 
-      <a class="btn-see-more" href="#">
+      <a id="see-more" href="#">
         <%= t('.see_more') %><br/>
         <i class="fa fa-chevron-down"></i>
       </a>
@@ -42,15 +42,13 @@
       <small>
         <%= t('.content.subtitle') %>
       </small>
-
-      <hr />
     </h1>
   </section>
 
   <section id="statistics">
     <div class="row">
       <div class="col-sm-4">
-        <h1 class="statistic">
+        <h2 class="statistic">
           <%= number_to_human(Decree.count, separator: ',') %>
 
           <br />
@@ -58,11 +56,11 @@
           <small>
             <%= t('.statistics.decrees') %>
           </small>
-        </h1>
+        </h2>
       </div>
 
       <div class="col-sm-4">
-        <h1 class="statistic">
+        <h2 class="statistic">
           <%= number_to_human(Judge.count, separator: ',') %>
 
           <br />
@@ -70,11 +68,11 @@
           <small>
             <%= t('.statistics.judges') %>
           </small>
-        </h1>
+        </h2>
       </div>
 
       <div class="col-sm-4">
-        <h1 class="statistic">
+        <h2 class="statistic">
           <%= number_to_human(Hearing.count, separator: ',') %>
 
           <br />
@@ -82,7 +80,7 @@
           <small>
             <%= t('.statistics.hearings') %>
           </small>
-        </h1>
+        </h2>
       </div>
     </div>
   </section>
@@ -95,13 +93,9 @@
       <div class="col-sm-9">
         <h2>
           <%= t('.testimonials.data.title') %>
-
-          <small>
-            <%= t('.testimonials.data.subtitle') %>
-          </small>
         </h2>
 
-        <%= t('.testimonials.data.content') %>
+        <%= t('.testimonials.data.content').html_safe %>
       </div>
 
       <div class="col-sm-3 feature-icon">
@@ -115,13 +109,9 @@
       <div class="col-sm-9">
         <h2>
           <%= t('.testimonials.analysis.title') %>
-
-          <small>
-            <%= t('.testimonials.analysis.subtitle') %>
-          </small>
         </h2>
 
-        <%= t('.testimonials.analysis.content') %>
+        <%= t('.testimonials.analysis.content').html_safe %>
       </div>
 
       <div class="col-sm-3 feature-icon">
@@ -135,47 +125,53 @@
       <div class="col-sm-9">
         <h2>
           <%= t('.testimonials.technologies.title') %>
-
-          <small>
-            <%= t('.testimonials.technologies.subtitle') %>
-          </small>
         </h2>
 
-        <%= t('.testimonials.technologies.content') %>
+        <%= t('.testimonials.technologies.content').html_safe %>
       </div>
 
       <div class="col-sm-3 feature-icon">
         <i class="fa fa-server"></i>
       </div>
     </div>
+
+    <hr />
   </section>
 
   <section id="partners">
     <h1><%= t('.partners.title') %></h1>
-    <hr />
 
-    <div class="row">
-      <div class="col-md-5 partner">
+    <div class="row partners">
+      <div class="col-md-6 partner">
         <a href="http://transparency.sk" target="_blank">
-          <%= image_tag 'partners/transparency-colored-280.png' %>
+          <%= image_tag 'partners/transparency-international-slovakia.svg', class: 'transparency-international' %>
         </a>
       </div>
 
-      <div class="col-md-7 partner partner-index-podnikatela">
+      <div class="col-md-6 partner index-podnikatela">
         <a href="https://indexpodnikatela.sk" target="_blank">
-          <%= image_tag "partners/index-podnikatela.png" %>
+          <%= image_tag "partners/index-podnikatela.svg", class: 'index-podnikatela' %>
         </a>
       </div>
     </div>
   </section>
-
-  <section id="invite">
-    <%= render partial: 'invite_form' %>
-  </section>
-
-  <section id="contact">
-    <h1 class="text-center text-muted">
-      <%= mail_to 'api@otvorenesudy.sk', nil, target: :_blank %>
-    </h1>
-  </section>
 </div>
+
+<footer>
+  <div class="container">
+    <section id="invite">
+      <%= render partial: 'invite_form' %>
+    </section>
+
+    <section id="contact">
+      <h1 class="text-center text-muted">
+        <%= mail_to 'api@otvorenesudy.sk', nil, target: :_blank %>
+      </h1>
+    </section>
+  </div>
+
+  <div class="bottom">
+    Copyright 2015 &middot; <a href="https://github.com/otvorenesudy/otvorenesudy-api" target="_blank">otvorenesudy-api</a>
+  </div>
+</footer>
+

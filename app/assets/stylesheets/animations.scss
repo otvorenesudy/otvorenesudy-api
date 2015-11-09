@@ -1,6 +1,6 @@
 @-webkit-keyframes fade-in-down {
     0% {
-        opacity: 0;
+        opacity: 0.1;
         -webkit-transform: translateY(-10px);
         transform: translateY(-10px);
     }
@@ -13,7 +13,7 @@
 
 @keyframes fade-in-down {
     0% {
-        opacity: 0;
+        opacity: 0.1;
         -webkit-transform: translateY(-10px);
         transform: translateY(-10px);
     }
@@ -26,7 +26,7 @@
 
 @-webkit-keyframes fade-in-up {
     0% {
-        opacity: 0;
+        opacity: 0.1;
         -webkit-transform: translateY(+10px);
         transform: translateY(+10px);
     }
@@ -39,7 +39,7 @@
 
 @keyframes fade-in-up {
     0% {
-        opacity: 0;
+        opacity: 0.1;
         -webkit-transform: translateY(+10px);
         transform: translateY(+10px);
     }
