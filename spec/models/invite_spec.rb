@@ -5,8 +5,20 @@ RSpec.describe Invite, type: :model do
     invite = build(:invite, email: nil, locale: :en)
 
     expect(invite).not_to be_valid
+    expect(invite.errors.size).to eql(2)
+    expect(invite.errors[:email].sort).to eql(['can\'t be blank', 'is invalid'].sort)
+
+    invite = build(:invite, email: 'example@gmail.com', locale: :en)
+
+    expect(invite).to be_valid
+  end
+
+  it 'requires correct email format' do
+    invite = build(:invite, email: 'bogus@', locale: :en)
+
+    expect(invite).not_to be_valid
     expect(invite.errors.size).to eql(1)
-    expect(invite.errors[:email]).to eql(['can\'t be blank'])
+    expect(invite.errors[:email]).to eql(['is invalid'])
 
     invite = build(:invite, email: 'example@gmail.com', locale: :en)
 
