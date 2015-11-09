@@ -2,7 +2,7 @@ en:
   welcome:
     home:
       title: "Data on Slovak Judiciary"
-      description: "Daily updated data on judicial decrees and judicial hearings with complex data analysis."
+      description: "Daily updated data on judicial decrees and judicial hearings with advanced data analysis."
 
       see_invite_form: "Request an Invite"
       see_more: "Find out more"
@@ -19,15 +19,15 @@ en:
       testimonials:
         data:
           title: "Latest Data"
-          content: "We can prepare daily summary of latest judicial decrees and hearings carefully crafted for your needs &mdash; by judges, court or laws."
+          content: "We can prepare daily summary of latest judicial decrees and judicial hearings carefully crafted for your needs &mdash; for specific judges, court or laws."
 
         analysis:
           title: "Data Analysis"
-          content: "By leveraging search algorithms we can identify similarity among decrees for you. We also offer analysis of courts and judges activity by their designations, property declarations and statistical summaries."
+          content: "By leveraging search algorithms we can identify similarities among decrees for you. We also offer analysis of judges activity by their designations, property declarations and statistical summaries."
 
         technologies:
           title: "API and Modern Technologies"
-          content: "We offer stuctured data on judicial decrees, hearings, judges and courts in various formats and daily synchronized."
+          content: "We offer stuctured data on judicial decrees, judicial hearings, judges and courts in various formats and daily synchronized."
 
       partners:
         title: 'Partners'

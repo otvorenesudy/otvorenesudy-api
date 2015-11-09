@@ -1,3 +1,6 @@
 sk:
-  home:
+  welcome:
     title: "Otvorené Súdy API"
+    description: "Dáta a API pre verejné dáta projektu Otvorené Súdy"
+    keywords: "otvorené súdy, otvorenesudy, api, súdne konania, konania, súdne rozhodnutia, rozhodnutia, súdne pojednávania, pojednávania, súdy data, súdy api, súdnictvo"
+    author: "Samuel Molnár and Pavol Zbell"
