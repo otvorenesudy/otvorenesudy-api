@@ -30,11 +30,9 @@ html, body {
 
     height: $font-size-h1;
     opacity: 0.3;
-    filter: alpha(opacity=30);
 
     &:hover {
       opacity: 1.0;
-      filter: alpha(opacity=100);
     }
   }
 }
