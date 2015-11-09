@@ -24,7 +24,7 @@ sk:
 
         analysis:
           title: "Analýzy rozhodnutí a sudcov"
-          content: "Pomocou komplexných algoritmov vieme pre vaše rozhodnutia nájsť ďalšie podobné. Ďalej ponúkame analýzy o aktivite súdov a sudcov podľa ich vymenovaní, majetkových priznaní a štatistických výkazov."
+          content: "Pomocou vyhľadávacích algoritmov vieme nájsť podobnosti medzi rozhodnutiami podľa vašej potreby. Ďalej ponúkame analýzy o aktivite súdov a sudcov podľa ich vymenovaní, majetkových priznaní a štatistických výkazov."
 
         technologies:
           title: "API a Moderné technológie"
