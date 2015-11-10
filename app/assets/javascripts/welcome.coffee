@@ -5,6 +5,8 @@ $(document).ready ->
     false
 
   $(document).on 'click', '#see-invite', ->
-    $('html, body').animate(scrollTop: $('.invite-form').offset().top, 'slow')
+    $('html, body').animate(scrollTop: $('.invite-form').offset().top, 'slow', ->
+      $('.invite-form input#email').focus()
+    )
 
     false
