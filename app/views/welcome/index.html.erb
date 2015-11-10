@@ -21,13 +21,14 @@
           <%= t('.description') %>
         </h2>
 
-        <a id="see-invite" class="btn btn-primary btn-lg" href="#"><%= t('.see_invite_form') %></a>
+        <%= link_to t('.see_invite_form'), '#', analytics_attributes(:invites, :'see-invite').merge(id: 'see-invite', class: 'btn btn-primary btn-lg') %>
       </div>
 
-      <a id="see-more" href="#">
+      <%= link_to '#', analytics_attributes(:invites, :'see-more').merge(id: 'see-more') do %>
         <%= t('.see_more') %><br/>
+
         <i class="fa fa-chevron-down"></i>
-      </a>
+      <% end %>
     </div>
   </div>
 </div>
