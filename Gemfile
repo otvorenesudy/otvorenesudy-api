@@ -23,7 +23,7 @@ gem 'font-awesome-rails', github: 'bokmann/font-awesome-rails'
 gem 'bcrypt', '~> 3.1.7'
 
 # Server
-gem 'unicorn'
+gem 'unicorn', '~> 4.9.0'
 
 # Serializers
 gem 'active_model_serializers', '~> 0.10.0.rc2'
