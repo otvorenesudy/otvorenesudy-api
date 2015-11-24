@@ -18,8 +18,13 @@ require 'rubygems'
 require 'vcr'
 
 VCR.configure do |config|
+  require 'webmock/rspec'
+
+  WebMock.disable_net_connect!(allow_localhost: true)
+
   config.cassette_library_dir = 'spec/fixtures/vcr'
   config.hook_into :webmock # or :fakeweb
+  config.ignore_localhost = true
 end
 
 RSpec.configure do |config|
