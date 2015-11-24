@@ -43,19 +43,27 @@ gem 'gabrake'
 
 # Utilities
 gem 'symbolize'
+gem 'curb'
+gem 'nokogiri'
 
 group :development, :test do
   # Debugging
   gem 'pry'
 
   # Testing
-  gem 'rspec-rails', '~> 3.0'
+  # TODO once rspec for Rails 5 is released, remove
+  %w[rspec-rails rspec rspec-core rspec-expectations rspec-mocks rspec-support].each do |lib|
+    gem lib, github: "rspec/#{lib}"
+  end
+
   gem 'fuubar'
   gem 'database_cleaner'
   gem 'factory_girl_rails', '~> 4.5'
   gem 'rails-controller-testing'
   gem 'capybara'
   gem 'poltergeist'
+  gem 'webmock'
+  gem 'vcr'
 end
 
 group :development do
