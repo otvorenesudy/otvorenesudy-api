@@ -1,5 +1,5 @@
-module JusticeGovSk::List
-  module Crawler
+module JusticeGovSk
+  module ListCrawler
     extend ActiveSupport::Concern
 
     def perform(page:)
@@ -17,6 +17,20 @@ module JusticeGovSk::List
         url = uri.build_for(page: 1)
 
         Parser.parse_pages(JusticeGovSk::Downloader.download(url))
+      end
+    end
+
+    class Parser
+      def self.parse(html)
+        document = Nokogiri::HTML(html)
+
+        document.css('.result-list .item h3 a').map { |e| e[:href] }
+      end
+
+      def self.parse_pages(html)
+        document = Nokogiri::HTML(html)
+
+        document.css('.pager .last a').first[:href].match(/_isufront_WAR_isufront_cur=(\d+)/)[1].to_i
       end
     end
   end

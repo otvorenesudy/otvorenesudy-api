@@ -1,6 +1,6 @@
 module JusticeGovSk::Decrees
   class ListCrawler < ActiveJob::Base
-    include JusticeGovSk::List::Crawler
+    include JusticeGovSk::ListCrawler
 
     queue_as :decrees
 
