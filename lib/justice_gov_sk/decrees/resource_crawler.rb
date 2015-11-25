@@ -4,11 +4,11 @@ module JusticeGovSk::Decrees
 
     queue_as :decree
 
-    def self.parser
+    def parser
       JusticeGovSk::Decrees::ResourceParser
     end
 
-    def self.persistor
+    def persistor
       JusticeGovSk::Decrees::Persistor
     end
   end

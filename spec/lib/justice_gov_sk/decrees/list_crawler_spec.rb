@@ -32,12 +32,4 @@ RSpec.describe JusticeGovSk::Decrees::ListCrawler do
       end
     end
   end
-
-  describe '.pages' do
-    it 'gets number of pages in the list' do
-      VCR.use_cassette('justice_gov_sk/decree_list') do
-        expect(JusticeGovSk::Decrees::ListCrawler.pages).to eql(8332)
-      end
-    end
-  end
 end
