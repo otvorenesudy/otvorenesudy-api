@@ -8,8 +8,8 @@ module JusticeGovSk::Decrees
       JusticeGovSk::Decrees::ResourceParser
     end
 
-    def persistor
-      JusticeGovSk::Decrees::Persistor
+    def repository
+      JusticeGovSk::Decree
     end
   end
 end

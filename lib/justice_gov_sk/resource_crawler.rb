@@ -8,7 +8,7 @@ module JusticeGovSk
       html = downloader.download(uri)
       attributes = parser.parse(html)
 
-      persistor.save(attributes.merge(uri: uri))
+      repository.import_from(attributes.merge(uri: uri))
     end
   end
 end

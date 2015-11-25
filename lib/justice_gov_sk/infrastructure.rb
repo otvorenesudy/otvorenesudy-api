@@ -1,5 +1,7 @@
 module JusticeGovSk
   module Infrastructure
+    # TODO implement async?
+
     def crawl
       (1..pages).each do |page|
         list_crawler.perform_async(page: page)
