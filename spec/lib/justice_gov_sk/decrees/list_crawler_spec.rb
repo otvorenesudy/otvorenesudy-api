@@ -5,7 +5,7 @@ RSpec.describe JusticeGovSk::Decrees::ListCrawler do
     it 'crawls decree list by specified page' do
       crawler = double(:crawler)
 
-      stub_const('JusticeGovSk::Decrees::Crawler', crawler)
+      stub_const('JusticeGovSk::Decrees::ResourceCrawler', crawler)
 
       VCR.use_cassette('justice_gov_sk/decree_list_on_page_3') do |cassette|
         expect(crawler).to receive(:perform_later).with('https://obcan.justice.sk/infosud/-/infosud/i-detail/rozhodnutie/d83847dc-be23-4b7c-aa89-064848f4364b%3Ae501691e-2a79-4feb-aed7-1b689ef35cfd')

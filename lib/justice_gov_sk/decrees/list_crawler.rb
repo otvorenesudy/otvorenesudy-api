@@ -9,7 +9,7 @@ module JusticeGovSk::Decrees
     end
 
     def self.resource_crawler
-      JusticeGovSk::Decrees::Crawler
+      JusticeGovSk::Decrees::ResourceCrawler
     end
 
     class URI

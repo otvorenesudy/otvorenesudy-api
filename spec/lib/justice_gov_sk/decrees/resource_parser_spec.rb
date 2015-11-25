@@ -1,13 +1,13 @@
 require 'spec_helper'
 require 'justice_gov_sk'
 
-RSpec.describe JusticeGovSk::Decrees::Parser do
+RSpec.describe JusticeGovSk::Decrees::ResourceParser do
   describe '.parse' do
     it 'parses raw decree attributes' do
       VCR.use_cassette('justice_gov_sk/decree') do
         html = JusticeGovSk::Downloader.download('https://obcan.justice.sk/infosud/-/infosud/i-detail/rozhodnutie/305e5973-67a3-4258-a19e-b1dd31f2d095%3A9e90c187-fe0c-4957-a0d2-5f508d6ade04')
 
-        attributes = JusticeGovSk::Decrees::Parser.parse(html)
+        attributes = JusticeGovSk::Decrees::ResourceParser.parse(html)
 
         expect(attributes).to eql(
           forma: 'Trestný rozkaz',

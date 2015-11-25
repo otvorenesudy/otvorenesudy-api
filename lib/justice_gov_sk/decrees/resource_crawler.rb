@@ -1,11 +1,11 @@
 module JusticeGovSk::Decrees
-  class Crawler < ActiveJob::Base
-    include JusticeGovSk::Crawler
+  class ResourceCrawler < ActiveJob::Base
+    include JusticeGovSk::ResourceCrawler
 
     queue_as :decree
 
     def self.parser
-      JusticeGovSk::Decrees::Parser
+      JusticeGovSk::Decrees::ResourceParser
     end
 
     def self.persistor

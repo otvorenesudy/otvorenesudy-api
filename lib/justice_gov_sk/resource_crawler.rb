@@ -1,5 +1,5 @@
 module JusticeGovSk
-  module Crawler
+  module ResourceCrawler
     extend ActiveSupport::Concern
 
     def perform(uri)
