@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151102130857) do
+ActiveRecord::Schema.define(version: 20151125160428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,25 @@ ActiveRecord::Schema.define(version: 20151102130857) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email", "locale"], name: "index_invites_on_email_and_locale", unique: true, using: :btree
+  end
+
+  create_table "justice_gov_sk_decrees", force: :cascade do |t|
+    t.string "uri",                       limit: 2048, null: false
+    t.text   "html",                                   null: false
+    t.string "forma"
+    t.string "sud"
+    t.string "sudca"
+    t.string "sud_uri",                   limit: 2048
+    t.string "sudca_uri",                 limit: 2048
+    t.string "datum_vydania_rozhodnutia"
+    t.string "spisova_znacka"
+    t.string "identifikacne_cislo_spisu"
+    t.string "oblast_pravnej_upravy"
+    t.string "povaha_rozhodnutia"
+    t.string "ecli"
+    t.string "predpisy",                                            array: true
+    t.string "pdf_url"
+    t.index ["uri"], name: "index_justice_gov_sk_decrees_on_uri", unique: true, using: :btree
   end
 
 end
