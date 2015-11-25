@@ -8,4 +8,7 @@ module JusticeGovSk
   autoload :Downloader
   autoload :ListCrawler
   autoload :ResourceCrawler
+  autoload :Infrastructure
+
+  autoload :Decrees
 end
