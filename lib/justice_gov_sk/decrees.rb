@@ -1,11 +1,6 @@
 module JusticeGovSk
   module Decrees
-    extend ActiveSupport::Autoload
     extend JusticeGovSk::Infrastructure
-
-    autoload :ListCrawler
-    autoload :ResourceParser
-    autoload :ResourceCrawler
 
     def self.uri
       URI
