@@ -33,6 +33,10 @@ gem 'oj_mimic_json'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
+# Async Processing
+gem 'sidekiq', '~> 4.0.1'
+gem 'sidekiq-limit_fetch'
+
 # Configuration
 gem 'dotenv-rails'
 gem 'squire'

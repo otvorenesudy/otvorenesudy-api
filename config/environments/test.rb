@@ -43,5 +43,6 @@ Rails.application.configure do
   # Use :en as default locale for specs
   config.i18n.default_locale = :en
 
+  # Use Inline adapter for ActiveJob
   config.active_job.queue_adapter = :inline
 end

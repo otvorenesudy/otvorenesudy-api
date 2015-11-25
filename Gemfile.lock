@@ -217,6 +217,7 @@ GEM
     coffee-script-source (1.9.1.1)
     colorize (0.7.7)
     concurrent-ruby (1.0.0)
+    connection_pool (2.2.0)
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
     curb (0.8.8)
@@ -293,11 +294,19 @@ GEM
       loofah (~> 2.0)
     raindrops (0.15.0)
     rake (10.4.2)
+    redis (3.2.2)
     rollbar (2.4.0)
       multi_json
     ruby-progressbar (1.7.5)
     safe_yaml (1.0.4)
     sass (3.4.19)
+    sidekiq (4.0.1)
+      concurrent-ruby (~> 1.0)
+      connection_pool (~> 2.2, >= 2.2.0)
+      json (~> 1.0)
+      redis (~> 3.2, >= 3.2.1)
+    sidekiq-limit_fetch (3.0.1)
+      sidekiq (>= 4)
     slop (3.6.0)
     spring (1.4.0)
     squire (1.3.6)
@@ -375,6 +384,8 @@ DEPENDENCIES
   rspec-rails!
   rspec-support!
   sass-rails!
+  sidekiq (~> 4.0.1)
+  sidekiq-limit_fetch
   spring
   sprockets!
   sprockets-rails!
