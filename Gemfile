@@ -36,6 +36,7 @@ gem 'oj_mimic_json'
 # Async Processing
 gem 'sidekiq', '~> 4.0.1'
 gem 'sidekiq-limit_fetch'
+gem 'sinatra', github: 'sinatra/sinatra', branch: '2.2.0-alpha', require: nil # dependency of Sidekiq::Web
 
 # Configuration
 gem 'dotenv-rails'
@@ -66,9 +67,12 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'capybara'
   gem 'poltergeist'
-  gem 'webmock'
   gem 'vcr'
   gem 'timecop'
+end
+
+group :test do
+  gem 'webmock'
 end
 
 group :development do
