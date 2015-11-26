@@ -1,0 +1,13 @@
+---
+:concurrency: 25
+:pidfile: tmp/pids/sidekiq.pid
+production:
+  :concurrency: 25
+:queues:
+  - [decrees,  2]
+  - [decree,   1]
+  - [hearings, 2]
+  - [hearing,  1]
+  - [hearing,  1]
+:limits:
+  # TODO
