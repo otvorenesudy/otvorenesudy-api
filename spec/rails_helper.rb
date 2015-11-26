@@ -41,28 +41,15 @@ RSpec.configure do |config|
   # deprecation warning
   config.use_transactional_fixtures = false
 
-  # DatabaseCleaner
-  database_cleaners = Array.new
-
   config.before(:suite) do
-    database_cleaners << DatabaseCleaner::Base.new(:active_record, connection: :test)
-    database_cleaners << DatabaseCleaner::Base.new(:active_record, connection: :opencourts_test)
+    DatabaseRewinder['opencourts_test']
+    DatabaseRewinder['test']
 
-    database_cleaners.each { |cleaner| cleaner.strategy = :truncation }
-  end
-
-  config.before(:each, js: true) do
-    DatabaseCleaner.strategy = :truncation
-  end
-
-  config.before(:each) do
-    DatabaseCleaner.strategy = :transaction
-
-    database_cleaners.each(&:start)
+    DatabaseRewinder.clean_all
   end
 
   config.after(:each) do
-    database_cleaners.each(&:clean)
+    DatabaseRewinder.clean
   end
 
   # Factory syntax suggar

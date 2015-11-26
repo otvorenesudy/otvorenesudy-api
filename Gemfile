@@ -61,7 +61,7 @@ group :development, :test do
   end
 
   gem 'fuubar'
-  gem 'database_cleaner'
+  gem 'database_rewinder'
   gem 'factory_girl_rails', '~> 4.5'
   gem 'rails-controller-testing'
   gem 'capybara'
