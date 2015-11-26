@@ -35,7 +35,7 @@ RSpec.shared_examples_for JusticeGovSk::Importable do
           record = described_class.find_by(uri: attributes[:uri])
           record_attributes = record.attributes.symbolize_keys.except(:id, :created_at, :updated_at)
 
-          expect(record.updated_at.change(usec: 0)).to eq(time)
+          expect(record.updated_at.change(usec: 0)).to eq(time.change(usec: 0))
           expect(record_attributes).to eq(attributes)
         end
       end
@@ -59,7 +59,7 @@ RSpec.shared_examples_for JusticeGovSk::Importable do
           record = described_class.find_by(uri: attributes[:uri])
           record_attributes = record.attributes.symbolize_keys.except(:id, :created_at, :updated_at)
 
-          expect(record.updated_at.change(usec: 0)).to eq(time)
+          expect(record.updated_at.change(usec: 0)).to eq(time.change(usec: 0))
           expect(record_attributes).to eq(attributes)
         end
       end
