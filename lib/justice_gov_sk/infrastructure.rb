@@ -4,7 +4,7 @@ module JusticeGovSk
 
     def crawl
       (1..pages).each do |page|
-        list_crawler.perform_async(page: page)
+        list_crawler.perform_later(page: page)
       end
     end
 
