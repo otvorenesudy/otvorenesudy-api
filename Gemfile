@@ -68,6 +68,7 @@ group :development, :test do
   gem 'poltergeist'
   gem 'webmock'
   gem 'vcr'
+  gem 'timecop'
 end
 
 group :development do
