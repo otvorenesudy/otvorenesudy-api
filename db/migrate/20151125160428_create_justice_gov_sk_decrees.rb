@@ -16,7 +16,9 @@ class CreateJusticeGovSkDecrees < ActiveRecord::Migration
       t.string :povaha_rozhodnutia
       t.string :ecli
       t.string :predpisy, array: true
-      t.string :pdf_url
+      t.string :pdf_uri, limit: 2048
+
+      t.timestamps
     end
 
     add_index :justice_gov_sk_decrees, :uri, unique: true
