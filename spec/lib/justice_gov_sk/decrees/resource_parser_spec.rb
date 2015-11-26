@@ -32,7 +32,8 @@ RSpec.describe JusticeGovSk::Decrees::ResourceParser do
             '/SK/ZZ/2005/300/#paragraf-61.odsek-1',
             '/SK/ZZ/2005/300/#paragraf-49.odsek-1.pismeno-a'
           ],
-          pdf_uri: 'https://obcan.justice.sk/content/public/item/9e90c187-fe0c-4957-a0d2-5f508d6ade04'
+          pdf_uri: 'https://obcan.justice.sk/content/public/item/9e90c187-fe0c-4957-a0d2-5f508d6ade04',
+          html: html
         )
       end
     end
