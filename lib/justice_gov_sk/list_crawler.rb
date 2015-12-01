@@ -1,9 +1,13 @@
 module JusticeGovSk
   module ListCrawler
+    def parser
+      Parser
+    end
+
     def perform(page:)
       url = uri.build_for(page: page)
       html = JusticeGovSk::Downloader.download(url)
-      links = Parser.parse(html)
+      links = parser.parse(html)
 
       links.each do |link|
         resource_crawler.perform_later(link)
