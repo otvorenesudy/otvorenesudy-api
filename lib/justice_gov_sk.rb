@@ -8,4 +8,5 @@ module JusticeGovSk
   autoload :ResourceCrawler
   autoload :Infrastructure
   autoload :Decrees
+  autoload :Hearings
 end

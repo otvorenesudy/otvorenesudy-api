@@ -16,9 +16,10 @@ module JusticeGovSk
 
     class PagesParser
       def self.parse(html)
+        # TODO resolve huge processing time of large htmls!
         document = Nokogiri::HTML(html)
 
-        document.css('.pager .last a').first[:href].match(/_isufront_WAR_isufront_cur=(\d+)/)[1].to_i
+        document.at_css('.pager .last a')[:href].match(/_isufront_WAR_isufront_cur=(\d+)/)[1].to_i
       end
     end
   end
