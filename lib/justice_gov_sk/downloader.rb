@@ -19,7 +19,7 @@ module JusticeGovSk
       end
 
       if response.response_code != 200
-        raise StandardError.new("Response code #{response.response_code}.")
+        raise StandardError.new("Response code #{response.response_code}")
       end
 
       response.body_str
