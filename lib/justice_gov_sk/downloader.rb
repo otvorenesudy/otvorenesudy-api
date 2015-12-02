@@ -12,10 +12,10 @@ module JusticeGovSk
       }
     end
 
-    def self.download(url, options = {})
+    def self.download(url, headers: {})
       response = Curl.get(url) do |curl|
         curl.follow_location = true
-        curl.headers = headers.merge(options[:headers] || {})
+        curl.headers = self.headers.merge(headers)
       end
 
       if response.response_code != 200
