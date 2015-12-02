@@ -11,12 +11,15 @@ RSpec.describe JusticeGovSk::Decrees do
     end
 
     it 'enqueues crawlers for all lists' do
-      # TODO check correct params
-
       VCR.use_cassette('justice_gov_sk/decree_list') do
         expect {
           JusticeGovSk::Decrees.crawl
-        }.to have_enqueued_job(JusticeGovSk::Decrees::ListCrawler).on_queue('decrees').exactly(8332).times
+        }.to satisfy(
+          have_enqueued_job(JusticeGovSk::Decrees::ListCrawler).on_queue('decrees').exactly(8332).times,
+          have_enqueued_job(JusticeGovSk::Decrees::ListCrawler).on_queue('decrees').with(page: 1),
+          have_enqueued_job(JusticeGovSk::Decrees::ListCrawler).on_queue('decrees').with(page: 2),
+          have_enqueued_job(JusticeGovSk::Decrees::ListCrawler).on_queue('decrees').with(page: 8332)
+        )
       end
     end
   end
