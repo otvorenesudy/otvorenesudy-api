@@ -2,7 +2,7 @@ opencourts: &opencourts
   adapter: postgresql
   encoding: utf8
   timeout: 5000
-  pool: 25
+  pool: 50
   username: <%= ENV['OPENCOURTS_DATABASE_USER'] %>
   password: <%= ENV['OPENCOURTS_DATABASE_PASSWORD'] %>
 
