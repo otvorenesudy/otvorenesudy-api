@@ -54,6 +54,7 @@ gem 'nokogiri'
 group :development, :test do
   # Debugging
   gem 'pry'
+  gem 'ruby-prof'
 
   # Testing
   # TODO once rspec for Rails 5 is released, remove
