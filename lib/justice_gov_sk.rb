@@ -17,4 +17,10 @@ module JusticeGovSk
   require 'justice_gov_sk/hearings/item_parser'
   require 'justice_gov_sk/hearings/item_crawler'
   require 'justice_gov_sk/hearings'
+
+  require 'justice_gov_sk/judges/list_parser'
+  require 'justice_gov_sk/judges/list_crawler'
+  require 'justice_gov_sk/judges/item_parser'
+  require 'justice_gov_sk/judges/item_crawler'
+  require 'justice_gov_sk/judges'
 end

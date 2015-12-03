@@ -2,6 +2,7 @@ module JusticeGovSk::Hearings
   class ItemParser
     def self.parse(html)
       # TODO parse participants in hearing when available
+      # TODO refactor and add more specs
 
       document = Nokogiri::HTML(html)
       detail = document.css('.detail .right .inner > .content')
