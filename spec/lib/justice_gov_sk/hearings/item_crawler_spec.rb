@@ -2,15 +2,9 @@ require 'rails_helper'
 
 RSpec.describe JusticeGovSk::Hearings::ItemCrawler do
   let(:uri) { 'https://obcan.justice.sk/infosud/-/infosud/i-detail/pojednavanie/5b341263-c6bc-4935-ab25-4fd56b288829' }
-  let(:downloader) { double(:downloader) }
-  let(:parser) { double(:parser) }
-  let(:repository) { double(:repository) }
-
-  before :each do
-    stub_const('JusticeGovSk::Downloader', downloader)
-    stub_const('JusticeGovSk::Hearings::ItemParser', parser)
-    stub_const('JusticeGovSk::Hearing', repository)
-  end
+  let(:downloader) { class_double(JusticeGovSk::Downloader).as_stubbed_const }
+  let(:parser) { class_double(JusticeGovSk::Hearings::ItemParser).as_stubbed_const }
+  let(:repository) { class_double(JusticeGovSk::Hearing).as_stubbed_const }
 
   describe '.perform_later' do
     it 'crawls hearing' do

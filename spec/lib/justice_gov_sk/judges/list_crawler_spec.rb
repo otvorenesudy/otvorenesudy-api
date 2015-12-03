@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe JusticeGovSk::Judges::ListCrawler do
-  let(:crawler) { double(:crawler) }
   let(:links) {[
     'https://obcan.justice.sk/infosud/-/infosud/reg-detail/sudca/sudca_1087',
     'https://obcan.justice.sk/infosud/-/infosud/reg-detail/sudca/sudca_873',
@@ -10,8 +9,7 @@ RSpec.describe JusticeGovSk::Judges::ListCrawler do
 
   describe '.perform_later' do
     it 'crawls judges list by specified page', vcr: { cassette_name: 'justice_gov_sk/judge_list_on_page_3' } do
-
-      stub_const('JusticeGovSk::Judges::ItemCrawler', crawler)
+      crawler = class_double(JusticeGovSk::Judges::ItemCrawler).as_stubbed_const
 
       expect(crawler).to receive(:perform_later).with(links[0])
       expect(crawler).to receive(:perform_later).with(links[1])

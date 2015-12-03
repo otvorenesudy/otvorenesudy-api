@@ -2,14 +2,13 @@ require 'rails_helper'
 
 RSpec.describe JusticeGovSk::Decrees::ListCrawler do
   describe '.perform_later' do
-    let(:crawler) { double(:crawler) }
     let(:links) {[
       'https://obcan.justice.sk/infosud/-/infosud/i-detail/rozhodnutie/d83847dc-be23-4b7c-aa89-064848f4364b%3Ae501691e-2a79-4feb-aed7-1b689ef35cfd',
       'https://obcan.justice.sk/infosud/-/infosud/i-detail/rozhodnutie/873e3670-12fd-471b-90fd-e8863f810f52%3A2b92f0d2-8c0f-4a44-8449-bf24b1848ce2'
     ]}
 
     it 'crawls decree list by specified page', vcr: { cassette_name: 'justice_gov_sk/decree_list_on_page_3' } do
-      stub_const('JusticeGovSk::Decrees::ItemCrawler', crawler)
+      crawler = class_double(JusticeGovSk::Decrees::ItemCrawler).as_stubbed_const
 
       expect(crawler).to receive(:perform_later).with(links[0])
       expect(crawler).to receive(:perform_later).with(links[1])
