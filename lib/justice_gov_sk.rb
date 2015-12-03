@@ -5,11 +5,16 @@ require 'nokogiri'
 module JusticeGovSk
   require 'justice_gov_sk/downloader'
   require 'justice_gov_sk/list_crawler'
-  require 'justice_gov_sk/resource_crawler'
+  require 'justice_gov_sk/item_crawler'
   require 'justice_gov_sk/infrastructure'
 
   require 'justice_gov_sk/decrees/list_crawler'
-  require 'justice_gov_sk/decrees/resource_parser'
-  require 'justice_gov_sk/decrees/resource_crawler'
+  require 'justice_gov_sk/decrees/item_parser'
+  require 'justice_gov_sk/decrees/item_crawler'
   require 'justice_gov_sk/decrees'
+
+  require 'justice_gov_sk/hearings/list_crawler'
+  require 'justice_gov_sk/hearings/item_parser'
+  require 'justice_gov_sk/hearings/item_crawler'
+  require 'justice_gov_sk/hearings'
 end

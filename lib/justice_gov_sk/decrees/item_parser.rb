@@ -1,5 +1,5 @@
 module JusticeGovSk::Decrees
-  class ResourceParser
+  class ItemParser
     def self.parse(html)
       document = Nokogiri::HTML(html)
       detail = document.css('.detail .inner > .content')[0]

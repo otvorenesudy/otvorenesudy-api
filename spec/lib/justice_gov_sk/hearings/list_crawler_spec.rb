@@ -10,7 +10,7 @@ RSpec.describe JusticeGovSk::Hearings::ListCrawler do
   describe '.perform_later' do
     it 'crawls hearings list by specified page', vcr: { cassette_name: 'justice_gov_sk/hearing_list_on_page_3' } do
 
-      stub_const('JusticeGovSk::Hearings::ResourceCrawler', crawler)
+      stub_const('JusticeGovSk::Hearings::ItemCrawler', crawler)
 
       expect(crawler).to receive(:perform_later).with(links[0])
       expect(crawler).to receive(:perform_later).with(links[1])
@@ -38,9 +38,9 @@ RSpec.describe JusticeGovSk::Hearings::ListCrawler do
         expect {
           JusticeGovSk::Hearings::ListCrawler.new.perform(page: 3)
         }.to satisfy(
-          have_enqueued_job(JusticeGovSk::Hearings::ResourceCrawler).with(links[0]).on_queue('hearing'),
-          have_enqueued_job(JusticeGovSk::Hearings::ResourceCrawler).with(links[1]).on_queue('hearing'),
-          have_enqueued_job(JusticeGovSk::Hearings::ResourceCrawler).on_queue('hearing').exactly(200).times
+          have_enqueued_job(JusticeGovSk::Hearings::ItemCrawler).with(links[0]).on_queue('hearing'),
+          have_enqueued_job(JusticeGovSk::Hearings::ItemCrawler).with(links[1]).on_queue('hearing'),
+          have_enqueued_job(JusticeGovSk::Hearings::ItemCrawler).on_queue('hearing').exactly(200).times
         )
       end
     end

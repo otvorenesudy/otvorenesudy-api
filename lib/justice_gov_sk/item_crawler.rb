@@ -1,5 +1,5 @@
 module JusticeGovSk
-  module ResourceCrawler
+  module ItemCrawler
     def downloader
       JusticeGovSk::Downloader
     end

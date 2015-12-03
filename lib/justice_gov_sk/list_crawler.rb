@@ -1,7 +1,7 @@
 module JusticeGovSk
   module ListCrawler
     def parser
-      Parser
+      ListParser
     end
 
     def perform(page:)
@@ -10,15 +10,7 @@ module JusticeGovSk
       links = parser.parse(html)
 
       links.each do |link|
-        resource_crawler.perform_later(link)
-      end
-    end
-
-    class Parser
-      def self.parse(html)
-        document = Nokogiri::HTML(html)
-
-        document.css('.result-list .item h3 a').map { |e| e[:href] }
+        item_crawler.perform_later(link)
       end
     end
   end
