@@ -1,11 +1,6 @@
 module JusticeGovSk
   module Hearings
-    extend ActiveSupport::Autoload
     extend JusticeGovSk::Infrastructure
-
-    autoload :ListCrawler
-    autoload :ResourceCrawler
-    autoload :ResourceParser
 
     def self.uri
       URI
