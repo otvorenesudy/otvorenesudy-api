@@ -3,6 +3,8 @@ require 'active_job'
 require 'nokogiri'
 
 module JusticeGovSk
+  # TODO rename to namespace ObcanJusticeSk when finished
+
   require 'justice_gov_sk/downloader'
   require 'justice_gov_sk/list_crawler'
   require 'justice_gov_sk/item_crawler'
