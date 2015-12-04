@@ -24,6 +24,7 @@ RSpec.describe JusticeGovSk::Hearings::ItemParser do
         poznamka: nil,
         navrhovatelia: [],
         odporcovia: [],
+        obzalovani: [],
         miestnost: '32 - 2.poschodie'
       })
     end

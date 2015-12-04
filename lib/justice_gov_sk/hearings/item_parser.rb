@@ -23,6 +23,7 @@ module JusticeGovSk::Hearings
         poznamka: table.css('tr')[8].at_css('td').text.strip.presence,
         navrhovatelia: [],
         odporcovia: [],
+        obzalovani: [],
         miestnost: children.map { |node| node.text.match(/miestnosť:\s+(.*)/).try(:[], 1) }.compact.first.try(:strip).presence,
         cas_pojednavania: children.map { |node| node.text.match(/\d{1,2}.\d{1,2}.\d{4} o (\d+:\d+)/).try(:[], 1) }.compact.first.try(:strip).presence
       }
