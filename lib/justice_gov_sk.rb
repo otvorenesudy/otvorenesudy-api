@@ -20,7 +20,6 @@ module JusticeGovSk
   require 'justice_gov_sk/hearings/resource_crawler'
   require 'justice_gov_sk/hearings'
 
-  require 'justice_gov_sk/judges/list_parser'
   require 'justice_gov_sk/judges/list_crawler'
   require 'justice_gov_sk/judges/resource_parser'
   require 'justice_gov_sk/judges/resource_crawler'
