@@ -1,47 +1,17 @@
 require 'rails_helper'
+require 'lib/justice_gov_sk/list_crawler_spec'
 
 RSpec.describe JusticeGovSk::Decrees::ListCrawler do
-  describe '.perform_later' do
+  it_behaves_like JusticeGovSk::ListCrawler do
+    let(:queue) { 'decrees' }
+    let(:resource_queue) { 'decree' }
+    let(:resource_crawler) { JusticeGovSk::Decrees::ResourceCrawler }
+    let(:vcr_cassette_name) { 'justice_gov_sk/decree_list_on_page_3' }
+
     let(:url) { JusticeGovSk::Decrees::URI.build_for(page: 3) }
     let(:links) {[
       'https://obcan.justice.sk/infosud/-/infosud/i-detail/rozhodnutie/d83847dc-be23-4b7c-aa89-064848f4364b%3Ae501691e-2a79-4feb-aed7-1b689ef35cfd',
       'https://obcan.justice.sk/infosud/-/infosud/i-detail/rozhodnutie/873e3670-12fd-471b-90fd-e8863f810f52%3A2b92f0d2-8c0f-4a44-8449-bf24b1848ce2'
     ]}
-
-    it 'crawls decree list by specified page', vcr: { cassette_name: 'justice_gov_sk/decree_list_on_page_3' } do
-      crawler = class_double(JusticeGovSk::Decrees::ResourceCrawler).as_stubbed_const
-
-      expect(crawler).to receive(:perform_later).with(links[0])
-      expect(crawler).to receive(:perform_later).with(links[1])
-      expect(crawler).to receive(:perform_later).exactly(198).times
-
-      JusticeGovSk::Decrees::ListCrawler.perform_later(url)
-    end
-
-    context 'with async adapter' do
-      before :each do
-        ActiveJob::Base.queue_adapter = :test
-      end
-
-      after :each do
-        ActiveJob::Base.queue_adapter = :inline
-      end
-
-      it 'enqueues job to queue with proper name' do
-        expect {
-          JusticeGovSk::Decrees::ListCrawler.perform_later(url)
-        }.to have_enqueued_job(JusticeGovSk::Decrees::ListCrawler).with(url).on_queue('decrees')
-      end
-
-      it 'enqueues jobs for decree pages', vcr: { cassette_name: 'justice_gov_sk/decree_list_on_page_3' } do
-        expect {
-          JusticeGovSk::Decrees::ListCrawler.new.perform(url)
-        }.to satisfy(
-          have_enqueued_job(JusticeGovSk::Decrees::ResourceCrawler).with(links[0]).on_queue('decree'),
-          have_enqueued_job(JusticeGovSk::Decrees::ResourceCrawler).with(links[1]).on_queue('decree'),
-          have_enqueued_job(JusticeGovSk::Decrees::ResourceCrawler).on_queue('decree').exactly(200).times
-        )
-      end
-    end
   end
 end
