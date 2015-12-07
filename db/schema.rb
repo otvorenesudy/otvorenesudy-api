@@ -32,29 +32,31 @@ ActiveRecord::Schema.define(version: 20151204145601) do
   end
 
   create_table "justice_gov_sk_courts", force: :cascade do |t|
-    t.string "uri",                                limit: 2048, null: false
-    t.text   "html",                                            null: false
-    t.string "nazov"
-    t.string "adresa"
-    t.string "psc"
-    t.string "mesto"
-    t.string "predseda"
-    t.string "podpredseda"
-    t.string "telefon"
-    t.string "fax"
-    t.string "lattiude"
-    t.string "longitude"
-    t.string "image",                              limit: 2048
-    t.string "kontaktna_osoba_pre_media"
-    t.string "telefon_pre_media"
-    t.string "email_pre_media"
-    t.string "internetova_stranka_pre_media"
-    t.string "informacne_centrum_telefonne_cislo"
-    t.string "informacne_centrum_email"
-    t.string "informacne_centrum_uradne_hodiny",                             array: true
-    t.string "podatelna_telefonne_cislo"
-    t.string "podatelna_email"
-    t.string "podatelna_uradne_hodiny",                                      array: true
+    t.string   "uri",                                limit: 2048, null: false
+    t.text     "html",                                            null: false
+    t.string   "nazov"
+    t.string   "adresa"
+    t.string   "psc"
+    t.string   "mesto"
+    t.string   "predseda"
+    t.string   "podpredseda"
+    t.string   "telefon"
+    t.string   "fax"
+    t.string   "lattiude"
+    t.string   "longitude"
+    t.string   "image",                              limit: 2048
+    t.string   "kontaktna_osoba_pre_media"
+    t.string   "telefon_pre_media"
+    t.string   "email_pre_media"
+    t.string   "internetova_stranka_pre_media"
+    t.string   "informacne_centrum_telefonne_cislo"
+    t.string   "informacne_centrum_email"
+    t.string   "informacne_centrum_uradne_hodiny",                             array: true
+    t.string   "podatelna_telefonne_cislo"
+    t.string   "podatelna_email"
+    t.string   "podatelna_uradne_hodiny",                                      array: true
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
     t.index ["uri"], name: "index_justice_gov_sk_courts_on_uri", unique: true, using: :btree
   end
 
@@ -80,37 +82,41 @@ ActiveRecord::Schema.define(version: 20151204145601) do
   end
 
   create_table "justice_gov_sk_hearings", force: :cascade do |t|
-    t.string "uri",                       limit: 2048, null: false
-    t.text   "html",                                   null: false
-    t.string "predmet"
-    t.string "sud"
-    t.string "sudca"
-    t.string "sud_uri",                   limit: 2048
-    t.string "sudca_uri",                 limit: 2048
-    t.string "datum_pojednavania"
-    t.string "cas_pojednavania"
-    t.string "usek"
-    t.string "spisova_znacka"
-    t.string "identifikacne_cislo_spisu"
-    t.string "forma_ukonu"
-    t.string "poznamka"
-    t.string "navrhovatelia",                                       array: true
-    t.string "odporcovia",                                          array: true
-    t.string "obzalovani",                                          array: true
-    t.string "miestnost"
+    t.string   "uri",                       limit: 2048, null: false
+    t.text     "html",                                   null: false
+    t.string   "predmet"
+    t.string   "sud"
+    t.string   "sudca"
+    t.string   "sud_uri",                   limit: 2048
+    t.string   "sudca_uri",                 limit: 2048
+    t.string   "datum_pojednavania"
+    t.string   "cas_pojednavania"
+    t.string   "usek"
+    t.string   "spisova_znacka"
+    t.string   "identifikacne_cislo_spisu"
+    t.string   "forma_ukonu"
+    t.string   "poznamka"
+    t.string   "navrhovatelia",                                       array: true
+    t.string   "odporcovia",                                          array: true
+    t.string   "obzalovani",                                          array: true
+    t.string   "miestnost"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.index ["uri"], name: "index_justice_gov_sk_hearings_on_uri", unique: true, using: :btree
   end
 
   create_table "justice_gov_sk_judges", force: :cascade do |t|
-    t.string  "uri",             limit: 2048, null: false
-    t.text    "html",                         null: false
-    t.string  "meno"
-    t.string  "sud"
-    t.string  "sud_uri",         limit: 2048
-    t.string  "docasny_sud"
-    t.string  "docasny_sud_uri"
-    t.boolean "aktivny"
-    t.text    "poznamka"
+    t.string   "uri",             limit: 2048, null: false
+    t.text     "html",                         null: false
+    t.string   "meno"
+    t.string   "sud"
+    t.string   "sud_uri",         limit: 2048
+    t.string   "docasny_sud"
+    t.string   "docasny_sud_uri"
+    t.boolean  "aktivny"
+    t.text     "poznamka"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.index ["uri"], name: "index_justice_gov_sk_judges_on_uri", unique: true, using: :btree
   end
 

@@ -20,6 +20,8 @@ class CreateJusticeGovSkHearings < ActiveRecord::Migration
       t.string :odporcovia, array: true
       t.string :obzalovani, array: true
       t.string :miestnost
+
+      t.timestamps
     end
 
     add_index :justice_gov_sk_hearings, :uri, unique: true

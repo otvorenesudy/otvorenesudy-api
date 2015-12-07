@@ -28,6 +28,8 @@ class CreateJusticeGovSkCourts < ActiveRecord::Migration
       t.string :podatelna_telefonne_cislo
       t.string :podatelna_email
       t.string :podatelna_uradne_hodiny, array: true
+
+      t.timestamps
     end
 
     add_index :justice_gov_sk_courts, :uri, unique: true

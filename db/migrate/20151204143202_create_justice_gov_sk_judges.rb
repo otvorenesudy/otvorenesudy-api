@@ -11,6 +11,8 @@ class CreateJusticeGovSkJudges < ActiveRecord::Migration
       t.string :docasny_sud_uri
       t.boolean :aktivny
       t.text :poznamka
+
+      t.timestamps
     end
 
     add_index :justice_gov_sk_judges, :uri, unique: true
