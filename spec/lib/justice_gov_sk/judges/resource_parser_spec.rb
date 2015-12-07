@@ -15,7 +15,8 @@ RSpec.describe JusticeGovSk::Judges::ResourceParser do
         docasny_sud: nil,
         docasny_sud_uri: nil,
         aktivny: true,
-        poznamka: nil
+        poznamka: nil,
+        html: html
       )
     end
 
@@ -30,7 +31,8 @@ RSpec.describe JusticeGovSk::Judges::ResourceParser do
           docasny_sud: nil,
           docasny_sud_uri: nil,
           aktivny: false,
-          poznamka: nil
+          poznamka: nil,
+          html: html
         )
       end
     end
@@ -46,7 +48,8 @@ RSpec.describe JusticeGovSk::Judges::ResourceParser do
           docasny_sud: 'Najvyšší súd Slovenskej republiky',
           docasny_sud_uri: 'https://obcan.justice.sk/infosud/-/infosud/detail/sud/100',
           aktivny: true,
-          poznamka: nil
+          poznamka: nil,
+          html: html
         )
       end
     end

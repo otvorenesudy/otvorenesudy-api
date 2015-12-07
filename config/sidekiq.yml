@@ -13,7 +13,6 @@ production:
   - [courts,   2]
   - [court,    1]
 :limits:
-  # JusticeGovSk
   decrees:  5
   decree:   5
   hearings: 5
@@ -22,6 +21,3 @@ production:
   judge:    1
   courts:   1
   court:    1
-
-  # Reconcile
-  reconcile: 25

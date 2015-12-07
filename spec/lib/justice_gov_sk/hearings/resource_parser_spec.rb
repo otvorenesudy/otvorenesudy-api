@@ -25,7 +25,8 @@ RSpec.describe JusticeGovSk::Hearings::ResourceParser do
         navrhovatelia: [],
         odporcovia: [],
         obzalovani: [],
-        miestnost: '32 - 2.poschodie'
+        miestnost: '32 - 2.poschodie',
+        html: html
       })
     end
   end

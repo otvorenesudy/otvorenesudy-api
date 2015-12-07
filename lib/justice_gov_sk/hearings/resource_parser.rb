@@ -25,7 +25,8 @@ module JusticeGovSk::Hearings
         odporcovia: [],
         obzalovani: [],
         miestnost: children.map { |node| node.text.match(/miestnosť:\s+(.*)/).try(:[], 1) }.compact.first.try(:strip).presence,
-        cas_pojednavania: children.map { |node| node.text.match(/\d{1,2}.\d{1,2}.\d{4} o (\d+:\d+)/).try(:[], 1) }.compact.first.try(:strip).presence
+        cas_pojednavania: children.map { |node| node.text.match(/\d{1,2}.\d{1,2}.\d{4} o (\d+:\d+)/).try(:[], 1) }.compact.first.try(:strip).presence,
+        html: html
       }
     end
   end
