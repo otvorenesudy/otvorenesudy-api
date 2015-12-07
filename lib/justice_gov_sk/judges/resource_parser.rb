@@ -13,7 +13,7 @@ module JusticeGovSk::Judges
         aktivny: !!detail.at_css('.sudca_stav span.state.active'),
         docasny_sud: detail.css('h5 a')[1].try(:text).try(:strip).presence,
         docasny_sud_uri: detail.css('h5 a')[1].try(:[], :href).try(:strip).presence,
-        note: nil
+        poznamka: nil
       }
     end
   end
