@@ -7,6 +7,8 @@ class CreateJusticeGovSkJudges < ActiveRecord::Migration
       t.string :meno
       t.string :sud
       t.string :sud_uri, limit: 2048
+      t.string :docasny_sud
+      t.string :docasny_sud_uri
       t.boolean :aktivny
       t.text :poznamka
     end

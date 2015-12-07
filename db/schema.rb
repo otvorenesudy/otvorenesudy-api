@@ -102,11 +102,13 @@ ActiveRecord::Schema.define(version: 20151204145601) do
   end
 
   create_table "justice_gov_sk_judges", force: :cascade do |t|
-    t.string  "uri",      limit: 2048, null: false
-    t.text    "html",                  null: false
+    t.string  "uri",             limit: 2048, null: false
+    t.text    "html",                         null: false
     t.string  "meno"
     t.string  "sud"
-    t.string  "sud_uri",  limit: 2048
+    t.string  "sud_uri",         limit: 2048
+    t.string  "docasny_sud"
+    t.string  "docasny_sud_uri"
     t.boolean "aktivny"
     t.text    "poznamka"
     t.index ["uri"], name: "index_justice_gov_sk_judges_on_uri", unique: true, using: :btree
