@@ -4,10 +4,6 @@ module JusticeGovSk::Hearings
 
     queue_as :hearings
 
-    def uri
-      JusticeGovSk::Hearings.uri
-    end
-
     def resource_crawler
       JusticeGovSk::Hearings::ResourceCrawler
     end

@@ -4,10 +4,6 @@ module JusticeGovSk::Judges
 
     queue_as :judges
 
-    def uri
-      JusticeGovSk::Judges.uri
-    end
-
     def resource_crawler
       JusticeGovSk::Judges::ResourceCrawler
     end

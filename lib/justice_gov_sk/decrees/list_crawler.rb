@@ -4,10 +4,6 @@ module JusticeGovSk::Decrees
 
     queue_as :decrees
 
-    def uri
-      JusticeGovSk::Decrees.uri
-    end
-
     def resource_crawler
       JusticeGovSk::Decrees::ResourceCrawler
     end

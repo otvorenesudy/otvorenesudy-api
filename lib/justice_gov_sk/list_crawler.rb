@@ -4,8 +4,7 @@ module JusticeGovSk
       ListParser
     end
 
-    def perform(page:)
-      url = uri.build_for(page: page)
+    def perform(url)
       html = JusticeGovSk::Downloader.download(url)
       links = parser.parse(html)
 

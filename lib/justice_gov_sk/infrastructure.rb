@@ -4,7 +4,9 @@ module JusticeGovSk
 
     def crawl
       (1..pages).each do |page|
-        list_crawler.perform_later(page: page)
+        url = uri.build_for(page: page)
+
+        list_crawler.perform_later(url)
       end
     end
 
