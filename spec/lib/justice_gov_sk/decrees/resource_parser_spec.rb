@@ -1,13 +1,13 @@
 require 'spec_helper'
 require 'justice_gov_sk'
 
-RSpec.describe JusticeGovSk::Decrees::ItemParser do
+RSpec.describe JusticeGovSk::Decrees::ResourceParser do
   let(:uri) { 'https://obcan.justice.sk/infosud/-/infosud/i-detail/rozhodnutie/305e5973-67a3-4258-a19e-b1dd31f2d095%3A9e90c187-fe0c-4957-a0d2-5f508d6ade04' }
   let(:html) { JusticeGovSk::Downloader.download(uri) }
 
   describe '.parse' do
     it 'parses raw decree attributes', vcr: { cassette_name: 'justice_gov_sk/decree' } do
-      attributes = JusticeGovSk::Decrees::ItemParser.parse(html)
+      attributes = JusticeGovSk::Decrees::ResourceParser.parse(html)
 
       expect(attributes).to eql(
         forma: 'Trestný rozkaz',
@@ -41,7 +41,7 @@ RSpec.describe JusticeGovSk::Decrees::ItemParser do
       let(:uri) { 'https://obcan.justice.sk/infosud/-/infosud/i-detail/rozhodnutie/83621225-46c2-409d-8aa5-3c0e3830998a%3A53191bda-9a39-4687-b75d-0a008ff13213' }
 
       it 'correctly parses the decree', vcr: { cassette_name: 'justice_gov_sk/decree_without_judge_uri' } do
-        attributes = JusticeGovSk::Decrees::ItemParser.parse(html)
+        attributes = JusticeGovSk::Decrees::ResourceParser.parse(html)
 
         expect(attributes).to eql(
           forma: 'Rozhodnutie',

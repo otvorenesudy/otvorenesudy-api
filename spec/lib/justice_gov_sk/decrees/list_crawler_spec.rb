@@ -8,7 +8,7 @@ RSpec.describe JusticeGovSk::Decrees::ListCrawler do
     ]}
 
     it 'crawls decree list by specified page', vcr: { cassette_name: 'justice_gov_sk/decree_list_on_page_3' } do
-      crawler = class_double(JusticeGovSk::Decrees::ItemCrawler).as_stubbed_const
+      crawler = class_double(JusticeGovSk::Decrees::ResourceCrawler).as_stubbed_const
 
       expect(crawler).to receive(:perform_later).with(links[0])
       expect(crawler).to receive(:perform_later).with(links[1])
@@ -36,9 +36,9 @@ RSpec.describe JusticeGovSk::Decrees::ListCrawler do
         expect {
           JusticeGovSk::Decrees::ListCrawler.new.perform(page: 3)
         }.to satisfy(
-          have_enqueued_job(JusticeGovSk::Decrees::ItemCrawler).with(links[0]).on_queue('decree'),
-          have_enqueued_job(JusticeGovSk::Decrees::ItemCrawler).with(links[1]).on_queue('decree'),
-          have_enqueued_job(JusticeGovSk::Decrees::ItemCrawler).on_queue('decree').exactly(200).times
+          have_enqueued_job(JusticeGovSk::Decrees::ResourceCrawler).with(links[0]).on_queue('decree'),
+          have_enqueued_job(JusticeGovSk::Decrees::ResourceCrawler).with(links[1]).on_queue('decree'),
+          have_enqueued_job(JusticeGovSk::Decrees::ResourceCrawler).on_queue('decree').exactly(200).times
         )
       end
     end

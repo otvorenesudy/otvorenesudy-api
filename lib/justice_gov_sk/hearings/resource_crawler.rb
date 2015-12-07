@@ -1,11 +1,11 @@
 module JusticeGovSk::Hearings
-  class ItemCrawler < ActiveJob::Base
-    include JusticeGovSk::ItemCrawler
+  class ResourceCrawler < ActiveJob::Base
+    include JusticeGovSk::ResourceCrawler
 
     queue_as :hearing
 
     def parser
-      JusticeGovSk::Hearings::ItemParser
+      JusticeGovSk::Hearings::ResourceParser
     end
 
     def repository

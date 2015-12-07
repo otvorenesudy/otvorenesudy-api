@@ -1,13 +1,13 @@
 require 'spec_helper'
 require 'justice_gov_sk'
 
-RSpec.describe JusticeGovSk::Hearings::ItemParser do
+RSpec.describe JusticeGovSk::Hearings::ResourceParser do
   let(:uri) { 'https://obcan.justice.sk/infosud/-/infosud/i-detail/pojednavanie/5b341263-c6bc-4935-ab25-4fd56b288829' }
   let(:html) { JusticeGovSk::Downloader.download(uri) }
 
   describe '.parse' do
     it 'parses hearing', vcr: { cassette_name: 'justice_gov_sk/hearing' } do
-      attributes = JusticeGovSk::Hearings::ItemParser.parse(html)
+      attributes = JusticeGovSk::Hearings::ResourceParser.parse(html)
 
       expect(attributes).to eql({
         predmet: 'PO - určenie neexistencie práva na výkon zrážok zo mzdy',

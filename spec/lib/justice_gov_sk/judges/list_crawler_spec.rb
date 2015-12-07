@@ -9,7 +9,7 @@ RSpec.describe JusticeGovSk::Judges::ListCrawler do
 
   describe '.perform_later' do
     it 'crawls judges list by specified page', vcr: { cassette_name: 'justice_gov_sk/judge_list_on_page_3' } do
-      crawler = class_double(JusticeGovSk::Judges::ItemCrawler).as_stubbed_const
+      crawler = class_double(JusticeGovSk::Judges::ResourceCrawler).as_stubbed_const
 
       expect(crawler).to receive(:perform_later).with(links[0])
       expect(crawler).to receive(:perform_later).with(links[1])
@@ -38,10 +38,10 @@ RSpec.describe JusticeGovSk::Judges::ListCrawler do
         expect {
           JusticeGovSk::Judges::ListCrawler.new.perform(page: 3)
         }.to satisfy(
-          have_enqueued_job(JusticeGovSk::Judges::ItemCrawler).with(links[0]).on_queue('judge'),
-          have_enqueued_job(JusticeGovSk::Judges::ItemCrawler).with(links[1]).on_queue('judge'),
-          have_enqueued_job(JusticeGovSk::Judges::ItemCrawler).with(links[2]).on_queue('judge'),
-          have_enqueued_job(JusticeGovSk::Judges::ItemCrawler).on_queue('judge').exactly(200).times
+          have_enqueued_job(JusticeGovSk::Judges::ResourceCrawler).with(links[0]).on_queue('judge'),
+          have_enqueued_job(JusticeGovSk::Judges::ResourceCrawler).with(links[1]).on_queue('judge'),
+          have_enqueued_job(JusticeGovSk::Judges::ResourceCrawler).with(links[2]).on_queue('judge'),
+          have_enqueued_job(JusticeGovSk::Judges::ResourceCrawler).on_queue('judge').exactly(200).times
         )
       end
     end

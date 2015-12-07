@@ -1,5 +1,5 @@
 module JusticeGovSk::Hearings
-  class ItemParser
+  class ResourceParser
     def self.parse(html)
       # TODO parse participants in hearing when available
       # TODO refactor and add more specs

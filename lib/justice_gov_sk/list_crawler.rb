@@ -10,7 +10,7 @@ module JusticeGovSk
       links = parser.parse(html)
 
       links.each do |link|
-        item_crawler.perform_later(link)
+        resource_crawler.perform_later(link)
       end
     end
   end

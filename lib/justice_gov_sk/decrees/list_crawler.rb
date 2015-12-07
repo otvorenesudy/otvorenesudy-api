@@ -8,8 +8,8 @@ module JusticeGovSk::Decrees
       JusticeGovSk::Decrees.uri
     end
 
-    def item_crawler
-      JusticeGovSk::Decrees::ItemCrawler
+    def resource_crawler
+      JusticeGovSk::Decrees::ResourceCrawler
     end
   end
 end

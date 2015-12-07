@@ -8,8 +8,8 @@ module JusticeGovSk::Hearings
       JusticeGovSk::Hearings.uri
     end
 
-    def item_crawler
-      JusticeGovSk::Hearings::ItemCrawler
+    def resource_crawler
+      JusticeGovSk::Hearings::ResourceCrawler
     end
   end
 end

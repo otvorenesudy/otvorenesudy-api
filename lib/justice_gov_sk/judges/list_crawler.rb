@@ -8,8 +8,8 @@ module JusticeGovSk::Judges
       JusticeGovSk::Judges.uri
     end
 
-    def item_crawler
-      JusticeGovSk::Judges::ItemCrawler
+    def resource_crawler
+      JusticeGovSk::Judges::ResourceCrawler
     end
   end
 end
