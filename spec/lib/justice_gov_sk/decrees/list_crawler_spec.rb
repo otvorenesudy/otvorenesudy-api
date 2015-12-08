@@ -7,6 +7,7 @@ RSpec.describe JusticeGovSk::Decrees::ListCrawler do
     let(:resource_queue) { 'decree' }
     let(:resource_crawler) { JusticeGovSk::Decrees::ResourceCrawler }
     let(:vcr_cassette_name) { 'justice_gov_sk/decree_list_on_page_3' }
+    let(:items) { 200 }
 
     let(:url) { JusticeGovSk::Decrees::URI.build(page: 3) }
     let(:links) {[

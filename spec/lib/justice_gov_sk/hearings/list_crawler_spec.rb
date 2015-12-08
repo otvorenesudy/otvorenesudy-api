@@ -7,6 +7,7 @@ RSpec.describe JusticeGovSk::Hearings::ListCrawler do
     let(:resource_queue) { 'hearing' }
     let(:resource_crawler) { JusticeGovSk::Hearings::ResourceCrawler }
     let(:vcr_cassette_name) { 'justice_gov_sk/hearing_list_on_page_3' }
+    let(:items) { 200 }
 
     let(:url) { JusticeGovSk::Hearings::URI.build(page: 3) }
     let(:links) {[

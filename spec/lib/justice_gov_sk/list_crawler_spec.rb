@@ -6,9 +6,11 @@ RSpec.shared_examples_for JusticeGovSk::ListCrawler do
       VCR.use_cassette(vcr_cassette_name) do
         crawler = class_double(resource_crawler).as_stubbed_const
 
-        expect(crawler).to receive(:perform_later).with(links[0])
-        expect(crawler).to receive(:perform_later).with(links[1])
-        expect(crawler).to receive(:perform_later).exactly(198).times
+        links.each do |link|
+          expect(crawler).to receive(:perform_later).with(link)
+        end
+
+        expect(crawler).to receive(:perform_later).exactly(items - links.size).times
 
         described_class.perform_later(url)
       end
@@ -41,15 +43,15 @@ RSpec.shared_examples_for JusticeGovSk::ListCrawler do
     end
 
     it 'enqueues jobs for resources' do
+      matchers = links.map { |link| have_enqueued_job(resource_crawler).with(link).on_queue(resource_queue) }
+
+      matchers << have_enqueued_job(resource_crawler).on_queue(resource_queue).exactly(items).times
+
       expect {
         VCR.use_cassette(vcr_cassette_name) do
           described_class.new.perform(url)
         end
-      }.to satisfy(
-        have_enqueued_job(resource_crawler).with(links[0]).on_queue(resource_queue),
-        have_enqueued_job(resource_crawler).with(links[1]).on_queue(resource_queue),
-        have_enqueued_job(resource_crawler).on_queue(resource_queue).exactly(200).times
-      )
+      }.to satisfy(*matchers)
     end
   end
 end

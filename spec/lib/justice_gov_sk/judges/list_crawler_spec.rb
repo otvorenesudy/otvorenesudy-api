@@ -7,6 +7,7 @@ RSpec.describe JusticeGovSk::Judges::ListCrawler do
     let(:resource_queue) { 'judge' }
     let(:resource_crawler) { JusticeGovSk::Judges::ResourceCrawler }
     let(:vcr_cassette_name) { 'justice_gov_sk/judge_list_on_page_3' }
+    let(:items) { 200 }
 
     let(:url) { JusticeGovSk::Judges::URI.build(page: 3) }
     let(:links) {[
