@@ -24,4 +24,9 @@ module JusticeGovSk
   require 'justice_gov_sk/judges/resource_parser'
   require 'justice_gov_sk/judges/resource_crawler'
   require 'justice_gov_sk/judges'
+
+  require 'justice_gov_sk/courts/list_crawler'
+  require 'justice_gov_sk/courts/resource_parser'
+  require 'justice_gov_sk/courts/resource_crawler'
+  require 'justice_gov_sk/courts'
 end
