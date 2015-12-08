@@ -12,10 +12,10 @@ RSpec.shared_examples_for JusticeGovSk::Infrastructure do
 
     it 'enqueues crawlers for all lists' do
       params = [
-        described_class.uri.build_for(page: 1),
-        described_class.uri.build_for(page: 2),
-        described_class.uri.build_for(page: 3),
-        described_class.uri.build_for(page: pages)
+        described_class.uri.build(page: 1),
+        described_class.uri.build(page: 2),
+        described_class.uri.build(page: 3),
+        described_class.uri.build(page: pages)
       ]
 
       VCR.use_cassette(vcr_cassette_name) do

@@ -8,7 +8,7 @@ RSpec.describe JusticeGovSk::Hearings::ListCrawler do
     let(:resource_crawler) { JusticeGovSk::Hearings::ResourceCrawler }
     let(:vcr_cassette_name) { 'justice_gov_sk/hearing_list_on_page_3' }
 
-    let(:url) { JusticeGovSk::Hearings::URI.build_for(page: 3) }
+    let(:url) { JusticeGovSk::Hearings::URI.build(page: 3) }
     let(:links) {[
       'https://obcan.justice.sk/infosud/-/infosud/i-detail/pojednavanie/f295813a-af35-49ad-8be1-cfc3bc77ccbf',
       'https://obcan.justice.sk/infosud/-/infosud/i-detail/pojednavanie/922eace7-a6f5-4843-9446-b4fba2322178'
