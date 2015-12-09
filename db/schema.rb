@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20151204145601) do
     t.string   "predseda"
     t.string   "predseda_uri"
     t.string   "podpredseda",                                                         array: true
-    t.string   "podpredseda_uri",                                                     array: true
+    t.string   "podpredseda_uri",                           limit: 2048,              array: true
     t.string   "telefon"
     t.string   "fax"
     t.string   "latitude"

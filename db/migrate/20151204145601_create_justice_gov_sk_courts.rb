@@ -11,7 +11,7 @@ class CreateJusticeGovSkCourts < ActiveRecord::Migration
       t.string :predseda
       t.string :predseda_uri
       t.string :podpredseda, array: true
-      t.string :podpredseda_uri, array: true
+      t.string :podpredseda_uri, array: true, limit: 2048
       t.string :telefon
       t.string :fax
       t.string :latitude
