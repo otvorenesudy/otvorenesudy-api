@@ -24,7 +24,7 @@ RSpec.shared_examples_for JusticeGovSk::Importable do
 
       context 'without any change' do
         it 'does not update record' do
-          time = 1.hour.ago
+          time = 30.minutes.ago
 
           Timecop.freeze(time) do
             described_class.import_from(attributes)
@@ -42,7 +42,7 @@ RSpec.shared_examples_for JusticeGovSk::Importable do
 
       context 'when restricted attributes for update changes' do
         it 'does not update record' do
-          time = 1.hour.ago
+          time = 30.minutes.ago
 
           Timecop.freeze(time) do
             described_class.import_from(attributes)

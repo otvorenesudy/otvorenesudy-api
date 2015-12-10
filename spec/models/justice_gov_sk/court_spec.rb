@@ -46,21 +46,16 @@ RSpec.describe JusticeGovSk::Court do
           '8:00 - 15:00',
         ],
         podatelna_uradne_hodiny_poznamka: nil,
-        html: '<html></html>',
 
-        obchodny_register_telefonne_cislo: '02/501 18 340, 02/501 18 356, 02/501 18 181, 02/501 18 421',
+        obchodny_register_telefonne_cislo: nil,
         obchodny_register_email: nil,
-        obchodny_register_uradne_hodiny: [
-          '8:00 - 15:00',
-          '8:00 - 15:00',
-          '8:00 - 15:00',
-          '8:00 - 15:00',
-          '8:00 - 12:00',
-        ],
-        obchodny_register_uradne_hodiny_poznamka: 'prestávka v práci PO - ŠT: 12:00 - 13:00'
+        obchodny_register_uradne_hodiny: [],
+        obchodny_register_uradne_hodiny_poznamka: nil,
+
+        html: '<html></html>'
       }
     }
 
-    let(:updated_attributes) { attributes.merge(podpredseda: ['Mgr. Miriam PLAVČÁKOVÁ']) }
+    let(:updated_attributes) { attributes.merge(predseda: 'Mgr. Miriam PLAVČÁKOVÁ', podpredseda: ['JUDr. Eva FULCOVÁ']) }
   end
 end

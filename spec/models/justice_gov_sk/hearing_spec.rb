@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 require 'rails_helper'
 require 'models/concerns/justice_gov_sk/importable_spec'
 
@@ -19,13 +21,13 @@ RSpec.describe JusticeGovSk::Hearing do
         forma_ukonu: 'Pojednávanie a rozhodnutie',
         poznamka: nil,
         navrhovatelia: [],
-        odporcovia: ['Pavol'],
+        odporcovia: ['Pavol Nový'],
         obzalovani: [],
         miestnost: '32 - 2.poschodie',
         html: '<html></html>'
       }
     }
 
-    let(:updated_attributes) { attributes.merge(cas_pojednavania: '15:00', odporcovia: ['Peter']) }
+    let(:updated_attributes) { attributes.merge(cas_pojednavania: '15:00', odporcovia: ['Peter Nový']) }
   end
 end
