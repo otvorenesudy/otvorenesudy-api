@@ -44,6 +44,9 @@ gem 'gabrake'
 # Utilities
 gem 'symbolize'
 
+# Codeclimate
+gem 'codeclimate-test-reporter', group: :test, require: nil
+
 group :development, :test do
   # Debugging
   gem 'pry'

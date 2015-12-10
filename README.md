@@ -1,6 +1,8 @@
 # Open Courts API
 
 [![Build Status](https://travis-ci.org/otvorenesudy/otvorenesudy-api.svg)](https://travis-ci.org/otvorenesudy/otvorenesudy-api)
+[![Code Climate](https://codeclimate.com/github/otvorenesudy/otvorenesudy-api/badges/gpa.svg)](https://codeclimate.com/github/otvorenesudy/otvorenesudy-api)
+[![Test Coverage](https://codeclimate.com/github/otvorenesudy/otvorenesudy-api/badges/coverage.svg)](https://codeclimate.com/github/otvorenesudy/otvorenesudy-api/coverage)
 
 RESTful APIs for public data of the [Open Courts](https://github.com/otvorenesudy) project
 
