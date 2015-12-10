@@ -64,5 +64,33 @@ RSpec.shared_examples_for JusticeGovSk::Importable do
         end
       end
     end
+
+    context 'with just portion of attributes' do
+      let(:keys) { [:uri, :html] + attributes.except(:uri, :html).keys.first(3) }
+      let(:partial_attributes) { attributes.slice(*keys) }
+
+      it 'imports record' do
+        described_class.import_from(partial_attributes)
+
+        record = described_class.find_by(uri: attributes[:uri])
+        record_attributes = record.attributes.symbolize_keys.except(:id, :created_at, :updated_at).slice(*keys)
+
+        expect(record_attributes).to eql(partial_attributes)
+      end
+
+      context 'when record is already imported' do
+        context 'without any change' do
+          it 'does not update record' do
+            described_class.import_from(partial_attributes)
+            described_class.import_from(partial_attributes)
+
+            record = described_class.find_by(uri: attributes[:uri])
+            record_attributes = record.attributes.symbolize_keys.except(:id, :created_at, :updated_at).slice(*keys)
+
+            expect(record_attributes).to eql(partial_attributes)
+          end
+        end
+      end
+    end
   end
 end
