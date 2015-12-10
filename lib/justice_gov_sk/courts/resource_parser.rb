@@ -8,11 +8,7 @@ module JusticeGovSk::Courts
       registry = detail.at_css('.podatelna')
       business_registry = detail.at_css('.orsr')
 
-      if contact.at_css('table').css('tr').size == 6
-        contact.at_css('table').at_css('tr').add_next_sibling('<tr><td></td><td></td></tr>' * 2)
-      elsif contact.at_css('table').css('tr').size == 7
-        contact.at_css('table').css('tr')[4].add_next_sibling('<tr><td></td><td></td></tr>' * 2)
-      end
+      Corrector.correct_contact_table(contact.css('table'))
 
       attributes = {
         nazov: detail.at_css('h1').text.strip.presence,
@@ -60,6 +56,22 @@ module JusticeGovSk::Courts
         },
         obchodny_register_uradne_hodiny_poznamka: business_registry.css('.span6')[0].css('.row-fluid')[2].text.strip.presence,
       )
+    end
+
+    class Corrector
+      def self.correct_contact_table(table)
+        if table.css('tr').size == 6
+          return table.at_css('tr').add_next_sibling('<tr><td></td><td></td></tr>' * 2)
+        end
+
+        if table.css('tr').size == 7
+          if table.at_css('td.emp:contains("Fax")')
+            return table.css('tr')[4].add_next_sibling('<tr><td></td><td></td></tr>')
+          else
+            return table.css('tr')[1].add_next_sibling('<tr><td></td><td></td></tr>')
+          end
+        end
+      end
     end
   end
 end
