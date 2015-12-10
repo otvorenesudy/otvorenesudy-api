@@ -29,6 +29,7 @@ VCR.configure do |config|
   config.cassette_library_dir = 'spec/fixtures/vcr'
   config.hook_into :webmock # or :fakeweb
   config.ignore_localhost = true
+  config.ignore_hosts 'codeclimate.com'
   config.configure_rspec_metadata!
 end
 
