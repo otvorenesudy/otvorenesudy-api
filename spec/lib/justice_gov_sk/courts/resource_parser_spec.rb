@@ -172,5 +172,57 @@ RSpec.describe JusticeGovSk::Courts::ResourceParser do
         )
       end
     end
+
+    context 'when court is missing media phone number' do
+      let(:uri) { 'https://obcan.justice.sk/infosud/-/infosud/reg-detail/sud/sud_158' }
+
+      it 'parses court correctly', vcr: { cassette_name: 'justice_gov_sk/court_with_no_media_phone_number' } do
+        attributes = JusticeGovSk::Courts::ResourceParser.parse(html)
+
+        expect(attributes).to eql(
+          nazov: 'Okresný súd Humenné',
+          adresa: 'Laborecká 17',
+          psc: '06634',
+          mesto: nil,
+          predseda: 'JUDr. Jana KURUCOVÁ',
+          predseda_uri: 'https://obcan.justice.sk/infosud/-/infosud/detail/sudca/695',
+          podpredseda: ['JUDr. Ivan DAŇO'],
+          podpredseda_uri: ['https://obcan.justice.sk/infosud/-/infosud/detail/sudca/687'],
+          telefon: '057888 3180',
+          fax: '+421577752756',
+          image: 'https://obcan.justice.sk/isu-front/prilohy/SUD/158/23.jpg',
+          latitude: nil,
+          longitude: nil,
+
+          kontaktna_osoba_pre_media: 'JUDr. Michal Drimák',
+          telefon_pre_media: nil,
+          email_pre_media: nil,
+          internetova_stranka_pre_media: nil,
+
+          informacne_centrum_telefonne_cislo: '0578883200',
+          informacne_centrum_email: 'ingrid.hajduckova@justice.sk',
+          informacne_centrum_uradne_hodiny: [
+            '07:30 - 11:30, 12:00 - 15:30',
+            '07:30 - 11:30, 12:00 - 15:30',
+            '07:30 - 11:30, 12:00 - 16:00',
+            '07:30 - 11:30',
+            '07:30 - 11:30, 12:00 - 15:00'
+          ],
+          informacne_centrum_uradne_hodiny_poznamka: nil,
+
+          podatelna_telefonne_cislo: '057888 3180',
+          podatelna_email: 'podatelnaOSHN@justice.sk',
+          podatelna_uradne_hodiny: [
+            '07:30 - 11:30, 12:00 - 15:30',
+            '07:30 - 11:30, 12:00 - 15:30',
+            '07:30 - 11:30, 12:00 - 16:00',
+            '07:30 - 11:30, 12:00 - 15:30',
+            '07:30 - 11:30, 12:00 - 15:00'
+          ],
+          podatelna_uradne_hodiny_poznamka: nil,
+          html: html
+        )
+      end
+    end
   end
 end

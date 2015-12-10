@@ -29,17 +29,17 @@ http_interactions:
       X-Xss-Protection:
       - '1'
       Set-Cookie:
-      - COOKIE_SUPPORT=true; Expires=Mon, 24-Jul-2062 15:15:51 GMT; Path=/; Secure;
+      - COOKIE_SUPPORT=true; Expires=Mon, 24-Jul-2062 15:55:53 GMT; Path=/; Secure;
         HttpOnly
-      - GUEST_LANGUAGE_ID=sk_SK; Expires=Mon, 24-Jul-2062 15:15:51 GMT; Path=/; Secure;
+      - GUEST_LANGUAGE_ID=sk_SK; Expires=Mon, 24-Jul-2062 15:55:53 GMT; Path=/; Secure;
         HttpOnly
-      - JSESSIONID=B522D2C15057E6F3872BFA925FC2A27C; Path=/; Secure; HttpOnly
+      - JSESSIONID=2FBA2DD9600CC0E6AF708DE8D790FAEE; Path=/; Secure; HttpOnly
       Content-Type:
       - text/html;charset=UTF-8
       Transfer-Encoding:
       - chunked
       Date:
-      - Thu, 10 Dec 2015 12:33:44 GMT
+      - Thu, 10 Dec 2015 13:13:47 GMT
       Strict-Transport-Security:
       - max-age=15552000; includeSubDomains
     body:
@@ -161,7 +161,7 @@ http_interactions:
         PWZpcmVmb3gmdGhlbWVJZD1yZXNzcHVibGljX1dBUl9yZXNzcHVibGljdGhl
         bWUmY29sb3JTY2hlbWVJZD0wMSZtaW5pZmllclR5cGU9anMmbGFuZ3VhZ2VJ
         ZD1za19TSyZiPTYyMDMmdD0xNDI5MTk1MjI2MDAwIn19O0xpZmVyYXkuYXV0
-        aFRva2VuPSJzZW9BeFhCTSI7TGlmZXJheS5jdXJyZW50VVJMPSJceDJmaW5m
+        aFRva2VuPSJCbEFHUFNqTSI7TGlmZXJheS5jdXJyZW50VVJMPSJceDJmaW5m
         b3N1ZFx4MmYtXHgyZmluZm9zdWRceDJmcmVnLWRldGFpbFx4MmZzdWRceDJm
         c3VkXzE1NCI7TGlmZXJheS5jdXJyZW50VVJMRW5jb2RlZD0iJTJGaW5mb3N1
         ZCUyRi0lMkZpbmZvc3VkJTJGcmVnLWRldGFpbCUyRnN1ZCUyRnN1ZF8xNTQi
@@ -351,7 +351,7 @@ http_interactions:
         IGNsYXNzPSJzcXVhcmUiPjwvc3Bhbj4gPGEgaHJlZj0iaHR0cHM6Ly9vYmNh
         bi5qdXN0aWNlLnNrL2luZm9zdWQvLS9pbmZvc3VkL2RldGFpbC9zdWQvMTU0
         P19pc3Vmcm9udF9XQVJfaXN1ZnJvbnRfZGV0YWlsUGFydD1TVURfUk9aSE9E
-        TlVUSUEiPiBSb3pob2RudXRpYSA8c3BhbiBjbGFzcz0iZW1wIj4oMzI0NjIp
+        TlVUSUEiPiBSb3pob2RudXRpYSA8c3BhbiBjbGFzcz0iZW1wIj4oMzIzNTYp
         PC9zcGFuPiA8L2E+IDwvbGk+IDxsaSBjbGFzcz0iIj4gPHNwYW4gY2xhc3M9
         InNxdWFyZSI+PC9zcGFuPiA8YSBocmVmPSJodHRwczovL29iY2FuLmp1c3Rp
         Y2Uuc2svaW5mb3N1ZC8tL2luZm9zdWQvZGV0YWlsL3N1ZC8xNTQ/X2lzdWZy
@@ -472,21 +472,21 @@ http_interactions:
         L3RoPiA8dGQ+NzozMCAtIDE1OjMwPC90ZD4gPHRkPjwvdGQ+IDx0ZD48L3Rk
         PiA8L3RyPiA8dHI+IDx0aD5QaWF0b2s8L3RoPiA8dGQ+NzozMCAtIDE1OjMw
         PC90ZD4gPHRkPjwvdGQ+IDx0ZD48L3RkPiA8L3RyPiA8L3RhYmxlPiA8L2Rp
-        dj4gPC9kaXY+IDwvZGl2PiA8ZGl2IGlkPSJkZXRhaWwtbWFwOTk0MjQyMzM3
+        dj4gPC9kaXY+IDwvZGl2PiA8ZGl2IGlkPSJkZXRhaWwtbWFwNzAwODUyMDQ5
         IiBjbGFzcz0iZGV0YWlsLW1hcGEiPjwvZGl2PiA8c2NyaXB0IHR5cGU9InRl
         eHQvamF2YXNjcmlwdCIgc3JjPSJodHRwczovL21hcHMuZ29vZ2xlYXBpcy5j
         b20vbWFwcy9hcGkvanM/a2V5PUFJemFTeURDWklwWXVwWEJlX2swMTk2N29w
         R1paLUU3WXBzdFBlUSZvbmxvYWQ9bWFwTG9hZGVkIiA+PC9zY3JpcHQ+IDxz
         Y3JpcHQ+JChkb2N1bWVudCkucmVhZHkobWFwTG9hZGVkKTtmdW5jdGlvbiBt
         YXBMb2FkZWQoKXtpZih0eXBlb2YgZ29vZ2xlPT09InVuZGVmaW5lZCIpeyQo
-        IiNkZXRhaWwtbWFwOTk0MjQyMzM3IikuY3NzKCJ2aXNpYmlsaXR5IiwiaGlk
-        ZGVuIik7JCgiI2RldGFpbC1tYXA5OTQyNDIzMzciKS5jc3MoImRpc3BsYXki
+        IiNkZXRhaWwtbWFwNzAwODUyMDQ5IikuY3NzKCJ2aXNpYmlsaXR5IiwiaGlk
+        ZGVuIik7JCgiI2RldGFpbC1tYXA3MDA4NTIwNDkiKS5jc3MoImRpc3BsYXki
         LCJub25lIik7cmV0dXJufXZhciBhPW5ldyBnb29nbGUubWFwcy5MYXRMbmco
         IjQ4LjY2OTAiLCIxOS42OTkwIik7dmFyIGU9MTY7YT1uZXcgZ29vZ2xlLm1h
         cHMuTGF0TG5nKCI0OC42MjAwNTkiLCIyMS43MTg3MzciKTtlPTE2O3ZhciBi
         PXtjZW50ZXI6YSx6b29tOmUsc2Nyb2xsd2hlZWw6ZmFsc2V9O3ZhciBmPW5l
         dyBnb29nbGUubWFwcy5NYXAoZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoImRl
-        dGFpbC1tYXA5OTQyNDIzMzciKSxiKTt2YXIgZD1uZXcgZ29vZ2xlLm1hcHMu
+        dGFpbC1tYXA3MDA4NTIwNDkiKSxiKTt2YXIgZD1uZXcgZ29vZ2xlLm1hcHMu
         SW5mb1dpbmRvdyh7Y29udGVudDoiIn0pO3ZhciBhPW5ldyBnb29nbGUubWFw
         cy5MYXRMbmcoIjQ4LjYyMDA1OSIsIjIxLjcxODczNyIpO3ZhciBjPW5ldyBn
         b29nbGUubWFwcy5NYXJrZXIoe3Bvc2l0aW9uOmEsdGl0bGU6Ik9rcmVzbsO9
@@ -606,5 +606,5 @@ http_interactions:
         IDxzY3JpcHQgdHlwZT0idGV4dC9qYXZhc2NyaXB0Ij48L3NjcmlwdD4gPC9i
         b2R5PiA8L2h0bWw+IA==
     http_version: 
-  recorded_at: Thu, 10 Dec 2015 12:29:54 GMT
+  recorded_at: Thu, 10 Dec 2015 13:09:55 GMT
 recorded_with: VCR 3.0.0

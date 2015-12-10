@@ -8,8 +8,10 @@ module JusticeGovSk::Courts
       registry = detail.at_css('.podatelna')
       business_registry = detail.at_css('.orsr')
 
-      if contact.at_css('table').css('tr').size < 8
+      if contact.at_css('table').css('tr').size == 6
         contact.at_css('table').at_css('tr').add_next_sibling('<tr><td></td><td></td></tr>' * 2)
+      elsif contact.at_css('table').css('tr').size == 7
+        contact.at_css('table').css('tr')[4].add_next_sibling('<tr><td></td><td></td></tr>' * 2)
       end
 
       attributes = {
@@ -35,14 +37,14 @@ module JusticeGovSk::Courts
         informacne_centrum_telefonne_cislo: information_center.css('.span6')[0].css('.span8')[0].text.strip.presence,
         informacne_centrum_email: information_center.css('.span6')[0].css('.span8')[1].text.strip.presence,
         informacne_centrum_uradne_hodiny: information_center.css('.span6')[1].css('table').css('tr')[0..4].map { |row|
-          row.css('td')[0].text.strip.presence
+          row.css('td')[0..1].map(&:text).map(&:strip).map(&:presence).compact.join(', ')
         },
         informacne_centrum_uradne_hodiny_poznamka: information_center.css('.span6')[0].css('.row-fluid')[2].text.strip.presence,
 
         podatelna_telefonne_cislo: registry.css('.span6')[0].css('.span8')[0].text.strip.presence,
         podatelna_email: registry.css('.span6')[0].css('.span8')[1].text.strip.presence,
         podatelna_uradne_hodiny: registry.css('.span6')[1].css('table').css('tr')[0..4].map { |row|
-          row.css('td')[0].text.strip.presence
+          row.css('td')[0..1].map(&:text).map(&:strip).map(&:presence).compact.join(', ')
         },
         podatelna_uradne_hodiny_poznamka: registry.css('.span6')[0].css('.row-fluid')[2].text.strip.presence,
         html: html
