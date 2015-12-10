@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head lang="<%= I18n.locale %>">
-  <meta charset="utf-8" />
-  <title><%= t('welcome.title') %></title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="<%= t 'welcome.description'%>" />
-  <meta name="keywords" content="<%= t 'welcome.keywords' %>" />
-  <meta name="author" content="<%= t 'welcome.author' %>" />
-  <link rel="mask-icon" sizes="any" href="<%= asset_path 'icons/favicon.svg' %>" />
-  <link rel="apple-touch-icon" href="<%= asset_path 'icons/touchicon.png' %>" />
-  <link rel="icon" href="<%= asset_path 'icons/favicon.png' %>" />
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400&subset=latin,cyrillic-ext,latin-ext,cyrillic' rel='stylesheet' type='text/css'>
-  <!--[if IE]><link rel="shortcut icon" href="<%= asset_path 'icons/favicon.ico' %>" /><![endif]-->
-  <meta name="msapplication-TileColor" content="#fff" />
-  <meta name="msapplication-TileImage" content="<%= asset_path 'icons/tileicon.png' %>" />
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+  <head lang="<%= I18n.locale %>">
+    <meta charset="utf-8" />
+    <title><%= t('welcome.title') %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="<%= t 'welcome.description'%>" />
+    <meta name="keywords" content="<%= t 'welcome.keywords' %>" />
+    <meta name="author" content="<%= t 'welcome.author' %>" />
+    <link rel="mask-icon" sizes="any" href="<%= asset_path 'icons/favicon.svg' %>" />
+    <link rel="apple-touch-icon" href="<%= asset_path 'icons/touchicon.png' %>" />
+    <link rel="icon" href="<%= asset_path 'icons/favicon.png' %>" />
+    <!--[if IE]><link rel="shortcut icon" href="<%= asset_path 'icons/favicon.ico' %>" /><![endif]-->
+    <meta name="msapplication-TileColor" content="#fff" />
+    <meta name="msapplication-TileImage" content="<%= asset_path 'icons/tileicon.png' %>" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css" />
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= yield %>
+  </body>
 </html>
