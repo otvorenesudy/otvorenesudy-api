@@ -29,4 +29,10 @@ module JusticeGovSk
   require 'justice_gov_sk/courts/resource_parser'
   require 'justice_gov_sk/courts/resource_crawler'
   require 'justice_gov_sk/courts'
+
+  def self.crawl
+    [Courts, Judges, Hearings, Decrees].each do |infrastructure|
+      infrastructure.crawl
+    end
+  end
 end
