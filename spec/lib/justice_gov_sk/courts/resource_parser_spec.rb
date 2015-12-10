@@ -60,7 +60,8 @@ RSpec.describe JusticeGovSk::Courts::ResourceParser do
           '8:00 - 15:00',
           '8:00 - 12:00',
         ],
-        obchodny_register_uradne_hodiny_poznamka: 'prestávka v práci PO - ŠT: 12:00 - 13:00'
+        obchodny_register_uradne_hodiny_poznamka: 'prestávka v práci PO - ŠT: 12:00 - 13:00',
+        html: html
       )
     end
 
@@ -114,7 +115,60 @@ RSpec.describe JusticeGovSk::Courts::ResourceParser do
             '8:00 - 15:30',
             '8:00 - 15:00',
           ],
-          podatelna_uradne_hodiny_poznamka: nil
+          podatelna_uradne_hodiny_poznamka: nil,
+          html: html
+        )
+      end
+    end
+
+    context 'when court has no contact' do
+      let(:uri) { 'https://obcan.justice.sk/infosud/-/infosud/reg-detail/sud/sud_154' }
+
+      it 'does not parse contact', vcr: { cassette_name: 'justice_gov_sk/court_without_contact' } do
+        attributes = JusticeGovSk::Courts::ResourceParser.parse(html)
+
+        expect(attributes).to eql(
+          nazov: 'Okresný súd Trebišov',
+          adresa: 'Nám. mieru 638',
+          psc: '07501',
+          mesto: 'Trebišov',
+          predseda: 'JUDr. Milan PETRIČKO',
+          predseda_uri: 'https://obcan.justice.sk/infosud/-/infosud/detail/sudca/1133',
+          podpredseda: ['JUDr. Eva FRANKOVÁ'],
+          podpredseda_uri: ['https://obcan.justice.sk/infosud/-/infosud/detail/sudca/1125'],
+          telefon: nil,
+          fax: nil,
+          image: 'https://obcan.justice.sk/isu-front/prilohy/SUD/154/57.jpg',
+          latitude: nil,
+          longitude: nil,
+
+          kontaktna_osoba_pre_media: 'Marcela Galová',
+          telefon_pre_media: '0905532609',
+          email_pre_media: nil,
+          internetova_stranka_pre_media: nil,
+
+          informacne_centrum_telefonne_cislo: '0568879200',
+          informacne_centrum_email: 'infoOSTV@justice.sk',
+          informacne_centrum_uradne_hodiny: [
+            '8:00 - 15:00',
+            '8:00 - 12:00',
+            '8:00 - 15:00',
+            '8:00 - 12:00',
+            '8:00 - 14:00',
+          ],
+          informacne_centrum_uradne_hodiny_poznamka: nil,
+
+          podatelna_telefonne_cislo: '056/6713111, 056/6722321',
+          podatelna_email: 'podatelnaostv@justice.sk',
+          podatelna_uradne_hodiny: [
+            '7:30 - 15:30',
+            '7:30 - 15:30',
+            '7:30 - 15:30',
+            '7:30 - 15:30',
+            '7:30 - 15:30',
+          ],
+          podatelna_uradne_hodiny_poznamka: nil,
+          html: html
         )
       end
     end

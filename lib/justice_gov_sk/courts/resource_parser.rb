@@ -8,6 +8,10 @@ module JusticeGovSk::Courts
       registry = detail.at_css('.podatelna')
       business_registry = detail.at_css('.orsr')
 
+      if contact.at_css('table').css('tr').size < 8
+        contact.at_css('table').at_css('tr').add_next_sibling('<tr><td></td><td></td></tr>' * 2)
+      end
+
       attributes = {
         nazov: detail.at_css('h1').text.strip.presence,
         adresa: contact.css('.address div')[0].text.strip.presence,
@@ -40,7 +44,8 @@ module JusticeGovSk::Courts
         podatelna_uradne_hodiny: registry.css('.span6')[1].css('table').css('tr')[0..4].map { |row|
           row.css('td')[0].text.strip.presence
         },
-        podatelna_uradne_hodiny_poznamka: registry.css('.span6')[0].css('.row-fluid')[2].text.strip.presence
+        podatelna_uradne_hodiny_poznamka: registry.css('.span6')[0].css('.row-fluid')[2].text.strip.presence,
+        html: html
       }
 
       return attributes unless business_registry
