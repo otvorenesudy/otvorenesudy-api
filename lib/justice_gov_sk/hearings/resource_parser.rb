@@ -2,12 +2,13 @@ module JusticeGovSk::Hearings
   class ResourceParser
     def self.parse(html)
       # TODO parse participants in hearing when available
-      # TODO refactor and add more specs
 
       document = Nokogiri::HTML(html)
       detail = document.css('.detail .right .inner > .content')
       table = detail.at_css('.contentTable')
-      children = detail.children[3].children
+      children = detail.children[5].children
+
+      HTMLCorrector.correct_judge_row(table)
 
       {
         predmet: detail.css('.header h1').text.strip.presence,
@@ -28,6 +29,14 @@ module JusticeGovSk::Hearings
         cas_pojednavania: children.map { |node| node.text.match(/\d{1,2}.\d{1,2}.\d{4} o (\d+:\d+)/).try(:[], 1) }.compact.first.try(:strip).presence,
         html: html
       }
+    end
+
+    class HTMLCorrector
+      def self.correct_judge_row(table)
+        unless table.at_css('tr th:contains("Sudca:")')
+          table.at_css('tr').add_next_sibling('<tr><th></th><td></td></tr>')
+        end
+      end
     end
   end
 end

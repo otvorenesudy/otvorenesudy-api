@@ -14,7 +14,7 @@ RSpec.describe JusticeGovSk::Decrees::ResourceParser do
         sud: 'Okresný súd Dunajská Streda',
         sud_uri: 'https://obcan.justice.sk/infosud/-/infosud/detail/sud/111',
         sudca: 'JUDr. Mária Képessyová',
-        sudca_uri: 'https://obcan.justice.sk/infosud/-/infosud/detail/sudca/666',
+        sudca_uri: 'https://obcan.justice.sk/infosud/-/infosud/detail/sudca/666?_isufront_WAR_isufront_detailPart=SUDCA_ROZHODNUTIA',
         datum_vydania_rozhodnutia: '21.11.2015',
         spisova_znacka: '0T/167/2015',
         identifikacne_cislo_spisu: '2215000304',
