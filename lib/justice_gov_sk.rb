@@ -5,6 +5,8 @@ require 'nokogiri'
 module JusticeGovSk
   # TODO rename to namespace ObcanJusticeSk when finished
 
+  require 'justice_gov_sk/refinements/string'
+
   require 'justice_gov_sk/downloader'
   require 'justice_gov_sk/list_crawler'
   require 'justice_gov_sk/resource_crawler'
