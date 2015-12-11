@@ -18,8 +18,8 @@ module JusticeGovSk::Courts
         mesto: contact.css('.address div')[1].text.match(/\d+ (.*)/)[1].strip.presence,
         predseda: detail.at_css('.sud_header_sudcovia').text.strip.presence,
         predseda_uri: detail.at_css('.sud_header_sudcovia a')[:href].strip.presence,
-        podpredseda: detail.css('.sud_header_sudcovia')[1].css('a').map(&:text).map(&:strip).map(&:presence).compact,
-        podpredseda_uri: detail.css('.sud_header_sudcovia')[1].css('a').map { |e| e[:href] }.map(&:strip).map(&:presence).compact,
+        podpredseda: detail.css('.sud_header_sudcovia')[1].css('a').map { |e| e.text.strip.presence }.compact,
+        podpredseda_uri: detail.css('.sud_header_sudcovia')[1].css('a').map { |e| e[:href] }.map { |e| e.strip.presence }.compact,
         telefon: contact.at_css('table').css('tr')[1].css('td')[1].text.strip.presence,
         fax: contact.at_css('table').css('tr')[2].css('td')[1].text.strip.presence,
         image: detail.at_css('.sud-foto img')[:src].strip.presence.tap { |path| path.prepend('https://obcan.justice.sk') },
@@ -34,14 +34,14 @@ module JusticeGovSk::Courts
         informacne_centrum_telefonne_cislo: information_center.css('.span6')[0].css('.span8')[0].text.strip.presence,
         informacne_centrum_email: information_center.css('.span6')[0].css('.span8')[1].text.strip.presence,
         informacne_centrum_uradne_hodiny: information_center.css('.span6')[1].css('table').css('tr')[0..4].map { |row|
-          row.css('td')[0..1].map(&:text).map(&:strip).map(&:presence).compact.join(', ')
+          row.css('td')[0..1].map { |e| e.text.strip.presence }.compact.join(', ')
         },
         informacne_centrum_uradne_hodiny_poznamka: information_center.css('.span6')[0].css('.row-fluid')[2].text.strip.presence,
 
         podatelna_telefonne_cislo: registry.css('.span6')[0].css('.span8')[0].text.strip.presence,
         podatelna_email: registry.css('.span6')[0].css('.span8')[1].text.strip.presence,
         podatelna_uradne_hodiny: registry.css('.span6')[1].css('table').css('tr')[0..4].map { |row|
-          row.css('td')[0..1].map(&:text).map(&:strip).map(&:presence).compact.join(', ')
+          row.css('td')[0..1].map { |e| e.text.strip.presence }.compact.join(', ')
         },
         podatelna_uradne_hodiny_poznamka: registry.css('.span6')[0].css('.row-fluid')[2].text.strip.presence,
         html: html
