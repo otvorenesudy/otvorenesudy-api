@@ -15,7 +15,7 @@ class CreateJusticeGovSkHearings < ActiveRecord::Migration
       t.string :spisova_znacka
       t.string :identifikacne_cislo_spisu
       t.string :forma_ukonu
-      t.string :poznamka
+      t.text :poznamka
       t.string :navrhovatelia, array: true
       t.string :odporcovia, array: true
       t.string :obzalovani, array: true

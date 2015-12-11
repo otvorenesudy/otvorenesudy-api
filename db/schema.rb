@@ -54,15 +54,15 @@ ActiveRecord::Schema.define(version: 20151204145601) do
     t.string   "informacne_centrum_telefonne_cislo"
     t.string   "informacne_centrum_email"
     t.string   "informacne_centrum_uradne_hodiny",                                    array: true
-    t.string   "informacne_centrum_uradne_hodiny_poznamka"
+    t.text     "informacne_centrum_uradne_hodiny_poznamka"
     t.string   "podatelna_telefonne_cislo"
     t.string   "podatelna_email"
     t.string   "podatelna_uradne_hodiny",                                             array: true
-    t.string   "podatelna_uradne_hodiny_poznamka"
+    t.text     "podatelna_uradne_hodiny_poznamka"
     t.string   "obchodny_register_telefonne_cislo"
     t.string   "obchodny_register_email"
     t.string   "obchodny_register_uradne_hodiny",                                     array: true
-    t.string   "obchodny_register_uradne_hodiny_poznamka"
+    t.text     "obchodny_register_uradne_hodiny_poznamka"
     t.datetime "created_at",                                             null: false
     t.datetime "updated_at",                                             null: false
     t.index ["uri"], name: "index_justice_gov_sk_courts_on_uri", unique: true, using: :btree
@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(version: 20151204145601) do
     t.string   "spisova_znacka"
     t.string   "identifikacne_cislo_spisu"
     t.string   "forma_ukonu"
-    t.string   "poznamka"
+    t.text     "poznamka"
     t.string   "navrhovatelia",                                       array: true
     t.string   "odporcovia",                                          array: true
     t.string   "obzalovani",                                          array: true
