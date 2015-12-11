@@ -55,7 +55,6 @@ RSpec.describe JusticeGovSk::Hearings::ResourceParser do
           miestnost: '138 - pojednávacia miestnosť',
           html: html
         })
-
       end
     end
   end
