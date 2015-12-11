@@ -39,14 +39,14 @@ ActiveRecord::Schema.define(version: 20151204145601) do
     t.string   "psc"
     t.string   "mesto"
     t.string   "predseda"
-    t.string   "predseda_uri"
+    t.string   "predseda_uri",                              limit: 2048
     t.string   "podpredseda",                                                         array: true
     t.string   "podpredseda_uri",                           limit: 2048,              array: true
     t.string   "telefon"
     t.string   "fax"
     t.string   "latitude"
     t.string   "longitude"
-    t.string   "image",                                     limit: 2048
+    t.string   "sud_foto_uri",                              limit: 2048
     t.string   "kontaktna_osoba_pre_media"
     t.string   "telefon_pre_media"
     t.string   "email_pre_media"
@@ -120,7 +120,7 @@ ActiveRecord::Schema.define(version: 20151204145601) do
     t.string   "sud"
     t.string   "sud_uri",         limit: 2048
     t.string   "docasny_sud"
-    t.string   "docasny_sud_uri"
+    t.string   "docasny_sud_uri", limit: 2048
     t.boolean  "aktivny"
     t.text     "poznamka"
     t.datetime "created_at",                   null: false

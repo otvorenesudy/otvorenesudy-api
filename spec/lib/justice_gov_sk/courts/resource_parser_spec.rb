@@ -20,7 +20,7 @@ RSpec.describe JusticeGovSk::Courts::ResourceParser do
         podpredseda_uri: ['https://obcan.justice.sk/infosud/-/infosud/detail/sudca/1767'],
         telefon: '+421288810111',
         fax: '+421255571634',
-        image: 'https://obcan.justice.sk/isu-front/prilohy/SUD/102/12.jpg',
+        sud_foto_uri: 'https://obcan.justice.sk/isu-front/prilohy/SUD/102/12.jpg',
         latitude: '48.152538',
         longitude: '17.122962',
 
@@ -86,7 +86,7 @@ RSpec.describe JusticeGovSk::Courts::ResourceParser do
           ],
           telefon: '+421288810111',
           fax: '+421288810168',
-          image: 'https://obcan.justice.sk/isu-front/prilohy/SUD/101/2.jpg',
+          sud_foto_uri: 'https://obcan.justice.sk/isu-front/prilohy/SUD/101/2.jpg',
           latitude: '48.152538',
           longitude: '17.122962',
 
@@ -138,7 +138,7 @@ RSpec.describe JusticeGovSk::Courts::ResourceParser do
           podpredseda_uri: ['https://obcan.justice.sk/infosud/-/infosud/detail/sudca/1125'],
           telefon: nil,
           fax: nil,
-          image: 'https://obcan.justice.sk/isu-front/prilohy/SUD/154/57.jpg',
+          sud_foto_uri: 'https://obcan.justice.sk/isu-front/prilohy/SUD/154/57.jpg',
           latitude: '48.620059',
           longitude: '21.718737',
 
@@ -190,7 +190,7 @@ RSpec.describe JusticeGovSk::Courts::ResourceParser do
           podpredseda_uri: ['https://obcan.justice.sk/infosud/-/infosud/detail/sudca/687'],
           telefon: '057888 3180',
           fax: '+421577752756',
-          image: 'https://obcan.justice.sk/isu-front/prilohy/SUD/158/23.jpg',
+          sud_foto_uri: 'https://obcan.justice.sk/isu-front/prilohy/SUD/158/23.jpg',
           latitude: '48.9361916',
           longitude: '21.9009363',
 

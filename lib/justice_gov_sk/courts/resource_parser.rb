@@ -22,7 +22,7 @@ module JusticeGovSk::Courts
         podpredseda_uri: detail.css('.sud_header_sudcovia')[1].css('a').map { |e| e[:href] }.map { |e| e.strip.presence }.compact,
         telefon: contact.at_css('table').css('tr')[1].css('td')[1].text.strip.presence,
         fax: contact.at_css('table').css('tr')[2].css('td')[1].text.strip.presence,
-        image: detail.at_css('.sud-foto img')[:src].strip.presence.tap { |path| path.prepend('https://obcan.justice.sk') },
+        sud_foto_uri: detail.at_css('.sud-foto img')[:src].strip.presence.tap { |path| path.prepend('https://obcan.justice.sk') },
         latitude: coordinates[0],
         longitude: coordinates[1],
 

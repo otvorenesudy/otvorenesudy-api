@@ -16,7 +16,7 @@ RSpec.describe JusticeGovSk::Court do
         podpredseda_uri: ['https://obcan.justice.sk/infosud/-/infosud/detail/sudca/1767'],
         telefon: '+421288810111',
         fax: '+421255571634',
-        image: 'https://obcan.justice.sk/isu-front/prilohy/SUD/102/12.jpg',
+        sud_foto_uri: 'https://obcan.justice.sk/isu-front/prilohy/SUD/102/12.jpg',
         latitude: nil,
         longitude: nil,
 
