@@ -12,7 +12,7 @@ module JusticeGovSk
       record = find_or_initialize_by(uri: attributes[:uri])
       keys = attributes.keys - importable_restricted_attributes_for_update.map(&:to_sym)
 
-      return if record.attributes.symbolize_keys.slice(*keys) == attributes.symbolize_keys.slice(*keys)
+      return if record.attributes.symbolize_keys.slice(*keys) == attributes.slice(*keys)
 
       record.attributes = attributes
       record.save!
