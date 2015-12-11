@@ -1,7 +1,6 @@
----
 :concurrency: 25
 :pidfile: tmp/pids/sidekiq.pid
-production:
+:production:
   :concurrency: 25
 :queues:
   - [decrees,  2]
