@@ -7,6 +7,7 @@ module JusticeGovSk::Courts
       information_center = detail.at_css('.informacne-centrum')
       registry = detail.at_css('.podatelna')
       business_registry = detail.at_css('.orsr')
+      coordinates = document.text.scan(/LatLng\("(\d{2}\.\d+)","(\d{2}.\d+)"\)/)[1]
 
       HTMLCorrector.correct_contact_table(contact.css('table'))
 
@@ -22,8 +23,8 @@ module JusticeGovSk::Courts
         telefon: contact.at_css('table').css('tr')[1].css('td')[1].text.strip.presence,
         fax: contact.at_css('table').css('tr')[2].css('td')[1].text.strip.presence,
         image: detail.at_css('.sud-foto img')[:src].strip.presence.tap { |path| path.prepend('https://obcan.justice.sk') },
-        latitude: nil,
-        longitude: nil,
+        latitude: coordinates[0],
+        longitude: coordinates[1],
 
         kontaktna_osoba_pre_media: contact.at_css('table').css('tr')[4].css('td')[1].text.strip.presence,
         telefon_pre_media: contact.at_css('table').css('tr')[5].css('td')[1].text.strip.presence,

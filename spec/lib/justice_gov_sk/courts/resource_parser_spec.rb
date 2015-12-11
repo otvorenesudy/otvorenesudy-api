@@ -21,8 +21,8 @@ RSpec.describe JusticeGovSk::Courts::ResourceParser do
         telefon: '+421288810111',
         fax: '+421255571634',
         image: 'https://obcan.justice.sk/isu-front/prilohy/SUD/102/12.jpg',
-        latitude: nil,
-        longitude: nil,
+        latitude: '48.152538',
+        longitude: '17.122962',
 
         kontaktna_osoba_pre_media: 'Mgr. Pavol Adamčiak',
         telefon_pre_media: '0903 424 263, 02/50118417',
@@ -87,8 +87,8 @@ RSpec.describe JusticeGovSk::Courts::ResourceParser do
           telefon: '+421288810111',
           fax: '+421288810168',
           image: 'https://obcan.justice.sk/isu-front/prilohy/SUD/101/2.jpg',
-          latitude: nil,
-          longitude: nil,
+          latitude: '48.152538',
+          longitude: '17.122962',
 
           kontaktna_osoba_pre_media: 'Mgr. Pavol Adamčiak',
           telefon_pre_media: '02/50118417, 0903 424 263',
@@ -139,8 +139,8 @@ RSpec.describe JusticeGovSk::Courts::ResourceParser do
           telefon: nil,
           fax: nil,
           image: 'https://obcan.justice.sk/isu-front/prilohy/SUD/154/57.jpg',
-          latitude: nil,
-          longitude: nil,
+          latitude: '48.620059',
+          longitude: '21.718737',
 
           kontaktna_osoba_pre_media: 'Marcela Galová',
           telefon_pre_media: '0905532609',
@@ -191,8 +191,8 @@ RSpec.describe JusticeGovSk::Courts::ResourceParser do
           telefon: '057888 3180',
           fax: '+421577752756',
           image: 'https://obcan.justice.sk/isu-front/prilohy/SUD/158/23.jpg',
-          latitude: nil,
-          longitude: nil,
+          latitude: '48.9361916',
+          longitude: '21.9009363',
 
           kontaktna_osoba_pre_media: 'JUDr. Michal Drimák',
           telefon_pre_media: nil,
