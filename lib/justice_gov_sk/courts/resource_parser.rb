@@ -1,5 +1,7 @@
 module JusticeGovSk::Courts
   class ResourceParser
+    using JusticeGovSk::Refinements::UnicodeString
+
     def self.parse(html)
       document = Nokogiri::HTML(html)
       detail = document.css('.detail .right .inner > .content')

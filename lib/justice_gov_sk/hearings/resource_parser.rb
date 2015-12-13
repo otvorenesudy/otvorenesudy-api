@@ -1,5 +1,7 @@
 module JusticeGovSk::Hearings
   class ResourceParser
+    using JusticeGovSk::Refinements::UnicodeString
+
     def self.parse(html)
       # TODO parse participants in hearing when available
 

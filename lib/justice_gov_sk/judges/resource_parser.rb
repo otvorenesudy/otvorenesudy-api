@@ -1,5 +1,7 @@
 module JusticeGovSk::Judges
   class ResourceParser
+    using JusticeGovSk::Refinements::UnicodeString
+
     def self.parse(html)
       # TODO implement note parses when fixed in detail, otherwise pull from list
 
