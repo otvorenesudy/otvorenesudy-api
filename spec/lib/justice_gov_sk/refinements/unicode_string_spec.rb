@@ -31,7 +31,7 @@ RSpec.describe JusticeGovSk::Refinements::UnicodeString do
     end
 
     context 'when no spaces are removed' do
-      it 'returns nil' do
+      it 'returns copy of string' do
         string = 'a'
         stripped = string.strip
 
