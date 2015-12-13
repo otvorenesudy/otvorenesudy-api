@@ -1,9 +1,9 @@
 module JusticeGovSk
   module Refinements
-    module String
+    module UnicodeString
       # TODO consider better naming when expands
 
-      refine ::String do
+      refine String do
         def strip
           dup.strip!
         end

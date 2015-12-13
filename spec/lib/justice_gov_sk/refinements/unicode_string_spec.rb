@@ -1,9 +1,9 @@
 require 'spec_helper'
 require 'justice_gov_sk'
 
-RSpec.describe JusticeGovSk::Refinements::String do
+RSpec.describe JusticeGovSk::Refinements::UnicodeString do
   describe '#strip!' do
-    using JusticeGovSk::Refinements::String
+    using JusticeGovSk::Refinements::UnicodeString
 
     it 'removes normal ASCII whitespace' do
       expect('   a   '.strip!).to eql('a')
