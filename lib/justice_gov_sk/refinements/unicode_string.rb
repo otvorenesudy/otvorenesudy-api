@@ -5,11 +5,14 @@ module JusticeGovSk
 
       refine String do
         def strip
-          dup.strip!
+          dup.tap { |string| string.strip! }
         end
 
         def strip!
-          gsub!(/\A[[:space:]]+/, '').gsub!(/[[:space:]]+\z/, '')
+          left = gsub!(/\A[[:space:]]+/, '')
+          right = gsub!(/[[:space:]]+\z/, '')
+
+          left || right ? self : nil
         end
       end
     end
