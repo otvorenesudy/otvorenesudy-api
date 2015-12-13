@@ -25,6 +25,11 @@ RSpec.describe JusticeGovSk::Refinements::UnicodeString do
   end
 
   context '#strip' do
+    it 'delegates to strip!' do
+      expect('   a   '.strip).to eql('a')
+      expect('   a b   '.strip).to eql('a b')
+    end
+
     context 'when no spaces are removed' do
       it 'returns nil' do
         expect('a'.strip).to eql('a')
