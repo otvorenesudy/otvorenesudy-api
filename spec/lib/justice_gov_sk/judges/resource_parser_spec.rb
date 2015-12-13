@@ -31,7 +31,7 @@ RSpec.describe JusticeGovSk::Judges::ResourceParser do
           docasny_sud: nil,
           docasny_sud_uri: nil,
           aktivny: false,
-          poznamka: nil,
+          poznamka: '- od 1. augusta 2010 má prerušený výkon funkcie sudcu podľa § 24 ods. 4 zákona č. 385/2000 Z.z.',
           html: html
         )
       end

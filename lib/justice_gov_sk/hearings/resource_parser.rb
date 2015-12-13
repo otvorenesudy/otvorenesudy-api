@@ -12,13 +12,16 @@ module JusticeGovSk::Hearings
 
       HTMLCorrector.correct_judge_row(table)
 
+      date_with_time = table.css('tr')[2].at_css('td').text.strip
+
       {
-        predmet: detail.css('.header h1').text.strip.presence,
+        predmet: detail.at_css('.header h1').text.strip.presence,
         sud: table.css('tr')[0].at_css('td').text.strip.presence,
         sud_uri: table.css('tr')[0].at_css('td a').try(:[], :href).try(:strip).presence,
         sudca: table.css('tr')[1].at_css('td').text.strip.presence,
         sudca_uri: table.css('tr')[1].at_css('td a').try(:[], :href).try(:strip).presence,
-        datum_pojednavania: table.css('tr')[2].at_css('td').text.strip.presence,
+        datum_pojednavania: date_with_time.match(/\d+\.\d+\.\d{4}/)[0],
+        cas_pojednavania: date_with_time.match(/o (\d+:\d+)/)[1],
         usek: table.css('tr')[3].at_css('td').text.strip.presence,
         spisova_znacka: table.css('tr')[5].at_css('td').text.strip.presence,
         identifikacne_cislo_spisu: table.css('tr')[6].at_css('td').text.strip.presence,
@@ -28,7 +31,6 @@ module JusticeGovSk::Hearings
         odporcovia: [],
         obzalovani: [],
         miestnost: children.map { |node| node.text.match(/miestnosť:\s+(.*)/).try(:[], 1) }.compact.first.try(:strip).presence,
-        cas_pojednavania: children.map { |node| node.text.match(/\d{1,2}.\d{1,2}.\d{4} o (\d+:\d+)/).try(:[], 1) }.compact.first.try(:strip).presence,
         html: html
       }
     end
