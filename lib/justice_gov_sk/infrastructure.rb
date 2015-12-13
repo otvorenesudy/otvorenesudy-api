@@ -1,7 +1,5 @@
 module JusticeGovSk
   module Infrastructure
-    # TODO implement async?
-
     def crawl
       (1..pages).each do |page|
         url = uri.build(page: page)
