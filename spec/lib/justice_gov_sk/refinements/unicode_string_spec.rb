@@ -32,7 +32,11 @@ RSpec.describe JusticeGovSk::Refinements::UnicodeString do
 
     context 'when no spaces are removed' do
       it 'returns nil' do
-        expect('a'.strip).to eql('a')
+        string = 'a'
+        stripped = string.strip
+
+        expect(string).to eql(stripped)
+        expect(string).not_to equal(stripped)
       end
     end
   end
