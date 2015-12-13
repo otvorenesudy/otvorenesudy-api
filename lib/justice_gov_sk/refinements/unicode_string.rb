@@ -1,8 +1,6 @@
 module JusticeGovSk
   module Refinements
     module UnicodeString
-      # TODO consider better naming when expands
-
       refine String do
         def strip
           dup.tap { |string| string.strip! }
