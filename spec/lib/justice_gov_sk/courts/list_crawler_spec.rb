@@ -9,7 +9,7 @@ RSpec.describe JusticeGovSk::Courts::ListCrawler do
     let(:vcr_cassette_name) { 'justice_gov_sk/court_list_on_page_3' }
     let(:items) { 64 }
 
-    let(:url) { JusticeGovSk::Courts::URI }
+    let(:url) { JusticeGovSk::Courts.uri }
     let(:links) {[
       'https://obcan.justice.sk/infosud/-/infosud/reg-detail/sud/sud_100',
       'https://obcan.justice.sk/infosud/-/infosud/reg-detail/sud/sud_130',
