@@ -10,7 +10,7 @@ module JusticeGovSk::Hearings
       table = detail.at_css('.contentTable')
       children = detail.children[5].children
 
-      HTMLCorrector.correct_judge_row(table)
+      HtmlCorrector.correct_judge_row(table)
 
       date_with_time = table.css('tr')[2].at_css('td').text.strip
 
@@ -35,7 +35,7 @@ module JusticeGovSk::Hearings
       }
     end
 
-    class HTMLCorrector
+    class HtmlCorrector
       def self.correct_judge_row(table)
         unless table.at_css('tr th:contains("Sudca:")')
           table.at_css('tr').add_next_sibling('<tr><th></th><td></td></tr>')

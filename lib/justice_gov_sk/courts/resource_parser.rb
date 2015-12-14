@@ -11,7 +11,7 @@ module JusticeGovSk::Courts
       business_registry = detail.at_css('.orsr')
       coordinates = document.text.scan(/LatLng\("(\d{2}\.\d+)","(\d{2}.\d+)"\)/)[1]
 
-      HTMLCorrector.correct_contact_table(contact.css('table'))
+      HtmlCorrector.correct_contact_table(contact.css('table'))
 
       attributes = {
         nazov: detail.at_css('h1').text.strip.presence,
@@ -61,7 +61,7 @@ module JusticeGovSk::Courts
       )
     end
 
-    class HTMLCorrector
+    class HtmlCorrector
       def self.correct_contact_table(table)
         if table.css('tr').size == 6
           return table.at_css('tr').add_next_sibling('<tr><td></td><td></td></tr>' * 2)
