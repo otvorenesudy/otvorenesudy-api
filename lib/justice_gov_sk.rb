@@ -6,6 +6,7 @@ module JusticeGovSk
   # TODO rename to namespace ObcanJusticeSk when finished
 
   require 'justice_gov_sk/refinements/unicode_string'
+  require 'justice_gov_sk/uri'
 
   require 'justice_gov_sk/downloader'
   require 'justice_gov_sk/list_crawler'
