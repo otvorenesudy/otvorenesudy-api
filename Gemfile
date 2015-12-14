@@ -33,6 +33,11 @@ gem 'oj_mimic_json'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
+# Async Processing
+gem 'sidekiq', '~> 4.0.1'
+gem 'sidekiq-limit_fetch'
+gem 'sinatra', github: 'sinatra/sinatra', branch: '2.2.0-alpha', require: nil # dependency of Sidekiq::Web
+
 # Configuration
 gem 'dotenv-rails'
 gem 'squire'
@@ -43,6 +48,8 @@ gem 'gabrake'
 
 # Utilities
 gem 'symbolize'
+gem 'curb'
+gem 'nokogiri'
 
 # Codeclimate
 gem 'codeclimate-test-reporter', group: :test, require: nil
@@ -50,15 +57,26 @@ gem 'codeclimate-test-reporter', group: :test, require: nil
 group :development, :test do
   # Debugging
   gem 'pry'
+  gem 'ruby-prof'
 
   # Testing
-  gem 'rspec-rails', '~> 3.0'
+  # TODO once rspec for Rails 5 is released, remove
+  %w[rspec-rails rspec rspec-core rspec-expectations rspec-mocks rspec-support].each do |lib|
+    gem lib, github: "rspec/#{lib}"
+  end
+
   gem 'fuubar'
-  gem 'database_cleaner'
+  gem 'database_rewinder'
   gem 'factory_girl_rails', '~> 4.5'
   gem 'rails-controller-testing'
   gem 'capybara'
   gem 'poltergeist'
+  gem 'vcr'
+  gem 'timecop'
+end
+
+group :test do
+  gem 'webmock'
 end
 
 group :development do

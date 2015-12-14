@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: git://github.com/rack/rack.git
-  revision: c393176b0edf3e5d06cabbb6eb9d9c7a07b2afa7
+  revision: 96ae9b9fed8d6809383b6f48a5884437e76f8ca4
   specs:
     rack (2.0.0.alpha)
       json
@@ -34,7 +34,7 @@ GIT
 
 GIT
   remote: git://github.com/rails/rails.git
-  revision: e8b2c0535c203119e6733a982dc22734f3da1219
+  revision: 8570c806bf6785bed657eb172ff2d0c795c98505
   specs:
     actionmailer (5.0.0.alpha)
       actionpack (= 5.0.0.alpha)
@@ -66,7 +66,7 @@ GIT
       activesupport (= 5.0.0.alpha)
       arel (= 7.0.0.alpha)
     activesupport (5.0.0.alpha)
-      concurrent-ruby (~> 1.0.0.pre3, < 2.0.0)
+      concurrent-ruby (~> 1.0)
       i18n (~> 0.7)
       json (~> 1.7, >= 1.7.7)
       method_source
@@ -102,7 +102,7 @@ GIT
 
 GIT
   remote: git://github.com/rails/sprockets-rails.git
-  revision: 93a45b1c463a063ec7cf4d160107b67aa3db7a1a
+  revision: 06d84e952490d7d391592124f6e3b79f9c596674
   specs:
     sprockets-rails (3.0.0.beta3)
       actionpack (>= 4.0)
@@ -111,16 +111,78 @@ GIT
 
 GIT
   remote: git://github.com/rails/sprockets.git
-  revision: 5a77f8b007b8ec61edd783c48baf9d971f1c684d
+  revision: c35a637a26faa775912e24ee7e42d1e7dd2a39a5
   specs:
     sprockets (4.0.0)
-      rack (>= 1, < 3)
+      concurrent-ruby (~> 1.0)
+      rack (> 1, < 3)
+
+GIT
+  remote: git://github.com/rspec/rspec-core.git
+  revision: a9f8475b3340663299fb5294cb30a469fbb29c64
+  specs:
+    rspec-core (3.5.0.pre)
+      rspec-support (= 3.5.0.pre)
+
+GIT
+  remote: git://github.com/rspec/rspec-expectations.git
+  revision: 87376eed1f580682c86ea88448ab0411be238c07
+  specs:
+    rspec-expectations (3.5.0.pre)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (= 3.5.0.pre)
+
+GIT
+  remote: git://github.com/rspec/rspec-mocks.git
+  revision: b94e242ebbc51081fc2245e37c574f5d6d02b7f8
+  specs:
+    rspec-mocks (3.5.0.pre)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (= 3.5.0.pre)
+
+GIT
+  remote: git://github.com/rspec/rspec-rails.git
+  revision: b4c00c45cfeb4ba5be3aeef5fd2b4205f77c0a47
+  specs:
+    rspec-rails (3.5.0.pre)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (= 3.5.0.pre)
+      rspec-expectations (= 3.5.0.pre)
+      rspec-mocks (= 3.5.0.pre)
+      rspec-support (= 3.5.0.pre)
+
+GIT
+  remote: git://github.com/rspec/rspec-support.git
+  revision: a0bc8606b33041dee1e1eae17def1e37ed4bf734
+  specs:
+    rspec-support (3.5.0.pre)
+
+GIT
+  remote: git://github.com/rspec/rspec.git
+  revision: 5966b248d83a74c58784ff195cef5d6be22fa17c
+  specs:
+    rspec (3.5.0.pre)
+      rspec-core (= 3.5.0.pre)
+      rspec-expectations (= 3.5.0.pre)
+      rspec-mocks (= 3.5.0.pre)
+
+GIT
+  remote: git://github.com/sinatra/sinatra.git
+  revision: 855208a2936b27da68588ba547b3fb70c3e48268
+  branch: 2.2.0-alpha
+  specs:
+    sinatra (2.0.0.pre.alpha)
+      rack (~> 2.0.0.alpha)
+      rack-protection (~> 1.5)
+      tilt (~> 2.0)
 
 GIT
   remote: git://github.com/twbs/bootstrap-rubygem.git
-  revision: c00bd6966ae0e74c7ba16f4e2450a2a7b0289694
+  revision: 303a643224ff1190ba5062fee6834ca2012684eb
   specs:
-    bootstrap (4.0.0.alpha1)
+    bootstrap (4.0.0.alpha2)
       autoprefixer-rails (>= 6.0.3)
       sass (>= 3.4.19)
 
@@ -131,7 +193,8 @@ GEM
       actionpack (>= 4.0)
       activemodel (>= 4.0)
       railties (>= 4.0)
-    autoprefixer-rails (6.1.0.1)
+    addressable (2.3.8)
+    autoprefixer-rails (6.1.2)
       execjs
       json
     bcrypt (3.1.10)
@@ -158,15 +221,22 @@ GEM
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
     cliver (0.3.2)
+    codeclimate-test-reporter (0.4.8)
+      simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.0)
     coffee-script (2.4.1)
       coffee-script-source
       execjs
-    coffee-script-source (1.9.1.1)
+    coffee-script-source (1.10.0)
     colorize (0.7.7)
-    concurrent-ruby (1.0.0.pre4)
-    database_cleaner (1.5.1)
+    concurrent-ruby (1.0.0)
+    connection_pool (2.2.0)
+    crack (0.4.2)
+      safe_yaml (~> 1.0.0)
+    curb (0.8.8)
+    database_rewinder (0.5.3)
     diff-lcs (1.2.5)
+    docile (1.1.5)
     dotenv (2.0.1)
     dotenv-rails (2.0.1)
       dotenv (= 2.0.1)
@@ -186,6 +256,7 @@ GEM
       railties (>= 3.2.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    hashdiff (0.2.3)
     httparty (0.13.7)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
@@ -201,16 +272,16 @@ GEM
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
-    mime-types (2.6.2)
-    mini_portile (0.6.2)
-    minitest (5.8.2)
+    mime-types (2.99)
+    mini_portile2 (2.0.0)
+    minitest (5.8.3)
     multi_json (1.11.2)
     multi_xml (0.5.5)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (3.0.1)
-    nokogiri (1.6.6.2)
-      mini_portile (~> 0.6.0)
+    nokogiri (1.6.7)
+      mini_portile2 (~> 2.0.0.rc2)
     oj (2.13.0)
     oj_mimic_json (1.0.1)
     pg (0.18.3)
@@ -223,6 +294,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    rack-protection (1.5.3)
+      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rails-controller-testing (0.0.3)
@@ -237,30 +310,25 @@ GEM
       loofah (~> 2.0)
     raindrops (0.15.0)
     rake (10.4.2)
+    redis (3.2.2)
     rollbar (2.4.0)
       multi_json
-    rspec (3.1.0)
-      rspec-core (~> 3.1.0)
-      rspec-expectations (~> 3.1.0)
-      rspec-mocks (~> 3.1.0)
-    rspec-core (3.1.7)
-      rspec-support (~> 3.1.0)
-    rspec-expectations (3.1.2)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.1.0)
-    rspec-mocks (3.1.3)
-      rspec-support (~> 3.1.0)
-    rspec-rails (3.1.0)
-      actionpack (>= 3.0)
-      activesupport (>= 3.0)
-      railties (>= 3.0)
-      rspec-core (~> 3.1.0)
-      rspec-expectations (~> 3.1.0)
-      rspec-mocks (~> 3.1.0)
-      rspec-support (~> 3.1.0)
-    rspec-support (3.1.2)
+    ruby-prof (0.15.8)
     ruby-progressbar (1.7.5)
-    sass (3.4.19)
+    safe_yaml (1.0.4)
+    sass (3.4.20)
+    sidekiq (4.0.1)
+      concurrent-ruby (~> 1.0)
+      connection_pool (~> 2.2, >= 2.2.0)
+      json (~> 1.0)
+      redis (~> 3.2, >= 3.2.1)
+    sidekiq-limit_fetch (3.0.1)
+      sidekiq (>= 4)
+    simplecov (0.11.1)
+      docile (~> 1.1.0)
+      json (~> 1.8)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.0)
     slop (3.6.0)
     spring (1.4.0)
     squire (1.3.6)
@@ -275,6 +343,8 @@ GEM
       i18n
     thor (0.19.1)
     thread_safe (0.3.5)
+    tilt (2.0.1)
+    timecop (0.8.0)
     turbolinks (2.5.3)
       coffee-rails
     tzinfo (1.2.2)
@@ -286,6 +356,11 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    vcr (3.0.0)
+    webmock (1.22.3)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+      hashdiff
     websocket-driver (0.6.2)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
@@ -307,14 +382,17 @@ DEPENDENCIES
   capistrano-rvm
   capistrano3-unicorn
   capybara
+  codeclimate-test-reporter
   coffee-rails!
-  database_cleaner
+  curb
+  database_rewinder
   dotenv-rails
   factory_girl_rails (~> 4.5)
   font-awesome-rails!
   fuubar
   gabrake
   jquery-rails
+  nokogiri
   oj
   oj_mimic_json
   pg
@@ -324,16 +402,28 @@ DEPENDENCIES
   rails!
   rails-controller-testing
   rollbar (~> 2.4.0)
-  rspec-rails (~> 3.0)
+  rspec!
+  rspec-core!
+  rspec-expectations!
+  rspec-mocks!
+  rspec-rails!
+  rspec-support!
+  ruby-prof
   sass-rails!
+  sidekiq (~> 4.0.1)
+  sidekiq-limit_fetch
+  sinatra!
   spring
   sprockets!
   sprockets-rails!
   squire
   symbolize
+  timecop
   turbolinks
   uglifier (>= 1.3.0)
   unicorn (~> 4.9.0)
+  vcr
+  webmock
 
 BUNDLED WITH
    1.10.6

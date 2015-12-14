@@ -8,4 +8,7 @@ Rails.application.routes.draw do
       get :sync, on: :collection
     end
   end
+
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
 end
