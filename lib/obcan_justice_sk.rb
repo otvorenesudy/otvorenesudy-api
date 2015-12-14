@@ -3,8 +3,6 @@ require 'active_job'
 require 'nokogiri'
 
 module ObcanJusticeSk
-  # TODO rename to namespace ObcanJusticeSk when finished
-
   require 'obcan_justice_sk/refinements/unicode_string'
   require 'obcan_justice_sk/uri'
 
