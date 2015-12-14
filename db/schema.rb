@@ -76,11 +76,11 @@ ActiveRecord::Schema.define(version: 20151204145601) do
     t.string   "sudca"
     t.string   "sud_uri",                   limit: 2048
     t.string   "sudca_uri",                 limit: 2048
-    t.string   "datum_vydania_rozhodnutia"
+    t.string   "datum"
     t.string   "spisova_znacka"
     t.string   "identifikacne_cislo_spisu"
     t.string   "oblast_pravnej_upravy"
-    t.string   "povaha_rozhodnutia"
+    t.string   "povaha"
     t.string   "ecli"
     t.string   "predpisy",                                            array: true
     t.string   "pdf_uri",                   limit: 2048
@@ -97,8 +97,8 @@ ActiveRecord::Schema.define(version: 20151204145601) do
     t.string   "sudca"
     t.string   "sud_uri",                   limit: 2048
     t.string   "sudca_uri",                 limit: 2048
-    t.string   "datum_pojednavania"
-    t.string   "cas_pojednavania"
+    t.string   "datum"
+    t.string   "cas"
     t.string   "usek"
     t.string   "spisova_znacka"
     t.string   "identifikacne_cislo_spisu"

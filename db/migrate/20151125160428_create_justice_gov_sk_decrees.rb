@@ -9,11 +9,11 @@ class CreateJusticeGovSkDecrees < ActiveRecord::Migration
       t.string :sudca
       t.string :sud_uri, limit: 2048
       t.string :sudca_uri, limit: 2048
-      t.string :datum_vydania_rozhodnutia
+      t.string :datum
       t.string :spisova_znacka
       t.string :identifikacne_cislo_spisu
       t.string :oblast_pravnej_upravy
-      t.string :povaha_rozhodnutia
+      t.string :povaha
       t.string :ecli
       t.string :predpisy, array: true
       t.string :pdf_uri, limit: 2048

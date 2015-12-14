@@ -11,11 +11,11 @@ RSpec.describe JusticeGovSk::Decree do
         sud_uri: 'https://obcan.justice.sk/infosud/-/infosud/detail/sud/111',
         sudca: 'JUDr. Mária Képessyová',
         sudca_uri: 'https://obcan.justice.sk/infosud/-/infosud/detail/sudca/666',
-        datum_vydania_rozhodnutia: '21.11.2015',
+        datum: '21.11.2015',
         spisova_znacka: '0T/167/2015',
         identifikacne_cislo_spisu: '2215000304',
         oblast_pravnej_upravy: 'Poriadok vo verejných veciach - Trestné právo',
-        povaha_rozhodnutia: 'Prvostupňové nenapadnuté opravnými prostriedkami',
+        povaha: 'Prvostupňové nenapadnuté opravnými prostriedkami',
         ecli: 'ECLI:SK:OSDS:2015:2215000304.1',
         predpisy: [
           '/SK/ZZ/2005/300/#paragraf-37',

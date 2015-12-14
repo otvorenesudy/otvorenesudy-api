@@ -9,8 +9,8 @@ class CreateJusticeGovSkHearings < ActiveRecord::Migration
       t.string :sudca
       t.string :sud_uri, limit: 2048
       t.string :sudca_uri, limit: 2048
-      t.string :datum_pojednavania
-      t.string :cas_pojednavania
+      t.string :datum
+      t.string :cas
       t.string :usek
       t.string :spisova_znacka
       t.string :identifikacne_cislo_spisu

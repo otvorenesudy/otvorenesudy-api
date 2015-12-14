@@ -13,8 +13,8 @@ RSpec.describe JusticeGovSk::Hearing do
         sud_uri: 'https://obcan.justice.sk/infosud/-/infosud/detail/sud/146',
         sudca: 'Mgr. Daniel Koneracký',
         sudca_uri: 'https://obcan.justice.sk/infosud/-/infosud/detail/sudca/1749',
-        datum_pojednavania: '26.8.2016',
-        cas_pojednavania: '09:00',
+        datum: '26.8.2016',
+        cas: '09:00',
         usek: 'Civilný',
         spisova_znacka: '18C/19/2014',
         identifikacne_cislo_spisu: '6414201836',
@@ -28,6 +28,6 @@ RSpec.describe JusticeGovSk::Hearing do
       }
     }
 
-    let(:updated_attributes) { attributes.merge(cas_pojednavania: '15:00', odporcovia: ['Peter Nový']) }
+    let(:updated_attributes) { attributes.merge(cas: '15:00', odporcovia: ['Peter Nový']) }
   end
 end
