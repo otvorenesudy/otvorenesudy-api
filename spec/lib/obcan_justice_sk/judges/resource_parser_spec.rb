@@ -16,7 +16,6 @@ RSpec.describe ObcanJusticeSk::Judges::ResourceParser do
         docasny_sud_uri: nil,
         aktivny: true,
         poznamka: nil,
-        html: html
       )
     end
 
@@ -32,7 +31,6 @@ RSpec.describe ObcanJusticeSk::Judges::ResourceParser do
           docasny_sud_uri: nil,
           aktivny: false,
           poznamka: '- od 1. augusta 2010 má prerušený výkon funkcie sudcu podľa § 24 ods. 4 zákona č. 385/2000 Z.z.',
-          html: html
         )
       end
     end
@@ -49,7 +47,6 @@ RSpec.describe ObcanJusticeSk::Judges::ResourceParser do
           docasny_sud_uri: 'https://obcan.justice.sk/infosud/-/infosud/detail/sud/100',
           aktivny: true,
           poznamka: nil,
-          html: html
         )
       end
     end

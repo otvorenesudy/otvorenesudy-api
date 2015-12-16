@@ -33,7 +33,6 @@ RSpec.describe ObcanJusticeSk::Decrees::ResourceParser do
           '/SK/ZZ/2005/300/#paragraf-49.odsek-1.pismeno-a'
         ],
         pdf_uri: 'https://obcan.justice.sk/content/public/item/9e90c187-fe0c-4957-a0d2-5f508d6ade04',
-        html: html
       )
     end
 
@@ -57,7 +56,6 @@ RSpec.describe ObcanJusticeSk::Decrees::ResourceParser do
           ecli: 'ECLI:SK:OSRS:2015:6915213805.1',
           predpisy: [],
           pdf_uri: 'https://obcan.justice.sk/content/public/item/53191bda-9a39-4687-b75d-0a008ff13213',
-          html: html
         )
       end
     end

@@ -14,7 +14,6 @@ module ObcanJusticeSk::Judges
         docasny_sud: detail.css('h5 a')[1].try(:text).try(:strip).presence,
         docasny_sud_uri: detail.css('h5 a')[1].try(:[], :href).try(:strip).presence,
         poznamka: detail.at_css('.sudca_stav').next.try(:text).strip.presence,
-        html: html
       }
     end
   end
