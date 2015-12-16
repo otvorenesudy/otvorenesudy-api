@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20151204145601) do
 
   create_table "legacy_courts", force: :cascade do |t|
     t.string   "uri",                                       limit: 2048, null: false
-    t.text     "html",                                                   null: false
+    t.json     "source",                                                 null: false
     t.string   "nazov"
     t.string   "adresa"
     t.string   "psc"
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 20151204145601) do
 
   create_table "legacy_decrees", force: :cascade do |t|
     t.string   "uri",                       limit: 2048, null: false
-    t.text     "html",                                   null: false
+    t.json     "source",                                 null: false
     t.string   "forma"
     t.string   "sud"
     t.string   "sudca"
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 20151204145601) do
 
   create_table "legacy_hearings", force: :cascade do |t|
     t.string   "uri",                       limit: 2048, null: false
-    t.text     "html",                                   null: false
+    t.json     "source",                                 null: false
     t.string   "predmet"
     t.string   "sud"
     t.string   "sudca"
@@ -115,7 +115,7 @@ ActiveRecord::Schema.define(version: 20151204145601) do
 
   create_table "legacy_judges", force: :cascade do |t|
     t.string   "uri",             limit: 2048, null: false
-    t.text     "html",                         null: false
+    t.json     "source",                       null: false
     t.string   "meno"
     t.string   "sud"
     t.string   "sud_uri",         limit: 2048

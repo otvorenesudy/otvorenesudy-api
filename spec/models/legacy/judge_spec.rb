@@ -13,7 +13,7 @@ RSpec.describe Legacy::Judge do
         docasny_sud_uri: 'https://obcan.justice.sk/infosud/-/infosud/detail/sud/100',
         aktivny: true,
         poznamka: nil,
-        html: '<html></html>'
+        source: { 'html' => '<html></html>' }
       }
     }
 

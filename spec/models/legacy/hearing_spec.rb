@@ -22,7 +22,7 @@ RSpec.describe Legacy::Hearing do
         odporcovia: ['Pavol Nový'],
         obzalovani: [],
         miestnost: '32 - 2.poschodie',
-        html: '<html></html>'
+        source: { 'html' => '<html></html>' }
       }
     }
 

@@ -52,7 +52,7 @@ RSpec.describe Legacy::Court do
         obchodny_register_uradne_hodiny: [],
         obchodny_register_uradne_hodiny_poznamka: nil,
 
-        html: '<html></html>'
+        source: { 'html' => '<html></html>' }
       }
     }
 

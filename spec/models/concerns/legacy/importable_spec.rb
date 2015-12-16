@@ -49,7 +49,7 @@ RSpec.shared_examples_for Legacy::Importable do
           end
 
           restricted_attributes = described_class.importable_restricted_attributes_for_update.inject(Hash.new) do |hash, attribute|
-            hash[attribute] = rand.to_s
+            hash[attribute] = hash[attribute].is_a?(Hash) ? { a: rand.to_s } : rand.to_s
 
             hash
           end
@@ -66,7 +66,7 @@ RSpec.shared_examples_for Legacy::Importable do
     end
 
     context 'with just portion of attributes' do
-      let(:keys) { [:uri, :html] + attributes.except(:uri, :html).keys.first(3) }
+      let(:keys) { [:uri, :source] + attributes.except(:uri, :source).keys.first(3) }
       let(:partial_attributes) { attributes.slice(*keys) }
 
       it 'imports record' do
