@@ -1,14 +1,14 @@
 module ObcanJusticeSk::Hearings
   class ResourceParser
-    using ObcanJusticeSk::Refinements::UnicodeString
+    using UnicodeString
 
     def self.parse(html)
       # TODO parse participants in hearing when available
 
       document = Nokogiri::HTML(html)
-      detail = document.css('.detail .right .inner > .content')
+      detail = document.at_css('.detail .right .inner > .content')
       table = detail.at_css('.contentTable')
-      children = detail.children[5].children
+      children = detail.at_css('.content').children
 
       HtmlCorrector.correct_judge_row(table)
 
@@ -31,7 +31,6 @@ module ObcanJusticeSk::Hearings
         odporcovia: [],
         obzalovani: [],
         miestnost: children.map { |node| node.text.match(/miestnosť:\s+(.*)/).try(:[], 1) }.compact.first.try(:strip).presence,
-        html: html
       }
     end
 

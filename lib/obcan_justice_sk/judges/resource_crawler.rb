@@ -9,7 +9,7 @@ module ObcanJusticeSk::Judges
     end
 
     def repository
-      ObcanJusticeSk::Judge
+      Legacy::Judge
     end
   end
 end

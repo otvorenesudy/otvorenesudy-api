@@ -1,6 +1,6 @@
 module ObcanJusticeSk::Courts
   class ResourceParser
-    using ObcanJusticeSk::Refinements::UnicodeString
+    using UnicodeString
 
     def self.parse(html)
       document = Nokogiri::HTML(html)
@@ -46,7 +46,6 @@ module ObcanJusticeSk::Courts
           row.css('td')[0..1].map { |e| e.text.strip.presence }.compact.join(', ')
         },
         podatelna_uradne_hodiny_poznamka: registry.css('.span6')[0].css('.row-fluid')[2].text.strip.presence,
-        html: html
       }
 
       return attributes unless business_registry

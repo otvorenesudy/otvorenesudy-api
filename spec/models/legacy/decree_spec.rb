@@ -1,8 +1,8 @@
 require 'rails_helper'
-require 'models/concerns/obcan_justice_sk/importable_spec'
+require 'models/concerns/legacy/importable_spec'
 
-RSpec.describe ObcanJusticeSk::Decree do
-  it_behaves_like ObcanJusticeSk::Importable do
+RSpec.describe Legacy::Decree do
+  it_behaves_like Legacy::Importable do
     let(:attributes) {
       {
         uri: 'https://obcan.justice.sk/infosud/-/infosud/i-detail/rozhodnutie/305e5973-67a3-4258-a19e-b1dd31f2d095%3A9e90c187-fe0c-4957-a0d2-5f508d6ade04',
@@ -29,7 +29,7 @@ RSpec.describe ObcanJusticeSk::Decree do
           '/SK/ZZ/2005/300/#paragraf-49.odsek-1.pismeno-a'
         ],
         pdf_uri: 'https://obcan.justice.sk/content/public/item/9e90c187-fe0c-4957-a0d2-5f508d6ade04',
-        html: '<html></html>'
+        source: { 'html' => '<html></html>' }
       }
     }
 

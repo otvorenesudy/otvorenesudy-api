@@ -1,8 +1,8 @@
 require 'rails_helper'
-require 'models/concerns/obcan_justice_sk/importable_spec'
+require 'models/concerns/legacy/importable_spec'
 
-RSpec.describe ObcanJusticeSk::Judge do
-  it_behaves_like ObcanJusticeSk::Importable do
+RSpec.describe Legacy::Judge do
+  it_behaves_like Legacy::Importable do
     let(:attributes) {
       {
         uri: 'https://obcan.justice.sk/infosud/-/infosud/reg-detail/sudca/sudca_258',
@@ -13,7 +13,7 @@ RSpec.describe ObcanJusticeSk::Judge do
         docasny_sud_uri: 'https://obcan.justice.sk/infosud/-/infosud/detail/sud/100',
         aktivny: true,
         poznamka: nil,
-        html: '<html></html>'
+        source: { 'html' => '<html></html>' }
       }
     }
 

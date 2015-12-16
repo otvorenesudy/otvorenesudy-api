@@ -31,9 +31,9 @@ ActiveRecord::Schema.define(version: 20151204145601) do
     t.index ["email", "locale"], name: "index_invites_on_email_and_locale", unique: true, using: :btree
   end
 
-  create_table "obcan_justice_sk_courts", force: :cascade do |t|
+  create_table "legacy_courts", force: :cascade do |t|
     t.string   "uri",                                       limit: 2048, null: false
-    t.text     "html",                                                   null: false
+    t.json     "source",                                                 null: false
     t.string   "nazov"
     t.string   "adresa"
     t.string   "psc"
@@ -65,12 +65,12 @@ ActiveRecord::Schema.define(version: 20151204145601) do
     t.text     "obchodny_register_uradne_hodiny_poznamka"
     t.datetime "created_at",                                             null: false
     t.datetime "updated_at",                                             null: false
-    t.index ["uri"], name: "index_obcan_justice_sk_courts_on_uri", unique: true, using: :btree
+    t.index ["uri"], name: "index_legacy_courts_on_uri", unique: true, using: :btree
   end
 
-  create_table "obcan_justice_sk_decrees", force: :cascade do |t|
+  create_table "legacy_decrees", force: :cascade do |t|
     t.string   "uri",                       limit: 2048, null: false
-    t.text     "html",                                   null: false
+    t.json     "source",                                 null: false
     t.string   "forma"
     t.string   "sud"
     t.string   "sudca"
@@ -86,12 +86,12 @@ ActiveRecord::Schema.define(version: 20151204145601) do
     t.string   "pdf_uri",                   limit: 2048
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
-    t.index ["uri"], name: "index_obcan_justice_sk_decrees_on_uri", unique: true, using: :btree
+    t.index ["uri"], name: "index_legacy_decrees_on_uri", unique: true, using: :btree
   end
 
-  create_table "obcan_justice_sk_hearings", force: :cascade do |t|
+  create_table "legacy_hearings", force: :cascade do |t|
     t.string   "uri",                       limit: 2048, null: false
-    t.text     "html",                                   null: false
+    t.json     "source",                                 null: false
     t.string   "predmet"
     t.string   "sud"
     t.string   "sudca"
@@ -110,12 +110,12 @@ ActiveRecord::Schema.define(version: 20151204145601) do
     t.string   "miestnost"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
-    t.index ["uri"], name: "index_obcan_justice_sk_hearings_on_uri", unique: true, using: :btree
+    t.index ["uri"], name: "index_legacy_hearings_on_uri", unique: true, using: :btree
   end
 
-  create_table "obcan_justice_sk_judges", force: :cascade do |t|
+  create_table "legacy_judges", force: :cascade do |t|
     t.string   "uri",             limit: 2048, null: false
-    t.text     "html",                         null: false
+    t.json     "source",                       null: false
     t.string   "meno"
     t.string   "sud"
     t.string   "sud_uri",         limit: 2048
@@ -125,7 +125,7 @@ ActiveRecord::Schema.define(version: 20151204145601) do
     t.text     "poznamka"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
-    t.index ["uri"], name: "index_obcan_justice_sk_judges_on_uri", unique: true, using: :btree
+    t.index ["uri"], name: "index_legacy_judges_on_uri", unique: true, using: :btree
   end
 
 end

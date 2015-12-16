@@ -1,10 +1,12 @@
 module ObcanJusticeSk::Judges
   class ResourceParser
-    using ObcanJusticeSk::Refinements::UnicodeString
+    using UnicodeString
 
     def self.parse(html)
       document = Nokogiri::HTML(html)
       detail = document.css('.detail .right .inner > .content')
+
+      HtmlCorrector.remove_warnings(detail)
 
       {
         meno: detail.at_css('h1').text.strip.presence,
@@ -14,8 +16,14 @@ module ObcanJusticeSk::Judges
         docasny_sud: detail.css('h5 a')[1].try(:text).try(:strip).presence,
         docasny_sud_uri: detail.css('h5 a')[1].try(:[], :href).try(:strip).presence,
         poznamka: detail.at_css('.sudca_stav').next.try(:text).strip.presence,
-        html: html
       }
+    end
+
+    class HtmlCorrector
+      def self.remove_warnings(detail)
+        detail.at_css('h1:contains(InfoSúd)').remove
+        detail.at_css('.pilotWarning').remove
+      end
     end
   end
 end

@@ -7,7 +7,7 @@ RSpec.shared_examples_for ObcanJusticeSk::ResourceCrawler do
     it 'crawls resource' do
       allow(downloader).to receive(:download).with(uri) { 'html' }
       allow(parser).to receive(:parse).with('html') { { attribute: 1 } }
-      expect(repository).to receive(:import_from).with(uri: uri, attribute: 1)
+      expect(repository).to receive(:import_from).with(uri: uri, source: { html: 'html' }, attribute: 1)
 
       described_class.perform_later(uri)
     end

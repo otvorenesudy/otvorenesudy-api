@@ -1,8 +1,8 @@
-class CreateObcanJusticeSkHearings < ActiveRecord::Migration
+class CreateLegacyHearings < ActiveRecord::Migration
   def change
-    create_table :obcan_justice_sk_hearings do |t|
+    create_table :legacy_hearings do |t|
       t.string :uri, null: false, limit: 2048
-      t.text :html, null: false
+      t.json :source, null: false
 
       t.string :predmet
       t.string :sud
@@ -24,6 +24,6 @@ class CreateObcanJusticeSkHearings < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :obcan_justice_sk_hearings, :uri, unique: true
+    add_index :legacy_hearings, :uri, unique: true
   end
 end
