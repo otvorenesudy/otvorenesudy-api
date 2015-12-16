@@ -9,7 +9,7 @@ module ObcanJusticeSk::Decrees
     end
 
     def repository
-      ObcanJusticeSk::Decree
+      Legacy::Decree
     end
   end
 end

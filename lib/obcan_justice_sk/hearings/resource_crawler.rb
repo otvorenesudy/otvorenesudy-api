@@ -9,7 +9,7 @@ module ObcanJusticeSk::Hearings
     end
 
     def repository
-      ObcanJusticeSk::Hearing
+      Legacy::Hearing
     end
   end
 end

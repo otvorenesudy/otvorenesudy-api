@@ -1,8 +1,8 @@
-class CreateObcanJusticeSkDecrees < ActiveRecord::Migration
+class CreateLegacyDecrees < ActiveRecord::Migration
   def change
-    create_table :obcan_justice_sk_decrees do |t|
+    create_table :legacy_decrees do |t|
       t.string :uri, null: false, limit: 2048
-      t.text :html, null: false
+      t.json :source, null: false
 
       t.string :forma
       t.string :sud
@@ -21,6 +21,6 @@ class CreateObcanJusticeSkDecrees < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :obcan_justice_sk_decrees, :uri, unique: true
+    add_index :legacy_decrees, :uri, unique: true
   end
 end

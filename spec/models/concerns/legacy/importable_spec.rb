@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.shared_examples_for ObcanJusticeSk::Importable do
+RSpec.shared_examples_for Legacy::Importable do
   describe '.import_from' do
     it 'imports record by attributes' do
       described_class.import_from(attributes)

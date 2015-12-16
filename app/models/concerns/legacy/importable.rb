@@ -1,9 +1,9 @@
 # TODO report weird bug with utf8 based string array attributes when using changed? method
 
-module ObcanJusticeSk
+module Legacy
   module Importable
     def importable_restricted_attributes_for_update
-      [:html]
+      [:source]
     end
 
     def import_from(attributes)

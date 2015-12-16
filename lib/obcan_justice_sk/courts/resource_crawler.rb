@@ -9,7 +9,7 @@ module ObcanJusticeSk::Courts
     end
 
     def repository
-      ObcanJusticeSk::Court
+      Legacy::Court
     end
   end
 end
