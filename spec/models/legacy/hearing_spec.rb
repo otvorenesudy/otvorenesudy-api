@@ -7,7 +7,7 @@ RSpec.describe Legacy::Hearing do
       {
         uri: 'https://obcan.justice.sk/infosud/-/infosud/i-detail/pojednavanie/5b341263-c6bc-4935-ab25-4fd56b288829',
         predmet: 'PO - určenie neexistencie práva na výkon zrážok zo mzdy',
-        sud: 'Okresný súd Žiar n/H',
+        sud: 'Okresný súd Žiar nad Hronom',
         sud_uri: 'https://obcan.justice.sk/infosud/-/infosud/detail/sud/146',
         sudca: 'Mgr. Daniel Koneracký',
         sudca_uri: 'https://obcan.justice.sk/infosud/-/infosud/detail/sudca/1749',

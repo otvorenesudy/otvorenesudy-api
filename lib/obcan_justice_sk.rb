@@ -1,9 +1,9 @@
 require 'active_support/core_ext/object/blank'
 require 'active_job'
 require 'nokogiri'
+require 'refinements/unicode_string'
 
 module ObcanJusticeSk
-  require 'obcan_justice_sk/refinements/unicode_string'
   require 'obcan_justice_sk/uri'
 
   require 'obcan_justice_sk/downloader'
