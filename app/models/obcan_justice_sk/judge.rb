@@ -1,5 +1,5 @@
 module ObcanJusticeSk
   class Judge < ActiveRecord::Base
-    extend ObcanJusticeSk::Importable
+    extend Importable
   end
 end

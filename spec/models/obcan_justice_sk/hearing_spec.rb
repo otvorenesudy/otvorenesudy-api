@@ -1,10 +1,10 @@
 # encoding: UTF-8
 
 require 'rails_helper'
-require 'models/concerns/obcan_justice_sk/importable_spec'
+require 'models/concerns/importable_spec'
 
 RSpec.describe ObcanJusticeSk::Hearing do
-  it_behaves_like ObcanJusticeSk::Importable do
+  it_behaves_like Importable do
     let(:attributes) {
       {
         uri: 'https://obcan.justice.sk/infosud/-/infosud/i-detail/pojednavanie/5b341263-c6bc-4935-ab25-4fd56b288829',
