@@ -1,9 +1,9 @@
 require 'active_support/core_ext/object/blank'
 require 'active_job'
 require 'nokogiri'
+require 'unicode_string'
 
 module ObcanJusticeSk
-  require 'obcan_justice_sk/refinements/unicode_string'
   require 'obcan_justice_sk/uri'
 
   require 'obcan_justice_sk/downloader'
@@ -30,4 +30,8 @@ module ObcanJusticeSk
   require 'obcan_justice_sk/courts/resource_parser'
   require 'obcan_justice_sk/courts/resource_crawler'
   require 'obcan_justice_sk/courts'
+
+  def self.table_name_prefix
+    'obcan_justice_sk_'
+  end
 end

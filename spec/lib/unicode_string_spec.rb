@@ -1,8 +1,7 @@
 require 'spec_helper'
-require 'obcan_justice_sk'
 
-RSpec.describe ObcanJusticeSk::Refinements::UnicodeString do
-  using ObcanJusticeSk::Refinements::UnicodeString
+RSpec.describe UnicodeString do
+  using UnicodeString
 
   describe '#strip!' do
     it 'removes normal ASCII whitespace' do

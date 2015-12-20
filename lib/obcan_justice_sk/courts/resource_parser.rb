@@ -1,6 +1,6 @@
 module ObcanJusticeSk::Courts
   class ResourceParser
-    using ObcanJusticeSk::Refinements::UnicodeString
+    using UnicodeString
 
     def self.parse(html)
       document = Nokogiri::HTML(html)
