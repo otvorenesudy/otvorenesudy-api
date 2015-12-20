@@ -19,8 +19,7 @@ module ObcanJusticeSk::Decrees
         povaha: detail.css('.contentTable tr')[7].at_css('td').text.strip.presence,
         ecli: detail.css('.contentTable tr')[8].at_css('td').text.strip.presence,
         predpisy: detail.css('.contentTable tr')[9].css('td a').map { |a| a[:'data-iri'].strip },
-        pdf_uri: detail.css('#documentWrapper iframe')[0][:src].match(/url=([^&]+)&/)[1],
-        html: html
+        pdf_uri: detail.css('#documentWrapper iframe')[0][:src].match(/url=([^&]+)&/)[1]
       }
     end
   end

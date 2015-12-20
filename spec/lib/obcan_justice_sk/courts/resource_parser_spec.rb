@@ -60,8 +60,7 @@ RSpec.describe ObcanJusticeSk::Courts::ResourceParser do
           '8:00 - 15:00',
           '8:00 - 12:00',
         ],
-        obchodny_register_uradne_hodiny_poznamka: 'prestávka v práci PO - ŠT: 12:00 - 13:00',
-        html: html
+        obchodny_register_uradne_hodiny_poznamka: 'prestávka v práci PO - ŠT: 12:00 - 13:00'
       )
     end
 
@@ -115,8 +114,7 @@ RSpec.describe ObcanJusticeSk::Courts::ResourceParser do
             '8:00 - 15:30',
             '8:00 - 15:00',
           ],
-          podatelna_uradne_hodiny_poznamka: nil,
-          html: html
+          podatelna_uradne_hodiny_poznamka: nil
         )
       end
     end
@@ -167,8 +165,7 @@ RSpec.describe ObcanJusticeSk::Courts::ResourceParser do
             '7:30 - 15:30',
             '7:30 - 15:30',
           ],
-          podatelna_uradne_hodiny_poznamka: nil,
-          html: html
+          podatelna_uradne_hodiny_poznamka: nil
         )
       end
     end
@@ -219,8 +216,7 @@ RSpec.describe ObcanJusticeSk::Courts::ResourceParser do
             '07:30 - 11:30, 12:00 - 15:30',
             '07:30 - 11:30, 12:00 - 15:00'
           ],
-          podatelna_uradne_hodiny_poznamka: nil,
-          html: html
+          podatelna_uradne_hodiny_poznamka: nil
         )
       end
     end

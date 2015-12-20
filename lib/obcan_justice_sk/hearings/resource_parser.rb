@@ -30,8 +30,7 @@ module ObcanJusticeSk::Hearings
         navrhovatelia: [],
         odporcovia: [],
         obzalovani: [],
-        miestnost: children.map { |node| node.text.match(/miestnosť:\s+(.*)/).try(:[], 1) }.compact.first.try(:strip).presence,
-        html: html
+        miestnost: children.map { |node| node.text.match(/miestnosť:\s+(.*)/).try(:[], 1) }.compact.first.try(:strip).presence
       }
     end
 

@@ -25,8 +25,7 @@ RSpec.describe ObcanJusticeSk::Hearings::ResourceParser do
         navrhovatelia: [],
         odporcovia: [],
         obzalovani: [],
-        miestnost: '32 - 2.poschodie',
-        html: html
+        miestnost: '32 - 2.poschodie'
       })
     end
 
@@ -52,8 +51,7 @@ RSpec.describe ObcanJusticeSk::Hearings::ResourceParser do
           navrhovatelia: [],
           odporcovia: [],
           obzalovani: [],
-          miestnost: '138 - pojednávacia miestnosť',
-          html: html
+          miestnost: '138 - pojednávacia miestnosť'
         })
       end
     end

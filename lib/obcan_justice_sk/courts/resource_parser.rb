@@ -45,8 +45,7 @@ module ObcanJusticeSk::Courts
         podatelna_uradne_hodiny: registry.css('.span6')[1].css('table').css('tr')[0..4].map { |row|
           row.css('td')[0..1].map { |e| e.text.strip.presence }.compact.join(', ')
         },
-        podatelna_uradne_hodiny_poznamka: registry.css('.span6')[0].css('.row-fluid')[2].text.strip.presence,
-        html: html
+        podatelna_uradne_hodiny_poznamka: registry.css('.span6')[0].css('.row-fluid')[2].text.strip.presence
       }
 
       return attributes unless business_registry
