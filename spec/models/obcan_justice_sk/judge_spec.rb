@@ -1,8 +1,8 @@
 require 'rails_helper'
-require 'models/concerns/importable_spec'
+require 'models/concerns/obcan_justice_sk/importable_spec'
 
 RSpec.describe ObcanJusticeSk::Judge do
-  it_behaves_like Importable do
+  it_behaves_like ObcanJusticeSk::Importable do
     let(:attributes) {
       {
         uri: 'https://obcan.justice.sk/infosud/-/infosud/reg-detail/sudca/sudca_258',
