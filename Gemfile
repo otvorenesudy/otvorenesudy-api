@@ -57,6 +57,7 @@ gem 'codeclimate-test-reporter', group: :test, require: nil
 group :development, :test do
   # Debugging
   gem 'pry'
+  gem 'pry-rails'
   gem 'ruby-prof'
 
   # Testing
