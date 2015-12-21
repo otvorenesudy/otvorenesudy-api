@@ -16,6 +16,12 @@ module InfoSud
     end
   end
 
+  def self.import_hearings
+    Dir[Rails.root.join('tmp/data/info_sud/hearings/*.json')].each do |file|
+      InfoSud::Importer.import(file, repository: InfoSud::Hearing)
+    end
+  end
+
   def self.table_name_prefix
     'info_sud_'
   end
