@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151204145601) do
+ActiveRecord::Schema.define(version: 20151220191833) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,14 @@ ActiveRecord::Schema.define(version: 20151204145601) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["value"], name: "index_api_keys_on_value", unique: true, using: :btree
+  end
+
+  create_table "info_sud_courts", force: :cascade do |t|
+    t.string   "guid",       null: false
+    t.json     "data",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["guid"], name: "index_info_sud_courts_on_guid", unique: true, using: :btree
   end
 
   create_table "invites", force: :cascade do |t|

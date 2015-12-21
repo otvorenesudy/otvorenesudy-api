@@ -1,11 +1,11 @@
 module InfoSud
   class Importer
-    def self.import(path, parser:, repository:)
+    def self.import(path, parser: InfoSud::Parser, repository:)
       File.open(path) do |file|
         records = parser.parse(file.read)
 
         records.each do |attributes|
-          repository.import_from(attributes)
+          repository.import_from(guid: attributes[:guid], data: attributes)
         end
       end
     end
