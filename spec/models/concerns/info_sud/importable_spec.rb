@@ -6,29 +6,16 @@ RSpec.shared_examples_for InfoSud::Importable do
     let(:record) { described_class.find_by(guid: attributes[:guid]) }
     let(:restricted_attributes_for_update) { [] }
 
+    # TODO add more descriptive attributes for each model later
     let(:attributes) {
       {
         guid: '1',
         data: {
           guid: '1',
-          kraj: 'Bratislavský kraj',
-          lattitude: '48.152538',
-          internet_address: nil,
-
-          podpredseda: {
-            sudcovia: [
-              {
-                name: "JUDr. Tibor KUBÍK",
-                id: "47"
-              },
-              {
-                name: "JUDr. Boris TÓTH",
-                id: "582"
-              },
-              {
-                name: "JUDr. Roman BOLEBRUCH",
-                id: "588"
-              }
+          category: {
+            attribute: [
+              id: '1',
+              name: 'Example'
             ]
           }
         }
@@ -37,23 +24,15 @@ RSpec.shared_examples_for InfoSud::Importable do
 
     let(:updated_attributes) { attributes.merge!(
       data: {
-        podpredseda: {
-          sudcovia: [
-            {
-              name: "Peter KUBÍK",
-              id: "47"
-            },
-            {
-              name: "JUDr. Boris TÓTH",
-              id: "582"
-            },
-            {
-              name: "JUDr. Roman BOLEBRUCH",
-              id: "588"
-            }
+        guid: '1',
+        category: {
+          attribute: [
+            id: '2',
+            name: 'Example'
           ]
         }
-      })
+      }
+    )
     }
   end
 end
