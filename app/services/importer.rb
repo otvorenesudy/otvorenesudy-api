@@ -4,7 +4,7 @@ module Importer
 
     keys = attributes.keys - restricted_attributes.map(&:to_sym)
 
-    return if record.attributes.symbolize_keys.slice(*keys) == attributes.slice(*keys)
+    return if record.attributes.deep_symbolize_keys.slice(*keys) == attributes.slice(*keys)
 
     record.attributes = attributes
     record.save!
