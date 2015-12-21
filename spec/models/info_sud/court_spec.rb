@@ -37,7 +37,7 @@ RSpec.describe InfoSud::Court do
         podpredseda: {
           sudcovia: [
             {
-              name: "JUDr. Tibor KUBÍk",
+              name: "Peter KUBÍK",
               id: "47"
             },
             {
