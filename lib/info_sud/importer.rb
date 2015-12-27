@@ -5,7 +5,7 @@ module InfoSud
         records = parser.parse(file.read)
 
         records.each do |attributes|
-          repository.import_from(guid: attributes[:guid], data: attributes)
+          repository.import_from(attributes)
         end
       end
     end
