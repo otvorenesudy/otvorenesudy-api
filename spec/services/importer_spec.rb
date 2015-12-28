@@ -1,39 +1,27 @@
 require 'rails_helper'
 
 RSpec.describe Importer do
+  let(:attributes) { { name: 'Peter', surname: 'Parker' } }
+  let(:dispatcher) { double(:dispatcher) }
+
   describe '.import_or_update' do
-    let(:attributes) { { name: 'Peter', surname: 'Parker' } }
-    let(:record) { double(:record, attributes: attributes) }
-
     context 'when attributes change' do
-      let(:updated_attributes) { { name: 'Peter', surname: 'Pan' } }
+      it 'dispatches update for attributes' do
+        expect(dispatcher).to receive(:attributes=).with(attributes)
+        allow(dispatcher).to receive(:changed?) { true }
+        expect(dispatcher).to receive(:update_attributes!).with(attributes)
 
-      it 'updates record' do
-        expect(record).to receive(:attributes=).with(updated_attributes)
-        expect(record).to receive(:save!)
-
-        Importer.import_or_update(record, attributes: updated_attributes)
+        Importer.import_or_update(dispatcher, attributes: attributes)
       end
     end
 
-    context 'when attributes do not change' do
-      it 'does not update record' do
-        expect(record).not_to receive(:attributes=)
-        expect(record).not_to receive(:save!)
+    context 'without change' do
+      it 'does not dispatch update for attributes' do
+        expect(dispatcher).to receive(:attributes=).with(attributes)
+        allow(dispatcher).to receive(:changed?) { false }
+        expect(dispatcher).not_to receive(:update_attributes!)
 
-        expect(Importer.import_or_update(record, attributes: attributes)).to be_nil
-      end
-    end
-
-    context 'when restricted attributes change' do
-      let(:restricted_attributes) { [:name] }
-      let(:updated_attributes) { { name: 'John', surname: 'Parker' } }
-
-      it 'does not update record' do
-        expect(record).not_to receive(:attributes=).with(updated_attributes)
-        expect(record).not_to receive(:save!)
-
-        Importer.import_or_update(record, attributes: updated_attributes, restricted_attributes: restricted_attributes)
+        Importer.import_or_update(dispatcher, attributes: attributes)
       end
     end
   end
