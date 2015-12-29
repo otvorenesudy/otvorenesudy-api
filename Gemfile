@@ -50,6 +50,8 @@ gem 'gabrake', '~> 0.1.2'
 gem 'symbolize'
 gem 'curb'
 gem 'nokogiri'
+gem 'mechanize'
+gem 'rubyzip', require: 'zip'
 
 # Codeclimate
 gem 'codeclimate-test-reporter', group: :test, require: nil
