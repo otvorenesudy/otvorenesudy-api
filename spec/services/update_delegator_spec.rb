@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe UpdateDispatcher do
-  subject { UpdateDispatcher.new(record) }
+RSpec.describe UpdateDelegator do
+  subject { UpdateDelegator.new(record) }
 
   let(:record) { double(:record, attributes: attributes) }
   let(:attributes) { { a: 1, b: 2 } }
@@ -64,7 +64,7 @@ RSpec.describe UpdateDispatcher do
     end
 
     context 'when only restricted attributes change' do
-      subject { UpdateDispatcher.new(record, restricted_attributes: [:a]) }
+      subject { UpdateDelegator.new(record, restricted_attributes: [:a]) }
 
       it 'does not report change' do
         subject.attributes = attributes.merge(a: 2)

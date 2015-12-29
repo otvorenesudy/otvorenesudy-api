@@ -1,4 +1,4 @@
-class UpdateDispatcher
+class UpdateDelegator
   extend Forwardable
 
   attr_reader :record, :attributes, :restricted_attributes

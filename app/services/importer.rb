@@ -1,9 +1,9 @@
 module Importer
-  def self.import_or_update(dispatcher, attributes:)
-    dispatcher.attributes = attributes
+  def self.import_or_update(record, attributes:)
+    record.attributes = attributes
 
-    return unless dispatcher.changed?
+    return unless record.changed?
 
-    dispatcher.update_attributes!(attributes)
+    record.update_attributes!(attributes)
   end
 end
