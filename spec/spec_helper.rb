@@ -20,6 +20,7 @@ CodeClimate::TestReporter.start
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require 'rubygems'
 require 'vcr'
+require 'support/fixture_helper'
 
 VCR.configure do |config|
   require 'webmock/rspec'
@@ -103,4 +104,7 @@ RSpec.configure do |config|
   # test failures related to randomization by passing the same `--seed` value
   # as the one that triggered the failure.
   Kernel.srand config.seed
+
+  # Helpers
+  config.include FixtureHelper
 end

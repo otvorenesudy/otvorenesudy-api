@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 require 'rails_helper'
 require 'models/concerns/obcan_justice_sk/importable_spec'
 

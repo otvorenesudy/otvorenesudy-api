@@ -237,6 +237,8 @@ GEM
     database_rewinder (0.5.3)
     diff-lcs (1.2.5)
     docile (1.1.5)
+    domain_name (0.5.25)
+      unf (>= 0.0.5, < 1.0.0)
     dotenv (2.0.1)
     dotenv-rails (2.0.1)
       dotenv (= 2.0.1)
@@ -257,6 +259,8 @@ GEM
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     hashdiff (0.2.3)
+    http-cookie (1.0.2)
+      domain_name (~> 0.5)
     httparty (0.13.7)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
@@ -271,17 +275,29 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    mechanize (2.7.3)
+      domain_name (~> 0.5, >= 0.5.1)
+      http-cookie (~> 1.0)
+      mime-types (~> 2.0)
+      net-http-digest_auth (~> 1.1, >= 1.1.1)
+      net-http-persistent (~> 2.5, >= 2.5.2)
+      nokogiri (~> 1.4)
+      ntlm-http (~> 0.1, >= 0.1.1)
+      webrobots (>= 0.0.9, < 0.2)
     method_source (0.8.2)
     mime-types (2.99)
     mini_portile2 (2.0.0)
     minitest (5.8.3)
     multi_json (1.11.2)
     multi_xml (0.5.5)
+    net-http-digest_auth (1.4)
+    net-http-persistent (2.9.4)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (3.0.1)
     nokogiri (1.6.7)
       mini_portile2 (~> 2.0.0.rc2)
+    ntlm-http (0.1.1)
     oj (2.13.0)
     oj_mimic_json (1.0.1)
     pg (0.18.3)
@@ -294,6 +310,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-rails (0.3.4)
+      pry (>= 0.9.10)
     rack-protection (1.5.3)
       rack
     rack-test (0.6.3)
@@ -315,6 +333,7 @@ GEM
       multi_json
     ruby-prof (0.15.8)
     ruby-progressbar (1.7.5)
+    rubyzip (1.1.0)
     safe_yaml (1.0.4)
     sass (3.4.20)
     sidekiq (4.0.1)
@@ -352,6 +371,9 @@ GEM
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.1)
     unicorn (4.9.0)
       kgio (~> 2.6)
       rack
@@ -361,6 +383,7 @@ GEM
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
+    webrobots (0.1.1)
     websocket-driver (0.6.2)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
@@ -392,12 +415,14 @@ DEPENDENCIES
   fuubar
   gabrake (~> 0.1.2)
   jquery-rails
+  mechanize
   nokogiri
   oj
   oj_mimic_json
   pg
   poltergeist
   pry
+  pry-rails
   rack!
   rails!
   rails-controller-testing
@@ -409,6 +434,7 @@ DEPENDENCIES
   rspec-rails!
   rspec-support!
   ruby-prof
+  rubyzip
   sass-rails!
   sidekiq (~> 4.0.1)
   sidekiq-limit_fetch
@@ -426,4 +452,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   1.10.6
+   1.11.2
