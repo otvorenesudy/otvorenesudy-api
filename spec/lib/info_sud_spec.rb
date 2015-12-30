@@ -6,24 +6,27 @@ RSpec.describe InfoSud do
   describe '.import_courts' do
     it 'imports courts from url' do
       allow(downloader).to receive(:download_file).with(InfoSud::COURTS_URL) { 'path/to/file' }
-
       allow(InfoSud).to receive(:import).with('path/to/file', repository: InfoSud::Court)
+
+      InfoSud.import_courts
     end
   end
 
   describe '.import_judges' do
     it 'imports judges from url' do
       allow(downloader).to receive(:download_file).with(InfoSud::JUDGES_URL) { 'path/to/file' }
-
       allow(InfoSud).to receive(:import).with('path/to/file', repository: InfoSud::Judge)
+
+      InfoSud.import_judges
     end
   end
 
   describe '.import_hearings' do
     it 'imports hearings from url' do
       allow(downloader).to receive(:download_file).with(InfoSud::HEARINGS_URL) { 'path/to/file' }
-
       allow(InfoSud).to receive(:import).with('path/to/file', repository: InfoSud::Hearing)
+
+      InfoSud.import_hearings
     end
   end
 
@@ -31,8 +34,9 @@ RSpec.describe InfoSud do
   describe '.import_decrees' do
     it 'imports decrees from url' do
       allow(downloader).to receive(:download_file).with(InfoSud::DECREES_URL) { 'path/to/file' }
-
       allow(InfoSud).to receive(:import).with('path/to/file', repository: InfoSud::Decree)
+
+      InfoSud.import_decrees
     end
   end
 
