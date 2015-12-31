@@ -5,6 +5,10 @@ module InfoSud
       @data = court.data.deep_symbolize_keys
     end
 
+    def uri
+      @court.url
+    end
+
     def name
       @data[:nazov]
     end
@@ -50,7 +54,7 @@ module InfoSud
     end
 
     def information_center_email
-      @data[:info_centrum].fetch([:internetAddress], {})[:email]
+      @data[:info_centrum].fetch(:internetAddress, {})[:email]
     end
 
     def information_center_phone
@@ -66,7 +70,7 @@ module InfoSud
     end
 
     def registry_center_email
-      @data[:podatelna].fetch([:internetAddress], {})[:email]
+      @data[:podatelna].fetch(:internetAddress, {})[:email]
     end
 
     def registry_center_phone
@@ -82,7 +86,7 @@ module InfoSud
     end
 
     def business_registry_center_email
-      @data[:orsr].fetch([:internetAddress], {})[:email]
+      @data[:orsr].fetch(:internetAddress, {})[:email]
     end
 
     def business_registry_center_phone
