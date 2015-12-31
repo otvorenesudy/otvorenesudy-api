@@ -17,6 +17,7 @@ class CourtReconciler
 
   def reconcile_attributes
     court.assign_attributes(
+      uri: source.uri,
       name: source.name,
       street: source.street,
       phone: source.phone,
