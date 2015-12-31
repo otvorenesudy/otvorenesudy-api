@@ -4,6 +4,7 @@ RSpec.shared_examples_for InfoSud::Importable do
   let(:record) { described_class.find_by(guid: attributes[:guid]) }
   let(:attributes) {
     {
+      url: 'url',
       guid: '1',
       category: {
         attribute: [
@@ -29,7 +30,7 @@ RSpec.shared_examples_for InfoSud::Importable do
 
       record_attributes = record.attributes.symbolize_keys.except(:id, :created_at, :updated_at)
 
-      expect(record_attributes.deep_symbolize_keys).to eql(guid: attributes[:guid], data: attributes)
+      expect(record_attributes.deep_symbolize_keys).to eql(url: attributes[:url], guid: attributes[:guid], data: attributes.except(:url))
     end
 
     context 'when record is already imported' do
@@ -39,7 +40,7 @@ RSpec.shared_examples_for InfoSud::Importable do
 
         record_attributes = record.attributes.symbolize_keys.except(:id, :created_at, :updated_at)
 
-        expect(record_attributes.deep_symbolize_keys).to eql(guid: updated_attributes[:guid], data: attributes)
+        expect(record_attributes.deep_symbolize_keys).to eql(url: updated_attributes[:url], guid: updated_attributes[:guid], data: updated_attributes.except(:url))
       end
 
       context 'without any change' do
@@ -55,7 +56,7 @@ RSpec.shared_examples_for InfoSud::Importable do
           record_attributes = record.attributes.symbolize_keys.except(:id, :created_at, :updated_at)
 
           expect(record.updated_at.change(usec: 0)).to eq(time.change(usec: 0))
-          expect(record_attributes.deep_symbolize_keys).to eql(guid: attributes[:guid], data: attributes)
+          expect(record_attributes.deep_symbolize_keys).to eql(url: attributes[:url], guid: attributes[:guid], data: attributes.except(:url))
         end
       end
     end
