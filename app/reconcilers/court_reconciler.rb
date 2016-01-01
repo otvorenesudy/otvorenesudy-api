@@ -1,8 +1,8 @@
 class CourtReconciler
-  attr_reader :source, :court
+  attr_reader :mapper, :court
 
-  def initialize(source, court)
-    @source = source
+  def initialize(mapper, court)
+    @mapper = mapper
     @court = court
   end
 
@@ -17,36 +17,37 @@ class CourtReconciler
 
   def reconcile_attributes
     court.assign_attributes(
-      uri: source.uri,
-      name: source.name,
-      street: source.street,
-      phone: source.phone,
-      fax: source.fax,
-      media_person: source.media_person,
-      media_phone: source.media_phone,
-      latitude: source.latitude,
-      longitude: source.longitude
+      uri: mapper.uri,
+      source: mapper.source,
+      name: mapper.name,
+      street: mapper.street,
+      phone: mapper.phone,
+      fax: mapper.fax,
+      media_person: mapper.media_person,
+      media_phone: mapper.media_phone,
+      latitude: mapper.latitude,
+      longitude: mapper.longitude
     )
   end
 
   def reconcile_type
-    court.type = Court::Type.find_by(value: source.type)
+    court.type = Court::Type.find_by(value: mapper.type)
   end
 
   def reconcile_municipality
-    court.municipality = Municipality.find_or_initialize_by(name: source.municipality, zipcode: source.zipcode)
+    court.municipality = Municipality.find_or_initialize_by(name: mapper.municipality, zipcode: mapper.zipcode)
   end
 
   def reconcile_information_center
     attributes = {
-      email: source.information_center_email,
-      phone: source.information_center_phone,
-      hours_monday: source.information_center_hours[0],
-      hours_tuesday: source.information_center_hours[1],
-      hours_wednesday: source.information_center_hours[2],
-      hours_thursday: source.information_center_hours[3],
-      hours_friday: source.information_center_hours[4],
-      note: source.information_center_note
+      email: mapper.information_center_email,
+      phone: mapper.information_center_phone,
+      hours_monday: mapper.information_center_hours[0],
+      hours_tuesday: mapper.information_center_hours[1],
+      hours_wednesday: mapper.information_center_hours[2],
+      hours_thursday: mapper.information_center_hours[3],
+      hours_friday: mapper.information_center_hours[4],
+      note: mapper.information_center_note
     }
 
     return unless attributes.compact.any?
@@ -60,14 +61,14 @@ class CourtReconciler
 
   def reconcile_registry_center
     attributes = {
-      email: source.registry_center_email,
-      phone: source.registry_center_phone,
-      hours_monday: source.registry_center_hours[0],
-      hours_tuesday: source.registry_center_hours[1],
-      hours_wednesday: source.registry_center_hours[2],
-      hours_thursday: source.registry_center_hours[3],
-      hours_friday: source.registry_center_hours[4],
-      note: source.registry_center_note
+      email: mapper.registry_center_email,
+      phone: mapper.registry_center_phone,
+      hours_monday: mapper.registry_center_hours[0],
+      hours_tuesday: mapper.registry_center_hours[1],
+      hours_wednesday: mapper.registry_center_hours[2],
+      hours_thursday: mapper.registry_center_hours[3],
+      hours_friday: mapper.registry_center_hours[4],
+      note: mapper.registry_center_note
     }
 
     return unless attributes.compact.any?
@@ -81,14 +82,14 @@ class CourtReconciler
 
   def reconcile_business_registry_center
     attributes = {
-      email: source.business_registry_center_email,
-      phone: source.business_registry_center_phone,
-      hours_monday: source.business_registry_center_hours[0],
-      hours_tuesday: source.business_registry_center_hours[1],
-      hours_wednesday: source.business_registry_center_hours[2],
-      hours_thursday: source.business_registry_center_hours[3],
-      hours_friday: source.business_registry_center_hours[4],
-      note: source.business_registry_center_note
+      email: mapper.business_registry_center_email,
+      phone: mapper.business_registry_center_phone,
+      hours_monday: mapper.business_registry_center_hours[0],
+      hours_tuesday: mapper.business_registry_center_hours[1],
+      hours_wednesday: mapper.business_registry_center_hours[2],
+      hours_thursday: mapper.business_registry_center_hours[3],
+      hours_friday: mapper.business_registry_center_hours[4],
+      note: mapper.business_registry_center_note
     }
 
     return unless attributes.compact.any?

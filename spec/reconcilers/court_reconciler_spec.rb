@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe CourtReconciler do
-  subject { CourtReconciler.new(source, court) }
+  subject { CourtReconciler.new(mapper, court) }
 
   let(:court) { double(:court) }
-  let(:source) { double(:source, attributes) }
+  let(:mapper) { double(:mapper, attributes) }
   let(:attributes) {
     {
       uri: 'http://path/to/file',
