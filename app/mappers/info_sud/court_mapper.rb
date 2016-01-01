@@ -6,7 +6,11 @@ module InfoSud
     end
 
     def uri
-      @court.url
+    end
+
+    def source
+      # TODO remove source dependency in legacy database
+      Source.find_by(module: 'JusticeGovSk')
     end
 
     def name

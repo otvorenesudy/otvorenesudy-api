@@ -41,7 +41,11 @@ RSpec.describe InfoSud do
     let(:repository) { double(:repository) }
 
     it 'imports data from url to repository' do
-      expect(importer).to receive(:import).with('url', repository: repository)
+      allow(InfoSud::Downloader).to receive(:download_file).with('url') { :archive }
+      allow(InfoSud::Extractor).to receive(:extract).with(:archive).and_yield('Data 1').and_yield('Data 2')
+
+      expect(importer).to receive(:import).with('Data 1', repository: repository)
+      expect(importer).to receive(:import).with('Data 2', repository: repository)
 
       InfoSud.import('url', repository: repository)
     end

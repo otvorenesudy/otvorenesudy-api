@@ -7,15 +7,12 @@ RSpec.describe InfoSud::Importer do
     let(:repository) { double(:repository) }
 
     it 'imports file from path' do
-      allow(InfoSud::Downloader).to receive(:download_file).with('url') { :archive }
-      allow(InfoSud::Extractor).to receive(:extract).with(:archive).and_yield(data)
-
       allow(parser).to receive(:parse).with(data) { [{ guid: '1', attribute: 'A' }, { guid: '2', attribute: 'B' }] }
 
-      expect(repository).to receive(:import_from).with(guid: '1', attribute: 'A', url: 'url')
-      expect(repository).to receive(:import_from).with(guid: '2', attribute: 'B', url: 'url')
+      expect(repository).to receive(:import_from).with(guid: '1', attribute: 'A')
+      expect(repository).to receive(:import_from).with(guid: '2', attribute: 'B')
 
-      InfoSud::Importer.import('url', parser: parser, repository: repository)
+      InfoSud::Importer.import(data, parser: parser, repository: repository)
     end
   end
 end

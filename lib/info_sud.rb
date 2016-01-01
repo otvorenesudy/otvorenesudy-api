@@ -27,7 +27,11 @@ module InfoSud
   end
 
   def self.import(url, repository:)
-    InfoSud::Importer.import(url, repository: repository)
+    path = InfoSud::Downloader.download_file(url)
+
+    InfoSud::Extractor.extract(path) do |data|
+      InfoSud::Importer.import(data, repository: repository)
+    end
   end
 
   def self.table_name_prefix

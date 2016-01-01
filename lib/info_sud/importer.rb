@@ -1,14 +1,10 @@
 module InfoSud
   class Importer
-    def self.import(url, parser: InfoSud::Parser, repository:)
-      archive = InfoSud::Downloader.download_file(url)
+    def self.import(data, parser: InfoSud::Parser, repository:)
+      records = parser.parse(data)
 
-      InfoSud::Extractor.extract(archive) do |data|
-        records = parser.parse(data)
-
-        records.each do |attributes|
-          repository.import_from(attributes.merge(url: url))
-        end
+      records.each do |attributes|
+        repository.import_from(attributes)
       end
     end
   end
