@@ -8,6 +8,7 @@ RSpec.describe CourtReconciler do
   let(:attributes) {
     {
       uri: 'http://path/to/file',
+      source: double(:source),
       name: 'Example Court',
       street: 'Example Avenue 45',
       phone: '+421 000 000 000',
@@ -19,6 +20,7 @@ RSpec.describe CourtReconciler do
       type: 'Court Type',
       municipality: 'Bratislava',
       zipcode: '12345',
+      acronym: 'OSBA1',
 
       information_center_email: 'podatelnaosba1@justice.sk',
       information_center_phone: nil,
@@ -53,7 +55,7 @@ RSpec.describe CourtReconciler do
   describe '#reconcile_attributes' do
     it 'reconciles attributes for court' do
       expect(court).to receive(:assign_attributes).with(
-        attributes.slice(:uri, :name, :street, :phone, :fax, :media_person, :media_phone, :longitude, :latitude)
+        attributes.slice(:uri, :source, :name, :street, :phone, :fax, :media_person, :media_phone, :longitude, :latitude, :acronym)
       )
 
       subject.reconcile_attributes
@@ -62,19 +64,22 @@ RSpec.describe CourtReconciler do
 
   describe '#reconcile_type' do
     it 'reconciles court type' do
-      allow(Municipality).to receive(:find_or_initialize_by).with(name: 'Bratislava', zipcode: '12345') { :municipality }
-      expect(court).to receive(:municipality=).with(:municipality)
-
-      subject.reconcile_municipality
-    end
-  end
-
-  describe '#reconcile_municipality' do
-    it 'reconciles court municipality' do
       allow(Court::Type).to receive(:find_by).with(value: 'Court Type') { :type }
       expect(court).to receive(:type=).with(:type)
 
       subject.reconcile_type
+    end
+  end
+
+  describe '#reconcile_municipality' do
+    let(:municipality) { double(:municipality) }
+
+    it 'reconciles court municipality' do
+      allow(Municipality).to receive(:find_or_initialize_by).with(name: 'Bratislava') { municipality }
+      expect(municipality).to receive(:assign_attributes).with(zipcode: '12345')
+      expect(court).to receive(:municipality=).with(municipality)
+
+      subject.reconcile_municipality
     end
   end
 

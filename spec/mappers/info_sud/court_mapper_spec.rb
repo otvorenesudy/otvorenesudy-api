@@ -42,6 +42,12 @@ RSpec.describe InfoSud::CourtMapper do
     }
   }
 
+  describe '#uri' do
+    it 'maps uri from guid' do
+      expect(subject.uri).to eql('https://obcan.justice.sk/infosud/-/infosud/reg-detail/sud/sud_102')
+    end
+  end
+
   describe '#name' do
     it 'maps name' do
       expect(subject.name).to eql('Okresný súd Bratislava I')
@@ -108,6 +114,12 @@ RSpec.describe InfoSud::CourtMapper do
   describe '#media_phone' do
     it 'maps media phone' do
       expect(subject.media_phone).to eql('0903 424 263, 02/50 118 417')
+    end
+  end
+
+  describe '#acronym' do
+    it 'maps acronym' do
+      expect(subject.acronym).to eql('OSBA1')
     end
   end
 

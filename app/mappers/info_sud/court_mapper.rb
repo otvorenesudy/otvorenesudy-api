@@ -6,6 +6,7 @@ module InfoSud
     end
 
     def uri
+      "https://obcan.justice.sk/infosud/-/infosud/reg-detail/sud/#{@data[:guid]}"
     end
 
     def source
@@ -22,7 +23,8 @@ module InfoSud
     end
 
     def municipality
-      @data[:addr][:Municipality]
+      # TODO remove hotfix when municipality is fixed
+      @data[:addr][:Municipality] || (name == 'Okresný súd Humenné' && 'Humenné')
     end
 
     def zipcode
@@ -55,6 +57,10 @@ module InfoSud
 
     def media_phone
       map_phones(@data[:media_tel])
+    end
+
+    def acronym
+      @data[:skratka]
     end
 
     def information_center_email

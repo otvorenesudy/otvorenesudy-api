@@ -26,7 +26,8 @@ class CourtReconciler
       media_person: mapper.media_person,
       media_phone: mapper.media_phone,
       latitude: mapper.latitude,
-      longitude: mapper.longitude
+      longitude: mapper.longitude,
+      acronym: mapper.acronym
     )
   end
 
@@ -35,7 +36,11 @@ class CourtReconciler
   end
 
   def reconcile_municipality
-    court.municipality = Municipality.find_or_initialize_by(name: mapper.municipality, zipcode: mapper.zipcode)
+    municipality = Municipality.find_or_initialize_by(name: mapper.municipality)
+
+    municipality.assign_attributes(zipcode: mapper.zipcode)
+
+    court.municipality = municipality
   end
 
   def reconcile_information_center
