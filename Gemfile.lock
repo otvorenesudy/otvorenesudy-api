@@ -197,6 +197,7 @@ GEM
     autoprefixer-rails (6.1.2)
       execjs
       json
+    awesome_print (1.6.1)
     bcrypt (3.1.10)
     builder (3.2.2)
     capistrano (3.4.0)
@@ -396,6 +397,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers (~> 0.10.0.rc2)
   arel!
+  awesome_print
   bcrypt (~> 3.1.7)
   bootstrap!
   bump!
