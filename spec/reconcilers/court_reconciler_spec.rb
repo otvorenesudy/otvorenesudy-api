@@ -41,12 +41,17 @@ RSpec.describe CourtReconciler do
 
   describe '#reconcile' do
     it 'runs all reconciliations' do
-      expect(subject).to receive(:reconcile_attributes)
-      expect(subject).to receive(:reconcile_type)
-      expect(subject).to receive(:reconcile_municipality)
-      expect(subject).to receive(:reconcile_information_center)
-      expect(subject).to receive(:reconcile_registry_center)
-      expect(subject).to receive(:reconcile_business_registry_center)
+      expect(court).to receive(:lock!).ordered
+
+      expect(subject).to receive(:reconcile_attributes).ordered
+      expect(subject).to receive(:reconcile_type).ordered
+      expect(subject).to receive(:reconcile_municipality).ordered
+      expect(subject).to receive(:reconcile_information_center).ordered
+      expect(subject).to receive(:reconcile_registry_center).ordered
+      expect(subject).to receive(:reconcile_business_registry_center).ordered
+
+      expect(court).to receive(:save!).ordered
+      expect(court).to receive(:touch).ordered
 
       subject.reconcile
     end
