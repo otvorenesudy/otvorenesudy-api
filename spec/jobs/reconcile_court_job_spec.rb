@@ -2,17 +2,15 @@ require 'rails_helper'
 
 RSpec.describe ReconcileCourtJob do
   let(:record) { double(:record, to_mapper: mapper) }
-  let(:mapper) { double(:mapper, name: 'Krajský súd v Bratislave') }
+  let(:mapper) { double(:mapper, name: 'Krajský súd Bratislava') }
   let(:reconciler) { double(:reconciler)  }
   let(:court) { double(:court) }
 
   describe '#perform' do
     it 'performs reconciliation for court' do
-      allow(Court).to receive(:find_or_initialize_by).with(name: 'Krajský súd v Bratislave') { court }
+      allow(Court).to receive(:find_or_initialize_by).with(name: 'Krajský súd Bratislava') { court }
       allow(CourtReconciler).to receive(:new).with(mapper, court) { reconciler }
-      expect(reconciler).to receive(:reconcile)
-      expect(court).to receive(:save!)
-      expect(court).to receive(:touch)
+      expect(ReconciliationManager).to receive(:manage).with(reconciler, record: court)
 
       ReconcileCourtJob.new.perform(record)
     end
