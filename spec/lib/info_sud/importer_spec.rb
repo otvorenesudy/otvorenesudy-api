@@ -1,5 +1,4 @@
-require 'spec_helper'
-require 'info_sud/importer'
+require 'rails_helper'
 
 RSpec.describe InfoSud::Importer do
   describe '.import' do
@@ -8,7 +7,6 @@ RSpec.describe InfoSud::Importer do
     let(:repository) { double(:repository) }
 
     it 'imports file from path' do
-      expect(data.size).to be > 0
       allow(parser).to receive(:parse).with(data) { [{ guid: '1', attribute: 'A' }, { guid: '2', attribute: 'B' }] }
 
       expect(repository).to receive(:import_from).with(guid: '1', attribute: 'A')
