@@ -12,8 +12,6 @@ RSpec.feature 'Import Courts' do
   }
 
   before :each do
-    ActiveJob::Base.queue_adapter = :test
-
     create(:court_type, value: 'Okresný')
     create(:court_type, value: 'Krajský')
     create(:court_type, value: 'Najvyšší')
@@ -21,14 +19,8 @@ RSpec.feature 'Import Courts' do
     create(:court_type, value: 'Špecializovaný')
   end
 
-  after :each do
-    ActiveJob::Base.queue_adapter = :inline
-  end
-
   scenario 'imports courts from InfoSud archives', vcr: { cassette_name: 'info_sud/courts' } do
-    perform_enqueued_jobs do
-      InfoSud.import_courts
-    end
+    InfoSud.import_courts
 
     expect(InfoSud::Court.count).to eql(64)
     expect(Court.count).to eql(64)
@@ -220,18 +212,14 @@ RSpec.feature 'Import Courts' do
 
   scenario 'updates courts from InfoSud archives', vcr: { cassette_name: 'info_sud/courts' } do
     Timecop.travel(30.minutes.ago) do
-      perform_enqueued_jobs do
-        InfoSud.import_courts
-      end
+      InfoSud.import_courts
     end
 
     updated_at = Time.now
     updated_data = fixture('info_sud/updated_courts.json').read
 
     Timecop.freeze(updated_at) do
-      perform_enqueued_jobs do
-        InfoSud::Importer.import(updated_data, repository: InfoSud::Court)
-      end
+      InfoSud::Importer.import(updated_data, repository: InfoSud::Court)
     end
 
     courts = Court.where('updated_at >= ?', updated_at)

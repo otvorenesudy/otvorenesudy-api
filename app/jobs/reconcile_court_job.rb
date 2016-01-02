@@ -6,9 +6,6 @@ class ReconcileCourtJob < ActiveJob::Base
     court = Court.find_or_initialize_by(name: mapper.name)
     reconciler = CourtReconciler.new(mapper, court)
 
-    reconciler.reconcile
-
-    court.save!
-    court.touch
+    ReconciliationManager.manage(reconciler, record: record)
   end
 end

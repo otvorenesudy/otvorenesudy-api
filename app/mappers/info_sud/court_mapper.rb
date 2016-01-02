@@ -15,7 +15,7 @@ module InfoSud
     end
 
     def name
-      @data[:nazov]
+      Normalizer.normalize_court_name(@data[:nazov])
     end
 
     def street
