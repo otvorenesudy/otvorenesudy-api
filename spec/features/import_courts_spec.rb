@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature 'Import Courts' do
+  # TODO refactor main application to use InfoSud namespace instead of JusticeGovSk as base
   let!(:source) { create(:source, :justice_gov_sk) }
   let!(:office_types) {
     [
@@ -12,8 +13,6 @@ RSpec.feature 'Import Courts' do
 
   before :each do
     ActiveJob::Base.queue_adapter = :test
-
-    # TODO refactor main application to use InfoSud namespace instead of JusticeGovSk as base
 
     create(:court_type, value: 'Okresný')
     create(:court_type, value: 'Krajský')
