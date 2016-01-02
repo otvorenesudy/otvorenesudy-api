@@ -1,0 +1,8905 @@
+{
+  "data" : [
+    {
+      "kraj" : "Bratislavský kraj",
+      "address" : "Župné nám. 13, Bratislava",
+      "lattitude" : "48.145962",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "02 / 323 04 660",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelna@nsud.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Jarmila URBANCOVÁ",
+            "id" : "335"
+          }
+        ]
+      },
+      "okres" : "Okres Bratislava I",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Daniela ŠVECOVÁ",
+            "id" : "433"
+          }
+        ]
+      },
+      "typ_sudu" : "Najvyšší súd SR",
+      "nazov" : "Najvyšší súd Slovenskej republiky",
+      "ico" : "00165581",
+      "skratka" : "NSSR",
+      "info_centrum" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_100",
+      "media_tel" : [
+        {
+          "tel_number" : "02/32304101",
+          "tel_type" : "label.codelist.tel_type.1"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Župné nám.",
+        "Municipality" : "Bratislava",
+        "BuildingNumber" : "13",
+        "PostalCode" : "81490",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "17.104613"
+    },
+    {
+      "kraj" : "Bratislavský kraj",
+      "address" : "Záhradnícka 10, Bratislava",
+      "lattitude" : "48.152538",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "02/88810180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaKSBA@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Tibor KUBÍK",
+            "id" : "47"
+          },
+          {
+            "name" : "JUDr. Boris TÓTH",
+            "id" : "582"
+          },
+          {
+            "name" : "JUDr. Roman BOLEBRUCH",
+            "id" : "588"
+          }
+        ]
+      },
+      "okres" : "Okres Bratislava I",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Ľuboš SÁDOVSKÝ",
+            "id" : "581"
+          }
+        ]
+      },
+      "typ_sudu" : "Krajský súd",
+      "nazov" : "Krajský súd v Bratislave",
+      "ico" : "00215759",
+      "skratka" : "KSBA",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 12:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "02/88810200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaKSBA@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_101",
+      "media_tel" : [
+        {
+          "tel_number" : "02/50118417, 0903 424 263",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Záhradnícka",
+        "Municipality" : "Bratislava",
+        "BuildingNumber" : "10",
+        "PostalCode" : "81366",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "17.122962"
+    },
+    {
+      "kraj" : "Bratislavský kraj",
+      "address" : "Záhradnícka 10, Bratislava I",
+      "lattitude" : "48.152538",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "02/88811180, fax. 02/88811192",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaosba1@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "Mgr. Miriam PLAVČÁKOVÁ",
+            "id" : "1767"
+          }
+        ]
+      },
+      "okres" : "Okres Bratislava I",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Eva FULCOVÁ",
+            "id" : "561"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Bratislava I",
+      "ico" : "00039471",
+      "skratka" : "OSBA1",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 14:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "02/88811200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaosba1@justice.sk"
+        }
+      },
+      "orsr" : {
+        "note" : "prestávka v práci PO - ŠT: 12:00 - 13:00",
+        "opening_hours" : [
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 12:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "02/501 18 340, 02/501 18 356, 02/501 18 181, 02/501 18 421",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ]
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_102",
+      "media_tel" : [
+        {
+          "tel_number" : "0903 424 263, 02/50118417",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Záhradnícka",
+        "Municipality" : "Bratislava I",
+        "BuildingNumber" : "10",
+        "PostalCode" : "12345",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "18.122962"
+    },
+    {
+      "kraj" : "Bratislavský kraj",
+      "address" : "Drieňova 5, Bratislava II",
+      "lattitude" : "48.1604058",
+      "internet_address" : null,
+      "podatelna" : {
+        "note" : "Dňa 23. 12. 2015 a 31. 12. 2015 budú úradné hodiny od 8,00 hod. do 12,00 hod.",
+        "opening_hours" : [
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 14:30",
+          "",
+          "",
+          "8:00 - 14:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "+421288812180",
+            "tel_type" : "label.codelist.tel_type.1"
+          },
+          {
+            "tel_number" : "+421288812222",
+            "tel_type" : "label.codelist.tel_type.3"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSBA2@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Ľubica NOVOTNÁ",
+            "id" : "540"
+          },
+          {
+            "name" : "JUDr. Monika ŠKOLNÍKOVÁ",
+            "id" : "548"
+          }
+        ]
+      },
+      "okres" : "Okres Bratislava II",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Nora VLADOVÁ",
+            "id" : "552"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Bratislava II",
+      "ico" : "00039489",
+      "skratka" : "OSBA2",
+      "info_centrum" : {
+        "note" : "Dňa 23. 12. 2015 a 31. 12. 2015 budú úradné hodiny od 8,00 hod. do 12,00 hod.",
+        "opening_hours" : [
+          "8:00 - 12:00",
+          "12:30 - 15:30",
+          "",
+          "8:00 - 12:00",
+          "12:30 - 15:00",
+          "",
+          "8:00 - 12:00",
+          "12:30 - 15:00",
+          "",
+          "8:00 - 12:00",
+          "12:30 - 14:30",
+          "",
+          "8:00 - 12:00",
+          "12:30 - 14:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "02/88812200, 02/888 12 103",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSBA2@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_103",
+      "media_tel" : [
+        {
+          "tel_number" : "02/50118417, 0903 424 263",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Drieňova",
+        "Municipality" : "Bratislava II",
+        "BuildingNumber" : "5",
+        "PostalCode" : "82702",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "17.1474862"
+    },
+    {
+      "kraj" : "Bratislavský kraj",
+      "address" : "Námestie Biely Kríž 7, Bratislava III",
+      "lattitude" : "48.182105",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "7:45 - 12:00",
+          "12:30 - 16:15",
+          "",
+          "7:45 - 12:00",
+          "12:30 - 15:15",
+          "",
+          "7:45 - 12:00",
+          "12:30 - 15:45",
+          "",
+          "7:45 - 12:00",
+          "12:30 - 15:15",
+          "",
+          "7:45 - 12:00",
+          "12:30 - 13:45",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "02/88813180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaosba3@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Roman FITT",
+            "id" : "560"
+          },
+          {
+            "name" : "JUDr. Silvia GANDELOVÁ",
+            "id" : "1405"
+          }
+        ]
+      },
+      "okres" : "Okres Bratislava III",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. David LINDTNER",
+            "id" : "1630"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Bratislava III",
+      "ico" : "00039501",
+      "skratka" : "OSBA3",
+      "info_centrum" : {
+        "opening_hours" : [
+          "7:45 - 12:00",
+          "12:30 - 16:15",
+          "",
+          "7:45 - 12:00",
+          "12:30 - 15:15",
+          "",
+          "7:45 - 12:00",
+          "12:30 - 15:45",
+          "",
+          "7:45 - 12:00",
+          "12:30 - 15:15",
+          "",
+          "7:45 - 12:00",
+          "12:30 - 13:45",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "02/88813200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ]
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_104",
+      "media_tel" : [
+        {
+          "tel_number" : "02/50118417, 0903 424 263",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Námestie Biely Kríž",
+        "Municipality" : "Bratislava III",
+        "BuildingNumber" : "7",
+        "PostalCode" : "83607",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "17.1276031"
+    },
+    {
+      "kraj" : "Bratislavský kraj",
+      "address" : "Saratovská 1/A, Bratislava IV",
+      "lattitude" : "48.1872566",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "02/88814180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSBA4@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Daniela KOTRECOVÁ",
+            "id" : "1524"
+          }
+        ]
+      },
+      "okres" : "Okres Bratislava IV",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Ida TAKÁČOVÁ",
+            "id" : "605"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Bratislava IV",
+      "ico" : "00039535",
+      "skratka" : "OSBA4",
+      "info_centrum" : {
+        "note" : "Prestávka v práci 12:00 - 12:30 hod",
+        "opening_hours" : [
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 14:00",
+          "",
+          "",
+          "8:00 - 14:00",
+          "",
+          "",
+          "8:00 - 14:00",
+          "",
+          "",
+          "8:00 - 14:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "02/88814200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ]
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_105",
+      "media_tel" : [
+        {
+          "tel_number" : "02/50118417, 0903 424 263",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Saratovská",
+        "Municipality" : "Bratislava IV",
+        "BuildingNumber" : "1/A",
+        "PostalCode" : "84454",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "17.0367754"
+    },
+    {
+      "kraj" : "Bratislavský kraj",
+      "address" : "Prokofievova ul. 12, Bratislava V",
+      "lattitude" : "48.1168753",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "7:30 - 11:30  12:00-15:30",
+          "",
+          "",
+          "7:30 - 11:30  12:00-15:30",
+          "",
+          "",
+          "7:30 - 11:30  12:00-15:30",
+          "",
+          "",
+          "7:30 - 11:30  12:00-15:30",
+          "",
+          "",
+          "7:30 - 11:30  12:00-15:30",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "02/88815180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSBA5@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Alena MARTINUSOVÁ",
+            "id" : "619"
+          },
+          {
+            "name" : "JUDr. René ŠTEPÁNIK",
+            "id" : "630"
+          }
+        ]
+      },
+      "okres" : "Okres Bratislava V",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Dušan SROGONČÍK",
+            "id" : "627"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Bratislava V",
+      "ico" : "00510157",
+      "skratka" : "OSBA5",
+      "info_centrum" : {
+        "note" : "Objednanie na študovanie spisov je možné na týchto e-mail.adresách aj informácie ohľadne spisov. Nazeranie so súdneho spisu v čase od 8:00 - 14:00 hod.",
+        "opening_hours" : [
+          "8:00 - 11:30  12:00-15:30",
+          "",
+          "",
+          "8:00 - 11:30  12:00-15:30",
+          "",
+          "",
+          "8:00 - 11:30  12:00-15:30",
+          "",
+          "",
+          "8:00 - 11:30  12:00-15:30",
+          "",
+          "",
+          "8:00 - 11:30  12:00-15:30",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "02/88815201",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "lubica.vrchovska@justice.sk, dana.patkova@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_106",
+      "media_tel" : [
+        {
+          "tel_number" : "02/50118417, 0903 424 263",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Prokofievova ul.",
+        "Municipality" : "Bratislava V",
+        "BuildingNumber" : "12",
+        "PostalCode" : "85238",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "17.1007143"
+    },
+    {
+      "kraj" : "Bratislavský kraj",
+      "address" : "Mierové nám. 10, Malacky",
+      "lattitude" : "48.4360376",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "8:00 - 17:00",
+          "",
+          "",
+          "8:00 - 16:00",
+          "",
+          "",
+          "8:00 - 16:00",
+          "",
+          "",
+          "8:00 - 16:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "034/8816180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSMA@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Viera MALINOWSKÁ",
+            "id" : "1789"
+          }
+        ]
+      },
+      "okres" : "Okres Malacky",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Ľubomír HUDÁK",
+            "id" : "847"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Malacky",
+      "ico" : "42128226",
+      "skratka" : "OSMA",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:00 - 16:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 12:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "034/8816180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ]
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_107",
+      "media_tel" : [
+        {
+          "tel_number" : "02/50118417, 0903 424 263",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Mierové nám.",
+        "Municipality" : "Malacky",
+        "BuildingNumber" : "10",
+        "PostalCode" : "90119",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "17.0176373"
+    },
+    {
+      "kraj" : "Bratislavský kraj",
+      "address" : "M. R. Štefánika 40, Pezinok",
+      "lattitude" : "48.2897877",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "7:45 - 16:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 14:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "033/8817180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSPK@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Zuzana GAJEROVÁ",
+            "id" : "1646"
+          }
+        ]
+      },
+      "okres" : "Okres Pezinok",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Tomáš MICHÁLEK",
+            "id" : "953"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Pezinok",
+      "ico" : "42128234",
+      "skratka" : "OSPK",
+      "info_centrum" : {
+        "note" : "PONEDLOK, STREDA, PIATOK : nahliadnutie do spisov, študovanie spisov, vyhotovovanie fotokópií zo spisov;                                                   UTOROK, ŠTVRTOK : vyznačovanie právoplatnosti, poskytovanie informácií",
+        "opening_hours" : [
+          "7:45 - 16:00",
+          "obedňajšia prestávka 12:00 - 12:30",
+          "",
+          "8:00 - 15:00",
+          "obedňajšia prestávka 12:00 - 12:30",
+          "",
+          "8:00 - 15:00",
+          "obedňajšia prestávka 12:00 - 12:30",
+          "",
+          "8:00 - 15:00",
+          "obedňajšia prestávka 12:00 - 12:30",
+          "",
+          "8:00 - 14:00",
+          "obedňajšia prestávka 12:00 - 12:30",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "033/8817200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "gabriela.kuruczova@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-17T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_108",
+      "media_tel" : [
+        {
+          "tel_number" : "02/50118417, 0903 424 263",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "M. R. Štefánika",
+        "Municipality" : "Pezinok",
+        "BuildingNumber" : "40",
+        "PostalCode" : "90201",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "17.2688673"
+    },
+    {
+      "kraj" : "Trnavský kraj",
+      "address" : "Vajanského 2, Trnava",
+      "lattitude" : "48.373724",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "033/8820180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaKSTT@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Pavol SLÁDOK",
+            "id" : "330"
+          },
+          {
+            "name" : "JUDr. Katarína SLOVÁČEKOVÁ",
+            "id" : "331"
+          }
+        ]
+      },
+      "okres" : "Okres Trnava",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Anton JAČEK",
+            "id" : "317"
+          }
+        ]
+      },
+      "typ_sudu" : "Krajský súd",
+      "nazov" : "Krajský súd v Trnave",
+      "ico" : "35629703",
+      "skratka" : "KSTT",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "+421338820200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ]
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_109",
+      "media_tel" : [
+        {
+          "tel_number" : "0905 519743",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Vajanského",
+        "Municipality" : "Trnava",
+        "BuildingNumber" : "2",
+        "PostalCode" : "91870",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "17.5855041"
+    },
+    {
+      "kraj" : "Trnavský kraj",
+      "address" : "Hlavná 49, Trnava",
+      "lattitude" : "48.3736672",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "8:00 - 12:00",
+          "13:00 - 15:30",
+          "",
+          "8:00 - 12:00",
+          "13:00 - 15:00",
+          "",
+          "8:00 - 12:00",
+          "13:00 - 15:30",
+          "",
+          "8:00 - 12:00",
+          "13:00 - 15:00",
+          "",
+          "8:00 - 12:00",
+          "13:00 - 14:30",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "033/8821180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSTT@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Katarína BATISOVÁ",
+            "id" : "1797"
+          }
+        ]
+      },
+      "okres" : "Okres Trnava",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Dagmar VALOCKÁ",
+            "id" : "1395"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Trnava",
+      "ico" : "00165719",
+      "skratka" : "OSTT",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:00 - 12:00",
+          "13:00 - 15:30",
+          "",
+          "8:00 - 12:00",
+          "13:00 - 14:30",
+          "",
+          "8:00 - 12:00",
+          "13:00 - 15:30",
+          "",
+          "8:00 - 12:00",
+          "13:00 - 14:30",
+          "",
+          "8:00 - 12:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "033/8821200, 033/8821517",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "helena.slavikova@justice.sk; zuzana.branisovicova@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "8:00 - 12:00",
+          "13:00 - 15:30",
+          "",
+          "8:00 - 12:00",
+          "",
+          "",
+          "8:00 - 12:00",
+          "13:00 - 15:30",
+          "",
+          "8:00 - 12:00",
+          "",
+          "",
+          "8:00 - 12:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0338821504",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ]
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_110",
+      "media_tel" : [
+        {
+          "tel_number" : "0905 519 743",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Hlavná",
+        "Municipality" : "Trnava",
+        "BuildingNumber" : "49",
+        "PostalCode" : "91783",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "17.5874084"
+    },
+    {
+      "kraj" : "Trnavský kraj",
+      "address" : "Alžbetínske námestie 8, Dunajská Streda",
+      "lattitude" : "47.9958871",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "9:00 - 15:00",
+          "",
+          "",
+          "9:00 - 15:00",
+          "",
+          "",
+          "9:00 - 15:00",
+          "",
+          "",
+          "9:00 - 15:00",
+          "",
+          "",
+          "9:00 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "031/8822180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSDS@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Erika LENGYELOVÁ",
+            "id" : "667"
+          }
+        ]
+      },
+      "okres" : "Okres Dunajská Streda",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Antónia SALAYOVÁ",
+            "id" : "672"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Dunajská Streda",
+      "ico" : "00165620",
+      "skratka" : "OSDS",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:00 - 12:00",
+          "13:00 - 15:00",
+          "",
+          "8:00 - 12:00",
+          "13:00 - 15:00",
+          "",
+          "8:00 - 12:00",
+          "13:00 - 15:00",
+          "",
+          "8:00 - 12:00",
+          "13:00 - 15:00",
+          "",
+          "8:00 - 12:00",
+          "13:00 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "+421318822200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ]
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_111",
+      "media_tel" : [
+        {
+          "tel_number" : "0905/519743",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Alžbetínske námestie",
+        "Municipality" : "Dunajská Streda",
+        "BuildingNumber" : "8",
+        "PostalCode" : "92927",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "17.6147169"
+    },
+    {
+      "kraj" : "Trnavský kraj",
+      "address" : "Mierové nám. 1, Galanta",
+      "lattitude" : "48.1898449",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "7:30 - 15:30",
+          "",
+          "",
+          "7:30 - 15:30",
+          "",
+          "",
+          "7:30 - 15:30",
+          "",
+          "",
+          "7:30 - 15:30",
+          "",
+          "",
+          "7:30 - 15:30",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "031/8823700",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSGA@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Eva SCHWEITZEROVÁ",
+            "id" : "684"
+          }
+        ]
+      },
+      "okres" : "Okres Galanta",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Ľuboš SZIGETI",
+            "id" : "685"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Galanta",
+      "ico" : "00165638",
+      "skratka" : "OSGA",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "031/8823770;031/8823709",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ]
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-17T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_112",
+      "media_tel" : [
+        {
+          "tel_number" : "0905/519743",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Mierové nám.",
+        "Municipality" : "Galanta",
+        "BuildingNumber" : "1",
+        "PostalCode" : "92423",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "17.72608"
+    },
+    {
+      "kraj" : "Trnavský kraj",
+      "address" : "Nálepkova 31, Piešťany",
+      "lattitude" : "48.5877692",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "8:00 - 12:00      12:30 - 15:00",
+          "",
+          "",
+          "8:00 - 12:00      12:30 - 15:00",
+          "",
+          "",
+          "8:00 - 12:00      12:30 - 15:30",
+          "",
+          "",
+          "8:00 - 12:00      12:30 - 15:00",
+          "",
+          "",
+          "8:00 - 12:00      12:30 - 14:30",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "+421338825180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSPN@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Ingrid ŠIMONOVÁ",
+            "id" : "961"
+          }
+        ]
+      },
+      "okres" : "Okres Piešťany",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Andrea KONDLLOVÁ",
+            "id" : "1650"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Piešťany",
+      "ico" : "45014809",
+      "skratka" : "OSPN",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:00 - 12:00      12:30 - 15:30",
+          "",
+          "",
+          "8:00 - 12:00      12:30 - 15:30",
+          "",
+          "",
+          "8:00 - 12:00      12:30 - 16:00",
+          "",
+          "",
+          "8:00 - 12:00",
+          "",
+          "",
+          "8:00 - 12:00     12:30 - 14:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "+421338825200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "alena.bubakova@justice.sk; silvia.hrdinova@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_113",
+      "media_tel" : [
+        {
+          "tel_number" : "0905 519 743",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Nálepkova",
+        "Municipality" : "Piešťany",
+        "BuildingNumber" : "31",
+        "PostalCode" : "92101",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "17.835458600000038"
+    },
+    {
+      "kraj" : "Trnavský kraj",
+      "address" : "Nám. Oslobodenia 1, Senica",
+      "lattitude" : "48.6780518",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "8:00 - 11:30; 12:00 - 15:30",
+          "",
+          "",
+          "8:00 - 11:30; 12:00 - 15:30",
+          "",
+          "",
+          "8:00 - 11:30; 12:00 - 15:30",
+          "",
+          "",
+          "8:00 - 11:30; 12:00 - 15:30",
+          "",
+          "",
+          "8:00 - 11:30; 12:00 - 15:30",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "034/8826180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSSE@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Viera SLÁVIKOVÁ",
+            "id" : "1072"
+          }
+        ]
+      },
+      "okres" : "Okres Senica",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Milan TRYLČ",
+            "id" : "1074"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Senica",
+      "ico" : "00165689",
+      "skratka" : "OSSE",
+      "info_centrum" : {
+        "note" : "034/8826133 civilné odd., 034/8826123 - obchodné odd., 034/8826126 - exekučné odd., 034/8826127 - rodinné odd., 034/8826148 - dedičské odd., 034/8826147 - trestné odd.",
+        "opening_hours" : [
+          "8:00 - 11:30; 12:00 - 14:00",
+          "",
+          "",
+          "8:00 - 11:30; 12:00 - 14:00",
+          "",
+          "",
+          "8:00 - 11:30; 12:00 - 14:00",
+          "",
+          "",
+          "8:00 - 11:30; 12:00 - 14:00",
+          "",
+          "",
+          "8:00 - 11:30; 12:00 - 14:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "034/8826200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "ingrid.budova@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-11T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_114",
+      "media_tel" : [
+        {
+          "tel_number" : "0905 519 743",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Nám. Oslobodenia",
+        "Municipality" : "Senica",
+        "BuildingNumber" : "1",
+        "PostalCode" : "90530",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "17.3677137"
+    },
+    {
+      "kraj" : "Trnavský kraj",
+      "address" : "Námestie Slobody 15, Skalica",
+      "lattitude" : "48.8458643",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "034/8827180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSSI@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Božena MICHALÁČOVÁ",
+            "id" : "1173"
+          }
+        ]
+      },
+      "okres" : "Okres Skalica",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "Mgr. Jarmila BÍLIKOVÁ",
+            "id" : "1079"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Skalica",
+      "ico" : "45014817",
+      "skratka" : "OSSI",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:00 - 11:30",
+          "12:00 - 15:00",
+          "",
+          "8:00 - 11:30",
+          "12:00 - 15:00",
+          "",
+          "8:00 - 11:30",
+          "12:00 - 15:00",
+          "",
+          "8:00 - 11:30",
+          "12:00 - 15:00",
+          "",
+          "8:00 - 11:30",
+          "12:00 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "034/8827200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ]
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_115",
+      "media_tel" : [
+        {
+          "tel_number" : "0905 519 743",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Námestie Slobody",
+        "Municipality" : "Skalica",
+        "BuildingNumber" : "15",
+        "PostalCode" : "90901",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "17.2299953"
+    },
+    {
+      "kraj" : "Trenčiansky kraj",
+      "address" : "Námestie sv. Anny č. 28, Trenčín",
+      "lattitude" : "48.8894212",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "032/8830180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaKSTN@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Beáta ČUPKOVÁ",
+            "id" : "288"
+          },
+          {
+            "name" : "JUDr. Roman HARGAŠ",
+            "id" : "1533"
+          }
+        ]
+      },
+      "okres" : "Okres Trenčín",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Miroslav MANĎÁK",
+            "id" : "1488"
+          }
+        ]
+      },
+      "typ_sudu" : "Krajský súd",
+      "nazov" : "Krajský súd v Trenčíne",
+      "ico" : "35629665",
+      "skratka" : "KSTN",
+      "info_centrum" : {
+        "opening_hours" : [
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "032/8830200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaKSTN@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-14T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_116",
+      "media_tel" : [
+        {
+          "tel_number" : "032/8830858",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Námestie sv. Anny č.",
+        "Municipality" : "Trenčín",
+        "BuildingNumber" : "28",
+        "PostalCode" : "91150",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "18.0357546"
+    },
+    {
+      "kraj" : "Trenčiansky kraj",
+      "address" : "Piaristická 27, Trenčín",
+      "lattitude" : "48.88841",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "07:00 - 15:00",
+          "",
+          "",
+          "07:00 - 15:00",
+          "",
+          "",
+          "07:00 - 15:00",
+          "",
+          "",
+          "07:00 - 15:00",
+          "",
+          "",
+          "07:00 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "032/8831180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "PodatelnaOSTN@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "Mgr. Patrície KEPEŇOVÁ",
+            "id" : "1144"
+          }
+        ]
+      },
+      "okres" : "Okres Trenčín",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Marián MANDUCH",
+            "id" : "1564"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Trenčín",
+      "ico" : "00165701",
+      "skratka" : "OSTN",
+      "info_centrum" : {
+        "opening_hours" : [
+          "08:00 - 15:00",
+          "",
+          "",
+          "08:00 - 12:00",
+          "",
+          "",
+          "08:00 - 15:00",
+          "",
+          "",
+          "08:00 - 15:00",
+          "",
+          "",
+          "08:00 - 12:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "032/8831200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ]
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_117",
+      "media_tel" : [
+        {
+          "tel_number" : "032/6545 858",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Piaristická",
+        "Municipality" : "Trenčín",
+        "BuildingNumber" : "27",
+        "PostalCode" : "91180",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "18.0322172"
+    },
+    {
+      "kraj" : "Trenčiansky kraj",
+      "address" : "Hviezdoslavova 37, Nové Mesto nad Váhom",
+      "lattitude" : "48.7548932",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "032/8835180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSNM@justice.sk "
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Rastislav DLUGOŠ",
+            "id" : "1550"
+          }
+        ]
+      },
+      "okres" : "Okres Nové Mesto nad Váhom",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Eva MACÚCHOVÁ",
+            "id" : "922"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Nové Mesto nad Váhom",
+      "ico" : "42025524",
+      "skratka" : "OSNM",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:00 - 14:30",
+          "",
+          "",
+          "8:00 - 14:30",
+          "",
+          "",
+          "8:00 - 14:30",
+          "",
+          "",
+          "8:00 - 14:30",
+          "",
+          "",
+          "8:00 - 11:30",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "032/8835200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "marta.kravarikova@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-22T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_119",
+      "media_tel" : [
+        {
+          "tel_number" : "032/6545 858 , 0911 273 834",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Hviezdoslavova",
+        "Municipality" : "Nové Mesto nad Váhom",
+        "BuildingNumber" : "37",
+        "PostalCode" : "91519",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "17.8351591"
+    },
+    {
+      "kraj" : "Trenčiansky kraj",
+      "address" : "1. mája 4, Partizánske",
+      "lattitude" : "48.6263107",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "7:30 - 11:30",
+          "12:00 - 15:30",
+          "",
+          "7:30 - 11:30",
+          "12:00 - 15:30",
+          "",
+          "7:30 - 11:30",
+          "12:00 - 15:30",
+          "",
+          "7:30 - 11:30",
+          "12:00 - 15:30",
+          "",
+          "7:30 - 11:30",
+          "12:00 - 15:30",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "038/8836180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSPE@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Alena BLAŠKOVÁ",
+            "id" : "945"
+          }
+        ]
+      },
+      "okres" : "Okres Partizánske",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Božena BRINČÍKOVÁ",
+            "id" : "946"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Partizánske",
+      "ico" : "42025532",
+      "skratka" : "OSPE",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:00 - 11:30",
+          "12:30 - 15:00",
+          "",
+          "8:00 - 11:30",
+          "12:30 - 15:00",
+          "",
+          "8:00 - 11:30",
+          "12:30 - 15:00",
+          "",
+          "8:00 - 11:30",
+          "12:30 - 15:00",
+          "",
+          "8:00 - 11:30",
+          "12:30 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "038/8836200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "ivana.sikova@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-15T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_120",
+      "media_tel" : [
+        {
+          "tel_number" : "032/6545 858",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "1. mája",
+        "Municipality" : "Partizánske",
+        "PropertyRegistrationNumber" : "225",
+        "BuildingNumber" : "4",
+        "PostalCode" : "95826",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "18.3744121"
+    },
+    {
+      "kraj" : "Trenčiansky kraj",
+      "address" : "Štúrova 2, Považská Bystrica",
+      "lattitude" : "49.1181476",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 14:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "042/8837180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSPB@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Róbert JANKOVSKÝ",
+            "id" : "985"
+          }
+        ]
+      },
+      "okres" : "Okres Považská Bystrica",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Helena LODUHOVÁ",
+            "id" : "988"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Považská Bystrica",
+      "ico" : "00165794",
+      "skratka" : "OSPB",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 12:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 12:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "042/8837200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ]
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-17T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_121",
+      "media_tel" : [
+        {
+          "tel_number" : "032/6545 858",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Štúrova",
+        "Municipality" : "Považská Bystrica",
+        "PropertyRegistrationNumber" : "1",
+        "BuildingNumber" : "2",
+        "PostalCode" : "01733",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "18.4492214"
+    },
+    {
+      "kraj" : "Trenčiansky kraj",
+      "address" : "Švéniho 5, Prievidza",
+      "lattitude" : "48.7715138",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "046/8838180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSPD@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Noema TURANOVIČOVÁ",
+            "id" : "1566"
+          }
+        ]
+      },
+      "okres" : "Okres Prievidza",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Robert ŠORL PhD.",
+            "id" : "1573"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Prievidza",
+      "ico" : "00165808",
+      "skratka" : "OSPD",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8.00 – 11.30 hod.",
+          "12.30 – 14.45 hod.",
+          "",
+          "8.00 – 11.30 hod.",
+          "12.30 – 14.45 hod.",
+          "",
+          "8.00 – 11.30 hod.",
+          "12.30 – 14.45 hod.",
+          "",
+          "8.00 – 11.30 hod.",
+          "12.30 – 14.45 hod.",
+          "",
+          "8.00 – 11.30 hod.",
+          "12.30 – 14.45 hod.",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "046/8838200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSPD@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_122",
+      "media_tel" : [
+        {
+          "tel_number" : "032/6545 858",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Švéniho",
+        "Municipality" : "Prievidza",
+        "BuildingNumber" : "5",
+        "PostalCode" : "97172",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "18.6199065"
+    },
+    {
+      "kraj" : "Nitriansky kraj",
+      "address" : "Štúrova 9, Nitra",
+      "lattitude" : "48.3080863",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "037/8840180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaksnr@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Ingrid DOLEŽAJOVÁ",
+            "id" : "225"
+          },
+          {
+            "name" : "JUDr. Roman GREGUŠ",
+            "id" : "227"
+          }
+        ]
+      },
+      "okres" : "Okres Nitra",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Ján VANKO",
+            "id" : "255"
+          }
+        ]
+      },
+      "typ_sudu" : "Krajský súd",
+      "nazov" : "Krajský súd v Nitre",
+      "ico" : "35629738",
+      "skratka" : "KSNR",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:00 - 11:30",
+          "12:00 - 15:00",
+          "",
+          "8:00 - 11:30",
+          "12:00 - 15:00",
+          "",
+          "8:00 - 11:30",
+          "12:00 - 15:00",
+          "",
+          "8:00 - 11:30",
+          "12:00 - 15:00",
+          "",
+          "8:00 - 11:30",
+          "12:00 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "037/ 8840200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaksnr@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_123",
+      "media_tel" : [
+        {
+          "tel_number" : "0911 340 024, 037/652 68 80-116 kl., 037 / 88 40 116",
+          "tel_type" : "label.codelist.tel_type.1"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Štúrova",
+        "Municipality" : "Nitra",
+        "BuildingNumber" : "9",
+        "PostalCode" : "95048",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "18.0830243"
+    },
+    {
+      "kraj" : "Nitriansky kraj",
+      "address" : "Štúrova 9, Nitra",
+      "lattitude" : "48.3080863",
+      "internet_address" : null,
+      "podatelna" : {
+        "note" : "Dňa 23.12.2015 a 31.12.2015 budú úradné hodiny od 8.00 do 12:00",
+        "opening_hours" : [
+          "8:00 - 12:00",
+          "13:00 - 15:00",
+          "",
+          "8:00 - 12:00",
+          "13:00 - 15:00",
+          "",
+          "8:00 - 12:00",
+          "13:00 - 15:00",
+          "",
+          "8:00 - 12:00",
+          "13:00 - 15:00",
+          "",
+          "8:00 - 12:00",
+          "13:00 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "037/8841180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaosnr@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Eduard HEINRICH",
+            "id" : "903"
+          }
+        ]
+      },
+      "okres" : "Okres Nitra",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Viera KOSCELANSKÁ",
+            "id" : "908"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Nitra",
+      "ico" : "00165662",
+      "skratka" : "OSNR",
+      "info_centrum" : {
+        "note" : "Dňa 23.12.2015 a 31.12.2015 budú úradné hodiny od 8.00 do 12:00",
+        "opening_hours" : [
+          "8:00 - 12:00",
+          "13:00 - 15:00",
+          "",
+          "8:00 - 12:00",
+          "13:00 - 15:00",
+          "",
+          "8:00 - 12:00",
+          "13:00 - 15:00",
+          "",
+          "8:00 - 12:00",
+          "13:00 - 15:00",
+          "",
+          "8:00 - 12:00",
+          "13:00 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "037/8841200, 037/8841201",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "emilia.bediova@justice.sk, martina.rojkova@justice.sk"
+        }
+      },
+      "orsr" : {
+        "note" : "Uvedené úradné hodiny platia aj pre Konkurzné oddelenie.     Dňa 23.12.2015 a 31.12.2015 budú úradné hodiny od 8.00 do 12:00",
+        "opening_hours" : [
+          "8:30 - 12:00",
+          "",
+          "",
+          "8:30 - 12:00",
+          "13:00 - 15:00",
+          "",
+          "8:30 - 12:00",
+          "13:00 - 15:00",
+          "",
+          "8:30 - 12:00",
+          "",
+          "",
+          "8:30 - 12:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "037/7417483",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ]
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_124",
+      "media_tel" : [
+        {
+          "tel_number" : "037/6526880 kl. 116, 0911 340 024, 037 / 88 40 116",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Štúrova",
+        "Municipality" : "Nitra",
+        "BuildingNumber" : "9",
+        "PostalCode" : "94968",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "18.0830243"
+    },
+    {
+      "kraj" : "Nitriansky kraj",
+      "address" : "Pohraničná 6, Komárno",
+      "lattitude" : "47.7594233",
+      "internet_address" : null,
+      "podatelna" : {
+        "note" : "Úradné hodiny dňa 31.12.2015 od 8:00 do 11:00 hod.",
+        "opening_hours" : [
+          "8:00 - 11:00",
+          "12:30 - 14:30",
+          "",
+          "8:00 - 11:00",
+          "12:30 - 14:30",
+          "",
+          "8:00 - 11:00",
+          "12:30 - 14:30",
+          "",
+          "8:00 - 11:00",
+          "12:30 - 14:30",
+          "",
+          "8:00 - 11:00",
+          "12:30 - 14:30",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "035/8842180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSKN@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Adriana KONKOLOVSKÁ",
+            "id" : "714"
+          }
+        ]
+      },
+      "okres" : "Okres Komárno",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "Mgr. Ľudovít MAJERČÍK",
+            "id" : "715"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Komárno",
+      "ico" : "00165646",
+      "skratka" : "OSKN",
+      "info_centrum" : {
+        "note" : "Úradné hodiny dňa  31.12.2015 od 8:00 do 11:00 hod.",
+        "opening_hours" : [
+          "8:00 - 11:00",
+          "12:30 - 14:30",
+          "",
+          "8:00 - 11:00",
+          "12:30 - 14:30",
+          "",
+          "8:00 - 11:00",
+          "12:30 - 14:30",
+          "",
+          "8:00 - 11:00",
+          "12:30 - 14:30",
+          "",
+          "8:00 - 11:00",
+          "12:30 - 14:30",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "035/8842200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ]
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_125",
+      "media_tel" : [
+        {
+          "tel_number" : "037/6526880 kl. 116, 0911 340 024, 037 / 88 40 116",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Pohraničná",
+        "Municipality" : "Komárno",
+        "BuildingNumber" : "6",
+        "PostalCode" : "94535",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "18.1295482"
+    },
+    {
+      "kraj" : "Nitriansky kraj",
+      "address" : "Kalvínske nám. 7, Levice",
+      "lattitude" : "48.2180655",
+      "internet_address" : null,
+      "podatelna" : {
+        "note" : "Každý posledný pracovný deň v mesiaci od 8:00 do 11:00; od 12:30 do 14:00 hod.",
+        "opening_hours" : [
+          "8:00 - 11:00; 12:30 - 15:00",
+          "",
+          "",
+          "8:00 - 11:00; 12:30 - 15:00",
+          "",
+          "",
+          "8:00 - 11:00; 12:30 - 15:00",
+          "",
+          "",
+          "8:00 - 11:00; 12:30 - 15:00",
+          "",
+          "",
+          "8:00 - 11:00; 12:30 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "036/6350922",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSLV@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "Mgr. Jana KOSORÍNOVÁ",
+            "id" : "812"
+          }
+        ]
+      },
+      "okres" : "Okres Levice",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Ľuboš BAKA",
+            "id" : "805"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Levice",
+      "ico" : "00165654",
+      "skratka" : "OSLV",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:00 - 11:00; 12:30 - 14:30",
+          "",
+          "",
+          "8:00 - 11:00; 12:30 - 14:30",
+          "",
+          "",
+          "8:00 - 11:00; 12:30 - 14:30",
+          "",
+          "",
+          "8:00 - 11:00; 12:30 - 14:30",
+          "",
+          "",
+          "8:00 - 11:00; 12.30 - 14:30",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "036/6350919",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "dana.zacharova@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_126",
+      "media_tel" : [
+        {
+          "tel_number" : "0911 340 024, 037/6526880 kl. 116, 037 / 88 40 116",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Kalvínske nám.",
+        "Municipality" : "Levice",
+        "BuildingNumber" : "7",
+        "PostalCode" : "93431",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "18.6034959"
+    },
+    {
+      "kraj" : "Nitriansky kraj",
+      "address" : "Rákocziho 15, Nové Zámky",
+      "lattitude" : "47.986686",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "8:00 - 14:30",
+          "",
+          "",
+          "8:00 - 14:30",
+          "",
+          "",
+          "8:00 - 14:30",
+          "",
+          "",
+          "8:00 - 14:30",
+          "",
+          "",
+          "8:00 - 14:30",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "035/8844180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSNZ@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Eva KOVÁCSOVÁ",
+            "id" : "936"
+          }
+        ]
+      },
+      "okres" : "Okres Nové Zámky",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Jozef KANÁS",
+            "id" : "933"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Nové Zámky",
+      "ico" : "00165671",
+      "skratka" : "OSNZ",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:00 - 14:30",
+          "",
+          "",
+          "8:00 - 14:30",
+          "",
+          "",
+          "8:00 - 14:30",
+          "",
+          "",
+          "8:00 - 14:30",
+          "",
+          "",
+          "8:00 - 14:30",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "035/8844200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "lucia.garaiova@justice.sk, michaela.belanova@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_127",
+      "media_tel" : [
+        {
+          "tel_number" : "0911 340 024, 037/6526880 kl. 116, 037 / 88 40 116",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Rákocziho",
+        "Municipality" : "Nové Zámky",
+        "BuildingNumber" : "15",
+        "PostalCode" : "94016",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "18.1656345"
+    },
+    {
+      "kraj" : "Nitriansky kraj",
+      "address" : "Jarmočná 1, Šaľa",
+      "lattitude" : "48.1459853",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "podpredseda" : {
+        "sudcovia" : []
+      },
+      "okres" : "Okres Šaľa",
+      "predseda" : {
+        "sudcovia" : []
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Šaľa",
+      "ico" : null,
+      "skratka" : "OSSA",
+      "info_centrum" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-01T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_128",
+      "media_tel" : [],
+      "addr" : {
+        "StreetName" : "Jarmočná",
+        "Municipality" : "Šaľa",
+        "BuildingNumber" : "1",
+        "PostalCode" : "92744",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "17.8729579"
+    },
+    {
+      "kraj" : "Nitriansky kraj",
+      "address" : "Nám. M. R. Štefánika 2238/55, Topoľčany",
+      "lattitude" : "48.5586975",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "038/8846180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSTO@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "Marián MOKOŠ",
+            "id" : "1120"
+          }
+        ]
+      },
+      "okres" : "Okres Topoľčany",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Ingrid KIŠACOVÁ PhD.",
+            "id" : "1116"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Topoľčany",
+      "ico" : "00165697",
+      "skratka" : "OSTO",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "038/8846200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSTO@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_129",
+      "media_tel" : [
+        {
+          "tel_number" : "+42137652 68 80 kl.116, 0911 340 024, 037 / 88 40 116",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Nám. M. R. Štefánika",
+        "Municipality" : "Topoľčany",
+        "BuildingNumber" : "2238/55",
+        "PostalCode" : "95515",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "18.1750963"
+    },
+    {
+      "kraj" : "Žilinský kraj",
+      "address" : "Orolská 3, Žilina",
+      "lattitude" : "49.2226865",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "+421418850203",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaKSZA@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Ivana NEMČEKOVÁ",
+            "id" : "862"
+          },
+          {
+            "name" : "JUDr. Dana WÄNKEOVÁ",
+            "id" : "1253"
+          }
+        ]
+      },
+      "okres" : "Okres Žilina",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Eva KYSELOVÁ",
+            "id" : "355"
+          }
+        ]
+      },
+      "typ_sudu" : "Krajský súd",
+      "nazov" : "Krajský súd v Žiline",
+      "ico" : "35995572",
+      "skratka" : "KSZA",
+      "info_centrum" : {
+        "opening_hours" : [
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "+421418850200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ]
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-15T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_130",
+      "media_tel" : [
+        {
+          "tel_number" : "0907844596",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Orolská",
+        "Municipality" : "Žilina",
+        "BuildingNumber" : "3",
+        "PostalCode" : "01001",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "18.7337403"
+    },
+    {
+      "kraj" : "Žilinský kraj",
+      "address" : "Hviezdoslavova ul. 28, Žilina",
+      "lattitude" : "49.2262003",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "+421418851180        ",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSZA@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Vladimír KOZÁČIK",
+            "id" : "1463"
+          },
+          {
+            "name" : "JUDr. Gabriela PANÁKOVÁ",
+            "id" : "1522"
+          }
+        ]
+      },
+      "okres" : "Okres Žilina",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Daniel BÉREŠ",
+            "id" : "645"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Žilina",
+      "ico" : "00165859",
+      "skratka" : "OSZA",
+      "info_centrum" : {
+        "note" : "Prestávka v práci:  pondelok až piatok od 11:30 hodín do 12:30 hodín",
+        "opening_hours" : [
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "                              +421418851104, +421418851105",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "maria.hassova@justice.sk,   jarmila.mrenkova@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-17T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_131",
+      "media_tel" : [
+        {
+          "tel_number" : "0907844596",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Hviezdoslavova ul.",
+        "Municipality" : "Žilina",
+        "BuildingNumber" : "28",
+        "PostalCode" : "01059",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "18.7473782"
+    },
+    {
+      "kraj" : "Žilinský kraj",
+      "address" : "Ul. 17. novembra 1256, Čadca",
+      "lattitude" : "49.4372539",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "041/8853180",
+            "tel_type" : "label.codelist.tel_type.1"
+          },
+          {
+            "tel_number" : "041/8853191",
+            "tel_type" : "label.codelist.tel_type.3"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSCA@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Milan GYLÁNIK",
+            "id" : "646"
+          }
+        ]
+      },
+      "okres" : "Okres Čadca",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Adriana PYTLIAKOVÁ PhD.",
+            "id" : "654"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Čadca",
+      "ico" : "00165743",
+      "skratka" : "OSCA",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:00 -11:00",
+          "12:15 - 13:15",
+          "",
+          "8:00 -11:00",
+          "12:15 - 13:15",
+          "",
+          "8:00 -11:00",
+          "12:15 - 14:45",
+          "",
+          "8:00 -11:00",
+          "12:15 - 13:15",
+          "",
+          "8:00 -11:00",
+          "12:15 - 13:15",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "041/8853200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ]
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-17T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_132",
+      "media_tel" : [
+        {
+          "tel_number" : "0907844596",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Ul. 17. novembra",
+        "Municipality" : "Čadca",
+        "BuildingNumber" : "1256",
+        "PostalCode" : "02221",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "18.7859418"
+    },
+    {
+      "kraj" : "Žilinský kraj",
+      "address" : "Radlinského 36, Dolný Kubín",
+      "lattitude" : "49.2107937",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "043/8854180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSDK@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Renáta KŇAZÚROVÁ",
+            "id" : "660"
+          }
+        ]
+      },
+      "okres" : "Okres Dolný Kubín",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Rastislav PLUTINSKÝ",
+            "id" : "661"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Dolný Kubín",
+      "ico" : "00165751",
+      "skratka" : "OSDK",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:30 - 11:00",
+          "12:00 - 14:00",
+          "",
+          "8:00 - 11:00",
+          "",
+          "",
+          "8:30 - 11:00",
+          "12:00 - 15:00",
+          "",
+          "8:30 - 11:00",
+          "12:00 - 14:00",
+          "",
+          "8:00 - 11:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "043/8854200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "infocentrumOSDK@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-21T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_133",
+      "media_tel" : [
+        {
+          "tel_number" : "0907844596",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Radlinského",
+        "Municipality" : "Dolný Kubín",
+        "BuildingNumber" : "36",
+        "PostalCode" : "02625",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "19.2940698"
+    },
+    {
+      "kraj" : "Žilinský kraj",
+      "address" : "Tomášikova 5, Liptovský Mikuláš",
+      "lattitude" : "49.085075",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 16:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 14:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "044/8856180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSLM@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "Mgr. Zuzana BAJLOVÁ",
+            "id" : "1062"
+          }
+        ]
+      },
+      "okres" : "Okres Liptovský Mikuláš",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "Mgr. Magdaléna ANDREÁNSKA",
+            "id" : "817"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Liptovský Mikuláš",
+      "ico" : "00165760",
+      "skratka" : "OSLM",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:30 - 11:00",
+          "12:30 - 14:00",
+          "",
+          "8:30 - 11:00",
+          "",
+          "",
+          "8:00 - 11:00",
+          "12:00 - 16:00",
+          "",
+          "8:30 - 11:00",
+          "",
+          "",
+          "8:30 - 11:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "044/8856200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ]
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-22T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_134",
+      "media_tel" : [
+        {
+          "tel_number" : "0907844596",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Tomášikova",
+        "Municipality" : "Liptovský Mikuláš",
+        "BuildingNumber" : "5",
+        "PostalCode" : "03133",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "19.607535"
+    },
+    {
+      "kraj" : "Žilinský kraj",
+      "address" : "E. B. Lukáča 2A 1, Martin",
+      "lattitude" : "49.0727668",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "7:30 - 15:15",
+          "",
+          "",
+          "7:30 - 15:15",
+          "",
+          "",
+          "7:30 - 15:15",
+          "",
+          "",
+          "7:30 - 15:15",
+          "",
+          "",
+          "7:30 - 14:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "043/8857180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSMT@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "Mgr. Róbert VETERNÍK",
+            "id" : "867"
+          }
+        ]
+      },
+      "okres" : "Okres Martin",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Alena KÁČERIKOVÁ",
+            "id" : "859"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Martin",
+      "ico" : "00165786",
+      "skratka" : "OSMT",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:00 - 12:00",
+          "12:30 - 14:30",
+          "",
+          "8:30 - 12:00",
+          "12:30 - 14:30",
+          "",
+          "8:00 - 12:00",
+          "12:30 - 15:15",
+          "",
+          "8:00 - 12:00",
+          "12:30 - 14:30",
+          "",
+          "8:00 - 12:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "043/8857200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "olga.kalnická@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_135",
+      "media_tel" : [
+        {
+          "tel_number" : "0907844596",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "E. B. Lukáča",
+        "Municipality" : "Martin",
+        "BuildingNumber" : "2A 1",
+        "PostalCode" : "03661",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "18.9254123"
+    },
+    {
+      "kraj" : "Žilinský kraj",
+      "address" : "Námestie Antona Bernoláka  332/16, Námestovo",
+      "lattitude" : "49.40920269999999",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "043/8858180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSNO@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Gabriela KYSEĽOVÁ",
+            "id" : "1586"
+          }
+        ]
+      },
+      "okres" : "Okres Námestovo",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Margita KOVAĽOVÁ",
+            "id" : "890"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Námestovo",
+      "ico" : "42061385",
+      "skratka" : "OSNO",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:00 - 11:00",
+          "",
+          "",
+          "8:00 - 11:00",
+          "",
+          "",
+          "8:00 - 11:00",
+          "12:00 - 15:00",
+          "",
+          "8:00 - 11:00",
+          "",
+          "",
+          "8:00 - 11:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "043/8858200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSNO@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_136",
+      "media_tel" : [
+        {
+          "tel_number" : "0907844596",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Námestie Antona Bernoláka ",
+        "Municipality" : "Námestovo",
+        "BuildingNumber" : "332/16",
+        "PostalCode" : "02901",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "19.481098400000064"
+    },
+    {
+      "kraj" : "Žilinský kraj",
+      "address" : "Dončova 8, Ružomberok",
+      "lattitude" : "49.0832192",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "7:15 - 15:15",
+          "",
+          "",
+          "7:15 - 15:15",
+          "",
+          "",
+          "7:15 - 15:15",
+          "",
+          "",
+          "7:15 - 15:15",
+          "",
+          "",
+          "7:15 - 15:15",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "044/8859180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSRK@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : []
+      },
+      "okres" : "Okres Ružomberok",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Janka MAJERČÍKOVÁ",
+            "id" : "1065"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Ružomberok",
+      "ico" : "35995599",
+      "skratka" : "OSRK",
+      "info_centrum" : {
+        "opening_hours" : [
+          "9:00 - 11:00",
+          "",
+          "",
+          "9:00 - 11:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "9:00 - 11:00",
+          "",
+          "",
+          "9:00 - 11:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "+421448859200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "_SEKRETARIAT_OS_RK@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_137",
+      "media_tel" : [
+        {
+          "tel_number" : "0907844596",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Dončova",
+        "Municipality" : "Ružomberok",
+        "BuildingNumber" : "8",
+        "PostalCode" : "03401",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "19.2991987"
+    },
+    {
+      "kraj" : "Banskobystrický kraj",
+      "address" : "Skuteckého 7, Banská Bystrica",
+      "lattitude" : "48.7389858",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "048/8860180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaKSBB@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Jaroslav GALLO",
+            "id" : "639"
+          },
+          {
+            "name" : "JUDr. Ľubomír BUŠÍK PhD.",
+            "id" : "1493"
+          }
+        ]
+      },
+      "okres" : "Okres Banská Bystrica",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Milan ĎURICA PhD.",
+            "id" : "115"
+          }
+        ]
+      },
+      "typ_sudu" : "Krajský súd",
+      "nazov" : "Krajský súd v Banskej Bystrici",
+      "ico" : "00215775",
+      "skratka" : "KSBB",
+      "info_centrum" : {
+        "opening_hours" : [
+          "7:30 - 15:30",
+          "",
+          "",
+          "7:30 - 15:30",
+          "",
+          "",
+          "7:30 - 15:30",
+          "",
+          "",
+          "7:30 - 15:30",
+          "",
+          "",
+          "7:30 - 15:30",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "048/8860200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "ksbb_infocentrum@justice.sk, infocentrumKSBB@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_138",
+      "media_tel" : [
+        {
+          "tel_number" : "048/43 13 350, 0905 482 924",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Skuteckého",
+        "Municipality" : "Banská Bystrica",
+        "BuildingNumber" : "7",
+        "PostalCode" : "97487",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "19.1511556"
+    },
+    {
+      "kraj" : "Banskobystrický kraj",
+      "address" : "Skuteckého 28, Banská Bystrica",
+      "lattitude" : "48.7409533",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0488861180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSBB@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Libuša ZÁTHURECKÁ",
+            "id" : "477"
+          },
+          {
+            "name" : "JUDr. Štefan NOVÁK",
+            "id" : "1451"
+          }
+        ]
+      },
+      "okres" : "Okres Banská Bystrica",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Marián BLAHA",
+            "id" : "449"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Banská Bystrica",
+      "ico" : "00165735",
+      "skratka" : "OSBB",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:00 - 12:00 13:00 - 15:00",
+          "",
+          "",
+          "8:00 - 13:00",
+          "",
+          "",
+          "8:00 - 12:00 13:00 - 15:00",
+          "",
+          "",
+          "8:00 - 12:00 13:00 - 15:00",
+          "",
+          "",
+          "8:00 - 13:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "048/8861 135, 048/8861 200, 048/8861 134",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSBB@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "8:00 - 12:00 13:00 - 15:00",
+          "",
+          "",
+          "8:00 - 13:00",
+          "",
+          "",
+          "8:00 - 12:00 13:00 - 15:00",
+          "",
+          "",
+          "8:00 - 12:00 13:00 - 15:00",
+          "",
+          "",
+          "8:00 - 13:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [],
+        "internetAddress" : {
+          "email" : "podatelnaOSBB@justice.sk"
+        }
+      },
+      "aktualizacia" : "2015-12-18T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_139",
+      "media_tel" : [
+        {
+          "tel_number" : "048/8860 350, 0905 482 924",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Skuteckého",
+        "Municipality" : "Banská Bystrica",
+        "BuildingNumber" : "28",
+        "PostalCode" : "97559",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "19.1547533"
+    },
+    {
+      "kraj" : "Banskobystrický kraj",
+      "address" : "Kuzmányho 4, Brezno",
+      "lattitude" : "48.8059582",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "7:30 - 15:30",
+          "",
+          "",
+          "7:30 - 15:30",
+          "",
+          "",
+          "7:30 - 16:00",
+          "",
+          "",
+          "7:30 - 15:30",
+          "",
+          "",
+          "7:30 - 14:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "048/8863180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSBR@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Ondrej KEKEŇÁK PhD.",
+            "id" : "1588"
+          }
+        ]
+      },
+      "okres" : "Okres Brezno",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Eva CVENGOVÁ",
+            "id" : "636"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Brezno",
+      "ico" : "35995602",
+      "skratka" : "OSBR",
+      "info_centrum" : {
+        "opening_hours" : [
+          "7:30 - 11:00  12:00 - 15:00",
+          "",
+          "",
+          "7:30 - 11:00  12:00 - 15:00",
+          "",
+          "",
+          "7:30 - 11:00  12:00 - 15:00",
+          "",
+          "",
+          "7:30 - 11:00  12:00 - 15:00",
+          "",
+          "",
+          "7:30 - 11:00  12:00 - 14:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0488863200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "osbr_infocentrum@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_140",
+      "media_tel" : [
+        {
+          "tel_number" : "+421484313350, 0905 482 924",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Kuzmányho",
+        "Municipality" : "Brezno",
+        "BuildingNumber" : "4",
+        "PostalCode" : "97701",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "19.64535"
+    },
+    {
+      "kraj" : "Banskobystrický kraj",
+      "address" : "Ul. Dr. Herza 14, Lučenec",
+      "lattitude" : "48.3274866",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "7:00 - 16:00",
+          "",
+          "",
+          "7:00 - 16:00",
+          "",
+          "",
+          "7:00 - 16:00",
+          "",
+          "",
+          "7:00 - 16:00",
+          "",
+          "",
+          "7:00 - 16:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "047/8866180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelna_OS_LC@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Stanislav GALOVIČ",
+            "id" : "832"
+          }
+        ]
+      },
+      "okres" : "Okres Lučenec",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Miroslav RAČKO",
+            "id" : "838"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Lučenec",
+      "ico" : "00156778",
+      "skratka" : "OSLC",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 14:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "047/8866200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "oslc_infocentrum@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_141",
+      "media_tel" : [
+        {
+          "tel_number" : "048/ 43 13 350, 0905 482 924",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Ul. Dr. Herza",
+        "Municipality" : "Lučenec",
+        "BuildingNumber" : "14",
+        "PostalCode" : "98437",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "19.6662481"
+    },
+    {
+      "kraj" : "Banskobystrický kraj",
+      "address" : "SNP 539/1, Revúca",
+      "lattitude" : "48.6299816",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "7:30 - 11:30",
+          "12:30 - 15:30",
+          "",
+          "7:30 - 11:30",
+          "12:30 - 15:30",
+          "",
+          "7:30 - 11:30",
+          "12:30 - 16:00",
+          "",
+          "7:30 - 11:30",
+          "12:30 - 15:30",
+          "",
+          "7:30 - 11:30",
+          "12:30 - 14:30",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0588868180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSRA@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : []
+      },
+      "okres" : "Okres Revúca",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Marián TÖRÖK",
+            "id" : "978"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Revúca",
+      "ico" : "45018545",
+      "skratka" : "OSRA",
+      "info_centrum" : {
+        "opening_hours" : [
+          "7:30 - 11:30",
+          "12:30 - 15:30",
+          "",
+          "7:30 - 11:30",
+          "12:30 - 15:30",
+          "",
+          "7:30 - 11:30",
+          "12:30 - 16:00",
+          "",
+          "7:30 - 11:30",
+          "12:30 - 15:30",
+          "",
+          "7:30 - 11:30",
+          "12:30 - 14:30",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0588868200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "osra_infocentrum@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-22T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_142",
+      "media_tel" : [
+        {
+          "tel_number" : "048/ 43 13 350, 0905 482 924",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "SNP",
+        "Municipality" : "Revúca",
+        "BuildingNumber" : "539/1",
+        "PostalCode" : "05001",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "20.23487380000006"
+    },
+    {
+      "kraj" : "Banskobystrický kraj",
+      "address" : "Jesenského 3, Rimavská Sobota",
+      "lattitude" : "48.3863152",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "8:00 - 11:30",
+          "12:30 - 15:30",
+          "",
+          "8:00 - 11:30",
+          "12:30 - 15:30",
+          "",
+          "8:00 - 11:30",
+          "12:30 - 15:30",
+          "",
+          "8:00 - 11:30",
+          "12:30 - 15:30",
+          "",
+          "8:00 - 11:30",
+          "12:30 - 15:30",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0478869180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSRS@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "Mgr. Ivan ANTAL",
+            "id" : "1037"
+          }
+        ]
+      },
+      "okres" : "Okres Rimavská Sobota",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Peter ZACHAR",
+            "id" : "1048"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Rimavská Sobota",
+      "ico" : "00165816",
+      "skratka" : "OSRS",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:00 - 11:30",
+          "12:30 - 15:30",
+          "",
+          "8:00 - 11:30",
+          "12:30 - 15:30",
+          "",
+          "8:00 - 11:30",
+          "12:30 - 15:30",
+          "",
+          "8:00 - 11:30",
+          "12:30 - 15:30",
+          "",
+          "8:00 - 11:30",
+          "12:30 - 15:30",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0478869200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "jana.czegenyova@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_143",
+      "media_tel" : [
+        {
+          "tel_number" : "048/ 43 13 350, 0905 482 924",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Jesenského",
+        "Municipality" : "Rimavská Sobota",
+        "BuildingNumber" : "3",
+        "PostalCode" : "97901",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "20.0236584"
+    },
+    {
+      "kraj" : "Banskobystrický kraj",
+      "address" : "SNP 2, Veľký Krtíš",
+      "lattitude" : "48.2088801",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "7:30 - 15:30",
+          "",
+          "",
+          "7:30 - 15:30",
+          "",
+          "",
+          "7:30 - 15:30",
+          "",
+          "",
+          "7:30 - 15:30",
+          "",
+          "",
+          "7:30 - 15:30",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "047/8862180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSVK@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Ľuboš MURGAŠ",
+            "id" : "1815"
+          }
+        ]
+      },
+      "okres" : "Okres Veľký Krtíš",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "Mgr. Eva STRAŠKOVÁ",
+            "id" : "1184"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Veľký Krtíš",
+      "ico" : "00165824",
+      "skratka" : "OSVK",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:00 - 11:30",
+          "13:00 - 15:00",
+          "",
+          "8:00 - 11:30",
+          "13:00 - 15:00",
+          "",
+          "8:00 - 11:30",
+          "13:00 - 15:00",
+          "",
+          "8:00 - 11:30",
+          "13:00 - 15:00",
+          "",
+          "8:00 - 11:30",
+          "13:00 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "047/8862200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "vk_infocentrum@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_144",
+      "media_tel" : [
+        {
+          "tel_number" : "048/ 43 13 350, 0905 482 924",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "SNP",
+        "Municipality" : "Veľký Krtíš",
+        "PropertyRegistrationNumber" : "714",
+        "BuildingNumber" : "2",
+        "PostalCode" : "99014",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "19.352192"
+    },
+    {
+      "kraj" : "Banskobystrický kraj",
+      "address" : "Kozačekova 19, Zvolen",
+      "lattitude" : "48.5775506",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "045/8867180 Zdena Ludrovanová, Anna Ťavodová",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSZV@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Bc. Viktor MARKO PhD.",
+            "id" : "1752"
+          }
+        ]
+      },
+      "okres" : "Okres Zvolen",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Adriána POVAŽANOVÁ",
+            "id" : "1613"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Zvolen",
+      "ico" : "00165832",
+      "skratka" : "OSZV",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:00 - 12:00",
+          "13:00 -15:30",
+          "",
+          "8:00 - 12:00",
+          "13:00 -15:00",
+          "",
+          "8:00 - 12:00",
+          "13:00 -15:30",
+          "",
+          "8:00 - 12:00",
+          "13:00 -15:30",
+          "",
+          "8:00 - 12:00",
+          "13:00 -14:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0458867200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "eva.pivarcova@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_145",
+      "media_tel" : [
+        {
+          "tel_number" : "048/ 43 13 350, 0905 482 924",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Kozačekova",
+        "Municipality" : "Zvolen",
+        "BuildingNumber" : "19",
+        "PostalCode" : "96068",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "19.1288287"
+    },
+    {
+      "kraj" : "Banskobystrický kraj",
+      "address" : "Nám. Matice slov. 1, Žiar n/H",
+      "lattitude" : "48.591451",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "7:00 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "045/8864180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "PodatelnaOSZH@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Andrej MATUŠOVIC",
+            "id" : "1679"
+          }
+        ]
+      },
+      "okres" : "Okres Žiar nad Hronom",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Ján AUXT",
+            "id" : "447"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Žiar nad Hronom",
+      "ico" : "00165841",
+      "skratka" : "OSZH",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:00 - 11:30",
+          "12:00 - 15:00",
+          "",
+          "8:00 - 11:30",
+          "12:00 - 15:00",
+          "",
+          "8:00 - 11:30",
+          "12:00 - 15:00",
+          "",
+          "8:00 - 11:30",
+          "12:00 - 15:00",
+          "",
+          "8:00 - 11:30",
+          "12:00 - 14:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0458864200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "oszh_infocentrum@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_146",
+      "media_tel" : [
+        {
+          "tel_number" : "048/ 43 13 350, 0905 482 924",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Nám. Matice slov.",
+        "Municipality" : "Žiar n/H",
+        "PropertyRegistrationNumber" : "5",
+        "BuildingNumber" : "1",
+        "PostalCode" : "96535",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "18.8517342"
+    },
+    {
+      "kraj" : "Košický kraj",
+      "address" : "Štúrova 29, Košice",
+      "lattitude" : "48.7165592",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 16:30",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 14:30",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0558870180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaKSKE@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Jozef KURUC",
+            "id" : "193"
+          },
+          {
+            "name" : "JUDr. Jozef MARUŠČÁK",
+            "id" : "194"
+          }
+        ]
+      },
+      "okres" : "Okres Košice I",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Imrich VOLKAI",
+            "id" : "222"
+          }
+        ]
+      },
+      "typ_sudu" : "Krajský súd",
+      "nazov" : "Krajský súd v Košiciach",
+      "ico" : "00215783",
+      "skratka" : "KSKE",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:00 - 12:00     13:00 - 15:00",
+          "",
+          "",
+          "8:00 - 12:00     13:00 - 15:00",
+          "",
+          "",
+          "8:00 - 12:00     13:00 - 16:00",
+          "",
+          "",
+          "8:00 - 12:00     13:00 - 15:00",
+          "",
+          "",
+          "8:00 - 12:00     13:00 - 14:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0558870200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "jarmila.beluskova@justice.sk; valeria.levayova@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 14:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "055/7269942",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ]
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_147",
+      "media_tel" : [
+        {
+          "tel_number" : "055/7269208; 0905 532 609",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Štúrova",
+        "Municipality" : "Košice",
+        "BuildingNumber" : "29",
+        "PostalCode" : "04151",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "21.2486472"
+    },
+    {
+      "kraj" : "Košický kraj",
+      "address" : "Štúrova 29, Košice I",
+      "lattitude" : "48.7165592",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 16:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 14:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0558871180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSKE1@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Emília GUĽOVÁ",
+            "id" : "741"
+          },
+          {
+            "name" : "JUDr. Branislav GAZDAG",
+            "id" : "1369"
+          }
+        ]
+      },
+      "okres" : "Okres Košice I",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Radoslav LACKO",
+            "id" : "746"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Košice I",
+      "ico" : "31944515",
+      "skratka" : "OSKE1",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:00 - 12:00      12:30 - 15:00",
+          "",
+          "",
+          "8:00 - 12:00      12:30 - 15:00",
+          "",
+          "",
+          "8:00 - 12:00      12:30 - 16:00",
+          "",
+          "",
+          "8:00 -  12:00     12:30 - 15:00",
+          "",
+          "",
+          "8:00 - 12:00      12:30 - 14:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0558871200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ]
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "8:00 - 12:00       13:00 - 15:00",
+          "",
+          "",
+          "8:00 - 12:00       13:00 - 15:00",
+          "",
+          "",
+          "8:00 - 12:00       13:00 - 15:30",
+          "",
+          "",
+          "8:00 - 12:00       13:00 - 15:00",
+          "",
+          "",
+          "8:00 - 12:00       13:00 - 14:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "055/7269942",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ]
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_148",
+      "media_tel" : [
+        {
+          "tel_number" : "055/7269208",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Štúrova",
+        "Municipality" : "Košice I",
+        "BuildingNumber" : "29",
+        "PostalCode" : "04160",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "21.2486472"
+    },
+    {
+      "kraj" : "Košický kraj",
+      "address" : "Štúrova 29, Košice II",
+      "lattitude" : "48.7165592",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "8:00 - 12:00",
+          "12:30 - 15:00",
+          "",
+          "8:00 - 12:00",
+          "12:30 - 15:00",
+          "",
+          "8:00 - 12:00",
+          "12:30 - 16:00",
+          "",
+          "8:00 - 12:00",
+          "12:30 - 15:00",
+          "",
+          "8:00 - 12:00",
+          "12:30 - 14:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0558872180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaoske2@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Soňa GAŠKOVÁ",
+            "id" : "779"
+          },
+          {
+            "name" : "JUDr. Vladimír KOTUS",
+            "id" : "788"
+          }
+        ]
+      },
+      "okres" : "Okres Košice II",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Adrián PAŽÚR",
+            "id" : "1375"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Košice II",
+      "ico" : "31944523",
+      "skratka" : "OSKE2",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:00 - 12:00",
+          "12:30 - 15:00",
+          "",
+          "8:00 - 12:00",
+          "12:30 - 15:00",
+          "",
+          "8:00 - 12:00",
+          "12:30 - 16:00",
+          "",
+          "8:00 - 12:00",
+          "12:30 - 15:00",
+          "",
+          "8:00 - 12:00",
+          "12:30 - 14:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0558872200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "maria.koncerakova@justice.sk, eva.kovacova@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_149",
+      "media_tel" : [
+        {
+          "tel_number" : "055/7269208,  0905 532 609",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Štúrova",
+        "Municipality" : "Košice II",
+        "BuildingNumber" : "29",
+        "PostalCode" : "04211",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "21.2486472"
+    },
+    {
+      "kraj" : "Košický kraj",
+      "address" : "Štúrova 29, Košice okolie",
+      "lattitude" : "48.7165592",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 16:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 14:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0558875180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSKE3@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "Mgr. Iveta SONDERLICHOVÁ",
+            "id" : "731"
+          }
+        ]
+      },
+      "okres" : "Okres Košice - okolie",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "Mgr. Nicola KUZMIAKOVÁ",
+            "id" : "1365"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Košice okolie",
+      "ico" : "00165891",
+      "skratka" : "OSKE3",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:00 - 15:00",
+          "",
+          "",
+          "12:00 - 15:00",
+          "",
+          "",
+          "8:00 - 16:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 12:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0558875200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "alzbeta.fabianova@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_150",
+      "media_tel" : [
+        {
+          "tel_number" : "055/72 69 208",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Štúrova",
+        "Municipality" : "Košice okolie",
+        "BuildingNumber" : "29",
+        "PostalCode" : "04110",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "21.2486472"
+    },
+    {
+      "kraj" : "Košický kraj",
+      "address" : "Nám. Slobody 11, Michalovce",
+      "lattitude" : "48.7555177",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "7:30 - 15:00",
+          "",
+          "",
+          "7:30 - 15:00",
+          "",
+          "",
+          "7:30 - 15:00",
+          "",
+          "",
+          "7:30 - 15:00",
+          "",
+          "",
+          "7:30 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0568877180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSMI@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Martin LOPUCH PhD.",
+            "id" : "877"
+          }
+        ]
+      },
+      "okres" : "Okres Michalovce",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Martin STRETAVSKÝ",
+            "id" : "883"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Michalovce",
+      "ico" : "00165905",
+      "skratka" : "OSMI",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0568877200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "iveta.golasova@justice.sk martin.sunitra@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_151",
+      "media_tel" : [
+        {
+          "tel_number" : "056/6872118 - sekretariát",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Nám. Slobody",
+        "Municipality" : "Michalovce",
+        "BuildingNumber" : "11",
+        "PostalCode" : "07180",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "21.9129416"
+    },
+    {
+      "kraj" : "Košický kraj",
+      "address" : "Námestie 1. mája 2, Rožňava",
+      "lattitude" : "48.6621578",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "7:30 - 15:30",
+          "",
+          "",
+          "7:30 - 15:30",
+          "",
+          "",
+          "7:30 - 16:00",
+          "",
+          "",
+          "7:30 - 15:30",
+          "",
+          "",
+          "7:30 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0588878180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSRV@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Katarína JANEČKOVÁ",
+            "id" : "1057"
+          }
+        ]
+      },
+      "okres" : "Okres Rožňava",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Viliam HLAVÁČ",
+            "id" : "1054"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Rožňava",
+      "ico" : "00165930",
+      "skratka" : "OSRV",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 12:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 12:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0588878200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "eva.vilcukova@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-15T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_152",
+      "media_tel" : [
+        {
+          "tel_number" : "055/7269111",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Námestie 1. mája",
+        "Municipality" : "Rožňava",
+        "BuildingNumber" : "2",
+        "PostalCode" : "04820",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "20.5268358"
+    },
+    {
+      "kraj" : "Košický kraj",
+      "address" : "Stará cesta 3, Spišská Nová Ves",
+      "lattitude" : "48.9445432",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "7:00 - 15:30",
+          "",
+          "",
+          "7:00 - 15:30",
+          "",
+          "",
+          "7:00 - 15:30",
+          "",
+          "",
+          "7:00 - 15:30",
+          "",
+          "",
+          "7:00 - 15:30",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0538876180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSSN@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Mária BLAHOVSKÁ",
+            "id" : "1082"
+          }
+        ]
+      },
+      "okres" : "Okres Spišská Nová Ves",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Ján SLOVINSKÝ",
+            "id" : "1096"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Spišská Nová Ves",
+      "ico" : "00165948",
+      "skratka" : "OSSN",
+      "info_centrum" : {
+        "opening_hours" : [
+          "7:30 - 14:30",
+          "",
+          "",
+          "7:30 - 14:30",
+          "",
+          "",
+          "7:30 - 14:30",
+          "",
+          "",
+          "7:30 - 14:30",
+          "",
+          "",
+          "7:30 - 14:30",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0538876229",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "katarina.petraskova@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_153",
+      "media_tel" : [
+        {
+          "tel_number" : "053/4171234",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Stará cesta",
+        "Municipality" : "Spišská Nová Ves",
+        "BuildingNumber" : "3",
+        "PostalCode" : "05280",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "20.5610631"
+    },
+    {
+      "kraj" : "Košický kraj",
+      "address" : "Nám. mieru 638, Trebišov",
+      "lattitude" : "48.620059",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "7:30 - 15:30",
+          "",
+          "",
+          "7:30 - 15:30",
+          "",
+          "",
+          "7:30 - 15:30",
+          "",
+          "",
+          "7:30 - 15:30",
+          "",
+          "",
+          "7:30 - 15:30",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "056/6713111, 056/6722321",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaostv@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Eva FRANKOVÁ",
+            "id" : "1125"
+          }
+        ]
+      },
+      "okres" : "Okres Trebišov",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Milan PETRIČKO",
+            "id" : "1133"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Trebišov",
+      "ico" : "00165972",
+      "skratka" : "OSTV",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 12:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 12:00",
+          "",
+          "",
+          "8:00 - 14:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0568879200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "infoOSTV@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_154",
+      "media_tel" : [
+        {
+          "tel_number" : "0905532609",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Nám. mieru",
+        "Municipality" : "Trebišov",
+        "BuildingNumber" : "638",
+        "PostalCode" : "07501",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "21.718737"
+    },
+    {
+      "kraj" : "Prešovský kraj",
+      "address" : "Hlavná 22, Prešov",
+      "lattitude" : "48.9948401",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "7:30 - 11:30",
+          "12:00 - 15:30",
+          "",
+          "7:30 - 11:30",
+          "12:00 - 15:30",
+          "",
+          "7:30 - 11:30",
+          "12:00 - 15:30",
+          "",
+          "7:30 - 11:30",
+          "12:00 - 15:30",
+          "",
+          "7:30 - 11:30",
+          "12:00 - 15:30",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0518880180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaKSPO@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Peter TOBIAŠ",
+            "id" : "1011"
+          },
+          {
+            "name" : "JUDr. Milan MAJERNÍK",
+            "id" : "1388"
+          }
+        ]
+      },
+      "okres" : "Okres Prešov",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Anna KOVAĽOVÁ",
+            "id" : "1005"
+          }
+        ]
+      },
+      "typ_sudu" : "Krajský súd",
+      "nazov" : "Krajský súd v Prešove",
+      "ico" : "17068410",
+      "skratka" : "KSPO",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:00 - 11:30",
+          "12:00 - 15:00",
+          "",
+          "8:00 - 11:30",
+          "12:00 - 15:00",
+          "",
+          "8:00 - 11:30",
+          "12:00 - 15:00",
+          "",
+          "8:00 - 11:30",
+          "12:00 - 15:00",
+          "",
+          "8:00 - 11:30",
+          "12:00 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0518880200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "agata.billa@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_155",
+      "media_tel" : [
+        {
+          "tel_number" : "0905515872",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Hlavná",
+        "Municipality" : "Prešov",
+        "BuildingNumber" : "22",
+        "PostalCode" : "08001",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "21.2429643"
+    },
+    {
+      "kraj" : "Prešovský kraj",
+      "address" : "Grešova 3, Prešov",
+      "lattitude" : "48.9933419",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "8:00 - 12:00",
+          "12:30 - 16:00",
+          "",
+          "8:00 - 12:00",
+          "12:30 - 16:00",
+          "",
+          "8:00 - 12:00",
+          "12:30 - 16:00",
+          "",
+          "8:00 - 12:00",
+          "12:30 - 16:00",
+          "",
+          "8:00 - 12:00",
+          "12:30 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0518881180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSPO@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : []
+      },
+      "okres" : "Okres Prešov",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Marek ČECH",
+            "id" : "997"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Prešov",
+      "ico" : "00165921",
+      "skratka" : "OSPO",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:00 - 12:00",
+          "12:30-  16:00",
+          "",
+          "8:00 - 12:00",
+          "12:30 - 16:00",
+          "",
+          "8:00 - 12:00",
+          "12:30 - 16:00",
+          "",
+          "8:00 - 12:00",
+          "12:30 - 16:00",
+          "",
+          "8:00 - 12:00",
+          "12:30 - 14:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0518881200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "olga.poracova@justice.sk, monika.lukacova@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_156",
+      "media_tel" : [],
+      "addr" : {
+        "StreetName" : "Grešova",
+        "Municipality" : "Prešov",
+        "BuildingNumber" : "3",
+        "PostalCode" : "08001",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "21.2469289"
+    },
+    {
+      "kraj" : "Prešovský kraj",
+      "address" : "Partizánska 1, Bardejov",
+      "lattitude" : "49.2924314",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "8:00 - 11:45",
+          "12:15 - 15:00",
+          "",
+          "8:00 - 11:45",
+          "12:15 - 15:00",
+          "",
+          "8:00 - 11:45",
+          "12:15 - 15:00",
+          "",
+          "8:00 - 11:45",
+          "12:15 - 15:00",
+          "",
+          "8:00 - 11:45",
+          "12:15 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0548882180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSBJ@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : []
+      },
+      "okres" : "Okres Bardejov",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Jana DUBIVSKÁ",
+            "id" : "479"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Bardejov",
+      "ico" : "00165875",
+      "skratka" : "OSBJ",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:00 - 11:00",
+          "13:00 - 15:00",
+          "",
+          "8:00 - 11:00",
+          "13:00 - 15:00",
+          "",
+          "8:00 - 11:00",
+          "13:00 - 15:00",
+          "",
+          "8:00 - 11:00",
+          "13:00 - 15:00",
+          "",
+          "8:00 - 11:00",
+          "13:00 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0548882200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "ingrid.kostelnikova@justice.sk, slavka.fertalova@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_157",
+      "media_tel" : [],
+      "addr" : {
+        "StreetName" : "Partizánska",
+        "Municipality" : "Bardejov",
+        "BuildingNumber" : "1",
+        "PostalCode" : "08575",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "21.2712163"
+    },
+    {
+      "kraj" : "Prešovský kraj",
+      "address" : "Laborecká 17",
+      "lattitude" : "48.9361916",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "07:30 - 11:30",
+          "12:00 - 15:30",
+          "",
+          "07:30 - 11:30",
+          "12:00 - 15:30",
+          "",
+          "07:30 - 11:30",
+          "12:00 - 16:00",
+          "",
+          "07:30 - 11:30",
+          "12:00 - 15:30",
+          "",
+          "07:30 - 11:30",
+          "12:00 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "057888 3180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSHN@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Ivan DAŇO",
+            "id" : "687"
+          }
+        ]
+      },
+      "okres" : "Okres Humenné",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Jana KURUCOVÁ",
+            "id" : "695"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Humenné",
+      "ico" : "00165883",
+      "skratka" : "OSHE",
+      "info_centrum" : {
+        "opening_hours" : [
+          "07:30 - 11:30",
+          "12:00 - 15:30",
+          "",
+          "07:30 - 11:30",
+          "12:00 - 15:30",
+          "",
+          "07:30 - 11:30",
+          "12:00 - 16:00",
+          "",
+          "07:30 - 11:30",
+          "",
+          "",
+          "07:30 - 11:30",
+          "12:00 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0578883200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "ingrid.hajduckova@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_158",
+      "media_tel" : [],
+      "addr" : {
+        "StreetName" : "Laborecká",
+        "BuildingNumber" : "17",
+        "PostalCode" : "06634",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "21.9009363"
+    },
+    {
+      "kraj" : "Prešovský kraj",
+      "address" : "Ul. Trhovište 16, Kežmarok",
+      "lattitude" : "49.1370519",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "8:00 - 11:00",
+          "12:00 - 14:30",
+          "",
+          "8:00 - 11:00",
+          "12:00 - 14:30",
+          "",
+          "8:00 - 11:00",
+          "12:00 - 15:00",
+          "",
+          "8:00 - 11:00",
+          "12:00 - 14:30",
+          "",
+          "8:00 - 11:00",
+          "12:00 - 14:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0528884180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSKK@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Juraj ŠTEFFEL",
+            "id" : "1570"
+          }
+        ]
+      },
+      "okres" : "Okres Kežmarok",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Erika BOROVSKÁ",
+            "id" : "702"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Kežmarok",
+      "ico" : "35535881",
+      "skratka" : "OSKK",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:00 - 11:00",
+          "12:00 - 14:30",
+          "",
+          "8:00 - 11:00",
+          "12:00 - 14:30",
+          "",
+          "8:00 - 11:00",
+          "12:00 - 15:00",
+          "",
+          "8:00 - 11:00",
+          "12:00 - 14:30",
+          "",
+          "8:00 - 11:00",
+          "12:00 - 14:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0528884200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "_infocentrum_oskk@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_159",
+      "media_tel" : [
+        {
+          "tel_number" : "051/7094214",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Ul. Trhovište",
+        "Municipality" : "Kežmarok",
+        "BuildingNumber" : "16",
+        "PostalCode" : "06001",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "20.4334295"
+    },
+    {
+      "kraj" : "Prešovský kraj",
+      "address" : "Štefánikova 100, Poprad",
+      "lattitude" : "49.05517469999999",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0528887180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSPP@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Peter KURUC",
+            "id" : "969"
+          }
+        ]
+      },
+      "okres" : "Okres Poprad",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Jozef KURIAN",
+            "id" : "968"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Poprad",
+      "ico" : "00165913",
+      "skratka" : "OSPP",
+      "info_centrum" : {
+        "opening_hours" : [
+          "9:00-12:00",
+          "13:00-14:00",
+          "",
+          "9:00-12:00",
+          "13:00-14:00",
+          "",
+          "9:00-12:00",
+          "13:00-14:00",
+          "",
+          "9:00-12:00",
+          "13:00-14:00",
+          "",
+          "9:00-12:00",
+          "13:00-14:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0528887368, 0528887242",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "_INFOCENTRUM_OSPP@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-10T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_160",
+      "media_tel" : [
+        {
+          "tel_number" : "052/7862415",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Štefánikova",
+        "Municipality" : "Poprad",
+        "BuildingNumber" : "100",
+        "PostalCode" : "05852",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "20.29825660000006"
+    },
+    {
+      "kraj" : "Prešovský kraj",
+      "address" : "17. novembra 30, Stará Ľubovňa",
+      "lattitude" : "49.3016257",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 14:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0528885200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSSL@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Jana SROKOVÁ",
+            "id" : "1103"
+          }
+        ]
+      },
+      "okres" : "Okres Stará Ľubovňa",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Oľga BITALOVÁ",
+            "id" : "1099"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Stará Ľubovňa",
+      "ico" : "00165956",
+      "skratka" : "OSSL",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:30",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 14:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0528885200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ]
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_161",
+      "media_tel" : [
+        {
+          "tel_number" : "0905 515 872",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "17. novembra",
+        "Municipality" : "Stará Ľubovňa",
+        "BuildingNumber" : "30",
+        "PostalCode" : "06427",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "20.684566"
+    },
+    {
+      "kraj" : "Prešovský kraj",
+      "address" : "Sov. hrdinov 35, Svidník",
+      "lattitude" : "49.308686",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "7:30 - 15:30",
+          "",
+          "",
+          "7:30 - 15:30",
+          "",
+          "",
+          "7:30 - 15:30",
+          "",
+          "",
+          "7:30 - 15:30",
+          "",
+          "",
+          "7:30 - 15:30",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0548886180",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSSK@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Ivo PARADA",
+            "id" : "1107"
+          }
+        ]
+      },
+      "okres" : "Okres Svidník",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Štefan BUJŇÁK",
+            "id" : "1105"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Svidník",
+      "ico" : "00165964",
+      "skratka" : "OSSK",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "8:00 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0548886200",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "Bozena.Kalinakova@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_162",
+      "media_tel" : [
+        {
+          "tel_number" : "0905 515 872, 051/709 42 14",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Sov. hrdinov",
+        "Municipality" : "Svidník",
+        "PropertyRegistrationNumber" : "200",
+        "BuildingNumber" : "35",
+        "PostalCode" : "08901",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "21.5712274"
+    },
+    {
+      "kraj" : "Prešovský kraj",
+      "address" : "M.R. Štefánika 874, Vranov n/T",
+      "lattitude" : "48.8864092",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "07:30 – 11.30",
+          "12:15 – 15:30",
+          "",
+          "07:30 – 11.30",
+          "12:15 – 15:30",
+          "",
+          "07:30 – 11.30",
+          "12:15 – 15:30",
+          "",
+          "07:30 – 11.30",
+          "12:15 – 15:30",
+          "",
+          "07:30 – 11.30",
+          "12:15 – 13:30",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "057/4421311",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "podatelnaOSVT@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Andrea ZOLOTOVÁ",
+            "id" : "1599"
+          }
+        ]
+      },
+      "okres" : "Okres Vranov nad Topľou",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Iveta MIHÓKOVÁ",
+            "id" : "1190"
+          }
+        ]
+      },
+      "typ_sudu" : "Okresný súd",
+      "nazov" : "Okresný súd Vranov nad Topľou",
+      "ico" : "00165981",
+      "skratka" : "OSVT",
+      "info_centrum" : {
+        "opening_hours" : [
+          "8:00 -11:30",
+          "12:15 -14:30",
+          "",
+          "nestránkový deň",
+          "",
+          "",
+          "8:00 -11:30",
+          "12:15 -15:30",
+          "",
+          "8:00 -11:30",
+          "12:15 -14:30",
+          "",
+          "8:00 -11:30",
+          "12:15 -13:30",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "0578888045",
+            "tel_type" : "label.codelist.tel_type"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "_SEKRETARIAT_OS_VV@justice.sk"
+        }
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_163",
+      "media_tel" : [
+        {
+          "tel_number" : "051/7094111",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "M.R. Štefánika",
+        "Municipality" : "Vranov n/T",
+        "BuildingNumber" : "874",
+        "PostalCode" : "09332",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "21.6881672"
+    },
+    {
+      "kraj" : "Bratislavský kraj",
+      "address" : "Suvorovova 5/A, Pezinok",
+      "lattitude" : "48.2961613",
+      "internet_address" : null,
+      "podatelna" : {
+        "opening_hours" : [
+          "8:30 - 15:00",
+          "",
+          "",
+          "8:30 - 15:00",
+          "",
+          "",
+          "8:30 - 15:00",
+          "",
+          "",
+          "8:30 - 15:00",
+          "",
+          "",
+          "8:30 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "033/8895180",
+            "tel_type" : "label.codelist.tel_type.1"
+          },
+          {
+            "tel_number" : "033/8895272",
+            "tel_type" : "label.codelist.tel_type.3"
+          }
+        ],
+        "internetAddress" : {
+          "email" : "infosps@justice.sk"
+        }
+      },
+      "podpredseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Roman PÚCHOVSKÝ",
+            "id" : "467"
+          }
+        ]
+      },
+      "okres" : "Okres Pezinok",
+      "predseda" : {
+        "sudcovia" : [
+          {
+            "name" : "JUDr. Michal TRUBAN",
+            "id" : "474"
+          }
+        ]
+      },
+      "typ_sudu" : "Špecializovaný trestný súd",
+      "nazov" : "Špecializovaný trestný súd",
+      "ico" : "30796130",
+      "skratka" : "SSPK",
+      "info_centrum" : {
+        "note" : "POBOČKA Špecializovaný trestný súd, pracovisko Banská Bystrica, Ul.Skuteckého č.10, 974 01 Banská Bystrica  tel.:048/ 471 39 11, 048/471 39 27 fax :048/4713933  Súdne tajomníčky: Ľubica Kincelová; Bc. Beáta Karvašová telef. číslo 048/8865180",
+        "opening_hours" : [
+          "8:30 - 15:00",
+          "",
+          "",
+          "8:30 - 15:00",
+          "",
+          "",
+          "8:30 - 15:00",
+          "",
+          "",
+          "8:30 - 15:00",
+          "",
+          "",
+          "8:30 - 15:00",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : [
+          {
+            "tel_number" : "zlúčené s podateľňou",
+            "tel_type" : "label.codelist.tel_type"
+          },
+          {
+            "tel_number" : "048/4713933",
+            "tel_type" : "label.codelist.tel_type.3"
+          }
+        ]
+      },
+      "orsr" : {
+        "opening_hours" : [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        "tel" : []
+      },
+      "aktualizacia" : "2015-12-09T00:00:00Z",
+      "opening_hours" : null,
+      "guid" : "sud_170",
+      "media_tel" : [
+        {
+          "tel_number" : "033/8895165",
+          "tel_type" : "label.codelist.tel_type"
+        }
+      ],
+      "addr" : {
+        "StreetName" : "Suvorovova",
+        "Municipality" : "Pezinok",
+        "BuildingNumber" : "5/A",
+        "PostalCode" : "90201",
+        "Country" : "703"
+      },
+      "zapisy" : [],
+      "longitude" : "17.262352"
+    }
+  ]
+}

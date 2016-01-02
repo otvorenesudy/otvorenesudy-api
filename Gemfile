@@ -52,6 +52,7 @@ gem 'curb'
 gem 'nokogiri'
 gem 'mechanize'
 gem 'rubyzip', require: 'zip'
+gem 'awesome_print'
 
 # Codeclimate
 gem 'codeclimate-test-reporter', group: :test, require: nil
