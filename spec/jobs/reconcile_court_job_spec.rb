@@ -12,6 +12,7 @@ RSpec.describe ReconcileCourtJob do
       allow(CourtReconciler).to receive(:new).with(mapper, court) { reconciler }
       expect(reconciler).to receive(:reconcile)
       expect(court).to receive(:save!)
+      expect(court).to receive(:touch)
 
       ReconcileCourtJob.new.perform(record)
     end

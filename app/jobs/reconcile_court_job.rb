@@ -9,5 +9,6 @@ class ReconcileCourtJob < ActiveJob::Base
     reconciler.reconcile
 
     court.save!
+    court.touch
   end
 end
