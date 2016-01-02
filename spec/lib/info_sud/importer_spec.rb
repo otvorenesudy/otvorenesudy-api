@@ -1,4 +1,5 @@
-require 'rails_helper'
+require 'spec_helper'
+require 'info_sud'
 
 RSpec.describe InfoSud::Importer do
   describe '.import' do

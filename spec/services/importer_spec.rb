@@ -1,4 +1,5 @@
-require 'rails_helper'
+require 'spec_helper'
+require_relative '../../app/services/importer'
 
 RSpec.describe Importer do
   let(:attributes) { { name: 'Peter', surname: 'Parker' } }

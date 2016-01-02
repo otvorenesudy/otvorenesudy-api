@@ -1,4 +1,5 @@
-require 'rails_helper'
+require 'spec_helper'
+require_relative '../../app/reconcilers/court_reconciler'
 
 RSpec.describe CourtReconciler do
   subject { CourtReconciler.new(mapper, court) }
