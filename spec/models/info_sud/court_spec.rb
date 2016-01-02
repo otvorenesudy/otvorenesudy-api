@@ -18,6 +18,7 @@ RSpec.describe InfoSud::Court do
     it 'enqueues reconciliation job' do
       expect { record }.not_to have_enqueued_job(ReconcileCourtJob).on_queue('reconcilers')
       expect { record.save! }.to have_enqueued_job(ReconcileCourtJob).with(record).on_queue('reconcilers')
+      expect { record.update_attributes!({}) }.to have_enqueued_job(ReconcileCourtJob).with(record).on_queue('reconcilers')
     end
   end
 end
