@@ -33,16 +33,16 @@ module InfoSud
       @data[:funkcia].downcase
     end
 
-    def court
-      InfoSud::Normalizer.normalize_court_name(@data[:sud])
-    end
-
     def active
       status = STATUS_MAP[@data[:stav]]
 
       return true if status == :active
 
       false
+    end
+
+    def court
+      InfoSud::Normalizer.normalize_court_name(@data[:sud])
     end
 
     def temporary_court
