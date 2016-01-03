@@ -4,7 +4,7 @@ class ReconcileJudgeJob < ActiveJob::Base
   def perform(record)
     mapper = record.to_mapper
     judge = Judge.find_or_initialize_by(name: mapper.name)
-    reconciler = JudgeReconciler.new(mapper, judge)
+    reconciler = JudgeReconciler.new(judge, mapper: mapper)
 
     reconciler.reconcile!
   end
