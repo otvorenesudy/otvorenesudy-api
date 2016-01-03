@@ -76,7 +76,7 @@ RSpec.describe JudgeReconciler do
     it 'reconciles employement' do
       allow(Judge::Position).to receive(:find_or_create_by!).with(value: 'predseda') { :position }
       allow(Court).to receive(:find_by).with(name: 'Krajský súd Trenčín') { :court }
-      expect(EmploymentBuilder).to receive(:build_or_update).with(employments, court: :court, position: :position, active: true)
+      expect(JudgeReconciler::EmploymentBuilder).to receive(:build_or_update).with(employments, court: :court, position: :position, active: true)
 
       subject.reconcile_employment
     end
@@ -86,7 +86,7 @@ RSpec.describe JudgeReconciler do
     it 'reconciles temporary employment' do
       allow(Judge::Position).to receive(:find_or_create_by!).with(value: 'sudca') { :position }
       allow(Court).to receive(:find_by).with(name: 'Okresný súd Prievidza') { :court }
-      expect(EmploymentBuilder).to receive(:build_or_update).with(employments, court: :court, position: :position, active: true)
+      expect(JudgeReconciler::EmploymentBuilder).to receive(:build_or_update).with(employments, court: :court, position: :position, active: true)
 
       subject.reconcile_temporary_employment
     end
@@ -95,9 +95,37 @@ RSpec.describe JudgeReconciler do
       let(:attributes) { { temporary_court: nil } }
 
       it 'does not reconcile temporary employement' do
-        expect(EmploymentBuilder).not_to receive(:build_or_update)
+        expect(JudgeReconciler::EmploymentBuilder).not_to receive(:build_or_update)
 
         subject.reconcile_temporary_employment
+      end
+    end
+  end
+end
+
+RSpec.describe JudgeReconciler::EmploymentBuilder do
+  describe '.build' do
+    let(:association) { double(:association) }
+    let(:position) { double(:position) }
+    let(:court) { double(:court) }
+    let(:employment) { double(:employment, new_record?: true) }
+
+    it 'builds employment' do
+      allow(association).to receive(:find_or_initialize_by).with(court: court, position: position) { employment }
+      expect(employment).to receive(:active=).with(true)
+
+      EmploymentBuilder.build_or_update(association, position: position, court: court, active: true)
+    end
+
+    context 'when record is not new' do
+      let(:employment) { double(:employment, new_record?: false) }
+
+      it 'saves it' do
+        allow(association).to receive(:find_or_initialize_by).with(court: court, position: position) { employment }
+        expect(employment).to receive(:active=).with(true)
+        expect(employment).to receive(:save!)
+
+        EmploymentBuilder.build_or_update(association, position: position, court: court, active: true)
       end
     end
   end
