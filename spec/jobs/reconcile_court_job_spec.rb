@@ -10,7 +10,7 @@ RSpec.describe ReconcileCourtJob do
     it 'performs reconciliation for court' do
       allow(Court).to receive(:find_or_initialize_by).with(name: 'Krajský súd Bratislava') { court }
       allow(CourtReconciler).to receive(:new).with(mapper, court) { reconciler }
-      expect(reconciler).to receive(:reconcile)
+      expect(reconciler).to receive(:reconcile!)
 
       ReconcileCourtJob.new.perform(record)
     end
