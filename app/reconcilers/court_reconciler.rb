@@ -6,9 +6,7 @@ class CourtReconciler
     @court = court
   end
 
-  def reconcile
-    @court.lock!
-
+  def reconcile!
     reconcile_attributes
     reconcile_type
     reconcile_municipality
