@@ -1,5 +1,13 @@
 module InfoSud
   class JudgeMapper
+    STATUS_MAP = {
+      nil => :active,
+      '01' => :active,
+      '03' => :deleted,
+      '04' => :inactive,
+      '06' => :suspended
+    }
+
     def initialize(judge)
       @judge = judge
       @data = @judge.data.symbolize_keys
@@ -28,6 +36,14 @@ module InfoSud
 
     def court
       InfoSud::Normalizer.normalize_court_name(@data[:sud])
+    end
+
+    def active
+      status = STATUS_MAP[@data[:stav]]
+
+      return true if status == :active
+
+      false
     end
 
     def temporary_court

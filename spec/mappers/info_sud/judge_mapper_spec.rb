@@ -56,6 +56,27 @@ RSpec.describe InfoSud::JudgeMapper do
     end
   end
 
+  describe '#active' do
+    it 'maps judge activity' do
+      expect(subject.active).to be_truthy
+    end
+
+    context 'when activity is missing' do
+      let(:data) { { "stav" => nil } }
+
+      it 'maps judge as active' do
+        expect(subject.active).to be_truthy
+      end
+    end
+
+    context 'when activity is any other than active' do
+      let(:data) { { "stav" => '04' } }
+
+      it 'maps judge as inactive' do
+        expect(subject.active).to be_falsey
+      end
+    end
+  end
 
   describe '#position' do
     it 'maps judge position at current court' do

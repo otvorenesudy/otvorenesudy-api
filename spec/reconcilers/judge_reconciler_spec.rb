@@ -25,7 +25,8 @@ RSpec.describe JudgeReconciler do
 
       court: 'Krajský súd Trenčín',
       position: 'predseda',
-      temporary_court: 'Okresný súd Prievidza'
+      temporary_court: 'Okresný súd Prievidza',
+      active: true
     }
   }
 

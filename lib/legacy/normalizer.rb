@@ -220,7 +220,7 @@ module Legacy
     public
 
     def normalize_zipcode(value)
-      value = value.to_s.sascii.strip.gsub(/\s+/, '')
+      value = value.to_s.ascii.strip.gsub(/\s+/, '')
 
       "#{value[0..2]} #{value[3..-1]}"
     end
