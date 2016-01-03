@@ -71,7 +71,7 @@ RSpec.describe InfoSud::CourtMapper do
 
   describe '#zipcode' do
     it 'maps zipcode' do
-      expect(subject.zipcode).to eql('81244')
+      expect(subject.zipcode).to eql('812 44')
     end
   end
 

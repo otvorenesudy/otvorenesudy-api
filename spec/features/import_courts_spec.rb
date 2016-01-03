@@ -205,7 +205,7 @@ RSpec.feature 'Import Courts' do
     expect(court.latitude.to_f).to eql(48.152538)
     expect(court.longitude.to_f).to eql(17.122962)
 
-    expect(municipality.zipcode).to eql('81244')
+    expect(municipality.zipcode).to eql('812 44')
 
     # TODO check offices' hours
   end
@@ -407,7 +407,7 @@ RSpec.feature 'Import Courts' do
     expect(court.latitude.to_f).to eql(48.152538)
     expect(court.longitude.to_f).to eql(18.122962)
 
-    expect(municipality.zipcode).to eql('12345')
+    expect(municipality.zipcode).to eql('123 45')
 
     # TODO check update on offices
   end

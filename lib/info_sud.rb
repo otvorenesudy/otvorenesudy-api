@@ -1,7 +1,7 @@
 require 'oj'
 require 'mechanize'
 require 'zip'
-require 'unicode_string'
+require 'legacy'
 
 module InfoSud
   require 'info_sud/parser'
