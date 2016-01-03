@@ -1,8 +1,7 @@
 module InfoSud
   class CourtMapper
-    def initialize(court)
-      @court = court
-      @data = court.data.deep_symbolize_keys
+    def initialize(data)
+      @data = data.deep_symbolize_keys
     end
 
     def uri

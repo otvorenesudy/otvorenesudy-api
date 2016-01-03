@@ -8,9 +8,8 @@ module InfoSud
       '06' => :suspended
     }
 
-    def initialize(judge)
-      @judge = judge
-      @data = @judge.data.symbolize_keys
+    def initialize(data)
+      @data = data.symbolize_keys
     end
 
     def uri

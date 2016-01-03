@@ -1,12 +1,9 @@
 require 'spec_helper'
-require 'active_support/all'
 require 'info_sud'
-require_relative '../../../app/mappers/info_sud/court_mapper'
 
 RSpec.describe InfoSud::CourtMapper do
-  subject { InfoSud::CourtMapper.new(court) }
+  subject { InfoSud::CourtMapper.new(data) }
 
-  let(:court) { double(:court, data: data) }
   let(:data) {
     {
       "ico"=>"00039471",

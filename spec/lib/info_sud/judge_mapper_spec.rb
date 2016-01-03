@@ -1,12 +1,9 @@
 require 'spec_helper'
 require 'info_sud'
-require 'active_support/all'
-require_relative '../../../app/mappers/info_sud/judge_mapper'
 
 RSpec.describe InfoSud::JudgeMapper do
-  subject { InfoSud::JudgeMapper.new(judge) }
+  subject { InfoSud::JudgeMapper.new(data) }
 
-  let(:judge) { double(:judge, data: data) }
   let(:data) {
     {
       "sud" => "Okresný súd Lučenec",
