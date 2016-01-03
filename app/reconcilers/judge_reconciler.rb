@@ -50,6 +50,6 @@ class JudgeReconciler
     position = Judge::Position.find_or_create_by!(value: 'sudca')
     court = Court.find_by(name: mapper.temporary_court)
 
-    EmploymentBuilder.build_or_update(judge.employments, court: court, position: position, active: mapper.active)
+    EmploymentBuilder.build_or_update(judge.employments, court: court, position: position, active: true)
   end
 end
