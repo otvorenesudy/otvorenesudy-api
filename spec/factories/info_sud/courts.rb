@@ -5,7 +5,7 @@ FactoryGirl.define do
     data {
       {
         guid: guid,
-        name: 'Example Court'
+        nazov: 'Example Court'
       }
     }
   end
