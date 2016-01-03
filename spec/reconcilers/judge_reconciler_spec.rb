@@ -114,7 +114,7 @@ RSpec.describe JudgeReconciler::EmploymentBuilder do
       allow(association).to receive(:find_or_initialize_by).with(court: court, position: position) { employment }
       expect(employment).to receive(:active=).with(true)
 
-      EmploymentBuilder.build_or_update(association, position: position, court: court, active: true)
+      JudgeReconciler::EmploymentBuilder.build_or_update(association, position: position, court: court, active: true)
     end
 
     context 'when record is not new' do
@@ -125,7 +125,7 @@ RSpec.describe JudgeReconciler::EmploymentBuilder do
         expect(employment).to receive(:active=).with(true)
         expect(employment).to receive(:save!)
 
-        EmploymentBuilder.build_or_update(association, position: position, court: court, active: true)
+        JudgeReconciler::EmploymentBuilder.build_or_update(association, position: position, court: court, active: true)
       end
     end
   end
