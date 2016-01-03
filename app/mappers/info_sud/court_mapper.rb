@@ -15,7 +15,7 @@ module InfoSud
     end
 
     def name
-      Normalizer.normalize_court_name(@data[:nazov])
+      InfoSud::Normalizer.normalize_court_name(@data[:nazov])
     end
 
     def street
@@ -23,7 +23,7 @@ module InfoSud
     end
 
     def municipality
-      # TODO remove hotfix when municipality is fixed
+      # TODO remove hotfix when municipality for court is fixed
       @data[:addr][:Municipality] || (name == 'Okresný súd Humenné' && 'Humenné')
     end
 

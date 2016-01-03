@@ -1,6 +1,6 @@
 require 'spec_helper'
-require 'info_sud'
 require 'active_support/all'
+require 'info_sud'
 require_relative '../../../app/mappers/info_sud/court_mapper'
 
 RSpec.describe InfoSud::CourtMapper do
