@@ -1,22 +1,9 @@
-# TODO Track employment history (possible feature?)
-# -> E1: active (2001 - 2005), E2: active (2004 - 2006)
-# -> E3: active (2005 - 2010), E2: active (2004 - 2009) => E1 (inactive)
-# -> E2: active (2004 - 2014)
-# -> E1: active (2015 - 2016)
-#
-# => judge.employments = [
-#       E1 (2001 - 2005),
-#       E2 (2004 - 2014),
-#       E3 (2005 - 2010),
-#       E1 (2015 - 2016)
-#   }
-
 class JudgeReconciler
   attr_reader :mapper, :judge
 
-  def initialize(mapper, judge)
-    @mapper = mapper
+  def initialize(judge, mapper:)
     @judge = judge
+    @mapper = mapper
   end
 
   def reconcile!

@@ -1,9 +1,9 @@
 class CourtReconciler
   attr_reader :mapper, :court
 
-  def initialize(mapper, court)
-    @mapper = mapper
+  def initialize(court, mapper:)
     @court = court
+    @mapper = mapper
   end
 
   def reconcile!

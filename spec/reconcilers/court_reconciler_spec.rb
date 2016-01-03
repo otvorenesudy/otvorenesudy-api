@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CourtReconciler do
-  subject { CourtReconciler.new(mapper, court) }
+  subject { CourtReconciler.new(court, mapper: mapper) }
 
   let(:court) { double(:court) }
   let(:mapper) { double(:mapper, attributes) }

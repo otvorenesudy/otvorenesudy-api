@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe JudgeReconciler do
-  subject { JudgeReconciler.new(mapper, judge) }
+  subject { JudgeReconciler.new(judge, mapper: mapper) }
 
   let(:mapper) { double(:mapper, attributes) }
   let(:judge) { double(:judge, employments: employments) }
