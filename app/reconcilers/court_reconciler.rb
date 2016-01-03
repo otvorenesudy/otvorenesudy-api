@@ -14,8 +14,8 @@ class CourtReconciler
     reconcile_registry_center
     reconcile_business_registry_center
 
-    @court.save!
-    @court.touch
+    court.save!
+    court.touch
   end
 
   def reconcile_attributes
