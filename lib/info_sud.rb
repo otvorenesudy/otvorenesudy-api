@@ -2,6 +2,7 @@ require 'oj'
 require 'mechanize'
 require 'zip'
 require 'legacy'
+require 'active_support/all'
 
 module InfoSud
   require 'info_sud/parser'
