@@ -43,15 +43,11 @@ module InfoSud
     end
 
     def phone
-      node = @data[:tel].find { |e| e[:tel_type] == 'label.codelist.tel_type.1' }
-
-      InfoSud::Normalizer.normalize_phone(node[:tel_number]) if node
+      map_phones(@data[:tel], type: 'label.codelist.tel_type.1')
     end
 
     def fax
-      node = @data[:tel].find { |e| e[:tel_type] == 'label.codelist.tel_type.3' }
-
-      InfoSud::Normalizer.normalize_phone(node[:tel_number]) if node
+      map_phones(@data[:tel], type: 'label.codelist.tel_type.3')
     end
 
     def media_person
@@ -116,7 +112,11 @@ module InfoSud
 
     private
 
-    def map_phones(phones)
+    def map_phones(phones, type: nil)
+      phones = phones.select { |e| e[:tel_type] == type } if type
+
+      return unless phones.any?
+
       phones.map { |e|
         InfoSud::Normalizer.normalize_phone(e[:tel_number])
       }.join(', ')
