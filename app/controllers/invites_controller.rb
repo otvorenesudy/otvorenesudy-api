@@ -3,6 +3,12 @@ class InvitesController < ApplicationController
     attributes = create_params.merge(locale: I18n.locale)
 
     @invite = Invite.new(attributes)
+
+    if @invite.save
+      render :create
+    else
+      render partial: 'error'
+    end
   end
 
   private
