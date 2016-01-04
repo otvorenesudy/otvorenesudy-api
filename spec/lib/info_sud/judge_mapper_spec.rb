@@ -20,7 +20,8 @@ RSpec.describe InfoSud::JudgeMapper do
       "stav_zmena" => "31.3.2008",
       "aktualizacia" => "2015-12-08T00:00:00Z",
       "lattitude_sudu" => "48.3274866",
-      "longitude_sudu" => "19.6662481"
+      "longitude_sudu" => "19.6662481",
+      "poznamka" => "- od 1. februára 2004 má prerušený výkon funkcie sudcu podľa § 24 ods. 4 zákona č. 385/2000 Z.z."
     }
   }
 
@@ -103,6 +104,12 @@ RSpec.describe InfoSud::JudgeMapper do
       it 'maps temporary court' do
         expect(subject.temporary_court).to eql('Krajský súd Trenčín')
       end
+    end
+  end
+
+  describe '#note' do
+    it 'parses note' do
+      expect(subject.note).to eql('- od 1. februára 2004 má prerušený výkon funkcie sudcu podľa § 24 ods. 4 zákona č. 385/2000 Z.z.')
     end
   end
 end

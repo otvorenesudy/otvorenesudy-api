@@ -50,5 +50,9 @@ module InfoSud
 
       InfoSud::Normalizer.normalize_court_name(@data[:asud])
     end
+
+    def note
+      @data[:poznamka]
+    end
   end
 end
