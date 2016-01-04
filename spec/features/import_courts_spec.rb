@@ -25,157 +25,7 @@ RSpec.feature 'Import Courts' do
     expect(InfoSud::Court.count).to eql(64)
     expect(Court.count).to eql(64)
 
-    record = InfoSud::Court.find_by(guid: 'sud_102')
     court = Court.find_by(name: 'Okresný súd Bratislava I')
-
-    expect(record.attributes.deep_symbolize_keys.except(:id, :created_at, :updated_at)).to eql(
-      :guid => "sud_102",
-      :data => {
-        :ico => "00039471",
-        :addr => {
-          :Country => "703",
-          :PostalCode => "81244",
-          :StreetName => "Záhradnícka",
-          :Municipality => "Bratislava I",
-          :BuildingNumber => "10"
-        },
-        :guid => "sud_102",
-        :kraj => "Bratislavský kraj",
-        :orsr => {
-          :tel => [
-            {
-              :tel_type => "label.codelist.tel_type",
-              :tel_number => "02/501 18 340, 02/501 18 356, 02/501 18 181, 02/501 18 421"
-            }
-          ],
-          :note => "prestávka v práci PO - ŠT: 12:00 - 13:00",
-          :opening_hours => [
-            "8:00 - 15:00",
-            "",
-            "",
-            "8:00 - 15:00",
-            "",
-            "",
-            "8:00 - 15:00",
-            "",
-            "",
-            "8:00 - 15:00",
-            "",
-            "",
-            "8:00 - 12:00",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ]
-        },
-        :nazov => "Okresný súd Bratislava I",
-        :okres => "Okres Bratislava I",
-        :zapisy => [],
-        :address => "Záhradnícka 10, Bratislava I",
-        :skratka => "OSBA1",
-        :predseda => {
-          :sudcovia => [
-            {
-              :id => "561",
-              :name => "JUDr. Eva FULCOVÁ"
-            }
-          ]
-        },
-        :typ_sudu => "Okresný súd",
-        :lattitude => "48.152538",
-        :longitude => "17.122962",
-        :media_tel => [
-          {
-            :tel_type => "label.codelist.tel_type",
-            :tel_number => "0903 424 263, 02/50118417"
-          }
-        ],
-        :podatelna => {
-          :tel => [
-            {
-              :tel_type => "label.codelist.tel_type",
-              :tel_number => "02/88811180, fax. 02/88811192"
-            }
-          ],
-          :opening_hours => [
-            "8:00 - 15:30",
-            "",
-            "",
-            "8:00 - 15:30",
-            "",
-            "",
-            "8:00 - 15:30",
-            "",
-            "",
-            "8:00 - 15:30",
-            "",
-            "",
-            "8:00 - 15:00",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
-          :internetAddress => {
-            :email => "podatelnaosba1@justice.sk"
-          }
-        },
-        :podpredseda => {
-          :sudcovia => [
-            {
-              :id => "1767",
-              :name => "Mgr. Miriam PLAVČÁKOVÁ"
-            }
-          ]
-        },
-        :aktualizacia => "2015-12-09T00:00:00Z",
-        :info_centrum => {
-          :tel => [
-            {
-              :tel_type => "label.codelist.tel_type",
-              :tel_number => "02/88811200"
-            }
-          ],
-          :opening_hours => [
-            "8:00 - 15:00",
-            "",
-            "",
-            "8:00 - 15:00",
-            "",
-            "",
-            "8:00 - 15:00",
-            "",
-            "",
-            "8:00 - 15:00",
-            "",
-            "",
-            "8:00 - 14:00",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
-          :internetAddress => {
-            :email => "podatelnaosba1@justice.sk"
-          }
-        },
-        :opening_hours => nil,
-        :internet_address => nil
-      }
-    )
 
     type = Court::Type.find_by(value: 'Okresný')
     municipality = Municipality.find_by(name: 'Bratislava I')
@@ -191,9 +41,9 @@ RSpec.feature 'Import Courts' do
       :municipality_id => municipality.id,
       :name => "Okresný súd Bratislava I",
       :street => "Záhradnícka 10",
-      :phone => nil,
-      :fax => nil,
-      :media_person => nil,
+      :phone => '+421288810111',
+      :fax => '+421288811191',
+      :media_person => 'Mgr. Pavol Adamčiak',
       :media_person_unprocessed => nil,
       :media_phone => "0903 424 263, 02/50 118 417",
       :information_center_id => information_center.id,
@@ -226,158 +76,7 @@ RSpec.feature 'Import Courts' do
 
     expect(courts.size).to eql(1)
 
-    record = InfoSud::Court.find_by(guid: 'sud_102')
     court = courts.first
-
-    expect(record.attributes.deep_symbolize_keys.except(:id, :created_at, :updated_at)).to eql(
-      :guid => "sud_102",
-      :data => {
-        :ico => "00039471",
-        :addr => {
-          :Country => "703",
-          :PostalCode => "12345",
-          :StreetName => "Záhradnícka",
-          :Municipality => "Bratislava I",
-          :BuildingNumber => "10"
-        },
-        :guid => "sud_102",
-        :kraj => "Bratislavský kraj",
-        :orsr => {
-          :tel => [
-            {
-              :tel_type => "label.codelist.tel_type",
-              :tel_number => "02/501 18 340, 02/501 18 356, 02/501 18 181, 02/501 18 421"
-            }
-          ],
-          :note => "prestávka v práci PO - ŠT: 12:00 - 13:00",
-          :opening_hours => [
-            "8:00 - 15:00",
-            "",
-            "",
-            "8:00 - 15:00",
-            "",
-            "",
-            "8:00 - 15:00",
-            "",
-            "",
-            "8:00 - 15:00",
-            "",
-            "",
-            "8:00 - 12:00",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ]
-        },
-        :nazov => "Okresný súd Bratislava I",
-        :okres => "Okres Bratislava I",
-        :zapisy => [],
-        :address => "Záhradnícka 10, Bratislava I",
-        :skratka => "OSBA1",
-        :predseda => {
-          :sudcovia => [
-            {
-              :id => "561",
-              :name => "JUDr. Eva FULCOVÁ"
-            }
-          ]
-        },
-        :typ_sudu => "Okresný súd",
-        :lattitude => "48.152538",
-        :longitude => "18.122962",
-        :media_tel => [
-          {
-            :tel_type => "label.codelist.tel_type",
-            :tel_number => "0903 424 263, 02/50118417"
-          }
-        ],
-        :podatelna => {
-          :tel => [
-            {
-              :tel_type => "label.codelist.tel_type",
-              :tel_number => "02/88811180, fax. 02/88811192"
-            }
-          ],
-          :opening_hours => [
-            "8:00 - 15:30",
-            "",
-            "",
-            "8:00 - 15:30",
-            "",
-            "",
-            "8:00 - 15:30",
-            "",
-            "",
-            "8:00 - 15:30",
-            "",
-            "",
-            "8:00 - 15:00",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
-          :internetAddress => {
-            :email => "podatelnaosba1@justice.sk"
-          }
-        },
-        :podpredseda => {
-          :sudcovia => [
-            {
-              :id => "1767",
-              :name => "Mgr. Miriam PLAVČÁKOVÁ"
-            }
-          ]
-        },
-        :aktualizacia => "2015-12-09T00:00:00Z",
-        :info_centrum => {
-          :tel => [
-            {
-              :tel_type => "label.codelist.tel_type",
-              :tel_number => "02/88811200"
-            }
-          ],
-          :opening_hours => [
-            "8:00 - 15:00",
-            "",
-            "",
-            "8:00 - 15:00",
-            "",
-            "",
-            "8:00 - 15:00",
-            "",
-            "",
-            "8:00 - 15:00",
-            "",
-            "",
-            "8:00 - 14:00",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
-          :internetAddress => {
-            :email => "podatelnaosba1@justice.sk"
-          }
-        },
-        :opening_hours => nil,
-        :internet_address => nil
-      }
-    )
-
 
     type = Court::Type.find_by(value: 'Okresný')
     municipality = Municipality.find_by(name: 'Bratislava I')
@@ -393,9 +92,9 @@ RSpec.feature 'Import Courts' do
       :municipality_id => municipality.id,
       :name => "Okresný súd Bratislava I",
       :street => "Záhradnícka 10",
-      :phone => nil,
-      :fax => nil,
-      :media_person => nil,
+      :phone => '+421288810111',
+      :fax => '+421288811191',
+      :media_person => 'Mgr. Pavol Adamčiak',
       :media_person_unprocessed => nil,
       :media_phone => "0903 424 263, 02/50 118 417",
       :information_center_id => information_center.id,

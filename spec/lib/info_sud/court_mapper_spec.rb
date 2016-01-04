@@ -7,6 +7,7 @@ RSpec.describe InfoSud::CourtMapper do
   let(:data) {
     {
       "ico"=>"00039471",
+      "tel"=>[{"tel_type"=>"label.codelist.tel_type.1", "tel_number"=>"+421288810111"}, {"tel_type"=>"label.codelist.tel_type.3", "tel_number"=>"+421288811191"}],
       "addr"=>{"Country"=>"703", "PostalCode"=>"81244", "StreetName"=>"Záhradnícka", "Municipality"=>"Bratislava I", "BuildingNumber"=>"10"},
       "guid"=>"sud_102",
       "kraj"=>"Bratislavský kraj",
@@ -30,6 +31,7 @@ RSpec.describe InfoSud::CourtMapper do
        "opening_hours"=>["8:00 - 15:30", "", "", "8:00 - 15:30", "", "", "8:00 - 15:30", "", "", "8:00 - 15:30", "", "", "8:00 - 15:00", "", "", "", "", "", "", "", ""],
        "internetAddress"=>{"email"=>"podatelnaosba1@justice.sk"}
       },
+      "media_name"=>"Mgr. Pavol Adamčiak",
       "podpredseda"=>{"sudcovia"=>[{"id"=>"1767", "name"=>"Mgr. Miriam PLAVČÁKOVÁ"}]},
       "aktualizacia"=>"2015-12-09T00:00:00Z",
       "info_centrum"=> {
@@ -92,22 +94,19 @@ RSpec.describe InfoSud::CourtMapper do
 
   describe '#phone' do
     it 'maps phone' do
-      # TODO
-      expect(subject.phone).to eql(nil)
+      expect(subject.phone).to eql('+421288810111')
     end
   end
 
   describe '#fax' do
     it 'maps fax number' do
-      # TODO
-      expect(subject.fax).to eql(nil)
+      expect(subject.fax).to eql('+421288811191')
     end
   end
 
   describe '#media_person' do
     it 'maps media person' do
-      # TODO
-      expect(subject.media_person).to eql(nil)
+      expect(subject.media_person).to eql('Mgr. Pavol Adamčiak')
     end
   end
 

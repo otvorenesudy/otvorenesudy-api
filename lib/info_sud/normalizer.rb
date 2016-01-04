@@ -27,6 +27,10 @@ module InfoSud
       Legacy::Normalizer.normalize_zipcode(value)
     end
 
+    def self.normalize_person_name(value)
+      Legacy::Normalizer.normalize_person_name(value)
+    end
+
     def self.partition_person_name(value)
       Legacy::Normalizer.partition_person_name(value)
     end
