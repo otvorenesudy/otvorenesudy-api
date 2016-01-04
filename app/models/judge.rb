@@ -5,7 +5,7 @@ class Judge < ActiveRecord::Base
 
   has_many :designations, class_name: 'Judge::Designation'
 
-  has_many :employments
+  has_many :employments, autosave: true
   has_many :courts, through: :employments
   has_many :positions, through: :employments, source: :judge_position
 

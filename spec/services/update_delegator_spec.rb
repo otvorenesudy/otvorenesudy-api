@@ -1,4 +1,6 @@
-require 'rails_helper'
+require 'spec_helper'
+require 'active_support/all'
+require_relative '../../app/services/update_delegator'
 
 RSpec.describe UpdateDelegator do
   subject { UpdateDelegator.new(record) }

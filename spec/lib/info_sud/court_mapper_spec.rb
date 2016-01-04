@@ -1,9 +1,9 @@
-require 'rails_helper'
+require 'spec_helper'
+require 'info_sud'
 
 RSpec.describe InfoSud::CourtMapper do
-  subject { InfoSud::CourtMapper.new(court) }
+  subject { InfoSud::CourtMapper.new(data) }
 
-  let(:court) { double(:court, data: data) }
   let(:data) {
     {
       "ico"=>"00039471",
@@ -68,7 +68,7 @@ RSpec.describe InfoSud::CourtMapper do
 
   describe '#zipcode' do
     it 'maps zipcode' do
-      expect(subject.zipcode).to eql('81244')
+      expect(subject.zipcode).to eql('812 44')
     end
   end
 

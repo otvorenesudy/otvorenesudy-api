@@ -1,0 +1,38 @@
+{
+  "data" : [
+    {
+      "stav" : "01",
+      "sud" : "Okresný súd Levice",
+      "stav_zmena" : "1.11.2015",
+      "lattitude_sudu" : "48.3080863",
+      "meno" : "JUDr. Martina BALEGOVÁ",
+      "asud" : "Krajský súd v Trenčíne",
+      "funkcia" : "Sudca",
+      "kraj_sudu" : "Nitriansky kraj",
+      "typ_sudu" : "Okresný súd",
+      "okres_sudu" : "Okres Nitra",
+      "sud_guid" : "126",
+      "aktualizacia" : "2015-12-08T00:00:00Z",
+      "asud_guid" : "123",
+      "guid" : "sudca_1508",
+      "longitude_sudu" : "18.0830243"
+    },
+    {
+      "stav" : null,
+      "sud" : "Okresný súd Bratislava II",
+      "stav_zmena" : "20.6.2005",
+      "lattitude_sudu" : "48.1604058",
+      "meno" : "JUDr. Ivana DANČOVÁ",
+      "asud" : "Okresný súd Bratislava II",
+      "funkcia" : "Sudca",
+      "kraj_sudu" : "Bratislavský kraj",
+      "typ_sudu" : "Okresný súd",
+      "okres_sudu" : "Okres Bratislava II",
+      "sud_guid" : "103",
+      "aktualizacia" : "2015-12-08T00:00:00Z",
+      "asud_guid" : "103",
+      "guid" : "sudca_1507",
+      "longitude_sudu" : "17.1474862"
+    }
+  ]
+}

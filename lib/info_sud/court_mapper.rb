@@ -1,8 +1,7 @@
 module InfoSud
   class CourtMapper
-    def initialize(court)
-      @court = court
-      @data = court.data.deep_symbolize_keys
+    def initialize(data)
+      @data = data.deep_symbolize_keys
     end
 
     def uri
@@ -15,20 +14,20 @@ module InfoSud
     end
 
     def name
-      @data[:nazov]
+      InfoSud::Normalizer.normalize_court_name(@data[:nazov])
     end
 
     def street
-      "#{@data[:addr][:StreetName]} #{@data[:addr][:BuildingNumber]}"
+      InfoSud::Normalizer.normalize_street("#{@data[:addr][:StreetName]} #{@data[:addr][:BuildingNumber]}")
     end
 
     def municipality
-      # TODO remove hotfix when municipality is fixed
+      # TODO remove hotfix when municipality for court is fixed
       @data[:addr][:Municipality] || (name == 'Okresný súd Humenné' && 'Humenné')
     end
 
     def zipcode
-      @data[:addr][:PostalCode]
+      InfoSud::Normalizer.normalize_zipcode(@data[:addr][:PostalCode])
     end
 
     def type
@@ -64,7 +63,7 @@ module InfoSud
     end
 
     def information_center_email
-      @data[:info_centrum].fetch(:internetAddress, {})[:email]
+      map_email(@data[:info_centrum].fetch(:internetAddress, {})[:email])
     end
 
     def information_center_phone
@@ -80,7 +79,7 @@ module InfoSud
     end
 
     def registry_center_email
-      @data[:podatelna].fetch(:internetAddress, {})[:email]
+      map_email(@data[:podatelna].fetch(:internetAddress, {})[:email])
     end
 
     def registry_center_phone
@@ -96,7 +95,7 @@ module InfoSud
     end
 
     def business_registry_center_email
-      @data[:orsr].fetch(:internetAddress, {})[:email]
+      map_email(@data[:orsr].fetch(:internetAddress, {})[:email])
     end
 
     def business_registry_center_phone
@@ -123,6 +122,10 @@ module InfoSud
       opening_hours[0..14].each_slice(3).map { |hours|
         InfoSud::Normalizer.normalize_hours(hours.map(&:presence).compact.join(', '))
       }
+    end
+
+    def map_email(email)
+      InfoSud::Normalizer.normalize_email(email) if email
     end
   end
 end

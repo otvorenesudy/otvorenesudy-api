@@ -1,4 +1,5 @@
-require 'rails_helper'
+require 'spec_helper'
+require 'info_sud'
 
 RSpec.describe InfoSud::Extractor do
   let(:archive) { fixture('info_sud/example.zip') }

@@ -5,7 +5,7 @@ module InfoSud
     after_commit { ReconcileCourtJob.perform_later(self) }
 
     def to_mapper
-      InfoSud::CourtMapper.new(self)
+      InfoSud::CourtMapper.new(self.data)
     end
   end
 end

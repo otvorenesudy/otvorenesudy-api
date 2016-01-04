@@ -1,11 +1,11 @@
 FactoryGirl.define do
-  factory :'info_sud/court', aliases: [:info_sud_court] do
+  factory :'info_sud/judge', aliases: [:info_sud_judge] do
     sequence(:guid) { |n| n.to_s }
 
     data {
       {
         guid: guid,
-        nazov: 'Example Court'
+        meno: 'Example Judge'
       }
     }
   end
