@@ -18,29 +18,7 @@ RSpec.feature 'Import Judges' do
     expect(InfoSud::Judge.count).to eql(2)
     expect(Judge.count).to eql(2)
 
-    record = InfoSud::Judge.find_by(guid: 'sudca_1508')
     judge = Judge.find_by(name: 'JUDr. Martina Balegová')
-
-    expect(record.attributes.deep_symbolize_keys.except(:id, :created_at, :updated_at)).to eql(
-      :guid => "sudca_1508",
-      :data => {
-        :sud => "Okresný súd Levice",
-        :asud => "Krajský súd v Nitre",
-        :guid => "sudca_1508",
-        :meno => "JUDr. Martina BALEGOVÁ",
-        :stav => "01",
-        :funkcia => "Sudca",
-        :sud_guid => "126",
-        :typ_sudu => "Okresný súd",
-        :asud_guid => "123",
-        :kraj_sudu => "Nitriansky kraj",
-        :okres_sudu => "Okres Nitra",
-        :stav_zmena => "1.11.2015",
-        :aktualizacia => "2015-12-08T00:00:00Z",
-        :lattitude_sudu => "48.3080863",
-        :longitude_sudu => "18.0830243"
-      }
-    )
 
     expect(judge.attributes.deep_symbolize_keys.except(:id, :created_at, :updated_at)).to eql(
       uri: 'https://obcan.justice.sk/infosud/-/infosud/reg-detail/sudca/sudca_1508',
@@ -83,29 +61,7 @@ RSpec.feature 'Import Judges' do
 
     expect(Judge.where('updated_at >= ?', updated_at).size).to eql(1)
 
-    record = InfoSud::Judge.find_by(guid: 'sudca_1508')
     judge = Judge.find_by(name: 'JUDr. Martina Balegová')
-
-    expect(record.attributes.deep_symbolize_keys.except(:id, :created_at, :updated_at)).to eql(
-      :guid => "sudca_1508",
-      :data => {
-        :sud => "Okresný súd Levice",
-        :asud => "Krajský súd v Trenčíne",
-        :guid => "sudca_1508",
-        :meno => "JUDr. Martina BALEGOVÁ",
-        :stav => "01",
-        :funkcia => "Sudca",
-        :sud_guid => "126",
-        :typ_sudu => "Okresný súd",
-        :asud_guid => "123",
-        :kraj_sudu => "Nitriansky kraj",
-        :okres_sudu => "Okres Nitra",
-        :stav_zmena => "1.11.2015",
-        :aktualizacia => "2015-12-08T00:00:00Z",
-        :lattitude_sudu => "48.3080863",
-        :longitude_sudu => "18.0830243"
-      }
-    )
 
     expect(judge.attributes.deep_symbolize_keys.except(:id, :created_at, :updated_at)).to eql(
       uri: 'https://obcan.justice.sk/infosud/-/infosud/reg-detail/sudca/sudca_1508',
@@ -127,7 +83,7 @@ RSpec.feature 'Import Judges' do
     expect(employments[0].court).to eql(Court.find_by(name: 'Okresný súd Levice'))
     expect(employments[0].position).to eql(Judge::Position.find_by(value: 'sudca'))
     expect(employments[0].active).to eql(true)
-    expect(employments[0].note).to be_nil
+    expect(employments[0].note).to eql('od 1. novembra 2015 do 31. októbra 2016 je dočasne pridelená na KS v Trenčíne')
 
     expect(employments[1].court).to eql(Court.find_by(name: 'Krajský súd Nitra'))
     expect(employments[1].position).to eql(Judge::Position.find_by(value: 'sudca'))

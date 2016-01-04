@@ -19,7 +19,7 @@ class JudgeReconciler
   def reconcile_attributes
     name = mapper.partitioned_name
 
-    judge.assign_attributes(
+    judge.update_attributes!(
       uri: mapper.uri,
       source: mapper.source,
       name: name[:value],
@@ -38,28 +38,25 @@ class JudgeReconciler
   end
 
   def reconcile_employment
-    position = Judge::Position.find_or_create_by!(value: mapper.position)
     court = Court.find_by(name: mapper.court)
+    employment = judge.employments.find_or_initialize_by(court: court)
 
-    EmploymentBuilder.build_or_update(judge.employments, court: court, position: position, active: mapper.active)
+    employment.update_attributes!(
+      position: Judge::Position.find_or_create_by!(value: mapper.position),
+      active: mapper.active,
+      note: mapper.note
+    )
   end
 
   def reconcile_temporary_employment
     return unless mapper.temporary_court
 
-    position = Judge::Position.find_or_create_by!(value: 'sudca')
     court = Court.find_by(name: mapper.temporary_court)
+    employment = judge.employments.find_or_initialize_by(court: court)
 
-    EmploymentBuilder.build_or_update(judge.employments, court: court, position: position, active: true)
-  end
-
-  class EmploymentBuilder
-    def self.build_or_update(association, court:, position:, active:)
-      employment = association.find_or_initialize_by(court: court, position: position)
-
-      employment.active = active
-
-      employment.save! unless employment.new_record?
-    end
+    employment.update_attributes!(
+      position: Judge::Position.find_or_create_by!(value: 'sudca'),
+      active: true
+    )
   end
 end
