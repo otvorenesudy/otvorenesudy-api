@@ -12,7 +12,7 @@ RSpec.feature 'Import Judges' do
     create(:court, name: 'Krajský súd Trenčín')
   end
 
-  scenario 'imports judges from InfoSud archives', vcr: { cassette_name: 'info_sud/judges' } do
+  scenario 'imports judges from InfoSud archives' do
     InfoSud::Importer.import(data, repository: InfoSud::Judge)
 
     expect(InfoSud::Judge.count).to eql(2)
@@ -70,7 +70,7 @@ RSpec.feature 'Import Judges' do
     expect(employments[1].note).to be_nil
   end
 
-  scenario 'updates judges from InfoSud archives and preserves their employment history', vcr: { cassette_name: 'info_sud/judges' } do
+  scenario 'updates judges from InfoSud archives and preserves their employment history' do
     Timecop.travel(30.minutes.ago) do
       InfoSud::Importer.import(data, repository: InfoSud::Judge)
     end
