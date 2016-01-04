@@ -47,7 +47,9 @@ class CourtReconciler
   end
 
   def reconcile_information_center
-    attributes = {
+    office = build_office(
+      'Informačné centrum',
+
       email: mapper.information_center_email,
       phone: mapper.information_center_phone,
       hours_monday: mapper.information_center_hours[0],
@@ -56,19 +58,15 @@ class CourtReconciler
       hours_thursday: mapper.information_center_hours[3],
       hours_friday: mapper.information_center_hours[4],
       note: mapper.information_center_note
-    }
+    )
 
-    return unless attributes.compact.any?
-
-    type = Court::Office::Type.find_by(value: 'Informačné centrum')
-    office = Court::Office.find_or_initialize_by(court: court, type: type)
-
-    office.assign_attributes(attributes)
-    court.information_center = office
+    court.information_center = office if office
   end
 
   def reconcile_registry_center
-    attributes = {
+    office = build_office(
+      'Podateľna',
+
       email: mapper.registry_center_email,
       phone: mapper.registry_center_phone,
       hours_monday: mapper.registry_center_hours[0],
@@ -77,19 +75,15 @@ class CourtReconciler
       hours_thursday: mapper.registry_center_hours[3],
       hours_friday: mapper.registry_center_hours[4],
       note: mapper.registry_center_note
-    }
+    )
 
-    return unless attributes.compact.any?
-
-    type = Court::Office::Type.find_by(value: 'Podateľna')
-    office = Court::Office.find_or_initialize_by(court: court, type: type)
-
-    office.assign_attributes(attributes)
-    court.registry_center = office
+    court.registry_center = office if office
   end
 
   def reconcile_business_registry_center
-    attributes = {
+    office = build_office(
+      'Informačné stredisko obchodného registra',
+
       email: mapper.business_registry_center_email,
       phone: mapper.business_registry_center_phone,
       hours_monday: mapper.business_registry_center_hours[0],
@@ -98,14 +92,21 @@ class CourtReconciler
       hours_thursday: mapper.business_registry_center_hours[3],
       hours_friday: mapper.business_registry_center_hours[4],
       note: mapper.business_registry_center_note
-    }
+    )
 
+    court.business_registry_center = office if office
+  end
+
+  private
+
+  def build_office(name, attributes)
     return unless attributes.compact.any?
 
-    type = Court::Office::Type.find_by(value: 'Informačné stredisko obchodného registra')
+    type = Court::Office::Type.find_by(value: name)
     office = Court::Office.find_or_initialize_by(court: court, type: type)
 
     office.assign_attributes(attributes)
-    court.business_registry_center = office
+
+    office
   end
 end
