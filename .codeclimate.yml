@@ -19,7 +19,7 @@ engines:
   fixme:
     enabled: true
   rubocop:
-    enabled: true
+    enabled: false
 ratings:
   paths:
   - Gemfile.lock
