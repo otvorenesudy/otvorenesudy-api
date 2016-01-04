@@ -7,13 +7,15 @@ class JudgeReconciler
   end
 
   def reconcile!
-    reconcile_attributes
-    reconcile_past_employments
-    reconcile_employment
-    reconcile_temporary_employment
+    judge.with_lock do
+      reconcile_attributes
+      reconcile_past_employments
+      reconcile_employment
+      reconcile_temporary_employment
 
-    judge.save!
-    judge.touch
+      judge.save!
+      judge.touch
+    end
   end
 
   def reconcile_attributes

@@ -31,6 +31,8 @@ RSpec.describe JudgeReconciler do
 
   describe '#reconcile!' do
     it 'reconciles and saves judge' do
+      expect(judge).to receive(:with_lock).and_yield
+
       expect(subject).to receive(:reconcile_attributes).ordered
       expect(subject).to receive(:reconcile_past_employments).ordered
       expect(subject).to receive(:reconcile_employment).ordered

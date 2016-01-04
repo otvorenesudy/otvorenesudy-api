@@ -40,6 +40,8 @@ RSpec.describe CourtReconciler do
 
   describe '#reconcile!' do
     it 'runs all reconciliations' do
+      expect(court).to receive(:with_lock).and_yield
+
       expect(subject).to receive(:reconcile_attributes).ordered
       expect(subject).to receive(:reconcile_type).ordered
       expect(subject).to receive(:reconcile_municipality).ordered

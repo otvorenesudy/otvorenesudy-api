@@ -7,15 +7,17 @@ class CourtReconciler
   end
 
   def reconcile!
-    reconcile_attributes
-    reconcile_type
-    reconcile_municipality
-    reconcile_information_center
-    reconcile_registry_center
-    reconcile_business_registry_center
+    court.with_lock do
+      reconcile_attributes
+      reconcile_type
+      reconcile_municipality
+      reconcile_information_center
+      reconcile_registry_center
+      reconcile_business_registry_center
 
-    court.save!
-    court.touch
+      court.save!
+      court.touch
+    end
   end
 
   def reconcile_attributes
