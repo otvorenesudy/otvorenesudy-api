@@ -16,11 +16,6 @@ module InfoSud
       "https://obcan.justice.sk/infosud/-/infosud/reg-detail/sudca/#{@data[:guid]}"
     end
 
-    def source
-      # TODO remove source dependency in legacy database
-      Source.find_by(module: 'JusticeGovSk')
-    end
-
     def name
       partitioned_name[:value]
     end

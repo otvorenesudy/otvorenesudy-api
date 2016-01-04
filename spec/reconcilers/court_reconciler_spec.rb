@@ -8,7 +8,6 @@ RSpec.describe CourtReconciler do
   let(:attributes) {
     {
       uri: 'http://path/to/file',
-      source: double(:source),
       name: 'Example Court',
       street: 'Example Avenue 45',
       phone: '+421 000 000 000',
@@ -57,8 +56,10 @@ RSpec.describe CourtReconciler do
 
   describe '#reconcile_attributes' do
     it 'reconciles attributes for court' do
+      allow(Source).to receive(:find_by).with(module: 'JusticeGovSk') { :source }
+
       expect(court).to receive(:assign_attributes).with(
-        attributes.slice(:uri, :source, :name, :street, :phone, :fax, :media_person, :media_phone, :longitude, :latitude, :acronym)
+        attributes.slice(:uri, :name, :street, :phone, :fax, :media_person, :media_phone, :longitude, :latitude, :acronym).merge(source: :source)
       )
 
       subject.reconcile_attributes

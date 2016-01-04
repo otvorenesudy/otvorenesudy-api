@@ -21,7 +21,7 @@ class CourtReconciler
   def reconcile_attributes
     court.assign_attributes(
       uri: mapper.uri,
-      source: mapper.source,
+      source: Source.find_by(module: 'JusticeGovSk'),
       name: mapper.name,
       street: mapper.street,
       phone: mapper.phone,

@@ -7,11 +7,9 @@ RSpec.describe JudgeReconciler do
   let(:judge) { double(:judge, employments: employments) }
   let(:employments) { double(:employments) }
 
-  let(:source) { double(:source) }
   let(:attributes) {
     {
       uri: 'uri',
-      source: source,
       partitioned_name: {
         value: 'JUDr. Peter Parker, PhD.',
         unprocessed: 'JUDr. Peter PARKER, Phd.',
@@ -47,9 +45,11 @@ RSpec.describe JudgeReconciler do
 
   describe '#reconcile_attributes' do
     it 'reconciles attributes for judge' do
+      allow(Source).to receive(:find_by).with(module: 'JusticeGovSk') { :source }
+
       expect(judge).to receive(:update_attributes!).with(
         uri: 'uri',
-        source: source,
+        source: :source,
         name: 'JUDr. Peter Parker, PhD.',
         name_unprocessed: 'JUDr. Peter PARKER, Phd.',
         prefix: 'JUDr.',

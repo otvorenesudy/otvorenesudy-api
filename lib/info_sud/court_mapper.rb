@@ -8,11 +8,6 @@ module InfoSud
       "https://obcan.justice.sk/infosud/-/infosud/reg-detail/sud/#{@data[:guid]}"
     end
 
-    def source
-      # TODO remove source dependency in legacy database
-      Source.find_by(module: 'JusticeGovSk')
-    end
-
     def name
       InfoSud::Normalizer.normalize_court_name(@data[:nazov])
     end

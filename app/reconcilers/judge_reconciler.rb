@@ -21,7 +21,7 @@ class JudgeReconciler
 
     judge.update_attributes!(
       uri: mapper.uri,
-      source: mapper.source,
+      source: Source.find_by(module: 'JusticeGovSk'),
       name: name[:value],
       name_unprocessed: name[:unprocessed],
       prefix: name[:prefix],
