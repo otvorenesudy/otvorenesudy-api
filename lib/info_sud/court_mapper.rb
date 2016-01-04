@@ -116,10 +116,6 @@ module InfoSud
 
     private
 
-    def phones
-      @data[:phone].sort_by { |e| e[:tel_type] }
-    end
-
     def map_phones(phones)
       phones.map { |e|
         InfoSud::Normalizer.normalize_phone(e[:tel_number])
