@@ -13,7 +13,7 @@ RSpec.describe InfoSud::Hearing do
   end
 
   describe 'after save' do
-    let(:record) { build(:info_sud_judge)  }
+    let(:record) { build(:info_sud_hearing)  }
 
     it 'enqueues reconciliation job' do
       expect { record }.not_to have_enqueued_job(ReconcileHearingJob).on_queue('reconcilers')
