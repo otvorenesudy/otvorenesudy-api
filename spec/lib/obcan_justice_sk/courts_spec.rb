@@ -1,15 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ObcanJusticeSk::Courts do
-  describe '.crawl' do
-    before :each do
-      ActiveJob::Base.queue_adapter = :test
-    end
-
-    after :each do
-      ActiveJob::Base.queue_adapter = :inline
-    end
-
+  describe '.crawl', active_job: { adapter: :test } do
     it 'enqueues job for crawling list of judges' do
       expect {
         ObcanJusticeSk::Courts.crawl

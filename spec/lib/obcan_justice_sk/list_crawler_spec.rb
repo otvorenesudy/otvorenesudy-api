@@ -16,15 +16,7 @@ RSpec.shared_examples_for ObcanJusticeSk::ListCrawler do
       end
     end
 
-    context 'with async adapter' do
-      before :each do
-        ActiveJob::Base.queue_adapter = :test
-      end
-
-      after :each do
-        ActiveJob::Base.queue_adapter = :inline
-      end
-
+    context 'with async adapter', active_job: { adapter: :test } do
       it 'enqueues job to queue with proper name' do
         expect {
           described_class.perform_later(url)
@@ -33,15 +25,7 @@ RSpec.shared_examples_for ObcanJusticeSk::ListCrawler do
     end
   end
 
-  describe '#perform' do
-    before :each do
-      ActiveJob::Base.queue_adapter = :test
-    end
-
-    after :each do
-      ActiveJob::Base.queue_adapter = :inline
-    end
-
+  describe '#perform', active_job: { adapter: :test } do
     it 'enqueues jobs for resources' do
       matchers = links.map { |link| have_enqueued_job(resource_crawler).with(link).on_queue(resource_queue) }
 

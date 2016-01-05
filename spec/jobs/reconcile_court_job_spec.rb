@@ -16,15 +16,7 @@ RSpec.describe ReconcileCourtJob do
     end
   end
 
-  describe '.perform_later' do
-    before :each do
-      ActiveJob::Base.queue_adapter = :test
-    end
-
-    after :each do
-      ActiveJob::Base.queue_adapter = :inline
-    end
-
+  describe '.perform_later', active_job: { adapter: :test } do
     it 'enqueues record for reconciliation' do
       record = create(:info_sud_court)
 

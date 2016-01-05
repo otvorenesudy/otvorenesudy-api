@@ -41,6 +41,7 @@ RSpec.configure do |config|
   # deprecation warning
   config.use_transactional_fixtures = false
 
+  # DatabaseRewinder
   config.before(:suite) do
     DatabaseRewinder['opencourts_test']
     DatabaseRewinder['test']
@@ -50,6 +51,16 @@ RSpec.configure do |config|
 
   config.after(:each) do
     DatabaseRewinder.clean
+  end
+
+  # ActiveJob
+  config.around(:each, :active_job) do |example|
+    former_adapter = ActiveJob::Base.queue_adapter
+    ActiveJob::Base.queue_adapter = example.metadata[:active_job][:adapter]
+
+    example.run
+
+    ActiveJob::Base.queue_adapter = former_adapter
   end
 
   # Factory syntax suggar

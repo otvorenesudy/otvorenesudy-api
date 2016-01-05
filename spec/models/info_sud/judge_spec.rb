@@ -4,15 +4,7 @@ require 'models/concerns/info_sud/importable_spec'
 RSpec.describe InfoSud::Judge do
   it_behaves_like InfoSud::Importable
 
-  before :each do
-    ActiveJob::Base.queue_adapter = :test
-  end
-
-  after :each do
-    ActiveJob::Base.queue_adapter = :inline
-  end
-
-  describe 'after save' do
+  describe 'after save', active_job: { adapter: :test } do
     let(:record) { build(:info_sud_judge)  }
 
     it 'enqueues reconciliation job' do
