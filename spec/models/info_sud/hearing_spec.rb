@@ -1,10 +1,10 @@
 require 'rails_helper'
 require 'models/concerns/info_sud/importable_spec'
 
-RSpec.describe InfoSud::Hearing do
+RSpec.describe InfoSud::Hearing, active_job: { adapter: :test } do
   it_behaves_like InfoSud::Importable
 
-  describe 'after save', active_job: { adapter: :test } do
+  describe 'after save' do
     let(:record) { build(:info_sud_hearing)  }
 
     it 'enqueues reconciliation job' do
