@@ -1,5 +1,6 @@
 require 'spec_helper'
 require 'info_sud'
+require_relative '../../../app/mappers/info_sud/judge_mapper'
 
 RSpec.describe InfoSud::JudgeMapper do
   subject { InfoSud::JudgeMapper.new(data) }

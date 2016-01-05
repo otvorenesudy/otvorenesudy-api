@@ -1,5 +1,6 @@
 require 'spec_helper'
 require 'info_sud'
+require_relative '../../../app/mappers/info_sud/hearing_mapper'
 
 RSpec.describe InfoSud::HearingMapper do
   subject { InfoSud::HearingMapper.new(data) }
@@ -76,8 +77,6 @@ RSpec.describe InfoSud::HearingMapper do
 
   describe '#special_type' do
     it 'maps special type' do
-      pending
-
       expect(subject.special_type).to be_nil
     end
   end
@@ -89,10 +88,28 @@ RSpec.describe InfoSud::HearingMapper do
   end
 
   describe '#type' do
-    it 'maps type' do
-      pending
+    context 'when court is specialized' do
+      let(:data) { { 'sud_nazov' => 'Špecializovaný trestný súd' } }
 
-      expect(subject.type).to eql(nil)
+      it 'maps type to special' do
+        expect(subject.type).to eql('Špecializovaného trestného súdu')
+      end
+    end
+
+    context 'when section is criminal and court it other than specilized' do
+      let(:data) { { 'usek' => 'T' } }
+
+      it 'maps type to criminal' do
+        expect(subject.type).to eql('Trestné')
+      end
+    end
+
+    context 'when section is other than criminal' do
+      let(:data) { { 'usek' => 'C' } }
+
+      it 'maps type to civil' do
+        expect(subject.type).to eql('Civilné')
+      end
     end
   end
 
