@@ -5,6 +5,8 @@ RSpec.feature 'Import Hearings' do
   let(:source) { create(:source, :justice_gov_sk) }
 
   scenario 'imports hearings from InfoSud archives' do
+    pending
+
     InfoSud::Importer.import(data, repository: InfoSud::Hearing)
 
     expect(InfoSud::Hearing.count).to eql(2)
