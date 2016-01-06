@@ -19,6 +19,7 @@ class JudgeReconciler
   end
 
   def reconcile_attributes
+    # TODO remove source, leave now for compatibility
     name = mapper.partitioned_name
 
     judge.update_attributes!(
@@ -40,6 +41,8 @@ class JudgeReconciler
   end
 
   def reconcile_employment
+    return unless mapper.court
+
     court = Court.find_by(name: mapper.court)
     employment = judge.employments.find_or_initialize_by(court: court)
 
