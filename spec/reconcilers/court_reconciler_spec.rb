@@ -134,7 +134,7 @@ RSpec.describe CourtReconciler do
     let(:office) { double(:office) }
 
     it 'reconciles registry center' do
-      allow(Court::Office::Type).to receive(:find_by).with(value: 'Podateľna') { :type }
+      allow(Court::Office::Type).to receive(:find_by).with(value: 'Podateľňa') { :type }
       allow(Court::Office).to receive(:find_or_initialize_by).with(court: court, type: :type) { office }
 
       expect(court).to receive(:registry_center=).with(office)
