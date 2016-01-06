@@ -8,7 +8,7 @@ module Legacy
     using Legacy::String
 
     def normalize_court_name(value)
-      value = value.to_s.utf8
+      value = value.clone.utf8
 
       value.gsub!(/[\-\,]/, '')
 
@@ -84,7 +84,7 @@ module Legacy
 
     def partition_person_name(value, options = {})
       copy  = value.clone
-      value = value.to_s.utf8
+      value = value.clone.utf8
 
       prefixes  = []
       suffixes  = []
@@ -220,13 +220,13 @@ module Legacy
     public
 
     def normalize_zipcode(value)
-      value = value.to_s.ascii.strip.gsub(/\s+/, '')
+      value = value.clone.ascii.strip.gsub(/\s+/, '')
 
       "#{value[0..2]} #{value[3..-1]}"
     end
 
     def normalize_street(value)
-      value = value.to_s.utf8
+      value = value.clone.utf8
 
       value.gsub!(/\,/, ' ')
       value.gsub!(/\.\s*/, '. ')
@@ -273,7 +273,7 @@ module Legacy
     end
 
     def normalize_hours(value)
-      value = value.to_s.ascii.gsub(/[a-z]+/i, '')
+      value = value.clone.ascii.gsub(/[a-z]+/i, '')
 
       times = value.split(/\s*\-\s*|\,\s*|\;\s*|\s+/).map do |time|
         hour, minute = time.split(/\:/)
