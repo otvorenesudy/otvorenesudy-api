@@ -40,3 +40,6 @@ module OpenCourtsApi
     # config.api_only = true
   end
 end
+
+require 'info_sud'
+require 'obcan_justice_sk'
