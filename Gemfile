@@ -8,6 +8,9 @@ gem 'sass-rails', github: 'rails/sass-rails'
 gem 'arel', github: 'rails/arel'
 gem 'rack', github: 'rack/rack'
 
+# Internationalization
+gem 'rails-i18n'
+
 # Database
 gem 'pg'
 

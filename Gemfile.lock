@@ -327,6 +327,9 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.2)
       loofah (~> 2.0)
+    rails-i18n (4.0.2)
+      i18n (~> 0.6)
+      rails (>= 4.0)
     raindrops (0.15.0)
     rake (10.4.2)
     redis (3.2.2)
@@ -428,6 +431,7 @@ DEPENDENCIES
   rack!
   rails!
   rails-controller-testing
+  rails-i18n
   rollbar (~> 2.4.0)
   rspec!
   rspec-core!
