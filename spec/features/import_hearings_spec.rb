@@ -2,7 +2,16 @@ require 'rails_helper'
 
 RSpec.feature 'Import Hearings' do
   let(:data) { fixture('info_sud/hearings.json').read }
-  let(:source) { create(:source, :justice_gov_sk) }
+  let!(:source) { create(:source, :justice_gov_sk) }
+  let!(:judge) { create(:judge, name: 'JUDr. Margaréta Hlaváčková') }
+
+  before :each do
+    create(:hearing_type, value: 'Trestné')
+    create(:hearing_type, value: 'Civilné')
+    create(:hearing_type, value: 'Špecializovaného trestného súdu')
+
+    create(:court, name: 'Okresný súd Košice I')
+  end
 
   scenario 'imports hearings from InfoSud archives' do
     pending
@@ -14,15 +23,15 @@ RSpec.feature 'Import Hearings' do
 
     hearing = Hearing.find_by(uri: 'https://obcan.justice.sk/infosud/-/infosud/i-detail/pojednavanie/94fed4fd-af4a-42c3-8c21-788358207927')
     court = Court.find_by(name: 'Okresný súd Košice I')
-    type = Hearing::Type.find_by(value: "TODO")
+    type = Hearing::Type.find_by(value: 'Trestné')
     section = Hearing::Section.find_by(value: 'T')
     subject = Hearing::Subject.find_by(value: '4Pv 461/14 - § 189 ods. 1 Tr. zák.')
     form = Hearing::Form.find_by(value: 'Hlavné pojednávanie s rozhodnutím')
     proceeding = Proceeding.find_by(file_number: '7115010154')
 
-    expect(hearing.attributes.except(:id, :created_at, :updated_at)).to eql(
+    expect(hearing.attributes.symbolize_keys.except(:id, :created_at, :updated_at)).to eql(
       uri: 'https://obcan.justice.sk/infosud/-/infosud/i-detail/pojednavanie/94fed4fd-af4a-42c3-8c21-788358207927',
-      source: source,
+      source_id: source.id,
       case_number: '3T/9/2015',
       file_number: '7115010154',
       date: Time.parse('2015-12-07T12:30:00Z'),
@@ -44,10 +53,9 @@ RSpec.feature 'Import Hearings' do
     expect(hearing.proposers.to_a).to be_empty
     expect(hearing.opponents.to_a).to be_empty
     expect(hearing.defendants.pluck(:name)).to eql(['Peter Pan'])
-    expect(hearing.judges.pluck(:name)).to eql(['JUDr. Margaréta Hlaváčková'])
+    expect(hearing.judges).to eql([judge])
   end
 
   scenario 'updated hearings from InfoSud archives' do
-
   end
 end
