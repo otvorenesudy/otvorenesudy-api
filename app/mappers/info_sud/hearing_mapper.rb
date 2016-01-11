@@ -60,25 +60,31 @@ module InfoSud
     end
 
     def proposers
-      map_participants(@data[:navrhovatel])
+      @data[:navrhovatel] || []
     end
 
     def opponents
-      map_participants(@data[:mena_odporcov])
+      @data[:mena_odporcov] || []
     end
 
     def defendants
-      map_participants(@data[:mena_obzalovanych])
+      @data[:mena_obzalovanych] || []
     end
 
     def judges
-      @data[:sudca_meno].map { |name| InfoSud::Normalizer.normalize_person_name(name)  }
+      court == 'Špecializovaný trestný súd' ? [] : map_judges
+    end
+
+    def chair_judges
+      court == 'Špecializovaný trestný súd' ? map_judges : []
     end
 
     private
 
-    def map_participants(participants)
-      participants.map { |name| InfoSud::Normalizer.normalize_person_name(name) }
+    def map_judges
+      names = @data[:sudca_meno] || []
+
+      names.map { |name| InfoSud::Normalizer.partition_person_name(name) }
     end
   end
 end

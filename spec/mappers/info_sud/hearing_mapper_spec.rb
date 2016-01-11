@@ -152,6 +152,22 @@ RSpec.describe InfoSud::HearingMapper do
   describe '#judges' do
     it 'maps judges' do
       expect(subject.judges).to eql(['JUDr. Margaréta Hlaváčková'])
+      expect(subject.chair_judges).to be_empty
+    end
+
+    context 'when court is specialized' do
+      let(:data) {
+        {
+          "sud_nazov"=>"Špecializovaný trestný súd",
+          "sudca_meno"=>["JUDr. Margaréta Hlaváčková"],
+        }
+
+      }
+
+      it 'maps judges as chair' do
+        expect(subject.chair_judges).to eql(['JUDr. Margaréta Hlaváčková'])
+        expect(subject.judges).to be_empty
+      end
     end
   end
 end
