@@ -8,7 +8,7 @@ module Legacy
     using Legacy::String
 
     def normalize_court_name(value)
-      value = value.clone.utf8
+      value = value.to_s.clone.utf8
 
       value.gsub!(/[\-\,]/, '')
 
