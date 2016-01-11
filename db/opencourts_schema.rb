@@ -11,12 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151027124327) do
+ActiveRecord::Schema.define(version: 20160111115719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "pg_trgm"
-  enable_extension "unaccent"
 
   create_table "accusations", force: :cascade do |t|
     t.integer  "defendant_id",                  null: false
@@ -450,7 +448,7 @@ ActiveRecord::Schema.define(version: 20151027124327) do
 
   create_table "judgements", force: :cascade do |t|
     t.integer  "decree_id",                                                  null: false
-    t.integer  "judge_id",                                                   null: false
+    t.integer  "judge_id"
     t.decimal  "judge_name_similarity",              precision: 3, scale: 2, null: false
     t.string   "judge_name_unprocessed", limit: 255,                         null: false
     t.datetime "created_at",                                                 null: false
@@ -483,7 +481,7 @@ ActiveRecord::Schema.define(version: 20151027124327) do
 
   create_table "judgings", force: :cascade do |t|
     t.integer  "hearing_id",                                                 null: false
-    t.integer  "judge_id",                                                   null: false
+    t.integer  "judge_id"
     t.decimal  "judge_name_similarity",              precision: 3, scale: 2, null: false
     t.string   "judge_name_unprocessed", limit: 255,                         null: false
     t.boolean  "judge_chair",                                                null: false
