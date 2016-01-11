@@ -10,7 +10,7 @@ RSpec.describe JudgeReconciler do
   let(:attributes) {
     {
       uri: 'uri',
-      partitioned_name: {
+      name: {
         value: 'JUDr. Peter Parker, PhD.',
         unprocessed: 'JUDr. Peter PARKER, Phd.',
         prefix: 'JUDr.',

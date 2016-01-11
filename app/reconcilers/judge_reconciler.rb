@@ -20,7 +20,7 @@ class JudgeReconciler
 
   def reconcile_attributes
     # TODO remove source, leave now for compatibility
-    name = mapper.partitioned_name
+    name = mapper.name
 
     judge.update_attributes!(
       uri: mapper.uri,

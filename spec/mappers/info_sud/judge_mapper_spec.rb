@@ -33,14 +33,8 @@ RSpec.describe InfoSud::JudgeMapper do
   end
 
   describe '#name' do
-    it 'maps judge name' do
-      expect(subject.name).to eql('JUDr. Magdaléna Balážová')
-    end
-  end
-
-  describe '#partitioned_name' do
     it 'maps judge name into parts' do
-      expect(subject.partitioned_name).to eql(
+      expect(subject.name).to eql(
         value: 'JUDr. Magdaléna Balážová',
         unprocessed: 'JUDr. Magdaléna BALÁŽOVÁ',
         prefix: 'JUDr.',
