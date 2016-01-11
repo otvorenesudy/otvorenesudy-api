@@ -12,7 +12,7 @@ RSpec.describe InfoSud::HearingMapper do
       "usek"=>"T",
       "predmet"=>"4Pv 461/14 - § 189 ods. 1 Tr. zák.",
       "sud_typ"=>"Okresný súd",
-      "poznamka"=>"",
+      "poznamka"=>"poznamka",
       "sud_guid"=>"148",
       "sud_kraj"=>"Košický kraj",
       "miestnost"=>"135",
@@ -70,8 +70,8 @@ RSpec.describe InfoSud::HearingMapper do
   end
 
   describe '#note' do
-    it 'spec_name' do
-      expect(subject.note).to be_nil
+    it 'maps note' do
+      expect(subject.note).to eql('poznamka')
     end
   end
 
