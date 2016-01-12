@@ -7,7 +7,7 @@ class HearingFinder
       file_number: attributes.file_number,
       judges: {
         name: attributes.judges + attributes.chair_judges
-      },
+      }
     )
   end
 end
