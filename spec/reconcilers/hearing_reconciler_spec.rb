@@ -26,7 +26,10 @@ RSpec.describe HearingReconciler do
       ],
       chair_judges: [
         { value: 'JUDr. Peter Parker', unprocessed: 'JUDR Peter Parker' }
-      ]
+      ],
+      opponents: ['Peter Pan', 'John Smith'],
+      defendants: ['John Pan'],
+      proposers: ['John Smithy']
     }
   }
 
@@ -99,7 +102,7 @@ RSpec.describe HearingReconciler do
         judge_name_unprocessed: 'JUDR Peter Parker',
         judge_name_similarity: 1,
         judge_chair: true
-      )
+      ).and_return(:judging_1)
 
       expect(Judging).to receive(:find_or_create_by!).with(
         judge: :judge_1,
@@ -107,7 +110,9 @@ RSpec.describe HearingReconciler do
         judge_name_unprocessed: 'JuDR Peter Pan',
         judge_name_similarity: 1,
         judge_chair: false
-      )
+      ).and_return(:judging_2)
+
+      expect(hearing).to receive(:purge!).with(:judgings, except: [:judging_1, :judging_2])
 
       subject.reconcile_judges
     end
@@ -133,8 +138,41 @@ RSpec.describe HearingReconciler do
           judge_chair: false
         )
 
+        expect(hearing).to receive(:purge!)
+
         subject.reconcile_judges
       end
+    end
+  end
+
+  describe '#reconcile_opponents' do
+    it 'reconciles opponents' do
+      expect(Opponent).to receive(:find_or_create_by!).with(name: 'Peter Pan', name_unprocessed: 'Peter Pan', hearing: hearing).and_return(:opponent_1)
+      expect(Opponent).to receive(:find_or_create_by!).with(name: 'John Smith', name_unprocessed: 'John Smith', hearing: hearing).and_return(:opponent_2)
+
+      expect(hearing).to receive(:purge!).with(:opponents, except: [:opponent_1, :opponent_2])
+
+      subject.reconcile_opponents
+    end
+  end
+
+  describe '#reconcile_defendants' do
+    it 'reconciles defendants' do
+      expect(Defendant).to receive(:find_or_create_by!).with(name: 'John Pan', name_unprocessed: 'John Pan', hearing: hearing).and_return(:defendant_1)
+
+      expect(hearing).to receive(:purge!).with(:defendants, except: [:defendant_1])
+
+      subject.reconcile_defendants
+    end
+  end
+
+  describe '#reconcile_proposers' do
+    it 'reconciles proposers' do
+      expect(Proposer).to receive(:find_or_create_by!).with(name: 'John Smithy', name_unprocessed: 'John Smithy', hearing: hearing).and_return(:proposer_1)
+
+      expect(hearing).to receive(:purge!).with(:proposers, except: [:proposer_1])
+
+      subject.reconcile_proposers
     end
   end
 end

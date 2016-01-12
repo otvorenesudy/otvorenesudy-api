@@ -73,25 +73,33 @@ class HearingReconciler
       )
     }
 
-    mapper.chair_judges.each { |name| reconciler.call(name, chair: true) }
-    mapper.judges.each { |name| reconciler.call(name, chair: false) }
+    judgings = mapper.chair_judges.map { |name| reconciler.call(name, chair: true) }
+    judgings += mapper.judges.map { |name| reconciler.call(name, chair: false) }
+
+    hearing.purge!(:judgings, except: judgings)
   end
 
   def reconcile_opponents
-    mapper.opponents.each do |name|
+    opponents = mapper.opponents.map do |name|
       Opponent.find_or_create_by!(name: name, name_unprocessed: name, hearing: hearing)
     end
+
+    hearing.purge!(:opponents, except: opponents)
   end
 
   def reconcile_defendants
-    mapper.defendants.each do |name|
+    defendants = mapper.defendants.map do |name|
       Defendant.find_or_create_by!(name: name, name_unprocessed: name, hearing: hearing)
     end
+
+    hearing.purge!(:defendants, except: defendants)
   end
 
   def reconcile_proposers
-    mapper.proposers.each do |name|
+    proposers = mapper.proposers.map do |name|
       Proposer.find_or_create_by!(name: name, name_unprocessed: name, hearing: hearing)
     end
+
+    hearing.purge!(:proposers, except: proposers)
   end
 end

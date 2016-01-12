@@ -2,7 +2,7 @@ require 'spec_helper'
 
 RSpec.describe ReconcileJudgeJob do
   let(:record) { double(:record, to_mapper: mapper) }
-  let(:mapper) { double(:mapper, name: 'JUDr. Peter Pan') }
+  let(:mapper) { double(:mapper, name: { value: 'JUDr. Peter Pan' }) }
   let(:reconciler) { double(:reconciler)  }
   let(:judge) { double(:judge) }
 

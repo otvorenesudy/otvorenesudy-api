@@ -1,0 +1,64 @@
+{
+  "data" : [
+    {
+      "ecli" : "ECLI:SK:OSKE1:2015:7115010154.5",
+      "guid" : "94fed4fd-af4a-42c3-8c21-788358207927",
+      "usek" : "C",
+      "predmet" : "4Pv 461/14 - § 189 ods. 1 Tr. zák.",
+      "sud_typ" : "Okresný súd",
+      "poznamka" : "",
+      "sud_guid" : "148",
+      "sud_kraj" : "Nitriansky kraj",
+      "miestnost" : "135",
+      "sud_nazov" : "Okresný súd Nitra",
+      "sud_okres" : "Okres Nitra",
+      "sudca_guid" : [
+        "185"
+      ],
+      "sudca_meno" : [
+        "JUDr. Petra Hlaváčková"
+      ],
+      "forma_ukonu" : "Hlavné pojednávanie s rozhodnutím",
+      "navrhovatel" : ["Peter Parker"],
+      "je_samosudca" : true,
+      "mena_odporcov" : ["Peter Smith"],
+      "spisova_znacka" : "3T/9/2015",
+      "datum_zapocatia" : null,
+      "index_timestamp" : "2015-12-03T12:26:05.395Z",
+      "mena_obzalovanych" : null,
+      "datum_a_cas_pojednavania" : "2015-12-07T12:30:00Z",
+      "identifikacne_cislo_spisu" : "123456789"
+    },
+    {
+      "ecli" : "ECLI:SK:OSTT:2015:2115214896.3",
+      "guid" : "4519faf0-b9c7-4f00-8b6d-de2f50567a87",
+      "usek" : "O",
+      "predmet" : "vyhlásenie konkurzu",
+      "sud_typ" : "Okresný súd",
+      "poznamka" : "",
+      "sud_guid" : "110",
+      "sud_kraj" : "Trnavský kraj",
+      "miestnost" : "148 OS",
+      "sud_nazov" : "Okresný súd Trnava",
+      "sud_okres" : "Okres Trnava",
+      "sudca_guid" : [
+        "101"
+      ],
+      "sudca_meno" : [
+        "JUDr. Dagmar Valocká"
+      ],
+      "forma_ukonu" : "Pojednávanie a rozhodnutie",
+      "navrhovatel" : null,
+      "je_samosudca" : true,
+      "mena_odporcov" : [
+        "Ing. Vladimír Vladimirovič"
+      ],
+      "spisova_znacka" : "25K/19/2015",
+      "datum_zapocatia" : null,
+      "index_timestamp" : "2015-12-03T12:24:37.242Z",
+      "mena_obzalovanych" : null,
+      "datum_a_cas_pojednavania" : "2015-09-24T06:30:00Z",
+      "identifikacne_cislo_spisu" : "2115214896"
+    }
+  ]
+}
