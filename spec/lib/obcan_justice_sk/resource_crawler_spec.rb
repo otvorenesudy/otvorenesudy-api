@@ -12,15 +12,7 @@ RSpec.shared_examples_for ObcanJusticeSk::ResourceCrawler do
       described_class.perform_later(uri)
     end
 
-    context 'with async adapter' do
-      before :each do
-        ActiveJob::Base.queue_adapter = :test
-      end
-
-      after :each do
-        ActiveJob::Base.queue_adapter = :inline
-      end
-
+    context 'with async adapter', active_job: { adapter: :test } do
       it 'enques job to queue with proper name' do
         expect {
           described_class.perform_later(uri)

@@ -6,7 +6,7 @@ RSpec.feature 'Import Courts' do
   let!(:office_types) {
     [
       create(:court_office_type, value: 'Informačné centrum'),
-      create(:court_office_type, value: 'Podateľna'),
+      create(:court_office_type, value: 'Podateľňa'),
       create(:court_office_type, value: 'Informačné stredisko obchodného registra')
     ]
   }

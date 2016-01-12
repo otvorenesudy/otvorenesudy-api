@@ -1,15 +1,7 @@
 require 'rails_helper'
 
 RSpec.shared_examples_for ObcanJusticeSk::Infrastructure do
-  describe '.crawl' do
-    before :each do
-      ActiveJob::Base.queue_adapter = :test
-    end
-
-    after :each do
-      ActiveJob::Base.queue_adapter = :inline
-    end
-
+  describe '.crawl', active_job: { adapter: :test } do
     it 'enqueues crawlers for all lists' do
       params = [
         described_class.uri.build(page: 1),

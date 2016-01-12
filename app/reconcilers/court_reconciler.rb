@@ -21,6 +21,7 @@ class CourtReconciler
   end
 
   def reconcile_attributes
+    # TODO remove source, leave now for compatibility
     court.assign_attributes(
       uri: mapper.uri,
       source: Source.find_by(module: 'JusticeGovSk'),
@@ -67,7 +68,7 @@ class CourtReconciler
 
   def reconcile_registry_center
     office = build_office(
-      'Podateľna',
+      'Podateľňa',
 
       email: mapper.registry_center_email,
       phone: mapper.registry_center_phone,

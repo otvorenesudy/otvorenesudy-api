@@ -17,15 +17,11 @@ module InfoSud
     end
 
     def name
-      partitioned_name[:value]
-    end
-
-    def partitioned_name
       InfoSud::Normalizer.partition_person_name(@data[:meno])
     end
 
     def position
-      @data[:funkcia].downcase
+      @data[:funkcia].try(:downcase)
     end
 
     def active
@@ -37,7 +33,7 @@ module InfoSud
     end
 
     def court
-      InfoSud::Normalizer.normalize_court_name(@data[:sud])
+      InfoSud::Normalizer.normalize_court_name(@data[:sud]) if @data[:sud]
     end
 
     def temporary_court
