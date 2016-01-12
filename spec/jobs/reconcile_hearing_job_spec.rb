@@ -2,7 +2,7 @@ require 'spec_helper'
 
 RSpec.describe ReconcileHearingJob do
   let(:record) { double(:record, to_mapper: mapper) }
-  let(:mapper) { double(:mapper) }
+  let(:mapper) { double(:mapper, uri: 'uri') }
   let(:reconciler) { double(:reconciler) }
   let(:hearing) { double(:hearing) }
 
@@ -13,6 +13,17 @@ RSpec.describe ReconcileHearingJob do
       expect(reconciler).to receive(:reconcile!)
 
       ReconcileHearingJob.new.perform(record)
+    end
+
+    context 'when hearing does not exist' do
+      it 'initializes new one' do
+        allow(HearingFinder).to receive(:find_by).with(mapper) { nil }
+        allow(Hearing).to receive(:new).with(uri: 'uri') { hearing }
+        allow(HearingReconciler).to receive(:new).with(hearing, mapper: mapper) { reconciler }
+        expect(reconciler).to receive(:reconcile!)
+
+        ReconcileHearingJob.new.perform(record)
+      end
     end
   end
 
