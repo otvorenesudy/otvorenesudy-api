@@ -2,6 +2,8 @@ class HearingFinder
   def self.find_by(attributes, relation: Hearing)
     return relation.find_by(uri: attributes.uri) if Hearing.exists?(uri: attributes.uri)
 
+    return if !attributes.date || !attributes.file_number
+
     relation.joins(:judges).find_by(
       date: attributes.date,
       file_number: attributes.file_number,
