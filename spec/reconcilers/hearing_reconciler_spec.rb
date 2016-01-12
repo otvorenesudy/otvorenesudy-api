@@ -21,12 +21,8 @@ RSpec.describe HearingReconciler do
       section: 'Civilný',
       subject: 'Zaplatenie pokuty - 33 eur',
       form: 'Verejné zasadnutie',
-      judges: [
-        { value: 'JUDr. Peter Pan', unprocessed: 'JuDR Peter Pan' }
-      ],
-      chair_judges: [
-        { value: 'JUDr. Peter Parker', unprocessed: 'JUDR Peter Parker' }
-      ],
+      judges: ['JUDr. Peter Pan'],
+      chair_judges: ['JUDr. Peter Parker'],
       opponents: ['Peter Pan', 'John Smith'],
       defendants: ['John Pan'],
       proposers: ['John Smithy']
@@ -99,7 +95,7 @@ RSpec.describe HearingReconciler do
       expect(Judging).to receive(:find_or_create_by!).with(
         judge: :judge_2,
         hearing: hearing,
-        judge_name_unprocessed: 'JUDR Peter Parker',
+        judge_name_unprocessed: 'JUDr. Peter Parker',
         judge_name_similarity: 1,
         judge_chair: true
       ).and_return(:judging_1)
@@ -107,7 +103,7 @@ RSpec.describe HearingReconciler do
       expect(Judging).to receive(:find_or_create_by!).with(
         judge: :judge_1,
         hearing: hearing,
-        judge_name_unprocessed: 'JuDR Peter Pan',
+        judge_name_unprocessed: 'JUDr. Peter Pan',
         judge_name_similarity: 1,
         judge_chair: false
       ).and_return(:judging_2)
@@ -125,7 +121,7 @@ RSpec.describe HearingReconciler do
         expect(Judging).to receive(:find_or_create_by!).with(
           judge: :judge_2,
           hearing: hearing,
-          judge_name_unprocessed: 'JUDR Peter Parker',
+          judge_name_unprocessed: 'JUDr. Peter Parker',
           judge_name_similarity: 1,
           judge_chair: true
         )
@@ -133,7 +129,7 @@ RSpec.describe HearingReconciler do
         expect(Judging).to receive(:find_or_create_by!).with(
           judge: nil,
           hearing: hearing,
-          judge_name_unprocessed: 'JuDR Peter Pan',
+          judge_name_unprocessed: 'JUDr. Peter Pan',
           judge_name_similarity: 0,
           judge_chair: false
         )

@@ -85,7 +85,7 @@ module InfoSud
       # TODO pass in only normalized and unprocessed value
       names = @data[:sudca_meno] || []
 
-      names.map { |name| InfoSud::Normalizer.partition_person_name(name) }
+      names.map { |name| InfoSud::Normalizer.normalize_person_name(name) }
     end
   end
 end

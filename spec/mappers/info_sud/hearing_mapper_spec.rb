@@ -151,7 +151,7 @@ RSpec.describe InfoSud::HearingMapper do
 
   describe '#judges' do
     it 'maps judges' do
-      expect(subject.judges.map { |e| e[:value] }).to eql(['JUDr. Margaréta Hlaváčková'])
+      expect(subject.judges).to eql(['JUDr. Margaréta Hlaváčková'])
       expect(subject.chair_judges).to be_empty
     end
 
@@ -165,7 +165,7 @@ RSpec.describe InfoSud::HearingMapper do
       }
 
       it 'maps judges as chair' do
-        expect(subject.chair_judges.map { |e| e[:value] }).to eql(['JUDr. Margaréta Hlaváčková'])
+        expect(subject.chair_judges).to eql(['JUDr. Margaréta Hlaváčková'])
         expect(subject.judges).to be_empty
       end
     end
