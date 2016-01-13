@@ -95,23 +95,23 @@ RSpec.describe HearingReconciler do
       judgings = [double(:judging), double(:judging)]
 
       expect(Judging).to receive(:find_or_initialize_by).with(
-        judge: :judge_2,
+        judge_name_unprocessed: 'JUDr. Peter Parker',
         hearing: hearing
       ).and_return(judgings[0])
 
       expect(Judging).to receive(:find_or_initialize_by).with(
-        judge: :judge_1,
+        judge_name_unprocessed: 'JUDr. Peter Pan',
         hearing: hearing
       ).and_return(judgings[1])
 
       expect(judgings[0]).to receive(:update_attributes!).with(
-        judge_name_unprocessed: 'JUDr. Peter Parker',
+        judge: :judge_2,
         judge_name_similarity: 1,
         judge_chair: true
       )
 
       expect(judgings[1]).to receive(:update_attributes!).with(
-        judge_name_unprocessed: 'JUDr. Peter Pan',
+        judge: :judge_1,
         judge_name_similarity: 1,
         judge_chair: false
       )
@@ -127,12 +127,12 @@ RSpec.describe HearingReconciler do
         allow(JudgeFinder).to receive(:find_by).with(name: 'JUDr. Peter Parker') { :judge_2 }
 
         expect(Judging).to receive(:find_or_initialize_by).with(
-          judge: :judge_2,
+          judge_name_unprocessed: 'JUDr. Peter Parker',
           hearing: hearing,
         ).and_return(double.as_null_object)
 
         expect(Judging).to receive(:find_or_initialize_by).with(
-          judge: nil,
+          judge_name_unprocessed: 'JUDr. Peter Pan',
           hearing: hearing,
         ).and_return(double.as_null_object)
 
