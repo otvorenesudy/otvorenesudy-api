@@ -120,4 +120,10 @@ RSpec.describe InfoSud::DecreeMapper do
       expect(subject.legislation_subarea).to eql('Vyživovacie povinnosti')
     end
   end
+
+  describe '#pages' do
+    it 'maps pages from pdf document' do
+      expect(subject.pages).to eql(['Fulltext'])
+    end
+  end
 end

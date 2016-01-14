@@ -78,5 +78,9 @@ module InfoSud
         InfoSud::Normalizer.partition_legislation(string).merge(value: string, value_unprocessed: string)
       end
     end
+
+    def pages
+      [@data[:dokument_fulltext]]
+    end
   end
 end
