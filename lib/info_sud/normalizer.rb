@@ -34,5 +34,14 @@ module InfoSud
     def self.partition_person_name(value)
       Legacy::Normalizer.partition_person_name(value)
     end
+
+    def self.partition_legislation(value)
+      year, number = value.match(/\A\/SK\/ZZ\/(\d{4})\/(\d+)/)[1..2].map(&:to_i)
+      _, paragraph = *value.match(/paragraf-(\d+)/)
+      _, section = *value.match(/odsek-(\w+)/)
+      _, letter = *value.match(/pismeno-(\w+)/)
+
+      { year: year, number: number, paragraph: paragraph, section: section, letter: letter }.compact
+    end
   end
 end
