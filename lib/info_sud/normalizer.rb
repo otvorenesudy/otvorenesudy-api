@@ -36,7 +36,7 @@ module InfoSud
     end
 
     def self.partition_legislation(value)
-      year, number = value.match(/\A\/SK\/ZZ\/(\d{4})\/(\d+)/)[1..2].map(&:to_i)
+      year, number = value.match(/\A\/SK\/ZZ\/(\d+)\/(\d+)/)[1..2].map(&:to_i)
       _, paragraph = *value.match(/paragraf-(\d+)/)
       _, section = *value.match(/odsek-(\w+)/)
       _, letter = *value.match(/pismeno-(\w+)/)
