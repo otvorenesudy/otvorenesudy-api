@@ -121,9 +121,9 @@ RSpec.describe InfoSud::DecreeMapper do
     end
   end
 
-  describe '#pages' do
-    it 'maps pages from pdf document' do
-      expect(subject.pages).to eql(['Fulltext'])
+  describe '#text' do
+    it 'maps text from pdf document' do
+      expect(subject.text).to eql('Fulltext')
     end
   end
 end

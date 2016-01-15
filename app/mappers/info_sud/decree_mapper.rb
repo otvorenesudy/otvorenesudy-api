@@ -2,8 +2,10 @@ module InfoSud
   class DecreeMapper
     FORM_CODE_MAP = {
       'Rozsudok' => 'A',
+      'Rozhodnutie' => 'A',
       'Uznesenie' => 'N',
       'Opravné uznesenie' => 'R',
+      'Dopĺňacie uznesenie' => 'R',
       'Dopĺňací rozsudok' => 'D',
       'Platobný rozkaz' => 'P',
       'Zmenkový platobný rozkaz' => 'M',
@@ -74,13 +76,13 @@ module InfoSud
     end
 
     def legislations
-      @data[:odkazovane_predpisy].map do |string|
+      Array.wrap(@data[:odkazovane_predpisy].presence).map do |string|
         InfoSud::Normalizer.partition_legislation(string).merge(value: string, value_unprocessed: string)
       end
     end
 
-    def pages
-      [@data[:dokument_fulltext]]
+    def text
+      @data[:dokument_fulltext].presence
     end
   end
 end
