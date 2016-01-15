@@ -1,0 +1,81 @@
+{
+  "data" : [
+    {
+      "ecli" : "ECLI:SK:OSRV:2015:7813210471.2",
+      "guid" : "8db35214-01e6-4ed9-bf10-02f41884dec2:a0ab01fc-955b-4c8b-a3f0-975fe178edeb",
+      "sud_typ" : "Okresný súd",
+      "sud_guid" : "152",
+      "sud_kraj" : "Košický kraj",
+      "sud_nazov" : "Okresný súd Košice I",
+      "sud_okres" : "Okres Košice",
+      "sudca_guid" : "118",
+      "sudca_meno" : "Mgr. Ján Krak",
+      "dokument_nazov" : "Uznesenie_9Er-1167-2013.pdf",
+      "spisova_znacka" : "9Er/1167/2013",
+      "index_timestamp" : "2015-12-02T19:32:57.526Z",
+      "sudca_meno_text" : "Mgr. Milan Krak",
+      "vazby_na_eurlex" : "",
+      "dokument_fulltext" : "Fulltext #1",
+      "forma_rozhodnutia" : "Uznesenie",
+      "nadpis_rozhodnutia" : "",
+      "povaha_rozhodnutia" : [
+        "Prvostupňové nenapadnuté opravnými prostriedkami"
+      ],
+      "odkazovane_predpisy" : [
+        "/SK/ZZ/1996/234/#paragraf-58.odsek-2.pismeno-d"
+      ],
+      "oblast_pravnej_upravy" : [
+        "Obchodné právo"
+      ],
+      "dokument_download_link" : "https://obcan.justice.sk/content/public/item/a0ab01fc-955b-4c8b-a3f0-975fe178edeb",
+      "odkazovane_predpisy_iri" : "",
+      "podoblast_pravnej_upravy" : [
+        "Iné"
+      ],
+      "datum_vydania_rozhodnutia" : "2015-04-12T22:00:00Z",
+      "identifikacne_cislo_spisu" : "7813210471",
+      "vazby_na_eu_sudne_rozhodnutie" : "",
+      "vazby_na_sk_sudne_rozhodnutie" : ""
+    },
+    {
+      "ecli" : "ECLI:SK:OSTT:2015:2115208737.2",
+      "guid" : "3a6523c3-d148-477f-a3dd-c972055c078a:e173c39e-7029-48d8-8aa1-d50a5ae66b40",
+      "sud_typ" : "Okresný súd",
+      "sud_guid" : "110",
+      "sud_kraj" : "Trnavský kraj",
+      "sud_nazov" : "Okresný súd Trnava",
+      "sud_okres" : "Okres Trnava",
+      "sudca_guid" : "101",
+      "sudca_meno" : "JUDr. Dagmar Valocká",
+      "dokument_nazov" : "Uznesenie_25Cbi-7-2015.pdf",
+      "spisova_znacka" : "25Cbi/7/2015",
+      "index_timestamp" : "2015-12-02T19:32:31.859Z",
+      "sudca_meno_text" : "JUDr. Dagmar Valocká",
+      "vazby_na_eurlex" : "",
+      "dokument_fulltext" : "Fulltext #2",
+      "forma_rozhodnutia" : "Uznesenie",
+      "nadpis_rozhodnutia" : "",
+      "povaha_rozhodnutia" : [
+        "Prvostupňové nenapadnuté opravnými prostriedkami"
+      ],
+      "odkazovane_predpisy" : [
+        "/SK/ZZ/1963/99",
+        "/SK/ZZ/1963/99/#paragraf-96.odsek-1",
+        "/SK/ZZ/1963/99/#paragraf-96.odsek-2",
+        "/SK/ZZ/1963/99/#paragraf-96.odsek-3",
+        "/SK/ZZ/1963/99/#paragraf-146.odsek-1",
+        "/SK/ZZ/1963/99/#paragraf-146.odsek-2"
+      ],
+      "oblast_pravnej_upravy" : "",
+      "dokument_download_link" : "https://obcan.justice.sk/content/public/item/e173c39e-7029-48d8-8aa1-d50a5ae66b40",
+      "odkazovane_predpisy_iri" : "",
+      "podoblast_pravnej_upravy" : [
+        "Iné"
+      ],
+      "datum_vydania_rozhodnutia" : "2015-07-16T22:00:00Z",
+      "identifikacne_cislo_spisu" : "2115208737",
+      "vazby_na_eu_sudne_rozhodnutie" : "",
+      "vazby_na_sk_sudne_rozhodnutie" : ""
+    }
+  ]
+}

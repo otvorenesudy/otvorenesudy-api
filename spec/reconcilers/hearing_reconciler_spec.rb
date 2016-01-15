@@ -31,8 +31,8 @@ RSpec.describe HearingReconciler do
 
   describe '#reconcile_attributes' do
     it 'reconciles attributes' do
-      allow(Source).to receive(:find_by).with(module: 'JusticeGovSk') { source }
-      allow(Hearing::Type).to receive(:find_or_create_by!).with(value: 'Trestné') { :type }
+      allow(Source).to receive(:find_by!).with(module: 'JusticeGovSk') { source }
+      allow(Hearing::Type).to receive(:find_by!).with(value: 'Trestné') { :type }
 
       expect(hearing).to receive(:update_attributes!).with(
         attributes.slice(:uri, :case_number, :file_number, :date, :room, :selfjudge, :note, :special_type).merge(type: :type, source: source)
@@ -44,7 +44,7 @@ RSpec.describe HearingReconciler do
 
   describe '#reconcile_court' do
     it 'reconciles court' do
-      allow(Court).to receive(:find_by).with(name: 'Krajský súd Bratislava I') { :court }
+      allow(Court).to receive(:find_by!).with(name: 'Krajský súd Bratislava I') { :court }
       expect(hearing).to receive(:court=).with(:court)
 
       subject.reconcile_court
@@ -95,23 +95,23 @@ RSpec.describe HearingReconciler do
       judgings = [double(:judging), double(:judging)]
 
       expect(Judging).to receive(:find_or_initialize_by).with(
-        judge: :judge_2,
+        judge_name_unprocessed: 'JUDr. Peter Parker',
         hearing: hearing
       ).and_return(judgings[0])
 
       expect(Judging).to receive(:find_or_initialize_by).with(
-        judge: :judge_1,
+        judge_name_unprocessed: 'JUDr. Peter Pan',
         hearing: hearing
       ).and_return(judgings[1])
 
       expect(judgings[0]).to receive(:update_attributes!).with(
-        judge_name_unprocessed: 'JUDr. Peter Parker',
+        judge: :judge_2,
         judge_name_similarity: 1,
         judge_chair: true
       )
 
       expect(judgings[1]).to receive(:update_attributes!).with(
-        judge_name_unprocessed: 'JUDr. Peter Pan',
+        judge: :judge_1,
         judge_name_similarity: 1,
         judge_chair: false
       )
@@ -127,12 +127,12 @@ RSpec.describe HearingReconciler do
         allow(JudgeFinder).to receive(:find_by).with(name: 'JUDr. Peter Parker') { :judge_2 }
 
         expect(Judging).to receive(:find_or_initialize_by).with(
-          judge: :judge_2,
+          judge_name_unprocessed: 'JUDr. Peter Parker',
           hearing: hearing,
         ).and_return(double.as_null_object)
 
         expect(Judging).to receive(:find_or_initialize_by).with(
-          judge: nil,
+          judge_name_unprocessed: 'JUDr. Peter Pan',
           hearing: hearing,
         ).and_return(double.as_null_object)
 

@@ -1,5 +1,6 @@
 class Decree < ActiveRecord::Base
   include OpenCourts::Model
+  include Purgeable
 
   belongs_to :source
 

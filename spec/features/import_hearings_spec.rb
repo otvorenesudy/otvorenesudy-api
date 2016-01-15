@@ -17,6 +17,7 @@ RSpec.feature 'Import Hearings' do
 
       create(:court, name: 'Okresný súd Košice I')
       create(:court, name: 'Okresný súd Nitra')
+      create(:court, name: 'Okresný súd Trnava')
     end
 
     scenario 'imports hearings' do
