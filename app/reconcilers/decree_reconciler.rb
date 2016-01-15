@@ -25,18 +25,18 @@ class DecreeReconciler
 
   def reconcile_attributes
     decree.update_attributes!(
-      source: Source.find_by(module: 'JusticeGovSk'),
+      source: Source.find_by!(module: 'JusticeGovSk'),
       uri: mapper.uri,
       ecli: mapper.ecli,
       case_number: mapper.case_number,
       file_number: mapper.file_number,
       date: mapper.date,
-      form: Decree::Form.find_by(value: mapper.form, code: mapper.form_code)
+      form: Decree::Form.find_by!(value: mapper.form, code: mapper.form_code)
     )
   end
 
   def reconcile_court
-    decree.court = Court.find_by(name: mapper.court)
+    decree.court = Court.find_by!(name: mapper.court)
   end
 
   def reconcile_legislation_area
@@ -49,7 +49,7 @@ class DecreeReconciler
     return unless mapper.legislation_area
     return unless mapper.legislation_subarea
 
-    area = Legislation::Area.find_by(value: mapper.legislation_area)
+    area = Legislation::Area.find_by!(value: mapper.legislation_area)
     decree.legislation_subarea = Legislation::Subarea.find_or_create_by!(value: mapper.legislation_subarea, area: area)
   end
 

@@ -24,7 +24,7 @@ class JudgeReconciler
 
     judge.update_attributes!(
       uri: mapper.uri,
-      source: Source.find_by(module: 'JusticeGovSk'),
+      source: Source.find_by!(module: 'JusticeGovSk'),
       name: name[:value],
       name_unprocessed: name[:unprocessed],
       prefix: name[:prefix],
@@ -43,7 +43,7 @@ class JudgeReconciler
   def reconcile_employment
     return unless mapper.court
 
-    court = Court.find_by(name: mapper.court)
+    court = Court.find_by!(name: mapper.court)
     employment = judge.employments.find_or_initialize_by(court: court)
 
     employment.update_attributes!(
@@ -56,7 +56,7 @@ class JudgeReconciler
   def reconcile_temporary_employment
     return unless mapper.temporary_court
 
-    court = Court.find_by(name: mapper.temporary_court)
+    court = Court.find_by!(name: mapper.temporary_court)
     employment = judge.employments.find_or_initialize_by(court: court)
 
     employment.update_attributes!(

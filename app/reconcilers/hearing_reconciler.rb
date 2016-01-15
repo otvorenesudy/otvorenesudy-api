@@ -28,8 +28,8 @@ class HearingReconciler
     # TODO remove source, leave now for compatibility
     hearing.update_attributes!(
       uri: mapper.uri,
-      type: Hearing::Type.find_or_create_by!(value: mapper.type),
-      source: Source.find_by(module: 'JusticeGovSk'),
+      type: Hearing::Type.find_by!(value: mapper.type),
+      source: Source.find_by!(module: 'JusticeGovSk'),
       case_number: mapper.case_number,
       file_number: mapper.file_number,
       date: mapper.date,
@@ -41,7 +41,7 @@ class HearingReconciler
   end
 
   def reconcile_court
-    hearing.court = Court.find_by(name: mapper.court)
+    hearing.court = Court.find_by!(name: mapper.court)
   end
 
   def reconcile_section

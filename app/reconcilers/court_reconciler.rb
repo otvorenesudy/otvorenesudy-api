@@ -24,7 +24,7 @@ class CourtReconciler
     # TODO remove source, leave now for compatibility
     court.assign_attributes(
       uri: mapper.uri,
-      source: Source.find_by(module: 'JusticeGovSk'),
+      source: Source.find_by!(module: 'JusticeGovSk'),
       name: mapper.name,
       street: mapper.street,
       phone: mapper.phone,
@@ -38,7 +38,7 @@ class CourtReconciler
   end
 
   def reconcile_type
-    court.type = Court::Type.find_by(value: mapper.type)
+    court.type = Court::Type.find_by!(value: mapper.type)
   end
 
   def reconcile_municipality
@@ -105,7 +105,7 @@ class CourtReconciler
   def build_office(name, attributes)
     return unless attributes.compact.any?
 
-    type = Court::Office::Type.find_by(value: name)
+    type = Court::Office::Type.find_by!(value: name)
     office = Court::Office.find_or_initialize_by(court: court, type: type)
 
     office.assign_attributes(attributes)
