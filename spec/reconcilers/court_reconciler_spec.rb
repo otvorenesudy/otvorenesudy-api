@@ -58,7 +58,7 @@ RSpec.describe CourtReconciler do
 
   describe '#reconcile_attributes' do
     it 'reconciles attributes for court' do
-      allow(Source).to receive(:find_by).with(module: 'JusticeGovSk') { :source }
+      allow(Source).to receive(:find_by!).with(module: 'JusticeGovSk') { :source }
 
       expect(court).to receive(:assign_attributes).with(
         attributes.slice(:uri, :name, :street, :phone, :fax, :media_person, :media_phone, :longitude, :latitude, :acronym).merge(source: :source)
@@ -70,7 +70,7 @@ RSpec.describe CourtReconciler do
 
   describe '#reconcile_type' do
     it 'reconciles court type' do
-      allow(Court::Type).to receive(:find_by).with(value: 'Court Type') { :type }
+      allow(Court::Type).to receive(:find_by!).with(value: 'Court Type') { :type }
       expect(court).to receive(:type=).with(:type)
 
       subject.reconcile_type
@@ -93,7 +93,7 @@ RSpec.describe CourtReconciler do
     let(:office) { double(:office) }
 
     it 'reconciles information center' do
-      allow(Court::Office::Type).to receive(:find_by).with(value: 'Informačné centrum') { :type }
+      allow(Court::Office::Type).to receive(:find_by!).with(value: 'Informačné centrum') { :type }
       allow(Court::Office).to receive(:find_or_initialize_by).with(court: court, type: :type) { office }
 
       expect(court).to receive(:information_center=).with(office)
@@ -122,7 +122,7 @@ RSpec.describe CourtReconciler do
       }
 
       it 'does not reconcile information center' do
-        expect(Court::Office::Type).not_to receive(:find_by)
+        expect(Court::Office::Type).not_to receive(:find_by!)
         expect(Court::Office).not_to receive(:find_or_initialize_by)
 
         subject.reconcile_information_center
@@ -134,7 +134,7 @@ RSpec.describe CourtReconciler do
     let(:office) { double(:office) }
 
     it 'reconciles registry center' do
-      allow(Court::Office::Type).to receive(:find_by).with(value: 'Podateľňa') { :type }
+      allow(Court::Office::Type).to receive(:find_by!).with(value: 'Podateľňa') { :type }
       allow(Court::Office).to receive(:find_or_initialize_by).with(court: court, type: :type) { office }
 
       expect(court).to receive(:registry_center=).with(office)
@@ -163,7 +163,7 @@ RSpec.describe CourtReconciler do
       }
 
       it 'does not reconcile registry center' do
-        expect(Court::Office::Type).not_to receive(:find_by)
+        expect(Court::Office::Type).not_to receive(:find_by!)
         expect(Court::Office).not_to receive(:find_or_initialize_by)
 
         subject.reconcile_registry_center
@@ -175,7 +175,7 @@ RSpec.describe CourtReconciler do
     let(:office) { double(:office) }
 
     it 'reconciles business registry center' do
-      allow(Court::Office::Type).to receive(:find_by).with(value: 'Informačné stredisko obchodného registra') { :type }
+      allow(Court::Office::Type).to receive(:find_by!).with(value: 'Informačné stredisko obchodného registra') { :type }
       allow(Court::Office).to receive(:find_or_initialize_by).with(court: court, type: :type) { office }
 
       expect(court).to receive(:business_registry_center=).with(office)
@@ -204,7 +204,7 @@ RSpec.describe CourtReconciler do
       }
 
       it 'does not reconcile business registry center' do
-        expect(Court::Office::Type).not_to receive(:find_by)
+        expect(Court::Office::Type).not_to receive(:find_by!)
         expect(Court::Office).not_to receive(:find_or_initialize_by)
 
         subject.reconcile_business_registry_center

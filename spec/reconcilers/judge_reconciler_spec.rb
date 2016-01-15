@@ -47,7 +47,7 @@ RSpec.describe JudgeReconciler do
 
   describe '#reconcile_attributes' do
     it 'reconciles attributes for judge' do
-      allow(Source).to receive(:find_by).with(module: 'JusticeGovSk') { :source }
+      allow(Source).to receive(:find_by!).with(module: 'JusticeGovSk') { :source }
 
       expect(judge).to receive(:update_attributes!).with(
         uri: 'uri',
@@ -80,7 +80,7 @@ RSpec.describe JudgeReconciler do
 
     it 'reconciles employement' do
       allow(Judge::Position).to receive(:find_or_create_by!).with(value: 'predseda') { :position }
-      allow(Court).to receive(:find_by).with(name: 'Krajský súd Trenčín') { :court }
+      allow(Court).to receive(:find_by!).with(name: 'Krajský súd Trenčín') { :court }
       allow(employments).to receive(:find_or_initialize_by).with(court: :court) { employment }
 
       expect(employment).to receive(:update_attributes!).with(
@@ -98,7 +98,7 @@ RSpec.describe JudgeReconciler do
 
     it 'reconciles temporary employment' do
       allow(Judge::Position).to receive(:find_or_create_by!).with(value: 'sudca') { :position }
-      allow(Court).to receive(:find_by).with(name: 'Okresný súd Prievidza') { :court }
+      allow(Court).to receive(:find_by!).with(name: 'Okresný súd Prievidza') { :court }
       allow(employments).to receive(:find_or_initialize_by).with(court: :court) { employment }
 
       expect(employment).to receive(:update_attributes!).with(
@@ -114,7 +114,7 @@ RSpec.describe JudgeReconciler do
 
       it 'does not reconcile temporary employement' do
         expect(Judge::Position).not_to receive(:find_or_create_by!)
-        expect(Court).not_to receive(:find_by)
+        expect(Court).not_to receive(:find_by!)
         expect(employments).not_to receive(:find_or_initialize_by)
 
         subject.reconcile_temporary_employment

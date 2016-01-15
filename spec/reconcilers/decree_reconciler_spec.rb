@@ -46,8 +46,8 @@ RSpec.describe DecreeReconciler do
 
   describe '#reconcile_attributes' do
     it 'reconciles attributes for decree' do
-      allow(Source).to receive(:find_by).with(module: 'JusticeGovSk') { :source }
-      allow(Decree::Form).to receive(:find_by).with(value: 'form', code: 'code') { :form }
+      allow(Source).to receive(:find_by!).with(module: 'JusticeGovSk') { :source }
+      allow(Decree::Form).to receive(:find_by!).with(value: 'form', code: 'code') { :form }
 
       expect(decree).to receive(:update_attributes!).with(
         source: :source,
@@ -65,7 +65,7 @@ RSpec.describe DecreeReconciler do
 
   describe '#reconcile_court' do
     it 'reconciles court' do
-      allow(Court).to receive(:find_by).with(name: 'Court #1') { :court }
+      allow(Court).to receive(:find_by!).with(name: 'Court #1') { :court }
       expect(decree).to receive(:court=).with(:court)
 
       subject.reconcile_court
@@ -93,7 +93,7 @@ RSpec.describe DecreeReconciler do
 
   describe '#reconcile_legislation_subarea' do
     it 'reconciles legislation subarea with legislation area' do
-      allow(Legislation::Area).to receive(:find_by).with(value: 'Legislation Area #1') { :legislation_area }
+      allow(Legislation::Area).to receive(:find_by!).with(value: 'Legislation Area #1') { :legislation_area }
       allow(Legislation::Subarea).to receive(:find_or_create_by!).with(value: 'Legislation Subarea #1', area: :legislation_area) { :legislation_subarea }
       expect(decree).to receive(:legislation_subarea=).with(:legislation_subarea)
 

@@ -31,8 +31,8 @@ RSpec.describe HearingReconciler do
 
   describe '#reconcile_attributes' do
     it 'reconciles attributes' do
-      allow(Source).to receive(:find_by).with(module: 'JusticeGovSk') { source }
-      allow(Hearing::Type).to receive(:find_or_create_by!).with(value: 'Trestné') { :type }
+      allow(Source).to receive(:find_by!).with(module: 'JusticeGovSk') { source }
+      allow(Hearing::Type).to receive(:find_by!).with(value: 'Trestné') { :type }
 
       expect(hearing).to receive(:update_attributes!).with(
         attributes.slice(:uri, :case_number, :file_number, :date, :room, :selfjudge, :note, :special_type).merge(type: :type, source: source)
@@ -44,7 +44,7 @@ RSpec.describe HearingReconciler do
 
   describe '#reconcile_court' do
     it 'reconciles court' do
-      allow(Court).to receive(:find_by).with(name: 'Krajský súd Bratislava I') { :court }
+      allow(Court).to receive(:find_by!).with(name: 'Krajský súd Bratislava I') { :court }
       expect(hearing).to receive(:court=).with(:court)
 
       subject.reconcile_court

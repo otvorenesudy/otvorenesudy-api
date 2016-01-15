@@ -9,6 +9,7 @@ RSpec.describe 'Import Decrees' do
     before :each do
       create(:court, name: 'Okresný súd Rožňava')
       create(:court, name: 'Okresný súd Košice I')
+      create(:court, name: 'Okresný súd Trnava')
 
       create(:judge, name: 'Mgr. Milan Krak')
       create(:judge, name: 'Mgr. Ján Krak')
