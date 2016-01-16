@@ -6,9 +6,9 @@ set :application, 'opencourts-api'
 set :scm,         :git
 set :repo_url,    'git@github.com:otvorenesudy/otvorenesudy-api.git'
 
-# RVM
-set :rvm_type,         :user
-set :rvm_ruby_version, '2.2.2'
+# Rbenv
+set :rbenv_type, :user
+set :rbenv_ruby, File.read('.ruby-version').strip
 
 # Links
 set :linked_files, fetch(:linked_files, []).push('.env')
