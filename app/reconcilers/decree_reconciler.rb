@@ -63,14 +63,13 @@ class DecreeReconciler
   def reconcile_judges
     judgements = mapper.judges.map do |name|
       judge = JudgeFinder.find_by(name: name)
-      judgement = Judgement.find_or_initialize_by(decree: decree, judge_name_unprocessed: name)
 
-      judgement.update_attributes!(
+      Judgement.find_or_create_by!(
+        decree: decree,
+        judge_name_unprocessed: name,
         judge: judge,
         judge_name_similarity: judge ? 1 : 0
       )
-
-      judgement
     end
 
     decree.purge!(:judgements, except: judgements)

@@ -94,27 +94,21 @@ RSpec.describe HearingReconciler do
 
       judgings = [double(:judging), double(:judging)]
 
-      expect(Judging).to receive(:find_or_initialize_by).with(
+      expect(Judging).to receive(:find_or_create_by!).with(
         judge_name_unprocessed: 'JUDr. Peter Parker',
-        hearing: hearing
-      ).and_return(judgings[0])
-
-      expect(Judging).to receive(:find_or_initialize_by).with(
-        judge_name_unprocessed: 'JUDr. Peter Pan',
-        hearing: hearing
-      ).and_return(judgings[1])
-
-      expect(judgings[0]).to receive(:update_attributes!).with(
         judge: :judge_2,
+        hearing: hearing,
         judge_name_similarity: 1,
         judge_chair: true
-      )
+      ).and_return(judgings[0])
 
-      expect(judgings[1]).to receive(:update_attributes!).with(
+      expect(Judging).to receive(:find_or_create_by!).with(
+        judge_name_unprocessed: 'JUDr. Peter Pan',
         judge: :judge_1,
+        hearing: hearing,
         judge_name_similarity: 1,
         judge_chair: false
-      )
+      ).and_return(judgings[1])
 
       expect(hearing).to receive(:purge!).with(:judgings, except: judgings)
 
@@ -126,14 +120,20 @@ RSpec.describe HearingReconciler do
         allow(JudgeFinder).to receive(:find_by).with(name: 'JUDr. Peter Pan') { nil }
         allow(JudgeFinder).to receive(:find_by).with(name: 'JUDr. Peter Parker') { :judge_2 }
 
-        expect(Judging).to receive(:find_or_initialize_by).with(
+        expect(Judging).to receive(:find_or_create_by!).with(
           judge_name_unprocessed: 'JUDr. Peter Parker',
+          judge: :judge_2,
           hearing: hearing,
+          judge_name_similarity: 1,
+          judge_chair: true
         ).and_return(double.as_null_object)
 
-        expect(Judging).to receive(:find_or_initialize_by).with(
+        expect(Judging).to receive(:find_or_create_by!).with(
           judge_name_unprocessed: 'JUDr. Peter Pan',
+          judge: nil,
           hearing: hearing,
+          judge_name_similarity: 0,
+          judge_chair: false
         ).and_return(double.as_null_object)
 
         expect(hearing).to receive(:purge!)

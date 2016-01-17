@@ -63,18 +63,14 @@ class HearingReconciler
   def reconcile_judges
     reconciler = ->(name, chair:) do
       judge = JudgeFinder.find_by(name: name)
-      judging = Judging.find_or_initialize_by(
-        hearing: hearing,
-        judge_name_unprocessed: name
-      )
 
-      judging.update_attributes!(
+      Judging.find_or_create_by!(
+        hearing: hearing,
         judge: judge,
+        judge_name_unprocessed: name,
         judge_name_similarity: judge ? 1 : 0,
         judge_chair: chair
       )
-
-      judging
     end
 
     judgings = mapper.chair_judges.map { |name| reconciler.call(name, chair: true) }
