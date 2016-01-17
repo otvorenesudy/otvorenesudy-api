@@ -84,5 +84,9 @@ module InfoSud
     def text
       @data[:dokument_fulltext].presence
     end
+
+    def pdf_uri
+      @data[:dokument_download_link].presence
+    end
   end
 end

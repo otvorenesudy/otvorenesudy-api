@@ -19,7 +19,8 @@ RSpec.describe DecreeReconciler do
       legislation_subarea: 'Legislation Subarea #1',
       judges: ['Peter Pan', 'Peter Smith'],
       natures: ['Decree Nature #1'],
-      text: 'Fulltext #1'
+      text: 'Fulltext #1',
+      pdf_uri: 'http://uri.pdf'
     }
   }
 
@@ -56,7 +57,8 @@ RSpec.describe DecreeReconciler do
         case_number: '1234/456/789',
         file_number: '123456789',
         date: mapper.date,
-        form: :form
+        form: :form,
+        pdf_uri: 'http://uri.pdf'
       )
 
       subject.reconcile_attributes

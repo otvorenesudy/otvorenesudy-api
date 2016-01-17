@@ -126,4 +126,10 @@ RSpec.describe InfoSud::DecreeMapper do
       expect(subject.text).to eql('Fulltext')
     end
   end
+
+  describe '#pdf_uri' do
+    it 'maps uri to pdf' do
+      expect(subject.pdf_uri).to eql('https://obcan.justice.sk/content/public/item/da85930e-5742-4e33-83d7-7d2f44282b37')
+    end
+  end
 end

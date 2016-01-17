@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160111115719) do
+ActiveRecord::Schema.define(version: 20160117173159) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -177,16 +177,17 @@ ActiveRecord::Schema.define(version: 20160111115719) do
     t.string   "case_number",            limit: 255
     t.string   "file_number",            limit: 255
     t.date     "date"
-    t.string   "ecli",                   limit: 255,  null: false
+    t.string   "ecli",                   limit: 255
     t.text     "summary"
     t.integer  "legislation_area_id"
     t.integer  "legislation_subarea_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "pdf_uri",                limit: 2048
     t.index ["case_number"], name: "index_decrees_on_case_number", using: :btree
     t.index ["court_id"], name: "index_decrees_on_court_id", using: :btree
     t.index ["decree_form_id"], name: "index_decrees_on_decree_form_id", using: :btree
-    t.index ["ecli"], name: "index_decrees_on_ecli", unique: true, using: :btree
+    t.index ["ecli"], name: "index_decrees_on_ecli", using: :btree
     t.index ["file_number"], name: "index_decrees_on_file_number", using: :btree
     t.index ["proceeding_id"], name: "index_decrees_on_proceeding_id", using: :btree
     t.index ["source_id"], name: "index_decrees_on_source_id", using: :btree

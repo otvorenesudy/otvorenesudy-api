@@ -31,7 +31,8 @@ class DecreeReconciler
       case_number: mapper.case_number,
       file_number: mapper.file_number,
       date: mapper.date,
-      form: Decree::Form.find_by!(value: mapper.form, code: mapper.form_code)
+      form: Decree::Form.find_by!(value: mapper.form, code: mapper.form_code),
+      pdf_uri: mapper.pdf_uri
     )
   end
 

@@ -41,6 +41,7 @@ RSpec.describe 'Import Decrees' do
         file_number: '7813210471',
         date: Time.parse('2015-04-12T22:00:00Z').to_date,
         summary: nil,
+        pdf_uri: 'https://obcan.justice.sk/content/public/item/a0ab01fc-955b-4c8b-a3f0-975fe178edeb',
 
         source_id: source.id,
         court_id: court.id,
@@ -89,6 +90,7 @@ RSpec.describe 'Import Decrees' do
         file_number: '7813210471',
         date: Time.parse('2015-04-12T22:00:00Z').to_date,
         summary: nil,
+        pdf_uri: 'https://obcan.justice.sk/content/public/item/a0ab01fc-955b-4c8b-a3f0-975fe178edeb',
 
         source_id: source.id,
         court_id: court.id,
