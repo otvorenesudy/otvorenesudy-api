@@ -5,6 +5,7 @@ FactoryGirl.define do
     association :source
     association :proceeding
     association :type, factory: :hearing_type
+    association :court
 
     trait :defendants do
       after :build do |hearing|

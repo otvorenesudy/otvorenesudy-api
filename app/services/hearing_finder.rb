@@ -1,14 +1,17 @@
 class HearingFinder
-  def self.find_by(attributes, relation: Hearing)
-    return relation.find_by(uri: attributes.uri) if Hearing.exists?(uri: attributes.uri)
+  def self.find_by(mapper, relation: Hearing)
+    return relation.find_by(uri: mapper.uri) if Hearing.exists?(uri: mapper.uri)
 
-    return if !attributes.date || !attributes.file_number
+    return if !mapper.file_number || !mapper.date || !mapper.court
 
-    relation.joins(:judges).find_by(
-      date: attributes.date,
-      file_number: attributes.file_number,
+    relation.joins(:court, :judges).find_by(
+      date: mapper.date,
+      file_number: mapper.file_number,
+      courts: {
+        name: mapper.court
+      },
       judges: {
-        name: attributes.judges + attributes.chair_judges
+        name: mapper.judges + mapper.chair_judges
       }
     )
   end
