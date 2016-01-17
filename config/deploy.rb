@@ -50,13 +50,4 @@ namespace :deploy do
       end
     end
   end
-
-  task :restart do
-    invoke 'unicorn:stop'
-
-    # Safe timeout for unicorn stopping
-    sleep 5
-
-    invoke 'unicorn:start'
-  end
 end

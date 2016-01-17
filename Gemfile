@@ -25,9 +25,6 @@ gem 'font-awesome-rails', github: 'bokmann/font-awesome-rails'
 # Security
 gem 'bcrypt', '~> 3.1.7'
 
-# Server
-gem 'unicorn', '~> 4.9.0'
-
 # Serializers
 gem 'active_model_serializers', '~> 0.10.0.rc2'
 gem 'oj'
@@ -96,7 +93,7 @@ group :development do
   gem 'capistrano-rails', '~> 1.1'
   gem 'capistrano-bundler'
   gem 'capistrano-rbenv', '~> 2.0'
-  gem 'capistrano3-unicorn'
+  gem 'capistrano-passenger'
 
   # Other
   gem 'bump', github: 'pavolzbell/bump'
