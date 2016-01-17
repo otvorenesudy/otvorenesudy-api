@@ -94,6 +94,7 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-rbenv', '~> 2.0'
   gem 'capistrano-passenger'
+  gem 'capistrano-sidekiq'
 
   # Other
   gem 'bump', github: 'pavolzbell/bump'
