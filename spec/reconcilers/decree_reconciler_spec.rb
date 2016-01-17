@@ -130,11 +130,11 @@ RSpec.describe DecreeReconciler do
       allow(JudgeFinder).to receive(:find_by).with(name: 'Peter Pan') { :judge }
       allow(JudgeFinder).to receive(:find_by).with(name: 'Peter Smith') { nil }
 
-      allow(Judgement).to receive(:find_or_initialize_by).with(decree: decree, judge_name_unprocessed: 'Peter Pan') { judgements[0] }
+      allow(Judgement).to receive(:find_or_initialize_by).with(decree: decree, judge: :judge) { judgements[0] }
       allow(Judgement).to receive(:find_or_initialize_by).with(decree: decree, judge_name_unprocessed: 'Peter Smith') { judgements[1] }
 
-      expect(judgements[0]).to receive(:update_attributes!).with(judge: :judge, judge_name_similarity: 1)
-      expect(judgements[1]).to receive(:update_attributes!).with(judge: nil, judge_name_similarity: 0)
+      expect(judgements[0]).to receive(:update_attributes!).with(judge: :judge, judge_name_similarity: 1, judge_name_unprocessed: 'Peter Pan')
+      expect(judgements[1]).to receive(:update_attributes!).with(judge: nil, judge_name_similarity: 0, judge_name_unprocessed: 'Peter Smith')
 
       expect(decree).to receive(:purge!).with(:judgements, except: judgements)
 
