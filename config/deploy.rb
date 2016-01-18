@@ -7,7 +7,7 @@ set :scm,         :git
 set :repo_url,    'git@github.com:otvorenesudy/otvorenesudy-api.git'
 
 # Sidekiq
-set :sidekiq_processes, 3
+set :sidekiq_processes, 2
 
 # Rbenv
 set :rbenv_type, :user
