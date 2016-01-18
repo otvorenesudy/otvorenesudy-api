@@ -5,4 +5,4 @@
 :queues:
   - [reconcilers, 2]
 :limits:
-  reconcilers: 30
+  # reconcilers: 30
