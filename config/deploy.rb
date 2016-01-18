@@ -6,6 +6,9 @@ set :application, 'opencourts-api'
 set :scm,         :git
 set :repo_url,    'git@github.com:otvorenesudy/otvorenesudy-api.git'
 
+# Sidekiq
+set :sidekiq_processes, 3
+
 # Rbenv
 set :rbenv_type, :user
 set :rbenv_ruby, File.read('.ruby-version').strip
