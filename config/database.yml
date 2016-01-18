@@ -1,16 +1,14 @@
 opencourts: &opencourts
   adapter: postgresql
   encoding: utf8
-  timeout: 5000
-  pool: 75
+  pool: 100
   username: <%= ENV['OPENCOURTS_DATABASE_USER'] %>
   password: <%= ENV['OPENCOURTS_DATABASE_PASSWORD'] %>
 
 defaults: &defaults
   adapter: postgresql
   encoding: utf8
-  timeout: 5000
-  pool: 75
+  pool: 100
   username: <%= ENV['OPENCOURTS_API_DATABASE_USER'] %>
   password: <%= ENV['OPENCOURTS_API_DATABASE_PASSWORD'] %>
 

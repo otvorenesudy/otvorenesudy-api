@@ -1,8 +1,8 @@
-:concurrency: 10
+:concurrency: 30
 :pidfile: tmp/pids/sidekiq.pid
 :production:
-  :concurrency: 10
+  :concurrency: 30
 :queues:
   - [reconcilers, 2]
 :limits:
-  reconcilers: 10
+  reconcilers: 30
