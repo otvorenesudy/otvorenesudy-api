@@ -119,7 +119,7 @@ module InfoSud
 
     def map_office_hours(opening_hours)
       opening_hours[0..14].each_slice(3).map { |hours|
-        InfoSud::Normalizer.normalize_hours(hours.map(&:presence).compact.join(', '))
+        InfoSud::Normalizer.normalize_hours(hours.map(&:presence).compact.join(', ')).presence
       }
     end
 
