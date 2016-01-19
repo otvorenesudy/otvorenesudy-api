@@ -72,6 +72,16 @@ RSpec.describe DecreeReconciler do
 
       subject.reconcile_court
     end
+
+    context 'when court is not present' do
+      let(:attributes) { { court: nil } }
+
+      it 'does not try to find court' do
+        expect(Court).not_to receive(:find_by!)
+
+        subject.reconcile_court
+      end
+    end
   end
 
   describe '#reconcile_legislation_area' do

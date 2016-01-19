@@ -37,6 +37,8 @@ class DecreeReconciler
   end
 
   def reconcile_court
+    return unless mapper.court
+
     decree.court = Court.find_by!(name: mapper.court)
   end
 
