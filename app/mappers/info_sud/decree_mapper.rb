@@ -33,7 +33,9 @@ module InfoSud
     end
 
     def court
-      InfoSud::Normalizer.normalize_court_name(@data[:sud_nazov])
+      name = @data[:sud_nazov].presence
+
+      InfoSud::Normalizer.normalize_court_name(name) if name
     end
 
     def judges
