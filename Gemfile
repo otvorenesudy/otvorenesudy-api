@@ -53,6 +53,7 @@ gem 'nokogiri'
 gem 'mechanize'
 gem 'rubyzip', require: 'zip'
 gem 'awesome_print'
+gem 'pdf-reader'
 
 # Codeclimate
 gem 'codeclimate-test-reporter', group: :test, require: nil

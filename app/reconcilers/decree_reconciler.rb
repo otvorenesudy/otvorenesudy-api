@@ -107,11 +107,12 @@ class DecreeReconciler
   end
 
   def reconcile_pages
-    # TODO remove Decree::Page and use decree.text instead? as optimization without
-    # downloading pdf
+    # TODO consider removing DecreePage and moving text to Decree as attribute
+    text = mapper.text || PdfExtractor.extract_text_from_url(mapper.pdf_uri)
+
     page = Decree::Page.find_or_initialize_by(decree: decree, number: 1)
 
-    page.update_attributes!(text: mapper.text)
+    page.update_attributes!(text: text)
 
     decree.purge!(:pages, except: [page])
   end
