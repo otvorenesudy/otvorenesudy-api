@@ -13,6 +13,9 @@ set :sidekiq_processes, 2
 set :rbenv_type, :user
 set :rbenv_ruby, File.read('.ruby-version').strip
 
+# Whenever
+set :whenever_identifier, ->{ "#{fetch(:application)}-#{fetch(:stage)}" }
+
 # Links
 set :linked_files, fetch(:linked_files, []).push('.env')
 set :linked_dirs,  fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle')

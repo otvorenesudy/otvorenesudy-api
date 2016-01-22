@@ -58,6 +58,9 @@ gem 'pdf-reader'
 # Codeclimate
 gem 'codeclimate-test-reporter', group: :test, require: nil
 
+# Scheduling
+gem 'whenever'
+
 group :development, :test do
   # Debugging
   gem 'pry'
