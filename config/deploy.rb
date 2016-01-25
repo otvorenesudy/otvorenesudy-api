@@ -20,7 +20,7 @@ set :whenever_identifier, ->{ "#{fetch(:application)}-#{fetch(:stage)}" }
 set :linked_files, fetch(:linked_files, []).push('.env')
 set :linked_dirs,  fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle')
 
-set :keep_releases, 5
+set :keep_releases, 2
 set :ssh_options, {
   forward_agent: true
 }

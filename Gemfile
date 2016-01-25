@@ -45,6 +45,7 @@ gem 'squire'
 # Reporting
 gem 'rollbar', '~> 2.4.0'
 gem 'gabrake', '~> 0.1.2'
+gem 'newrelic_rpm'
 
 # Utilities
 gem 'symbolize'

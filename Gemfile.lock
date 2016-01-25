@@ -302,6 +302,7 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (3.0.1)
+    newrelic_rpm (3.7.2.195)
     nokogiri (1.6.7)
       mini_portile2 (~> 2.0.0.rc2)
     ntlm-http (0.1.1)
@@ -433,6 +434,7 @@ DEPENDENCIES
   gabrake (~> 0.1.2)
   jquery-rails
   mechanize
+  newrelic_rpm
   nokogiri
   oj
   oj_mimic_json
