@@ -19,7 +19,8 @@ common: &default_settings
   app_name: Open Courts API
 
   # To disable the agent regardless of other settings, uncomment the following:
-  # agent_enabled: false
+  # TODO enable when 5.x support is ready
+  agent_enabled: false
 
   # Logging level for log/newrelic_agent.log
   log_level: info
