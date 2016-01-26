@@ -275,6 +275,7 @@ GEM
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
     curb (0.8.8)
+    dalli (2.7.5)
     database_rewinder (0.5.3)
     diff-lcs (1.2.5)
     docile (1.1.5)
@@ -467,6 +468,7 @@ DEPENDENCIES
   codeclimate-test-reporter
   coffee-rails!
   curb
+  dalli
   database_rewinder
   dotenv-rails
   factory_girl_rails (~> 4.5)

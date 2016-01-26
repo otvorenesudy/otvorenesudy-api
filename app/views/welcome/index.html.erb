@@ -50,7 +50,7 @@
     <div class="row">
       <div class="col-sm-4">
         <h2 class="statistic">
-          <%= number_to_human(Decree.count, separator: ',') %>
+          <%= number_to_human(@welcome_page.decrees_count, separator: ',') %>
 
           <br />
 
@@ -62,7 +62,7 @@
 
       <div class="col-sm-4">
         <h2 class="statistic">
-          <%= number_to_human(Judge.count, separator: ',') %>
+          <%= number_to_human(@welcome_page.judges_count, separator: ',') %>
 
           <br />
 
@@ -74,7 +74,7 @@
 
       <div class="col-sm-4">
         <h2 class="statistic">
-          <%= number_to_human(Hearing.count, separator: ',') %>
+          <%= number_to_human(@welcome_page.hearings_count, separator: ',') %>
 
           <br />
 
