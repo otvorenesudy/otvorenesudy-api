@@ -29,7 +29,7 @@ class ExportDecreesJob < ActiveJob::Base
 
   def self.enqueue(location:)
     directory = "api-decrees-#{Time.now.strftime('%Y%m%d%H%M')}"
-    path = "#{location}/#{directory}"
+    path = File.join(location, directory)
 
     FileUtils.mkdir_p(path)
 
