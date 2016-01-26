@@ -3,6 +3,7 @@
 :production:
   :concurrency: 10
 :queues:
+  - [default, 1]
   - [reconcilers, 2]
 :limits:
-  # reconcilers: 30
+  # reconcilers: 10

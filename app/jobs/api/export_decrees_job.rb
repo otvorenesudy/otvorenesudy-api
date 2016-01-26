@@ -1,7 +1,5 @@
 module Api
   class ExportDecreesJob < ActiveJob::Base
-    queue_as :export
-
     def perform(from_id, to_id, path:)
       decrees = Decree.includes(
         :pages,
