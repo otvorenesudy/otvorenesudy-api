@@ -1,12 +1,13 @@
 source 'https://rubygems.org'
 
 # TODO once is Rails 5 released, replace with semiverions
-gem 'rails', github: 'rails/rails'
+gem 'rails', github: 'rails/rails', tag: 'v5.0.0.beta1.1'
 gem 'sprockets-rails', github: 'rails/sprockets-rails'
 gem 'sprockets', github: 'rails/sprockets'
 gem 'sass-rails', github: 'rails/sass-rails'
 gem 'arel', github: 'rails/arel'
 gem 'rack', github: 'rack/rack'
+gem 'turbolinks', github: 'rails/turbolinks'
 
 # Internationalization
 gem 'rails-i18n'
@@ -18,7 +19,6 @@ gem 'pg'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', github: 'rails/coffee-rails'
 gem 'jquery-rails'
-gem 'turbolinks'
 gem 'bootstrap', github: 'twbs/bootstrap-rubygem'
 gem 'font-awesome-rails', github: 'bokmann/font-awesome-rails'
 
@@ -43,7 +43,7 @@ gem 'dotenv-rails'
 gem 'squire'
 
 # Reporting
-gem 'rollbar', '~> 2.4.0'
+gem 'rollbar', '~> 2.7.1'
 gem 'gabrake', '~> 0.1.2'
 # TODO enable when support for 5.x is released
 # gem 'newrelic_rpm'

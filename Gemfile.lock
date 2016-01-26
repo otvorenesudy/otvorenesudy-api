@@ -13,16 +13,16 @@ GIT
 
 GIT
   remote: git://github.com/rack/rack.git
-  revision: 96ae9b9fed8d6809383b6f48a5884437e76f8ca4
+  revision: 7ba4ad9f7c9a4b507398cbdb0d8425cfe7ef7c69
   specs:
     rack (2.0.0.alpha)
       json
 
 GIT
   remote: git://github.com/rails/arel.git
-  revision: 3c429c5d86e9e2201c2a35d934ca6a8911c18e69
+  revision: 63ea665c8083f8069a0d05d4f15cf19e08e470a6
   specs:
-    arel (7.0.0.alpha)
+    arel (7.0.0)
 
 GIT
   remote: git://github.com/rails/coffee-rails.git
@@ -34,58 +34,68 @@ GIT
 
 GIT
   remote: git://github.com/rails/rails.git
-  revision: 8570c806bf6785bed657eb172ff2d0c795c98505
+  revision: d3916fbe68eb12f3417169e47e1ffc054c4f4409
+  tag: v5.0.0.beta1.1
   specs:
-    actionmailer (5.0.0.alpha)
-      actionpack (= 5.0.0.alpha)
-      actionview (= 5.0.0.alpha)
-      activejob (= 5.0.0.alpha)
+    actioncable (5.0.0.beta1.1)
+      actionpack (= 5.0.0.beta1.1)
+      celluloid (~> 0.17.2)
+      coffee-rails (~> 4.1.0)
+      em-hiredis (~> 0.3.0)
+      faye-websocket (~> 0.10.0)
+      redis (~> 3.0)
+      websocket-driver (~> 0.6.1)
+    actionmailer (5.0.0.beta1.1)
+      actionpack (= 5.0.0.beta1.1)
+      actionview (= 5.0.0.beta1.1)
+      activejob (= 5.0.0.beta1.1)
       mail (~> 2.5, >= 2.5.4)
       rails-dom-testing (~> 1.0, >= 1.0.5)
-    actionpack (5.0.0.alpha)
-      actionview (= 5.0.0.alpha)
-      activesupport (= 5.0.0.alpha)
+    actionpack (5.0.0.beta1.1)
+      actionview (= 5.0.0.beta1.1)
+      activesupport (= 5.0.0.beta1.1)
       rack (~> 2.x)
       rack-test (~> 0.6.3)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    actionview (5.0.0.alpha)
-      activesupport (= 5.0.0.alpha)
+    actionview (5.0.0.beta1.1)
+      activesupport (= 5.0.0.beta1.1)
       builder (~> 3.1)
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    activejob (5.0.0.alpha)
-      activesupport (= 5.0.0.alpha)
-      globalid (>= 0.3.0)
-    activemodel (5.0.0.alpha)
-      activesupport (= 5.0.0.alpha)
+    activejob (5.0.0.beta1.1)
+      activesupport (= 5.0.0.beta1.1)
+      globalid (>= 0.3.6)
+    activemodel (5.0.0.beta1.1)
+      activesupport (= 5.0.0.beta1.1)
       builder (~> 3.1)
-    activerecord (5.0.0.alpha)
-      activemodel (= 5.0.0.alpha)
-      activesupport (= 5.0.0.alpha)
-      arel (= 7.0.0.alpha)
-    activesupport (5.0.0.alpha)
+    activerecord (5.0.0.beta1.1)
+      activemodel (= 5.0.0.beta1.1)
+      activesupport (= 5.0.0.beta1.1)
+      arel (~> 7.0)
+    activesupport (5.0.0.beta1.1)
       concurrent-ruby (~> 1.0)
       i18n (~> 0.7)
       json (~> 1.7, >= 1.7.7)
       method_source
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    rails (5.0.0.alpha)
-      actionmailer (= 5.0.0.alpha)
-      actionpack (= 5.0.0.alpha)
-      actionview (= 5.0.0.alpha)
-      activejob (= 5.0.0.alpha)
-      activemodel (= 5.0.0.alpha)
-      activerecord (= 5.0.0.alpha)
-      activesupport (= 5.0.0.alpha)
+    rails (5.0.0.beta1.1)
+      actioncable (= 5.0.0.beta1.1)
+      actionmailer (= 5.0.0.beta1.1)
+      actionpack (= 5.0.0.beta1.1)
+      actionview (= 5.0.0.beta1.1)
+      activejob (= 5.0.0.beta1.1)
+      activemodel (= 5.0.0.beta1.1)
+      activerecord (= 5.0.0.beta1.1)
+      activesupport (= 5.0.0.beta1.1)
       bundler (>= 1.3.0, < 2.0)
-      railties (= 5.0.0.alpha)
+      railties (= 5.0.0.beta1.1)
       sprockets-rails (>= 2.0.0)
-    railties (5.0.0.alpha)
-      actionpack (= 5.0.0.alpha)
-      activesupport (= 5.0.0.alpha)
+    railties (5.0.0.beta1.1)
+      actionpack (= 5.0.0.beta1.1)
+      activesupport (= 5.0.0.beta1.1)
       method_source
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
@@ -118,15 +128,22 @@ GIT
       rack (> 1, < 3)
 
 GIT
+  remote: git://github.com/rails/turbolinks.git
+  revision: dd31f4b2996f2300631f89339ada82c65b95f4c2
+  specs:
+    turbolinks (3.0.0)
+      coffee-rails
+
+GIT
   remote: git://github.com/rspec/rspec-core.git
-  revision: a9f8475b3340663299fb5294cb30a469fbb29c64
+  revision: 7054dcea08d55f68a281b4cc5b4465fa2b582b39
   specs:
     rspec-core (3.5.0.pre)
       rspec-support (= 3.5.0.pre)
 
 GIT
   remote: git://github.com/rspec/rspec-expectations.git
-  revision: 87376eed1f580682c86ea88448ab0411be238c07
+  revision: e7b08da715a777320586dec9f6c2ae5c44585ddd
   specs:
     rspec-expectations (3.5.0.pre)
       diff-lcs (>= 1.2.0, < 2.0)
@@ -134,7 +151,7 @@ GIT
 
 GIT
   remote: git://github.com/rspec/rspec-mocks.git
-  revision: b94e242ebbc51081fc2245e37c574f5d6d02b7f8
+  revision: 2fcdbaee682efc35c146c9f713c079356ca3ec6e
   specs:
     rspec-mocks (3.5.0.pre)
       diff-lcs (>= 1.2.0, < 2.0)
@@ -142,7 +159,7 @@ GIT
 
 GIT
   remote: git://github.com/rspec/rspec-rails.git
-  revision: b4c00c45cfeb4ba5be3aeef5fd2b4205f77c0a47
+  revision: 6f06b28c1c97249a742b2206f86e030b46fef3b9
   specs:
     rspec-rails (3.5.0.pre)
       actionpack (>= 3.0)
@@ -155,7 +172,7 @@ GIT
 
 GIT
   remote: git://github.com/rspec/rspec-support.git
-  revision: a0bc8606b33041dee1e1eae17def1e37ed4bf734
+  revision: 4b938ec512d2fbee945913afbb957b510244ecb3
   specs:
     rspec-support (3.5.0.pre)
 
@@ -226,6 +243,23 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    celluloid (0.17.3)
+      celluloid-essentials
+      celluloid-extras
+      celluloid-fsm
+      celluloid-pool
+      celluloid-supervision
+      timers (>= 4.1.1)
+    celluloid-essentials (0.20.5)
+      timers (>= 4.1.1)
+    celluloid-extras (0.20.5)
+      timers (>= 4.1.1)
+    celluloid-fsm (0.20.5)
+      timers (>= 4.1.1)
+    celluloid-pool (0.20.5)
+      timers (>= 4.1.1)
+    celluloid-supervision (0.20.5)
+      timers (>= 4.1.1)
     chronic (0.10.2)
     cliver (0.3.2)
     codeclimate-test-reporter (0.4.8)
@@ -249,13 +283,20 @@ GEM
     dotenv (2.0.1)
     dotenv-rails (2.0.1)
       dotenv (= 2.0.1)
+    em-hiredis (0.3.0)
+      eventmachine (~> 1.0)
+      hiredis (~> 0.5.0)
     erubis (2.7.0)
+    eventmachine (1.0.9.1)
     execjs (2.6.0)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
+    faye-websocket (0.10.2)
+      eventmachine (>= 0.12.0)
+      websocket-driver (>= 0.5.1)
     fuubar (2.0.0)
       rspec (~> 3.0)
       ruby-progressbar (~> 1.4)
@@ -267,6 +308,8 @@ GEM
       activesupport (>= 4.1.0)
     hashdiff (0.2.3)
     hashery (2.1.1)
+    hiredis (0.5.2)
+    hitimes (1.2.3)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
     httparty (0.13.7)
@@ -294,7 +337,7 @@ GEM
     method_source (0.8.2)
     mime-types (2.99)
     mini_portile2 (2.0.0)
-    minitest (5.8.3)
+    minitest (5.8.4)
     multi_json (1.11.2)
     multi_xml (0.5.5)
     net-http-digest_auth (1.4)
@@ -302,8 +345,7 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (3.0.1)
-    newrelic_rpm (3.7.2.195)
-    nokogiri (1.6.7)
+    nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     ntlm-http (0.1.1)
     oj (2.13.0)
@@ -338,14 +380,14 @@ GEM
       activesupport (>= 4.2.0.beta, < 5.0)
       nokogiri (~> 1.6.0)
       rails-deprecated_sanitizer (>= 1.0.1)
-    rails-html-sanitizer (1.0.2)
+    rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
     rails-i18n (4.0.2)
       i18n (~> 0.6)
       rails (>= 4.0)
-    rake (10.4.2)
+    rake (10.5.0)
     redis (3.2.2)
-    rollbar (2.4.0)
+    rollbar (2.7.1)
       multi_json
     ruby-prof (0.15.8)
     ruby-progressbar (1.7.5)
@@ -353,10 +395,9 @@ GEM
     rubyzip (1.1.0)
     safe_yaml (1.0.4)
     sass (3.4.20)
-    sidekiq (4.0.1)
+    sidekiq (4.0.2)
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
-      json (~> 1.0)
       redis (~> 3.2, >= 3.2.1)
     sidekiq-limit_fetch (3.0.1)
       sidekiq (>= 4)
@@ -381,9 +422,9 @@ GEM
     thread_safe (0.3.5)
     tilt (2.0.1)
     timecop (0.8.0)
+    timers (4.1.1)
+      hitimes
     ttfunk (1.4.0)
-    turbolinks (2.5.3)
-      coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.7.2)
@@ -434,7 +475,6 @@ DEPENDENCIES
   gabrake (~> 0.1.2)
   jquery-rails
   mechanize
-  newrelic_rpm
   nokogiri
   oj
   oj_mimic_json
@@ -447,7 +487,7 @@ DEPENDENCIES
   rails!
   rails-controller-testing
   rails-i18n
-  rollbar (~> 2.4.0)
+  rollbar (~> 2.7.1)
   rspec!
   rspec-core!
   rspec-expectations!
@@ -466,7 +506,7 @@ DEPENDENCIES
   squire
   symbolize
   timecop
-  turbolinks
+  turbolinks!
   uglifier (>= 1.3.0)
   vcr
   webmock
