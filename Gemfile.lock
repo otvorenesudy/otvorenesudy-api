@@ -452,7 +452,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_model_serializers (~> 0.10.0.rc2)
+  active_model_serializers (~> 0.10.0.rc3)
   arel!
   awesome_print
   bcrypt (~> 3.1.7)
