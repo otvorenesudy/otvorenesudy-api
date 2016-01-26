@@ -1,19 +1,17 @@
 class InvitesController < ApplicationController
   def create
-    attributes = create_params.merge(locale: I18n.locale)
-
-    @invite = Invite.new(attributes)
+    @invite = Invite.new(create_params)
 
     if @invite.save
       render :create
     else
-      render partial: 'error'
+      render status: 422, partial: 'error'
     end
   end
 
   private
 
   def create_params
-    params.permit(:email)
+    params.require(:invite).permit(:email, :locale)
   end
 end

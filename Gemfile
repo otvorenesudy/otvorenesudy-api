@@ -42,6 +42,9 @@ gem 'sinatra', github: 'sinatra/sinatra', branch: '2.2.0-alpha', require: nil # 
 gem 'dotenv-rails'
 gem 'squire'
 
+# Caching
+gem 'dalli'
+
 # Reporting
 gem 'rollbar', '~> 2.7.1'
 gem 'gabrake', '~> 0.1.2'

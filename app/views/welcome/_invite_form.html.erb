@@ -1,8 +1,12 @@
-<%= form_tag invites_path(l: params[:l]), method: :post, class: 'invite-form row', remote: true do |f| %>
-  <div class="input-group col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-    <%= text_field_tag 'email', nil, class: 'form-control', placeholder: t('.invite_placeholder') %>
+<%= form_for @invite, html: { class: 'invite-form row' }, remote: true do |f| %>
+  <%= hidden_field_tag :l, I18n.locale %>
+  <%= f.hidden_field :locale, value: I18n.locale %>
+
+  <div class="input-group col-sm8 col-sm-offset-2 col-md-6 col-md-offset-3">
+    <%= f.text_field :email, class: 'form-control', placeholder: t('.invite_placeholder') %>
+
     <span class="input-group-btn">
-      <%= button_tag t('.invite_button'), analytics_attributes(:invites, :create).merge(class: 'btn') %>
+      <%= f.submit t('.invite_button'), analytics_attributes(:invite, :create).merge(class: 'btn') %>
     </span>
   </div>
 <% end %>
