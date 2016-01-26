@@ -5,7 +5,7 @@ RSpec.feature 'Request Invite', type: :feature do
     visit root_path
 
     within '#invite' do
-      fill_in 'email', with: 'johny@example.com'
+      fill_in 'invite_email', with: 'johny@example.com'
 
       click_button 'Request an Invite'
     end
@@ -25,7 +25,7 @@ RSpec.feature 'Request Invite', type: :feature do
       click_link 'SK'
 
       within '#invite' do
-        fill_in 'email', with: 'johny@example.com'
+        fill_in 'invite_email', with: 'johny@example.com'
 
         click_button 'Požiadať o prístup'
       end
@@ -48,7 +48,7 @@ RSpec.feature 'Request Invite', type: :feature do
     end
 
     expect(page).not_to have_content('Thank you for your interest! We\'ll be in touch with you very soon.')
-    expect(page).to have_css('input.error[name="email"]')
+    expect(page).to have_css('input#invite_email.error')
 
     expect(Invite.count).to be_zero
   end
@@ -59,20 +59,20 @@ RSpec.feature 'Request Invite', type: :feature do
     visit root_path
 
     within '#invite' do
-      fill_in 'email', with: 'johny@example.com'
+      fill_in 'invite_email', with: 'johny@example.com'
 
       click_button 'Request an Invite'
     end
 
     expect(page).not_to have_content('Thank you for your interest! We\'ll be in touch with you very soon.')
-    expect(page).to have_css('input.error[name="email"]')
+    expect(page).to have_css('input#invite_email.error')
 
     expect(Invite.count).to eq(1)
 
     click_link 'SK'
 
     within '#invite' do
-      fill_in 'email', with: 'johny@example.com'
+      fill_in 'invite_email', with: 'johny@example.com'
 
       click_button 'Požiadať o prístup'
     end

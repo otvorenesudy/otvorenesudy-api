@@ -1,1 +1,1 @@
-$('.invite-form input[name="email"]').addClass('error')
+$('.invite-form input#invite_email').addClass('error')
