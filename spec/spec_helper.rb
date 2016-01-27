@@ -21,6 +21,9 @@ CodeClimate::TestReporter.start
 require 'rubygems'
 require 'vcr'
 require 'support/fixture_helper'
+require 'sidekiq/testing'
+
+Sidekiq::Testing.fake!
 
 VCR.configure do |config|
   require 'webmock/rspec'
