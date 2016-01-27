@@ -7,5 +7,7 @@ class ReconcileDecreeJob < ActiveJob::Base
     reconciler = DecreeReconciler.new(decree, mapper: mapper)
 
     reconciler.reconcile!
+
+    UpdateNotifier.notify(decree)
   end
 end

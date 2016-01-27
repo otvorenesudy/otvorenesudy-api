@@ -11,6 +11,7 @@ RSpec.describe ReconcileHearingJob do
       allow(HearingFinder).to receive(:find_by).with(mapper) { hearing }
       allow(HearingReconciler).to receive(:new).with(hearing, mapper: mapper) { reconciler }
       expect(reconciler).to receive(:reconcile!)
+      expect(UpdateNotifier).to receive(:notify).with(hearing)
 
       ReconcileHearingJob.new.perform(record)
     end
@@ -21,6 +22,7 @@ RSpec.describe ReconcileHearingJob do
         allow(Hearing).to receive(:new).with(uri: 'uri') { hearing }
         allow(HearingReconciler).to receive(:new).with(hearing, mapper: mapper) { reconciler }
         expect(reconciler).to receive(:reconcile!)
+        expect(UpdateNotifier).to receive(:notify).with(hearing)
 
         ReconcileHearingJob.new.perform(record)
       end

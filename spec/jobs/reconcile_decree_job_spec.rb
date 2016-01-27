@@ -11,6 +11,7 @@ RSpec.describe ReconcileDecreeJob do
       allow(DecreeFinder).to receive(:find_by).with(mapper) { decree }
       allow(DecreeReconciler).to receive(:new).with(decree, mapper: mapper) { reconciler }
       expect(reconciler).to receive(:reconcile!)
+      expect(UpdateNotifier).to receive(:notify).with(decree)
 
       ReconcileDecreeJob.new.perform(record)
     end
@@ -21,6 +22,7 @@ RSpec.describe ReconcileDecreeJob do
         allow(Decree).to receive(:new).with(uri: 'uri') { decree }
         allow(DecreeReconciler).to receive(:new).with(decree, mapper: mapper) { reconciler }
         expect(reconciler).to receive(:reconcile!)
+        expect(UpdateNotifier).to receive(:notify).with(decree)
 
         ReconcileDecreeJob.new.perform(record)
       end

@@ -11,6 +11,7 @@ RSpec.describe ReconcileJudgeJob do
       allow(Judge).to receive(:find_or_initialize_by).with(name: 'JUDr. Peter Pan') { judge }
       allow(JudgeReconciler).to receive(:new).with(judge, mapper: mapper) { reconciler }
       expect(reconciler).to receive(:reconcile!)
+      expect(UpdateNotifier).to receive(:notify).with(judge)
 
       ReconcileJudgeJob.new.perform(record)
     end

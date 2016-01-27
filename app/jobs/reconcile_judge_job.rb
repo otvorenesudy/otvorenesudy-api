@@ -7,5 +7,7 @@ class ReconcileJudgeJob < ActiveJob::Base
     reconciler = JudgeReconciler.new(judge, mapper: mapper)
 
     reconciler.reconcile!
+
+    UpdateNotifier.notify(judge)
   end
 end

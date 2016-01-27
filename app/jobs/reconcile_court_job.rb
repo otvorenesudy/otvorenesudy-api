@@ -7,5 +7,7 @@ class ReconcileCourtJob < ActiveJob::Base
     reconciler = CourtReconciler.new(court, mapper: mapper)
 
     reconciler.reconcile!
+
+    UpdateNotifier.notify(court)
   end
 end

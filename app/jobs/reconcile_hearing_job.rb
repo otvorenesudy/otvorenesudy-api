@@ -7,5 +7,7 @@ class ReconcileHearingJob < ActiveJob::Base
     reconciler = HearingReconciler.new(hearing, mapper: mapper)
 
     reconciler.reconcile!
+
+    UpdateNotifier.notify(hearing)
   end
 end
