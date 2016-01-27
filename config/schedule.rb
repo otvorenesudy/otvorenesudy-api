@@ -19,18 +19,18 @@
 
 # Learn more: http://github.com/javan/whenever
 
-every :day, at: '22:00' do
+every :day, at: '03:00' do
   runner 'InfoSud.import_courts'
 end
 
-every :day, at: '22:05' do
+every :day, at: '03:05' do
   runner 'InfoSud.import_judges'
 end
 
-every :day, at: '22:15' do
+every :day, at: '03:15' do
   runner 'InfoSud.import_hearings'
 end
 
-every :day, at: '22:15' do
+every :day, at: '03:15' do
   runner 'InfoSud.import_decrees'
 end
