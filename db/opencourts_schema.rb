@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160117173159) do
+ActiveRecord::Schema.define(version: 20160215195259) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,12 +23,6 @@ ActiveRecord::Schema.define(version: 20160117173159) do
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.index ["defendant_id", "value"], name: "index_accusations_on_defendant_id_and_value", unique: true, using: :btree
-  end
-
-  create_table "api_keys", force: :cascade do |t|
-    t.string   "value",      limit: 255, null: false
-    t.datetime "created_at",             null: false
-    t.index ["value"], name: "index_api_keys_on_key", unique: true, using: :btree
   end
 
   create_table "court_expenses", force: :cascade do |t|
@@ -359,13 +353,13 @@ ActiveRecord::Schema.define(version: 20160117173159) do
   end
 
   create_table "judge_property_declarations", force: :cascade do |t|
-    t.string   "uri",        limit: 2048, null: false
-    t.integer  "source_id",               null: false
-    t.integer  "court_id",                null: false
-    t.integer  "judge_id",                null: false
-    t.integer  "year",                    null: false
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string   "uri",        limit: 255
+    t.integer  "source_id",              null: false
+    t.integer  "court_id",               null: false
+    t.integer  "judge_id",               null: false
+    t.integer  "year",                   null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.index ["court_id"], name: "index_judge_property_declarations_on_court_id", using: :btree
     t.index ["judge_id", "year"], name: "index_judge_property_declarations_on_judge_id_and_year", unique: true, using: :btree
     t.index ["source_id"], name: "index_judge_property_declarations_on_source_id", using: :btree
