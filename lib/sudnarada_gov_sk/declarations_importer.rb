@@ -14,7 +14,7 @@ module SudnaradaGovSk
     def self.import(attributes, factory:)
       # TODO resolve absence of proclaims and statements
 
-      declaration = DeclarationFactory.create(attributes)
+      declaration = factory.create(attributes)
 
       return unless declaration
 
