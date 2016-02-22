@@ -48,8 +48,7 @@ gem 'dalli'
 # Reporting
 gem 'rollbar', '~> 2.7.1'
 gem 'gabrake', '~> 0.1.2'
-# TODO enable when support for 5.x is released
-# gem 'newrelic_rpm'
+gem 'newrelic_rpm', '>= 3.15.0.314'
 
 # Utilities
 gem 'symbolize'
