@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # TODO once is Rails 5 released, replace with semiverions
-gem 'rails', github: 'rails/rails', tag: 'v5.0.0.beta1.1'
+gem 'rails', github: 'rails/rails', tag: 'v5.0.0.beta2'
 gem 'sprockets-rails', github: 'rails/sprockets-rails'
 gem 'sprockets', github: 'rails/sprockets'
 gem 'sass-rails', github: 'rails/sass-rails'
