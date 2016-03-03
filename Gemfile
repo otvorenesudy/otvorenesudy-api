@@ -58,6 +58,8 @@ gem 'mechanize'
 gem 'rubyzip', require: 'zip'
 gem 'awesome_print'
 gem 'pdf-reader'
+gem 'roo'
+gem 'roo-xls'
 
 # Codeclimate
 gem 'codeclimate-test-reporter', group: :test, require: nil
