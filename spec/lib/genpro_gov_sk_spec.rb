@@ -14,7 +14,7 @@ RSpec.describe GenproGovSk do
     it 'exports property declarations to a json file' do
       allow(GenproGovSk::PropertyDeclarationsCrawler).to receive(:crawl) { property_declarations }
       allow(File).to receive(:open).with('/path/to/export.json', 'w').and_yield(file)
-      expect(file).to receive(:write).with('[{"name":"Name of Prosecutor","property_declarations":[]}]')
+      expect(file).to receive(:write).with(JSON.pretty_generate(property_declarations))
 
       GenproGovSk.export_property_declarations(path: '/path/to/export.json')
     end

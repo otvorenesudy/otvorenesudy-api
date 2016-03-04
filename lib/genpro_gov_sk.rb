@@ -17,7 +17,7 @@ module GenproGovSk
     declarations = PropertyDeclarationsCrawler.crawl
 
     File.open(path, 'w') do |file|
-      file.write(declarations.to_json)
+      file.write(JSON.pretty_generate(declarations))
     end
   end
 end
