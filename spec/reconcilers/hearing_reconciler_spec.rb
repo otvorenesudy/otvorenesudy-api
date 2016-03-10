@@ -147,10 +147,15 @@ RSpec.describe HearingReconciler do
 
   describe '#reconcile_opponents' do
     it 'reconciles opponents' do
-      expect(Opponent).to receive(:find_or_create_by!).with(name: 'Peter Pan', name_unprocessed: 'Peter Pan', hearing: hearing).and_return(:opponent_1)
-      expect(Opponent).to receive(:find_or_create_by!).with(name: 'John Smith', name_unprocessed: 'John Smith', hearing: hearing).and_return(:opponent_2)
+      opponents = [double(:opponent), double(:opponent)]
 
-      expect(hearing).to receive(:purge!).with(:opponents, except: [:opponent_1, :opponent_2])
+      expect(Opponent).to receive(:find_or_initialize_by).with(name: 'Peter Pan', hearing: hearing).and_return(opponents[0])
+      expect(Opponent).to receive(:find_or_initialize_by).with(name: 'John Smith', hearing: hearing).and_return(opponents[1])
+
+      expect(opponents[0]).to receive(:update_attributes!).with(name_unprocessed: 'Peter Pan')
+      expect(opponents[1]).to receive(:update_attributes!).with(name_unprocessed: 'John Smith')
+
+      expect(hearing).to receive(:purge!).with(:opponents, except: opponents)
 
       subject.reconcile_opponents
     end
@@ -158,9 +163,11 @@ RSpec.describe HearingReconciler do
 
   describe '#reconcile_defendants' do
     it 'reconciles defendants' do
-      expect(Defendant).to receive(:find_or_create_by!).with(name: 'John Pan', name_unprocessed: 'John Pan', hearing: hearing).and_return(:defendant_1)
+      defendant = double(:defendant)
 
-      expect(hearing).to receive(:purge!).with(:defendants, except: [:defendant_1])
+      expect(Defendant).to receive(:find_or_initialize_by).with(name: 'John Pan', hearing: hearing).and_return(defendant)
+      expect(defendant).to receive(:update_attributes!).with(name_unprocessed: 'John Pan')
+      expect(hearing).to receive(:purge!).with(:defendants, except: [defendant])
 
       subject.reconcile_defendants
     end
@@ -168,9 +175,11 @@ RSpec.describe HearingReconciler do
 
   describe '#reconcile_proposers' do
     it 'reconciles proposers' do
-      expect(Proposer).to receive(:find_or_create_by!).with(name: 'John Smithy', name_unprocessed: 'John Smithy', hearing: hearing).and_return(:proposer_1)
+      proposer = double(:proposer)
 
-      expect(hearing).to receive(:purge!).with(:proposers, except: [:proposer_1])
+      expect(Proposer).to receive(:find_or_initialize_by).with(name: 'John Smithy', hearing: hearing).and_return(proposer)
+      expect(proposer).to receive(:update_attributes!).with(name_unprocessed: 'John Smithy')
+      expect(hearing).to receive(:purge!).with(:proposers, except: [proposer])
 
       subject.reconcile_proposers
     end
