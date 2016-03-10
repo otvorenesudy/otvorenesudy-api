@@ -1,4 +1,4 @@
-class CreateInfoSudJudges < ActiveRecord::Migration
+class CreateInfoSudJudges < ActiveRecord::Migration[5.0]
   def change
     create_table :info_sud_judges do |t|
       t.string :guid, null: false
