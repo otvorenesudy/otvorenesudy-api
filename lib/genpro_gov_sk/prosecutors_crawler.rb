@@ -25,7 +25,7 @@ module GenproGovSk
       def self.parse_name(value)
         parts = Legacy::Normalizer.partition_person_name(value, reverse: true)
 
-        parts.slice(:value, :first, :last, :middle)
+        parts.slice(:first, :middle, :last).merge(name: parts[:value])
       end
     end
   end

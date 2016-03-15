@@ -6,7 +6,7 @@ module GenproGovSk
       prosecutors.map do |name|
         first_name, last_name = name[:first], name.values_at(:middle, :last).compact.join(' ')
 
-        { name: name, property_declarations: crawl_for(first_name: first_name, last_name: last_name) }
+        name.merge(property_declarations: crawl_for(first_name: first_name, last_name: last_name))
       end
     end
 

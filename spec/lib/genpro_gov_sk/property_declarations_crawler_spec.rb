@@ -11,11 +11,9 @@ RSpec.describe GenproGovSk::PropertyDeclarationsCrawler do
 
       expect(GenproGovSk::PropertyDeclarationsCrawler.crawl).to eql([
         {
-          name: {
-            first: 'Peter',
-            middle: 'John',
-            last: 'Pan'
-          },
+          first: 'Peter',
+          middle: 'John',
+          last: 'Pan',
 
           property_declarations: declarations
         }
