@@ -88,7 +88,11 @@ class HearingReconciler
 
   def reconcile_opponents
     opponents = mapper.opponents.map do |name|
-      Opponent.find_or_create_by!(name: name, name_unprocessed: name, hearing: hearing)
+      opponent = Opponent.find_or_initialize_by(name: name, hearing: hearing)
+
+      opponent.update_attributes!(name_unprocessed: name)
+
+      opponent
     end
 
     hearing.purge!(:opponents, except: opponents)
@@ -96,7 +100,11 @@ class HearingReconciler
 
   def reconcile_defendants
     defendants = mapper.defendants.map do |name|
-      Defendant.find_or_create_by!(name: name, name_unprocessed: name, hearing: hearing)
+      defendant = Defendant.find_or_initialize_by(name: name, hearing: hearing)
+
+      defendant.update_attributes!(name_unprocessed: name)
+
+      defendant
     end
 
     hearing.purge!(:defendants, except: defendants)
@@ -104,7 +112,11 @@ class HearingReconciler
 
   def reconcile_proposers
     proposers = mapper.proposers.map do |name|
-      Proposer.find_or_create_by!(name: name, name_unprocessed: name, hearing: hearing)
+      proposer = Proposer.find_or_initialize_by(name: name, hearing: hearing)
+
+      proposer.update_attributes!(name_unprocessed: name)
+
+      proposer
     end
 
     hearing.purge!(:proposers, except: proposers)

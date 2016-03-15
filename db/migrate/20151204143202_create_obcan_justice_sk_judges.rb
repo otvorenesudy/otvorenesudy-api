@@ -1,4 +1,4 @@
-class CreateObcanJusticeSkJudges < ActiveRecord::Migration
+class CreateObcanJusticeSkJudges < ActiveRecord::Migration[5.0]
   def change
     create_table :obcan_justice_sk_judges do |t|
       t.string :uri, limit: 2048, null: false
