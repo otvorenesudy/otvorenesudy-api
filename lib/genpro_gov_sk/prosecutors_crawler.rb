@@ -1,13 +1,22 @@
 module GenproGovSk
   class ProsecutorsCrawler
     def self.crawl
-      response = Downloader.get('https://www.genpro.gov.sk/extdoc/53851/Menn%FD%20zoznam%20prokur%E1torov%20Slovenskej%20republiky')
+      page = Downloader.get('https://www.genpro.gov.sk/prokuratura-sr/menny-zoznam-prokuratorov-slovenskej-republiky-3928.html').body_str
+      url = Parser.parse_link(page)
+      xls = Downloader.get(url).body_str
 
-      Parser.parse(response.body_str)
+      Parser.parse_list(xls)
     end
 
     class Parser
-      def self.parse(xls)
+      def self.parse_link(html)
+        document = Nokogiri::HTML(html)
+        fragment = document.at_css('a[href^="/extdoc"]:contains("Menný zoznam prokurátorov Slovenskej republiky")')[:href]
+
+        "https://www.genpro.gov.sk#{fragment}"
+      end
+
+      def self.parse_list(xls)
         path = "/tmp/prosecutors-list-#{SecureRandom.hex}"
 
         File.open(path, 'wb') { |f| f.write(xls) }
