@@ -22,9 +22,9 @@ module GenproGovSk
         File.open(path, 'wb') { |f| f.write(xls) }
 
         sheet = Roo::Spreadsheet.open(path, extension: :xls).sheet(0)
-        names = (3..sheet.last_row).map do |n|
+        names = (3..sheet.last_row).map { |n|
           parse_name(sheet.row(n)[1])
-        end
+        }.uniq
 
         FileUtils.rm_r(path)
 

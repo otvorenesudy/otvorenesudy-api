@@ -6,13 +6,20 @@ RSpec.describe GenproGovSk::ProsecutorsCrawler do
     it 'crawls list of prosecutors', vcr: { cassette_name: 'genpro_gov_sk/prosecutors_list' } do
       prosecutors = GenproGovSk::ProsecutorsCrawler.crawl
 
-      expect(prosecutors.size).to eql(945)
+      expect(prosecutors.size).to eql(942)
       expect(prosecutors.first).to eql(
         value: 'JUDr. Ingrid Adamcová',
         first: 'Ingrid',
         middle: nil,
         last: 'Adamcová'
       )
+    end
+
+    it 'unifies prosecutors names', vcr: { cassette_name: 'genpro_gov_sk/prosecutors_list' } do
+      prosecutors = GenproGovSk::ProsecutorsCrawler.crawl
+      names = prosecutors.map { |prosecutor| prosecutor[:value] }
+
+      expect(names.size).to eql(942)
     end
   end
 end
