@@ -5,8 +5,12 @@ module GenproGovSk
 
       prosecutors.map do |name|
         first_name, last_name = name[:first], name.values_at(:middle, :last).compact.join(' ')
+        metadata = GenproGovSk::ProsecutorsMetadata.of(name[:value])
 
-        { name: name, property_declarations: crawl_for(first_name: first_name, last_name: last_name) }
+        {
+          name: name,
+          property_declarations: crawl_for(first_name: first_name, last_name: last_name)
+        }.merge(metadata)
       end
     end
 

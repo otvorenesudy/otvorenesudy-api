@@ -6,17 +6,20 @@ RSpec.describe GenproGovSk::PropertyDeclarationsCrawler do
     let(:declarations) { [double(:declaration)] }
 
     it 'crawls property declarations' do
-      allow(GenproGovSk::ProsecutorsCrawler).to receive(:crawl) { [{ first: 'Peter', middle: 'John', last: 'Pan' }] }
+      allow(GenproGovSk::ProsecutorsCrawler).to receive(:crawl) { [{ first: 'Peter', middle: 'John', last: 'Pan', value: 'Peter John Pan' }] }
       expect(GenproGovSk::PropertyDeclarationsCrawler).to receive(:crawl_for).with(first_name: 'Peter', last_name: 'John Pan') { declarations }
+      allow(GenproGovSk::ProsecutorsMetadata).to receive(:of).with('Peter John Pan') { { position: 'Head of Court' } }
 
       expect(GenproGovSk::PropertyDeclarationsCrawler.crawl).to eql([
         {
           name: {
             first: 'Peter',
             middle: 'John',
-            last: 'Pan'
+            last: 'Pan',
+            value: 'Peter John Pan'
           },
 
+          position: 'Head of Court',
           property_declarations: declarations
         }
       ])

@@ -9,6 +9,7 @@ require 'unicode_string'
 require 'downloader'
 
 module GenproGovSk
+  require 'genpro_gov_sk/prosecutors_metadata'
   require 'genpro_gov_sk/prosecutors_crawler'
   require 'genpro_gov_sk/property_declaration_crawler'
   require 'genpro_gov_sk/property_declarations_crawler'
