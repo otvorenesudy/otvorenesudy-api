@@ -105,6 +105,7 @@ group :development do
   gem 'capistrano-rbenv', '~> 2.0'
   gem 'capistrano-passenger'
   gem 'capistrano-sidekiq'
+  gem 'capistrano-git-submodule-strategy', '~> 0.1'
 
   # Other
   gem 'bump', github: 'pavolzbell/bump'

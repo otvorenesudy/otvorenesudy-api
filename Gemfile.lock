@@ -221,6 +221,8 @@ GEM
     capistrano-bundler (1.1.4)
       capistrano (~> 3.1)
       sshkit (~> 1.2)
+    capistrano-git-submodule-strategy (0.1.17)
+      capistrano (~> 3.1)
     capistrano-passenger (0.2.0)
       capistrano (~> 3.0)
     capistrano-rails (1.1.5)
@@ -439,6 +441,7 @@ DEPENDENCIES
   bump!
   capistrano (~> 3.1)
   capistrano-bundler
+  capistrano-git-submodule-strategy (~> 0.1)
   capistrano-passenger
   capistrano-rails (~> 1.1)
   capistrano-rbenv (~> 2.0)
