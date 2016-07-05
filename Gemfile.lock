@@ -221,6 +221,8 @@ GEM
     capistrano-bundler (1.1.4)
       capistrano (~> 3.1)
       sshkit (~> 1.2)
+    capistrano-git-submodule-strategy (0.1.17)
+      capistrano (~> 3.1)
     capistrano-passenger (0.2.0)
       capistrano (~> 3.0)
     capistrano-rails (1.1.5)
@@ -361,6 +363,14 @@ GEM
     redis (3.2.2)
     rollbar (2.7.1)
       multi_json
+    roo (2.3.2)
+      nokogiri (~> 1)
+      rubyzip (~> 1.1, < 2.0.0)
+    roo-xls (1.0.0)
+      nokogiri
+      roo (>= 2.0.0beta1, < 3)
+      spreadsheet (> 0.9.0)
+    ruby-ole (1.2.12)
     ruby-prof (0.15.8)
     ruby-progressbar (1.7.5)
     ruby-rc4 (0.1.5)
@@ -379,6 +389,8 @@ GEM
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
     slop (3.6.0)
+    spreadsheet (1.1.1)
+      ruby-ole (>= 1.0)
     spring (1.4.0)
     squire (1.3.6)
       activesupport (>= 3.0.0)
@@ -429,6 +441,7 @@ DEPENDENCIES
   bump!
   capistrano (~> 3.1)
   capistrano-bundler
+  capistrano-git-submodule-strategy (~> 0.1)
   capistrano-passenger
   capistrano-rails (~> 1.1)
   capistrano-rbenv (~> 2.0)
@@ -460,6 +473,8 @@ DEPENDENCIES
   rails-controller-testing
   rails-i18n
   rollbar (~> 2.7.1)
+  roo
+  roo-xls
   rspec!
   rspec-core!
   rspec-expectations!
