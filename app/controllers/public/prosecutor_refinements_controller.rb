@@ -28,7 +28,7 @@ class Public::ProsecutorRefinementsController < Public::ApplicationController
     head 429 if refinements.size >= 30
   end
 
-  def permit_origin
-    headers['Access-Control-Allow-Origin'] = 'prokuratori.otvorenesudy.sk'
+  def restrict_allowed_origin
+    headers['Access-Control-Allow-Origin'] = Rails.env.production? ? 'prokuratori.otvorenesudy.sk' : '*'
   end
 end
