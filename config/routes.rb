@@ -9,6 +9,10 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :public, path: '/public', format: true, default: { format: :json } do
+    resources :prosecutor_refinements, only: [:create]
+  end
+
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'
 end

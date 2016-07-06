@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151221185525) do
+ActiveRecord::Schema.define(version: 20160706000015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -158,6 +158,17 @@ ActiveRecord::Schema.define(version: 20151221185525) do
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.index ["uri"], name: "index_obcan_justice_sk_judges_on_uri", unique: true, using: :btree
+  end
+
+  create_table "public_prosecutor_refinements", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.string   "email",      null: false
+    t.string   "ip_address", null: false
+    t.string   "prosecutor", null: false
+    t.string   "office",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ip_address"], name: "index_public_prosecutor_refinements_on_ip_address", using: :btree
   end
 
 end
