@@ -29,6 +29,6 @@ class Public::ProsecutorRefinementsController < Public::ApplicationController
   end
 
   def restrict_allowed_origin
-    headers['Access-Control-Allow-Origin'] = Rails.env.production? ? 'prokuratori.otvorenesudy.sk' : '*'
+    headers['Access-Control-Allow-Origin'] = Rails.env.production? ? 'https://prokuratori.otvorenesudy.sk' : '*'
   end
 end
