@@ -5,7 +5,7 @@ module GenproGovSk
 
       prosecutors.map do |name|
         first_name, last_name = name[:first], name.values_at(:middle, :last).compact.join(' ')
-        metadata = GenproGovSk::ProsecutorsMetadata.of(name[:value])
+        metadata = GenproGovSk::ProsecutorsMetadata.of(name[:value]) || {}
 
         {
           name: name,
