@@ -15,7 +15,7 @@ RSpec.describe GenproGovSk::ProsecutorsMetadata do
     end
 
     it 'returns empty metadata for judge with none of the values set' do
-      metadata = GenproGovSk::ProsecutorsMetadata.of('Mgr. Štefan Božík')
+      metadata = GenproGovSk::ProsecutorsMetadata.of('Mgr. Silvia Adamovičová')
 
       expect(metadata).to eql({ position: nil, organisation: nil, municipality: nil })
     end
