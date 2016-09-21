@@ -19,6 +19,14 @@ RSpec.describe GenproGovSk::ProsecutorsMetadata do
 
       expect(metadata).to eql({ position: nil, organisation: nil, municipality: nil })
     end
+
+    it 'correctly capitalizes metadata values' do
+      metadata = GenproGovSk::ProsecutorsMetadata.of('Mgr. Lucia Bačová')
+      expect(metadata).to eql({ position: nil, organisation: 'Okresná prokuratúra', municipality: 'Košice II' })
+
+      metadata = GenproGovSk::ProsecutorsMetadata.of('JUDr. Jozef Barabás')
+      expect(metadata).to eql({ position: 'Námestník okresného prokurátora', organisation: 'Okresná prokuratúra', municipality: 'Spišská Nová Ves' })
+    end
   end
 
   describe '.metadata' do
