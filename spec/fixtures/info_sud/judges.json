@@ -16,7 +16,8 @@
       "asud_guid" : "123",
       "guid" : "sudca_1508",
       "longitude_sudu" : "18.0830243",
-      "poznamka" : null
+      "poznamka" : null,
+      "aktivita" : "label.sudca.aktivny"
     },
     {
       "stav" : null,
@@ -34,7 +35,8 @@
       "asud_guid" : "103",
       "guid" : "sudca_1507",
       "longitude_sudu" : "17.1474862",
-      "poznamka" : null
+      "poznamka" : null,
+      "aktivita" : "label.sudca.aktivny"
     }
   ]
 }
