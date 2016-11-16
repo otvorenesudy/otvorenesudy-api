@@ -22,7 +22,8 @@ RSpec.describe InfoSud::JudgeMapper do
       "aktualizacia" => "2015-12-08T00:00:00Z",
       "lattitude_sudu" => "48.3274866",
       "longitude_sudu" => "19.6662481",
-      "poznamka" => "- od 1. februára 2004 má prerušený výkon funkcie sudcu podľa § 24 ods. 4 zákona č. 385/2000 Z.z."
+      "poznamka" => "- od 1. februára 2004 má prerušený výkon funkcie sudcu podľa § 24 ods. 4 zákona č. 385/2000 Z.z.",
+      "aktivita"=>"label.sudca.aktivny"
     }
   }
 
@@ -55,15 +56,24 @@ RSpec.describe InfoSud::JudgeMapper do
     end
 
     context 'when activity is missing' do
-      let(:data) { { "stav" => nil } }
+      let(:data) { { "aktivita" => nil } }
 
       it 'maps judge as active' do
         expect(subject.active).to be_truthy
       end
     end
 
-    context 'when activity is any other than active' do
-      let(:data) { { "stav" => '04' } }
+    context 'when activity is labeled as inactive' do
+      let(:data) { { "aktivita" => 'label.sudca.neaktivny' } }
+
+      it 'maps judge as inactive' do
+        expect(subject.active).to be_falsey
+      end
+    end
+
+
+    context 'when activity is labeled as deleted' do
+      let(:data) { { "aktivita" => 'label.sudca.vymazany' } }
 
       it 'maps judge as inactive' do
         expect(subject.active).to be_falsey

@@ -1,11 +1,10 @@
 module InfoSud
   class JudgeMapper
-    STATUS_MAP = {
+    ACTIVITY_MAP = {
       nil => :active,
-      '01' => :active,
-      '03' => :deleted,
-      '04' => :inactive,
-      '06' => :suspended
+      'label.sudca.aktivny' => :active,
+      'label.sudca.neaktivny' => :inactive,
+      'label.sudca.vymazany' => :deleted
     }
 
     def initialize(data)
@@ -25,7 +24,7 @@ module InfoSud
     end
 
     def active
-      status = STATUS_MAP[@data[:stav]]
+      status = ACTIVITY_MAP[@data[:aktivita]]
 
       return true if status == :active
 
