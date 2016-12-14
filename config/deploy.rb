@@ -8,7 +8,7 @@ set :repo_url,    'git@github.com:otvorenesudy/otvorenesudy-api.git'
 set :git_strategy, Capistrano::Git::SubmoduleStrategy
 
 # Sidekiq
-set :sidekiq_processes, 2
+set :sidekiq_processes, 1
 
 # Rbenv
 set :rbenv_type, :user
