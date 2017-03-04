@@ -31,4 +31,30 @@ RSpec.describe Api::DecreesController do
       expect(json[:decrees][0][:other_judges]).to eql(['JuDR. Kralik'])
     end
   end
+
+  describe '/health' do
+    before :each do
+      create :decree, updated_at: 20.days.ago
+    end
+
+    context 'with any decrees updated recently' do
+      it 'returns success' do
+        create :decree, updated_at: 3.hours.ago
+
+        get :health, params: { api_key: api_key.value }, format: :json
+
+        expect(response.status).to eql(200)
+        expect(JSON.parse(response.body, symbolize_names: true)).to eql(status: 'Success')
+      end
+    end
+
+    context 'with any decrees updated recently' do
+      it 'returns success' do
+        get :health, params: { api_key: api_key.value }, format: :json
+
+        expect(response.status).to eql(422)
+        expect(JSON.parse(response.body, symbolize_names: true)).to eql(status: 'Failure')
+      end
+    end
+  end
 end

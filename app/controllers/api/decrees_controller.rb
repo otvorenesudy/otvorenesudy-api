@@ -3,9 +3,9 @@ class Api::DecreesController < Api::ApplicationController
 
   def health
     if Decree.where('updated_at >= ?', 1.day.ago).count > 0
-      render 200, text: 'Success'
+      render status: 200, json: { status: 'Success' }
     else
-      render 422, text: 'Failure'
+      render status: 422, json: { status: 'Failure' }
     end
   end
 

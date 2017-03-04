@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   namespace :api, path: '/', format: true, defaults: { format: :json } do
     resources :decrees, only: [:show] do
       get :sync, on: :collection
+      get :health, on: :collection
     end
   end
 
