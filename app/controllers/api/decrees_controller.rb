@@ -2,7 +2,7 @@ class Api::DecreesController < Api::ApplicationController
   include Api::Syncable
 
   def health
-    if Decree.where('updated_at >= ?', 1.day.ago).count > 0
+    if Decree.where('updated_at >= ?', 2.day.ago).count > 0
       render status: 200, json: { status: 'Success' }
     else
       render status: 422, json: { status: 'Failure' }
