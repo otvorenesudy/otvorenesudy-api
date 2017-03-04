@@ -32,6 +32,18 @@ RSpec.shared_examples_for InfoSud::Importable do
       expect(record_attributes.deep_symbolize_keys).to eql(guid: attributes[:guid], data: attributes)
     end
 
+    it 'filters unrelevant attributes' do
+      described_class.import_from(attributes)
+
+      described_class.filtered_attributes_for_import.each do |name|
+        attributes[name] = rand.to_s
+      end
+
+      record_attributes = record.attributes.symbolize_keys.except(:id, :created_at, :updated_at)
+
+      expect(record_attributes.deep_symbolize_keys).to eql(guid: attributes[:guid], data: attributes.except(*described_class.filtered_attributes_for_import))
+    end
+
     context 'when record is already imported' do
       it 'updates record' do
         described_class.import_from(attributes)
