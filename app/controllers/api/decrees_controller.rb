@@ -1,6 +1,14 @@
 class Api::DecreesController < Api::ApplicationController
   include Api::Syncable
 
+  def health
+    if Decree.where('updated_at >= ?', 1.day.ago).count > 0
+      render 200, text: 'Success'
+    else
+      render 422, text: 'Failure'
+    end
+  end
+
   protected
 
   def syncable_repository
