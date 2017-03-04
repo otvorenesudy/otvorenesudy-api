@@ -15,6 +15,8 @@ ActiveRecord::Schema.define(version: 20160215195259) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pg_trgm"
+  enable_extension "unaccent"
 
   create_table "accusations", force: :cascade do |t|
     t.integer  "defendant_id",                  null: false
