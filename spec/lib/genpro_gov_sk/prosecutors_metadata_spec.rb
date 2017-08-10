@@ -31,7 +31,7 @@ RSpec.describe GenproGovSk::ProsecutorsMetadata do
 
   describe '.metadata' do
     it 'parses correct number of metadata' do
-      expect(GenproGovSk::ProsecutorsMetadata.metadata.size).to eql(942)
+      expect(GenproGovSk::ProsecutorsMetadata.metadata.size).to eql(938)
     end
   end
 end
