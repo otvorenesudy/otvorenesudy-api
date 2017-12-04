@@ -9,7 +9,7 @@
     <meta name="author" content="<%= t 'welcome.author' %>" />
     <link rel="mask-icon" sizes="any" href="<%= asset_path 'icons/favicon.svg' %>" />
     <link rel="apple-touch-icon" href="<%= asset_path 'icons/touchicon.png' %>" />
-    <link rel="icon" href="<%= asset_path 'icons/favicon.png' %>" />
+    <link rel="icon" href="<%= asset_path "icons/favicon.png", skip_pipeline: true  %>" />
     <!--[if IE]><link rel="shortcut icon" href="<%= asset_path 'icons/favicon.ico' %>" /><![endif]-->
     <meta name="msapplication-TileColor" content="#fff" />
     <meta name="msapplication-TileImage" content="<%= asset_path 'icons/tileicon.png' %>" />

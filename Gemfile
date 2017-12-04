@@ -1,13 +1,12 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
-# TODO once is Rails 5 released, replace with semiverions
-gem 'rails', github: 'rails/rails', tag: 'v5.0.0.beta2'
-gem 'sprockets-rails', github: 'rails/sprockets-rails'
-gem 'sprockets', github: 'rails/sprockets'
-gem 'sass-rails', github: 'rails/sass-rails'
-gem 'arel', github: 'rails/arel'
-gem 'rack', github: 'rack/rack'
-gem 'turbolinks', github: 'rails/turbolinks'
+gem 'rails', '~> 5.1.4'
+gem 'sass-rails'
+gem 'sprockets'
+gem 'sprockets-rails'
+gem 'turbolinks'
 
 # Internationalization
 gem 'rails-i18n'
@@ -16,27 +15,27 @@ gem 'rails-i18n'
 gem 'pg'
 
 # Assets
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', github: 'rails/coffee-rails'
+gem 'bootstrap', '4.0.0.alpha2'
+gem 'coffee-rails'
+gem 'font-awesome-rails'
 gem 'jquery-rails'
-gem 'bootstrap', github: 'twbs/bootstrap-rubygem'
-gem 'font-awesome-rails', github: 'bokmann/font-awesome-rails'
+gem 'uglifier', '>= 1.3.0'
 
 # Security
-gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt'
 
 # Serializers
 gem 'active_model_serializers', '~> 0.10.0.rc3'
 gem 'oj'
 gem 'oj_mimic_json'
 
-# Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
+# Use Rack CORS for handling Cross-Origin Resource Sharing (CORS)
+# making cross-origin AJAX possible
 # gem 'rack-cors'
 
 # Async Processing
-gem 'sidekiq', '~> 4.0.1'
+gem 'sidekiq'
 gem 'sidekiq-limit_fetch'
-gem 'sinatra', github: 'sinatra/sinatra', branch: '2.2.0-alpha', require: nil # dependency of Sidekiq::Web
 
 # Configuration
 gem 'dotenv-rails'
@@ -46,20 +45,20 @@ gem 'squire'
 gem 'dalli'
 
 # Reporting
-gem 'rollbar', '~> 2.7.1'
-gem 'gabrake', '~> 0.1.2'
+gem 'gabrake'
 gem 'newrelic_rpm', '>= 3.15.0.314'
+gem 'rollbar'
 
 # Utilities
-gem 'symbolize'
-gem 'curb'
-gem 'nokogiri'
-gem 'mechanize'
-gem 'rubyzip', require: 'zip'
 gem 'awesome_print'
+gem 'curb'
+gem 'mechanize'
+gem 'nokogiri'
 gem 'pdf-reader'
 gem 'roo'
 gem 'roo-xls'
+gem 'rubyzip', require: 'zip'
+gem 'symbolize'
 
 # Codeclimate
 gem 'codeclimate-test-reporter', group: :test, require: nil
@@ -69,24 +68,18 @@ gem 'whenever'
 
 group :development, :test do
   # Debugging
+  gem 'capybara'
+  gem 'database_rewinder'
+  gem 'factory_girl_rails'
+  gem 'fuubar'
+  gem 'poltergeist'
   gem 'pry'
   gem 'pry-rails'
-  gem 'ruby-prof'
-
-  # Testing
-  # TODO once rspec for Rails 5 is released, remove
-  %w[rspec-rails rspec rspec-core rspec-expectations rspec-mocks rspec-support].each do |lib|
-    gem lib, github: "rspec/#{lib}"
-  end
-
-  gem 'fuubar'
-  gem 'database_rewinder'
-  gem 'factory_girl_rails', '~> 4.5'
   gem 'rails-controller-testing'
-  gem 'capybara'
-  gem 'poltergeist'
-  gem 'vcr'
+  gem 'rspec-rails'
+  gem 'ruby-prof'
   gem 'timecop'
+  gem 'vcr'
 end
 
 group :test do
@@ -96,18 +89,19 @@ end
 group :development do
   # Debugging
   # TODO wait for web-console to be ready for Rails 5
-  # gem 'web-console', github: 'rails/web-console'
+  gem 'web-console'
 
   # Deployment
   gem 'capistrano', '~> 3.1'
-  gem 'capistrano-rails', '~> 1.1'
   gem 'capistrano-bundler'
-  gem 'capistrano-rbenv', '~> 2.0'
-  gem 'capistrano-passenger'
-  gem 'capistrano-sidekiq'
   gem 'capistrano-git-submodule-strategy', '~> 0.1'
+  gem 'capistrano-passenger'
+  gem 'capistrano-rails', '~> 1.1'
+  gem 'capistrano-rbenv', '~> 2.0'
+  gem 'capistrano-sidekiq'
 
   # Other
   gem 'bump', github: 'pavolzbell/bump'
+  gem 'rubocop'
   gem 'spring'
 end
