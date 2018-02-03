@@ -23,14 +23,18 @@ every :day, at: '4:00 am' do
   runner 'InfoSud.import_courts'
 end
 
-every :day, at: '4:30 am' do
+every :day, at: '4:00 am' do
   runner 'InfoSud.import_judges'
 end
 
-every :day, at: '5:00 am' do
+every :day, at: '4:00 am' do
   runner 'InfoSud.import_hearings'
 end
 
-every :day, at: '6:00 am' do
+every :day, at: '5:00 am' do
+  runner 'InfoSud.import_decrees'
+end
+
+every :day, at: '10:00 pm' do
   runner 'InfoSud.import_decrees'
 end
