@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.shared_examples_for Api::Syncable do
   let(:api_key) { create :api_key }
   let(:factory) { repository.name.underscore.to_sym }
-  let!(:records) { 101.times.map { FactoryGirl.create(factory) }.sort_by { |r| [r.updated_at, r.id] }}
+  let!(:records) { 101.times.map { FactoryBot.create(factory) }.sort_by { |r| [r.updated_at, r.id] }}
   let(:adapter) { ActiveModel::Serializer.config.adapter }
 
   describe 'GET show' do
@@ -32,7 +32,7 @@ RSpec.shared_examples_for Api::Syncable do
 
   describe 'GET sync' do
     it 'returns records as json' do
-      serializer = ActiveModel::Serializer::ArraySerializer.new(
+      serializer = ActiveModel::Serializer::CollectionSerializer.new(
         records.first(100),
         serializer: "#{repository}Serializer".constantize
       )
@@ -66,7 +66,7 @@ RSpec.shared_examples_for Api::Syncable do
       it 'returns records updated after provided date' do
         date = Time.now + 2.days
 
-        other = 3.times.map { FactoryGirl.create factory, updated_at: date }
+        other = 3.times.map { FactoryBot.create factory, updated_at: date }
 
         get :sync, params: { since: date.as_json, api_key: api_key.value }, format: :json
 
@@ -80,7 +80,7 @@ RSpec.shared_examples_for Api::Syncable do
       it 'does not embed Link header' do
         date = Time.now + 2.days
 
-        3.times.map { FactoryGirl.create factory, updated_at: date }
+        3.times.map { FactoryBot.create factory, updated_at: date }
 
         get :sync, params: { api_key: api_key.value }, format: :json
         get :sync, params: { since: date.as_json, api_key: api_key.value }, format: :json

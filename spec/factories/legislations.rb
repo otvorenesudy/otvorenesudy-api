@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :legislation do
     sequence(:number) { |n| n }
     sequence(:paragraph) { |n| n }

@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :'decree/page', aliases: [:decree_page] do
     association :decree
 

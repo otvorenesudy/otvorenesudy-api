@@ -21,7 +21,7 @@ class ExportDecreesJob < ActiveJob::Base
 
     File.open(File.join(path, "#{from_id}-#{to_id}.json"), 'w') do |f|
       adapter = ActiveModel::Serializer.config.adapter
-      serializer = ActiveModel::Serializer::ArraySerializer.new(decrees, serializer: DecreeSerializer)
+      serializer = ActiveModel::Serializer::CollectionSerializer.new(decrees, serializer: DecreeSerializer)
 
       f.write(adapter.new(serializer).to_json)
     end

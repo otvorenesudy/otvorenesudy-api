@@ -111,4 +111,9 @@ RSpec.configure do |config|
 
   # Helpers
   config.include FixtureHelper
+
+  # Exlude ObcanJusticeSk specs from running
+  config.before do |example|
+    skip if example.metadata[:file_path].match?(/obcan_justice_sk/)
+  end
 end

@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :'legislation/usage', aliases: [:legislation_usage] do
     association :legislation
     association :decree

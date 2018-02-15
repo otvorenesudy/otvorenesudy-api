@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151010220257) do
+ActiveRecord::Schema.define(version: 20170305154502) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,12 +24,6 @@ ActiveRecord::Schema.define(version: 20151010220257) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["defendant_id", "value"], name: "index_accusations_on_defendant_id_and_value", unique: true
-  end
-
-  create_table "api_keys", id: :serial, force: :cascade do |t|
-    t.string "value", limit: 255, null: false
-    t.datetime "created_at", null: false
-    t.index ["value"], name: "index_api_keys_on_key", unique: true
   end
 
   create_table "court_expenses", id: :serial, force: :cascade do |t|
@@ -178,19 +172,22 @@ ActiveRecord::Schema.define(version: 20151010220257) do
     t.string "case_number", limit: 255
     t.string "file_number", limit: 255
     t.date "date"
-    t.string "ecli", limit: 255, null: false
+    t.string "ecli", limit: 255
     t.text "summary"
     t.integer "legislation_area_id"
     t.integer "legislation_subarea_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "pdf_uri", limit: 2048
     t.index ["case_number"], name: "index_decrees_on_case_number"
     t.index ["court_id"], name: "index_decrees_on_court_id"
     t.index ["decree_form_id"], name: "index_decrees_on_decree_form_id"
-    t.index ["ecli"], name: "index_decrees_on_ecli", unique: true
+    t.index ["ecli"], name: "index_decrees_on_ecli"
     t.index ["file_number"], name: "index_decrees_on_file_number"
     t.index ["proceeding_id"], name: "index_decrees_on_proceeding_id"
     t.index ["source_id"], name: "index_decrees_on_source_id"
+    t.index ["updated_at", "id"], name: "index_decrees_on_updated_at_and_id"
+    t.index ["updated_at"], name: "index_decrees_on_updated_at"
     t.index ["uri"], name: "index_decrees_on_uri", unique: true
   end
 
@@ -358,7 +355,7 @@ ActiveRecord::Schema.define(version: 20151010220257) do
   end
 
   create_table "judge_property_declarations", id: :serial, force: :cascade do |t|
-    t.string "uri", limit: 2048, null: false
+    t.string "uri", limit: 255
     t.integer "source_id", null: false
     t.integer "court_id", null: false
     t.integer "judge_id", null: false
@@ -448,7 +445,7 @@ ActiveRecord::Schema.define(version: 20151010220257) do
 
   create_table "judgements", id: :serial, force: :cascade do |t|
     t.integer "decree_id", null: false
-    t.integer "judge_id", null: false
+    t.integer "judge_id"
     t.decimal "judge_name_similarity", precision: 3, scale: 2, null: false
     t.string "judge_name_unprocessed", limit: 255, null: false
     t.datetime "created_at", null: false
@@ -481,7 +478,7 @@ ActiveRecord::Schema.define(version: 20151010220257) do
 
   create_table "judgings", id: :serial, force: :cascade do |t|
     t.integer "hearing_id", null: false
-    t.integer "judge_id", null: false
+    t.integer "judge_id"
     t.decimal "judge_name_similarity", precision: 3, scale: 2, null: false
     t.string "judge_name_unprocessed", limit: 255, null: false
     t.boolean "judge_chair", null: false

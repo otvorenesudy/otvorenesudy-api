@@ -64,7 +64,7 @@ RSpec.configure do |config|
   end
 
   # Factory syntax suggar
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
 
   # Controller helpers that are part of rails-controller-testing gem
   config.include Rails::Controller::Testing::TestProcess

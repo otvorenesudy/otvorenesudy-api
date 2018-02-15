@@ -15,7 +15,7 @@ RSpec.feature 'Request Invite', type: :feature do
     invite = Invite.last
 
     expect(invite.email).to eql('johny@example.com')
-    expect(invite.locale).to eql(:en)
+    expect(invite.locale).to eql('en')
   end
 
   context 'after changing locale' do
@@ -35,7 +35,7 @@ RSpec.feature 'Request Invite', type: :feature do
       invite = Invite.last
 
       expect(invite.email).to eql('johny@example.com')
-      expect(invite.locale).to eql(:sk)
+      expect(invite.locale).to eql('sk')
 
     end
   end
@@ -54,7 +54,7 @@ RSpec.feature 'Request Invite', type: :feature do
   end
 
   scenario 'allows only unique emails per locale', js: true do
-    create :invite, email: 'johny@example.com', locale: :en
+    create :invite, email: 'johny@example.com', locale: 'en'
 
     visit root_path
 
@@ -82,6 +82,6 @@ RSpec.feature 'Request Invite', type: :feature do
     invite = Invite.last
 
     expect(invite.email).to eql('johny@example.com')
-    expect(invite.locale).to eql(:sk)
+    expect(invite.locale).to eql('sk')
   end
 end
