@@ -1,11 +1,8 @@
-# config valid only for current version of Capistrano
-lock '3.4.0'
+lock '3.10.1'
 
 # Repository
 set :application, 'opencourts-api'
-set :scm,         :git
 set :repo_url,    'git@github.com:otvorenesudy/otvorenesudy-api.git'
-set :git_strategy, Capistrano::Git::SubmoduleStrategy
 
 # Sidekiq
 set :sidekiq_processes, 1

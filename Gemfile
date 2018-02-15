@@ -90,6 +90,7 @@ group :development do
   # Deployment
   gem 'capistrano', '~> 3.10.1'
   gem 'capistrano-bundler'
+  gem 'capistrano-git'
   gem 'capistrano-git-with-submodules'
   gem 'capistrano-passenger'
   gem 'capistrano-rails'
