@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :'legislation/subarea', aliases: [:legislation_subarea] do
     association :area, factory: :legislation_area
 

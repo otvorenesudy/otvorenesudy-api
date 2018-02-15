@@ -1,113 +1,103 @@
 source 'https://rubygems.org'
 
-# TODO once is Rails 5 released, replace with semiverions
-gem 'rails', github: 'rails/rails', tag: 'v5.0.0.beta2'
-gem 'sprockets-rails', github: 'rails/sprockets-rails'
-gem 'sprockets', github: 'rails/sprockets'
-gem 'sass-rails', github: 'rails/sass-rails'
-gem 'arel', github: 'rails/arel'
-gem 'rack', github: 'rack/rack'
-gem 'turbolinks', github: 'rails/turbolinks'
+gem 'rails', '~> 5.1.5'
+gem 'sass-rails', '~> 5.0.7'
+gem 'sprockets', '~> 3.7.1'
+gem 'sprockets-rails', '~> 3.2.1'
+gem 'turbolinks', '~> 5.1.0'
 
 # Internationalization
-gem 'rails-i18n'
+gem 'rails-i18n', '~> 5.1.0'
 
 # Database
-gem 'pg'
+gem 'pg', '~> 1.0.0'
 
 # Assets
+gem 'bootstrap', '4.0.0.alpha2'
+gem 'coffee-rails', '~> 4.2.0'
+gem 'font-awesome-rails', '~> 4.7.0.3'
+gem 'jquery-rails', '~> 4.3.1'
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', github: 'rails/coffee-rails'
-gem 'jquery-rails'
-gem 'bootstrap', github: 'twbs/bootstrap-rubygem'
-gem 'font-awesome-rails', github: 'bokmann/font-awesome-rails'
 
 # Security
-gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.11'
 
 # Serializers
-gem 'active_model_serializers', '~> 0.10.0.rc3'
-gem 'oj'
-gem 'oj_mimic_json'
+gem 'active_model_serializers', '~> 0.10.7'
+gem 'oj', '~> 3.4.0'
+gem 'oj_mimic_json', '~> 1.0.1'
 
-# Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
+# Use Rack CORS for handling Cross-Origin Resource Sharing (CORS)
+# making cross-origin AJAX possible
 # gem 'rack-cors'
 
 # Async Processing
-gem 'sidekiq', '~> 4.0.1'
-gem 'sidekiq-limit_fetch'
-gem 'sinatra', github: 'sinatra/sinatra', branch: '2.2.0-alpha', require: nil # dependency of Sidekiq::Web
+gem 'sidekiq', '~> 5.1.1'
+gem 'sidekiq-limit_fetch', '~> 3.4.0'
 
 # Configuration
-gem 'dotenv-rails'
-gem 'squire'
+gem 'dotenv-rails', '~> 2.2.1'
+gem 'squire', '~> 1.3.7'
 
 # Caching
-gem 'dalli'
+gem 'dalli', '~> 2.7.6'
 
 # Reporting
-gem 'rollbar', '~> 2.7.1'
-gem 'gabrake', '~> 0.1.2'
-gem 'newrelic_rpm', '>= 3.15.0.314'
+gem 'newrelic_rpm', '~> 4.8.0.341'
+gem 'rollbar'
 
 # Utilities
-gem 'symbolize'
-gem 'curb'
-gem 'nokogiri'
-gem 'mechanize'
-gem 'rubyzip', require: 'zip'
-gem 'awesome_print'
-gem 'pdf-reader'
-gem 'roo'
-gem 'roo-xls'
+gem 'awesome_print', '~> 1.8.0'
+gem 'curb', '~> 0.9.4'
+gem 'enumerize', '~> 2.2.1'
+gem 'mechanize', '~> 2.7.5'
+gem 'nokogiri', '~> 1.8.2'
+gem 'pdf-reader', '~> 2.1.0'
+gem 'roo', '~> 2.7.1'
+gem 'roo-xls', '~> 1.1.0'
+gem 'rubyzip', '~> 1.2.1', require: 'zip'
 
 # Codeclimate
 gem 'codeclimate-test-reporter', group: :test, require: nil
 
 # Scheduling
-gem 'whenever'
+gem 'whenever', '0.10.0'
 
 group :development, :test do
-  # Debugging
+  gem 'capybara', '~> 2.18.0'
+  gem 'database_rewinder', '~> 0.8.3'
+  gem 'factory_bot_rails', '~> 4.8.2'
+  gem 'fuubar', '~> 2.3.1'
+  gem 'poltergeist', '~> 1.17.0'
   gem 'pry'
   gem 'pry-rails'
-  gem 'ruby-prof'
-
-  # Testing
-  # TODO once rspec for Rails 5 is released, remove
-  %w[rspec-rails rspec rspec-core rspec-expectations rspec-mocks rspec-support].each do |lib|
-    gem lib, github: "rspec/#{lib}"
-  end
-
-  gem 'fuubar'
-  gem 'database_rewinder'
-  gem 'factory_girl_rails', '~> 4.5'
-  gem 'rails-controller-testing'
-  gem 'capybara'
-  gem 'poltergeist'
-  gem 'vcr'
-  gem 'timecop'
+  gem 'rails-controller-testing', '~> 1.0.2'
+  gem 'rspec-rails', '~> 3.7.2'
+  gem 'ruby-prof', '~> 0.17.0'
+  gem 'spring', '~> 2.0.2'
+  gem 'timecop', '~> 0.9.1'
+  gem 'vcr', '~> 4.0.0'
 end
 
 group :test do
-  gem 'webmock'
+  gem 'webmock', '~> 3.3.0'
 end
 
 group :development do
   # Debugging
-  # TODO wait for web-console to be ready for Rails 5
-  # gem 'web-console', github: 'rails/web-console'
+  gem 'web-console'
 
   # Deployment
-  gem 'capistrano', '~> 3.1'
-  gem 'capistrano-rails', '~> 1.1'
+  gem 'capistrano', '~> 3.10.1'
   gem 'capistrano-bundler'
-  gem 'capistrano-rbenv', '~> 2.0'
+  gem 'capistrano-git'
+  gem 'capistrano-git-with-submodules'
   gem 'capistrano-passenger'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
   gem 'capistrano-sidekiq'
-  gem 'capistrano-git-submodule-strategy', '~> 0.1'
 
   # Other
   gem 'bump', github: 'pavolzbell/bump'
-  gem 'spring'
+  gem 'rubocop'
 end

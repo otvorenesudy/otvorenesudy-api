@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   sequence(:uri)    { |n| "factory_girl_uri_#{n}" }
 
   factory :source do

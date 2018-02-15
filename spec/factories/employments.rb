@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :employment do
     association :judge
     association :court

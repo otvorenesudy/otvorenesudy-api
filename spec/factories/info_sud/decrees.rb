@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :'info_sud/decree', aliases: [:info_sud_decree] do
     sequence(:guid) { |n| n.to_s }
 

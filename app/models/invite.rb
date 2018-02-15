@@ -1,6 +1,12 @@
 class Invite < ActiveRecord::Base
-  validates :email, format: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, presence: true, uniqueness: { scope: :locale }
-  validates :locale, presence: true
+  extend Enumerize
 
-  symbolize :locale, in: [:sk, :en], scopes: true
+  validates :email,
+    format: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i,
+    presence: true,
+    uniqueness: {
+      scope: :locale
+    }
+
+  validates :locale, presence: true, inclusion: { in: %w[sk en] }
 end

@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :proceeding do
     trait :with_hearings do
       after :build do |proceeding|
