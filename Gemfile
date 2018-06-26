@@ -55,7 +55,6 @@ gem 'nokogiri', '~> 1.8.2'
 gem 'pdf-reader', '~> 2.1.0'
 gem 'roo', '~> 2.7.1'
 gem 'roo-xls', '~> 1.1.0'
-gem 'rubyzip', '~> 1.2.1', require: 'zip'
 
 # Codeclimate
 gem 'codeclimate-test-reporter', group: :test, require: nil
