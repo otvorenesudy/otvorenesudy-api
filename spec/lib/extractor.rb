@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 require 'info_sud'
 
 RSpec.describe InfoSud::Extractor do
