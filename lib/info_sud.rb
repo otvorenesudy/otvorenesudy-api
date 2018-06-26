@@ -40,7 +40,7 @@ module InfoSud
   end
 
   def self.import(path, repository:)
-    InfoSud::Extractor.extract(path) do |data|
+    Extractor.extract(path) do |data|
       InfoSud::Importer.import(data, repository: repository)
     end
   end
