@@ -76,4 +76,7 @@ Rails.application.configure do
 
   # Use Sidekiq as ActiveJob adapter
   config.active_job.queue_adapter = :sidekiq
+
+  # Turn off AR logging
+  config.active_record.logger = nil
 end
