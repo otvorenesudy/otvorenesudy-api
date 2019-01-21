@@ -33,8 +33,8 @@ RSpec.describe Api::DecreesController do
   end
 
   describe '/health' do
-    before :each do
-      create :decree, updated_at: 20.days.ago
+    let!(:decree) do
+      create :decree, updated_at: 20.days.ago.beginning_of_day
     end
 
     context 'with any decrees updated recently' do
@@ -44,16 +44,52 @@ RSpec.describe Api::DecreesController do
         get :health, params: { api_key: api_key.value }, format: :json
 
         expect(response.status).to eql(200)
-        expect(JSON.parse(response.body, symbolize_names: true)).to eql(status: 'Success')
+        expect(JSON.parse(response.body, symbolize_names: true)).to eql(
+          status: 'Success'
+        )
       end
     end
 
-    context 'with any decrees updated recently' do
-      it 'returns success' do
+    context 'without any decrees updated recently' do
+      it 'returns failure' do
         get :health, params: { api_key: api_key.value }, format: :json
 
         expect(response.status).to eql(422)
-        expect(JSON.parse(response.body, symbolize_names: true)).to eql(status: 'Failure')
+        expect(JSON.parse(response.body, symbolize_names: true)).to eql(
+          status: 'Failure'
+        )
+      end
+    end
+
+    context 'with any decrees not updated during weekend no more than 3 days' do
+      let(:time) { Time.zone.parse('2019-01-18 06:00') }
+      let!(:decree) { create :decree, updated_at: time }
+
+      it 'returns success' do
+        Timecop.travel Time.parse('2019-01-21 00:00') do
+          get :health, params: { api_key: api_key.value }, format: :json
+
+          expect(response.status).to eql(200)
+          expect(JSON.parse(response.body, symbolize_names: true)).to eql(
+            status: 'Success'
+          )
+        end
+      end
+    end
+
+    context 'with any decrees not updated during weekend more than 3 days' do
+      let(:time) { Time.zone.parse('2019-01-17 06:00') }
+      let!(:decree) { create :decree, updated_at: time }
+
+      it 'returns success' do
+        Timecop.travel Time.parse('2019-01-21 00:00') do
+          get :health, params: { api_key: api_key.value }, format: :json
+
+          expect(response.status).to eql(422)
+          expect(JSON.parse(response.body, symbolize_names: true)).to eql(
+            status: 'Failure'
+          )
+        end
       end
     end
   end
