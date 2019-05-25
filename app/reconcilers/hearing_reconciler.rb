@@ -25,7 +25,7 @@ class HearingReconciler
   end
 
   def reconcile_attributes
-    # TODO remove source, leave now for compatibility
+    # TODO: remove source, leave now for compatibility
     hearing.update_attributes!(
       uri: mapper.uri,
       type: Hearing::Type.find_by!(value: mapper.type),
@@ -36,7 +36,8 @@ class HearingReconciler
       room: mapper.room,
       selfjudge: mapper.selfjudge,
       note: mapper.note,
-      special_type: mapper.special_type
+      special_type: mapper.special_type,
+      anonymized_at: Time.now
     )
   end
 

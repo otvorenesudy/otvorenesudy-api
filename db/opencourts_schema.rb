@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170305154502) do
+ActiveRecord::Schema.define(version: 20190418202027) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -179,6 +179,7 @@ ActiveRecord::Schema.define(version: 20170305154502) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "pdf_uri", limit: 2048
+    t.boolean "pdf_uri_invalid", default: false, null: false
     t.index ["case_number"], name: "index_decrees_on_case_number"
     t.index ["court_id"], name: "index_decrees_on_court_id"
     t.index ["decree_form_id"], name: "index_decrees_on_decree_form_id"
@@ -262,7 +263,8 @@ ActiveRecord::Schema.define(version: 20170305154502) do
     t.text "note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "anonymized", default: false
+    t.datetime "anonymized_at"
+    t.index ["anonymized_at"], name: "index_hearings_on_anonymized_at"
     t.index ["case_number"], name: "index_hearings_on_case_number"
     t.index ["court_id"], name: "index_hearings_on_court_id"
     t.index ["file_number"], name: "index_hearings_on_file_number"
