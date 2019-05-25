@@ -37,14 +37,25 @@ RSpec.describe HearingReconciler do
 
   describe '#reconcile_attributes' do
     it 'reconciles attributes' do
-      allow(Source).to receive(:find_by!).with(module: 'JusticeGovSk') { source }
-      allow(Hearing::Type).to receive(:find_by!).with(value: 'Trestné') { :type }
+      Timecop.freeze do
+        allow(Source).to receive(:find_by!).with(module: 'JusticeGovSk') { source }
+        allow(Hearing::Type).to receive(:find_by!).with(value: 'Trestné') { :type }
 
-      expect(hearing).to receive(:update_attributes!).with(
-        attributes.slice(:uri, :case_number, :file_number, :date, :room, :selfjudge, :note, :special_type).merge(type: :type, source: source)
-      )
+        expect(hearing).to receive(:update_attributes!).with(
+          attributes.slice(
+            :uri,
+            :case_number,
+            :file_number,
+            :date,
+            :room,
+            :selfjudge,
+            :note,
+            :special_type
+          ).merge(type: :type, source: source, anonymized_at: Time.now)
+        )
 
-      subject.reconcile_attributes
+        subject.reconcile_attributes
+      end
     end
   end
 
