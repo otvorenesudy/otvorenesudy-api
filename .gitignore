@@ -17,3 +17,5 @@ Gemfile.lock.tags
 
 !/log/.keep
 !/tmp/.keep
+
+.env.local

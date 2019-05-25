@@ -88,9 +88,9 @@ class HearingReconciler
 
   def reconcile_opponents
     opponents = mapper.opponents.map do |name|
-      opponent = Opponent.find_or_initialize_by(name: name, hearing: hearing)
+      opponent = Opponent.find_or_initialize_by(name_unprocessed: name, hearing: hearing)
 
-      opponent.update_attributes!(name_unprocessed: name)
+      opponent.update_attributes!(name: RandomInitialsProvider.provide)
 
       opponent
     end
@@ -100,9 +100,9 @@ class HearingReconciler
 
   def reconcile_defendants
     defendants = mapper.defendants.map do |name|
-      defendant = Defendant.find_or_initialize_by(name: name, hearing: hearing)
+      defendant = Defendant.find_or_initialize_by(name_unprocessed: name, hearing: hearing)
 
-      defendant.update_attributes!(name_unprocessed: name)
+      defendant.update_attributes!(name: RandomInitialsProvider.provide)
 
       defendant
     end
@@ -112,13 +112,19 @@ class HearingReconciler
 
   def reconcile_proposers
     proposers = mapper.proposers.map do |name|
-      proposer = Proposer.find_or_initialize_by(name: name, hearing: hearing)
+      proposer = Proposer.find_or_initialize_by(name_unprocessed: name, hearing: hearing)
 
-      proposer.update_attributes!(name_unprocessed: name)
+      proposer.update_attributes!(name: RandomInitialsProvider.provide)
 
       proposer
     end
 
     hearing.purge!(:proposers, except: proposers)
+  end
+
+  class RandomInitialsProvider
+    def self.provide
+      ('A'..'Z').to_a.sample(2)
+    end
   end
 end

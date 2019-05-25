@@ -82,7 +82,7 @@ module InfoSud
     private
 
     def map_judges
-      # TODO pass in only normalized and unprocessed value
+      # TODO: pass in only normalized and unprocessed value
       names = @data[:sudca_meno] || []
 
       names.map { |name| InfoSud::Normalizer.normalize_person_name(name) }

@@ -19,7 +19,13 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+
 require 'rubygems'
+require 'dotenv'
+
+Dotenv.load('.env')
+Dotenv.load('.env.local')
+
 require 'vcr'
 require 'support/fixture_helper'
 require 'sidekiq/testing'
