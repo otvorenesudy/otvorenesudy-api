@@ -1,11 +1,9 @@
 sudo: false
-cache:
-  - bundler
 language: ruby
-bundler_args: --without development
 
 before_install:
   - gem install bundler
+  - bundle install --without development --path=${BUNDLE_PATH:-vendor/bundle}
 
 env:
   - OPENCOURTS_DATABASE_USER=postgres OPENCOURTS_API_DATABASE_USER=postgres
