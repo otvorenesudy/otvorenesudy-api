@@ -21,10 +21,6 @@ module InfoSud
   end
 
   def self.import_judges
-    urls = Nokogiri::HTML(Curl.get('https://obcan.justice.sk/opendata').body_str).css('a').map { |e|
-      e['href']
-    }.select { |e| e.match(/p_p_resource_id=isu_sr.+_json.zip/) }
-
     path = InfoSud::Downloader.download_file(JUDGES_URL)
 
     import(path, repository: InfoSud::Judge)
@@ -37,7 +33,11 @@ module InfoSud
   end
 
   def self.import_decrees
-    DECREE_URLS.each do |url|
+    urls = Nokogiri::HTML(Curl.get('https://obcan.justice.sk/opendata').body_str).css('a').map { |e|
+      e['href']
+    }.select { |e| e.match(/p_p_resource_id=isu_sr.+_json.zip/) }
+
+    urls.each do |url|
       path = InfoSud::Downloader.download_file(url)
 
       import(path, repository: InfoSud::Decree)
