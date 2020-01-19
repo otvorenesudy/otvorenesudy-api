@@ -6,7 +6,7 @@ class Extractor
     Dir.mkdir(directory)
     begin
       `unzip '#{path}' -d #{directory}`
-      Dir[ectory.join('*')].each do |filename|
+      Dir[directory.join('*')].each do |filename|
         yield(File.read(filename)) rescue nil
       end
     ensure
