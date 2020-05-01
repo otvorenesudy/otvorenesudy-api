@@ -2,7 +2,7 @@ module OpenCourtsApi
   module VERSION
     MAJOR = 0
     MINOR = 4
-    PATCH = 22
+    PATCH = 23
 
     PRE = nil
 
