@@ -125,7 +125,7 @@ class HearingReconciler
 
   class RandomInitialsProvider
     def self.provide
-      ('A'..'Z').to_a.sample(2)
+      ('A'..'Z').to_a.sample(2).map { |e| "#{e}." }.join(' ')
     end
   end
 end

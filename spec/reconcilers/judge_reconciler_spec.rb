@@ -25,6 +25,7 @@ RSpec.describe JudgeReconciler do
       position: 'predseda',
       temporary_court: 'Okresný súd Prievidza',
       active: true,
+      status: :active,
       note: 'note'
     }
   }
@@ -86,6 +87,7 @@ RSpec.describe JudgeReconciler do
       expect(employment).to receive(:update_attributes!).with(
         position: :position,
         active: true,
+        status: :active,
         note: 'note'
       )
 

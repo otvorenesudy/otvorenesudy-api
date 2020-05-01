@@ -49,6 +49,7 @@ class JudgeReconciler
     employment.update_attributes!(
       position: Judge::Position.find_or_create_by!(value: mapper.position),
       active: mapper.active,
+      status: mapper.status,
       note: mapper.note
     )
   end

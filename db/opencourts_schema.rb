@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190418202027) do
+ActiveRecord::Schema.define(version: 20200501214856) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,9 +124,11 @@ ActiveRecord::Schema.define(version: 20190418202027) do
     t.index ["acronym"], name: "index_courts_on_acronym"
     t.index ["court_jurisdiction_id"], name: "index_courts_on_court_jurisdiction_id"
     t.index ["court_type_id"], name: "index_courts_on_court_type_id"
+    t.index ["created_at"], name: "index_courts_on_created_at"
     t.index ["municipality_id"], name: "index_courts_on_municipality_id"
     t.index ["name"], name: "index_courts_on_name", unique: true
     t.index ["source_id"], name: "index_courts_on_source_id"
+    t.index ["updated_at"], name: "index_courts_on_updated_at"
     t.index ["uri"], name: "index_courts_on_uri", unique: true
   end
 
@@ -182,6 +184,7 @@ ActiveRecord::Schema.define(version: 20190418202027) do
     t.boolean "pdf_uri_invalid", default: false, null: false
     t.index ["case_number"], name: "index_decrees_on_case_number"
     t.index ["court_id"], name: "index_decrees_on_court_id"
+    t.index ["created_at"], name: "index_decrees_on_created_at"
     t.index ["decree_form_id"], name: "index_decrees_on_decree_form_id"
     t.index ["ecli"], name: "index_decrees_on_ecli"
     t.index ["file_number"], name: "index_decrees_on_file_number"
@@ -211,6 +214,7 @@ ActiveRecord::Schema.define(version: 20190418202027) do
     t.text "note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status", limit: 255
     t.index ["active"], name: "index_employments_on_active"
     t.index ["court_id", "judge_id"], name: "index_employments_on_court_id_and_judge_id"
     t.index ["judge_id", "court_id"], name: "index_employments_on_judge_id_and_court_id"
@@ -267,9 +271,11 @@ ActiveRecord::Schema.define(version: 20190418202027) do
     t.index ["anonymized_at"], name: "index_hearings_on_anonymized_at"
     t.index ["case_number"], name: "index_hearings_on_case_number"
     t.index ["court_id"], name: "index_hearings_on_court_id"
+    t.index ["created_at"], name: "index_hearings_on_created_at"
     t.index ["file_number"], name: "index_hearings_on_file_number"
     t.index ["proceeding_id"], name: "index_hearings_on_proceeding_id"
     t.index ["source_id"], name: "index_hearings_on_source_id"
+    t.index ["updated_at"], name: "index_hearings_on_updated_at"
     t.index ["uri"], name: "index_hearings_on_uri", unique: true
   end
 
@@ -470,11 +476,13 @@ ActiveRecord::Schema.define(version: 20190418202027) do
     t.string "addition", limit: 255
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["created_at"], name: "index_judges_on_created_at"
     t.index ["first", "middle", "last"], name: "index_judges_on_first_and_middle_and_last"
     t.index ["last", "middle", "first"], name: "index_judges_on_last_and_middle_and_first"
     t.index ["name"], name: "index_judges_on_name", unique: true
     t.index ["name_unprocessed"], name: "index_judges_on_name_unprocessed", unique: true
     t.index ["source_id"], name: "index_judges_on_source_id"
+    t.index ["updated_at"], name: "index_judges_on_updated_at"
     t.index ["uri"], name: "index_judges_on_uri"
   end
 
@@ -582,7 +590,9 @@ ActiveRecord::Schema.define(version: 20190418202027) do
     t.string "file_number", limit: 255
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["created_at"], name: "index_proceedings_on_created_at"
     t.index ["file_number"], name: "index_proceedings_on_file_number", unique: true
+    t.index ["updated_at"], name: "index_proceedings_on_updated_at"
   end
 
   create_table "proposers", id: :serial, force: :cascade do |t|
@@ -664,10 +674,12 @@ ActiveRecord::Schema.define(version: 20190418202027) do
     t.string "report_url", limit: 2048
     t.index ["closed_at"], name: "index_selection_procedures_on_closed_at"
     t.index ["court_id"], name: "index_selection_procedures_on_court_id"
+    t.index ["created_at"], name: "index_selection_procedures_on_created_at"
     t.index ["date"], name: "index_selection_procedures_on_date"
     t.index ["organization_name"], name: "index_selection_procedures_on_organization_name"
     t.index ["organization_name_unprocessed"], name: "index_selection_procedures_on_organization_name_unprocessed"
     t.index ["source_id"], name: "index_selection_procedures_on_source_id"
+    t.index ["updated_at"], name: "index_selection_procedures_on_updated_at"
     t.index ["uri"], name: "index_selection_procedures_on_uri"
   end
 

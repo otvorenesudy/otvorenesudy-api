@@ -21,7 +21,11 @@ RSpec.feature 'Import Hearings' do
     end
 
     scenario 'imports hearings' do
-      InfoSud::Importer.import(data, repository: InfoSud::Hearing)
+      created_at = Time.zone.now
+
+      Timecop.freeze(created_at) do
+        InfoSud::Importer.import(data, repository: InfoSud::Hearing)
+      end
 
       expect(InfoSud::Hearing.count).to eql(2)
       expect(Hearing.count).to eql(2)
@@ -39,12 +43,12 @@ RSpec.feature 'Import Hearings' do
         source_id: source.id,
         case_number: '3T/9/2015',
         file_number: '7115010154',
-        date: Time.parse('2015-12-07T12:30:00Z'),
+        date: Time.parse('2015-12-07T12:30:00Z').in_time_zone,
         room: '135',
         commencement_date: nil,
         selfjudge: true,
         note: nil,
-        anonymized: false,
+        anonymized_at: created_at,
         special_type: nil,
 
         court_id: court.id,
@@ -57,7 +61,8 @@ RSpec.feature 'Import Hearings' do
 
       expect(hearing.proposers.to_a).to be_empty
       expect(hearing.opponents.to_a).to be_empty
-      expect(hearing.defendants.pluck(:name)).to eql(['Peter Pan'])
+      expect(hearing.defendants.count).to eql(1)
+      expect(hearing.defendants.pluck(:name).first).to match(/\A\w\. \w\.\z/)
       expect(hearing.judges.to_a).to eql([judges[0]])
     end
 
@@ -89,12 +94,12 @@ RSpec.feature 'Import Hearings' do
         source_id: source.id,
         case_number: '3T/9/2015',
         file_number: '123456789',
-        date: Time.parse('2015-12-07T12:30:00Z'),
+        date: Time.parse('2015-12-07T12:30:00Z').in_time_zone,
         room: '135',
         commencement_date: nil,
         selfjudge: true,
         note: nil,
-        anonymized: false,
+        anonymized_at: updated_at,
         special_type: nil,
 
         court_id: court.id,
@@ -105,8 +110,12 @@ RSpec.feature 'Import Hearings' do
         proceeding_id: proceeding.id
       )
 
-      expect(hearing.proposers.pluck(:name)).to eql(['Peter Parker'])
-      expect(hearing.opponents.pluck(:name)).to eql(['Peter Smith'])
+      expect(hearing.proposers.count).to eql(1)
+      expect(hearing.proposers.pluck(:name).first).to match(/\A\w\. \w\.\z/)
+
+      expect(hearing.opponents.count).to eql(1)
+      expect(hearing.opponents.pluck(:name).first).to match(/\A\w\. \w\.\z/)
+
       expect(hearing.defendants.to_a).to be_empty
       expect(hearing.judges.to_a).to eql([judges[1]])
     end

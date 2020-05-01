@@ -41,11 +41,13 @@ RSpec.feature 'Import Judges' do
       expect(employments[0].court).to eql(Court.find_by(name: 'Okresný súd Levice'))
       expect(employments[0].position).to eql(Judge::Position.find_by(value: 'sudca'))
       expect(employments[0].active).to eql(true)
+      expect(employments[0].status).to eql('active')
       expect(employments[0].note).to be_nil
 
       expect(employments[1].court).to eql(Court.find_by(name: 'Krajský súd Nitra'))
       expect(employments[1].position).to eql(Judge::Position.find_by(value: 'sudca'))
       expect(employments[1].active).to eql(true)
+      expect(employments[1].status).to be_nil
       expect(employments[1].note).to be_nil
     end
 
@@ -60,7 +62,7 @@ RSpec.feature 'Import Judges' do
         InfoSud::Importer.import(updated_data, repository: InfoSud::Judge)
       end
 
-      expect(Judge.where('updated_at >= ?', updated_at).size).to eql(1)
+      expect(Judge.where('updated_at >= ?', updated_at).size).to eql(2)
 
       judge = Judge.find_by(name: 'JUDr. Martina Balegová')
 
@@ -84,18 +86,30 @@ RSpec.feature 'Import Judges' do
       expect(employments[0].court).to eql(Court.find_by(name: 'Okresný súd Levice'))
       expect(employments[0].position).to eql(Judge::Position.find_by(value: 'sudca'))
       expect(employments[0].active).to eql(true)
+      expect(employments[0].status).to eql('active')
       expect(employments[0].note).to eql('od 1. novembra 2015 do 31. októbra 2016 je dočasne pridelená na KS v Trenčíne')
 
       expect(employments[1].court).to eql(Court.find_by(name: 'Krajský súd Nitra'))
       expect(employments[1].position).to eql(Judge::Position.find_by(value: 'sudca'))
       expect(employments[1].active).to eql(false)
+      expect(employments[1].status).to be_nil
       expect(employments[1].note).to be_nil
 
       expect(employments[2].court).to eql(Court.find_by(name: 'Krajský súd Trenčín'))
       expect(employments[2].position).to eql(Judge::Position.find_by(value: 'sudca'))
       expect(employments[2].active).to eql(true)
+      expect(employments[2].status).to be_nil
       expect(employments[2].note).to be_nil
-    end
 
+      judge = Judge.find_by(name: 'JUDr. Ivana Dančová')
+
+      employments = judge.employments.order(:id)
+
+      expect(employments[0].court).to eql(Court.find_by(name: 'Okresný súd Bratislava II'))
+      expect(employments[0].position).to eql(Judge::Position.find_by(value: 'sudca'))
+      expect(employments[0].active).to eql(false)
+      expect(employments[0].status).to eql('terminated')
+      expect(employments[0].note).to be_nil
+    end
   end
 end

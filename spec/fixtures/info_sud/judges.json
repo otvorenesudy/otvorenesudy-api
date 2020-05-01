@@ -1,7 +1,6 @@
 {
   "data" : [
     {
-      "stav" : "01",
       "sud" : "Okresný súd Levice",
       "stav_zmena" : "1.11.2015",
       "lattitude_sudu" : "48.3080863",
@@ -17,10 +16,9 @@
       "guid" : "sudca_1508",
       "longitude_sudu" : "18.0830243",
       "poznamka" : null,
-      "aktivita" : "label.sudca.aktivny"
+      "stav" : "01"
     },
     {
-      "stav" : null,
       "sud" : "Okresný súd Bratislava II",
       "stav_zmena" : "20.6.2005",
       "lattitude_sudu" : "48.1604058",
@@ -36,7 +34,7 @@
       "guid" : "sudca_1507",
       "longitude_sudu" : "17.1474862",
       "poznamka" : null,
-      "aktivita" : "label.sudca.aktivny"
+      "stav" : "06"
     }
   ]
 }

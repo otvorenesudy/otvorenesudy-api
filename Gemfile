@@ -97,6 +97,6 @@ group :development do
   gem 'capistrano-sidekiq'
 
   # Other
-  gem 'bump', github: 'pavolzbell/bump'
+  gem 'bump', git: 'https://github.com/pavolzbell/bump.git'
   gem 'rubocop'
 end

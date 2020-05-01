@@ -206,7 +206,7 @@ end
 RSpec.describe HearingReconciler::RandomInitialsProvider do
   describe '#provide' do
     it 'provides random initials' do
-      expect(described_class.provide.join(' ')).to match(/\A[A-Z] [A-Z]\z/)
+      expect(described_class.provide).to match(/\A[A-Z]. [A-Z].\z/)
     end
   end
 end

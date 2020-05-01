@@ -51,32 +51,109 @@ RSpec.describe InfoSud::JudgeMapper do
   end
 
   describe '#active' do
-    it 'maps judge activity' do
+    it 'maps judge status' do
       expect(subject.active).to be_truthy
     end
 
-    context 'when activity is missing' do
-      let(:data) { { "aktivita" => nil } }
+    context 'when status is active, but probably prosecuted' do
+      let(:data) { { 'stav' => '02' } }
 
       it 'maps judge as active' do
         expect(subject.active).to be_truthy
       end
     end
 
-    context 'when activity is labeled as inactive' do
-      let(:data) { { "aktivita" => 'label.sudca.neaktivny' } }
+    context 'when status is terminated' do
+      let(:data) { { 'stav' => '03' } }
+
+      it 'maps judge as active' do
+        expect(subject.active).to be_falsey
+      end
+    end
+
+    context 'when status is missing' do
+      let(:data) { { 'stav' => nil } }
+
+      it 'maps judge as active' do
+        expect(subject.active).to be_truthy
+      end
+    end
+
+    context 'when ststus is inactive' do
+      let(:data) { { 'stav' => '04' } }
 
       it 'maps judge as inactive' do
         expect(subject.active).to be_falsey
       end
     end
 
+    context 'when status is as position changed' do
+      let(:data) { { 'stav' => '05' } }
 
-    context 'when activity is labeled as deleted' do
-      let(:data) { { "aktivita" => 'label.sudca.vymazany' } }
+      it 'maps judge as active' do
+        expect(subject.active).to be_truthy
+      end
+    end
+
+    context 'when status is as 06' do
+      let(:data) { { 'stav' => '06' } }
+
+      it 'maps judge as active' do
+        expect(subject.active).to be_truthy
+      end
+    end
+  end
+
+  describe '#status' do
+    it 'maps judge status' do
+      expect(subject.status).to eq(:active)
+    end
+
+    context 'when status is active, but probably prosecuted' do
+      let(:data) { { 'stav' => '02' } }
+
+      it 'maps judge as active' do
+        expect(subject.status).to eq(:active)
+      end
+    end
+
+    context 'when status is terminated' do
+      let(:data) { { 'stav' => '03' } }
+
+      it 'maps judge as terminated' do
+        expect(subject.status).to eq(:terminated)
+      end
+    end
+
+    context 'when status is missing' do
+      let(:data) { { 'stav' => nil } }
+
+      it 'maps judge as active' do
+        expect(subject.status).to be_nil
+      end
+    end
+
+    context 'when ststus is inactive' do
+      let(:data) { { 'stav' => '04' } }
 
       it 'maps judge as inactive' do
-        expect(subject.active).to be_falsey
+        expect(subject.status).to eq(:inactive)
+      end
+    end
+
+    context 'when status is as position changed' do
+      let(:data) { { 'stav' => '05' } }
+
+      it 'maps judge as active' do
+        expect(subject.status).to eq(:active)
+      end
+    end
+
+    context 'when status is as 06' do
+      let(:data) { { 'stav' => '06' } }
+
+      it 'maps judge as active' do
+        expect(subject.status).to eq(:active)
       end
     end
   end
