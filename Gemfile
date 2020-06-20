@@ -13,7 +13,7 @@ gem 'rails-i18n', '~> 5.1.0'
 gem 'pg', '~> 1.0.0'
 
 # Assets
-gem 'bootstrap', '4.3.1'
+gem 'bootstrap', '4.0.0.alpha2'
 gem 'coffee-rails', '~> 4.2.0'
 gem 'font-awesome-rails', '~> 4.7.0.3'
 gem 'jquery-rails', '~> 4.3.1'
