@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '~> 5.1.5'
 gem 'sass-rails', '~> 5.0.7'
-gem 'sprockets', '~> 3.7.1'
+gem 'sprockets', '~> 3.7.2'
 gem 'sprockets-rails', '~> 3.2.1'
 gem 'turbolinks', '~> 5.1.0'
 
