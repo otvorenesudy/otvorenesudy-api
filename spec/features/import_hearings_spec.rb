@@ -58,7 +58,7 @@ RSpec.feature 'Import Hearings' do
         proceeding_id: proceeding.id
       )
 
-      expect(hearing.anonymized_at.iso8601).to eql(created_at.iso8601)
+      expect(hearing.anonymized_at.to_i).to eql(created_at.to_i)
       expect(hearing.proposers.to_a).to be_empty
       expect(hearing.opponents.to_a).to be_empty
       expect(hearing.defendants.count).to eql(1)
@@ -109,7 +109,7 @@ RSpec.feature 'Import Hearings' do
         proceeding_id: proceeding.id
       )
 
-      expect(hearing.anonymized_at.iso8601).to eql(updated_at.iso8601)
+      expect(hearing.anonymized_at.to_i).to eql(updated_at.to_i)
 
       expect(hearing.proposers.count).to eql(1)
       expect(hearing.proposers.pluck(:name).first).to match(/\A\w\. \w\.\z/)
