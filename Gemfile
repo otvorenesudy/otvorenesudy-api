@@ -32,7 +32,7 @@ gem 'oj_mimic_json', '~> 1.0.1'
 # gem 'rack-cors'
 
 # Async Processing
-gem 'sidekiq', '~> 5.1.1'
+gem 'sidekiq', '~> 5.2.9'
 gem 'sidekiq-limit_fetch', '~> 3.4.0'
 
 # Configuration
