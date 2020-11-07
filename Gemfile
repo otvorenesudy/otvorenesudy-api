@@ -33,7 +33,6 @@ gem 'oj_mimic_json', '~> 1.0.1'
 
 # Async Processing
 gem 'sidekiq', '~> 5.2.9'
-gem 'sidekiq-limit_fetch', '~> 3.4.0'
 
 # Configuration
 gem 'dotenv-rails', '~> 2.2.1'
