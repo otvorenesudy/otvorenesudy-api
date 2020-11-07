@@ -38,12 +38,6 @@ module OpenCourtsApi
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     # config.api_only = true
-
-    # X-XSS header is already defined by nginx
-    config.action_dispatch.default_headers = {
-      'X-Frame-Options' => 'SAMEORIGIN',
-      'X-Content-Type-Options' => 'nosniff'
-    }
   end
 end
 
