@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'rack', '2.0.8'
+
 gem 'rails', '~> 5.1.5'
 gem 'sass-rails', '~> 5.0.7'
 gem 'sprockets', '~> 3.7.2'
@@ -33,6 +35,7 @@ gem 'oj_mimic_json', '~> 1.0.1'
 
 # Async Processing
 gem 'sidekiq', '~> 5.2.9'
+gem 'sidekiq-limit_fetch', '~> 3.4.0'
 
 # Configuration
 gem 'dotenv-rails', '~> 2.2.1'

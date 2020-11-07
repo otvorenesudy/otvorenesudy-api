@@ -211,7 +211,7 @@ GEM
     pry-rails (0.3.6)
       pry (>= 0.10.4)
     public_suffix (3.0.2)
-    rack (2.2.3)
+    rack (2.0.8)
     rack-protection (2.1.0)
       rack
     rack-test (0.8.2)
@@ -307,6 +307,8 @@ GEM
       rack (~> 2.0)
       rack-protection (>= 1.5.0)
       redis (>= 3.3.5, < 4.2)
+    sidekiq-limit_fetch (3.4.0)
+      sidekiq (>= 4)
     simplecov (0.13.0)
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
@@ -402,6 +404,7 @@ DEPENDENCIES
   poltergeist (~> 1.17.0)
   pry
   pry-rails
+  rack (= 2.0.8)
   rails (~> 5.1.5)
   rails-controller-testing (~> 1.0.2)
   rails-i18n (~> 5.1.0)
@@ -413,6 +416,7 @@ DEPENDENCIES
   ruby-prof (~> 0.17.0)
   sass-rails (~> 5.0.7)
   sidekiq (~> 5.2.9)
+  sidekiq-limit_fetch (~> 3.4.0)
   spring (~> 2.0.2)
   sprockets (~> 3.7.2)
   sprockets-rails (~> 3.2.1)

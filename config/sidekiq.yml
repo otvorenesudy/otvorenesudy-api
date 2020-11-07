@@ -5,3 +5,5 @@
 :queues:
   - [exporters, 2]
   - [reconcilers, 3]
+:limits:
+  # reconcilers: 10
