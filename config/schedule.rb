@@ -19,6 +19,8 @@
 
 # Learn more: http://github.com/javan/whenever
 
+set :output, 'log/cron.log'
+
 every :day, at: '4:00 am' do
   runner 'InfoSud.import_courts'
 end
