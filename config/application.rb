@@ -44,3 +44,4 @@ end
 require 'info_sud'
 require 'obcan_justice_sk'
 require 'pdf_extractor'
+require 'exception_handler'
