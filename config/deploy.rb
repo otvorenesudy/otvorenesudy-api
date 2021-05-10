@@ -1,4 +1,4 @@
-lock '3.10.1'
+lock '3.10.2'
 
 # Repository
 set :application, 'opencourts-api'
