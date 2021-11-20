@@ -50,7 +50,7 @@ gem 'rollbar'
 
 # Utilities
 gem 'awesome_print', '~> 1.8.0'
-gem 'curb', '~> 0.9.4'
+gem 'curb', '~> 0.9.11'
 gem 'enumerize', '~> 2.2.1'
 gem 'mechanize', '~> 2.7.5'
 gem 'nokogiri', '~> 1.10.8'
