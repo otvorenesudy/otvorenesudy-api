@@ -1,7 +1,7 @@
 lock '3.10.2'
 
 # Repository
-set :application, 'opencourts-api'
+set :application, 'otvorenesudy-api'
 set :repo_url,    'git@github.com:otvorenesudy/otvorenesudy-api.git'
 
 # Sidekiq
