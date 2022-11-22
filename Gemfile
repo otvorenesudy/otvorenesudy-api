@@ -42,7 +42,7 @@ gem 'dotenv-rails', '~> 2.2.1'
 gem 'squire', '~> 1.3.7'
 
 # Caching
-gem 'dalli', '~> 2.7.6'
+gem 'dalli', '~> 3.2.3'
 
 # Reporting
 gem 'newrelic_rpm', '~> 4.8.0.341'
