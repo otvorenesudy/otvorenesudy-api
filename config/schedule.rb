@@ -21,11 +21,11 @@
 
 set :output, 'log/cron.log'
 
-every :day, at: '4:00 am' do
+every :day, at: '3:00 am' do
   runner 'ExceptionHandler.run { InfoSud.import_courts }'
 end
 
-every :day, at: '4:00 am' do
+every :day, at: '3:30 am' do
   runner ' ExceptionHandler.run { InfoSud.import_judges }'
 end
 
@@ -33,10 +33,6 @@ every :day, at: '4:00 am' do
   runner 'ExceptionHandler.run { InfoSud.import_hearings }'
 end
 
-every :day, at: '5:00 am' do
-  runner 'ExceptionHandler.run { InfoSud.import_decrees }'
-end
-
-every :day, at: '10:00 pm' do
+every :day, at: '4:30 am' do
   runner 'ExceptionHandler.run { InfoSud.import_decrees }'
 end
