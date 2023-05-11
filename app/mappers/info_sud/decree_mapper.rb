@@ -21,7 +21,8 @@ module InfoSud
       'Opatrenie bez poučenia' => 'X',
       'Rozsudok pre vzdanie' => 'X',
       'Čiastočný rozsudok' => 'X',
-      'Medzitýmny rozsudok' => 'X'
+      'Medzitýmny rozsudok' => 'X',
+      'Opatrenie' => 'X'
     }
 
     def initialize(data)
