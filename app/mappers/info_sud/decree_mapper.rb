@@ -17,7 +17,8 @@ module InfoSud
       'Rozsudok bez odôvodnenia' => 'F',
       'Uznesenie bez odôvodnenia' => 'C',
       'Osvedčenie' => 'B',
-      'Trestný rozkaz' => 'T'
+      'Trestný rozkaz' => 'T',
+      'Opatrenie bez poučenia' => 'X'
     }
 
     def initialize(data)
@@ -39,9 +40,7 @@ module InfoSud
     end
 
     def judges
-      Array.wrap(@data[:sudca_meno].presence).map do |name|
-        InfoSud::Normalizer.normalize_person_name(name)
-      end
+      Array.wrap(@data[:sudca_meno].presence).map { |name| InfoSud::Normalizer.normalize_person_name(name) }
     end
 
     def date
@@ -78,9 +77,11 @@ module InfoSud
     end
 
     def legislations
-      Array.wrap(@data[:odkazovane_predpisy].presence).map do |string|
-        InfoSud::Normalizer.partition_legislation(string).merge(value: string, value_unprocessed: string)
-      end
+      Array
+        .wrap(@data[:odkazovane_predpisy].presence)
+        .map do |string|
+          InfoSud::Normalizer.partition_legislation(string).merge(value: string, value_unprocessed: string)
+        end
     end
 
     def text
