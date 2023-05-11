@@ -18,7 +18,10 @@ module InfoSud
       'Uznesenie bez odôvodnenia' => 'C',
       'Osvedčenie' => 'B',
       'Trestný rozkaz' => 'T',
-      'Opatrenie bez poučenia' => 'X'
+      'Opatrenie bez poučenia' => 'X',
+      'Rozsudok pre vzdanie' => 'X',
+      'Čiastočný rozsudok' => 'X',
+      'Medzitýmny rozsudok' => 'X'
     }
 
     def initialize(data)

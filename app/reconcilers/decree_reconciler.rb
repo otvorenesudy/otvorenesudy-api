@@ -63,45 +63,44 @@ class DecreeReconciler
   end
 
   def reconcile_judges
-    judgements = mapper.judges.map do |name|
-      judge = JudgeFinder.find_by(name: name)
+    judgements =
+      mapper.judges.map do |name|
+        judge = JudgeFinder.find_by(name: name)
 
-      if judge
-        judgement = Judgement.find_or_initialize_by(decree: decree, judge: judge)
-      else
-        judgement = Judgement.find_or_initialize_by(decree: decree, judge_name_unprocessed: name)
+        if judge
+          judgement = Judgement.find_or_initialize_by(decree: decree, judge: judge)
+        else
+          judgement = Judgement.find_or_initialize_by(decree: decree, judge_name_unprocessed: name)
+        end
+
+        judgement.update_attributes!(judge_name_unprocessed: name, judge: judge, judge_name_similarity: judge ? 1 : 0)
+
+        judgement
       end
-
-      judgement.update_attributes!(
-        judge_name_unprocessed: name,
-        judge: judge,
-        judge_name_similarity: judge ? 1 : 0
-      )
-
-      judgement
-    end
 
     decree.purge!(:judgements, except: judgements)
   end
 
   def reconcile_natures
-    naturalizations = mapper.natures.map do |name|
-      nature = Decree::Nature.find_or_create_by!(value: name)
+    naturalizations =
+      mapper.natures.map do |name|
+        nature = Decree::Nature.find_or_create_by!(value: name)
 
-      Decree::Naturalization.find_or_create_by!(decree: decree, nature: nature)
-    end
+        Decree::Naturalization.find_or_create_by!(decree: decree, nature: nature)
+      end
 
     decree.purge!(:naturalizations, except: naturalizations)
   end
 
   def reconcile_legislations
-    usages = mapper.legislations.map do |attributes|
-      legislation = Legislation.find_or_initialize_by(attributes.slice(:value))
+    usages =
+      mapper.legislations.map do |attributes|
+        legislation = Legislation.find_or_initialize_by(attributes.slice(:value))
 
-      legislation.update_attributes!(attributes)
+        legislation.update_attributes!(attributes)
 
-      Legislation::Usage.find_or_create_by!(decree: decree, legislation: legislation)
-    end
+        Legislation::Usage.find_or_create_by!(decree: decree, legislation: legislation)
+      end
 
     decree.purge!(:legislation_usages, except: usages)
   end
