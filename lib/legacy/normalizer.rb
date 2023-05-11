@@ -52,6 +52,7 @@ module Legacy
       value.gsub!(/ŠTS(\s*v\s*Pezinku)?/i, 'Špecializovaný trestný súd')
       value.gsub!(/MS\s*SR/, 'Ministerstvo spravodlivosti Slovenskej republiky')
       value.gsub!(/NS\s*SR/, 'Najvyšší súd Slovenskej republiky')
+      value.gsub!(/Najvyšší\ssprávny\ssúd\s*(SR|Slovenskej\srepubliky)?/i, 'Najvyšší správny súd')
 
       value.gsub!(/\./, '')
 
