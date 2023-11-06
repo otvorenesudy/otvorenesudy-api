@@ -53,11 +53,11 @@ module Legacy
       value.gsub!(/MS\s*SR/, 'Ministerstvo spravodlivosti Slovenskej republiky')
       value.gsub!(/NS\s*SR/, 'Najvyšší súd Slovenskej republiky')
       value.gsub!(/Najvyšší\ssprávny\ssúd\s*(SR|Slovenskej\srepubliky)?/i, 'Najvyšší správny súd')
-      value.gsub!(/Okresný súd Bratislava I/i, 'Mestský súd Bratislava I')
-      value.gsub!(/Okresný súd Bratislava II/i, 'Mestský súd Bratislava II')
-      value.gsub!(/Okresný súd Bratislava III/i, 'Mestský súd Bratislava III')
-      value.gsub!(/Okresný súd Bratislava IV/i, 'Mestský súd Bratislava IV')
-      value.gsub!(/Okresný súd Košice I/i, 'Mestský súd Košice I')
+      value.gsub!(/\AOkresný súd Bratislava I\z/i, 'Mestský súd Bratislava I')
+      value.gsub!(/\AOkresný súd Bratislava II\z/i, 'Mestský súd Bratislava II')
+      value.gsub!(/\AOkresný súd Bratislava III\z/i, 'Mestský súd Bratislava III')
+      value.gsub!(/\AOkresný súd Bratislava IV\z/i, 'Mestský súd Bratislava IV')
+      value.gsub!(/\AOkresný súd Košice I\z/i, 'Mestský súd Košice')
 
       value.gsub!(/\./, '')
 
