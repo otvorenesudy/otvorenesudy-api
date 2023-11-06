@@ -57,6 +57,7 @@ module Legacy
       value.gsub!(/Okresný súd Bratislava II/i, 'Mestský súd Bratislava II')
       value.gsub!(/Okresný súd Bratislava III/i, 'Mestský súd Bratislava III')
       value.gsub!(/Okresný súd Bratislava IV/i, 'Mestský súd Bratislava IV')
+      value.gsub!(/Okresný súd Košice I/i, 'Mestský súd Košice I')
 
       value.gsub!(/\./, '')
 
