@@ -21,7 +21,7 @@ namespace :export do
     digits = ENV['DIGITS']
 
     pre_path = File.join(path, 'pre-2016')
-    post_past = File.join(path, 'post-2016')
+    post_path = File.join(path, 'post-2016')
 
     FileUtils.mkdir_p(pre_path)
     FileUtils.mkdir_p(post_past)
@@ -76,7 +76,7 @@ namespace :export do
       time = Time.now - start
       filename = "#{"%0#{digits}d" % i}.json"
 
-      File.open(File.join(pre_path, filename), 'w') do |f|
+      File.open(File.join(post_path, filename), 'w') do |f|
         f.write(JSON.pretty_generate(data))
       end
 
@@ -111,7 +111,7 @@ namespace :export do
           "sudca_meno": judges.map(&:name),
           "forma_ukonu": hearing.form&.value,
           "je_samosudca": hearing.selfjudge,
-          "spisova_znacka": hearing.proceeding.case_number,
+          "spisova_znacka": proceeding&.case_number,
           "datum_zapocatia": nil,
           "datum_a_cas_pojednavania": hearing.date,
           "identifikacne_cislo_spisu": hearing.file_number
@@ -135,7 +135,7 @@ namespace :export do
 
       filename = "#{"%0#{digits}d" % i}.json"
         
-      File.open(File.join(post_path, filename), 'w') do |f|
+      File.open(File.join(pre_path, filename), 'w') do |f|
         f.write(JSON.pretty_generate(data))
       end
 
