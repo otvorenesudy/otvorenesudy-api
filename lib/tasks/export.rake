@@ -74,12 +74,13 @@ namespace :export do
       end
 
       time = Time.now - start
-        
-      File.open(File.join(pre_path, "#{"%0#{digits}d" % i}.json"), 'w') do |f|
+      filename = "#{"%0#{digits}d" % i}.json"
+
+      File.open(File.join(pre_path, filename), 'w') do |f|
         f.write(JSON.pretty_generate(data))
       end
 
-      puts "Exported [pre-2016] batch [#{i}] in [#{time}] seconds"
+      puts "Exported [pre-2016] batch [#{i}] [#{file_name}] in [#{time}] seconds"
     end
 
     Hearing.where("uri LIKE '%www.justice.gov.sk%'").order(created_at: :asc).find_in_batches(batch_size: 10_000) do |hearings|
@@ -128,12 +129,16 @@ namespace :export do
 
         data
       end
+
+      time = Time.now - start
+
+      filename = "#{"%0#{digits}d" % i}.json"
         
-      File.open(File.join(post_path, "#{"%0#{digits}d" % i}.json"), 'w') do |f|
+      File.open(File.join(post_path, filename), 'w') do |f|
         f.write(JSON.pretty_generate(data))
       end
 
-      puts "Exported [post-2016] batch [#{i}] in [#{time}] seconds"
+      puts "Exported [post-2016] batch [#{i}] [#{filename}] in [#{time}] seconds"
     end
   end
 end
