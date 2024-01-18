@@ -24,7 +24,7 @@ namespace :export do
     post_path = File.join(path, 'post-2016')
 
     FileUtils.mkdir_p(pre_path)
-    FileUtils.mkdir_p(post_past)
+    FileUtils.mkdir_p(post_path)
 
     InfoSud::Hearing.order(created_at: :asc).find_in_batches(batch_size: 10_000) do |hearings|
       start = Time.now
