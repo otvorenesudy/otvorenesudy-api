@@ -80,7 +80,7 @@ namespace :export do
         f.write(JSON.pretty_generate(data))
       end
 
-      puts "Exported [pre-2016] batch [#{i}] [#{file_name}] in [#{time}] seconds"
+      puts "Exported [pre-2016] batch [#{i}] [#{filename}] in [#{time}] seconds"
     end
 
     Hearing.where("uri LIKE '%www.justice.gov.sk%'").order(created_at: :asc).find_in_batches(batch_size: 10_000) do |hearings|
@@ -93,9 +93,10 @@ namespace :export do
         info_sud_court = court_guid ? InfoSud::Court.find_by(guid: court_guid) : nil
         judges = hearing.judges
         judge_guids = judges.map(&:uri).map { |uri| uri.match(/sudca_\d+\z/) ? uri.split('/').last.gsub(/^sudca_/, '') : nil }
+        proceeding = hearing.proceeding
 
         data = {
-          "ecli": hearing.decrees.order(created_at: :asc).first&.ecli,
+          "ecli": proceeeding ? proceeding.decrees.order(created_at: :asc).first&.ecli : nil,
           "guid": nil,
           "usek": hearing.section&.value,
           "predmet": hearing.subject&.value,
@@ -124,7 +125,7 @@ namespace :export do
           'justice_gov_sk_uri' => hearing.uri,
           'otvorenesudy_id' => hearing.id,
           "otvorenesudy_uri" => "https://otvorenesudy.sk/hearings/#{hearing.id}",
-          "ecli": hearing.decrees.order(created_at: :asc).pluck(:ecli),
+          "ecli": proceeding ? proceeding.decrees.order(created_at: :asc).pluck(:ecli) : [],
         }
 
         data
