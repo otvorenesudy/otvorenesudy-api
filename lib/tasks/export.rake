@@ -88,10 +88,10 @@ namespace :export do
       i += 1
 
       data = hearings.map do |hearing|
-        court_guid = hearing.court.uri.split('/').last.gsub(/^sud_/, '')
+        court_guid = hearing.court.uri.split('/').last
         info_sud_court = InfoSud::Court.find_by!(guid: court_guid)
-        judge_uri = hearing.judge.uri
-        judge_guid = judge.uri.match(/sudca_\d+\z/) ? judge.uri.split('/').last.gsub(/^sudca_/, '') : nil
+        judges = hearing.judges
+        judge_guids = judges.map(&:uri).map { |uri| uri.match(/sudca_\d+\z/) ? uri.split('/').last.gsub(/^sudca_/, '') : nil }
 
         data = {
           "ecli": hearing.decrees.order(created_at: :asc).first&.ecli,
@@ -100,13 +100,13 @@ namespace :export do
           "predmet": hearing.subject&.value,
           "sud_typ": info_sud_court.data['typ_sudu'],
           "poznamka": hearing.note,
-          "sud_guid": court_guid,
+          "sud_guid": court_guid.gsub('^sud_', ''),
           "sud_kraj": info_sud_court.data['kraj'],
           "miestnost": hearing.room,
           "sud_nazov": info_sud_court.data['nazov'],
           "sud_okres": info_sud_court.data['okres'],
-          "sudca_guid": judge_guid,
-          "sudca_meno": hearing.judge.name,
+          "sudca_guid": judge_guids,
+          "sudca_meno": judges.map(&:name),
           "forma_ukonu": hearing.form&.value,
           "je_samosudca": hearing.selfjudge,
           "spisova_znacka": hearing.proceeding.case_number,
