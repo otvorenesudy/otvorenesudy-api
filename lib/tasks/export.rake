@@ -96,7 +96,7 @@ namespace :export do
         proceeding = hearing.proceeding
 
         data = {
-          "ecli": proceeeding ? proceeding.decrees.order(created_at: :asc).first&.ecli : nil,
+          "ecli": proceeding ? proceeding.decrees.order(created_at: :asc).first&.ecli : nil,
           "guid": nil,
           "usek": hearing.section&.value,
           "predmet": hearing.subject&.value,
