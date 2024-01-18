@@ -33,7 +33,7 @@ namespace :export do
 
       data = hearings.map do |hearing|
         uri = "https://obcan.justice.sk/infosud/-/infosud/i-detail/pojednavanie/#{hearing.data['guid']}"
-        id = ::Hearing.find_by!(uri: uri)&.id
+        id = ::Hearing.find_by(uri: uri)&.id
 
         data = hearing.data.slice(
           "ecli",
@@ -88,8 +88,8 @@ namespace :export do
       i += 1
 
       data = hearings.map do |hearing|
-        court_guid = hearing.court.uri.split('/').last
-        info_sud_court = InfoSud::Court.find_by!(guid: court_guid)
+        court_guid = hearing.court&.uri.split('/').last
+        info_sud_court = court_guid ? InfoSud::Court.find_by(guid: court_guid) : nil
         judges = hearing.judges
         judge_guids = judges.map(&:uri).map { |uri| uri.match(/sudca_\d+\z/) ? uri.split('/').last.gsub(/^sudca_/, '') : nil }
 
@@ -98,13 +98,13 @@ namespace :export do
           "guid": nil,
           "usek": hearing.section&.value,
           "predmet": hearing.subject&.value,
-          "sud_typ": info_sud_court.data['typ_sudu'],
+          "sud_typ": info_sud_court&.data['typ_sudu'],
           "poznamka": hearing.note,
-          "sud_guid": court_guid.gsub('^sud_', ''),
-          "sud_kraj": info_sud_court.data['kraj'],
+          "sud_guid": court_guid&.gsub('^sud_', ''),
+          "sud_kraj": info_sud_court&.data['kraj'],
           "miestnost": hearing.room,
-          "sud_nazov": info_sud_court.data['nazov'],
-          "sud_okres": info_sud_court.data['okres'],
+          "sud_nazov": info_sud_court&.data['nazov'],
+          "sud_okres": info_sud_court&.data['okres'],
           "sudca_guid": judge_guids,
           "sudca_meno": judges.map(&:name),
           "forma_ukonu": hearing.form&.value,
