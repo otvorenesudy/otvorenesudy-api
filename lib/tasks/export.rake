@@ -14,9 +14,7 @@ namespace :export do
   end
 
   desc 'Export hearings'
-  task hearings: :environment do
-    i = 0
-  
+  task hearings: :environment do  
     path = ENV['STORE']
     digits = ENV['DIGITS']
 
@@ -26,10 +24,8 @@ namespace :export do
     FileUtils.mkdir_p(pre_path)
     FileUtils.mkdir_p(post_path)
 
-    InfoSud::Hearing.order(created_at: :asc).find_in_batches(batch_size: 10_000) do |hearings|
+    InfoSud::Hearing.order(created_at: :asc).find_in_batches(batch_size: 10_000).with_index do |hearings, i|
       start = Time.now
-
-      i += 1
 
       data = hearings.map do |hearing|
         uri = "https://obcan.justice.sk/infosud/-/infosud/i-detail/pojednavanie/#{hearing.data['guid']}"
@@ -83,10 +79,8 @@ namespace :export do
       puts "Exported [post-2016] batch [#{i}] [#{filename}] in [#{time}] seconds"
     end
 
-    Hearing.where("uri LIKE '%www.justice.gov.sk%'").order(created_at: :asc).find_in_batches(batch_size: 10_000) do |hearings|
+    Hearing.where("uri LIKE '%www.justice.gov.sk%'").order(created_at: :asc).includes(:section, :subject, :form, :court, :judges, :proceeding, :proposers, :opponents, :defendants).find_in_batches(batch_size: 10_000).with_index do |hearings, i|
       start = Time.now
-
-      i += 1
 
       data = hearings.map do |hearing|
         court_guid = hearing.court&.uri.split('/').last
@@ -101,13 +95,13 @@ namespace :export do
           "guid": nil,
           "usek": hearing.section&.value,
           "predmet": hearing.subject&.value,
-          "sud_typ": info_sud_court&.data['typ_sudu'],
+          "sud_typ": info_sud_court ? info_sud_court.data['typ'] : nil,
           "poznamka": hearing.note,
           "sud_guid": court_guid&.gsub('^sud_', ''),
-          "sud_kraj": info_sud_court&.data['kraj'],
+          "sud_kraj": info_sud_court ? info_sud_court.data['kraj'] : nil,
           "miestnost": hearing.room,
-          "sud_nazov": info_sud_court&.data['nazov'],
-          "sud_okres": info_sud_court&.data['okres'],
+          "sud_nazov": info_sud_court ? info_sud_court.data['nazov'] : nil,
+          "sud_okres": info_sud_court ? info_sud_court.data['okres'] : nil,
           "sudca_guid": judge_guids,
           "sudca_meno": judges.map(&:name),
           "forma_ukonu": hearing.form&.value,
