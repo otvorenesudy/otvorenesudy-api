@@ -83,7 +83,7 @@ namespace :export do
       start = Time.now
 
       data = hearings.map do |hearing|
-        court_guid = hearing.court&.uri.split('/').last
+        court_guid = hearing.court ? hearing.court.uri.split('/').last : nil
         info_sud_court = court_guid ? InfoSud::Court.find_by(guid: court_guid) : nil
         judges = hearing.judges
         judge_guids = judges.map(&:uri).map { |uri| uri.match(/sudca_\d+\z/) ? uri.split('/').last.gsub(/^sudca_/, '') : nil }
