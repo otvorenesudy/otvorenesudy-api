@@ -80,7 +80,7 @@ namespace :export do
         f.write(JSON.pretty_generate(data))
       end
 
-      puts "Exported [pre-2016] batch [#{i}] [#{filename}] in [#{time}] seconds"
+      puts "Exported [post-2016] batch [#{i}] [#{filename}] in [#{time}] seconds"
     end
 
     Hearing.where("uri LIKE '%www.justice.gov.sk%'").order(created_at: :asc).find_in_batches(batch_size: 10_000) do |hearings|
@@ -94,9 +94,10 @@ namespace :export do
         judges = hearing.judges
         judge_guids = judges.map(&:uri).map { |uri| uri.match(/sudca_\d+\z/) ? uri.split('/').last.gsub(/^sudca_/, '') : nil }
         proceeding = hearing.proceeding
+        eclis = proceeding ? proceeding.decrees.order(created_at: :asc).pluck(:ecli) : []
 
         data = {
-          "ecli": proceeding ? proceeding.decrees.order(created_at: :asc).first&.ecli : nil,
+          "ecli": eclis.first,
           "guid": nil,
           "usek": hearing.section&.value,
           "predmet": hearing.subject&.value,
@@ -111,7 +112,7 @@ namespace :export do
           "sudca_meno": judges.map(&:name),
           "forma_ukonu": hearing.form&.value,
           "je_samosudca": hearing.selfjudge,
-          "spisova_znacka": proceeding&.case_number,
+          "spisova_znacka": hearing.case_number,
           "datum_zapocatia": nil,
           "datum_a_cas_pojednavania": hearing.date,
           "identifikacne_cislo_spisu": hearing.file_number
@@ -125,7 +126,7 @@ namespace :export do
           'justice_gov_sk_uri' => hearing.uri,
           'otvorenesudy_id' => hearing.id,
           "otvorenesudy_uri" => "https://otvorenesudy.sk/hearings/#{hearing.id}",
-          "ecli": proceeding ? proceeding.decrees.order(created_at: :asc).pluck(:ecli) : [],
+          "ecli": eclis,
         }
 
         data
@@ -139,7 +140,7 @@ namespace :export do
         f.write(JSON.pretty_generate(data))
       end
 
-      puts "Exported [post-2016] batch [#{i}] [#{filename}] in [#{time}] seconds"
+      puts "Exported [pre-2016] batch [#{i}] [#{filename}] in [#{time}] seconds"
     end
   end
 end
