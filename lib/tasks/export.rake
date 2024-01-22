@@ -137,4 +137,59 @@ namespace :export do
       puts "Exported [pre-2016] batch [#{i}] [#{filename}] in [#{time}] seconds"
     end
   end
+
+  desc 'Hearings export validation and stats'
+  task validate_hearings: :environment do
+    path = ENV['STORE']
+    pre_path = File.join(path, 'pre-2016')
+    post_path = File.join(path, 'post-2016')
+
+    data = []
+
+    puts 'Loading [pre-2016] data ...'
+
+    Dir.glob(File.join(pre_path, '*.json')).each do |filename|
+      data += JSON.parse(File.read(filename))
+    end
+    
+    puts 'Loading [post-2016] data ...'
+
+    Dir.glob(File.join(post_path, '*.json')).each do |filename|
+      data += JSON.parse(File.read(filename))
+    end
+
+    puts 'Validating ...'
+
+    stats = {
+      'Empty Participants' => 0,
+      'No Court' => 0,
+      'No Judges' => 0
+    }
+
+    all_names = {}
+
+    data.each do |hearing|
+      # Validate anonymization format
+      names = [hearing["navrhovatel"], hearing["mena_odporcov"], hearing["mena_obzalovanych"]].flatten.compact
+
+      raise "Incorrect anonymization format: #{hearing.inspect}" if names.any? { |name| !name.match(/^[A-Z]\.\s[A-Z]\.$/) }
+
+      # Compute stats
+      stats['Empty Participants'] += 1 if names.empty?
+      stats['No Court'] += 1 unless hearing['sud_guid']
+      stats['No Judges'] += 1 if hearing['sudca_guid']&.empty?
+
+      names.each do |name|
+        all_names[name] ||= 0
+        all_names[name] += 1
+      end
+    end
+
+    puts "Database Hearings: #{Hearing.count}"
+    puts "Hearings in Export: #{data.size}"
+    puts "\nStats:"
+    puts JSON.pretty_generate(stats)
+    puts "\nParticipants Distribution:"
+    puts JSON.pretty_generate(all_names)
+  end
 end
