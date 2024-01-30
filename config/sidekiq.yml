@@ -5,5 +5,6 @@
 :queues:
   - [exporters]
   - [reconcilers]
+  - [justice_gov_sk_pages]
 :limits:
   # reconcilers: 10

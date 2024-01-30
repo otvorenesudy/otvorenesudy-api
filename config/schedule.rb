@@ -36,3 +36,7 @@ end
 every :day, at: '4:30 am' do
   runner 'ExceptionHandler.run { InfoSud.import_decrees }'
 end
+
+every :day, at: '5:00 am' do
+  runner 'ExceptionHandler.run { JusticeGovSkPages.scrape }'
+end

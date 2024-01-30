@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170304203708) do
+ActiveRecord::Schema.define(version: 20240129212609) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,16 @@ ActiveRecord::Schema.define(version: 20170304203708) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email", "locale"], name: "index_invites_on_email_and_locale", unique: true
+  end
+
+  create_table "justice_gov_sk_pages", force: :cascade do |t|
+    t.string "model", default: "0", null: false
+    t.string "integer", default: "0", null: false
+    t.string "uri", null: false
+    t.jsonb "data", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["uri"], name: "index_justice_gov_sk_pages_on_uri", unique: true
   end
 
   create_table "obcan_justice_sk_courts", id: :serial, force: :cascade do |t|
