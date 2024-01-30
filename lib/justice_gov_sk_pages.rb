@@ -5,7 +5,7 @@ module JusticeGovSkPages
       data =
         JSON.parse(
           Curl.get(
-            "https://obcan.justice.sk/pilot/api/ress-isu-service/v1/sud?page=1&size=50&sortDirection=ASC&sortProperty=typSudu_sort"
+            'https://obcan.justice.sk/pilot/api/ress-isu-service/v1/sud?page=1&size=50&sortDirection=ASC&sortProperty=typSudu_sort'
           ).body_str,
           symbolize_names: true
         )
@@ -21,13 +21,9 @@ module JusticeGovSkPages
             symbolize_names: true
           )[
             :sudList
-          ].map do |court|
-            "https://obcan.justice.sk/pilot/api/ress-isu-service/v1/sud/#{court[:registreGuid]}"
-          end
+          ].map { |court| "https://obcan.justice.sk/pilot/api/ress-isu-service/v1/sud/#{court[:registreGuid]}" }
 
-        links.each do |link|
-          JusticeGovSkPages::Job.perform_later("court", link)
-        end
+        links.each { |link| JusticeGovSkPages::Job.perform_later('court', link) }
 
         total_courts += links.count
       end
@@ -39,9 +35,7 @@ module JusticeGovSkPages
       total_judges = 0
       data =
         JSON.parse(
-          Curl.get(
-            "https://obcan.justice.sk/pilot/api/ress-isu-service/v1/sudca?page=1&size=50"
-          ).body_str,
+          Curl.get('https://obcan.justice.sk/pilot/api/ress-isu-service/v1/sudca?page=1&size=50').body_str,
           symbolize_names: true
         )
       total_pages = data[:numFound] / data[:size].to_f
@@ -50,19 +44,13 @@ module JusticeGovSkPages
       (1..total_pages.ceil).each do |page|
         links =
           JSON.parse(
-            Curl.get(
-              "https://obcan.justice.sk/pilot/api/ress-isu-service/v1/sudca?page=#{page}&size=50"
-            ).body_str,
+            Curl.get("https://obcan.justice.sk/pilot/api/ress-isu-service/v1/sudca?page=#{page}&size=50").body_str,
             symbolize_names: true
           )[
             :sudcaList
-          ].map do |court|
-            "https://obcan.justice.sk/pilot/api/ress-isu-service/v1/sudca/#{court[:registreGuid]}"
-          end
+          ].map { |court| "https://obcan.justice.sk/pilot/api/ress-isu-service/v1/sudca/#{court[:registreGuid]}" }
 
-        links.each do |link|
-          JusticeGovSkPages::Job.perform_later("judge", link)
-        end
+        links.each { |link| JusticeGovSkPages::Job.perform_later('judge', link) }
 
         total_judges += links.count
       end
@@ -75,7 +63,7 @@ module JusticeGovSkPages
       data =
         JSON.parse(
           Curl.get(
-            "https://api.justice.gov.sk/pojednavanie/trestne?skip=0&take=50&filter.datumPojednavaniaOd=2024-01-29&sortCriteria[0].fieldName=DatumPojednavania&sortCriteria[0].direction=Ascending"
+            'https://api.justice.gov.sk/pojednavanie/trestne?skip=0&take=50&filter.datumPojednavaniaOd=2024-01-29&sortCriteria[0].fieldName=DatumPojednavania&sortCriteria[0].direction=Ascending'
           ).body_str,
           symbolize_names: true
         )
@@ -91,13 +79,9 @@ module JusticeGovSkPages
             symbolize_names: true
           )[
             :data
-          ].map do |hearing|
-            "https://api.justice.gov.sk/pojednavanie/trestne/#{hearing[:id]}"
-          end
+          ].map { |hearing| "https://api.justice.gov.sk/pojednavanie/trestne/#{hearing[:id]}" }
 
-        links.each do |link|
-          JusticeGovSkPages::Job.perform_later("hearing", link)
-        end
+        links.each { |link| JusticeGovSkPages::Job.perform_later('hearing', link) }
 
         total_criminal_hearings += links.count
       end
@@ -110,7 +94,7 @@ module JusticeGovSkPages
       data =
         JSON.parse(
           Curl.get(
-            "https://obcan.justice.sk/pilot/api/ress-isu-service/v1/obcianPojednavania?page=1&size=50&sortDirection=DESC&sortProperty=datum_a_cas_pojednavania"
+            'https://obcan.justice.sk/pilot/api/ress-isu-service/v1/obcianPojednavania?page=1&size=50&sortDirection=DESC&sortProperty=datum_a_cas_pojednavania'
           ).body_str,
           symbolize_names: true
         )
@@ -130,9 +114,7 @@ module JusticeGovSkPages
             "https://obcan.justice.sk/pilot/api/ress-isu-service/v1/obcianPojednavania/#{hearing[:guid]}"
           end
 
-        links.each do |link|
-          JusticeGovSkPages::Job.perform_later("hearing", link)
-        end
+        links.each { |link| JusticeGovSkPages::Job.perform_later('hearing', link) }
 
         total_civil_hearings += links.count
       end
@@ -144,9 +126,7 @@ module JusticeGovSkPages
       total_decrees = 0
       data =
         JSON.parse(
-          Curl.get(
-            "https://obcan.justice.sk/pilot/api/ress-isu-service/v1/rozhodnutie?page=1&size=50"
-          ).body_str,
+          Curl.get('https://obcan.justice.sk/pilot/api/ress-isu-service/v1/rozhodnutie?page=1&size=50').body_str,
           symbolize_names: true
         )
       total_pages = data[:numFound] / data[:size].to_f
@@ -161,13 +141,9 @@ module JusticeGovSkPages
             symbolize_names: true
           )[
             :rozhodnutieList
-          ].map do |decree|
-            "https://obcan.justice.sk/pilot/api/ress-isu-service/v1/rozhodnutie/#{decree[:id]}"
-          end
+          ].map { |decree| "https://obcan.justice.sk/pilot/api/ress-isu-service/v1/rozhodnutie/#{decree[:guid]}" }
 
-        links.each do |link|
-          JusticeGovSkPages::Job.perform_later("decree", link)
-        end
+        links.each { |link| JusticeGovSkPages::Job.perform_later('decree', link) }
 
         total_decrees += links.count
       end
