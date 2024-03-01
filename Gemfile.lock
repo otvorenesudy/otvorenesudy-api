@@ -61,6 +61,7 @@ GEM
       execjs
     awesome_print (1.8.0)
     bcrypt (3.1.11)
+    bcrypt_pbkdf (1.1.0)
     bindex (0.5.0)
     bootstrap (4.0.0.alpha2)
       autoprefixer-rails (>= 6.0.3)
@@ -127,6 +128,7 @@ GEM
     dotenv-rails (2.2.1)
       dotenv (= 2.2.1)
       railties (>= 3.2, < 5.2)
+    ed25519 (1.2.4)
     enumerize (2.2.1)
       activesupport (>= 3.2)
     erubi (1.7.0)
@@ -372,6 +374,7 @@ DEPENDENCIES
   active_model_serializers (~> 0.10.7)
   awesome_print (~> 1.8.0)
   bcrypt (~> 3.1.11)
+  bcrypt_pbkdf (~> 1.1.0)
   bootstrap (= 4.0.0.alpha2)
   bump!
   capistrano (~> 3.10.1)
@@ -389,6 +392,7 @@ DEPENDENCIES
   dalli (~> 2.7.6)
   database_rewinder (~> 0.8.3)
   dotenv-rails (~> 2.2.1)
+  ed25519 (~> 1.2.4)
   enumerize (~> 2.2.1)
   factory_bot_rails (~> 4.8.2)
   font-awesome-rails (~> 4.7.0.3)

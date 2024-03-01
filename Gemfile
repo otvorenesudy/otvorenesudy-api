@@ -23,6 +23,9 @@ gem 'uglifier', '>= 1.3.0'
 
 # Security
 gem 'bcrypt', '~> 3.1.11'
+gem 'bcrypt_pbkdf', '~> 1.1.0'
+
+gem 'ed25519', '~> 1.2.4'
 
 # Serializers
 gem 'active_model_serializers', '~> 0.10.7'
