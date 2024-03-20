@@ -42,7 +42,7 @@ jobs:
           registry-url: "https://registry.npmjs.org"
 
       - name: Install Required Packages
-        run: sudo apt-get install libpq-dev libcurl4-openssl-dev
+        run: sudo apt-get install libpq-dev libcurl4-openssl-dev libssl-dev
 
       - name: Install Bundle
         run: |
