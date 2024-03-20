@@ -4,9 +4,9 @@ on: [push]
 
 env:
   OPENCOURTS_DATABASE_USER: postgres
-  OPENCOURTS_DATABASE_PASSWORD: postgres
+  OPENCOURTS_DATABASE_PASSWORD:
   OPENCOURTS_API_DATABASE_USER: postgres
-  OPENCOURTS_API_DATABASE_PASSWORD: postgres
+  OPENCOURTS_API_DATABASE_PASSWORD:
   RAILS_ENV: test
 
 jobs:
@@ -20,8 +20,9 @@ jobs:
         image: postgres:16.0
         env:
           POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_PASSWORD:
           POSTGRES_DB: postgres
+          POSTGRES_HOST_AUTH_METHOD: trust
         ports:
           - 5432:5432
         # needed because the postgres container does not provide a healthcheck
@@ -35,19 +36,17 @@ jobs:
           node-version: "20.x"
           registry-url: "https://registry.npmjs.org"
 
-      - name: Set-up Gem Cache
-        id: cache-bundle
-        uses: actions/cache@v1
+      - uses: ruby/setup-ruby@v1
         with:
-          path: vendor/bundle
-          key: bundle-${{ hashFiles('**/Gemfile.lock') }}
+          ruby-version: 3.3.0
+          bundler-cache: true
 
       - name: Install Bundle
         env:
           RAILS_ENV: test
         run: |
           gem install bundler
-          bundle install --jobs 4 --retry 3 --path vendor/bundle
+          bundle install --jobs 4 --retry 3
 
       - name: Install Yarn
         run: npm install -g yarn
