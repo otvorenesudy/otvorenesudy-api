@@ -26,7 +26,7 @@ class HearingReconciler
 
   def reconcile_attributes
     # TODO: remove source, leave now for compatibility
-    hearing.update_attributes!(
+    hearing.update!(
       uri: mapper.uri,
       type: Hearing::Type.find_by!(value: mapper.type),
       source: Source.find_by!(module: 'JusticeGovSk'),
@@ -71,7 +71,7 @@ class HearingReconciler
         judging = Judging.find_or_initialize_by(hearing: hearing, judge_name_unprocessed: name)
       end
 
-      judging.update_attributes!(
+      judging.update!(
         judge: judge,
         judge_name_unprocessed: name,
         judge_name_similarity: judge ? 1 : 0,
@@ -88,37 +88,40 @@ class HearingReconciler
   end
 
   def reconcile_opponents
-    opponents = mapper.opponents.map do |name|
-      opponent = Opponent.find_or_initialize_by(name_unprocessed: name, hearing: hearing)
+    opponents =
+      mapper.opponents.map do |name|
+        opponent = Opponent.find_or_initialize_by(name_unprocessed: name, hearing: hearing)
 
-      opponent.update_attributes!(name: RandomInitialsProvider.provide)
+        opponent.update!(name: RandomInitialsProvider.provide)
 
-      opponent
-    end
+        opponent
+      end
 
     hearing.purge!(:opponents, except: opponents)
   end
 
   def reconcile_defendants
-    defendants = mapper.defendants.map do |name|
-      defendant = Defendant.find_or_initialize_by(name_unprocessed: name, hearing: hearing)
+    defendants =
+      mapper.defendants.map do |name|
+        defendant = Defendant.find_or_initialize_by(name_unprocessed: name, hearing: hearing)
 
-      defendant.update_attributes!(name: RandomInitialsProvider.provide)
+        defendant.update!(name: RandomInitialsProvider.provide)
 
-      defendant
-    end
+        defendant
+      end
 
     hearing.purge!(:defendants, except: defendants)
   end
 
   def reconcile_proposers
-    proposers = mapper.proposers.map do |name|
-      proposer = Proposer.find_or_initialize_by(name_unprocessed: name, hearing: hearing)
+    proposers =
+      mapper.proposers.map do |name|
+        proposer = Proposer.find_or_initialize_by(name_unprocessed: name, hearing: hearing)
 
-      proposer.update_attributes!(name: RandomInitialsProvider.provide)
+        proposer.update!(name: RandomInitialsProvider.provide)
 
-      proposer
-    end
+        proposer
+      end
 
     hearing.purge!(:proposers, except: proposers)
   end

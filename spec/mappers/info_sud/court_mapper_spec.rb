@@ -5,45 +5,133 @@ require_relative '../../../app/mappers/info_sud/court_mapper'
 RSpec.describe InfoSud::CourtMapper do
   subject { InfoSud::CourtMapper.new(data) }
 
-  let(:data) {
+  let(:data) do
     {
-      "ico"=>"00039471",
-      "tel"=>[{"tel_type"=>"label.codelist.tel_type.1", "tel_number"=>"+421288810111"}, {"tel_type"=>"label.codelist.tel_type.3", "tel_number"=>"+421288811191"}],
-      "addr"=>{"Country"=>"703", "PostalCode"=>"81244", "StreetName"=>"Záhradnícka", "Municipality"=>"Bratislava I", "BuildingNumber"=>"10"},
-      "guid"=>"sud_102",
-      "kraj"=>"Bratislavský kraj",
-      "orsr"=> {
-        "tel"=>[{"tel_type"=>"label.codelist.tel_type", "tel_number"=>"02/501 18 340, 02/501 18 356, 02/501 18 181, 02/501 18 421"}],
-        "note"=>"prestávka v práci PO - ŠT: 12:00 - 13:00",
-        "opening_hours"=>["8:00 - 15:00", "", "", "8:00 - 15:00", "", "", "8:00 - 15:00", "", "", "8:00 - 15:00", "", "", "8:00 - 12:00", "", "", "", "", "", "", "", ""]
+      'ico' => '00039471',
+      'tel' => [
+        { 'tel_type' => 'label.codelist.tel_type.1', 'tel_number' => '+421288810111' },
+        { 'tel_type' => 'label.codelist.tel_type.3', 'tel_number' => '+421288811191' }
+      ],
+      'addr' => {
+        'Country' => '703',
+        'PostalCode' => '81244',
+        'StreetName' => 'Záhradnícka',
+        'Municipality' => 'Bratislava I',
+        'BuildingNumber' => '10'
       },
-      "nazov"=>"Okresný súd Bratislava I",
-      "okres"=>"Okres Bratislava I",
-      "zapisy"=>[],
-      "address"=>"Záhradnícka 10, Bratislava I",
-      "skratka"=>"OSBA1",
-      "predseda"=>{"sudcovia"=>[{"id"=>"561", "name"=>"JUDr. Eva FULCOVÁ"}]},
-      "typ_sudu"=>"Okresný súd",
-      "lattitude"=>"48.152538",
-      "longitude"=>"17.122962",
-      "media_tel"=>[{"tel_type"=>"label.codelist.tel_type", "tel_number"=>"0903 424 263, 02/50118417"}],
-      "podatelna"=> {
-        "tel"=>[{"tel_type"=>"label.codelist.tel_type", "tel_number"=>"02/88811180, fax. 02/88811192"}],
-       "opening_hours"=>["8:00 - 15:30", "", "", "8:00 - 15:30", "", "", "8:00 - 15:30", "", "", "8:00 - 15:30", "", "", "8:00 - 15:00", "", "", "", "", "", "", "", ""],
-       "internetAddress"=>{"email"=>"podatelnaosba1@justice.sk"}
+      'guid' => 'sud_102',
+      'kraj' => 'Bratislavský kraj',
+      'orsr' => {
+        'tel' => [
+          {
+            'tel_type' => 'label.codelist.tel_type',
+            'tel_number' => '02/501 18 340, 02/501 18 356, 02/501 18 181, 02/501 18 421'
+          }
+        ],
+        'note' => 'prestávka v práci PO - ŠT: 12:00 - 13:00',
+        'opening_hours' => [
+          '8:00 - 15:00',
+          '',
+          '',
+          '8:00 - 15:00',
+          '',
+          '',
+          '8:00 - 15:00',
+          '',
+          '',
+          '8:00 - 15:00',
+          '',
+          '',
+          '8:00 - 12:00',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          ''
+        ]
       },
-      "media_name"=>"Mgr. Pavol Adamčiak",
-      "podpredseda"=>{"sudcovia"=>[{"id"=>"1767", "name"=>"Mgr. Miriam PLAVČÁKOVÁ"}]},
-      "aktualizacia"=>"2015-12-09T00:00:00Z",
-      "info_centrum"=> {
-        "tel"=>[{"tel_type"=>"label.codelist.tel_type", "tel_number"=>"02/88811200"}],
-       "opening_hours"=>["8:00 - 15:00", "", "", "8:00 - 15:00", "", "", "8:00 - 15:00", "", "", "8:00 - 15:00", "", "", "8:00 - 14:00", "", "", "", "", "", "", "", ""],
-       "internetAddress"=>{"email"=>"podatelnaosba1@justice.sk"}
+      'nazov' => 'Okresný súd Bratislava I',
+      'okres' => 'Okres Bratislava I',
+      'zapisy' => [],
+      'address' => 'Záhradnícka 10, Bratislava I',
+      'skratka' => 'OSBA1',
+      'predseda' => {
+        'sudcovia' => [{ 'id' => '561', 'name' => 'JUDr. Eva FULCOVÁ' }]
       },
-      "opening_hours"=>nil,
-      "internet_address"=>nil
+      'typ_sudu' => 'Okresný súd',
+      'lattitude' => '48.152538',
+      'longitude' => '17.122962',
+      'media_tel' => [{ 'tel_type' => 'label.codelist.tel_type', 'tel_number' => '0903 424 263, 02/50118417' }],
+      'podatelna' => {
+        'tel' => [{ 'tel_type' => 'label.codelist.tel_type', 'tel_number' => '02/88811180, fax. 02/88811192' }],
+        'opening_hours' => [
+          '8:00 - 15:30',
+          '',
+          '',
+          '8:00 - 15:30',
+          '',
+          '',
+          '8:00 - 15:30',
+          '',
+          '',
+          '8:00 - 15:30',
+          '',
+          '',
+          '8:00 - 15:00',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          ''
+        ],
+        'internetAddress' => {
+          'email' => 'podatelnaosba1@justice.sk'
+        }
+      },
+      'media_name' => 'Mgr. Pavol Adamčiak',
+      'podpredseda' => {
+        'sudcovia' => [{ 'id' => '1767', 'name' => 'Mgr. Miriam PLAVČÁKOVÁ' }]
+      },
+      'aktualizacia' => '2015-12-09T00:00:00Z',
+      'info_centrum' => {
+        'tel' => [{ 'tel_type' => 'label.codelist.tel_type', 'tel_number' => '02/88811200' }],
+        'opening_hours' => [
+          '8:00 - 15:00',
+          '',
+          '',
+          '8:00 - 15:00',
+          '',
+          '',
+          '8:00 - 15:00',
+          '',
+          '',
+          '8:00 - 15:00',
+          '',
+          '',
+          '8:00 - 14:00',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          ''
+        ],
+        'internetAddress' => {
+          'email' => 'podatelnaosba1@justice.sk'
+        }
+      },
+      'opening_hours' => nil,
+      'internet_address' => nil
     }
-  }
+  end
 
   describe '#uri' do
     it 'maps uri from guid' do
@@ -53,7 +141,7 @@ RSpec.describe InfoSud::CourtMapper do
 
   describe '#name' do
     it 'maps name' do
-      expect(subject.name).to eql('Okresný súd Bratislava I')
+      expect(subject.name).to eql('Mestský súd Bratislava I')
     end
   end
 
@@ -143,13 +231,9 @@ RSpec.describe InfoSud::CourtMapper do
 
   describe '#information_center_opening_hours' do
     it 'maps information center opening hours' do
-      expect(subject.information_center_hours).to eql([
-         "8:00 - 15:00",
-         "8:00 - 15:00",
-         "8:00 - 15:00",
-         "8:00 - 15:00",
-         "8:00 - 14:00"
-       ])
+      expect(subject.information_center_hours).to eql(
+        ['8:00 - 15:00', '8:00 - 15:00', '8:00 - 15:00', '8:00 - 15:00', '8:00 - 14:00']
+      )
     end
   end
 
@@ -173,13 +257,9 @@ RSpec.describe InfoSud::CourtMapper do
 
   describe '#registry_center_opening_hours' do
     it 'maps registry center opening hours' do
-      expect(subject.registry_center_hours).to eql([
-         "8:00 - 15:30",
-         "8:00 - 15:30",
-         "8:00 - 15:30",
-         "8:00 - 15:30",
-         "8:00 - 15:00"
-       ])
+      expect(subject.registry_center_hours).to eql(
+        ['8:00 - 15:30', '8:00 - 15:30', '8:00 - 15:30', '8:00 - 15:30', '8:00 - 15:00']
+      )
     end
   end
 
@@ -191,7 +271,9 @@ RSpec.describe InfoSud::CourtMapper do
 
   describe '#business_registry_center_phone' do
     it 'maps business registry center phone' do
-      expect(subject.business_registry_center_phone).to eql('02/50 118 340, 02/50 118 356, 02/50 118 181, 02/50 118 421')
+      expect(subject.business_registry_center_phone).to eql(
+        '02/50 118 340, 02/50 118 356, 02/50 118 181, 02/50 118 421'
+      )
     end
   end
 
@@ -203,13 +285,9 @@ RSpec.describe InfoSud::CourtMapper do
 
   describe '#business_registry_center_opening_hours' do
     it 'maps business registry center opening hours' do
-      expect(subject.business_registry_center_hours).to eql([
-         "8:00 - 15:00",
-         "8:00 - 15:00",
-         "8:00 - 15:00",
-         "8:00 - 15:00",
-         "8:00 - 12:00"
-       ])
+      expect(subject.business_registry_center_hours).to eql(
+        ['8:00 - 15:00', '8:00 - 15:00', '8:00 - 15:00', '8:00 - 15:00', '8:00 - 12:00']
+      )
     end
   end
 end

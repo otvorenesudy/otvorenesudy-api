@@ -6,7 +6,7 @@ RSpec.describe HearingReconciler do
   let(:hearing) { double(:hearing) }
   let(:mapper) { double(:mapper, attributes) }
   let(:source) { double(:source) }
-  let(:attributes) {
+  let(:attributes) do
     {
       uri: 'http://path/to/hearing',
       case_number: '12/23/12CS',
@@ -27,12 +27,10 @@ RSpec.describe HearingReconciler do
       defendants: ['John Pan'],
       proposers: ['John Smithy']
     }
-  }
+  end
 
   before :each do
-    allow(HearingReconciler::RandomInitialsProvider).to receive(:provide) {
-      'A. B.'
-    }
+    allow(HearingReconciler::RandomInitialsProvider).to receive(:provide) { 'A. B.' }
   end
 
   describe '#reconcile_attributes' do
@@ -41,17 +39,12 @@ RSpec.describe HearingReconciler do
         allow(Source).to receive(:find_by!).with(module: 'JusticeGovSk') { source }
         allow(Hearing::Type).to receive(:find_by!).with(value: 'Trestné') { :type }
 
-        expect(hearing).to receive(:update_attributes!).with(
-          attributes.slice(
-            :uri,
-            :case_number,
-            :file_number,
-            :date,
-            :room,
-            :selfjudge,
-            :note,
-            :special_type
-          ).merge(type: :type, source: source, anonymized_at: Time.now)
+        expect(hearing).to receive(:update!).with(
+          attributes.slice(:uri, :case_number, :file_number, :date, :room, :selfjudge, :note, :special_type).merge(
+            type: :type,
+            source: source,
+            anonymized_at: Time.now
+          )
         )
 
         subject.reconcile_attributes
@@ -111,24 +104,18 @@ RSpec.describe HearingReconciler do
 
       judgings = [double(:judging), double(:judging)]
 
-      expect(Judging).to receive(:find_or_initialize_by).with(
-        judge: :judge_1,
-        hearing: hearing
-      ).and_return(judgings[0])
+      expect(Judging).to receive(:find_or_initialize_by).with(judge: :judge_1, hearing: hearing).and_return(judgings[0])
 
-      expect(Judging).to receive(:find_or_initialize_by).with(
-        judge: :judge_2,
-        hearing: hearing
-      ).and_return(judgings[1])
+      expect(Judging).to receive(:find_or_initialize_by).with(judge: :judge_2, hearing: hearing).and_return(judgings[1])
 
-      expect(judgings[0]).to receive(:update_attributes!).with(
+      expect(judgings[0]).to receive(:update!).with(
         judge: :judge_1,
         judge_name_unprocessed: 'JUDr. Peter Parker',
         judge_name_similarity: 1,
         judge_chair: true
       )
 
-      expect(judgings[1]).to receive(:update_attributes!).with(
+      expect(judgings[1]).to receive(:update!).with(
         judge: :judge_2,
         judge_name_unprocessed: 'JUDr. Peter Pan',
         judge_name_similarity: 1,
@@ -145,14 +132,13 @@ RSpec.describe HearingReconciler do
         allow(JudgeFinder).to receive(:find_by).with(name: 'JUDr. Peter Pan') { nil }
         allow(JudgeFinder).to receive(:find_by).with(name: 'JUDr. Peter Parker') { :judge_2 }
 
-        expect(Judging).to receive(:find_or_initialize_by).with(
-          judge: :judge_2,
-          hearing: hearing,
-        ).and_return(double.as_null_object)
+        expect(Judging).to receive(:find_or_initialize_by).with(judge: :judge_2, hearing: hearing).and_return(
+          double.as_null_object
+        )
 
         expect(Judging).to receive(:find_or_initialize_by).with(
           judge_name_unprocessed: 'JUDr. Peter Pan',
-          hearing: hearing,
+          hearing: hearing
         ).and_return(double.as_null_object)
 
         expect(hearing).to receive(:purge!)
@@ -166,11 +152,17 @@ RSpec.describe HearingReconciler do
     it 'reconciles opponents' do
       opponents = [double(:opponent), double(:opponent)]
 
-      expect(Opponent).to receive(:find_or_initialize_by).with(name_unprocessed: 'Peter Pan', hearing: hearing).and_return(opponents[0])
-      expect(Opponent).to receive(:find_or_initialize_by).with(name_unprocessed: 'John Smith', hearing: hearing).and_return(opponents[1])
+      expect(Opponent).to receive(:find_or_initialize_by).with(
+        name_unprocessed: 'Peter Pan',
+        hearing: hearing
+      ).and_return(opponents[0])
+      expect(Opponent).to receive(:find_or_initialize_by).with(
+        name_unprocessed: 'John Smith',
+        hearing: hearing
+      ).and_return(opponents[1])
 
-      expect(opponents[0]).to receive(:update_attributes!).with(name: 'A. B.')
-      expect(opponents[1]).to receive(:update_attributes!).with(name: 'A. B.')
+      expect(opponents[0]).to receive(:update!).with(name: 'A. B.')
+      expect(opponents[1]).to receive(:update!).with(name: 'A. B.')
 
       expect(hearing).to receive(:purge!).with(:opponents, except: opponents)
 
@@ -182,8 +174,11 @@ RSpec.describe HearingReconciler do
     it 'reconciles defendants' do
       defendant = double(:defendant)
 
-      expect(Defendant).to receive(:find_or_initialize_by).with(name_unprocessed: 'John Pan', hearing: hearing).and_return(defendant)
-      expect(defendant).to receive(:update_attributes!).with(name: 'A. B.')
+      expect(Defendant).to receive(:find_or_initialize_by).with(
+        name_unprocessed: 'John Pan',
+        hearing: hearing
+      ).and_return(defendant)
+      expect(defendant).to receive(:update!).with(name: 'A. B.')
       expect(hearing).to receive(:purge!).with(:defendants, except: [defendant])
 
       subject.reconcile_defendants
@@ -194,8 +189,11 @@ RSpec.describe HearingReconciler do
     it 'reconciles proposers' do
       proposer = double(:proposer)
 
-      expect(Proposer).to receive(:find_or_initialize_by).with(name_unprocessed: 'John Smithy', hearing: hearing).and_return(proposer)
-      expect(proposer).to receive(:update_attributes!).with(name: 'A. B.')
+      expect(Proposer).to receive(:find_or_initialize_by).with(
+        name_unprocessed: 'John Smithy',
+        hearing: hearing
+      ).and_return(proposer)
+      expect(proposer).to receive(:update!).with(name: 'A. B.')
       expect(hearing).to receive(:purge!).with(:proposers, except: [proposer])
 
       subject.reconcile_proposers

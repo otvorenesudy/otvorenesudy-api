@@ -5,12 +5,12 @@ RSpec.describe InfoSud::Court, active_job: { adapter: :test } do
   it_behaves_like InfoSud::Importable
 
   describe 'after save' do
-    let(:record) { build(:info_sud_court)  }
+    let(:record) { build(:info_sud_court) }
 
     it 'enqueues reconciliation job' do
       expect { record }.not_to have_enqueued_job(ReconcileCourtJob).on_queue('reconcilers')
       expect { record.save! }.to have_enqueued_job(ReconcileCourtJob).with(record).on_queue('reconcilers')
-      expect { record.update_attributes!({}) }.to have_enqueued_job(ReconcileCourtJob).with(record).on_queue('reconcilers')
+      expect { record.update!({}) }.to have_enqueued_job(ReconcileCourtJob).with(record).on_queue('reconcilers')
     end
   end
 end

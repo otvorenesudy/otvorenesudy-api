@@ -1,10 +1,9 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
-ENV["RAILS_ENV"] ||= 'test'
+ENV['RAILS_ENV'] ||= 'test'
 require 'spec_helper'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 require 'capybara/rails'
-require 'capybara/poltergeist'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -20,13 +19,13 @@ require 'capybara/poltergeist'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 
-Capybara.javascript_driver = :poltergeist
+Capybara.javascript_driver = :selenium_chrome_headless
 
 RSpec.configure do |config|
   config.include RSpec::Rails::Matchers
@@ -37,8 +36,6 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true
-  # TODO after updating RSpec, rename to use_transactional_tests = false to avoid
-  # deprecation warning
   config.use_transactional_fixtures = false
 
   # DatabaseRewinder
@@ -49,9 +46,7 @@ RSpec.configure do |config|
     DatabaseRewinder.clean_all
   end
 
-  config.after(:each) do
-    DatabaseRewinder.clean
-  end
+  config.after(:each) { DatabaseRewinder.clean }
 
   # ActiveJob
   config.around(:each, :active_job) do |example|

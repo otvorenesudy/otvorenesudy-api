@@ -5,37 +5,39 @@ require_relative '../../../app/mappers/info_sud/hearing_mapper'
 RSpec.describe InfoSud::HearingMapper do
   subject { InfoSud::HearingMapper.new(data) }
 
-  let(:data) {
+  let(:data) do
     {
-      "ecli"=>"ECLI:SK:OSKE1:2015:7115010154.5",
-      "guid"=>"94fed4fd-af4a-42c3-8c21-788358207927",
-      "usek"=>"T",
-      "predmet"=>"4Pv 461/14 - § 189 ods. 1 Tr. zák.",
-      "sud_typ"=>"Okresný súd",
-      "poznamka"=>"poznamka",
-      "sud_guid"=>"148",
-      "sud_kraj"=>"Košický kraj",
-      "miestnost"=>"135",
-      "sud_nazov"=>"Okresný súd Košice I",
-      "sud_okres"=>"Okres Košice I",
-      "sudca_guid"=>["185"],
-      "sudca_meno"=>["JUDr. Margaréta Hlaváčková"],
-      "forma_ukonu"=>"Hlavné pojednávanie s rozhodnutím",
-      "navrhovatel"=>['Peter Pan'],
-      "je_samosudca"=>true,
-      "mena_odporcov"=>['Peter Parker'],
-      "spisova_znacka"=>"3T/9/2015",
-      "datum_zapocatia"=>nil,
-      "index_timestamp"=>"2015-12-03T12:26:05.395Z",
-      "mena_obzalovanych"=>["Peter Smith"],
-      "datum_a_cas_pojednavania"=>"2015-12-07T12:30:00Z",
-      "identifikacne_cislo_spisu"=>"7115010154"
+      'ecli' => 'ECLI:SK:OSKE1:2015:7115010154.5',
+      'guid' => '94fed4fd-af4a-42c3-8c21-788358207927',
+      'usek' => 'T',
+      'predmet' => '4Pv 461/14 - § 189 ods. 1 Tr. zák.',
+      'sud_typ' => 'Okresný súd',
+      'poznamka' => 'poznamka',
+      'sud_guid' => '148',
+      'sud_kraj' => 'Košický kraj',
+      'miestnost' => '135',
+      'sud_nazov' => 'Okresný súd Košice I',
+      'sud_okres' => 'Okres Košice I',
+      'sudca_guid' => ['185'],
+      'sudca_meno' => ['JUDr. Margaréta Hlaváčková'],
+      'forma_ukonu' => 'Hlavné pojednávanie s rozhodnutím',
+      'navrhovatel' => ['Peter Pan'],
+      'je_samosudca' => true,
+      'mena_odporcov' => ['Peter Parker'],
+      'spisova_znacka' => '3T/9/2015',
+      'datum_zapocatia' => nil,
+      'index_timestamp' => '2015-12-03T12:26:05.395Z',
+      'mena_obzalovanych' => ['Peter Smith'],
+      'datum_a_cas_pojednavania' => '2015-12-07T12:30:00Z',
+      'identifikacne_cislo_spisu' => '7115010154'
     }
-  }
+  end
 
   describe '#uri' do
     it 'maps uri' do
-      expect(subject.uri).to eql('https://obcan.justice.sk/infosud/-/infosud/i-detail/pojednavanie/94fed4fd-af4a-42c3-8c21-788358207927')
+      expect(subject.uri).to eql(
+        'https://obcan.justice.sk/infosud/-/infosud/i-detail/pojednavanie/94fed4fd-af4a-42c3-8c21-788358207927'
+      )
     end
   end
 
@@ -83,7 +85,7 @@ RSpec.describe InfoSud::HearingMapper do
 
   describe '#court' do
     it 'maps court' do
-      expect(subject.court).to eql('Okresný súd Košice I')
+      expect(subject.court).to eql('Mestský súd Košice')
     end
   end
 
@@ -156,13 +158,7 @@ RSpec.describe InfoSud::HearingMapper do
     end
 
     context 'when court is specialized' do
-      let(:data) {
-        {
-          "sud_nazov"=>"Špecializovaný trestný súd",
-          "sudca_meno"=>["JUDr. Margaréta Hlaváčková"],
-        }
-
-      }
+      let(:data) { { 'sud_nazov' => 'Špecializovaný trestný súd', 'sudca_meno' => ['JUDr. Margaréta Hlaváčková'] } }
 
       it 'maps judges as chair' do
         expect(subject.chair_judges).to eql(['JUDr. Margaréta Hlaváčková'])

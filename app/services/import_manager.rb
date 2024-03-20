@@ -4,6 +4,6 @@ module ImportManager
 
     return unless record.attributes.deep_symbolize_keys.slice(*keys) != attributes.slice(*keys)
 
-    record.update_attributes!(attributes)
+    record.update!(attributes)
   end
 end

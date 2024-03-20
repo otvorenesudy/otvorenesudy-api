@@ -7,7 +7,7 @@ RSpec.describe JudgeReconciler do
   let(:judge) { double(:judge, employments: employments) }
   let(:employments) { double(:employments) }
 
-  let(:attributes) {
+  let(:attributes) do
     {
       uri: 'uri',
       name: {
@@ -20,7 +20,6 @@ RSpec.describe JudgeReconciler do
         suffix: 'PhD.',
         addition: nil
       },
-
       court: 'Krajský súd Trenčín',
       position: 'predseda',
       temporary_court: 'Okresný súd Prievidza',
@@ -28,7 +27,7 @@ RSpec.describe JudgeReconciler do
       status: :active,
       note: 'note'
     }
-  }
+  end
 
   describe '#reconcile!' do
     it 'reconciles and saves judge' do
@@ -50,7 +49,7 @@ RSpec.describe JudgeReconciler do
     it 'reconciles attributes for judge' do
       allow(Source).to receive(:find_by!).with(module: 'JusticeGovSk') { :source }
 
-      expect(judge).to receive(:update_attributes!).with(
+      expect(judge).to receive(:update!).with(
         uri: 'uri',
         source: :source,
         name: 'JUDr. Peter Parker, PhD.',
@@ -75,7 +74,6 @@ RSpec.describe JudgeReconciler do
     end
   end
 
-
   describe '#reconcile_employment' do
     let(:employment) { double(:employment) }
 
@@ -84,12 +82,7 @@ RSpec.describe JudgeReconciler do
       allow(Court).to receive(:find_by!).with(name: 'Krajský súd Trenčín') { :court }
       allow(employments).to receive(:find_or_initialize_by).with(court: :court) { employment }
 
-      expect(employment).to receive(:update_attributes!).with(
-        position: :position,
-        active: true,
-        status: :active,
-        note: 'note'
-      )
+      expect(employment).to receive(:update!).with(position: :position, active: true, status: :active, note: 'note')
 
       subject.reconcile_employment
     end
@@ -103,10 +96,7 @@ RSpec.describe JudgeReconciler do
       allow(Court).to receive(:find_by!).with(name: 'Okresný súd Prievidza') { :court }
       allow(employments).to receive(:find_or_initialize_by).with(court: :court) { employment }
 
-      expect(employment).to receive(:update_attributes!).with(
-        position: :position,
-        active: true
-      )
+      expect(employment).to receive(:update!).with(position: :position, active: true)
 
       subject.reconcile_temporary_employment
     end

@@ -4,15 +4,15 @@ FactoryBot.define do
     association :court
 
     trait :active do
-      active true
+      active { true }
     end
 
     trait :inactive do
-      active false
+      active { false }
     end
 
     trait :unknown do
-      active nil
+      active { nil }
     end
   end
 end

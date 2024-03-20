@@ -19,3 +19,16 @@ Gemfile.lock.tags
 !/tmp/.keep
 
 .env.local
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
+
+/config/credentials/development.key
+
+/config/credentials/test.key
+
+/config/credentials/production.key

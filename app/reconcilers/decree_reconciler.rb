@@ -24,7 +24,7 @@ class DecreeReconciler
   end
 
   def reconcile_attributes
-    decree.update_attributes!(
+    decree.update!(
       source: Source.find_by!(module: 'JusticeGovSk'),
       uri: mapper.uri,
       ecli: mapper.ecli,
@@ -73,7 +73,7 @@ class DecreeReconciler
           judgement = Judgement.find_or_initialize_by(decree: decree, judge_name_unprocessed: name)
         end
 
-        judgement.update_attributes!(judge_name_unprocessed: name, judge: judge, judge_name_similarity: judge ? 1 : 0)
+        judgement.update!(judge_name_unprocessed: name, judge: judge, judge_name_similarity: judge ? 1 : 0)
 
         judgement
       end
@@ -97,7 +97,7 @@ class DecreeReconciler
       mapper.legislations.map do |attributes|
         legislation = Legislation.find_or_initialize_by(attributes.slice(:value))
 
-        legislation.update_attributes!(attributes)
+        legislation.update!(attributes)
 
         Legislation::Usage.find_or_create_by!(decree: decree, legislation: legislation)
       end
@@ -111,7 +111,7 @@ class DecreeReconciler
 
     page = Decree::Page.find_or_initialize_by(decree: decree, number: 1)
 
-    page.update_attributes!(text: text)
+    page.update!(text: text)
 
     decree.purge!(:pages, except: [page])
   end

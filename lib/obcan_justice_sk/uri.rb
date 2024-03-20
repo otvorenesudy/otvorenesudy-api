@@ -1,5 +1,5 @@
 module ObcanJusticeSk
-  class URI
+  class Uri
     attr_accessor :template
 
     def initialize(template)

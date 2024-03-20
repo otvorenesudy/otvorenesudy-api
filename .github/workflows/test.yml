@@ -1,0 +1,73 @@
+name: CI
+
+on: [push]
+
+env:
+  OPENCOURTS_DATABASE_USER: postgres
+  OPENCOURTS_API_DATABASE_USER: postgres
+  RAILS_ENV: test
+
+jobs:
+  rspec:
+    runs-on: ubuntu-latest
+    container:
+      image: ruby:3.3.0
+
+    services:
+      postgres:
+        image: postgres:16.0
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: ""
+          POSTGRES_DB: postgres
+        ports:
+          - 5432:5432
+        # needed because the postgres container does not provide a healthcheck
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "20.x"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Set-up Gem Cache
+        id: cache-bundle
+        uses: actions/cache@v1
+        with:
+          path: vendor/bundle
+          key: bundle-${{ hashFiles('**/Gemfile.lock') }}
+
+      - name: Install Bundle
+        env:
+          RAILS_ENV: test
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3 --path vendor/bundle
+
+      - name: Install Yarn
+        run: npm install -g yarn
+
+      - name: Get Yarn Cache Dir
+        id: yarn-cache-dir
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: Set-up Yarn Cache
+        id: cache-yarn
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache-dir.outputs.dir }}
+          key: yarn-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install Yarn
+        run: yarn install
+
+      - name: Setup DB
+        run: |
+          bin/rails db:create db:schema:load
+          bin/rails db:test:load_schema
+
+      - name: Run RSpec
+        run: bin/rspec

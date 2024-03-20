@@ -36,7 +36,6 @@ RSpec.feature 'Request Invite', type: :feature do
 
       expect(invite.email).to eql('johny@example.com')
       expect(invite.locale).to eql('sk')
-
     end
   end
 

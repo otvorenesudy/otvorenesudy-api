@@ -1,8 +1,8 @@
-lock '3.10.2'
+lock '3.18.1'
 
 # Repository
 set :application, 'otvorenesudy-api'
-set :repo_url,    'git@github.com:otvorenesudy/otvorenesudy-api.git'
+set :repo_url, 'git@github.com:otvorenesudy/otvorenesudy-api.git'
 
 # Sidekiq
 set :sidekiq_processes, 1
@@ -12,20 +12,28 @@ set :rbenv_type, :user
 set :rbenv_ruby, File.read('.ruby-version').strip
 
 # Whenever
-set :whenever_identifier, ->{ "#{fetch(:application)}-#{fetch(:stage)}" }
+set :whenever_identifier, -> { "#{fetch(:application)}-#{fetch(:stage)}" }
 
 # Links
 set :linked_files, fetch(:linked_files, []).push('.env')
-set :linked_dirs,  fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'tmp/downloads', 'vendor/bundle', 'tmp/extracted')
+set :linked_dirs,
+    fetch(:linked_dirs, []).push(
+      'log',
+      'tmp/pids',
+      'tmp/cache',
+      'tmp/sockets',
+      'tmp/downloads',
+      'vendor/bundle',
+      'tmp/extracted'
+    )
 
 set :keep_releases, 2
-set :ssh_options, {
-  forward_agent: true
-}
+set :ssh_options, { forward_agent: true }
 
 namespace :deploy do
   after 'deploy:publishing', 'deploy:restart'
   after 'finishing', 'deploy:cleanup'
+  after 'finishing', 'cache:clear'
 
   desc 'Deploy app for first time'
   task :cold do
@@ -50,6 +58,18 @@ namespace :deploy do
           execute :rake, 'db:create'
           execute :rake, 'db:migrate'
           execute :rake, 'db:seed'
+        end
+      end
+    end
+  end
+end
+
+namespace :cache do
+  task :clear do
+    on roles(:app) do |host|
+      with rails_env: fetch(:rails_env) do
+        within current_path do
+          execute :bundle, :exec, 'rake cache:clear'
         end
       end
     end
