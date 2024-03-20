@@ -2,7 +2,7 @@ opencourts: &opencourts
   adapter: postgresql
   encoding: utf8
   pool: 100
-  host: 127.0.0.1
+  host: localhost
   username: <%= ENV['OPENCOURTS_DATABASE_USER'] %>
   password: <%= ENV['OPENCOURTS_DATABASE_PASSWORD'] %>
 
@@ -10,7 +10,7 @@ defaults: &defaults
   adapter: postgresql
   encoding: utf8
   pool: 100
-  host: 127.0.0.1
+  host: localhost
   username: <%= ENV['OPENCOURTS_API_DATABASE_USER'] %>
   password: <%= ENV['OPENCOURTS_API_DATABASE_PASSWORD'] %>
 
