@@ -12,8 +12,6 @@ env:
 jobs:
   test:
     runs-on: ubuntu-latest
-    container:
-      image: ruby:3.3.0
 
     services:
       postgres:
