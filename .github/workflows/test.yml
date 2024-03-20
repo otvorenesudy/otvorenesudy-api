@@ -1,4 +1,4 @@
-name: CI
+name: Test
 
 on: [push]
 
@@ -10,7 +10,7 @@ env:
   RAILS_ENV: test
 
 jobs:
-  rspec:
+  test:
     runs-on: ubuntu-latest
     container:
       image: ruby:3.3.0
