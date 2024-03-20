@@ -4,7 +4,9 @@ on: [push]
 
 env:
   OPENCOURTS_DATABASE_USER: postgres
+  OPENCOURTS_DATABASE_PASSWORD: postgres
   OPENCOURTS_API_DATABASE_USER: postgres
+  OPENCOURTS_API_DATABASE_PASSWORD: postgres
   RAILS_ENV: test
 
 jobs:
@@ -18,7 +20,7 @@ jobs:
         image: postgres:16.0
         env:
           POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: ""
+          POSTGRES_PASSWORD: postgres
           POSTGRES_DB: postgres
         ports:
           - 5432:5432
