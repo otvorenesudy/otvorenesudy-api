@@ -3,6 +3,8 @@ name: CD
 on:
   workflow_run:
     workflows: ['CI']
+    branches:
+      - master
     types:
       - completed
 
