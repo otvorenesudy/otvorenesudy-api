@@ -6,11 +6,11 @@ FactoryBot.define do
     name { "#{prefix} #{first} #{middle} #{last}, #{suffix} #{addition}".strip.squeeze(' ') }
     name_unprocessed { |n| name }
 
-    prefix   'JUDr.'
-    first    'Peter'
-    middle   ''
-    suffix   'PhD.'
-    addition ''
+    prefix { 'JUDr.' }
+    first { 'Peter' }
+    middle { '' }
+    suffix { 'PhD.' }
+    addition { '' }
 
     sequence(:last) { |n| "Retep ##{n}" }
 

@@ -1,90 +1,91 @@
 source 'https://rubygems.org'
 
-gem 'rack', '2.0.8'
-
-gem 'rails', '~> 5.1.5'
-gem 'sass-rails', '~> 5.0.7'
-gem 'sprockets', '~> 3.7.2'
-gem 'sprockets-rails', '~> 3.2.1'
-gem 'turbolinks', '~> 5.1.0'
+gem 'rack'
+gem 'rails', '~> 7.1'
+gem 'sass-rails'
+gem 'turbolinks'
 
 # Internationalization
-gem 'rails-i18n', '~> 5.1.0'
+gem 'rails-i18n'
 
 # Database
-gem 'pg', '~> 1.0.0'
+gem 'pg'
 
 # Assets
 gem 'bootstrap', '4.0.0.alpha2'
-gem 'coffee-rails', '~> 4.2.0'
+gem 'coffee-rails'
 gem 'font-awesome-rails', '~> 4.7.0.3'
-gem 'jquery-rails', '~> 4.3.1'
-gem 'uglifier', '>= 1.3.0'
+gem 'jquery-rails'
+gem 'uglifier'
+gem 'webpacker'
 
 # Security
-gem 'bcrypt', '~> 3.1.11'
-gem 'bcrypt_pbkdf', '~> 1.1.0'
-
-gem 'ed25519', '~> 1.2.4'
+gem 'bcrypt_pbkdf'
+gem 'bcrypt'
+gem 'ed25519'
 
 # Serializers
-gem 'active_model_serializers', '~> 0.10.7'
-gem 'oj', '~> 3.4.0'
-gem 'oj_mimic_json', '~> 1.0.1'
+gem 'active_model_serializers'
+gem 'oj_mimic_json'
+gem 'oj'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS)
 # making cross-origin AJAX possible
 # gem 'rack-cors'
 
 # Async Processing
-gem 'sidekiq', '~> 5.2.9'
-gem 'sidekiq-limit_fetch', '~> 3.4.0'
+gem 'sidekiq-limit_fetch'
+gem 'sidekiq'
 
 # Configuration
-gem 'dotenv-rails', '~> 2.2.1'
-gem 'squire', '~> 1.3.7'
+gem 'dotenv-rails'
+gem 'squire'
 
 # Caching
-gem 'dalli', '~> 2.7.6'
+gem 'dalli'
 
 # Reporting
-gem 'newrelic_rpm', '~> 4.8.0.341'
-gem 'rollbar'
+gem 'sentry-rails'
+gem 'sentry-ruby'
 
 # Utilities
-gem 'awesome_print', '~> 1.8.0'
-gem 'curb', '~> 0.9.11'
-gem 'enumerize', '~> 2.2.1'
-gem 'mechanize', '~> 2.7.5'
-gem 'nokogiri', '~> 1.10.8'
-gem 'pdf-reader', '~> 2.1.0'
-gem 'roo', '~> 2.7.1'
-gem 'roo-xls', '~> 1.1.0'
+gem 'awesome_print'
+gem 'base64'
+gem 'bootsnap', require: false
+gem 'csv'
+gem 'curb'
+gem 'enumerize'
+gem 'matrix'
+gem 'mechanize'
+gem 'nkf'
+gem 'nokogiri'
+gem 'pdf-reader'
+gem 'roo-xls'
+gem 'roo'
 
 # Codeclimate
 gem 'codeclimate-test-reporter', group: :test, require: nil
 
 # Scheduling
-gem 'whenever', '0.10.0'
+gem 'whenever'
 
 group :development, :test do
-  gem 'capybara', '~> 2.18.0'
-  gem 'database_rewinder', '~> 0.8.3'
-  gem 'factory_bot_rails', '~> 4.8.2'
-  gem 'fuubar', '~> 2.3.1'
-  gem 'poltergeist', '~> 1.17.0'
-  gem 'pry'
+  gem 'capybara'
+  gem 'database_rewinder'
+  gem 'factory_bot_rails'
+  gem 'fuubar'
   gem 'pry-rails'
-  gem 'rails-controller-testing', '~> 1.0.2'
-  gem 'rspec-rails', '~> 3.7.2'
-  gem 'ruby-prof', '~> 0.17.0'
-  gem 'spring', '~> 2.0.2'
-  gem 'timecop', '~> 0.9.1'
-  gem 'vcr', '~> 4.0.0'
+  gem 'pry'
+  gem 'rails-controller-testing'
+  gem 'rspec-rails'
+  gem 'selenium-webdriver'
+  gem 'timecop'
+  gem 'vcr'
 end
 
 group :test do
-  gem 'webmock', '~> 3.3.0'
+  gem 'webmock'
+  gem 'puma'
 end
 
 group :development do
@@ -92,14 +93,14 @@ group :development do
   gem 'web-console'
 
   # Deployment
-  gem 'capistrano', '~> 3.10.1'
   gem 'capistrano-bundler'
-  gem 'capistrano-git'
   gem 'capistrano-git-with-submodules'
+  gem 'capistrano-git'
   gem 'capistrano-passenger'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'capistrano-sidekiq'
+  gem 'capistrano'
 
   # Other
   gem 'bump', git: 'https://github.com/pavolzbell/bump.git'

@@ -22,7 +22,7 @@ class JudgeReconciler
     # TODO remove source, leave now for compatibility
     name = mapper.name
 
-    judge.update_attributes!(
+    judge.update!(
       uri: mapper.uri,
       source: Source.find_by!(module: 'JusticeGovSk'),
       name: name[:value],
@@ -46,7 +46,7 @@ class JudgeReconciler
     court = Court.find_by!(name: mapper.court)
     employment = judge.employments.find_or_initialize_by(court: court)
 
-    employment.update_attributes!(
+    employment.update!(
       position: Judge::Position.find_or_create_by!(value: mapper.position),
       active: mapper.active,
       status: mapper.status,
@@ -60,9 +60,6 @@ class JudgeReconciler
     court = Court.find_by!(name: mapper.temporary_court)
     employment = judge.employments.find_or_initialize_by(court: court)
 
-    employment.update_attributes!(
-      position: Judge::Position.find_or_create_by!(value: 'sudca'),
-      active: true
-    )
+    employment.update!(position: Judge::Position.find_or_create_by!(value: 'sudca'), active: true)
   end
 end

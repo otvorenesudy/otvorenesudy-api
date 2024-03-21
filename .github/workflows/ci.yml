@@ -1,0 +1,76 @@
+name: CI
+
+on: [push]
+
+env:
+  RAILS_ENV: test
+  CI: true
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: opencourts_api_test
+          RAILS_ENV: test
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Setup ENV File
+        run: mv .env.ci .env.test
+
+      - name: Install Required Packages
+        run: sudo apt-get install libpq-dev libssl-dev libcurl4 libcurl4-openssl-dev
+
+      - name: "Read Ruby Version"
+        id: read-ruby-version
+        run: echo "RUBY_VERSION=$(cat .ruby-version)" >> $GITHUB_OUTPUT
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "${{ steps.read-ruby-version.outputs.RUBY_VERSION }}"
+          bundler-cache: true
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "20.x"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install Bundle
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+
+      - name: Install Yarn
+        run: npm install -g yarn
+
+      - name: Get Yarn Cache Dir
+        id: yarn-cache-dir
+        run: echo "YARN_CACHE_DIR=$(yarn cache dir)" >> $GITHUB_OUTPUT
+
+      - name: Setup Yarn Cache
+        id: cache-yarn
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache-dir.outputs.YARN_CACHE_DIR }}
+          key: yarn-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install Yarn
+        run: yarn install
+
+      - name: Setup Database
+        run: |
+          bin/rails db:create db:schema:load
+          bin/rails db:test:load_schema
+
+      - name: Run RSpec
+        run: bin/rspec

@@ -5,7 +5,7 @@ RSpec.describe DecreeReconciler do
 
   let(:decree) { double(:decree) }
   let(:mapper) { double(:mapper, attributes) }
-  let(:attributes) {
+  let(:attributes) do
     {
       uri: 'uri',
       ecli: 'ecli',
@@ -22,7 +22,7 @@ RSpec.describe DecreeReconciler do
       text: 'Fulltext #1',
       pdf_uri: 'http://uri.pdf'
     }
-  }
+  end
 
   describe '#reconcile!' do
     it 'reconciles decree from mapper' do
@@ -50,7 +50,7 @@ RSpec.describe DecreeReconciler do
       allow(Source).to receive(:find_by!).with(module: 'JusticeGovSk') { :source }
       allow(Decree::Form).to receive(:find_by!).with(value: 'form', code: 'code') { :form }
 
-      expect(decree).to receive(:update_attributes!).with(
+      expect(decree).to receive(:update!).with(
         source: :source,
         uri: 'uri',
         ecli: 'ecli',
@@ -106,7 +106,10 @@ RSpec.describe DecreeReconciler do
   describe '#reconcile_legislation_subarea' do
     it 'reconciles legislation subarea with legislation area' do
       allow(Legislation::Area).to receive(:find_by!).with(value: 'Legislation Area #1') { :legislation_area }
-      allow(Legislation::Subarea).to receive(:find_or_create_by!).with(value: 'Legislation Subarea #1', area: :legislation_area) { :legislation_subarea }
+      allow(Legislation::Subarea).to receive(:find_or_create_by!).with(
+        value: 'Legislation Subarea #1',
+        area: :legislation_area
+      ) { :legislation_subarea }
       expect(decree).to receive(:legislation_subarea=).with(:legislation_subarea)
 
       subject.reconcile_legislation_subarea
@@ -141,10 +144,20 @@ RSpec.describe DecreeReconciler do
       allow(JudgeFinder).to receive(:find_by).with(name: 'Peter Smith') { nil }
 
       allow(Judgement).to receive(:find_or_initialize_by).with(decree: decree, judge: :judge) { judgements[0] }
-      allow(Judgement).to receive(:find_or_initialize_by).with(decree: decree, judge_name_unprocessed: 'Peter Smith') { judgements[1] }
+      allow(Judgement).to receive(:find_or_initialize_by).with(decree: decree, judge_name_unprocessed: 'Peter Smith') {
+        judgements[1]
+      }
 
-      expect(judgements[0]).to receive(:update_attributes!).with(judge: :judge, judge_name_similarity: 1, judge_name_unprocessed: 'Peter Pan')
-      expect(judgements[1]).to receive(:update_attributes!).with(judge: nil, judge_name_similarity: 0, judge_name_unprocessed: 'Peter Smith')
+      expect(judgements[0]).to receive(:update!).with(
+        judge: :judge,
+        judge_name_similarity: 1,
+        judge_name_unprocessed: 'Peter Pan'
+      )
+      expect(judgements[1]).to receive(:update!).with(
+        judge: nil,
+        judge_name_similarity: 0,
+        judge_name_unprocessed: 'Peter Smith'
+      )
 
       expect(decree).to receive(:purge!).with(:judgements, except: judgements)
 
@@ -157,7 +170,9 @@ RSpec.describe DecreeReconciler do
       naturalization = double(:naturalization)
 
       allow(Decree::Nature).to receive(:find_or_create_by!).with(value: 'Decree Nature #1') { :nature }
-      expect(Decree::Naturalization).to receive(:find_or_create_by!).with(decree: decree, nature: :nature) { naturalization }
+      expect(Decree::Naturalization).to receive(:find_or_create_by!).with(decree: decree, nature: :nature) {
+        naturalization
+      }
       expect(decree).to receive(:purge!).with(:naturalizations, except: [naturalization])
 
       subject.reconcile_natures
@@ -169,7 +184,7 @@ RSpec.describe DecreeReconciler do
       page = double(:page)
 
       allow(Decree::Page).to receive(:find_or_initialize_by).with(decree: decree, number: 1) { page }
-      expect(page).to receive(:update_attributes!).with(text: 'Fulltext #1')
+      expect(page).to receive(:update!).with(text: 'Fulltext #1')
       expect(decree).to receive(:purge!).with(:pages, except: [page])
 
       subject.reconcile_pages

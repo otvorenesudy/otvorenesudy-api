@@ -17,8 +17,8 @@ class Court < ActiveRecord::Base
 
   has_many :offices, class_name: 'Court::Office'
 
-  belongs_to :information_center,       class_name: 'Court::Office', optional: true, autosave: true
-  belongs_to :registry_center,          class_name: 'Court::Office', optional: true, autosave: true
+  belongs_to :information_center, class_name: 'Court::Office', optional: true, autosave: true
+  belongs_to :registry_center, class_name: 'Court::Office', optional: true, autosave: true
   belongs_to :business_registry_center, class_name: 'Court::Office', optional: true, autosave: true
 
   has_many :expenses, class_name: 'Court::Expense'
@@ -34,5 +34,3 @@ class Court < ActiveRecord::Base
     }
   end
 end
-
-require 'court/type'

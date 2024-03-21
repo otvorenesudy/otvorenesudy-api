@@ -8,7 +8,7 @@ FactoryBot.define do
 
     sequence(:name) { |n| "Court #{n}" }
 
-    street 'Street'
+    street { 'Street' }
 
     trait :with_employments do
       after :create do |court|

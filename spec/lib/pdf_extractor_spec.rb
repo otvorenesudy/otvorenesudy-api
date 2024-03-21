@@ -8,8 +8,8 @@ RSpec.describe PdfExtractor do
     it 'extracts text from url', vcr: { cassette_name: 'example.pdf' } do
       text = PdfExtractor.extract_text_from_url(url)
 
-      expect(text.length).to eql(2470)
-      expect(text).to start_with("Súd:                              Okresný súd Spišská Nová Ves\nSpisová značka")
+      expect(text.length).to eql(2480)
+      expect(text).to start_with("Súd:                               Okresný súd Spišská Nová Ves\nSpisová značka:")
     end
   end
 end

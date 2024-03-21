@@ -23,8 +23,7 @@
 require 'rubygems'
 require 'dotenv'
 
-Dotenv.load('.env')
-Dotenv.load('.env.local')
+Dotenv.load('.env.test')
 
 require 'vcr'
 require 'support/fixture_helper'
