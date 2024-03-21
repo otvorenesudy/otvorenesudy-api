@@ -76,21 +76,3 @@ jobs:
 
       - name: Run RSpec
         run: bin/rspec
-
-  coverage:
-    needs: [test]
-    name: Publish Code Climate Coverage
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@master
-        with:
-          node-version: "20"
-      - run: npm install -g yarn
-      - run: yarn install
-      - run: yarn build
-      - uses: paambaati/codeclimate-action@v5.0.0
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-        with:
-          coverageCommand: yarn coverage
