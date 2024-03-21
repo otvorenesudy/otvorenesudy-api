@@ -4,6 +4,7 @@ on: [push]
 
 env:
   RAILS_ENV: test
+  CI: true
 
 jobs:
   test:

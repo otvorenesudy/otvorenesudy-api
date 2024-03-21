@@ -24,7 +24,8 @@ require 'rubygems'
 require 'dotenv'
 
 Dotenv.load('.env')
-Dotenv.load('.env.local')
+Dotenv.load('.env.test')
+Dotenv.load if ENV['CI']
 
 require 'vcr'
 require 'support/fixture_helper'
