@@ -25,7 +25,6 @@ require 'dotenv'
 
 Dotenv.load('.env')
 Dotenv.load('.env.test')
-Dotenv.load if ENV['CI']
 
 require 'vcr'
 require 'support/fixture_helper'
