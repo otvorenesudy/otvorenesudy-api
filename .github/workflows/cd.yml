@@ -8,6 +8,8 @@ on:
     types:
       - completed
 
+  workflow_dispatch:
+
 jobs:
   deploy:
     name: Deploy to Production
