@@ -8,6 +8,8 @@ env:
 
 jobs:
   ci:
+    name: Run RSpec
+
     runs-on: ubuntu-latest
 
     services:
