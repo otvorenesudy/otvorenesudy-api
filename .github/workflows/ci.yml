@@ -79,13 +79,13 @@ jobs:
 
   coverage:
     needs: [test]
-    name: Code Climate Coverage
+    name: Publish Code Climate Coverage
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@master
         with:
-          node-version: "12"
+          node-version: "20"
       - run: npm install -g yarn
       - run: yarn install
       - run: yarn build
