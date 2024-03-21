@@ -143,8 +143,6 @@ GEM
     case_transform (0.2)
       activesupport
     chronic (0.10.2)
-    codeclimate-test-reporter (1.0.9)
-      simplecov (<= 0.13)
     coderay (1.1.3)
     coffee-rails (5.0.0)
       coffee-script (>= 2.2.0)
@@ -506,7 +504,6 @@ DEPENDENCIES
   capistrano-rbenv
   capistrano-sidekiq
   capybara
-  codeclimate-test-reporter
   coffee-rails
   csv
   curb
@@ -544,6 +541,7 @@ DEPENDENCIES
   sentry-ruby
   sidekiq
   sidekiq-limit_fetch
+  simplecov
   squire
   timecop
   turbolinks

@@ -74,5 +74,18 @@ jobs:
           bin/rails db:create db:schema:load
           bin/rails db:test:load_schema
 
+      - name: Prepare Code Climate
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        run: |
+          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+          chmod +x ./cc-test-reporter
+          ./cc-test-reporter before-build
+
       - name: Run RSpec
         run: bin/rspec
+
+      - name: Notify Code Climate
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        run: ./cc-test-reporter after-build --input-type simplecov --exit-code $?
