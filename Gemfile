@@ -15,7 +15,6 @@ gem 'pg'
 gem 'bootstrap', '4.0.0.alpha2'
 gem 'coffee-rails'
 gem 'font-awesome-rails', '~> 4.7.0.3'
-gem 'jquery-rails'
 gem 'uglifier'
 gem 'webpacker'
 

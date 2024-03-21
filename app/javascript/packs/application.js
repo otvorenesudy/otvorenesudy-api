@@ -13,3 +13,63 @@
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+require('@rails/ujs').start();
+require('@rails/activestorage').start();
+
+import $ from 'jquery';
+import 'popper.js';
+import 'bootstrap';
+
+// Google Analytics
+$(() => {
+  $('[data-track-category]').on('click', () => {
+    const category = $(this).attr('data-track-category');
+    const action = $(this).attr('data-track-action');
+    let label;
+
+    if ($(this).attr('data-track-label')) {
+      label = $(this).attr('data-track-label');
+    } else {
+      const id = $(this).attr('id');
+      label = id ?? null;
+    }
+
+    if (window.ga) ga('send', 'event', category, action, label);
+  });
+});
+
+// Welcome Page
+$(() => {
+  $('#see-more').on('click', () => {
+    $('html, body').animate({ scrollTop: $('.content').offset().top - 32 }, 'slow');
+    return false;
+  });
+
+  $('#see-invite').on('click', () => {
+    $('html, body').animate({ scrollTop: $('.invite-form').offset().top }, 'slow', () => {
+      $('.invite-form input#email').focus();
+    });
+    return false;
+  });
+});
+
+// Cookie consent
+window.addEventListener('load', () => {
+  if (!window.cookieconsent) return;
+
+  window.cookieconsent.initialise({
+    palette: {
+      popup: {
+        background: '#8392ac',
+        text: '#fff',
+      },
+    },
+    content: {
+      message:
+        'Táto stránka využíva cookies. V prípade, že nesúhlasíte s ukladaním súborov cookies na Vašom zariadení, prosím, opustite túto stránku.',
+      dismiss: 'Súhlasím',
+    },
+    showLink: false,
+  });
+});

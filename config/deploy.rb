@@ -15,7 +15,7 @@ set :rbenv_ruby, File.read('.ruby-version').strip
 set :whenever_identifier, -> { "#{fetch(:application)}-#{fetch(:stage)}" }
 
 # Links
-set :linked_files, fetch(:linked_files, []).push('.env')
+set :linked_files, fetch(:linked_files, []).push('config/credentials/production.key')
 set :linked_dirs,
     fetch(:linked_dirs, []).push(
       'log',
