@@ -23,7 +23,6 @@
 require 'rubygems'
 require 'dotenv'
 
-Dotenv.load('.env')
 Dotenv.load('.env.test')
 
 require 'vcr'
