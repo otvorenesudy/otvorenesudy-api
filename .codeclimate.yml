@@ -41,8 +41,6 @@ checks:
     config:
       threshold: #language-specific defaults. overrides affect all languages.
 plugins:
- rubocop:
-  enabled: true
  eslint:
   enabled: true
 exclude_patterns:
