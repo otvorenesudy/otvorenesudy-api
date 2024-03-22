@@ -42,29 +42,20 @@ jobs:
           ruby-version: '${{ steps.read-ruby-version.outputs.RUBY_VERSION }}'
           bundler-cache: true
 
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '20.x'
-          registry-url: 'https://registry.npmjs.org'
-
       - name: Install Bundle
         run: |
           gem install bundler
           bundle install --jobs 4 --retry 3
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          node-version-file: 'package.json'
+          cache: 'yarn'
+          registry-url: 'https://registry.npmjs.org'
+
       - name: Install Yarn
         run: npm install -g yarn
-
-      - name: Get Yarn Cache Dir
-        id: yarn-cache-dir
-        run: echo "YARN_CACHE_DIR=$(yarn cache dir)" >> $GITHUB_OUTPUT
-
-      - name: Setup Yarn Cache
-        id: cache-yarn
-        uses: actions/cache@v1
-        with:
-          path: ${{ steps.yarn-cache-dir.outputs.YARN_CACHE_DIR }}
-          key: yarn-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install Yarn
         run: yarn install
