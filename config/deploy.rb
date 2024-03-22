@@ -15,7 +15,7 @@ set :rbenv_ruby, File.read('.ruby-version').strip
 set :whenever_identifier, -> { "#{fetch(:application)}-#{fetch(:stage)}" }
 
 # Links
-set :linked_files, fetch(:linked_files, []).push('config/credentials/production.key')
+set :linked_files, fetch(:linked_files, []).push('.env', 'config/credentials/production.key')
 set :linked_dirs,
     fetch(:linked_dirs, []).push(
       'log',
@@ -43,6 +43,7 @@ namespace :deploy do
     invoke 'deploy:started'
     invoke 'deploy:updating'
     invoke 'bundler:install'
+    invoke 'sidekiq:install'
     invoke 'deploy:database' # This replaces deploy:migrations
     invoke 'deploy:compile_assets'
     invoke 'deploy:normalize_assets'
