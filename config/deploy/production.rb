@@ -1,5 +1,5 @@
 set :stage, :production
-set :branch, 'master'
+set :branch, 'main'
 set :app_path, "#{fetch(:application)}-#{fetch(:stage)}"
 set :rails_env, :production
 set :user, 'deploy'

@@ -1,6 +1,6 @@
 # Open Courts API
 
-[![Build Status](https://github.com/otvorenesudy/otvorenesudy-api/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/otvorenesudy/otvorenesudy-api/actions?query=branch:master)
+[![Build Status](https://github.com/otvorenesudy/otvorenesudy-api/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/otvorenesudy/otvorenesudy-api/actions?query=branch:main)
 [![Code Climate](https://codeclimate.com/github/otvorenesudy/otvorenesudy-api/badges/gpa.svg)](https://codeclimate.com/github/otvorenesudy/otvorenesudy-api)
 [![Test Coverage](https://codeclimate.com/github/otvorenesudy/otvorenesudy-api/badges/coverage.svg)](https://codeclimate.com/github/otvorenesudy/otvorenesudy-api/coverage)
 
