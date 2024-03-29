@@ -11,7 +11,7 @@
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.4.4",
-    "bootstrap": "4.0.0",
+    "bootstrap": "4.3.1",
     "compression-webpack-plugin": "^11.1.0",
     "jquery": "^3.5.1",
     "lodash": "^4.0.8",
@@ -21,7 +21,7 @@
     "sanitize-html": "^2.12.1",
     "stimulus": "^1.1.1",
     "webpack": "^4.46.0",
-    "webpack-dev-middleware": "^5.3.4",
+    "webpack-dev-middleware": "^6.1.2",
     "webpack-cli": "^3.3.12"
   },
   "devDependencies": {
