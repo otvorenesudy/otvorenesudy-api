@@ -6,6 +6,7 @@ set :repo_url, 'git@github.com:otvorenesudy/otvorenesudy-api.git'
 
 # Sidekiq
 set :sidekiq_processes, 1
+set :sidekiq_service_unit_name, "#{fetch(:application)}.sidekiq"
 
 # Rbenv
 set :rbenv_type, :user

@@ -16,7 +16,7 @@ gem 'bootstrap', '4.0.0.alpha2'
 gem 'coffee-rails'
 gem 'font-awesome-rails', '~> 4.7.0.3'
 gem 'uglifier'
-gem 'webpacker'
+gem 'webpacker', '6.0.0.rc.6'
 
 # Security
 gem 'bcrypt_pbkdf'

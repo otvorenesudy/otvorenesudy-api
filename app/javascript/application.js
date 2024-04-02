@@ -14,15 +14,20 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-require('@rails/ujs').start();
-require('@rails/activestorage').start();
+import Rails from '@rails/ujs';
+import Turbolinks from 'turbolinks';
+import * as ActiveStorage from '@rails/activestorage';
+
+Rails.start();
+Turbolinks.start();
+ActiveStorage.start();
 
 import $ from 'jquery';
 import 'popper.js';
 import 'bootstrap';
 
 // Fix jQuery
-window.$ = $;
+global.$ = jQuery;
 
 // Google Analytics
 $(() => {
