@@ -10,6 +10,7 @@ gem 'rails-i18n'
 
 # Database
 gem 'pg'
+gem 'redis'
 
 # Assets
 gem 'bootstrap', '4.0.0.alpha2'

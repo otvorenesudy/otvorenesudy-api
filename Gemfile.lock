@@ -333,6 +333,8 @@ GEM
       ffi (~> 1.0)
     rdoc (6.6.2)
       psych (>= 4.0.0)
+    redis (5.1.0)
+      redis-client (>= 0.17.0)
     redis-client (0.21.0)
       connection_pool
     regexp_parser (2.9.0)
@@ -526,6 +528,7 @@ DEPENDENCIES
   rails (~> 7.1)
   rails-controller-testing
   rails-i18n
+  redis
   roo
   roo-xls
   rspec-rails

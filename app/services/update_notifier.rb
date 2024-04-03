@@ -6,10 +6,6 @@ class UpdateNotifier
   end
 
   def self.notify(record)
-    client.push(
-      'class' => 'UpdateRepositoryJob',
-      'queue' => 'probe',
-      'args' => [record.class.name, record.id]
-    )
+    client.push('class' => 'UpdateRepositoryJob', 'queue' => 'probe', 'args' => [record.class.name, record.id])
   end
 end
