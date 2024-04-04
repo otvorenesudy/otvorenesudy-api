@@ -66,6 +66,9 @@ gem 'roo'
 # Codeclimate
 gem 'simplecov', require: false, group: :test
 
+# Monitoring
+gem 'skylight'
+
 # Scheduling
 gem 'whenever'
 

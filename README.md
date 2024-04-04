@@ -3,6 +3,10 @@
 [![Build Status](https://github.com/otvorenesudy/otvorenesudy-api/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/otvorenesudy/otvorenesudy-api/actions?query=branch:main)
 [![Code Climate](https://codeclimate.com/github/otvorenesudy/otvorenesudy-api/badges/gpa.svg)](https://codeclimate.com/github/otvorenesudy/otvorenesudy-api)
 [![Test Coverage](https://codeclimate.com/github/otvorenesudy/otvorenesudy-api/badges/coverage.svg)](https://codeclimate.com/github/otvorenesudy/otvorenesudy-api/coverage)
+[![View performance data on Skylight](https://badges.skylight.io/status/YcoHMS8aa1P1.svg?token=VKdR-1FwByL-YIC2ld-L6ZYwQeoIasGRIW7YtQYFsaY)](https://www.skylight.io/app/applications/YcoHMS8aa1P1)
+[![View performance data on Skylight](https://badges.skylight.io/rpm/YcoHMS8aa1P1.svg?token=VKdR-1FwByL-YIC2ld-L6ZYwQeoIasGRIW7YtQYFsaY)](https://www.skylight.io/app/applications/YcoHMS8aa1P1)
+[![View performance data on Skylight](https://badges.skylight.io/typical/YcoHMS8aa1P1.svg?token=VKdR-1FwByL-YIC2ld-L6ZYwQeoIasGRIW7YtQYFsaY)](https://www.skylight.io/app/applications/YcoHMS8aa1P1)
+[![View performance data on Skylight](https://badges.skylight.io/problem/YcoHMS8aa1P1.svg?token=VKdR-1FwByL-YIC2ld-L6ZYwQeoIasGRIW7YtQYFsaY)](https://www.skylight.io/app/applications/YcoHMS8aa1P1)
 
 RESTful APIs and crawlers for public data of the [Open Courts](https://github.com/otvorenesudy) project
 

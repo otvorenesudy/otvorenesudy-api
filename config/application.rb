@@ -38,6 +38,9 @@ module OpenCourtsApi
 
     # ActiveJob
     config.active_job.queue_adapter = :sidekiq
+
+    # Skylight
+    config.skylight.probes << 'active_job'
   end
 end
 
