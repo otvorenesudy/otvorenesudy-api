@@ -2,7 +2,7 @@ lock '3.18.1'
 
 # Repository
 set :application, 'otvorenesudy-api'
-set :repo_url, 'git@github.com:otvorenesudy/otvorenesudy-api.git'
+set :repo_url, 'git@github.com-otvorenesudy-api:otvorenesudy/otvorenesudy-api.git' # Change the github.com-otvorenesudy-api to github.com when deploying locally and not from CI
 
 # Sidekiq
 set :sidekiq_processes, 1

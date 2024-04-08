@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: obcan_justice_sk_hearings
+#
+#  id         :bigint           not null, primary key
+#  guid       :string           not null
+#  uri        :string           not null
+#  data       :jsonb            not null
+#  checksum   :string           not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 require 'rails_helper'
 require 'models/concerns/obcan_justice_sk/importable_spec'
 

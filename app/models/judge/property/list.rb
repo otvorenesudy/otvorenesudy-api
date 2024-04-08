@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: judge_property_lists
+#
+#  id                            :integer          not null, primary key
+#  judge_property_declaration_id :integer          not null
+#  judge_property_category_id    :integer          not null
+#  created_at                    :datetime         not null
+#  updated_at                    :datetime         not null
+#
 class Judge::Property::List < ActiveRecord::Base
   include OpenCourts::Model
 

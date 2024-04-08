@@ -1,0 +1,262 @@
+{
+  "registreGuid": "sud_102",
+  "nazov": "Mestský súd Bratislava I",
+  "adresaString": "Záhradnícka 10, 81244 Bratislava I, Slovenská republika",
+  "suradnice": {
+    "zemepisnaDlzka": "17.122962",
+    "zemepisnaSirka": "48.152538"
+  },
+  "ico": "00039471",
+  "typSudu": "Mestský súd",
+  "predseda": {
+    "sudcovia": [
+      {
+        "id": "1766",
+        "meno": "JUDr. René MILTÁK"
+      }
+    ]
+  },
+  "podpredseda": {
+    "sudcovia": [
+      {
+        "id": "1710",
+        "meno": "JUDr. Erika NÉMETHOVÁ STIFFELOVÁ, LL.M."
+      }
+    ]
+  },
+  "srPredseda": {
+    "sudcovia": [
+      {
+        "id": "1768",
+        "meno": "JUDr. Michal VALENT"
+      }
+    ]
+  },
+  "srClen": {
+    "sudcovia": [
+      {
+        "id": "2008",
+        "meno": "JUDr. Branislav HARABIN"
+      }
+    ]
+  },
+  "telKontakty": [
+    {
+      "cislo": "+421288811191",
+      "typ": "label.codelist.tel_type.3"
+    },
+    {
+      "cislo": "+421288810111",
+      "typ": "label.codelist.tel_type.1"
+    }
+  ],
+  "ochranaOsobnychUdajov": {
+    "email": "ochrana.osobnych.udajov.MSBA1@justice.sk"
+  },
+  "adresa": {
+    "obec": "Bratislava I",
+    "ulica": "Záhradnícka",
+    "psc": "81244",
+    "krajina": "703"
+  },
+  "infoCentrum": {
+    "telKontakty": [
+      {
+        "cislo": "podatelnamsba1@justice.sk"
+      },
+      {
+        "cislo": "02/88811200",
+        "typ": "label.codelist.tel_type.1"
+      }
+    ],
+    "otvaracieHodiny": [
+      "08:00 - 12:00",
+      "13:00 - 15:00",
+      "",
+      "08:00 - 12:00",
+      "13:00 - 15:00",
+      "",
+      "08:00 - 12:00",
+      "13:00 - 15:00",
+      "",
+      "08:00 - 12:00",
+      "13:00 - 15:00",
+      "",
+      "08:00 - 12:00",
+      "-",
+      "",
+      "-",
+      "-",
+      "",
+      "-",
+      "-",
+      ""
+    ],
+    "internetovaAdresa": {
+      "email": ["podatelnamsba1@justice.sk"],
+      "www": []
+    }
+  },
+  "podatelna": {
+    "telKontakty": [
+      {
+        "cislo": "02/88811192",
+        "typ": "label.codelist.tel_type.3"
+      },
+      {
+        "cislo": "02/88811180, 02/88811720",
+        "typ": "label.codelist.tel_type.1"
+      },
+      {
+        "cislo": "podatelnamsba1@justice.sk"
+      }
+    ],
+    "otvaracieHodiny": [
+      "08:00 - 12:00",
+      "13:00 - 15:00",
+      "",
+      "08:00 - 12:00",
+      "13:00 - 15:00",
+      "",
+      "08:00 - 12:00",
+      "13:00 - 15:00",
+      "",
+      "08:00 - 12:00",
+      "13:00 - 15:00",
+      "",
+      "08:00 - 12:00",
+      "-",
+      "",
+      "-",
+      "-",
+      "",
+      "-",
+      "-",
+      ""
+    ],
+    "internetovaAdresa": {
+      "email": ["podatelnamsba1@justice.sk"],
+      "www": []
+    },
+    "poznamka": "Záhradnícka 10, 812 44 Bratislava"
+  },
+  "orsr": {
+    "otvaracieHodiny": [
+      "-",
+      "-",
+      "",
+      "-",
+      "-",
+      "",
+      "-",
+      "-",
+      "",
+      "-",
+      "-",
+      "",
+      "-",
+      "-",
+      "",
+      "-",
+      "-",
+      "",
+      "-",
+      "-",
+      ""
+    ]
+  },
+  "kontaktneMiesta": [
+    {
+      "otvaracieHodiny": [
+        "-",
+        "-",
+        "",
+        "-",
+        "-",
+        "",
+        "-",
+        "-",
+        "",
+        "-",
+        "-",
+        "",
+        "-",
+        "-",
+        "",
+        "-",
+        "-",
+        "",
+        "-",
+        "-",
+        ""
+      ]
+    },
+    {
+      "otvaracieHodiny": [
+        "-",
+        "-",
+        "",
+        "-",
+        "-",
+        "",
+        "-",
+        "-",
+        "",
+        "-",
+        "-",
+        "",
+        "-",
+        "-",
+        "",
+        "-",
+        "-",
+        "",
+        "-",
+        "-",
+        ""
+      ]
+    },
+    {
+      "otvaracieHodiny": [
+        "-",
+        "-",
+        "",
+        "-",
+        "-",
+        "",
+        "-",
+        "-",
+        "",
+        "-",
+        "-",
+        "",
+        "-",
+        "-",
+        "",
+        "-",
+        "-",
+        "",
+        "-",
+        "-",
+        ""
+      ],
+      "nazov": "Probačný a mediačný úradník",
+      "poznamka": "Mgr. Peter Tóth\r\nPevná sieť: 02/88811186\r\nE-mail: peter.toth2@justice.sk\r\n\r\nMgr. Martina Bachanová\r\nPevná sieť: 02/88811186\r\nE-mail: martina.bachanova1@justice.sk\r\n\r\nPaeDr. Ivona Kissová\r\nPevná sieť: 02/88810247\r\nE-mail: ivona.kissova@justice.sk\r\n\r\nMgr. Zdenka Slivová\r\nPevná sieť: 02/88810247\r\nE-mail: zdenka.slivova@justice.sk\r\n\r\nPhDr. Eva Srnová\r\nPevná sieť: 02/88810220\r\nE-mail: eva.srnova@justice.sk\r\n\r\nMgr. Miriam Horňačeková\r\nPevná sieť: 02/88810115\r\nE-mail: miriam.hornacekova@justice.sk\r\n\r\nMgr. Michaela Ferancová\r\nPevná sieť: 02/88810311\r\nE-mail: michaela.ferancova@justice.sk\r\n\r\nMgr. Andrea Giertlová\r\nPevná sieť: 02/88810118\r\nE-mail: andrea.giertlova@justice.sk\r\n\r\nMgr. Marcela Heinrichová\r\nPevná sieť: 02/88810227\r\nE-mail: marcela.heinrichova@justice.sk"
+    }
+  ],
+  "media": {
+    "telKontakty": [
+      {
+        "cislo": "+421288810285, 0903424263",
+        "typ": "label.codelist.tel_type.1"
+      }
+    ],
+    "net": {
+      "email": [],
+      "www": []
+    },
+    "osoba": "JUDr. Mgr. Pavol Adamčiak"
+  },
+  "ukonceny_string": "false",
+  "skratka_string": "MSBA1"
+}

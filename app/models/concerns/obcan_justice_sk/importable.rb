@@ -1,9 +1,13 @@
 module ObcanJusticeSk
   module Importable
-    def import_from(attributes)
-      record = find_or_initialize_by(uri: attributes[:uri])
+    def import_from!(guid:, uri:, data:)
+      checksum = Digest::SHA256.hexdigest(data.to_json)
 
-      ImportManager.import_or_update(record, attributes: attributes, restricted_attributes_for_update: [:html])
+      return if exists?(guid: guid, checksum: checksum)
+
+      record = find_or_initialize_by(guid: guid)
+
+      record.update!(data: data, uri: uri, checksum: checksum)
     end
   end
 end

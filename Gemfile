@@ -55,6 +55,7 @@ gem 'bootsnap', require: false
 gem 'csv'
 gem 'curb'
 gem 'enumerize'
+gem 'json-schema'
 gem 'matrix'
 gem 'mechanize'
 gem 'nkf'
@@ -93,6 +94,8 @@ end
 
 group :development do
   # Debugging
+  gem 'annotate'
+  gem 'ruby-prof'
   gem 'web-console'
 
   # Deployment

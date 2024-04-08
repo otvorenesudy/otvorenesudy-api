@@ -1,3 +1,25 @@
+# == Schema Information
+#
+# Table name: decrees
+#
+#  id                     :integer          not null, primary key
+#  uri                    :string(2048)     not null
+#  source_id              :integer          not null
+#  proceeding_id          :integer
+#  court_id               :integer
+#  decree_form_id         :integer
+#  case_number            :string(255)
+#  file_number            :string(255)
+#  date                   :date
+#  ecli                   :string(255)
+#  summary                :text
+#  legislation_area_id    :integer
+#  legislation_subarea_id :integer
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  pdf_uri                :string(2048)
+#  pdf_uri_invalid        :boolean          default(FALSE), not null
+#
 require 'rails_helper'
 
 RSpec.describe DecreeSerializer do

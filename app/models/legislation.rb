@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: legislations
+#
+#  id                :integer          not null, primary key
+#  value             :string(510)      not null
+#  value_unprocessed :string(510)      not null
+#  type              :string(255)
+#  number            :integer
+#  year              :integer
+#  name              :string(510)
+#  section           :string(255)
+#  paragraph         :string(255)
+#  letter            :string(255)
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#
 class Legislation < ActiveRecord::Base
   include OpenCourts::Model
 

@@ -1,3 +1,12 @@
+# == Schema Information
+#
+# Table name: judge_property_acquisition_reasons
+#
+#  id         :integer          not null, primary key
+#  value      :string(255)      not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 class Judge::Property::AcquisitionReason < ActiveRecord::Base
   include OpenCourts::Model
 
