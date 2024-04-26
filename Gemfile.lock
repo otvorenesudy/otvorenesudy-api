@@ -103,9 +103,10 @@ GEM
     bindex (0.8.1)
     bootsnap (1.18.3)
       msgpack (~> 1.2)
-    bootstrap (4.0.0.alpha2)
-      autoprefixer-rails (>= 6.0.3)
-      sass (>= 3.4.19)
+    bootstrap (4.3.1)
+      autoprefixer-rails (>= 9.1.0)
+      popper_js (>= 1.14.3, < 2)
+      sassc-rails (>= 2.0.0)
     builder (3.2.4)
     capistrano (3.18.1)
       airbrussh (>= 1.0.0)
@@ -269,6 +270,7 @@ GEM
       ruby-rc4
       ttfunk
     pg (1.5.6)
+    popper_js (1.16.1)
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -328,14 +330,11 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.1.0)
-    rb-fsevent (0.11.2)
-    rb-inotify (0.10.1)
-      ffi (~> 1.0)
-    rdoc (6.6.2)
+    rdoc (6.6.3.1)
       psych (>= 4.0.0)
     redis (5.1.0)
       redis-client (>= 0.17.0)
-    redis-client (0.21.0)
+    redis-client (0.22.1)
       connection_pool
     regexp_parser (2.9.0)
     reline (0.4.3)
@@ -383,11 +382,6 @@ GEM
     ruby-rc4 (0.1.5)
     rubyntlm (0.6.3)
     rubyzip (2.3.2)
-    sass (3.7.4)
-      sass-listen (~> 4.0.0)
-    sass-listen (4.0.0)
-      rb-fsevent (~> 0.9, >= 0.9.4)
-      rb-inotify (~> 0.9, >= 0.9.7)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
@@ -410,7 +404,7 @@ GEM
     sentry-ruby (5.17.1)
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.0.2)
-    sidekiq (7.2.2)
+    sidekiq (7.2.4)
       concurrent-ruby (< 2)
       connection_pool (>= 2.3.0)
       rack (>= 2.2.4)
@@ -493,7 +487,7 @@ DEPENDENCIES
   bcrypt
   bcrypt_pbkdf
   bootsnap
-  bootstrap (= 4.0.0.alpha2)
+  bootstrap (= 4.3.1)
   bump!
   capistrano
   capistrano-bundler

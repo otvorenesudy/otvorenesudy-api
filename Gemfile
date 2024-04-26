@@ -13,7 +13,7 @@ gem 'pg'
 gem 'redis'
 
 # Assets
-gem 'bootstrap', '4.0.0.alpha2'
+gem 'bootstrap', '4.3.1'
 gem 'coffee-rails'
 gem 'font-awesome-rails', '~> 4.7.0.3'
 gem 'uglifier'
