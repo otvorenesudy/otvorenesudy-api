@@ -14,7 +14,7 @@ module ObcanJusticeSk
   class Decree < ActiveRecord::Base
     extend ObcanJusticeSk::Importable
 
-    # after_commit(on: %i[create update]) { ReconcileDecreeJob.perform_later(self) }
+    after_commit(on: %i[create update]) { ReconcileDecreeJob.perform_later(self) }
 
     def to_mapper
       ObcanJusticeSk::DecreeMapper.new(self)

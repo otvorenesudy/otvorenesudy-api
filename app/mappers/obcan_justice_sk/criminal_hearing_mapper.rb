@@ -12,11 +12,11 @@ module ObcanJusticeSk
     end
 
     def source_class
-      @hearing.class.name
+      hearing.class.name
     end
 
     def source_class_id
-      @hearing.id
+      hearing.id
     end
 
     def uri

@@ -37,11 +37,11 @@ module ObcanJusticeSk
     end
 
     def source_class
-      @decree.class.name
+      decree.class.name
     end
 
     def source_class_id
-      @decree.id
+      decree.id
     end
 
     def uri

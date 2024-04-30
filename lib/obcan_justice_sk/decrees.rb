@@ -1,5 +1,5 @@
 module ObcanJusticeSk
-  class Decrees
+  module Decrees
     BASE_URL = 'https://obcan.justice.sk/pilot/api/ress-isu-service/v1/rozhodnutie'
 
     LIST_JSON_SCHEMA = {

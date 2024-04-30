@@ -6,53 +6,7 @@ require_relative '../../../app/mappers/obcan_justice_sk/decree_mapper'
 RSpec.describe ObcanJusticeSk::DecreeMapper do
   subject { described_class.new(double(:decree, id: 1, class: double(:class, name: 'Decree'), data: data)) }
 
-  let(:data) do
-    {
-      'sud' => {
-        'nazov' => 'Okresný súd Lučenec',
-        'registreGuid' => 'sud_141'
-      },
-      'ecli' => 'ECLI:SK:OSLC:2021:6120386527.2',
-      'guid' => '819aef78-bdd4-4855-b8ed-d936446d41a2:3855d4dc-1209-4ddf-8a63-34cb3349cede',
-      'sudca' => {
-        'meno' => 'JUDr. Andrea Gabrielová',
-        'registreGuid' => 'sudca_831'
-      },
-      'oblast' => ['Občianske právo'],
-      'povaha' => ['Prvostupňové nenapadnuté opravnými prostriedkami'],
-      'dokument' => {
-        'url' => 'https://obcan.justice.sk/content/public/item/3855d4dc-1209-4ddf-8a63-34cb3349cede',
-        'name' => 'Rozsudok_17Csp-50-2021.pdf',
-        'size' => 82_576,
-        'fileExtension' => 'PDF'
-      },
-      'podOblast' => ['Spotrebiteľské zmluvy'],
-      'updateDate' => '26.09.2023',
-      'datumVydania' => '27.05.2021',
-      'spisovaZnacka' => '17Csp/50/2021',
-      'formaRozhodnutia' => 'Rozsudok',
-      'identifikacneCislo' => '6120386527',
-      'odkazovanePredpisy' => [
-        { 'url' => 'https://www.slov-lex.sk/pravne-predpisy/SK/ZZ/1964/40', 'nazov' => '/SK/ZZ/1964/40' },
-        {
-          'url' => 'https://www.slov-lex.sk/pravne-predpisy/SK/ZZ/1964/40/#paragraf-52.odsek-1',
-          'nazov' => '/SK/ZZ/1964/40/#paragraf-52.odsek-1'
-        },
-        {
-          'url' => 'https://www.slov-lex.sk/pravne-predpisy/SK/ZZ/1964/40/#paragraf-52.odsek-2',
-          'nazov' => '/SK/ZZ/1964/40/#paragraf-52.odsek-2'
-        },
-        {
-          'url' => 'https://www.slov-lex.sk/pravne-predpisy/SK/ZZ/1964/40/#paragraf-517.odsek-1',
-          'nazov' => '/SK/ZZ/1964/40/#paragraf-517.odsek-1'
-        },
-        {
-          'url' => 'https://www.slov-lex.sk/pravne-predpisy/SK/ZZ/1964/40/#paragraf-517.odsek-2',
-          'nazov' => '/SK/ZZ/1964/40/#paragraf-517.odsek-2'
-        }
-      ]
-    }
-  end
+  let(:data) { let(:data) { JSON.parse(fixture('obcan_justice_sk/mappers/decree.json').read) } }
 
   describe '#source' do
     it 'maps source' do
