@@ -3,13 +3,13 @@ require 'obcan_justice_sk'
 require_relative '../../../app/mappers/obcan_justice_sk/court_mapper'
 
 RSpec.describe ObcanJusticeSk::CourtMapper do
-  subject { ObcanJusticeSk::CourtMapper.new(data) }
+  subject { described_class.new(double(:court, id: 1, data: data)) }
 
   let(:data) { JSON.parse(fixture('obcan_justice_sk/mappers/court.json').read) }
 
   describe '#uri' do
     it 'maps uri from guid' do
-      expect(subject.uri).to eql('https://obcan.justice.sk/infosud/-/infosud/reg-detail/sud/sud_102')
+      expect(subject.uri).to eql('https://www.justice.gov.sk/sudy-a-rozhodnutia/sudy/sud_102')
     end
   end
 
@@ -170,6 +170,64 @@ RSpec.describe ObcanJusticeSk::CourtMapper do
   describe '#business_registry_center_opening_hours' do
     it 'maps business registry center opening hours' do
       expect(subject.business_registry_center_hours).to eql([])
+    end
+  end
+
+  context 'for court with business registry center' do
+    let(:data) { JSON.parse(fixture('obcan_justice_sk/mappers/court_with_orsr.json').read) }
+
+    describe '#information_center_note' do
+      it 'maps information center note' do
+        expect(subject.information_center_note).to eql(
+          "Informačné centrum:\n\nMedená 22:                  02 888 11 650 \nNámestie Biely kríž 7:  02 888 13 200                            \n     Účastníci konania, strany sporu a ich zástupcovia môžu požiadať o nahliadnutie do súdneho spisu osobne v informačnom centre súdu alebo telefonicky:\nNám. Biely kríž, tel. čísla: 02/888 13 200, 02/888 13 201.\n\ne-mailom na adrese:  podatelnaMSBA3@justice.sk.\n"
+        )
+      end
+    end
+
+    describe '#business_registry_center_email' do
+      describe '#business_registry_center_email' do
+        it 'maps business registry center email' do
+          expect(subject.business_registry_center_email).to eql('podatelnamsba3@justice.sk')
+        end
+      end
+
+      describe '#business_registry_center_phone' do
+        it 'maps business registry center phone' do
+          expect(subject.business_registry_center_phone).to eql('+421288811600')
+        end
+      end
+
+      describe '#business_registry_center_note' do
+        it 'maps business registry center note' do
+          expect(subject.business_registry_center_note).to eql(
+            "Obchodný úsek MS BA III, Medená 22, 811 02 Bratislava\n\n                                                        \nSkrátené úradné hodiny:\nDňa       28.03.2024        od 08:00 hod. do 12:00 hod.\nDňa \t23.12.2024\tod 08:00 hod. do 12:00 hod.\nDňa \t31.12.2024\tod 08:00 hod. do 12:00 hod.\n"
+          )
+        end
+      end
+
+      describe '#business_registry_center_opening_hours' do
+        it 'maps business registry center opening hours' do
+          expect(subject.business_registry_center_hours).to eql(
+            [
+              '8:00 - 12:00, 13:00 - 15:00',
+              '8:00 - 12:00, 13:00 - 15:00',
+              '8:00 - 12:00, 13:00 - 15:00',
+              '8:00 - 12:00, 13:00 - 15:00',
+              '8:00 - 12:00'
+            ]
+          )
+        end
+      end
+    end
+  end
+
+  context 'for court with data protection email' do
+    let(:data) { JSON.parse(fixture('obcan_justice_sk/mappers/court_with_data_protection.json').read) }
+
+    describe '#data_protection_email' do
+      it 'maps data protection email' do
+        expect(subject.data_protection_email).to eql('ochrana.osobnych.udajov.KSBB@justice.sk')
+      end
     end
   end
 end

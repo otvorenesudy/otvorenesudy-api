@@ -1,4 +1,4 @@
-class ReconcileHearingJob < ActiveJob::Base
+class ReconcileHearingJob < ApplicationJob
   queue_as :reconcilers
 
   def perform(record)

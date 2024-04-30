@@ -12,7 +12,7 @@ module InfoSud
   class Decree < ActiveRecord::Base
     extend InfoSud::Importable
 
-    after_commit { ReconcileDecreeJob.perform_later(self) }
+    after_commit(on: %i[create update]) { ReconcileDecreeJob.perform_later(self) }
 
     def to_mapper
       InfoSud::DecreeMapper.new(self.data)

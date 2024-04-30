@@ -112,15 +112,13 @@ module InfoSud
 
       return unless phones.any?
 
-      phones.map { |e|
-        InfoSud::Normalizer.normalize_phone(e[:tel_number])
-      }.join(', ')
+      phones.map { |e| InfoSud::Normalizer.normalize_phone(e[:tel_number]) }.join(', ')
     end
 
     def map_office_hours(opening_hours)
-      opening_hours[0..14].each_slice(3).map { |hours|
-        InfoSud::Normalizer.normalize_hours(hours.map(&:presence).compact.join(', ')).presence
-      }
+      opening_hours[0..14]
+        .each_slice(3)
+        .map { |hours| InfoSud::Normalizer.normalize_hours(hours.map(&:presence).compact.join(', ')).presence }
     end
 
     def map_email(email)

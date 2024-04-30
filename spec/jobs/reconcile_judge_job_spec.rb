@@ -3,7 +3,7 @@ require 'spec_helper'
 RSpec.describe ReconcileJudgeJob do
   let(:record) { double(:record, to_mapper: mapper) }
   let(:mapper) { double(:mapper, name: { value: 'JUDr. Peter Pan' }) }
-  let(:reconciler) { double(:reconciler)  }
+  let(:reconciler) { double(:reconciler) }
   let(:judge) { double(:judge) }
 
   describe '#perform' do
@@ -21,9 +21,9 @@ RSpec.describe ReconcileJudgeJob do
     it 'enqueues judge for reconciliation' do
       record = create(:info_sud_judge)
 
-      expect {
-        ReconcileJudgeJob.perform_later(record)
-      }.to have_enqueued_job(ReconcileJudgeJob).on_queue('reconcilers').with(record)
+      expect { ReconcileJudgeJob.perform_later(record) }.to have_enqueued_job(ReconcileJudgeJob).on_queue(
+        'reconcilers'
+      ).with(record)
     end
   end
 end

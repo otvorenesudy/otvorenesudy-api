@@ -1,0 +1,18 @@
+{
+  "id": "E9DFD9CB-5D36-47D0-A0DC-6558478C48C2_18915",
+  "typ": { "itemCode": "TrestnePojednavanie", "itemName": "Trestné pojednávanie" },
+  "datumPojednavania": "2024-06-11T10:30:00",
+  "datumZapocatia": null,
+  "ics": "9523100470",
+  "predmet": "Návrh na povolenie obnovy konania sp.zn. 13T/14/2021",
+  "samosudca": false,
+  "spisovaZnacka": "14Nt/4/2023",
+  "sud": { "itemCode": "170", "itemName": "Špecializovaný trestný súd" },
+  "ukonForma": { "itemCode": "Verejné zasadnutie s rozhodnutím", "itemName": "Verejné zasadnutie s rozhodnutím" },
+  "miestnost": "2 - 117 pojednávacia miestnosť č.2",
+  "obzalovani": ["A. B."],
+  "poznamka": null,
+  "predsedaSenatu": null,
+  "sudcovia": ["JUDr. Jozef Pikna"],
+  "usek": "Trestný"
+}

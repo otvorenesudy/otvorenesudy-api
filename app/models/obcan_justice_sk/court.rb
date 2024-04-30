@@ -14,10 +14,14 @@ module ObcanJusticeSk
   class Court < ActiveRecord::Base
     extend ObcanJusticeSk::Importable
 
-    after_commit { ReconcileCourtJob.perform_later(self) }
+    after_commit(on: %i[create update]) { ReconcileCourtJob.perform_later(self) }
 
     def to_mapper
-      ObcanJusticeSk::CourtMapper.new(self.data)
+      ObcanJusticeSk::CourtMapper.new(self)
+    end
+
+    def name
+      data['nazov'] if data.present?
     end
   end
 end

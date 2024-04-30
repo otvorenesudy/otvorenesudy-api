@@ -15,11 +15,11 @@ RSpec.describe DecreeReconciler do
       form: 'form',
       form_code: 'code',
       court: 'Court #1',
-      legislation_area: 'Legislation Area #1',
-      legislation_subarea: 'Legislation Subarea #1',
+      legislation_areas: ['Legislation Area #1'],
+      legislation_subareas: ['Legislation Subarea #1'],
       judges: ['Peter Pan', 'Peter Smith'],
       natures: ['Decree Nature #1'],
-      text: 'Fulltext #1',
+      pages: ['Fulltext #1', 'Fulltext #2'],
       pdf_uri: 'http://uri.pdf'
     }
   end
@@ -30,8 +30,8 @@ RSpec.describe DecreeReconciler do
 
       expect(subject).to receive(:reconcile_attributes)
       expect(subject).to receive(:reconcile_court)
-      expect(subject).to receive(:reconcile_legislation_area)
-      expect(subject).to receive(:reconcile_legislation_subarea)
+      expect(subject).to receive(:reconcile_legislation_areas)
+      expect(subject).to receive(:reconcile_legislation_subareas)
       expect(subject).to receive(:reconcile_proceeding)
       expect(subject).to receive(:reconcile_judges)
       expect(subject).to receive(:reconcile_natures)
@@ -84,54 +84,52 @@ RSpec.describe DecreeReconciler do
     end
   end
 
-  describe '#reconcile_legislation_area' do
-    it 'reconciles legislation area' do
+  describe '#reconcile_legislation_areas' do
+    it 'reconciles legislation areas' do
       allow(Legislation::Area).to receive(:find_or_create_by!).with(value: 'Legislation Area #1') { :legislation_area }
-      expect(decree).to receive(:legislation_area=).with(:legislation_area)
+      expect(Legislation::AreaUsage).to receive(:find_or_create_by!).with(decree: decree, area: :legislation_area)
 
-      subject.reconcile_legislation_area
+      subject.reconcile_legislation_areas
     end
 
     context 'when legislation area is not present' do
-      let(:attributes) { { legislation_area: nil } }
+      let(:attributes) { { legislation_areas: nil } }
 
       it 'does not reconcile legislation area' do
-        expect(decree).not_to receive(:legislation_area=)
+        expect(Legislation::AreaUsage).not_to receive(:find_or_create_by!)
 
-        subject.reconcile_legislation_area
+        subject.reconcile_legislation_areas
       end
     end
   end
 
-  describe '#reconcile_legislation_subarea' do
+  describe '#reconcile_legislation_subareas' do
     it 'reconciles legislation subarea with legislation area' do
-      allow(Legislation::Area).to receive(:find_by!).with(value: 'Legislation Area #1') { :legislation_area }
-      allow(Legislation::Subarea).to receive(:find_or_create_by!).with(
-        value: 'Legislation Subarea #1',
-        area: :legislation_area
-      ) { :legislation_subarea }
-      expect(decree).to receive(:legislation_subarea=).with(:legislation_subarea)
+      allow(Legislation::Subarea).to receive(:find_or_create_by!).with(value: 'Legislation Subarea #1') {
+        :legislation_subarea
+      }
+      expect(Legislation::SubareaUsage).to receive(:find_or_create_by!).with(decree: decree, area: :legislation_subarea)
 
-      subject.reconcile_legislation_subarea
+      subject.reconcile_legislation_subareas
     end
 
     context 'when legislation area is not present' do
-      let(:attributes) { { legislation_area: nil } }
+      let(:attributes) { { legislation_areas: nil } }
 
       it 'does not reconcile legislation area' do
-        expect(decree).not_to receive(:legislation_subarea=)
+        expect(Legislation::SubareaUsage).not_to receive(:find_or_create_by!)
 
-        subject.reconcile_legislation_area
+        subject.reconcile_legislation_areas
       end
     end
 
     context 'when legislation subarea is not present' do
-      let(:attributes) { { legislation_area: 'Legislation Area #1', legislation_subarea: nil } }
+      let(:attributes) { { legislation_areas: ['Legislation Area #1'], legislation_subareas: nil } }
 
       it 'does not reconcile legislation area' do
-        expect(decree).not_to receive(:legislation_subarea=)
+        expect(Legislation::SubareaUsage).not_to receive(:find_or_create_by!)
 
-        subject.reconcile_legislation_subarea
+        subject.reconcile_legislation_subareas
       end
     end
   end
@@ -181,11 +179,14 @@ RSpec.describe DecreeReconciler do
 
   describe '#reconcile_pages' do
     it 'reconciles pages from fulltext already extracted in dataset' do
-      page = double(:page)
+      pages = [double(:page_1), double(:page_2)]
 
-      allow(Decree::Page).to receive(:find_or_initialize_by).with(decree: decree, number: 1) { page }
-      expect(page).to receive(:update!).with(text: 'Fulltext #1')
-      expect(decree).to receive(:purge!).with(:pages, except: [page])
+      allow(Decree::Page).to receive(:find_or_initialize_by).with(decree: decree, number: 1) { pages[0] }
+      allow(Decree::Page).to receive(:find_or_initialize_by).with(decree: decree, number: 2) { pages[1] }
+
+      expect(pages[0]).to receive(:update!).with(text: 'Fulltext #1')
+      expect(pages[1]).to receive(:update!).with(text: 'Fulltext #2')
+      expect(decree).to receive(:purge!).with(:pages, except: pages)
 
       subject.reconcile_pages
     end

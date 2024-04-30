@@ -29,8 +29,11 @@ class HearingReconciler
     hearing.update!(
       uri: mapper.uri,
       type: Hearing::Type.find_by!(value: mapper.type),
-      source: Source.find_by!(module: 'JusticeGovSk'),
+      source: Source.find_by!(module: mapper.source),
+      source_class: mapper.source_class,
+      source_class_id: mapper.source_class_id,
       case_number: mapper.case_number,
+      original_case_number: mapper.original_case_number,
       file_number: mapper.file_number,
       date: mapper.date,
       room: mapper.room,
@@ -43,6 +46,7 @@ class HearingReconciler
 
   def reconcile_court
     hearing.court = Court.find_by!(name: mapper.court)
+    hearing.original_court = Court.find_by!(name: mapper.original_court) if mapper.original_court
   end
 
   def reconcile_section

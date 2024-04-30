@@ -10,11 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_01_134042) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_22_190139) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "pg_trgm"
   enable_extension "plpgsql"
-  enable_extension "unaccent"
 
   create_table "accusations", id: :serial, force: :cascade do |t|
     t.integer "defendant_id", null: false
@@ -120,12 +118,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_01_134042) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.string "acronym", limit: 255
+    t.string "source_class", limit: 255
+    t.integer "source_class_id"
+    t.string "data_protection_email", limit: 255
     t.index ["acronym"], name: "index_courts_on_acronym"
     t.index ["court_jurisdiction_id"], name: "index_courts_on_court_jurisdiction_id"
     t.index ["court_type_id"], name: "index_courts_on_court_type_id"
     t.index ["created_at"], name: "index_courts_on_created_at"
     t.index ["municipality_id"], name: "index_courts_on_municipality_id"
     t.index ["name"], name: "index_courts_on_name", unique: true
+    t.index ["source_class", "source_class_id"], name: "index_courts_on_source_class_and_source_class_id"
     t.index ["source_id"], name: "index_courts_on_source_id"
     t.index ["updated_at"], name: "index_courts_on_updated_at"
     t.index ["uri"], name: "index_courts_on_uri", unique: true
@@ -175,12 +177,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_01_134042) do
     t.date "date"
     t.string "ecli", limit: 255
     t.text "summary"
-    t.integer "legislation_area_id"
-    t.integer "legislation_subarea_id"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.string "pdf_uri", limit: 2048
     t.boolean "pdf_uri_invalid", default: false, null: false
+    t.string "source_class", limit: 255
+    t.integer "source_class_id"
     t.index ["case_number"], name: "index_decrees_on_case_number"
     t.index ["court_id"], name: "index_decrees_on_court_id"
     t.index ["created_at"], name: "index_decrees_on_created_at"
@@ -189,6 +191,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_01_134042) do
     t.index ["ecli"], name: "index_decrees_on_ecli"
     t.index ["file_number"], name: "index_decrees_on_file_number"
     t.index ["proceeding_id"], name: "index_decrees_on_proceeding_id"
+    t.index ["source_class", "source_class_id"], name: "index_decrees_on_source_class_and_source_class_id"
     t.index ["source_id"], name: "index_decrees_on_source_id"
     t.index ["updated_at", "id"], name: "index_decrees_on_updated_at_and_id"
     t.index ["updated_at"], name: "index_decrees_on_updated_at"
@@ -268,6 +271,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_01_134042) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.datetime "anonymized_at", precision: nil
+    t.string "source_class", limit: 255
+    t.integer "source_class_id"
+    t.integer "original_court_id"
+    t.string "original_case_number", limit: 255
     t.index ["anonymized_at"], name: "index_hearings_on_anonymized_at"
     t.index ["case_number"], name: "index_hearings_on_case_number"
     t.index ["court_id"], name: "index_hearings_on_court_id"
@@ -275,6 +282,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_01_134042) do
     t.index ["date"], name: "index_hearings_on_date"
     t.index ["file_number"], name: "index_hearings_on_file_number"
     t.index ["proceeding_id"], name: "index_hearings_on_proceeding_id"
+    t.index ["source_class", "source_class_id"], name: "index_hearings_on_source_class_and_source_class_id"
     t.index ["source_id"], name: "index_hearings_on_source_id"
     t.index ["updated_at"], name: "index_hearings_on_updated_at"
     t.index ["uri"], name: "index_hearings_on_uri", unique: true
@@ -477,11 +485,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_01_134042) do
     t.string "addition", limit: 255
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.string "source_class", limit: 255
+    t.integer "source_class_id"
     t.index ["created_at"], name: "index_judges_on_created_at"
     t.index ["first", "middle", "last"], name: "index_judges_on_first_and_middle_and_last"
     t.index ["last", "middle", "first"], name: "index_judges_on_last_and_middle_and_first"
     t.index ["name"], name: "index_judges_on_name", unique: true
     t.index ["name_unprocessed"], name: "index_judges_on_name_unprocessed", unique: true
+    t.index ["source_class", "source_class_id"], name: "index_judges_on_source_class_and_source_class_id"
     t.index ["source_id"], name: "index_judges_on_source_id"
     t.index ["updated_at"], name: "index_judges_on_updated_at"
     t.index ["uri"], name: "index_judges_on_uri"
@@ -500,6 +511,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_01_134042) do
     t.index ["judge_name_unprocessed"], name: "index_judgings_on_judge_name_unprocessed"
   end
 
+  create_table "legislation_area_usages", id: :serial, force: :cascade do |t|
+    t.integer "decree_id", null: false
+    t.integer "legislation_area_id", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.index ["decree_id", "legislation_area_id"], name: "index_area_usage_on_decree_id_and_area_id", unique: true
+    t.index ["decree_id"], name: "index_legislation_area_usages_on_decree_id"
+    t.index ["legislation_area_id"], name: "index_legislation_area_usages_on_legislation_area_id"
+  end
+
   create_table "legislation_areas", id: :serial, force: :cascade do |t|
     t.string "value", limit: 255, null: false
     t.datetime "created_at", precision: nil, null: false
@@ -507,12 +528,20 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_01_134042) do
     t.index ["value"], name: "index_legislation_areas_on_value"
   end
 
+  create_table "legislation_subarea_usages", id: :serial, force: :cascade do |t|
+    t.integer "decree_id", null: false
+    t.integer "legislation_subarea_id", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.index ["decree_id", "legislation_subarea_id"], name: "index_subarea_usage_on_decree_id_and_subarea_id", unique: true
+    t.index ["decree_id"], name: "index_legislation_subarea_usages_on_decree_id"
+    t.index ["legislation_subarea_id"], name: "index_legislation_subarea_usages_on_legislation_subarea_id"
+  end
+
   create_table "legislation_subareas", id: :serial, force: :cascade do |t|
-    t.integer "legislation_area_id", null: false
     t.string "value", limit: 255, null: false
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
-    t.index ["legislation_area_id"], name: "index_legislation_subareas_on_legislation_area_id"
     t.index ["value"], name: "index_legislation_subareas_on_value"
   end
 

@@ -2,7 +2,7 @@ class UpdateNotifier
   # TODO provide Rest API instead of shared queue later
 
   def self.client
-    @client ||= Sidekiq::Client.new(ConnectionPool.new { Redis.new(url: 'redis://localhost:6379/0') })
+    @client ||= Sidekiq::Client.new(pool: ConnectionPool.new { Redis.new(url: 'redis://localhost:6379/0') })
   end
 
   def self.notify(record)

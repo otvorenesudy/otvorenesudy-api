@@ -2,26 +2,8 @@ require 'rails_helper'
 
 RSpec.shared_examples_for InfoSud::Importable do
   let(:record) { described_class.find_by(guid: attributes[:guid]) }
-  let(:attributes) {
-    {
-      guid: '1',
-      category: {
-        attribute: [
-          id: '1',
-          name: 'Example'
-        ]
-      }
-    }
-  }
-
-  let(:updated_attributes) { attributes.merge!(
-    category: {
-      attribute: [
-        id: '2',
-        name: 'Example'
-      ]
-    }
-  )}
+  let(:attributes) { { guid: '1', category: { attribute: [id: '1', name: 'Example'] } } }
+  let(:updated_attributes) { attributes.merge!(category: { attribute: [id: '2', name: 'Example'] }) }
 
   describe '.import_from' do
     it 'imports record by attributes' do
@@ -35,13 +17,14 @@ RSpec.shared_examples_for InfoSud::Importable do
     it 'filters unrelevant attributes' do
       described_class.import_from(attributes)
 
-      described_class.filtered_attributes_for_import.each do |name|
-        attributes[name] = rand.to_s
-      end
+      described_class.filtered_attributes_for_import.each { |name| attributes[name] = rand.to_s }
 
       record_attributes = record.attributes.symbolize_keys.except(:id, :created_at, :updated_at)
 
-      expect(record_attributes.deep_symbolize_keys).to eql(guid: attributes[:guid], data: attributes.except(*described_class.filtered_attributes_for_import))
+      expect(record_attributes.deep_symbolize_keys).to eql(
+        guid: attributes[:guid],
+        data: attributes.except(*described_class.filtered_attributes_for_import)
+      )
     end
 
     context 'when record is already imported' do
@@ -58,9 +41,7 @@ RSpec.shared_examples_for InfoSud::Importable do
         it 'does not update record' do
           time = 30.minutes.ago
 
-          Timecop.freeze(time) do
-            described_class.import_from(attributes)
-          end
+          Timecop.freeze(time) { described_class.import_from(attributes) }
 
           described_class.import_from(attributes)
 

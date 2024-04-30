@@ -1,0 +1,37 @@
+{
+  "sud": {
+    "nazov": "Okresný súd Nitra",
+    "suradnice": {
+      "zemepisnaDlzka": "18.0830243",
+      "zemepisnaSirka": "48.3080863"
+    },
+    "adresaString": "Štúrova 9, 94968 Nitra, Slovenská republika",
+    "registreGuid": "sud_124"
+  },
+  "guid": "1f708cde-3e2e-4f50-adc4-ab4dc876b84a",
+  "usek": "C",
+  "sudca": [
+    {
+      "meno": "Mgr. Miroslava Šúleková",
+      "registreGuid": "sudca_1122"
+    }
+  ],
+  "predmet": "zvýšenie výživného",
+  "miestnost": "71/1",
+  "formaUkonu": "Pojednávanie bez rozhodnutia",
+  "povodnySud": {
+    "nazov": "Okresný súd Topoľčany",
+    "suradnice": {
+      "zemepisnaDlzka": "18.1750963",
+      "zemepisnaSirka": "48.5586975"
+    },
+    "adresaString": "Nám. M. R. Štefánika 2238/55, 95515 Topoľčany, Slovenská republika",
+    "registreGuid": "sud_129"
+  },
+  "updateDate": "26.09.2023",
+  "spisovaZnacka": "TO-10P/42/2023",
+  "casPojednavania": "10:00",
+  "datumPojednavania": "29.06.2023",
+  "identifikacneCislo": "4623200406",
+  "povodnaSpisovaZnacka": "10P/42/2023"
+}

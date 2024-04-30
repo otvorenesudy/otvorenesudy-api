@@ -71,6 +71,19 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_06_084627) do
     t.index ["uri"], name: "index_justice_gov_sk_pages_on_uri", unique: true
   end
 
+  create_table "obcan_justice_sk_civil_hearings", force: :cascade do |t|
+    t.string "guid", null: false
+    t.string "uri", null: false
+    t.jsonb "data", default: "{}", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["checksum"], name: "index_obcan_justice_sk_civil_hearings_on_checksum", unique: true
+    t.index ["data"], name: "index_obcan_justice_sk_civil_hearings_on_data", using: :gin
+    t.index ["guid"], name: "index_obcan_justice_sk_civil_hearings_on_guid", unique: true
+    t.index ["uri"], name: "index_obcan_justice_sk_civil_hearings_on_uri", unique: true
+  end
+
   create_table "obcan_justice_sk_courts", force: :cascade do |t|
     t.string "guid", null: false
     t.string "uri", null: false
@@ -79,8 +92,22 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_06_084627) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["checksum"], name: "index_obcan_justice_sk_courts_on_checksum", unique: true
+    t.index ["data"], name: "index_obcan_justice_sk_courts_on_data", using: :gin
     t.index ["guid"], name: "index_obcan_justice_sk_courts_on_guid", unique: true
     t.index ["uri"], name: "index_obcan_justice_sk_courts_on_uri", unique: true
+  end
+
+  create_table "obcan_justice_sk_criminal_hearings", force: :cascade do |t|
+    t.string "guid", null: false
+    t.string "uri", null: false
+    t.jsonb "data", default: "{}", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["checksum"], name: "index_obcan_justice_sk_criminal_hearings_on_checksum", unique: true
+    t.index ["data"], name: "index_obcan_justice_sk_criminal_hearings_on_data", using: :gin
+    t.index ["guid"], name: "index_obcan_justice_sk_criminal_hearings_on_guid", unique: true
+    t.index ["uri"], name: "index_obcan_justice_sk_criminal_hearings_on_uri", unique: true
   end
 
   create_table "obcan_justice_sk_decrees", force: :cascade do |t|
@@ -91,20 +118,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_06_084627) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["checksum"], name: "index_obcan_justice_sk_decrees_on_checksum", unique: true
+    t.index ["data"], name: "index_obcan_justice_sk_decrees_on_data", using: :gin
     t.index ["guid"], name: "index_obcan_justice_sk_decrees_on_guid", unique: true
     t.index ["uri"], name: "index_obcan_justice_sk_decrees_on_uri", unique: true
-  end
-
-  create_table "obcan_justice_sk_hearings", force: :cascade do |t|
-    t.string "guid", null: false
-    t.string "uri", null: false
-    t.jsonb "data", default: "{}", null: false
-    t.string "checksum", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["checksum"], name: "index_obcan_justice_sk_hearings_on_checksum", unique: true
-    t.index ["guid"], name: "index_obcan_justice_sk_hearings_on_guid", unique: true
-    t.index ["uri"], name: "index_obcan_justice_sk_hearings_on_uri", unique: true
   end
 
   create_table "obcan_justice_sk_judges", force: :cascade do |t|
@@ -115,6 +131,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_06_084627) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["checksum"], name: "index_obcan_justice_sk_judges_on_checksum", unique: true
+    t.index ["data"], name: "index_obcan_justice_sk_judges_on_data", using: :gin
     t.index ["guid"], name: "index_obcan_justice_sk_judges_on_guid", unique: true
     t.index ["uri"], name: "index_obcan_justice_sk_judges_on_uri", unique: true
   end

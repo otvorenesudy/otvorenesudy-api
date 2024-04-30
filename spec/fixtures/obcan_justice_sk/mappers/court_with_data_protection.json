@@ -1,0 +1,97 @@
+{
+  "ico": "00215775",
+  "foto": null,
+  "media": {
+    "net": { "www": [], "email": ["ksbb_hovorca@justice.sk"] },
+    "osoba": "JUDr. Mgr. Nina Uhrovičová",
+    "telKontakty": [
+      { "typ": "label.codelist.tel_type.1", "cislo": "+42148/8860222" },
+      { "typ": "label.codelist.tel_type.2", "cislo": "0905482924" }
+    ]
+  },
+  "nazov": "Krajský súd v Banskej Bystrici",
+  "adresa": { "psc": "97487", "obec": "Banská Bystrica", "ulica": "Skuteckého", "krajina": "703" },
+  "srClen": {
+    "sudcovia": [
+      { "id": "1451", "meno": "JUDr. Štefan NOVÁK, LL.M." },
+      { "id": "151", "meno": "JUDr. Miroslava PÚCHOVSKÁ" },
+      { "id": "637", "meno": "JUDr. Renáta DEÁKOVÁ" },
+      { "id": "459", "meno": "Mgr. Miriam KAMENSKÁ" },
+      { "id": "644", "meno": "JUDr. Mário ŠULEJ" },
+      { "id": "1210", "meno": "JUDr. Anna SNOPČOKOVÁ" }
+    ]
+  },
+  "typSudu": "Krajský súd",
+  "predseda": { "sudcovia": [{ "id": "447", "meno": "JUDr. Ján AUXT" }] },
+  "podatelna": {
+    "telKontakty": [{ "typ": "label.codelist.tel_type.1", "cislo": "048/8860180" }],
+    "otvaracieHodiny": [
+      "08:00 - 15:00",
+      "-",
+      "",
+      "08:00 - 15:00",
+      "-",
+      "",
+      "08:00 - 15:00",
+      "-",
+      "",
+      "08:00 - 15:00",
+      "-",
+      "",
+      "08:00 - 14:00",
+      "-",
+      "",
+      "-",
+      "-",
+      "",
+      "-",
+      "-",
+      ""
+    ],
+    "internetovaAdresa": { "www": [], "email": ["podatelnaKSBB@justice.sk"] }
+  },
+  "suradnice": { "zemepisnaDlzka": "19.1511556", "zemepisnaSirka": "48.7389858" },
+  "srPredseda": { "sudcovia": [{ "id": "106", "meno": "Mgr. Štefan BALÁŽ" }] },
+  "infoCentrum": {
+    "telKontakty": [{ "typ": "label.codelist.tel_type.1", "cislo": "048/8860200" }],
+    "otvaracieHodiny": [
+      "08:00 - 12:00",
+      "12:30 - 15:00",
+      "",
+      "08:00 - 12:00",
+      "12:30 - 15:00",
+      "",
+      "08:00 - 12:00",
+      "12:30 - 15:00",
+      "",
+      "08:00 - 12:00",
+      "12:30 - 15:00",
+      "",
+      "08:00 - 12:00",
+      "12:30 - 14:00",
+      "",
+      "-",
+      "-",
+      "",
+      "-",
+      "-",
+      ""
+    ],
+    "internetovaAdresa": { "www": [], "email": ["infocentrumKSBB@justice.sk", "ksbb_infocentrum@justice.sk"] }
+  },
+  "podpredseda": {
+    "sudcovia": [
+      { "id": "113", "meno": "Mgr. Ivana DATLOVÁ" },
+      { "id": "1215", "meno": "JUDr. Ivica HANUSKOVÁ" }
+    ]
+  },
+  "telKontakty": [
+    { "typ": "label.codelist.tel_type.3", "cislo": "+421484124976" },
+    { "typ": "label.codelist.tel_type.1", "cislo": "+421488860111" }
+  ],
+  "adresaString": "Skuteckého 7, 97487 Banská Bystrica, Slovenská republika",
+  "registreGuid": "sud_138",
+  "skratka_string": "KSBB",
+  "ukonceny_string": "false",
+  "ochranaOsobnychUdajov": { "email": "ochrana.osobnych.udajov.KSBB@justice.sk" }
+}

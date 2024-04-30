@@ -22,6 +22,8 @@
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  anonymized_at      :datetime
+#  source_class       :string(255)
+#  source_class_id    :integer
 #
 class Hearing < ActiveRecord::Base
   include OpenCourts::Model

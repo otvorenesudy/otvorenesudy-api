@@ -19,6 +19,8 @@
 #  updated_at             :datetime         not null
 #  pdf_uri                :string(2048)
 #  pdf_uri_invalid        :boolean          default(FALSE), not null
+#  source_class           :string(255)
+#  source_class_id        :integer
 #
 FactoryBot.define do
   factory :decree do

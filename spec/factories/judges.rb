@@ -15,6 +15,8 @@
 #  addition         :string(255)
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#  source_class     :string(255)
+#  source_class_id  :integer
 #
 FactoryBot.define do
   factory :judge do

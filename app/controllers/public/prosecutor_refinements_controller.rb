@@ -5,9 +5,10 @@ class Public::ProsecutorRefinementsController < Public::ApplicationController
   def create
     attributes = create_params.except(:prosecutors)
 
-    refinements = create_params[:prosecutors].map do |prosecutor|
-      Public::ProsecutorRefinement.create(attributes.merge(prosecutor: prosecutor, ip_address: request.remote_ip))
-    end
+    refinements =
+      create_params[:prosecutors].map do |prosecutor|
+        Public::ProsecutorRefinement.create(attributes.merge(prosecutor: prosecutor, ip_address: request.remote_ip))
+      end
 
     invalid_refinement = refinements.find(&:invalid?)
     render 422, errors: invalid_refinement.errors.full_messages if invalid_refinement

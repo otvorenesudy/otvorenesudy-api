@@ -10,6 +10,6 @@
 class Legislation::Area < ActiveRecord::Base
   include OpenCourts::Model
 
-  has_many :subareas, class_name: 'Legislation::Subarea'
-  has_many :decrees
+  has_many :usages, class_name: 'Legislation::AreaUsage'
+  has_many :decrees, through: :usages
 end

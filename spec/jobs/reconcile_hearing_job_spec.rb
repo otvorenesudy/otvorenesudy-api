@@ -33,9 +33,9 @@ RSpec.describe ReconcileHearingJob do
     it 'enqueues reconciliation job' do
       hearing = create(:info_sud_hearing)
 
-      expect {
-        ReconcileHearingJob.perform_later(hearing)
-      }.to have_enqueued_job(ReconcileHearingJob).on_queue('reconcilers').with(hearing)
+      expect { ReconcileHearingJob.perform_later(hearing) }.to have_enqueued_job(ReconcileHearingJob).on_queue(
+        'reconcilers'
+      ).with(hearing)
     end
   end
 end

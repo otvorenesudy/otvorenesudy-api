@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: obcan_justice_sk_hearings
+# Table name: obcan_justice_sk_criminal_hearings
 #
 #  id         :bigint           not null, primary key
 #  guid       :string           not null
@@ -11,7 +11,13 @@
 #  updated_at :datetime         not null
 #
 module ObcanJusticeSk
-  class Hearing < ActiveRecord::Base
+  class CriminalHearing < ActiveRecord::Base
     extend ObcanJusticeSk::Importable
+
+    after_commit(on: %i[create update]) { ReconcileHearingJob.perform_later(self) }
+
+    def to_mapper
+      ObcanJusticeSk::CriminalHearingMapper.new(self)
+    end
   end
 end

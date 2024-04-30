@@ -1,0 +1,36 @@
+{
+  "sud": {
+    "nazov": "Správny súd v Banskej Bystrici",
+    "suradnice": {
+      "zemepisnaDlzka": "19.153488159179688",
+      "zemepisnaSirka": "48.73823547363281"
+    },
+    "adresaString": "Robotnícka 120/6, 97401 Banská Bystrica, Slovenská republika",
+    "registreGuid": "sud_177"
+  },
+  "guid": "f5c7b3ce-e9d6-44ed-adca-66b57190e542",
+  "usek": "S",
+  "sudca": [
+    {
+      "meno": "Mgr. Denisa Slivová",
+      "registreGuid": "sudca_null"
+    }
+  ],
+  "predmet": "preskúmanie rozh. č. 100692444/2018 z 9.4.2018",
+  "formaUkonu": "Pojednávanie a rozhodnutie",
+  "odporcovia": [
+    {
+      "meno": "Finančné riaditeľstvo SR, Banská Bystrica"
+    }
+  ],
+  "updateDate": "22.03.2024",
+  "navrhovatelia": [
+    {
+      "meno": "ABC"
+    }
+  ],
+  "spisovaZnacka": "ZA-31S/55/2018",
+  "casPojednavania": "10:20",
+  "datumPojednavania": "13.11.2019",
+  "identifikacneCislo": "5018200202"
+}

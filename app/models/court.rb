@@ -23,6 +23,9 @@
 #  created_at                  :datetime         not null
 #  updated_at                  :datetime         not null
 #  acronym                     :string(255)
+#  source_class                :string(255)
+#  source_class_id             :integer
+#  data_protection_email       :string(255)
 #
 class Court < ActiveRecord::Base
   include OpenCourts::Model

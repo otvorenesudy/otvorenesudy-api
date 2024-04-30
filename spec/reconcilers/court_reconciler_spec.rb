@@ -8,12 +8,16 @@ RSpec.describe CourtReconciler do
   let(:attributes) do
     {
       uri: 'http://path/to/file',
+      source: 'JusticeGovSk',
+      source_class: 'ObcanJusticeSk::Court',
+      source_class_id: '1',
       name: 'Example Court',
       street: 'Example Avenue 45',
       phone: '+421 000 000 000',
       fax: '123456',
       media_person: 'Peter Parker',
       media_phone: nil,
+      data_protection_email: 'data@protection.com',
       latitude: 48.11,
       longitude: 49.12,
       type: 'Court Type',
@@ -60,12 +64,16 @@ RSpec.describe CourtReconciler do
       expect(court).to receive(:assign_attributes).with(
         attributes.slice(
           :uri,
+          :source,
+          :source_class,
+          :source_class_id,
           :name,
           :street,
           :phone,
           :fax,
           :media_person,
           :media_phone,
+          :data_protection_email,
           :longitude,
           :latitude,
           :acronym

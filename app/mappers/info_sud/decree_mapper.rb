@@ -72,12 +72,12 @@ module InfoSud
       Array.wrap(@data[:povaha_rozhodnutia].presence)
     end
 
-    def legislation_area
-      Array.wrap(@data[:oblast_pravnej_upravy].presence).first
+    def legislation_areas
+      Array.wrap(@data[:oblast_pravnej_upravy].presence)
     end
 
-    def legislation_subarea
-      Array.wrap(@data[:podoblast_pravnej_upravy].presence).first
+    def legislation_subareas
+      Array.wrap(@data[:podoblast_pravnej_upravy].presence)
     end
 
     def legislations
