@@ -11,5 +11,5 @@
 class Decree::Form < ActiveRecord::Base
   include OpenCourts::Model
 
-  has_many :decrees
+  has_many :decrees, foreign_key: :decree_form_id
 end

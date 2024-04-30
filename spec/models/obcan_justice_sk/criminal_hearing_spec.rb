@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: obcan_justice_sk_civil_hearings
+# Table name: obcan_justice_sk_criminal_hearings
 #
 #  id         :bigint           not null, primary key
 #  guid       :string           not null

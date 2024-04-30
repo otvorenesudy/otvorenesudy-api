@@ -12,5 +12,5 @@
 class Decree::Page < ActiveRecord::Base
   include OpenCourts::Model
 
-  belongs_to :decree
+  belongs_to :decree, foreign_key: :decree_id
 end

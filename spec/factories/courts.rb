@@ -26,6 +26,7 @@
 #  source_class                :string(255)
 #  source_class_id             :integer
 #  data_protection_email       :string(255)
+#  destroyed_at                :datetime
 #
 FactoryBot.define do
   factory :court do

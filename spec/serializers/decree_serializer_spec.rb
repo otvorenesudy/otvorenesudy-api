@@ -2,25 +2,23 @@
 #
 # Table name: decrees
 #
-#  id                     :integer          not null, primary key
-#  uri                    :string(2048)     not null
-#  source_id              :integer          not null
-#  proceeding_id          :integer
-#  court_id               :integer
-#  decree_form_id         :integer
-#  case_number            :string(255)
-#  file_number            :string(255)
-#  date                   :date
-#  ecli                   :string(255)
-#  summary                :text
-#  legislation_area_id    :integer
-#  legislation_subarea_id :integer
-#  created_at             :datetime         not null
-#  updated_at             :datetime         not null
-#  pdf_uri                :string(2048)
-#  pdf_uri_invalid        :boolean          default(FALSE), not null
-#  source_class           :string(255)
-#  source_class_id        :integer
+#  id              :integer          not null, primary key
+#  uri             :string(2048)     not null
+#  source_id       :integer          not null
+#  proceeding_id   :integer
+#  court_id        :integer
+#  decree_form_id  :integer
+#  case_number     :string(255)
+#  file_number     :string(255)
+#  date            :date
+#  ecli            :string(255)
+#  summary         :text
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  pdf_uri         :string(2048)
+#  pdf_uri_invalid :boolean          default(FALSE), not null
+#  source_class    :string(255)
+#  source_class_id :integer
 #
 require 'rails_helper'
 
@@ -36,7 +34,7 @@ RSpec.describe DecreeSerializer do
       court = create(:court, name: 'Krajský súd Bratislava', street: 'Kozia 20 3/4', municipality: municipality)
 
       area = create(:legislation_area, value: 'Občianske právo')
-      subarea = create(:legislation_subarea, value: 'Majetok', area: area)
+      subarea = create(:legislation_subarea, value: 'Majetok')
       form = create(:decree_form, value: 'Platobný príkaz', code: 'P')
 
       decree =
@@ -50,10 +48,11 @@ RSpec.describe DecreeSerializer do
           date: Time.utc(2013, 4, 1, 13, 0),
           court: court,
           form: form,
-          legislation_area: area,
-          legislation_subarea: subarea,
           proceeding: proceeding
         )
+
+      create(:legislation_area_usage, decree: decree, area: area)
+      create(:legislation_subarea_usage, decree: decree, subarea: subarea)
 
       create(:decree_page, decree: decree, number: 1, text: 'Text 1 ')
       create(:decree_page, decree: decree, number: 2, text: 'Text 2 ')
@@ -111,12 +110,8 @@ RSpec.describe DecreeSerializer do
               code: 'P',
               value: 'Platobný príkaz'
             },
-            legislation_area: {
-              value: 'Občianske právo'
-            },
-            legislation_subarea: {
-              value: 'Majetok'
-            },
+            legislation_areas: [{ value: 'Občianske právo' }],
+            legislation_subareas: [{ value: 'Majetok' }],
             natures: [{ value: 'Zastavujúce odvolacie konanie' }],
             judges: [{ id: judge.id, name: 'JUDr. Peter Harabin, PhD.' }],
             legislations: [

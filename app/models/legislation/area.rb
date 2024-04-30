@@ -10,6 +10,6 @@
 class Legislation::Area < ActiveRecord::Base
   include OpenCourts::Model
 
-  has_many :usages, class_name: 'Legislation::AreaUsage'
+  has_many :usages, class_name: 'Legislation::AreaUsage', foreign_key: :legislation_area_id
   has_many :decrees, through: :usages
 end

@@ -15,11 +15,11 @@ RSpec.describe PdfExtractor do
     end
 
     context 'with non-selectable text' do
-      skip 'requires OCR'
-
       let(:url) { 'TODO' }
 
       it 'extracts text from url', vcr: { cassette_name: 'ocr.pdf' } do
+        pending 'Requires OCR'
+
         text = PdfExtractor.extract_text_from_url(url)
 
         expect(text.length).to eql(2480)

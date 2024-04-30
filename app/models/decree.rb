@@ -2,25 +2,23 @@
 #
 # Table name: decrees
 #
-#  id                     :integer          not null, primary key
-#  uri                    :string(2048)     not null
-#  source_id              :integer          not null
-#  proceeding_id          :integer
-#  court_id               :integer
-#  decree_form_id         :integer
-#  case_number            :string(255)
-#  file_number            :string(255)
-#  date                   :date
-#  ecli                   :string(255)
-#  summary                :text
-#  legislation_area_id    :integer
-#  legislation_subarea_id :integer
-#  created_at             :datetime         not null
-#  updated_at             :datetime         not null
-#  pdf_uri                :string(2048)
-#  pdf_uri_invalid        :boolean          default(FALSE), not null
-#  source_class           :string(255)
-#  source_class_id        :integer
+#  id              :integer          not null, primary key
+#  uri             :string(2048)     not null
+#  source_id       :integer          not null
+#  proceeding_id   :integer
+#  court_id        :integer
+#  decree_form_id  :integer
+#  case_number     :string(255)
+#  file_number     :string(255)
+#  date            :date
+#  ecli            :string(255)
+#  summary         :text
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  pdf_uri         :string(2048)
+#  pdf_uri_invalid :boolean          default(FALSE), not null
+#  source_class    :string(255)
+#  source_class_id :integer
 #
 class Decree < ActiveRecord::Base
   include OpenCourts::Model
@@ -43,10 +41,13 @@ class Decree < ActiveRecord::Base
   has_many :natures, class_name: 'Decree::Nature', through: :naturalizations
 
   has_many :legislation_area_usages, class_name: 'Legislation::AreaUsage'
-  has_many :legislation_areas, class_name: 'Legislation::Area', through: :legislation_area_usages
+  has_many :legislation_areas, class_name: 'Legislation::Area', through: :legislation_area_usages, source: :area
 
   has_many :legislation_subarea_usages, class_name: 'Legislation::SubareaUsage'
-  has_many :legislation_subareas, class_name: 'Legislation::Subarea', through: :legislation_subarea_usages
+  has_many :legislation_subareas,
+           class_name: 'Legislation::Subarea',
+           through: :legislation_subarea_usages,
+           source: :subarea
 
   has_many :legislation_usages, class_name: 'Legislation::Usage'
   has_many :legislations, through: :legislation_usages

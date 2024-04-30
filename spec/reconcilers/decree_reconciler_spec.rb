@@ -108,7 +108,7 @@ RSpec.describe DecreeReconciler do
       allow(Legislation::Subarea).to receive(:find_or_create_by!).with(value: 'Legislation Subarea #1') {
         :legislation_subarea
       }
-      expect(Legislation::SubareaUsage).to receive(:find_or_create_by!).with(decree: decree, area: :legislation_subarea)
+      expect(Legislation::SubareaUsage).to receive(:find_or_create_by!).with(decree: decree, subarea: :legislation_subarea)
 
       subject.reconcile_legislation_subareas
     end

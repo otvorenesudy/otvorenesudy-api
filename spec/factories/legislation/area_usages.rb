@@ -8,9 +8,9 @@
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #
-class Legislation::AreaUsage < ActiveRecord::Base
-  include OpenCourts::Model
-
-  belongs_to :area, class_name: 'Legislation::Area', required: true, foreign_key: :legislation_area_id
-  belongs_to :decree, required: true
+FactoryBot.define do
+  factory :'legislation/area_usage', aliases: [:legislation_area_usage] do
+    association :area, factory: :legislation_area
+    association :decree
+  end
 end

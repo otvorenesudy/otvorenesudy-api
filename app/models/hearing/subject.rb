@@ -10,5 +10,5 @@
 class Hearing::Subject < ActiveRecord::Base
   include OpenCourts::Model
 
-  has_many :hearings
+  has_many :hearings, foreign_key: :hearing_subject_id
 end

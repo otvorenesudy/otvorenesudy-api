@@ -10,5 +10,5 @@
 class Court::Type < ActiveRecord::Base
   include OpenCourts::Model
 
-  has_many :courts
+  has_many :courts, foreign_key: :court_type_id
 end

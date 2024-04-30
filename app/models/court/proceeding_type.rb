@@ -10,6 +10,6 @@
 class Court::ProceedingType < ActiveRecord::Base
   include OpenCourts::Model
 
-  has_many :jurisdictions, class_name: 'Court::Jurisdiction'
+  has_many :jurisdictions, class_name: 'Court::Jurisdiction', foreign_key: :court_proceeding_type_id
   has_many :courts, through: :jurisdictions
 end
