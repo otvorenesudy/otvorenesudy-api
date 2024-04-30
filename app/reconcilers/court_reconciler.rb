@@ -36,7 +36,9 @@ class CourtReconciler
       data_protection_email: mapper.data_protection_email,
       latitude: mapper.latitude,
       longitude: mapper.longitude,
-      acronym: mapper.acronym
+      acronym: mapper.acronym,
+      other_contacts_json:
+        mapper.respond_to?(:other_contacts) && mapper.other_contacts.present? ? JSON.dump(mapper.other_contacts) : nil
     )
   end
 

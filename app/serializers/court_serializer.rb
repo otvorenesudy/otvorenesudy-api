@@ -27,6 +27,7 @@
 #  source_class_id             :integer
 #  data_protection_email       :string(255)
 #  destroyed_at                :datetime
+#  other_contacts_json         :text
 #
 class CourtSerializer < ActiveModel::Serializer
   attributes :id, :name, :address

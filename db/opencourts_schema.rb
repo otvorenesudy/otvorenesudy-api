@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_22_190139) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_30_115407) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -121,6 +121,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_22_190139) do
     t.string "source_class", limit: 255
     t.integer "source_class_id"
     t.string "data_protection_email", limit: 255
+    t.datetime "destroyed_at", precision: nil
+    t.text "other_contacts_json"
     t.index ["acronym"], name: "index_courts_on_acronym"
     t.index ["court_jurisdiction_id"], name: "index_courts_on_court_jurisdiction_id"
     t.index ["court_type_id"], name: "index_courts_on_court_type_id"

@@ -126,17 +126,21 @@ module ObcanJusticeSk
     end
 
     def other_contacts
-      return [] if data[:kontaktneMiesta].blank?
+      return if data[:kontaktneMiesta].blank?
 
-      data[:kontaktneMiesta].map do |contact|
-        {
-          name: contact[:nazov],
-          note: contact[:poznamka],
-          phone: contact[:telKontakty] ? map_phone(contact[:telKontakty], type: 'label.codelist.tel_type.1') : nil,
-          email: contact[:internetovaAdresa] ? map_email(contact[:internetovaAdresa][:email].first) : nil,
-          hours: contact[:otvaracieHodiny] ? map_office_hours(contact[:otvaracieHodiny]) : nil
-        }
-      end
+      data[:kontaktneMiesta]
+        .map do |contact|
+          next if contact[:nazov].blank?
+
+          {
+            name: contact[:nazov],
+            note: contact[:poznamka],
+            phone: contact[:telKontakty] ? map_phones(contact[:telKontakty], type: 'label.codelist.tel_type.1') : nil,
+            email: contact[:internetovaAdresa] ? map_email(contact[:internetovaAdresa][:email].first) : nil,
+            hours: contact[:otvaracieHodiny] ? map_office_hours(contact[:otvaracieHodiny]) : nil
+          }
+        end
+        .compact
     end
 
     def chairmen_of_judicial_council_guids

@@ -35,7 +35,8 @@ RSpec.describe CourtReconciler do
       business_registry_center_phone: '02/50 118 340, 02/50 118 356, 02/50 118 181, 02/50 118 421',
       business_registry_center_email: nil,
       business_registry_center_hours: [],
-      business_registry_center_note: nil
+      business_registry_center_note: nil,
+      other_contacts: []
     }
   end
 
@@ -77,7 +78,7 @@ RSpec.describe CourtReconciler do
           :longitude,
           :latitude,
           :acronym
-        ).merge(source: :source)
+        ).merge(source: :source, other_contacts_json: nil)
       )
 
       subject.reconcile_attributes
