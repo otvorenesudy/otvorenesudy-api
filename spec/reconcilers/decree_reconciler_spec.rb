@@ -8,6 +8,8 @@ RSpec.describe DecreeReconciler do
   let(:attributes) do
     {
       uri: 'uri',
+      source_class: 'Decree',
+      source_class_id: 1,
       ecli: 'ecli',
       case_number: '1234/456/789',
       file_number: '123456789',
@@ -52,6 +54,8 @@ RSpec.describe DecreeReconciler do
 
       expect(decree).to receive(:update!).with(
         source: :source,
+        source_class: 'Decree',
+        source_class_id: 1,
         uri: 'uri',
         ecli: 'ecli',
         case_number: '1234/456/789',
@@ -108,7 +112,10 @@ RSpec.describe DecreeReconciler do
       allow(Legislation::Subarea).to receive(:find_or_create_by!).with(value: 'Legislation Subarea #1') {
         :legislation_subarea
       }
-      expect(Legislation::SubareaUsage).to receive(:find_or_create_by!).with(decree: decree, subarea: :legislation_subarea)
+      expect(Legislation::SubareaUsage).to receive(:find_or_create_by!).with(
+        decree: decree,
+        subarea: :legislation_subarea
+      )
 
       subject.reconcile_legislation_subareas
     end

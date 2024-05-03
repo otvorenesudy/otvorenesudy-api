@@ -26,6 +26,8 @@ class DecreeReconciler
   def reconcile_attributes
     decree.update!(
       source: Source.find_by!(module: 'JusticeGovSk'),
+      source_class: mapper.source_class,
+      source_class_id: mapper.source_class_id,
       uri: mapper.uri,
       ecli: mapper.ecli,
       case_number: mapper.case_number,
