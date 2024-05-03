@@ -35,6 +35,7 @@ class Hearing < ActiveRecord::Base
 
   belongs_to :proceeding, optional: true
   belongs_to :court, optional: true
+  belongs_to :original_court, class_name: :Court, optional: true
 
   has_many :judgings
   has_many :judges, through: :judgings
