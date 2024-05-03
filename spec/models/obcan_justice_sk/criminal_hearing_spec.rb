@@ -16,6 +16,24 @@ require 'models/concerns/obcan_justice_sk/importable_spec'
 RSpec.describe ObcanJusticeSk::CriminalHearing, active_job: { adapter: :test } do
   it_behaves_like ObcanJusticeSk::Importable
 
+  describe 'before save' do
+    it 'anonymizes defendants' do
+      record = build(:obcan_justice_sk_criminal_hearing, data: { 'obzalovani' => nil })
+
+      expect { record.save! }.not_to(change { record.data })
+
+      record = build(:obcan_justice_sk_criminal_hearing, data: { 'obzalovani' => ['John Doe'] })
+
+      record.save!
+
+      expect(record.data['obzalovani'][0]).to match(/^[A-Z]\. [A-Z]\.$/)
+
+      record.reload
+
+      expect(record.data['obzalovani'][0]).to match(/^[A-Z]\. [A-Z]\.$/)
+    end
+  end
+
   describe 'after save' do
     let(:record) { build(:obcan_justice_sk_criminal_hearing) }
 
