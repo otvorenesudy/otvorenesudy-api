@@ -21,6 +21,18 @@
 
 set :output, 'log/cron.log'
 
-every :day, at: '5:00 am' do
-  runner 'ExceptionHandler.run { JusticeGovSkPages.scrape }'
+every :day, at: '3:00 am' do
+  runner 'ExceptionHandler.run { ObcanJusticeSk::Courts.import }'
+end
+
+every :day, at: '3:10 am' do
+  runner ' ExceptionHandler.run { ObcanJusticeSk::Judges.import }'
+end
+
+every :day, at: '3:30 am' do
+  runner 'ExceptionHandler.run { ObcanJusticeSk::Hearings.import }'
+end
+
+every :day, at: '4:30 am' do
+  runner 'ExceptionHandler.run { ObcanJusticeSk::Decrees.import }'
 end
