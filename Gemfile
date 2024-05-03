@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby File.read(File.expand_path('../.ruby-version', __FILE__)).strip
+
 gem 'rack'
 gem 'rails', '~> 7.1'
 gem 'sass-rails'
@@ -55,6 +57,7 @@ gem 'bootsnap', require: false
 gem 'csv'
 gem 'curb'
 gem 'enumerize'
+gem 'json-schema'
 gem 'matrix'
 gem 'mechanize'
 gem 'nkf'
@@ -93,6 +96,8 @@ end
 
 group :development do
   # Debugging
+  gem 'annotate'
+  gem 'ruby-prof'
   gem 'web-console'
 
   # Deployment

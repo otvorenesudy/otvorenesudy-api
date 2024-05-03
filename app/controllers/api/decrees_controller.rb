@@ -18,17 +18,14 @@ class Api::DecreesController < Api::ApplicationController
       :pages,
       :court,
       :form,
-      :legislation_area,
-      :legislation_subarea,
+      :legislation_areas,
+      :legislation_subareas,
       :natures,
       :legislations,
       :inexact_judgements,
-
       exact_judgements: [:judge],
       court: [:municipality],
-      proceeding: [
-        hearings: [:proposers, :defendants, :opponents]
-      ]
+      proceeding: [hearings: %i[proposers defendants opponents]]
     )
   end
 

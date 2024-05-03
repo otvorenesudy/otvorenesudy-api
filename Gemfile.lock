@@ -92,6 +92,9 @@ GEM
     afm (0.2.2)
     airbrussh (1.5.1)
       sshkit (>= 1.6.1, != 1.7.0)
+    annotate (3.2.0)
+      activerecord (>= 3.2, < 8.0)
+      rake (>= 10.4, < 14.0)
     ast (2.4.2)
     autoprefixer-rails (10.4.16.0)
       execjs (~> 2)
@@ -199,6 +202,8 @@ GEM
       rdoc
       reline (>= 0.4.2)
     json (2.7.1)
+    json-schema (4.3.0)
+      addressable (>= 2.8)
     jsonapi-renderer (0.2.2)
     language_server-protocol (3.17.0.3)
     loofah (2.22.0)
@@ -379,6 +384,7 @@ GEM
     rubocop-ast (1.31.2)
       parser (>= 3.3.0.4)
     ruby-ole (1.2.12.2)
+    ruby-prof (1.7.0)
     ruby-progressbar (1.13.0)
     ruby-rc4 (0.1.5)
     rubyntlm (0.6.3)
@@ -488,6 +494,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
+  annotate
   awesome_print
   base64
   bcrypt
@@ -515,6 +522,7 @@ DEPENDENCIES
   factory_bot_rails
   font-awesome-rails (~> 4.7.0.3)
   fuubar
+  json-schema
   matrix
   mechanize
   nkf
@@ -535,6 +543,7 @@ DEPENDENCIES
   roo-xls
   rspec-rails
   rubocop
+  ruby-prof
   sass-rails
   selenium-webdriver
   sentry-rails

@@ -33,10 +33,9 @@ RSpec.describe ReconcileDecreeJob do
     it 'enqueues reconciliation job' do
       decree = create(:info_sud_decree)
 
-      expect {
-        ReconcileDecreeJob.perform_later(decree)
-      }.to have_enqueued_job(ReconcileDecreeJob).on_queue('reconcilers').with(decree)
+      expect { ReconcileDecreeJob.perform_later(decree) }.to have_enqueued_job(ReconcileDecreeJob).on_queue(
+        'reconcilers'
+      ).with(decree)
     end
   end
-
 end

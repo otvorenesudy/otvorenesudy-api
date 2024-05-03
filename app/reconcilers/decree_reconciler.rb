@@ -10,8 +10,8 @@ class DecreeReconciler
     decree.with_lock do
       reconcile_attributes
       reconcile_court
-      reconcile_legislation_area
-      reconcile_legislation_subarea
+      reconcile_legislation_areas
+      reconcile_legislation_subareas
       reconcile_proceeding
       reconcile_judges
       reconcile_natures
@@ -42,18 +42,25 @@ class DecreeReconciler
     decree.court = Court.find_by!(name: mapper.court)
   end
 
-  def reconcile_legislation_area
-    return unless mapper.legislation_area
+  def reconcile_legislation_areas
+    return unless mapper.legislation_areas
 
-    decree.legislation_area = Legislation::Area.find_or_create_by!(value: mapper.legislation_area)
+    mapper.legislation_areas.each do |value|
+      area = Legislation::Area.find_or_create_by!(value: value)
+
+      Legislation::AreaUsage.find_or_create_by!(decree: decree, area: area)
+    end
   end
 
-  def reconcile_legislation_subarea
-    return unless mapper.legislation_area
-    return unless mapper.legislation_subarea
+  def reconcile_legislation_subareas
+    return if mapper.legislation_areas.blank?
+    return if mapper.legislation_subareas.blank?
 
-    area = Legislation::Area.find_by!(value: mapper.legislation_area)
-    decree.legislation_subarea = Legislation::Subarea.find_or_create_by!(value: mapper.legislation_subarea, area: area)
+    mapper.legislation_subareas.each do |value|
+      area = Legislation::Subarea.find_or_create_by!(value: value)
+
+      Legislation::SubareaUsage.find_or_create_by!(decree: decree, subarea: area)
+    end
   end
 
   def reconcile_proceeding
@@ -106,13 +113,15 @@ class DecreeReconciler
   end
 
   def reconcile_pages
-    # TODO consider removing DecreePage and moving text to Decree as attribute
-    text = mapper.text || PdfExtractor.extract_text_from_url(mapper.pdf_uri)
+    pages =
+      mapper.pages.map.with_index do |text, i|
+        page = Decree::Page.find_or_initialize_by(decree: decree, number: i + 1)
 
-    page = Decree::Page.find_or_initialize_by(decree: decree, number: 1)
+        page.update!(text: text)
 
-    page.update!(text: text)
+        page
+      end
 
-    decree.purge!(:pages, except: [page])
+    decree.purge!(:pages, except: pages)
   end
 end

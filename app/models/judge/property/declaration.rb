@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: judge_property_declarations
+#
+#  id         :integer          not null, primary key
+#  uri        :string(255)
+#  source_id  :integer          not null
+#  court_id   :integer          not null
+#  judge_id   :integer          not null
+#  year       :integer          not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 class Judge::Property::Declaration < ActiveRecord::Base
   include OpenCourts::Model
 

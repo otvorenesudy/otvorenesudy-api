@@ -1,3 +1,25 @@
+# == Schema Information
+#
+# Table name: decrees
+#
+#  id              :integer          not null, primary key
+#  uri             :string(2048)     not null
+#  source_id       :integer          not null
+#  proceeding_id   :integer
+#  court_id        :integer
+#  decree_form_id  :integer
+#  case_number     :string(255)
+#  file_number     :string(255)
+#  date            :date
+#  ecli            :string(255)
+#  summary         :text
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  pdf_uri         :string(2048)
+#  pdf_uri_invalid :boolean          default(FALSE), not null
+#  source_class    :string(255)
+#  source_class_id :integer
+#
 require 'rails_helper'
 
 RSpec.describe DecreeSerializer do
@@ -12,25 +34,25 @@ RSpec.describe DecreeSerializer do
       court = create(:court, name: 'Krajský súd Bratislava', street: 'Kozia 20 3/4', municipality: municipality)
 
       area = create(:legislation_area, value: 'Občianske právo')
-      subarea = create(:legislation_subarea, value: 'Majetok', area: area)
+      subarea = create(:legislation_subarea, value: 'Majetok')
       form = create(:decree_form, value: 'Platobný príkaz', code: 'P')
 
-      decree = create(:decree,
-        id: 3,
-        uri: 'http://justice.gov.sk/3',
-        case_number: '2007',
-        file_number: '12345678',
-        ecli: 'ecli',
-        date: Time.utc(2013, 4, 1, 13, 0),
+      decree =
+        create(
+          :decree,
+          id: 3,
+          uri: 'http://justice.gov.sk/3',
+          case_number: '2007',
+          file_number: '12345678',
+          ecli: 'ecli',
+          date: Time.utc(2013, 4, 1, 13, 0),
+          court: court,
+          form: form,
+          proceeding: proceeding
+        )
 
-        court: court,
-        form: form,
-
-        legislation_area: area,
-        legislation_subarea: subarea,
-
-        proceeding: proceeding
-      )
+      create(:legislation_area_usage, decree: decree, area: area)
+      create(:legislation_subarea_usage, decree: decree, subarea: subarea)
 
       create(:decree_page, decree: decree, number: 1, text: 'Text 1 ')
       create(:decree_page, decree: decree, number: 2, text: 'Text 2 ')
@@ -42,17 +64,19 @@ RSpec.describe DecreeSerializer do
       judge = create(:judge, first: 'Peter', last: 'Harabin')
       create(:judgement, judge: judge, decree: decree)
 
-      legislation = create(:legislation,
-        name: 'Legislation #1',
-        year: 2011,
-        number: 3,
-        section: 2,
-        paragraph: 4,
-        letter: 'A',
-        type: 'Zákon',
-        value: 'Value',
-        value_unprocessed: 'Unprocessed Value'
-      )
+      legislation =
+        create(
+          :legislation,
+          name: 'Legislation #1',
+          year: 2011,
+          number: 3,
+          section: 2,
+          paragraph: 4,
+          letter: 'A',
+          type: 'Zákon',
+          value: 'Value',
+          value_unprocessed: 'Unprocessed Value'
+        )
       create(:legislation_usage, legislation: legislation, decree: decree)
 
       hearing = create(:hearing, proceeding: proceeding)
@@ -63,71 +87,53 @@ RSpec.describe DecreeSerializer do
 
       hash = adapter.new(serializer.new(decree)).as_json
 
-      expect(hash).to eql({
-        decree: {
-          id: decree.id,
-          case_number: '2007',
-          file_number: '12345678',
-          ecli: 'ecli',
-          text: 'Text 1 Text 2 Text 3',
-          date: Time.parse('2013-04-01').to_date,
-          uri: 'http://justice.gov.sk/3',
-          document_url: 'http://otvorenesudy.sk/decrees/3/document',
-          created_at: decree.created_at,
-          updated_at: decree.updated_at,
-          other_judges: [],
-          court: {
-            id: decree.court.id,
-            name: 'Krajský súd Bratislava',
-            address: 'Kozia 20 3/4, 123 45 Bratislava'
-          },
-          form: {
-            code: 'P',
-            value: 'Platobný príkaz'
-          },
-          legislation_area: {
-            value: 'Občianske právo'
-          },
-          legislation_subarea: {
-            value: 'Majetok'
-          },
-          natures: [
-            {
-              value: 'Zastavujúce odvolacie konanie'
-            }
-          ],
-          judges: [
-            {
-              id: judge.id,
-              name: 'JUDr. Peter Harabin, PhD.'
-            }
-          ],
-          legislations: [
-            {
-              name: 'Legislation #1',
-              number: 3,
-              letter: 'A',
-              paragraph: '4',
-              section: '2',
-              type: 'Zákon',
-              year: 2011,
-              value: 'Value',
-              value_unprocessed: 'Unprocessed Value',
-              external_url: 'http://www.zakonypreludi.sk/zz/2011-3#p4-2-A'
-            }
-          ],
-
-          defendants: [
-            { name: 'Peter' }
-          ],
-          opponents: [
-            { name: 'Juraj' }
-          ],
-          proposers: [
-            { name: 'Janko' }
-          ]
+      expect(hash).to eql(
+        {
+          decree: {
+            id: decree.id,
+            case_number: '2007',
+            file_number: '12345678',
+            ecli: 'ecli',
+            text: 'Text 1 Text 2 Text 3',
+            date: Time.parse('2013-04-01').to_date,
+            uri: 'http://justice.gov.sk/3',
+            document_url: 'http://otvorenesudy.sk/decrees/3/document',
+            created_at: decree.created_at,
+            updated_at: decree.updated_at,
+            other_judges: [],
+            court: {
+              id: decree.court.id,
+              name: 'Krajský súd Bratislava',
+              address: 'Kozia 20 3/4, 123 45 Bratislava'
+            },
+            form: {
+              code: 'P',
+              value: 'Platobný príkaz'
+            },
+            legislation_areas: [{ value: 'Občianske právo' }],
+            legislation_subareas: [{ value: 'Majetok' }],
+            natures: [{ value: 'Zastavujúce odvolacie konanie' }],
+            judges: [{ id: judge.id, name: 'JUDr. Peter Harabin, PhD.' }],
+            legislations: [
+              {
+                name: 'Legislation #1',
+                number: 3,
+                letter: 'A',
+                paragraph: '4',
+                section: '2',
+                type: 'Zákon',
+                year: 2011,
+                value: 'Value',
+                value_unprocessed: 'Unprocessed Value',
+                external_url: 'http://www.zakonypreludi.sk/zz/2011-3#p4-2-A'
+              }
+            ],
+            defendants: [{ name: 'Peter' }],
+            opponents: [{ name: 'Juraj' }],
+            proposers: [{ name: 'Janko' }]
+          }
         }
-      })
+      )
     end
   end
 
@@ -136,19 +142,18 @@ RSpec.describe DecreeSerializer do
     let(:judges) { 2.times.map { create(:judge) } }
 
     it 'uses only exactly matched judges' do
-      create :judgement, decree: decree, judge: judges[0], judge_name_similarity: 0.8, judge_name_unprocessed: 'JuDR. Kralik'
+      create :judgement,
+             decree: decree,
+             judge: judges[0],
+             judge_name_similarity: 0.8,
+             judge_name_unprocessed: 'JuDR. Kralik'
       create :judgement, decree: decree, judge: judges[1], judge_name_similarity: 1.0
 
       expect(decree.judges.sort).to eql(judges.sort)
 
       hash = adapter.new(serializer.new(decree)).as_json
 
-      expect(hash[:decree][:judges]).to eql([
-        {
-          id: judges[1].id,
-          name: judges[1].name
-        }
-      ])
+      expect(hash[:decree][:judges]).to eql([{ id: judges[1].id, name: judges[1].name }])
       expect(hash[:decree][:other_judges]).to eql(['JuDR. Kralik'])
     end
   end
@@ -169,9 +174,7 @@ RSpec.describe DecreeSerializer do
 
         hash = adapter.new(serializer.new(decree)).as_json
 
-        expect(hash[:decree][:defendants]).to eql([{
-          name: 'Peter Pan'
-        }])
+        expect(hash[:decree][:defendants]).to eql([{ name: 'Peter Pan' }])
       end
     end
   end
@@ -192,9 +195,7 @@ RSpec.describe DecreeSerializer do
 
         hash = adapter.new(serializer.new(decree)).as_json
 
-        expect(hash[:decree][:opponents]).to eql([{
-          name: 'Peter Parker'
-        }])
+        expect(hash[:decree][:opponents]).to eql([{ name: 'Peter Parker' }])
       end
     end
   end
@@ -215,9 +216,7 @@ RSpec.describe DecreeSerializer do
 
         hash = adapter.new(serializer.new(decree)).as_json
 
-        expect(hash[:decree][:proposers]).to eql([{
-          name: 'Peter Smith'
-        }])
+        expect(hash[:decree][:proposers]).to eql([{ name: 'Peter Smith' }])
       end
     end
   end

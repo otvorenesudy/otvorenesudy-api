@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: info_sud_judges
+#
+#  id         :integer          not null, primary key
+#  guid       :string           not null
+#  data       :jsonb            not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 require 'spec_helper'
 require 'models/concerns/info_sud/importable_spec'
 

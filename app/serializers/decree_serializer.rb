@@ -1,12 +1,34 @@
+# == Schema Information
+#
+# Table name: decrees
+#
+#  id              :integer          not null, primary key
+#  uri             :string(2048)     not null
+#  source_id       :integer          not null
+#  proceeding_id   :integer
+#  court_id        :integer
+#  decree_form_id  :integer
+#  case_number     :string(255)
+#  file_number     :string(255)
+#  date            :date
+#  ecli            :string(255)
+#  summary         :text
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  pdf_uri         :string(2048)
+#  pdf_uri_invalid :boolean          default(FALSE), not null
+#  source_class    :string(255)
+#  source_class_id :integer
+#
 class DecreeSerializer < ActiveModel::Serializer
   attributes :id, :case_number, :file_number, :ecli, :text, :date, :uri, :document_url, :created_at, :updated_at
   attributes :other_judges
 
   has_one :court
   has_one :form
-  has_one :legislation_area
-  has_one :legislation_subarea
 
+  has_many :legislation_areas
+  has_many :legislation_subareas
   has_many :natures
   has_many :judges
   has_many :legislations

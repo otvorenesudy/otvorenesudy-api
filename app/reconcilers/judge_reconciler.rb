@@ -12,6 +12,8 @@ class JudgeReconciler
       reconcile_past_employments
       reconcile_employment
       reconcile_temporary_employment
+      reconcile_as_judicial_council_chairman
+      reconcile_as_judicial_council_member
 
       judge.save!
       judge.touch
@@ -24,7 +26,9 @@ class JudgeReconciler
 
     judge.update!(
       uri: mapper.uri,
-      source: Source.find_by!(module: 'JusticeGovSk'),
+      source: Source.find_by!(module: mapper.source),
+      source_class: mapper.source_class,
+      source_class_id: mapper.source_class_id,
       name: name[:value],
       name_unprocessed: name[:unprocessed],
       prefix: name[:prefix],
@@ -61,5 +65,27 @@ class JudgeReconciler
     employment = judge.employments.find_or_initialize_by(court: court)
 
     employment.update!(position: Judge::Position.find_or_create_by!(value: 'sudca'), active: true)
+  end
+
+  def reconcile_as_judicial_council_chairman
+    return unless mapper.try(:judicial_council_chairman_court_names)
+
+    mapper.judicial_council_chairman_court_names.each do |court_name|
+      court = Court.find_by!(name: court_name)
+      employment = judge.employments.find_or_initialize_by(court: court)
+
+      employment.update!(position: Judge::Position.find_or_create_by!(value: 'predseda súdnej rady'), active: true)
+    end
+  end
+
+  def reconcile_as_judicial_council_member
+    return unless mapper.try(:judicial_council_member_court_names)
+
+    mapper.judicial_council_member_court_names.each do |court_name|
+      court = Court.find_by!(name: court_name)
+      employment = judge.employments.find_or_initialize_by(court: court)
+
+      employment.update!(position: Judge::Position.find_or_create_by!(value: 'člen súdnej rady'), active: true)
+    end
   end
 end

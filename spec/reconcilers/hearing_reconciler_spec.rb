@@ -9,6 +9,9 @@ RSpec.describe HearingReconciler do
   let(:attributes) do
     {
       uri: 'http://path/to/hearing',
+      source: 'JusticeGovSk',
+      source_class: 'ObcanJusticeSk::CivilHearing',
+      source_class_id: 1,
       case_number: '12/23/12CS',
       file_number: '12345678',
       date: Time.now,
@@ -25,7 +28,9 @@ RSpec.describe HearingReconciler do
       chair_judges: ['JUDr. Peter Parker'],
       opponents: ['Peter Pan', 'John Smith'],
       defendants: ['John Pan'],
-      proposers: ['John Smithy']
+      proposers: ['John Smithy'],
+      original_court: 'Krajský súd Bratislava II',
+      original_case_number: '12/23/12CS'
     }
   end
 
@@ -40,11 +45,19 @@ RSpec.describe HearingReconciler do
         allow(Hearing::Type).to receive(:find_by!).with(value: 'Trestné') { :type }
 
         expect(hearing).to receive(:update!).with(
-          attributes.slice(:uri, :case_number, :file_number, :date, :room, :selfjudge, :note, :special_type).merge(
-            type: :type,
-            source: source,
-            anonymized_at: Time.now
-          )
+          attributes.slice(
+            :uri,
+            :source_class,
+            :source_class_id,
+            :case_number,
+            :file_number,
+            :date,
+            :room,
+            :selfjudge,
+            :note,
+            :special_type,
+            :original_case_number
+          ).merge(type: :type, source: source, anonymized_at: Time.now)
         )
 
         subject.reconcile_attributes
@@ -54,8 +67,10 @@ RSpec.describe HearingReconciler do
 
   describe '#reconcile_court' do
     it 'reconciles court' do
-      allow(Court).to receive(:find_by!).with(name: 'Krajský súd Bratislava I') { :court }
-      expect(hearing).to receive(:court=).with(:court)
+      allow(Court).to receive(:find_by!).twice.with(name: 'Krajský súd Bratislava I') { :court_1 }
+      allow(Court).to receive(:find_by!).twice.with(name: 'Krajský súd Bratislava II') { :court_2 }
+      expect(hearing).to receive(:court=).with(:court_1)
+      expect(hearing).to receive(:original_court=).with(:court_2)
 
       subject.reconcile_court
     end

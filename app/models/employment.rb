@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: employments
+#
+#  id                :integer          not null, primary key
+#  court_id          :integer          not null
+#  judge_id          :integer          not null
+#  judge_position_id :integer
+#  active            :boolean
+#  note              :text
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  status            :string(255)
+#
 class Employment < ActiveRecord::Base
   include OpenCourts::Model
 

@@ -1,3 +1,12 @@
+# == Schema Information
+#
+# Table name: api_keys
+#
+#  id         :integer          not null, primary key
+#  value      :string           not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 require 'rails_helper'
 
 RSpec.describe Api::Key do

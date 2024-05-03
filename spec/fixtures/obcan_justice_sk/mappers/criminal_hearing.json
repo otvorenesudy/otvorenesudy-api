@@ -1,0 +1,18 @@
+{
+  "id": "CCDA6228-8F0F-4364-B60C-5BA527607C8B_711769",
+  "typ": { "itemCode": "TrestnePojednavanie", "itemName": "Trestné pojednávanie" },
+  "datumPojednavania": "2024-05-02T08:30:00",
+  "datumZapocatia": null,
+  "ics": "4424010012",
+  "predmet": "Návrh na nariadenie výkonu uznaného cudzieho rozhodnutia",
+  "samosudca": false,
+  "spisovaZnacka": "4Tcud/1/2024",
+  "sud": { "itemCode": "127", "itemName": "Okresný súd Nové Zámky" },
+  "ukonForma": { "itemCode": "Pojednávanie a rozhodnutie", "itemName": "Pojednávanie a rozhodnutie" },
+  "miestnost": "33",
+  "obzalovani": ["A. B."],
+  "poznamka": null,
+  "predsedaSenatu": null,
+  "sudcovia": ["JUDr. Vladimír Tamaškovič"],
+  "usek": "Trestný"
+}

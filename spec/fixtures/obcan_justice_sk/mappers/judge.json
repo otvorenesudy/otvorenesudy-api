@@ -1,0 +1,18 @@
+{
+  "registreGuid": "sudca_1",
+  "meno": "JUDr. Alena ADAMCOVÁ",
+  "funkcia": "Sudca",
+  "stav": "label.sudca.aktivny",
+  "sud": {
+    "registreGuid": "sud_100",
+    "nazov": "Najvyšší súd Slovenskej republiky"
+  },
+  "docasnePridelenySud": {
+    "registreGuid": "sud_123",
+    "nazov": "Krajský súd v Nitre"
+  },
+  "suradnice": {
+    "zemepisnaDlzka": "17.104613",
+    "zemepisnaSirka": "48.145962"
+  }
+}

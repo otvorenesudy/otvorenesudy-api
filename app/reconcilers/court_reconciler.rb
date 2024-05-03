@@ -24,16 +24,21 @@ class CourtReconciler
     # TODO remove source, leave now for compatibility
     court.assign_attributes(
       uri: mapper.uri,
-      source: Source.find_by!(module: 'JusticeGovSk'),
+      source: Source.find_by!(module: mapper.source),
+      source_class: mapper.source_class,
+      source_class_id: mapper.source_class_id,
       name: mapper.name,
       street: mapper.street,
       phone: mapper.phone,
       fax: mapper.fax,
       media_person: mapper.media_person,
       media_phone: mapper.media_phone,
+      data_protection_email: mapper.data_protection_email,
       latitude: mapper.latitude,
       longitude: mapper.longitude,
-      acronym: mapper.acronym
+      acronym: mapper.acronym,
+      other_contacts_json:
+        mapper.respond_to?(:other_contacts) && mapper.other_contacts.present? ? JSON.dump(mapper.other_contacts) : nil
     )
   end
 

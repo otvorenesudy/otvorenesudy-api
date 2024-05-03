@@ -8,12 +8,16 @@ RSpec.describe CourtReconciler do
   let(:attributes) do
     {
       uri: 'http://path/to/file',
+      source: 'JusticeGovSk',
+      source_class: 'ObcanJusticeSk::Court',
+      source_class_id: '1',
       name: 'Example Court',
       street: 'Example Avenue 45',
       phone: '+421 000 000 000',
       fax: '123456',
       media_person: 'Peter Parker',
       media_phone: nil,
+      data_protection_email: 'data@protection.com',
       latitude: 48.11,
       longitude: 49.12,
       type: 'Court Type',
@@ -31,7 +35,8 @@ RSpec.describe CourtReconciler do
       business_registry_center_phone: '02/50 118 340, 02/50 118 356, 02/50 118 181, 02/50 118 421',
       business_registry_center_email: nil,
       business_registry_center_hours: [],
-      business_registry_center_note: nil
+      business_registry_center_note: nil,
+      other_contacts: []
     }
   end
 
@@ -60,16 +65,20 @@ RSpec.describe CourtReconciler do
       expect(court).to receive(:assign_attributes).with(
         attributes.slice(
           :uri,
+          :source,
+          :source_class,
+          :source_class_id,
           :name,
           :street,
           :phone,
           :fax,
           :media_person,
           :media_phone,
+          :data_protection_email,
           :longitude,
           :latitude,
           :acronym
-        ).merge(source: :source)
+        ).merge(source: :source, other_contacts_json: nil)
       )
 
       subject.reconcile_attributes

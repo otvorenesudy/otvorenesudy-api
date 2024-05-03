@@ -10,6 +10,9 @@ RSpec.describe JudgeReconciler do
   let(:attributes) do
     {
       uri: 'uri',
+      source: 'JusticeGovSk',
+      source_class: 'ObcanJusticeSk::Judge',
+      source_class_id: '123',
       name: {
         value: 'JUDr. Peter Parker, PhD.',
         unprocessed: 'JUDr. Peter PARKER, Phd.',
@@ -52,6 +55,8 @@ RSpec.describe JudgeReconciler do
       expect(judge).to receive(:update!).with(
         uri: 'uri',
         source: :source,
+        source_class: 'ObcanJusticeSk::Judge',
+        source_class_id: '123',
         name: 'JUDr. Peter Parker, PhD.',
         name_unprocessed: 'JUDr. Peter PARKER, Phd.',
         prefix: 'JUDr.',
@@ -110,6 +115,84 @@ RSpec.describe JudgeReconciler do
         expect(employments).not_to receive(:find_or_initialize_by)
 
         subject.reconcile_temporary_employment
+      end
+    end
+  end
+
+  describe '#reconcile_as_judicial_council_chairman' do
+    context 'when judge is a chairman of judicial council' do
+      let(:attributes) { { judicial_council_chairman_court_names: ['Krajský súd Trenčín'] } }
+      let(:employment) { double(:employment) }
+
+      it 'reconciles employement as judicial council chairman' do
+        allow(Judge::Position).to receive(:find_or_create_by!).with(value: 'predseda súdnej rady') { :position }
+        allow(Court).to receive(:find_by!).with(name: 'Krajský súd Trenčín') { :court }
+        allow(employments).to receive(:find_or_initialize_by).with(court: :court) { employment }
+
+        expect(employment).to receive(:update!).with(position: :position, active: true)
+
+        subject.reconcile_as_judicial_council_chairman
+      end
+    end
+
+    context 'when judge is not a chairman of any judicial council' do
+      let(:attributes) { { judicial_council_chairman_court_names: [] } }
+
+      it 'does not reconcile employement as judicial council chairman' do
+        expect(Judge::Position).not_to receive(:find_or_create_by!)
+        expect(Court).not_to receive(:find_by!)
+        expect(employments).not_to receive(:find_or_initialize_by)
+
+        subject.reconcile_as_judicial_council_chairman
+      end
+    end
+
+    context 'when judicial council chairman court names are not set' do
+      it 'does not reconcile employement as judicial council chairman' do
+        expect(Judge::Position).not_to receive(:find_or_create_by!)
+        expect(Court).not_to receive(:find_by!)
+        expect(employments).not_to receive(:find_or_initialize_by)
+
+        subject.reconcile_as_judicial_council_chairman
+      end
+    end
+  end
+
+  describe '#reconcile_as_judicial_council_member' do
+    context 'when judge is a member of judicial council' do
+      let(:attributes) { { judicial_council_member_court_names: ['Krajský súd Trenčín'] } }
+      let(:employment) { double(:employment) }
+
+      it 'reconciles employement as judicial council chairman' do
+        allow(Judge::Position).to receive(:find_or_create_by!).with(value: 'člen súdnej rady') { :position }
+        allow(Court).to receive(:find_by!).with(name: 'Krajský súd Trenčín') { :court }
+        allow(employments).to receive(:find_or_initialize_by).with(court: :court) { employment }
+
+        expect(employment).to receive(:update!).with(position: :position, active: true)
+
+        subject.reconcile_as_judicial_council_member
+      end
+    end
+
+    context 'when judge is not a member of any judicial council' do
+      let(:attributes) { { judicial_council_member_court_names: [] } }
+
+      it 'does not reconcile employement as judicial council member' do
+        expect(Judge::Position).not_to receive(:find_or_create_by!)
+        expect(Court).not_to receive(:find_by!)
+        expect(employments).not_to receive(:find_or_initialize_by)
+
+        subject.reconcile_as_judicial_council_member
+      end
+    end
+
+    context 'when judicial council member court names are not set' do
+      it 'does not reconcile employement as judicial council member' do
+        expect(Judge::Position).not_to receive(:find_or_create_by!)
+        expect(Court).not_to receive(:find_by!)
+        expect(employments).not_to receive(:find_or_initialize_by)
+
+        subject.reconcile_as_judicial_council_member
       end
     end
   end

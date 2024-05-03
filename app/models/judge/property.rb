@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: judge_properties
+#
+#  id                                   :integer          not null, primary key
+#  judge_property_list_id               :integer          not null
+#  judge_property_acquisition_reason_id :integer
+#  judge_property_ownership_form_id     :integer
+#  judge_property_change_id             :integer
+#  description                          :string(255)
+#  acquisition_date                     :string(255)
+#  cost                                 :bigint
+#  share_size                           :string(255)
+#  created_at                           :datetime         not null
+#  updated_at                           :datetime         not null
+#
 class Judge::Property < ActiveRecord::Base
   include OpenCourts::Model
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_29_212609) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_06_084627) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -71,100 +71,68 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_29_212609) do
     t.index ["uri"], name: "index_justice_gov_sk_pages_on_uri", unique: true
   end
 
-  create_table "obcan_justice_sk_courts", id: :serial, force: :cascade do |t|
-    t.string "uri", limit: 2048, null: false
-    t.text "html", null: false
-    t.string "nazov"
-    t.string "adresa"
-    t.string "psc"
-    t.string "mesto"
-    t.string "predseda"
-    t.string "predseda_uri", limit: 2048
-    t.string "podpredseda", array: true
-    t.string "podpredseda_uri", limit: 2048, array: true
-    t.string "telefon"
-    t.string "fax"
-    t.string "latitude"
-    t.string "longitude"
-    t.string "sud_foto_uri", limit: 2048
-    t.string "kontaktna_osoba_pre_media"
-    t.string "telefon_pre_media"
-    t.string "email_pre_media"
-    t.string "internetova_stranka_pre_media"
-    t.string "informacne_centrum_telefonne_cislo"
-    t.string "informacne_centrum_email"
-    t.string "informacne_centrum_uradne_hodiny", array: true
-    t.text "informacne_centrum_uradne_hodiny_poznamka"
-    t.string "podatelna_telefonne_cislo"
-    t.string "podatelna_email"
-    t.string "podatelna_uradne_hodiny", array: true
-    t.text "podatelna_uradne_hodiny_poznamka"
-    t.string "obchodny_register_telefonne_cislo"
-    t.string "obchodny_register_email"
-    t.string "obchodny_register_uradne_hodiny", array: true
-    t.text "obchodny_register_uradne_hodiny_poznamka"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
+  create_table "obcan_justice_sk_civil_hearings", force: :cascade do |t|
+    t.string "guid", null: false
+    t.string "uri", null: false
+    t.jsonb "data", default: "{}", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["checksum"], name: "index_obcan_justice_sk_civil_hearings_on_checksum", unique: true
+    t.index ["data"], name: "index_obcan_justice_sk_civil_hearings_on_data", using: :gin
+    t.index ["guid"], name: "index_obcan_justice_sk_civil_hearings_on_guid", unique: true
+    t.index ["uri"], name: "index_obcan_justice_sk_civil_hearings_on_uri", unique: true
+  end
+
+  create_table "obcan_justice_sk_courts", force: :cascade do |t|
+    t.string "guid", null: false
+    t.string "uri", null: false
+    t.jsonb "data", default: "{}", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["checksum"], name: "index_obcan_justice_sk_courts_on_checksum", unique: true
+    t.index ["data"], name: "index_obcan_justice_sk_courts_on_data", using: :gin
+    t.index ["guid"], name: "index_obcan_justice_sk_courts_on_guid", unique: true
     t.index ["uri"], name: "index_obcan_justice_sk_courts_on_uri", unique: true
   end
 
-  create_table "obcan_justice_sk_decrees", id: :serial, force: :cascade do |t|
-    t.string "uri", limit: 2048, null: false
-    t.text "html", null: false
-    t.string "forma"
-    t.string "sud"
-    t.string "sudca"
-    t.string "sud_uri", limit: 2048
-    t.string "sudca_uri", limit: 2048
-    t.string "datum"
-    t.string "spisova_znacka"
-    t.string "identifikacne_cislo_spisu"
-    t.string "oblast_pravnej_upravy"
-    t.string "povaha"
-    t.string "ecli"
-    t.string "predpisy", array: true
-    t.string "pdf_uri", limit: 2048
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
+  create_table "obcan_justice_sk_criminal_hearings", force: :cascade do |t|
+    t.string "guid", null: false
+    t.string "uri", null: false
+    t.jsonb "data", default: "{}", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["checksum"], name: "index_obcan_justice_sk_criminal_hearings_on_checksum", unique: true
+    t.index ["data"], name: "index_obcan_justice_sk_criminal_hearings_on_data", using: :gin
+    t.index ["guid"], name: "index_obcan_justice_sk_criminal_hearings_on_guid", unique: true
+    t.index ["uri"], name: "index_obcan_justice_sk_criminal_hearings_on_uri", unique: true
+  end
+
+  create_table "obcan_justice_sk_decrees", force: :cascade do |t|
+    t.string "guid", null: false
+    t.string "uri", null: false
+    t.jsonb "data", default: "{}", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["checksum"], name: "index_obcan_justice_sk_decrees_on_checksum", unique: true
+    t.index ["data"], name: "index_obcan_justice_sk_decrees_on_data", using: :gin
+    t.index ["guid"], name: "index_obcan_justice_sk_decrees_on_guid", unique: true
     t.index ["uri"], name: "index_obcan_justice_sk_decrees_on_uri", unique: true
   end
 
-  create_table "obcan_justice_sk_hearings", id: :serial, force: :cascade do |t|
-    t.string "uri", limit: 2048, null: false
-    t.text "html", null: false
-    t.string "predmet"
-    t.string "sud"
-    t.string "sudca"
-    t.string "sud_uri", limit: 2048
-    t.string "sudca_uri", limit: 2048
-    t.string "datum"
-    t.string "cas"
-    t.string "usek"
-    t.string "spisova_znacka"
-    t.string "identifikacne_cislo_spisu"
-    t.string "forma_ukonu"
-    t.text "poznamka"
-    t.string "navrhovatelia", array: true
-    t.string "odporcovia", array: true
-    t.string "obzalovani", array: true
-    t.string "miestnost"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.index ["uri"], name: "index_obcan_justice_sk_hearings_on_uri", unique: true
-  end
-
-  create_table "obcan_justice_sk_judges", id: :serial, force: :cascade do |t|
-    t.string "uri", limit: 2048, null: false
-    t.text "html", null: false
-    t.string "meno"
-    t.string "sud"
-    t.string "sud_uri", limit: 2048
-    t.string "docasny_sud"
-    t.string "docasny_sud_uri", limit: 2048
-    t.boolean "aktivny"
-    t.text "poznamka"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
+  create_table "obcan_justice_sk_judges", force: :cascade do |t|
+    t.string "guid", null: false
+    t.string "uri", null: false
+    t.jsonb "data", default: "{}", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["checksum"], name: "index_obcan_justice_sk_judges_on_checksum", unique: true
+    t.index ["data"], name: "index_obcan_justice_sk_judges_on_data", using: :gin
+    t.index ["guid"], name: "index_obcan_justice_sk_judges_on_guid", unique: true
     t.index ["uri"], name: "index_obcan_justice_sk_judges_on_uri", unique: true
   end
 
