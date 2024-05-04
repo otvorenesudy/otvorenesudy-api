@@ -1,4 +1,6 @@
 class DecreeReconciler
+  include Skylight::Helpers
+
   attr_reader :decree, :mapper
 
   def initialize(decree, mapper:)
@@ -126,4 +128,15 @@ class DecreeReconciler
 
     decree.purge!(:pages, except: pages)
   end
+
+  instrument_method :reconcile!
+  instrument_method :reconcile_attributes
+  instrument_method :reconcile_court
+  instrument_method :reconcile_legislation_areas
+  instrument_method :reconcile_legislation_subareas
+  instrument_method :reconcile_proceeding
+  instrument_method :reconcile_judges
+  instrument_method :reconcile_natures
+  instrument_method :reconcile_legislations
+  instrument_method :reconcile_pages
 end
