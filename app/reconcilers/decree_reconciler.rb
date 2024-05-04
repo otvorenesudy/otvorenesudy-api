@@ -49,22 +49,28 @@ class DecreeReconciler
   def reconcile_legislation_areas
     return unless mapper.legislation_areas
 
-    mapper.legislation_areas.each do |value|
-      area = Legislation::Area.find_or_create_by!(value: value)
+    usages =
+      mapper.legislation_areas.map do |value|
+        area = Legislation::Area.find_or_create_by!(value: value)
 
-      Legislation::AreaUsage.find_or_create_by!(decree: decree, area: area)
-    end
+        Legislation::AreaUsage.find_or_create_by!(decree: decree, area: area)
+      end
+
+    decree.purge!(:legislation_area_usages, except: usages)
   end
 
   def reconcile_legislation_subareas
     return if mapper.legislation_areas.blank?
     return if mapper.legislation_subareas.blank?
 
-    mapper.legislation_subareas.each do |value|
-      area = Legislation::Subarea.find_or_create_by!(value: value)
+    usages =
+      mapper.legislation_subareas.map do |value|
+        area = Legislation::Subarea.find_or_create_by!(value: value)
 
-      Legislation::SubareaUsage.find_or_create_by!(decree: decree, subarea: area)
-    end
+        Legislation::SubareaUsage.find_or_create_by!(decree: decree, subarea: area)
+      end
+
+    decree.purge!(:legislation_subarea_usages, except: usages)
   end
 
   def reconcile_proceeding

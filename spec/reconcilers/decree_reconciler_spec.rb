@@ -91,7 +91,11 @@ RSpec.describe DecreeReconciler do
   describe '#reconcile_legislation_areas' do
     it 'reconciles legislation areas' do
       allow(Legislation::Area).to receive(:find_or_create_by!).with(value: 'Legislation Area #1') { :legislation_area }
-      expect(Legislation::AreaUsage).to receive(:find_or_create_by!).with(decree: decree, area: :legislation_area)
+      allow(Legislation::AreaUsage).to receive(:find_or_create_by!).with(decree: decree, area: :legislation_area) {
+        :usage
+      }
+
+      expect(decree).to receive(:purge!).with(:legislation_area_usages, except: [:usage])
 
       subject.reconcile_legislation_areas
     end
@@ -112,10 +116,12 @@ RSpec.describe DecreeReconciler do
       allow(Legislation::Subarea).to receive(:find_or_create_by!).with(value: 'Legislation Subarea #1') {
         :legislation_subarea
       }
-      expect(Legislation::SubareaUsage).to receive(:find_or_create_by!).with(
+      allow(Legislation::SubareaUsage).to receive(:find_or_create_by!).with(
         decree: decree,
         subarea: :legislation_subarea
-      )
+      ) { :usage }
+
+      expect(decree).to receive(:purge!).with(:legislation_subarea_usages, except: [:usage])
 
       subject.reconcile_legislation_subareas
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_30_115407) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_04_114137) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -470,6 +470,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_30_115407) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["decree_id", "judge_id"], name: "index_judgements_on_decree_id_and_judge_id", unique: true
+    t.index ["decree_id", "judge_name_unprocessed"], name: "index_judgements_on_decree_id_and_judge_name_unprocessed", unique: true
     t.index ["judge_id", "decree_id"], name: "index_judgements_on_judge_id_and_decree_id", unique: true
     t.index ["judge_name_unprocessed"], name: "index_judgements_on_judge_name_unprocessed"
   end
@@ -527,7 +528,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_30_115407) do
     t.string "value", limit: 255, null: false
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
-    t.index ["value"], name: "index_legislation_areas_on_value"
+    t.index ["value"], name: "index_legislation_areas_on_value", unique: true
   end
 
   create_table "legislation_subarea_usages", id: :serial, force: :cascade do |t|
@@ -544,7 +545,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_30_115407) do
     t.string "value", limit: 255, null: false
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
-    t.index ["value"], name: "index_legislation_subareas_on_value"
+    t.index ["value"], name: "index_legislation_subareas_on_value", unique: true
   end
 
   create_table "legislation_usages", id: :serial, force: :cascade do |t|
