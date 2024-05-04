@@ -7,20 +7,18 @@ class DecreeReconciler
   end
 
   def reconcile!
-    decree.transaction do
-      reconcile_attributes
-      reconcile_court
-      reconcile_legislation_areas
-      reconcile_legislation_subareas
-      reconcile_proceeding
-      reconcile_judges
-      reconcile_natures
-      reconcile_legislations
-      reconcile_pages
+    reconcile_attributes
+    reconcile_court
+    reconcile_legislation_areas
+    reconcile_legislation_subareas
+    reconcile_proceeding
+    reconcile_judges
+    reconcile_natures
+    reconcile_legislations
+    reconcile_pages
 
-      decree.save!
-      decree.touch
-    end
+    decree.save!
+    decree.touch
   end
 
   def reconcile_attributes
