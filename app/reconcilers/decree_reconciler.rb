@@ -7,7 +7,7 @@ class DecreeReconciler
   end
 
   def reconcile!
-    decree.with_lock do
+    decree.transaction do
       reconcile_attributes
       reconcile_court
       reconcile_legislation_areas
