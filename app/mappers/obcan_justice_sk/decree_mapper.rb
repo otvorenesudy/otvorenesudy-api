@@ -30,6 +30,8 @@ module ObcanJusticeSk
     def initialize(decree)
       @decree = decree
       @data = decree.data.deep_symbolize_keys
+
+      pages
     end
 
     def source
