@@ -1,7 +1,7 @@
 :concurrency: 25
 :pidfile: tmp/pids/sidekiq.pid
 :production:
-  :concurrency: 25
+  :concurrency: 5
 :queues:
   - [exporters]
   - [reconcilers]
