@@ -7,3 +7,5 @@
   - [reconcilers]
   - [justice_gov_sk_pages]
   - [obcan_justice_sk]
+:limits:
+  reconcilers: 10

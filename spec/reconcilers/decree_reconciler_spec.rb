@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe DecreeReconciler, skip: true do
+RSpec.describe DecreeReconciler do
   subject { DecreeReconciler.new(decree, mapper: mapper) }
 
   let(:decree) { double(:decree) }
