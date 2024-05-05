@@ -7,14 +7,6 @@ RSpec.describe ObcanJusticeSk::DecreeMapper do
   subject { described_class.new(double(:decree, id: 1, class: double(:class, name: 'Decree'), data: data)) }
 
   let(:data) { JSON.parse(fixture('obcan_justice_sk/mappers/decree.json').read) }
-  let(:pdf_uri) { 'https://obcan.justice.sk/content/public/item/3855d4dc-1209-4ddf-8a63-34cb3349cede' }
-
-  before :each do
-    allow(PdfExtractor).to receive(:extract_text_from_url)
-      .with(pdf_uri, preserve_pages: true)
-      .and_return(['Fulltext'])
-      .once
-  end
 
   describe '#source' do
     it 'maps source' do
@@ -146,6 +138,11 @@ RSpec.describe ObcanJusticeSk::DecreeMapper do
 
   describe '#pages' do
     it 'maps pages from pdf document to text pages and caches pdf extractor response' do
+      allow(PdfExtractor).to receive(:extract_text_from_url)
+        .with(subject.pdf_uri, preserve_pages: true)
+        .and_return(['Fulltext'])
+        .once
+
       expect(subject.pages).to eql(['Fulltext'])
       expect(subject.pages).to eql(['Fulltext'])
     end
@@ -153,7 +150,9 @@ RSpec.describe ObcanJusticeSk::DecreeMapper do
 
   describe '#pdf_uri' do
     it 'maps uri to pdf' do
-      expect(subject.pdf_uri).to eql(pdf_uri)
+      expect(subject.pdf_uri).to eql(
+        'https://obcan.justice.sk/content/public/item/3855d4dc-1209-4ddf-8a63-34cb3349cede'
+      )
     end
   end
 end
