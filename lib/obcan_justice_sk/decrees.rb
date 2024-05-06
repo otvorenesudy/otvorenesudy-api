@@ -51,6 +51,7 @@ module ObcanJusticeSk
             'Platobný rozkaz',
             'Príkaz',
             'Rozhodnutie',
+            'Rozkaz na plnenie',
             'Rozsudok bez odôvodnenia',
             'Rozsudok pre uznanie',
             'Rozsudok pre vzdanie',
@@ -59,7 +60,8 @@ module ObcanJusticeSk
             'Trestný rozkaz',
             'Uznesenie bez odôvodnenia',
             'Uznesenie',
-            'Výzva'
+            'Výzva',
+            'Zmenkový platobný rozkaz'
           ]
         },
         povaha: {
@@ -103,8 +105,7 @@ module ObcanJusticeSk
             meno: {
               type: :string
             }
-          },
-          required: %i[registreGuid meno]
+          }
         },
         identifikacneCislo: {
           type: :string

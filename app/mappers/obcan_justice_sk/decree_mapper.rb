@@ -59,6 +59,8 @@ module ObcanJusticeSk
     end
 
     def judges
+      return [] unless data[:sudca] || data[:sudca][:meno]
+
       name = data[:sudca][:meno]
 
       [ObcanJusticeSk::Normalizer.normalize_person_name(name)]
