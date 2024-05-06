@@ -172,7 +172,7 @@ module ObcanJusticeSk
           type: :string
         }
       },
-      required: %i[guid formaRozhodnutia sud sudca identifikacneCislo spisovaZnacka datumVydania dokument updateDate]
+      required: %i[guid formaRozhodnutia sud sudca spisovaZnacka datumVydania dokument updateDate]
     }
 
     def self.import(since: nil)
