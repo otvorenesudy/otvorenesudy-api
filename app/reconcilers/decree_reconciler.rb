@@ -123,6 +123,8 @@ class DecreeReconciler
   end
 
   def reconcile_pages
+    return if mapper.pages.blank?
+
     pages =
       mapper.pages.map.with_index do |text, i|
         page = Decree::Page.find_or_initialize_by(decree: decree, number: i + 1)

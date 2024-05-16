@@ -1,6 +1,7 @@
 require 'spec_helper'
 require 'obcan_justice_sk'
 require 'pdf_extractor'
+require 'sentry-ruby'
 require_relative '../../../app/mappers/obcan_justice_sk/decree_mapper'
 
 RSpec.describe ObcanJusticeSk::DecreeMapper do
@@ -145,6 +146,34 @@ RSpec.describe ObcanJusticeSk::DecreeMapper do
 
       expect(subject.pages).to eql(['Fulltext'])
       expect(subject.pages).to eql(['Fulltext'])
+    end
+
+    context 'when pdf is not available' do
+      it 'returns empty array' do
+        error = StandardError.new()
+
+        allow(PdfExtractor).to receive(:extract_text_from_url).with(subject.pdf_uri, preserve_pages: true).and_raise(
+          error
+        )
+
+        expect(Sentry).to receive(:capture_exception).with(error).once
+
+        expect(subject.pages).to eql([])
+      end
+    end
+
+    context 'when pdf is empty' do
+      it 'returns empty array' do
+        allow(PdfExtractor).to receive(:extract_text_from_url).with(subject.pdf_uri, preserve_pages: true).and_return(
+          []
+        )
+
+        expect(Sentry).to receive(:capture_exception) do |error|
+          error.message === 'Failed to extract text from PDF for Decree:1'
+        end
+
+        expect(subject.pages).to eql([])
+      end
     end
   end
 
