@@ -119,6 +119,14 @@ RSpec.describe ObcanJusticeSk::DecreeMapper do
             value: '/SK/ZZ/1964/40/#paragraf-517.odsek-2',
             value_unprocessed: '/SK/ZZ/1964/40/#paragraf-517.odsek-2',
             year: 1964
+          },
+          {
+            number: 300,
+            paragraph: '289',
+            section: '1',
+            value: '/SK/ZZ/2005/300/#paragraf-289.odsek-1',
+            value_unprocessed: '/SK/ZZ/2005/-300/#paragraf-289.odsek-1',
+            year: 2005
           }
         ]
       )

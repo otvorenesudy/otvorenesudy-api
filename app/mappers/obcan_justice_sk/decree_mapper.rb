@@ -104,10 +104,7 @@ module ObcanJusticeSk
       Array
         .wrap(data[:odkazovanePredpisy].presence)
         .map do |value|
-          ObcanJusticeSk::Normalizer.partition_legislation(value[:nazov]).merge(
-            value: value[:nazov],
-            value_unprocessed: value[:nazov]
-          )
+          ObcanJusticeSk::Normalizer.partition_legislation(value[:nazov]).merge(value_unprocessed: value[:nazov])
         end
     end
 

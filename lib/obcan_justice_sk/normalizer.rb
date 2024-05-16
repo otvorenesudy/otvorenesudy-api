@@ -36,12 +36,14 @@ module ObcanJusticeSk
     end
 
     def self.partition_legislation(value)
+      value = value.gsub(%r{\A/SK/ZZ/(\d+)/-(\d+)}, '/SK/ZZ/\1/\2')
+
       year, number = value.match(%r{\A/SK/ZZ/(\d+)/(\d+)})[1..2].map(&:to_i)
       _, paragraph = *value.match(/paragraf-(\d+)/)
       _, section = *value.match(/odsek-(\w+)/)
       _, letter = *value.match(/pismeno-(\w+)/)
 
-      { year: year, number: number, paragraph: paragraph, section: section, letter: letter }.compact
+      { year: year, number: number, paragraph: paragraph, section: section, letter: letter, value: value }.compact
     end
   end
 end
