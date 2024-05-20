@@ -5,6 +5,7 @@ module ObcanJusticeSk
     ACTIVITY_MAP = {
       'label.sudca.aktivny' => :active,
       'label.sudca.odvolany' => :terminated,
+      'label.sudca.vymazany' => :deleted,
       'label.sudca.prerusenie vykonu - poberatel' => :inactive,
       'label.sudca.prerusenie vykonu - ina funkce' => :inactive,
       'label.sudca.prerusenie vykonu' => :inactive
