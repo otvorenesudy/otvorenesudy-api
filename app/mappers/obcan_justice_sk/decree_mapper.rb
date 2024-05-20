@@ -1,28 +1,30 @@
 module ObcanJusticeSk
   class DecreeMapper
     FORM_CODE_MAP = {
-      'Rozsudok' => 'A',
-      'Rozhodnutie' => 'A',
-      'Uznesenie' => 'N',
-      'Opravné uznesenie' => 'R',
-      'Dopĺňacie uznesenie' => 'R',
-      'Dopĺňací rozsudok' => 'D',
-      'Platobný rozkaz' => 'P',
-      'Zmenkový platobný rozkaz' => 'M',
-      'Európsky platobný rozkaz' => 'E',
-      'Šekový platobný rozkaz' => 'S',
-      'Rozkaz na plnenie' => 'L',
-      'Rozsudok pre zmeškanie' => 'K',
-      'Rozsudok pre uznanie' => 'U',
-      'Rozsudok bez odôvodnenia' => 'F',
-      'Uznesenie bez odôvodnenia' => 'C',
-      'Osvedčenie' => 'B',
-      'Trestný rozkaz' => 'T',
-      'Opatrenie bez poučenia' => 'X',
-      'Rozsudok pre vzdanie' => 'X',
       'Čiastočný rozsudok' => 'X',
+      'Dopĺňací rozsudok' => 'D',
+      'Dopĺňacie uznesenie' => 'R',
+      'Európsky platobný rozkaz' => 'E',
       'Medzitýmny rozsudok' => 'X',
-      'Opatrenie' => 'X'
+      'Opatrenie bez poučenia' => 'X',
+      'Opatrenie' => 'X',
+      'Opravné uznesenie' => 'R',
+      'Osvedčenie' => 'B',
+      'Platobný rozkaz' => 'P',
+      'Príkaz' => 'X',
+      'Rozhodnutie' => 'A',
+      'Rozkaz na plnenie' => 'L',
+      'Rozsudok bez odôvodnenia' => 'F',
+      'Rozsudok pre uznanie' => 'U',
+      'Rozsudok pre vzdanie' => 'X',
+      'Rozsudok pre zmeškanie' => 'K',
+      'Rozsudok' => 'A',
+      'Šekový platobný rozkaz' => 'S',
+      'Trestný rozkaz' => 'T',
+      'Uznesenie bez odôvodnenia' => 'C',
+      'Uznesenie' => 'N',
+      'Výzva' => 'X',
+      'Zmenkový platobný rozkaz' => 'M'
     }
 
     attr :decree, :data
@@ -59,7 +61,7 @@ module ObcanJusticeSk
     end
 
     def judges
-      return [] unless data[:sudca] || data[:sudca][:meno]
+      return [] unless data[:sudca] && data[:sudca][:meno]
 
       name = data[:sudca][:meno]
 
@@ -102,10 +104,7 @@ module ObcanJusticeSk
       Array
         .wrap(data[:odkazovanePredpisy].presence)
         .map do |value|
-          ObcanJusticeSk::Normalizer.partition_legislation(value[:nazov]).merge(
-            value: value[:nazov],
-            value_unprocessed: value[:nazov]
-          )
+          ObcanJusticeSk::Normalizer.partition_legislation(value[:nazov]).merge(value_unprocessed: value[:nazov])
         end
     end
 
@@ -114,9 +113,15 @@ module ObcanJusticeSk
         begin
           pages = PdfExtractor.extract_text_from_url(pdf_uri, preserve_pages: true)
 
-          raise "Failed to extract text from PDF for #{source_class}:#{source_id}" if !pages || pages[0].blank?
+          if !pages || pages[0].blank?
+            raise ArgumentError.new("Failed to extract text from PDF for #{source_class}:#{source_class_id}")
+          end
 
           pages
+        rescue StandardError => e
+          Sentry.capture_exception(e)
+
+          []
         end
     end
 

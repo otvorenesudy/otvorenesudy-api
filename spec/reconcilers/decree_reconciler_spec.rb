@@ -203,5 +203,16 @@ RSpec.describe DecreeReconciler do
 
       subject.reconcile_pages
     end
+
+    context 'when pages are not present' do
+      let(:attributes) { { pages: [] } }
+
+      it 'does not reconcile pages' do
+        expect(Decree::Page).not_to receive(:find_or_initialize_by)
+        expect(decree).not_to receive(:purge!)
+
+        subject.reconcile_pages
+      end
+    end
   end
 end

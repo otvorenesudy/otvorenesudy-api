@@ -53,6 +53,7 @@ module ObcanJusticeSk
           enum: [
             'label.sudca.aktivny',
             'label.sudca.odvolany',
+            'label.sudca.vymazany',
             'label.sudca.prerusenie vykonu - poberatel',
             'label.sudca.prerusenie vykonu - ina funkce',
             'label.sudca.prerusenie vykonu'
