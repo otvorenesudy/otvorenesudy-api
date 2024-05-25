@@ -261,6 +261,8 @@ GEM
     nkf (0.2.0)
     nokogiri (1.16.3-x86_64-darwin)
       racc (~> 1.4)
+    nokogiri (1.16.3-x86_64-linux)
+      racc (~> 1.4)
     oj (3.16.3)
       bigdecimal (>= 3.0)
     oj_mimic_json (1.0.1)
@@ -492,6 +494,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-22
+  x86_64-linux
 
 DEPENDENCIES
   active_model_serializers
