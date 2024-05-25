@@ -21,9 +21,7 @@
 #  declaration_url               :string(2048)
 #  report_url                    :string(2048)
 #
-class SelectionProcedure < ActiveRecord::Base
-  include OpenCourts::Model
-
+class SelectionProcedure < OpenCourts::ApplicationRecord
   belongs_to :source
 
   belongs_to :court, optional: true

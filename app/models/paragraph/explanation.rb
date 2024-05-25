@@ -9,9 +9,7 @@
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #
-class Paragraph::Explanation < ActiveRecord::Base
-  include OpenCourts::Model
-
+class Paragraph::Explanation < OpenCourts::ApplicationRecord
   belongs_to :paragraph
   belongs_to :explainable, polymorphic: true
 end

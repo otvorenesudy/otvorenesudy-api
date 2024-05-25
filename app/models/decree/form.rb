@@ -8,8 +8,6 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Decree::Form < ActiveRecord::Base
-  include OpenCourts::Model
-
+class Decree::Form < OpenCourts::ApplicationRecord
   has_many :decrees, foreign_key: :decree_form_id
 end

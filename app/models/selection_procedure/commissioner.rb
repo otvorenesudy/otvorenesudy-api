@@ -10,9 +10,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
-class SelectionProcedure::Commissioner < ActiveRecord::Base
-  include OpenCourts::Model
-
+class SelectionProcedure::Commissioner < OpenCourts::ApplicationRecord
   belongs_to :procedure, class_name: 'SelectionProcedure', foreign_key: :selection_procedure_id
   belongs_to :judge, optional: true
 end

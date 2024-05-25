@@ -7,9 +7,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Judge::Position < ActiveRecord::Base
-  include OpenCourts::Model
-
+class Judge::Position < OpenCourts::ApplicationRecord
   has_many :employments
   has_many :judges, through: :employments
 end

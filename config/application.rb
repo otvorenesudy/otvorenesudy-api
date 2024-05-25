@@ -41,6 +41,9 @@ module OpenCourtsApi
 
     # Skylight
     config.skylight.probes << 'active_job'
+
+    # Schema Format
+    config.active_record.schema_format = :sql
   end
 end
 

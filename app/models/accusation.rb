@@ -9,9 +9,7 @@
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #
-class Accusation < ActiveRecord::Base
-  include OpenCourts::Model
-
+class Accusation < OpenCourts::ApplicationRecord
   belongs_to :defendant
 
   has_many :paragraph_explanations, as: :explainable

@@ -7,9 +7,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Legislation::Area < ActiveRecord::Base
-  include OpenCourts::Model
-
+class Legislation::Area < OpenCourts::ApplicationRecord
   has_many :usages, class_name: 'Legislation::AreaUsage', foreign_key: :legislation_area_id
   has_many :decrees, through: :usages
 end

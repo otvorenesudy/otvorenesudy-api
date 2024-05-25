@@ -8,9 +8,7 @@
 #  created_at               :datetime         not null
 #  updated_at               :datetime         not null
 #
-class Court::Jurisdiction < ActiveRecord::Base
-  include OpenCourts::Model
-
+class Court::Jurisdiction < OpenCourts::ApplicationRecord
   belongs_to :proceeding_type, class_name: 'Court::ProceedingType', foreign_key: :court_proceeding_type_id
   belongs_to :municipality
 

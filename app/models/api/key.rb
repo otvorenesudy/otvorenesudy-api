@@ -7,7 +7,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Api::Key < ActiveRecord::Base
+class Api::Key < ApplicationRecord
   before_create :generate_key
 
   def generate_key

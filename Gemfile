@@ -77,7 +77,7 @@ gem 'whenever'
 
 group :development, :test do
   gem 'capybara'
-  gem 'database_rewinder'
+  gem 'database_cleaner-active_record'
   gem 'factory_bot_rails'
   gem 'fuubar'
   gem 'pry-rails'

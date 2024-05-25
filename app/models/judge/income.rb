@@ -9,9 +9,7 @@
 #  created_at                    :datetime         not null
 #  updated_at                    :datetime         not null
 #
-class Judge::Income < ActiveRecord::Base
-  include OpenCourts::Model
-
+class Judge::Income < OpenCourts::ApplicationRecord
   belongs_to :property_declaration,
              class_name: 'Judge::Property::Declaration',
              foreign_key: :judge_property_declaration_id

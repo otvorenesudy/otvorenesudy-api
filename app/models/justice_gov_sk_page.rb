@@ -10,7 +10,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class JusticeGovSkPage < ActiveRecord::Base
+class JusticeGovSkPage < ApplicationRecord
   enum model: %i[court judge hearing decree]
 
   validates :uri, presence: true, uniqueness: true

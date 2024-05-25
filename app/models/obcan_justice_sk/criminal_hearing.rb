@@ -11,7 +11,7 @@
 #  updated_at :datetime         not null
 #
 module ObcanJusticeSk
-  class CriminalHearing < ActiveRecord::Base
+  class CriminalHearing < ApplicationRecord
     extend ObcanJusticeSk::Importable
 
     before_save :anonymize_defendants

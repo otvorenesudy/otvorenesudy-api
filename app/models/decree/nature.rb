@@ -7,9 +7,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Decree::Nature < ActiveRecord::Base
-  include OpenCourts::Model
-
+class Decree::Nature < OpenCourts::ApplicationRecord
   has_many :naturalizations, class_name: 'Decree::Naturalization', foreign_key: :decree_nature_id
   has_many :decrees, through: :naturalizations
 end

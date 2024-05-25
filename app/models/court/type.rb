@@ -7,8 +7,6 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Court::Type < ActiveRecord::Base
-  include OpenCourts::Model
-
+class Court::Type < OpenCourts::ApplicationRecord
   has_many :courts, foreign_key: :court_type_id
 end

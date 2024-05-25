@@ -9,8 +9,6 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
-class Paragraph < ActiveRecord::Base
-  include OpenCourts::Model
-
+class Paragraph < OpenCourts::ApplicationRecord
   has_many :explanations, class_name: 'Paragraph::Explanation'
 end

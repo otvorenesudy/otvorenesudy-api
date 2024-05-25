@@ -20,8 +20,7 @@
 #  source_class    :string(255)
 #  source_class_id :integer
 #
-class Decree < ActiveRecord::Base
-  include OpenCourts::Model
+class Decree < OpenCourts::ApplicationRecord
   include Purgeable
 
   belongs_to :source

@@ -9,8 +9,6 @@
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #
-class Proposer < ActiveRecord::Base
-  include OpenCourts::Model
-
+class Proposer < OpenCourts::ApplicationRecord
   belongs_to :hearing
 end

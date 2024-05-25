@@ -7,9 +7,7 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
-class Proceeding < ActiveRecord::Base
-  include OpenCourts::Model
-
+class Proceeding < OpenCourts::ApplicationRecord
   has_many :hearings
   has_many :decrees
 end

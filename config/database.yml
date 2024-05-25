@@ -5,6 +5,7 @@ opencourts: &opencourts
   host: localhost
   username: <%= ENV['OPENCOURTS_DATABASE_USER'] %>
   password: <%= ENV['OPENCOURTS_DATABASE_PASSWORD'] %>
+  migrations_paths: db/opencourts_migrate
 
 defaults: &defaults
   adapter: postgresql
@@ -14,26 +15,29 @@ defaults: &defaults
   username: <%= ENV['OPENCOURTS_API_DATABASE_USER'] %>
   password: <%= ENV['OPENCOURTS_API_DATABASE_PASSWORD'] %>
 
-opencourts_development:
-  <<: *opencourts
-  database: opencourts_development
-
-opencourts_test:
-  <<: *opencourts
-  database: opencourts_test
-
-opencourts_production:
-  <<: *opencourts
-  database: opencourts_production
-
 development:
-  <<: *defaults
-  database: opencourts_api_development
+  primary:
+    <<: *defaults
+    database: opencourts_api_development
+
+  opencourts:
+    <<: *opencourts
+    database: opencourts_development
 
 test:
-  <<: *defaults
-  database: opencourts_api_test
+  primary:
+    <<: *defaults
+    database: opencourts_api_test
+
+  opencourts:
+    <<: *opencourts
+    database: opencourts_test
 
 production:
-  <<: *defaults
-  database: opencourts_api_production
+  primary:
+    <<: *defaults
+    database: opencourts_api_production
+
+  opencourts:
+    <<: *opencourts
+    database: opencourts_production
