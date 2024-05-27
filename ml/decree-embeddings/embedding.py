@@ -19,14 +19,13 @@ def decree_to_base_features(decree):
     ]
 
 
-def base_embed_decrees(decrees):
+def base_embed_decrees(vocabulary, decrees):
     data = [
         {**decree, "features": decree_to_base_features(decree)} for decree in decrees
     ]
 
     vectorizer = CountVectorizer(
-        tokenizer=lambda x: x,
-        analyzer=lambda x: x,
+        vocabulary=vocabulary,
         lowercase=False,
         token_pattern=None,
     )
@@ -41,10 +40,9 @@ def base_embed_decrees(decrees):
         f"Vectorized [{len(vectorizer.get_feature_names_out())}] features in [{vectorizer_fit_time_in_ms:.2f}ms]"
     )
 
-    logger.debug("Sample of Vectorized Features Names:")
-    logger.debug(vectorizer.get_feature_names_out())
+    embeddings = []
 
     for i, decree in enumerate(data):
-        decree["vector"] = [int(decree["year"]) or 0] + vectors[i].toarray()[0]
+        embeddings[i] = [int(decree["year"]) or 0] + vectors[i].toarray()[0]
 
-    return data
+    return embeddings

@@ -15,6 +15,32 @@ params = {
 db = psycopg2.connect(**params)
 
 
+def decrees_base_features_vocabulary():
+    cur = db.cursor()
+
+    cur.execute(
+        """
+        SELECT decree_forms.value FROM decree_forms
+        UNION
+        SELECT court_types.value FROM court_types
+        UNION
+        SELECT decree_natures.value FROM decree_natures
+        UNION
+        SELECT legislation_areas.value FROM legislation_areas
+        UNION
+        SELECT legislation_subareas.value FROM legislation_subareas
+        UNION
+        SELECT legislations.value FROM legislations
+      """
+    )
+
+    rows = cur.fetchall()
+
+    cur.close()
+
+    return rows
+
+
 def decrees(include_text=True, batch_size=1000):
     cur = db.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
     last_id = 0
