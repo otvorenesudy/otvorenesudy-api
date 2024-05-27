@@ -41,9 +41,9 @@ def decrees(include_text=True, batch_size=1000):
             f"""
               SELECT
                 decrees.id AS id,
-                decree_forms.value AS form,
-                courts.name AS court,
-                court_types.value AS court_type,
+                (ARRAY_AGG(decree_forms.value))[1] AS form,
+                (ARRAY_AGG(courts.name))[1] AS court,
+                (ARRAY_AGG(court_types.value))[1] AS court_type,
                 EXTRACT(YEAR FROM date) :: INTEGER AS year,
                 ARRAY_AGG(DISTINCT decree_natures.value) FILTER (WHERE decree_natures.value IS NOT NULL) AS natures,
                 ARRAY_AGG(DISTINCT legislation_areas.value) FILTER (WHERE legislation_areas.value IS NOT NULL) AS areas,
@@ -69,9 +69,10 @@ def decrees(include_text=True, batch_size=1000):
               LEFT OUTER JOIN courts ON courts.id = decrees.court_id
               LEFT OUTER JOIN court_types ON court_types.id = courts.court_type_id
 
-              WHERE decrees.id > %s -- AND decrees.embedding IS NULL
-              GROUP BY decrees.id, decree_forms.value, courts.name, court_types.value
-              ORDER BY decrees.id, decree_forms.value, courts.name, court_types.value
+              WHERE decrees.id > %s
+              
+              GROUP BY decrees.id
+              ORDER BY decrees.id ASC
               LIMIT %s
             """,
             (last_id, batch_size),
