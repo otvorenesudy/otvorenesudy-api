@@ -13,18 +13,3 @@ def prepare_text(row):
     """
 
     return re.sub(r"\s+", " ", text).lower().strip()
-
-
-def decree_to_features(decree):
-    return [
-        item
-        for item in [
-            decree["form"] or None,
-            decree["court"] or None,
-            *(decree["natures"] or []),
-            *(decree["areas"] or []),
-            *(decree["subareas"] or []),
-            *(decree["legislations"] or []),
-        ]
-        if item
-    ]
