@@ -19,6 +19,21 @@ def decrees(include_text=True, batch_size=1000):
     cur = db.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
     last_id = 0
 
+    text_query = (
+        """
+          ,ARRAY_TO_STRING(
+            (
+              SELECT ARRAY_AGG(decree_pages.text ORDER BY decree_pages.number ASC) FROM decree_pages
+              WHERE decree_pages.decree_id = decrees.id
+              GROUP BY decree_pages.decree_id
+            ),
+            ''
+          ) AS text
+        """
+        if include_text
+        else ""
+    )
+
     while True:
         start_time = time()
 
@@ -34,17 +49,7 @@ def decrees(include_text=True, batch_size=1000):
                 ARRAY_AGG(DISTINCT legislation_areas.value) FILTER (WHERE legislation_areas.value IS NOT NULL) AS areas,
                 ARRAY_AGG(DISTINCT legislation_subareas.value) FILTER (WHERE legislation_subareas.value IS NOT NULL) AS subareas,
                 ARRAY_AGG(DISTINCT legislations.value) FILTER (WHERE legislations.value IS NOT NULL) AS legislations
-                { 
-                  """
-                    ,ARRAY_TO_STRING(
-                    (
-                      SELECT ARRAY_AGG(decree_pages.text ORDER BY decree_pages.number ASC) FROM decree_pages
-                      WHERE decree_pages.decree_id = decrees.id
-                      GROUP BY decree_pages.decree_id
-                    ),
-                    ''
-                    ) AS text
-                  """ if include_text else ""}
+                {text_query}
               FROM decrees
 
               LEFT OUTER JOIN decree_forms ON decree_forms.id = decrees.decree_form_id

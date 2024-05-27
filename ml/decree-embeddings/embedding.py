@@ -41,8 +41,8 @@ def base_embed_decrees(decrees):
         f"Vectorized [{len(vectorizer.get_feature_names_out())}] features in [{vectorizer_fit_time_in_ms:.2f}ms]"
     )
 
-    logger.debug("Vectorized features:")
-    logger.debug(vectorizer.get_feature_names_out().tolist())
+    logger.debug("Sample of Vectorized Features Names:")
+    logger.debug(vectorizer.get_feature_names_out())
 
     for i, decree in enumerate(data):
         decree["vector"] = [int(decree["year"]) or 0] + vectors[i].toarray()[0]
