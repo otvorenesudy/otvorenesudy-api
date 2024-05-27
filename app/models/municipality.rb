@@ -8,9 +8,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Municipality < ActiveRecord::Base
-  include OpenCourts::Model
-
+class Municipality < OpenCourts::ApplicationRecord
   has_many :courts
   has_many :court_jurisdictions
 end

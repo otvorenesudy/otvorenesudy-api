@@ -11,9 +11,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
-class Judging < ActiveRecord::Base
-  include OpenCourts::Model
-
+class Judging < OpenCourts::ApplicationRecord
   belongs_to :judge, optional: true
   belongs_to :hearing
 end

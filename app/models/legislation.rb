@@ -15,9 +15,7 @@
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #
-class Legislation < ActiveRecord::Base
-  include OpenCourts::Model
-
+class Legislation < OpenCourts::ApplicationRecord
   has_many :usages, class_name: :Usage
   has_many :decrees, through: :usages
 

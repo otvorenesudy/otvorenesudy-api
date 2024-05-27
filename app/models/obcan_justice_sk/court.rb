@@ -11,7 +11,7 @@
 #  updated_at :datetime         not null
 #
 module ObcanJusticeSk
-  class Court < ActiveRecord::Base
+  class Court < ApplicationRecord
     extend ObcanJusticeSk::Importable
 
     after_commit(on: %i[create update]) { ReconcileCourtJob.perform_later(self) }

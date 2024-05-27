@@ -9,6 +9,5 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Source < ActiveRecord::Base
-  include OpenCourts::Model
+class Source < OpenCourts::ApplicationRecord
 end

@@ -8,9 +8,7 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
-class Legislation::Usage < ActiveRecord::Base
-  include OpenCourts::Model
-
+class Legislation::Usage < OpenCourts::ApplicationRecord
   belongs_to :legislation
   belongs_to :decree
 end

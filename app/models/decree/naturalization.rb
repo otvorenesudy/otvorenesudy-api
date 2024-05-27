@@ -8,9 +8,7 @@
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #
-class Decree::Naturalization < ActiveRecord::Base
-  include OpenCourts::Model
-
+class Decree::Naturalization < OpenCourts::ApplicationRecord
   belongs_to :decree
   belongs_to :nature, class_name: 'Decree::Nature', foreign_key: :decree_nature_id
 end

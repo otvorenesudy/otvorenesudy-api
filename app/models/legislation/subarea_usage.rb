@@ -8,9 +8,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
-class Legislation::SubareaUsage < ActiveRecord::Base
-  include OpenCourts::Model
-
+class Legislation::SubareaUsage < OpenCourts::ApplicationRecord
   belongs_to :subarea, class_name: 'Legislation::Subarea', required: true, foreign_key: :legislation_subarea_id
   belongs_to :decree, required: true
 end

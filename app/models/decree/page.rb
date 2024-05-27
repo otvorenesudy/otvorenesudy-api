@@ -9,8 +9,6 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Decree::Page < ActiveRecord::Base
-  include OpenCourts::Model
-
+class Decree::Page < OpenCourts::ApplicationRecord
   belongs_to :decree, foreign_key: :decree_id
 end

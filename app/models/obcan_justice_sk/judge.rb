@@ -11,7 +11,7 @@
 #  updated_at :datetime         not null
 #
 module ObcanJusticeSk
-  class Judge < ActiveRecord::Base
+  class Judge < ApplicationRecord
     extend ObcanJusticeSk::Importable
 
     after_commit(on: %i[create update]) { ReconcileJudgeJob.perform_later(self) }
@@ -34,7 +34,7 @@ module ObcanJusticeSk
 
     def sanitized_short_guid_for_json_path_queries
       short_guid = data['registreGuid'].gsub(/\Asudca_/, '')
-      sanitized_short_guid = ActiveRecord::Base.connection.quote_string(short_guid)
+      sanitized_short_guid = ApplicationRecord.connection.quote_string(short_guid)
 
       Arel.sql(%Q["#{sanitized_short_guid}"])
     end

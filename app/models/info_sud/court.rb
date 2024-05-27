@@ -9,7 +9,7 @@
 #  updated_at :datetime         not null
 #
 module InfoSud
-  class Court < ActiveRecord::Base
+  class Court < ApplicationRecord
     extend InfoSud::Importable
 
     after_commit(on: %i[create update]) { ReconcileCourtJob.perform_later(self) }

@@ -9,9 +9,7 @@
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #
-class Defendant < ActiveRecord::Base
-  include OpenCourts::Model
-
+class Defendant < OpenCourts::ApplicationRecord
   belongs_to :hearing
 
   has_many :accusations

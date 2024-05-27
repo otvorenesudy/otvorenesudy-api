@@ -7,8 +7,6 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Hearing::Type < ActiveRecord::Base
-  include OpenCourts::Model
-
+class Hearing::Type < OpenCourts::ApplicationRecord
   has_many :hearings, foreign_key: :hearing_type_id
 end

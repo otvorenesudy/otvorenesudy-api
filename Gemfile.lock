@@ -163,7 +163,10 @@ GEM
     csv (3.2.8)
     curb (1.0.5)
     dalli (3.2.8)
-    database_rewinder (1.0.1)
+    database_cleaner-active_record (2.1.0)
+      activerecord (>= 5.a)
+      database_cleaner-core (~> 2.0.0)
+    database_cleaner-core (2.0.1)
     date (3.3.4)
     diff-lcs (1.5.1)
     docile (1.1.5)
@@ -234,7 +237,6 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2024.0305)
     mini_mime (1.1.5)
-    mini_portile2 (2.8.5)
     minitest (5.22.3)
     msgpack (1.7.2)
     mutex_m (0.2.0)
@@ -257,8 +259,9 @@ GEM
     net-ssh (7.2.1)
     nio4r (2.7.0)
     nkf (0.2.0)
-    nokogiri (1.16.3)
-      mini_portile2 (~> 2.8.2)
+    nokogiri (1.16.3-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.16.3-x86_64-linux)
       racc (~> 1.4)
     oj (3.16.3)
       bigdecimal (>= 3.0)
@@ -490,7 +493,8 @@ GEM
     zeitwerk (2.6.13)
 
 PLATFORMS
-  ruby
+  x86_64-darwin-22
+  x86_64-linux
 
 DEPENDENCIES
   active_model_serializers
@@ -515,7 +519,7 @@ DEPENDENCIES
   csv
   curb
   dalli
-  database_rewinder
+  database_cleaner-active_record
   dotenv-rails
   ed25519
   enumerize
@@ -561,6 +565,9 @@ DEPENDENCIES
   webmock
   webpacker (= 6.0.0.rc.6)
   whenever
+
+RUBY VERSION
+   ruby 3.3.0p0
 
 BUNDLED WITH
    2.5.6

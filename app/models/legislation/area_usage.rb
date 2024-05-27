@@ -8,9 +8,7 @@
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #
-class Legislation::AreaUsage < ActiveRecord::Base
-  include OpenCourts::Model
-
+class Legislation::AreaUsage < OpenCourts::ApplicationRecord
   belongs_to :area, class_name: 'Legislation::Area', required: true, foreign_key: :legislation_area_id
   belongs_to :decree, required: true
 end

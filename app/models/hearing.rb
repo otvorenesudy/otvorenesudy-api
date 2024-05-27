@@ -27,8 +27,7 @@
 #  original_court_id    :integer
 #  original_case_number :string(255)
 #
-class Hearing < ActiveRecord::Base
-  include OpenCourts::Model
+class Hearing < OpenCourts::ApplicationRecord
   include Purgeable
 
   belongs_to :source

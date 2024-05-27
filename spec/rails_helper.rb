@@ -38,15 +38,14 @@ RSpec.configure do |config|
   # instead of true
   config.use_transactional_fixtures = false
 
-  # DatabaseRewinder
+  # DatabaseCleaner
   config.before(:suite) do
-    DatabaseRewinder['opencourts_test']
-    DatabaseRewinder['test']
-
-    DatabaseRewinder.clean_all
+    DatabaseCleaner[:active_record].strategy = :deletion
+    DatabaseCleaner[:active_record, db: OpenCourts::ApplicationRecord].strategy = :deletion
   end
 
-  config.after(:each) { DatabaseRewinder.clean }
+  config.before(:each) { DatabaseCleaner.start }
+  config.after(:each) { DatabaseCleaner.clean }
 
   # ActiveJob
   config.around(:each, :active_job) do |example|

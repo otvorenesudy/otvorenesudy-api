@@ -29,8 +29,7 @@
 #  destroyed_at                :datetime
 #  other_contacts_json         :text
 #
-class Court < ActiveRecord::Base
-  include OpenCourts::Model
+class Court < OpenCourts::ApplicationRecord
   include Formattable
 
   belongs_to :source, autosave: true

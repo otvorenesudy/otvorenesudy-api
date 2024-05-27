@@ -11,9 +11,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Court::Expense < ActiveRecord::Base
-  include OpenCourts::Model
-
+class Court::Expense < OpenCourts::ApplicationRecord
   belongs_to :source
   belongs_to :court
 end

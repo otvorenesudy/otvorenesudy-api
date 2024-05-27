@@ -18,9 +18,7 @@
 #  source_class     :string(255)
 #  source_class_id  :integer
 #
-class Judge < ActiveRecord::Base
-  include OpenCourts::Model
-
+class Judge < OpenCourts::ApplicationRecord
   belongs_to :source
 
   has_many :designations, class_name: 'Judge::Designation'

@@ -7,8 +7,6 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Court::Office::Type < ActiveRecord::Base
-  include OpenCourts::Model
-
+class Court::Office::Type < OpenCourts::ApplicationRecord
   has_many :offices, class_name: 'Court::Office'
 end

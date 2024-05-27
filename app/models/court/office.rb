@@ -16,9 +16,7 @@
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #
-class Court::Office < ActiveRecord::Base
-  include OpenCourts::Model
-
+class Court::Office < OpenCourts::ApplicationRecord
   belongs_to :court
   belongs_to :type, class_name: 'Court::Office::Type', foreign_key: :court_office_type_id
 end

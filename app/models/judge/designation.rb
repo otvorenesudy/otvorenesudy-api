@@ -11,9 +11,7 @@
 #  created_at                :datetime         not null
 #  updated_at                :datetime         not null
 #
-class Judge::Designation < ActiveRecord::Base
-  include OpenCourts::Model
-
+class Judge::Designation < OpenCourts::ApplicationRecord
   belongs_to :source
   belongs_to :judge
   belongs_to :type, class_name: 'Judge::Designation::Type', foreign_key: :judge_designation_type_id, optional: true

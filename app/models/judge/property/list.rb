@@ -8,9 +8,7 @@
 #  created_at                    :datetime         not null
 #  updated_at                    :datetime         not null
 #
-class Judge::Property::List < ActiveRecord::Base
-  include OpenCourts::Model
-
+class Judge::Property::List < OpenCourts::ApplicationRecord
   belongs_to :declaration, class_name: 'Judge::Property::Declaration', foreign_key: :judge_property_declaration_id
   belongs_to :category, class_name: 'Judge::Property::Category', foreign_key: :judge_property_category_id
 

@@ -10,9 +10,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
-class Judgement < ActiveRecord::Base
-  include OpenCourts::Model
-
+class Judgement < OpenCourts::ApplicationRecord
   belongs_to :judge, optional: true
   belongs_to :decree
 

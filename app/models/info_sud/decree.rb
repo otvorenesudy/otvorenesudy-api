@@ -9,7 +9,7 @@
 #  updated_at :datetime         not null
 #
 module InfoSud
-  class Decree < ActiveRecord::Base
+  class Decree < ApplicationRecord
     extend InfoSud::Importable
 
     after_commit(on: %i[create update]) { ReconcileDecreeJob.perform_later(self) }

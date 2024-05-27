@@ -7,9 +7,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Judge::Property::Category < ActiveRecord::Base
-  include OpenCourts::Model
-
+class Judge::Property::Category < OpenCourts::ApplicationRecord
   has_many :property_lists, class_name: 'Judge::Property::List', foreign_key: :judge_property_list_id
 
   validates :value, presence: true
