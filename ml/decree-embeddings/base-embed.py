@@ -1,4 +1,3 @@
-from itertools import batched
 from time import time
 
 import pandas as pd
@@ -8,6 +7,7 @@ from logger import logger
 from repository import decrees, store_decrees_embeddings
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
+from utils import batched
 
 if __name__ == "__main__":
     try:
@@ -38,7 +38,7 @@ if __name__ == "__main__":
             f"Reduced dimensionality of [{len(embeddings)}] vectors using PCA in [{pca_time_in_ms:.2f}ms]"
         )
 
-        for batch in batched(zip(embeddings, data), 1000):
+        for batch in batched(list(zip(embeddings, data)), 1000):
             store_decrees_embeddings(
                 [[embedding.tolist(), data["id"]] for embedding, data in batch]
             )
