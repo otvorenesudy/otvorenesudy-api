@@ -4,7 +4,7 @@ from logger import logger
 from sklearn.feature_extraction.text import CountVectorizer
 
 
-def decree_to_plain_features(decree):
+def decree_to_base_features(decree):
     return [
         item
         for item in [
@@ -19,9 +19,9 @@ def decree_to_plain_features(decree):
     ]
 
 
-def plain_embed_decrees(decrees):
+def base_embed_decrees(decrees):
     data = [
-        {**decree, "features": decree_to_plain_features(decree)} for decree in decrees
+        {**decree, "features": decree_to_base_features(decree)} for decree in decrees
     ]
 
     vectorizer = CountVectorizer(
@@ -45,6 +45,6 @@ def plain_embed_decrees(decrees):
     logger.debug(vectorizer.get_feature_names_out().tolist())
 
     for i, decree in enumerate(data):
-        decree["vector"] = vectors[i].toarray()[0]
+        decree["vector"] = [int(decree["year"]) or 0] + vectors[i].toarray()[0]
 
     return data

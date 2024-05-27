@@ -4,7 +4,7 @@ from time import time
 
 import numpy
 import repository
-from embedding import plain_embed_decrees
+from embedding import base_embed_decrees
 from repository import decrees
 from sentence_transformers import InputExample, SentenceTransformer, losses, models
 from sklearn.metrics.pairwise import cosine_similarity
@@ -22,7 +22,7 @@ model = SentenceTransformer(modules=[embedding_model, pooling_model], device="cp
 if __name__ == "__main__":
     try:
         data = [decree for batch in decrees() for decree in batch]
-        data = plain_embed_decrees(data)
+        data = base_embed_decrees(data)
 
         training_examples = []
         number_of_samples = int(os.getenv("SAMPLES"))

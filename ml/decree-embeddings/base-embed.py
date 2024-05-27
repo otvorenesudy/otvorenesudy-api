@@ -3,7 +3,7 @@ from time import time
 
 import pandas as pd
 import repository
-from embedding import plain_embed_decrees
+from embedding import base_embed_decrees
 from logger import logger
 from repository import decrees, store_decrees_embeddings
 from sklearn.decomposition import PCA
@@ -11,8 +11,8 @@ from sklearn.preprocessing import StandardScaler
 
 if __name__ == "__main__":
     try:
-        data = [decree for batch in decrees() for decree in batch]
-        data = plain_embed_decrees(data)
+        data = [decree for batch in decrees(include_text=False) for decree in batch]
+        data = base_embed_decrees(data)
 
         standardize_start_time = time()
 

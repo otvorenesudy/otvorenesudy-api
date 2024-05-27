@@ -15,7 +15,7 @@ params = {
 db = psycopg2.connect(**params)
 
 
-def decrees(batch_size=1000):
+def decrees(include_text=True, batch_size=1000):
     cur = db.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
     last_id = 0
 
@@ -29,18 +29,22 @@ def decrees(batch_size=1000):
                 decree_forms.value AS form,
                 courts.name AS court,
                 court_types.value AS court_type,
+                EXTRACT(YEAR FROM date) :: INTEGER AS year,
                 ARRAY_AGG(DISTINCT decree_natures.value) FILTER (WHERE decree_natures.value IS NOT NULL) AS natures,
                 ARRAY_AGG(DISTINCT legislation_areas.value) FILTER (WHERE legislation_areas.value IS NOT NULL) AS areas,
                 ARRAY_AGG(DISTINCT legislation_subareas.value) FILTER (WHERE legislation_subareas.value IS NOT NULL) AS subareas,
-                ARRAY_AGG(DISTINCT legislations.value) FILTER (WHERE legislations.value IS NOT NULL) AS legislations,
-                ARRAY_TO_STRING(
-                  (
-                    SELECT ARRAY_AGG(decree_pages.text ORDER BY decree_pages.number ASC) FROM decree_pages
-                    WHERE decree_pages.decree_id = decrees.id AND decree_pages.number <= 2
-                    GROUP BY decree_pages.decree_id
-                  ),
-                  ''
-                ) AS text
+                ARRAY_AGG(DISTINCT legislations.value) FILTER (WHERE legislations.value IS NOT NULL) AS legislations
+                { 
+                  """
+                    ,ARRAY_TO_STRING(
+                    (
+                      SELECT ARRAY_AGG(decree_pages.text ORDER BY decree_pages.number ASC) FROM decree_pages
+                      WHERE decree_pages.decree_id = decrees.id
+                      GROUP BY decree_pages.decree_id
+                    ),
+                    ''
+                    ) AS text
+                  """ if include_text else ""}
               FROM decrees
 
               LEFT OUTER JOIN decree_forms ON decree_forms.id = decrees.decree_form_id
