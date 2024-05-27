@@ -15,7 +15,7 @@ RESTful APIs and crawlers for public data of the [Open Courts](https://github.co
 
 * Ruby 3.3.0
 * Rails 7.1
-* PostgreSQL 16
+* PostgreSQL 16 (+ pgvector extension)
 
 See [other requirements for Open Courts application](https://github.com/otvorenesudy/otvorenesudy#requirements)
 
