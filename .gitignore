@@ -34,4 +34,4 @@ yarn-debug.log*
 /config/credentials/production.key
 
 __pycache__
-ml/decree-embeddings/model/
+ml/decree-embeddings/models/
