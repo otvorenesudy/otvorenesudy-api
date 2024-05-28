@@ -24,18 +24,16 @@ def prepare_text(row):
 
 
 def batch_files(path, randomize_order=False):
+    files = os.listdir(path)
+
     if randomize_order:
-        files = list(os.listdir(path))
         random.shuffle(files)
-    else:
-        files = os.listdir(path)
 
     for filename in files:
         file_path = os.path.join(path, filename)
 
         if os.path.isfile(file_path):
-            file = open(file_path, "r")
-            content = file.read()
-            file.close()
+            with open(file_path, "r") as f:
+                content = f.read()
 
             yield file_path, content
