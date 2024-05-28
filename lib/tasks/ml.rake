@@ -81,11 +81,7 @@ namespace :ml do
         i += 1
       end
 
-      Open3.popen3 "DATA_PATH='#{path}' python3 #{Rails.root.join('ml', 'decree-embeddings', 'base-embed.py')}" do |stdin, stdout, stderr, thread|
-        while line = stdout.gets
-          puts line
-        end
-      end
+      system("DATA_PATH='#{path}' python3 #{Rails.root.join('ml', 'decree-embeddings', 'base-embed.py')}", out: STDOUT)
 
       Dir
         .glob(File.join(path, 'data', '*.json'))
