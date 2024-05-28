@@ -11,8 +11,8 @@ def decree_to_base_features(decree):
             decree["form"] or None,
             decree["court_type"] or None,
             *(decree["natures"] or []),
-            *(decree["areas"] or []),
-            *(decree["subareas"] or []),
+            *(decree["legislation_areas"] or []),
+            *(decree["legislation_subareas"] or []),
             *(decree["legislations"] or []),
         ]
         if item
@@ -28,6 +28,7 @@ def base_embed_decrees(vocabulary, decrees):
         vocabulary=vocabulary,
         lowercase=False,
         token_pattern=None,
+        tokenizer=lambda x: x,
     )
 
     vectorizer_fit_start_time = time()
@@ -43,6 +44,6 @@ def base_embed_decrees(vocabulary, decrees):
     embeddings = []
 
     for i, decree in enumerate(data):
-        embeddings[i] = [int(decree["year"]) or 0] + vectors[i].toarray()[0]
+        embeddings.append([int(decree["year"]) or 0] + vectors[i].toarray()[0])
 
     return embeddings

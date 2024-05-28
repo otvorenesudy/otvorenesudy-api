@@ -1,9 +1,7 @@
 import os
 from time import time
 
-import repository
 from logger import logger
-from repository import decrees, store_decrees_embeddings
 from sentence_transformers import SentenceTransformer
 from transformers import AutoModel
 from utils import prepare_text
@@ -28,17 +26,15 @@ def embed(texts):
 
 
 if __name__ == "__main__":
-    try:
-        for batch in decrees():
-            texts = [prepare_text(row) for row in batch]
+    # TODO: to be implemented, concatenate embeddings with base + bert
+    for batch in decrees():
+        texts = [prepare_text(row) for row in batch]
 
-            embeddings = embed(texts)
+        embeddings = embed(texts)
 
-            store_decrees_embeddings(
-                [
-                    [embedding.tolist(), row["id"]]
-                    for embedding, row in zip(embeddings, batch)
-                ]
-            )
-    finally:
-        repository.disconnect()
+        store_decrees_embeddings(
+            [
+                [embedding.tolist(), row["id"]]
+                for embedding, row in zip(embeddings, batch)
+            ]
+        )
