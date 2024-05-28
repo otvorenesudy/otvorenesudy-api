@@ -67,9 +67,6 @@ namespace :ml do
       *Legislation.pluck(:value)
     ]
 
-    timing =
-      Benchmark.measure { File.open(File.join(path, 'vocabulary.json'), 'w') { |f| f.write(vocabulary.to_json) } }
-
     begin
       timing =
         Benchmark.measure { File.open(File.join(path, 'vocabulary.json'), 'w') { |f| f.write(vocabulary.to_json) } }
