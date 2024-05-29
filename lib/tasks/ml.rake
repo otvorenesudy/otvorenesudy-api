@@ -25,19 +25,7 @@ def batch_decrees(batch_size: 10_000, include_text: false)
               Arel.sql(
                 'ARRAY_AGG(DISTINCT legislation_subareas.value) FILTER (WHERE legislation_subareas.value IS NOT NULL)'
               ),
-              Arel.sql('ARRAY_AGG(DISTINCT legislations.value) FILTER (WHERE legislations.value IS NOT NULL)'),
-              Arel.sql(
-                "
-                  ARRAY_TO_STRING(
-                    (
-                      SELECT ARRAY_AGG(decree_pages.text ORDER BY decree_pages.number ASC) FROM decree_pages
-                      WHERE decree_pages.decree_id = decrees.id
-                      GROUP BY decree_pages.decree_id
-                    ),
-                    ''
-                  ) AS text
-                "
-              )
+              Arel.sql('ARRAY_AGG(DISTINCT legislations.value) FILTER (WHERE legislations.value IS NOT NULL)')
             )
       end
 

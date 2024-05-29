@@ -38,7 +38,7 @@ def base_embed_decrees(vocabulary, decrees):
     vectorizer_fit_time_in_ms = (time() - vectorizer_fit_start_time) * 1000
 
     logger.info(
-        f"Vectorized [{len(vectorizer.get_feature_names_out())}] features of [{len(decrees)}] decrees in [{vectorizer_fit_time_in_ms:.2f}ms]"
+        f"Vectorized [{len(vectorizer.get_feature_names_out())}] features of [{len(decrees)}] in [{vectorizer_fit_time_in_ms:.2f}ms]"
     )
 
     embeddings = []
