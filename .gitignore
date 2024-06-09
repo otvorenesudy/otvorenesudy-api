@@ -35,3 +35,4 @@ yarn-debug.log*
 
 __pycache__
 ml/decree-embeddings/models/
+ml/decree-embeddings/data/

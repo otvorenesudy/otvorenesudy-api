@@ -6,6 +6,8 @@ from sentence_transformers import SentenceTransformer
 from transformers import AutoModel
 from utils import prepare_text
 
+# TODO: to be implemented, concatenate embeddings with base + bert
+
 current_dir = os.path.dirname(os.path.realpath(__file__))
 model = SentenceTransformer(
     f"{current_dir}/model/gerulata-slovakbert-otvorenesudy-decree-embeddings",
@@ -26,7 +28,7 @@ def embed(texts):
 
 
 if __name__ == "__main__":
-    # TODO: to be implemented, concatenate embeddings with base + bert
+
     for batch in decrees():
         texts = [prepare_text(row) for row in batch]
 

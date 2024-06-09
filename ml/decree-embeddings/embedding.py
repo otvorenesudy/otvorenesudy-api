@@ -1,7 +1,22 @@
+import json
+import os
+from datetime import datetime
 from time import time
 
+import numpy as np
 from logger import logger
+from scipy.sparse import csr_matrix, hstack
 from sklearn.feature_extraction.text import CountVectorizer
+
+
+def encode_year(year):
+    min_year = 1960
+    max_year = datetime.now().year
+    year_range = max_year - min_year
+    year_fraction = (year - min_year) / year_range
+    sine_encoding = np.sin(2 * np.pi * year_fraction)
+    cosine_encoding = np.cos(2 * np.pi * year_fraction)
+    return [sine_encoding, cosine_encoding]
 
 
 def decree_to_base_features(decree):
@@ -19,10 +34,8 @@ def decree_to_base_features(decree):
     ]
 
 
-def base_embed_decrees(vocabulary, decrees):
-    data = [
-        {**decree, "features": decree_to_base_features(decree)} for decree in decrees
-    ]
+def decrees_to_embeddings(vocabulary, decrees):
+    features = [decree_to_base_features(decree) for decree in decrees]
 
     vectorizer = CountVectorizer(
         vocabulary=vocabulary,
@@ -31,19 +44,7 @@ def base_embed_decrees(vocabulary, decrees):
         tokenizer=lambda x: x,
     )
 
-    vectorizer_fit_start_time = time()
+    vectors = vectorizer.fit_transform(features)
+    encoded_years = csr_matrix([encode_year(decree["year"]) for decree in decrees])
 
-    vectors = vectorizer.fit_transform([decree["features"] for decree in data])
-
-    vectorizer_fit_time_in_ms = (time() - vectorizer_fit_start_time) * 1000
-
-    logger.info(
-        f"Vectorized [{len(vectorizer.get_feature_names_out())}] features of [{len(decrees)}] in [{vectorizer_fit_time_in_ms:.2f}ms]"
-    )
-
-    embeddings = []
-
-    for i, decree in enumerate(data):
-        embeddings.append([int(decree["year"]) or 0] + vectors[i].toarray()[0])
-
-    return embeddings
+    return hstack((encoded_years, vectors))

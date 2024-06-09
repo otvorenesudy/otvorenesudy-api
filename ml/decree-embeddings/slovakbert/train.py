@@ -11,6 +11,8 @@ from sklearn.metrics.pairwise import cosine_similarity
 from torch.utils.data import DataLoader
 from utils import batch_files
 
+# TODO: to be implemented
+
 embedding_model = models.Transformer("gerulata/slovakbert")
 pooling_model = models.Pooling(
     embedding_model.get_word_embedding_dimension(),

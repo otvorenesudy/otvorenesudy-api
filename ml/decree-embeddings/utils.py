@@ -23,17 +23,9 @@ def prepare_text(row):
     return re.sub(r"\s+", " ", text).lower().strip()
 
 
-def batch_files(path, randomize_order=False):
-    files = os.listdir(path)
+def csr_matrix_memory_in_bytes(csr_matrix):
+    data_memory = csr_matrix.data.nbytes
+    indices_memory = csr_matrix.indices.nbytes
+    indptr_memory = csr_matrix.indptr.nbytes
 
-    if randomize_order:
-        random.shuffle(files)
-
-    for filename in files:
-        file_path = os.path.join(path, filename)
-
-        if os.path.isfile(file_path):
-            with open(file_path, "r") as f:
-                content = f.read()
-
-            yield file_path, content
+    return data_memory + indices_memory + indptr_memory
