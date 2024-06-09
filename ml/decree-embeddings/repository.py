@@ -34,7 +34,9 @@ def decrees_vocabulary():
       """
     )
 
-    return cur.fetchall()
+    rows = cur.fetchall()
+
+    return [row[0] for row in rows]
 
 
 def decrees(include_text=True, batch_size=10_000):
