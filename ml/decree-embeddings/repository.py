@@ -37,7 +37,7 @@ def decrees_vocabulary():
     return cur.fetchall()
 
 
-def decrees(include_text=True, batch_size=1000):
+def decrees(include_text=True, batch_size=10_000):
     cur = db.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
     last_id = 0
 
