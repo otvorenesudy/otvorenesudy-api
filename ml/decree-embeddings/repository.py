@@ -122,7 +122,10 @@ def store_decrees_embeddings(decrees):
 
     cur.executemany(
         "UPDATE decrees SET embedding = %s WHERE id = %s",
-        [(f"[{",".join(map(str, decree['embedding']))}]", decree['id']) for decree in decrees],
+        [
+            (f"[{','.join(map(str, decree['embedding']))}]", decree["id"])
+            for decree in decrees
+        ],
     )
 
     db.commit()
