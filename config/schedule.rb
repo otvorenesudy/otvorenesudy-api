@@ -22,7 +22,7 @@
 set :output, 'log/cron.log'
 
 every :day, at: '10 pm' do
-  command 'OPENCOURTS_DATABASE_NAME=opencourts_production python3 ml/decree-embeddings/embed.py'
+  runner 'ExceptionHandler.run { system("OPENCOURTS_DATABASE_NAME=opencourts_production python3 ml/decree-embeddings/embed.py") }'
 end
 
 every :day, at: '3:00 am' do
