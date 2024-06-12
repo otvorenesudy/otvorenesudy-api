@@ -7,7 +7,7 @@ from time import time
 import numpy as np
 from embedding import decrees_to_embeddings
 from logger import logger
-from repository import db, decrees, decrees_vocabulary, store_decrees_embeddings
+from repository import repository
 from scipy.sparse import vstack
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.random_projection import GaussianRandomProjection
@@ -15,7 +15,7 @@ from utils import csr_matrix_memory_in_bytes
 
 if __name__ == "__main__":
     try:
-        vocabulary = decrees_vocabulary()
+        vocabulary = repository.decrees_vocabulary()
 
         logger.info(f"Loaded vocabulary with [{len(vocabulary)}] values")
         logger.debug(f"Vocabulary sample: {vocabulary[:10]} ...")
@@ -24,7 +24,7 @@ if __name__ == "__main__":
         ids = []
         embeddings = []
 
-        for batch in decrees():
+        for batch in repository.decrees():
             start_time = time()
 
             vectors = decrees_to_embeddings(vocabulary, batch)
@@ -78,7 +78,7 @@ if __name__ == "__main__":
             ids_batch = ids[i : i + batch_size]
             reduced_embeddings = reducer.transform(embeddings_batch)
 
-            store_decrees_embeddings(
+            repository.store_decrees_embeddings(
                 [
                     {"id": id, "embedding": embedding.tolist()}
                     for id, embedding in zip(ids_batch, reduced_embeddings)
@@ -125,4 +125,4 @@ if __name__ == "__main__":
             f"Variance of differences between cosine similarities: {np.var(differences)}"
         )
     finally:
-        db.close()
+        repository.disconnect()
