@@ -24,8 +24,8 @@ RSpec.describe HearingReconciler do
       section: 'Civilný',
       subject: 'Zaplatenie pokuty - 33 eur',
       form: 'Verejné zasadnutie',
-      judges: ['JUDr. Peter Pan'],
-      chair_judges: ['JUDr. Peter Parker'],
+      judges: [double(:judge, name: 'JUDr. Peter Pan')],
+      chair_judges: [double(:judge, name: 'JUDr. Peter Parker')],
       opponents: ['Peter Pan', 'John Smith'],
       defendants: ['John Pan'],
       proposers: ['John Smithy'],
@@ -114,52 +114,24 @@ RSpec.describe HearingReconciler do
 
   describe '#reconcile_judges' do
     it 'reconciles existing judges' do
-      allow(JudgeFinder).to receive(:find_by).with(name: 'JUDr. Peter Parker') { :judge_1 }
-      allow(JudgeFinder).to receive(:find_by).with(name: 'JUDr. Peter Pan') { :judge_2 }
-
       judgings = [double(:judging), double(:judging)]
 
-      expect(Judging).to receive(:find_or_initialize_by).with(judge: :judge_1, hearing: hearing).and_return(judgings[0])
+      expect(Judging).to receive(:find_or_initialize_by).with(
+        judge: attributes[:chair_judges][0],
+        hearing: hearing
+      ).and_return(judgings[0])
 
-      expect(Judging).to receive(:find_or_initialize_by).with(judge: :judge_2, hearing: hearing).and_return(judgings[1])
+      expect(Judging).to receive(:find_or_initialize_by).with(
+        judge: attributes[:judges][0],
+        hearing: hearing
+      ).and_return(judgings[1])
 
-      expect(judgings[0]).to receive(:update!).with(
-        judge: :judge_1,
-        judge_name_unprocessed: 'JUDr. Peter Parker',
-        judge_name_similarity: 1,
-        judge_chair: true
-      )
-
-      expect(judgings[1]).to receive(:update!).with(
-        judge: :judge_2,
-        judge_name_unprocessed: 'JUDr. Peter Pan',
-        judge_name_similarity: 1,
-        judge_chair: false
-      )
+      expect(judgings[0]).to receive(:update!).with(judge_chair: true, judge_name_similarity: 1)
+      expect(judgings[1]).to receive(:update!).with(judge_chair: false, judge_name_similarity: 1)
 
       expect(hearing).to receive(:purge!).with(:judgings, except: judgings)
 
       subject.reconcile_judges
-    end
-
-    context 'when judge does not exist' do
-      it 'provides only unprocessed name' do
-        allow(JudgeFinder).to receive(:find_by).with(name: 'JUDr. Peter Pan') { nil }
-        allow(JudgeFinder).to receive(:find_by).with(name: 'JUDr. Peter Parker') { :judge_2 }
-
-        expect(Judging).to receive(:find_or_initialize_by).with(judge: :judge_2, hearing: hearing).and_return(
-          double.as_null_object
-        )
-
-        expect(Judging).to receive(:find_or_initialize_by).with(
-          judge_name_unprocessed: 'JUDr. Peter Pan',
-          hearing: hearing
-        ).and_return(double.as_null_object)
-
-        expect(hearing).to receive(:purge!)
-
-        subject.reconcile_judges
-      end
     end
   end
 

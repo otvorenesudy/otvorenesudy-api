@@ -1,6 +1,7 @@
 require 'spec_helper'
 require 'obcan_justice_sk'
 require_relative '../../../app/mappers/obcan_justice_sk/civil_hearing_mapper'
+require_relative '../../../app/services/obcan_justice_sk/judge_finder'
 
 RSpec.describe ObcanJusticeSk::CivilHearingMapper do
   subject do
@@ -43,7 +44,13 @@ RSpec.describe ObcanJusticeSk::CivilHearingMapper do
 
   describe '#judges' do
     it 'maps judges' do
-      expect(subject.judges).to eql(['Mgr. Denisa Slivová'])
+      judge = double(:judge, name: 'Mgr. Denisa Slivová')
+
+      allow(ObcanJusticeSk::JudgeFinder).to receive(:find_by).with(name: 'Mgr. Denisa Slivová', guid: nil).and_return(
+        judge
+      )
+
+      expect(subject.judges).to eql([judge])
     end
   end
 

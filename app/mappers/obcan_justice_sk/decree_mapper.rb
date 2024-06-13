@@ -63,9 +63,10 @@ module ObcanJusticeSk
     def judges
       return [] unless data[:sudca] && data[:sudca][:meno]
 
-      name = data[:sudca][:meno]
+      name = ObcanJusticeSk::Normalizer.normalize_person_name(data[:sudca][:meno])
+      guid = data[:sudca][:registreGuid].match(/null/) ? nil : data[:sudca][:registreGuid]
 
-      [ObcanJusticeSk::Normalizer.normalize_person_name(name)]
+      [ObcanJusticeSk::JudgeFinder.find_by(name: name, guid: guid)].compact
     end
 
     def date

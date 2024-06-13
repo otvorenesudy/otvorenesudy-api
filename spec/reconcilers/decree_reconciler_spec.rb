@@ -19,7 +19,7 @@ RSpec.describe DecreeReconciler do
       court: 'Court #1',
       legislation_areas: ['Legislation Area #1'],
       legislation_subareas: ['Legislation Subarea #1'],
-      judges: ['Peter Pan', 'Peter Smith'],
+      judges: [double(:judge, id: 1, name: 'Peter Pan')],
       natures: ['Decree Nature #1'],
       pages: ['Fulltext #1', 'Fulltext #2'],
       pdf_uri: 'http://uri.pdf'
@@ -149,26 +149,13 @@ RSpec.describe DecreeReconciler do
 
   describe '#reconcile_judges' do
     it 'reconciles judges for decree' do
-      judgements = [double(:judgement), double(:judgement)]
+      judgements = [double(:judgement)]
 
-      allow(JudgeFinder).to receive(:find_by).with(name: 'Peter Pan') { :judge }
-      allow(JudgeFinder).to receive(:find_by).with(name: 'Peter Smith') { nil }
-
-      allow(Judgement).to receive(:find_or_initialize_by).with(decree: decree, judge: :judge) { judgements[0] }
-      allow(Judgement).to receive(:find_or_initialize_by).with(decree: decree, judge_name_unprocessed: 'Peter Smith') {
-        judgements[1]
+      allow(Judgement).to receive(:find_or_initialize_by).with(decree: decree, judge: attributes[:judges][0]) {
+        judgements[0]
       }
 
-      expect(judgements[0]).to receive(:update!).with(
-        judge: :judge,
-        judge_name_similarity: 1,
-        judge_name_unprocessed: 'Peter Pan'
-      )
-      expect(judgements[1]).to receive(:update!).with(
-        judge: nil,
-        judge_name_similarity: 0,
-        judge_name_unprocessed: 'Peter Smith'
-      )
+      expect(judgements[0]).to receive(:update!).with(judge_name_similarity: 1)
 
       expect(decree).to receive(:purge!).with(:judgements, except: judgements)
 

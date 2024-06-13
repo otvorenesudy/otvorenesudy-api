@@ -104,7 +104,11 @@ module ObcanJusticeSk
     private
 
     def map_judges
-      data[:sudcovia].map { |judge| ObcanJusticeSk::Normalizer.normalize_person_name(judge) }
+      data[:sudcovia]
+        .map do |judge|
+          ObcanJusticeSk::JudgeFinder.find_by(name: ObcanJusticeSk::Normalizer.normalize_person_name(judge), guid: nil)
+        end
+        .compact
     end
   end
 end

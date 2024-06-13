@@ -1,6 +1,7 @@
 require 'spec_helper'
 require 'obcan_justice_sk'
 require_relative '../../../app/mappers/obcan_justice_sk/criminal_hearing_mapper'
+require_relative '../../../app/services/obcan_justice_sk/judge_finder'
 
 RSpec.describe ObcanJusticeSk::CriminalHearingMapper do
   subject do
@@ -43,7 +44,14 @@ RSpec.describe ObcanJusticeSk::CriminalHearingMapper do
 
   describe '#judges' do
     it 'maps judges' do
-      expect(subject.judges).to eql(['JUDr. Vladimír Tamaškovič'])
+      judge = double(:judge, name: 'JUDr. Vladimír Tamaškovič')
+
+      allow(ObcanJusticeSk::JudgeFinder).to receive(:find_by).with(
+        name: 'JUDr. Vladimír Tamaškovič',
+        guid: nil
+      ).and_return(judge)
+
+      expect(subject.judges).to eql([judge])
     end
   end
 
@@ -171,7 +179,13 @@ RSpec.describe ObcanJusticeSk::CriminalHearingMapper do
 
       describe '#chair_judges' do
         it 'maps chair judges' do
-          expect(subject.chair_judges).to eql(['JUDr. Jozef Pikna'])
+          judge = double(:judge, name: 'JUDr. Jozef Pikna')
+
+          allow(ObcanJusticeSk::JudgeFinder).to receive(:find_by).with(name: 'JUDr. Jozef Pikna', guid: nil).and_return(
+            judge
+          )
+
+          expect(subject.chair_judges).to eql([judge])
         end
       end
 

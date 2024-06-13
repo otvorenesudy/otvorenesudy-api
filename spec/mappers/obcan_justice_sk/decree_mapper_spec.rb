@@ -3,6 +3,7 @@ require 'obcan_justice_sk'
 require 'pdf_extractor'
 require 'sentry-ruby'
 require_relative '../../../app/mappers/obcan_justice_sk/decree_mapper'
+require_relative '../../../app/services/obcan_justice_sk/judge_finder'
 
 RSpec.describe ObcanJusticeSk::DecreeMapper do
   subject { described_class.new(double(:decree, id: 1, class: double(:class, name: 'Decree'), data: data)) }
@@ -48,8 +49,15 @@ RSpec.describe ObcanJusticeSk::DecreeMapper do
   end
 
   describe '#judges' do
-    it 'maps judges names' do
-      expect(subject.judges).to eql(['JUDr. Andrea Gabrielová'])
+    it 'maps judges' do
+      judge = double(:judge)
+
+      allow(ObcanJusticeSk::JudgeFinder).to receive(:find_by).with(
+        name: 'JUDr. Andrea Gabrielová',
+        guid: data['sudca']['registreGuid']
+      ).and_return(judge)
+
+      expect(subject.judges).to eql([judge])
     end
   end
 

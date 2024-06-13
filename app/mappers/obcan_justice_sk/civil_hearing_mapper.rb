@@ -30,7 +30,14 @@ module ObcanJusticeSk
     def judges
       return [] unless data[:sudca].present?
 
-      data[:sudca].map { |e| ObcanJusticeSk::Normalizer.normalize_person_name(e[:meno]) } if data[:sudca]
+      data[:sudca]
+        .map do |e|
+          name = ObcanJusticeSk::Normalizer.normalize_person_name(e[:meno])
+          guid = e[:registreGuid].match(/null/) ? nil : e[:registreGuid]
+
+          ObcanJusticeSk::JudgeFinder.find_by(name: name, guid: guid)
+        end
+        .compact if data[:sudca]
     end
 
     def court
