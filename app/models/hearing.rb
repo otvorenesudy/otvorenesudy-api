@@ -37,6 +37,8 @@ class Hearing < OpenCourts::ApplicationRecord
   belongs_to :original_court, class_name: :Court, optional: true
 
   has_many :judgings
+  has_many :exact_judgings, -> { exact }, class_name: :Judging
+  has_many :inexact_judgings, -> { inexact }, class_name: :Judging
   has_many :judges, through: :judgings
 
   belongs_to :type, class_name: 'Hearing::Type', foreign_key: :hearing_type_id
