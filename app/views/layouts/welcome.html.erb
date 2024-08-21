@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html>
-  <head lang="<%= I18n.locale %>">
+<html lang="<%= I18n.locale %>">
+  <head>
     <meta charset="utf-8" />
     <title><%= t('welcome.title') %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,20 +15,22 @@
     <meta name="msapplication-TileImage" content="<%= asset_path 'icons/tileicon.png' %>" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css" />
     <link type="text/css" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.0.1/dist/cookieconsent.css">
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
     <%= csrf_meta_tags %>
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8C6J6P0R19"></script>
-    <script>
+    <script async data-category="analytics" data-service="Google Analytics" src="https://www.googletagmanager.com/gtag/js?id=G-8C6J6P0R19"></script>
+    <script data-category="analytics" data-service="Google Analytics">
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
       gtag('config', 'G-8C6J6P0R19');
     </script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.0.1/dist/cookieconsent.umd.js"></script>
   </head>
   <body>
     <%= yield %>
