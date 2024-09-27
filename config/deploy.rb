@@ -16,7 +16,8 @@ set :rbenv_ruby, File.read('.ruby-version').strip
 set :whenever_identifier, -> { "#{fetch(:application)}-#{fetch(:stage)}" }
 
 # Links
-set :linked_files, fetch(:linked_files, []).push('.env', 'config/credentials/production.key')
+set :linked_files,
+    fetch(:linked_files, []).push('.env', 'config/credentials/production.key', 'ml/decree-embeddings/models/reducer.pk')
 set :linked_dirs,
     fetch(:linked_dirs, []).push(
       'log',
