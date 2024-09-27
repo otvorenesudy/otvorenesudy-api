@@ -82,7 +82,9 @@ class Repository:
 
     @retry
     @connection
-    def decrees(self, include_text=True, batch_size=10_000):
+    def decrees(
+        self, include_text=True, batch_size=10_000, without_embedding_only=False
+    ):
         cur = self._connection.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
         last_id = 0
 
@@ -99,6 +101,10 @@ class Repository:
             """
             if include_text
             else ""
+        )
+
+        without_embedding_only_query = (
+            "AND embedding IS NULL" if without_embedding_only else ""
         )
 
         while True:
@@ -136,7 +142,9 @@ class Repository:
                 LEFT OUTER JOIN courts ON courts.id = decrees.court_id
                 LEFT OUTER JOIN court_types ON court_types.id = courts.court_type_id
 
-                WHERE decrees.id > %s
+                WHERE
+                    decrees.id > %s
+                    {without_embedding_only_query}
                 
                 GROUP BY decrees.id
                 ORDER BY decrees.id ASC

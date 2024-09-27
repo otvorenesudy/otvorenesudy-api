@@ -15,6 +15,14 @@ from utils import csr_matrix_memory_in_bytes
 
 if __name__ == "__main__":
     try:
+        model_path = os.path.join(
+            os.path.dirname(os.path.abspath(__file__)), "models", "reducer.pk"
+        )
+        incremental = os.getenv("INCREMENTAL", "false").lower() == "true"
+
+        if incremental:
+            logger.info("Incremental mode enabled")
+
         vocabulary = repository.decrees_vocabulary()
 
         logger.info(f"Loaded vocabulary with [{len(vocabulary)}] values")
@@ -24,7 +32,7 @@ if __name__ == "__main__":
         ids = []
         embeddings = []
 
-        for batch in repository.decrees():
+        for batch in repository.decrees(without_embedding_only=incremental):
             start_time = time()
 
             vectors = decrees_to_embeddings(vocabulary, batch)
@@ -38,33 +46,56 @@ if __name__ == "__main__":
             ids.extend([decree["id"] for decree in batch])
             embeddings.append(vectors)
 
+        if len(embeddings) == 0:
+            logger.info("No embeddings to process")
+            exit(0)
+
         embeddings = vstack(embeddings)
 
         embeddings_time_in_ms = (time() - embeddings_start_time) * 1000
 
         logger.info(f"Finished embeddings in [{embeddings_time_in_ms:.2f}ms]")
 
-        memory = csr_matrix_memory_in_bytes(embeddings)
+        if incremental:
+            logger.info(f"Loading reducer model from [{model_path}] ...")
 
-        logger.debug(f"Memory usage for embeddings is [{memory / 1024 / 1024:.2f}MB]")
+            reducer_start_time = time()
 
-        sparsity = 1.0 - (
-            embeddings.count_nonzero() / (embeddings.shape[0] * embeddings.shape[1])
-        )
-        eps = math.floor(sparsity / 0.05) * 0.05
+            with open(model_path, "rb") as f:
+                reducer = pk.load(f)
 
-        logger.info(f"Sparsity of embeddings is [{sparsity}]")
-        logger.info(f"Setting eps of GaussianRandomProjection to [{eps}]")
+            reducer_time_in_ms = (time() - reducer_start_time) * 1000
 
-        reducer = GaussianRandomProjection(n_components=768, eps=eps)
+            logger.info(f"Reducer model loaded in [{reducer_time_in_ms:.2f}ms]")
+        else:
+            memory = csr_matrix_memory_in_bytes(embeddings)
 
-        reducer_start_time = time()
-        reducer.fit(embeddings)
-        reducer_time_in_ms = (time() - reducer_start_time) * 1000
+            logger.debug(
+                f"Memory usage for embeddings is [{memory / 1024 / 1024:.2f}MB]"
+            )
 
-        logger.info(
-            f"Finished fitting dimensionality reduction for embeddings in [{reducer_time_in_ms:.2f}ms]"
-        )
+            sparsity = 1.0 - (
+                embeddings.count_nonzero() / (embeddings.shape[0] * embeddings.shape[1])
+            )
+            eps = math.floor(sparsity / 0.05) * 0.05
+
+            logger.info(f"Sparsity of embeddings is [{sparsity}]")
+            logger.info(f"Setting eps of GaussianRandomProjection to [{eps}]")
+
+            reducer = GaussianRandomProjection(n_components=768, eps=eps)
+
+            reducer_start_time = time()
+            reducer.fit(embeddings)
+            reducer_time_in_ms = (time() - reducer_start_time) * 1000
+
+            logger.info(
+                f"Finished fitting dimensionality reduction for embeddings in [{reducer_time_in_ms:.2f}ms]"
+            )
+
+            with open(model_path, "wb") as f:
+                pk.dump(reducer, f)
+
+            logger.info(f"Reducer model saved to [{model_path}]")
 
         batch_size = 10_000
 
@@ -87,8 +118,11 @@ if __name__ == "__main__":
 
             time_in_ms = (time() - start_time) * 1000
 
+            # size min of 100 or embeddings_batch.shape[0]
+            size = min(100, embeddings_batch.shape[0])
+
             testing_indices = np.random.choice(
-                embeddings_batch.shape[0], size=100, replace=False
+                embeddings_batch.shape[0], size=size, replace=False
             )
 
             testing_embeddings.append(embeddings_batch[testing_indices, :])
