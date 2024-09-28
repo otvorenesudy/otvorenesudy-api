@@ -15,14 +15,6 @@ from utils import csr_matrix_memory_in_bytes
 
 if __name__ == "__main__":
     try:
-        model_path = os.path.join(
-            os.path.dirname(os.path.abspath(__file__)), "models", "reducer.pk"
-        )
-        incremental = os.getenv("INCREMENTAL", "false").lower() == "true"
-
-        if incremental:
-            logger.info("Incremental mode enabled")
-
         vocabulary = repository.decrees_vocabulary()
 
         logger.info(f"Loaded vocabulary with [{len(vocabulary)}] values")
@@ -32,7 +24,7 @@ if __name__ == "__main__":
         ids = []
         embeddings = []
 
-        for batch in repository.decrees(without_embedding_only=incremental):
+        for batch in repository.decrees():
             start_time = time()
 
             vectors = decrees_to_embeddings(vocabulary, batch)
@@ -56,46 +48,33 @@ if __name__ == "__main__":
 
         logger.info(f"Finished embeddings in [{embeddings_time_in_ms:.2f}ms]")
 
-        if incremental:
-            logger.info(f"Loading reducer model from [{model_path}] ...")
+        memory = csr_matrix_memory_in_bytes(embeddings)
 
-            reducer_start_time = time()
+        logger.debug(f"Memory usage for embeddings is [{memory / 1024 / 1024:.2f}MB]")
 
-            with open(model_path, "rb") as f:
-                reducer = pk.load(f)
+        sparsity = 1.0 - (
+            embeddings.count_nonzero() / (embeddings.shape[0] * embeddings.shape[1])
+        )
+        eps = math.floor(sparsity / 0.05) * 0.05
 
-            reducer_time_in_ms = (time() - reducer_start_time) * 1000
+        logger.info(f"Sparsity of embeddings is [{sparsity}]")
+        logger.info(f"Setting eps of GaussianRandomProjection to [{eps}]")
 
-            logger.info(f"Reducer model loaded in [{reducer_time_in_ms:.2f}ms]")
-        else:
-            memory = csr_matrix_memory_in_bytes(embeddings)
+        reducer = GaussianRandomProjection(n_components=768, eps=eps)
 
-            logger.debug(
-                f"Memory usage for embeddings is [{memory / 1024 / 1024:.2f}MB]"
-            )
+        reducer_start_time = time()
+        reducer.fit(embeddings)
+        reducer_time_in_ms = (time() - reducer_start_time) * 1000
 
-            sparsity = 1.0 - (
-                embeddings.count_nonzero() / (embeddings.shape[0] * embeddings.shape[1])
-            )
-            eps = math.floor(sparsity / 0.05) * 0.05
+        logger.info(
+            f"Finished fitting dimensionality reduction for embeddings in [{reducer_time_in_ms:.2f}ms]"
+        )
 
-            logger.info(f"Sparsity of embeddings is [{sparsity}]")
-            logger.info(f"Setting eps of GaussianRandomProjection to [{eps}]")
+        remove_index_start_time = time()
+        repository.remove_embeddings_index()
+        remove_index_time_in_ms = (time() - remove_index_start_time) * 1000
 
-            reducer = GaussianRandomProjection(n_components=768, eps=eps)
-
-            reducer_start_time = time()
-            reducer.fit(embeddings)
-            reducer_time_in_ms = (time() - reducer_start_time) * 1000
-
-            logger.info(
-                f"Finished fitting dimensionality reduction for embeddings in [{reducer_time_in_ms:.2f}ms]"
-            )
-
-            with open(model_path, "wb") as f:
-                pk.dump(reducer, f)
-
-            logger.info(f"Reducer model saved to [{model_path}]")
+        logger.info(f"Removed embeddings index in [{remove_index_time_in_ms:.2f}ms]")
 
         batch_size = 10_000
 
@@ -131,6 +110,12 @@ if __name__ == "__main__":
             logger.info(
                 f"Stored [#{ i // batch_size}] batch of embeddings in [{time_in_ms:.2f}ms]"
             )
+
+        create_index_start_time = time()
+        repository.create_embeddings_index()
+        create_index_time_in_ms = (time() - create_index_start_time) * 1000
+
+        logger.info(f"Created embeddings index in [{create_index_time_in_ms:.2f}ms]")
 
         similarities = cosine_similarity(vstack(testing_embeddings))
         reduced_similarities = cosine_similarity(

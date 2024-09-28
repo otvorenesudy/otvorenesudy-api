@@ -187,5 +187,29 @@ class Repository:
         time_in_ms = (time() - start_time) * 1000
         logger.info(f"Stored [{len(decrees)}] embeddings in [{time_in_ms:.2f}ms]")
 
+    @retry
+    @connection
+    def remove_embeddings_index(self):
+        cur = self._connection.cursor()
+
+        cur.execute("DROP INDEX IF EXISTS decrees_embedding_idx")
+
+        self._connection.commit()
+
+        cur.close()
+
+    @retry
+    @connection
+    def create_embeddings_index(self):
+        cur = self._connection.cursor()
+
+        cur.execute(
+            "CREATE INDEX decrees_embedding_idx ON decrees USING hnsw (embedding vector_cosine_ops) WITH (m = 20, ef_construction = 64);"
+        )
+
+        self._connection.commit()
+
+        cur.close()
+
 
 repository = Repository()
