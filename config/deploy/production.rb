@@ -5,4 +5,4 @@ set :rails_env, :production
 set :user, 'deploy'
 set :deploy_to, "/home/deploy/projects/#{fetch(:app_path)}"
 
-server 'otvorenesudy.sk', user: 'deploy', roles: %w[app db web]
+server 'otvorenesudy1.server.wbsprt.com', user: 'deploy', roles: %w[app db web]

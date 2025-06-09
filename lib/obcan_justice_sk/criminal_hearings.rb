@@ -135,7 +135,7 @@ module ObcanJusticeSk
       take = 1000
       pages = (json[:filteredCount] / take.to_f).ceil
 
-      (0...pages).each do |page|
+      (1..pages).each do |page|
         skip = page * take
         url = list_url(take: take, skip: skip)
 

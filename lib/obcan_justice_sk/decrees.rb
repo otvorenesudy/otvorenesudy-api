@@ -184,7 +184,7 @@ module ObcanJusticeSk
       size = 1_000
       pages = (json[:numFound] / size.to_f).ceil
 
-      (0...pages).each do |page|
+      (1..pages).each do |page|
         url = list_url(since: since, size: size, page: page)
 
         ObcanJusticeSk::ImportDecreesJob.perform_later(url)
