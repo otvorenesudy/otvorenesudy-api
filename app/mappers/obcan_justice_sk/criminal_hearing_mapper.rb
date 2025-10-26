@@ -74,7 +74,7 @@ module ObcanJusticeSk
     end
 
     def date
-      Time.parse("#{data[:datumPojednavania]}")
+      "#{data[:datumPojednavania]}".in_time_zone('Europe/Bratislava') if data[:datumPojednavania].present?
     end
 
     def note

@@ -80,9 +80,10 @@ module ObcanJusticeSk
       date = data[:datumPojednavania].presence
       time = data[:casPojednavania].presence
 
-      return Time.parse("#{date} 00:00") unless time
+      return nil if !date && !time
+      return Time.parse("#{date} 00:00 +0000") unless time
 
-      Time.parse("#{date} #{time}")
+      "#{date} #{time}".in_time_zone('Europe/Bratislava')
     end
 
     def note
