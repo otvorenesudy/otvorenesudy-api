@@ -111,7 +111,7 @@ RSpec.describe ObcanJusticeSk::CriminalHearingMapper do
 
   describe '#date' do
     it 'maps date' do
-      expect(subject.date).to eql(Time.parse('02-05-2024 08:30'))
+      expect(subject.date).to eql(Time.parse('02-05-2024 08:30 +0200'))
     end
   end
 
