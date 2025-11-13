@@ -33,7 +33,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          submodules: 'true'
+          submodules: "true"
 
       - name: Setup ENV File
         run: mv .env.ci .env.test
@@ -43,14 +43,14 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends libpq-dev libssl-dev libcurl4 libcurl4-openssl-dev
 
-      - name: 'Read Ruby Version'
+      - name: "Read Ruby Version"
         id: read-ruby-version
         run: echo "RUBY_VERSION=$(cat .ruby-version)" >> $GITHUB_OUTPUT
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '${{ steps.read-ruby-version.outputs.RUBY_VERSION }}'
+          ruby-version: "${{ steps.read-ruby-version.outputs.RUBY_VERSION }}"
           bundler-cache: true
 
       - name: Install Bundle
@@ -61,9 +61,9 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version-file: 'package.json'
-          cache: 'yarn'
-          registry-url: 'https://registry.npmjs.org'
+          node-version-file: "package.json"
+          cache: "yarn"
+          registry-url: "https://registry.npmjs.org"
 
       - name: Install Yarn
         run: npm install -g yarn
@@ -75,21 +75,16 @@ jobs:
         run: |
           bin/rails db:create db:schema:load
 
-      - name: Prepare Code Climate
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-        run: |
-          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-          chmod +x ./cc-test-reporter
-          ./cc-test-reporter before-build
-
       - name: Run RSpec
         run: bin/rspec
 
-      - name: Notify Code Climate
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-        run: ./cc-test-reporter after-build --coverage-input-type simplecov --exit-code $?
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: coverage/.resultset.json
+          fail_ci_if_error: true
+          verbose: true
 
   deploy:
     name: Deploy to Production
@@ -104,7 +99,7 @@ jobs:
         with:
           key: ${{ secrets.SSH_KEY }}
           name: github-actions
-          known_hosts: '...'
+          known_hosts: "..."
           config: |
             host otvorenesudy.sk
               IdentityFile ~/.ssh/github-actions
@@ -117,7 +112,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          submodules: 'true'
+          submodules: "true"
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
