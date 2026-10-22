@@ -9,14 +9,33 @@ RSpec.describe ObcanJusticeSk::CriminalHearings do
   let(:base_url) { 'https://api.justice.gov.sk/pojednavanie/trestne' }
   let(:id) { 'CCDA6228-8F0F-4364-B60C-5BA527607C8B_711769' }
 
+  def list_url(skip, take: 1000)
+    "#{base_url}?take=#{take}&skip=#{skip}"
+  end
+
   describe '.import' do
-    it 'enqueues a batch of a thousand hearings for each thousand there are' do
+    it 'enqueues a batch of a thousand hearings for each thousand there are, from the first' do
       stub_json("#{base_url}?take=1&skip=0", { filteredCount: 1500, data: [], take: 1 })
 
       described_class.import
 
       expect(ObcanJusticeSk::ImportCriminalHearingsJob).to have_been_enqueued.exactly(2).times
-      expect(ObcanJusticeSk::ImportCriminalHearingsJob).to have_been_enqueued.with("#{base_url}?take=1000&skip=2000")
+      [0, 1000].each do |skip|
+        expect(ObcanJusticeSk::ImportCriminalHearingsJob).to have_been_enqueued.with(list_url(skip))
+      end
+    end
+
+    # api.justice.gov.sk skips that many hearings, from 0, and reports how many there are in all as filteredCount.
+    it 'imports every hearing once, from the first batch to the last' do
+      stub_json("#{base_url}?take=1&skip=0", { filteredCount: 2001, data: [{ id: 'a' }], take: 1 })
+      { 0 => %w[a b], 1000 => %w[c], 2000 => %w[d], 3000 => [] }.each do |skip, ids|
+        stub_json(list_url(skip), { filteredCount: 2001, data: ids.map { { id: it } }, take: 1000 })
+      end
+
+      perform_enqueued_jobs(only: ObcanJusticeSk::ImportCriminalHearingsJob) { described_class.import }
+
+      expect(ObcanJusticeSk::ImportCriminalHearingJob).to have_been_enqueued.exactly(4).times
+      %w[a b c d].each { expect(ObcanJusticeSk::ImportCriminalHearingJob).to have_been_enqueued.with(it).once }
     end
 
     it 'stops at a list that is not what the importer expects' do

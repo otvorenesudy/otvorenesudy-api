@@ -135,13 +135,10 @@ module ObcanJusticeSk
       validate_list_json!(json)
 
       take = 1000
-      pages = (json[:filteredCount] / take.to_f).ceil
 
-      (1..pages).each do |page|
-        skip = page * take
-        url = list_url(take: take, skip: skip)
-
-        ObcanJusticeSk::ImportCriminalHearingsJob.perform_later(url)
+      # skip is how many hearings to pass over, from 0; filteredCount is how many there are in all.
+      (0...json[:filteredCount]).step(take) do |skip|
+        ObcanJusticeSk::ImportCriminalHearingsJob.perform_later(list_url(take:, skip:))
       end
     end
 
