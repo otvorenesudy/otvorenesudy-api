@@ -37,7 +37,7 @@ class Court < OpenCourts::ApplicationRecord
   belongs_to :type, class_name: 'Court::Type', foreign_key: :court_type_id, autosave: true, inverse_of: false
 
   has_many :employments, dependent: nil
-  has_many :judges, -> { uniq }, through: :employments
+  has_many :judges, -> { distinct }, through: :employments
 
   has_many :hearings, dependent: nil
   has_many :decrees, dependent: nil
