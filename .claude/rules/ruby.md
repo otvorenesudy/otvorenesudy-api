@@ -70,8 +70,9 @@ A source's record becomes an Open Courts record in steps, each with its place:
 - Iterate with `find_each` / `in_batches`: there are millions of decrees. `includes` against N+1 queries, as
   `Api::DecreesController#syncable_repository` does.
 - Errors you rescue and still want to hear about go to Sentry (`Sentry.capture_exception`).
-- Secrets come from Rails credentials (`Rails.application.credentials.dig(...)`) or ENV, never from code. You can't
-  read them; ask the user when a change needs a new one.
+- Secrets come from Rails credentials (`Rails.application.credentials.dig(...)`) or ENV, never from code. ENV comes
+  from dotenv's `.env` and `.env.test`, which git ignores, made from the committed `.env.example` and
+  `.env.test.example`. You can't read any of them; ask the user when a change needs a new one.
 - Log through `Rails.logger`, prefixed with the class, values in brackets:
   `Rails.logger.info "ObcanJusticeSk::Decrees # Imported page [#{page}]"`. Rake tasks report progress the same way
   with `puts` (`"Deleted [#{ids.size}] orphaned decrees"`).

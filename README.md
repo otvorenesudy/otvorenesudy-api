@@ -26,6 +26,11 @@ cd otvorenesudy-api
 bin/setup
 ```
 
+The settings come from [dotenv](https://github.com/bkeepers/dotenv) files, which git ignores except for their
+templates. `bin/setup` copies `.env.example` to `.env` (development) and `.env.test.example` to `.env.test` (tests)
+when they are missing, and never overwrites them: put your own database logins there. `.env.local` and
+`.env.*.local` hold personal overrides. CI uses the committed `.env.ci` as `.env.test`.
+
 See [installation of Open Courts application](https://github.com/otvorenesudy/otvorenesudy#installation)
 
 ## Contributing

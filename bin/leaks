@@ -41,8 +41,8 @@ forbidden='
 
 # Files that match a pattern above but are fine to commit, with the reason.
 allowed='
-(^|/)\.env\.(example|sample)$                           a template without values
-^\.env(\.ci|\.test)?$                                   committed since 2015; Betterleaks still scans what they say
+(^|/)\.env(\.[^/.]+)?\.(example|sample)$                a template; Betterleaks still scans what it says
+^\.env\.ci$                                             CI'"'"'s test settings; Betterleaks still scans what they say
 '
 
 # The pinned Betterleaks, downloaded on first use into the repository's git directory, which its worktrees share.

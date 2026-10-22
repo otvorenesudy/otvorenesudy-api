@@ -1,3 +1,6 @@
+# The logins come from ENV, which dotenv loads from .env, and in the specs from .env.test first. Git ignores both:
+# bin/setup makes them from the committed .env.example and .env.test.example, CI uses .env.ci as .env.test, and the
+# server has its own .env, which Capistrano links into each release.
 opencourts: &opencourts
   adapter: postgresql
   encoding: utf8

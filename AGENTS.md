@@ -45,14 +45,16 @@ bin/lint --fix <file>        # format and autocorrect a file (the edit hook does
 bin/leaks                    # secrets in the files and the history (the git hooks check each commit and push)
 bin/brakeman                 # vulnerabilities in the code
 bin/bundler-audit            # gems with known vulnerabilities
+bin/setup                    # gems, git hooks, .env and .env.test from their examples, the databases
 bin/rails server             # the app on localhost:3000
 bundle exec sidekiq -C config/sidekiq.yml
 ```
 
-`bin/test` needs PostgreSQL with pgvector on localhost. It rebuilds the test databases from `db/structure.sql` and
-`db/opencourts_structure.sql`, holds a machine-wide lock (otvorenesudy uses the same `opencourts_test` database), and
-runs outside the Claude Code sandbox because the app reads its local configuration while it boots. Run specs through
-it rather than `bundle exec rspec`, which the sandbox can't boot.
+`bin/test` needs PostgreSQL with pgvector on localhost, and the settings in `.env.test` and `.env`, which `bin/setup`
+makes. It rebuilds the test databases from `db/structure.sql` and `db/opencourts_structure.sql`, holds a machine-wide
+lock (otvorenesudy uses the same `opencourts_test` database), and runs outside the Claude Code sandbox because the app
+reads its local configuration while it boots. Run specs through it rather than `bundle exec rspec`, which the sandbox
+can't boot.
 
 ## Code Conventions
 
@@ -82,7 +84,9 @@ secret, ask the user to add it.
 
 | File | What |
 | --- | --- |
-| `.env`, `.env.local`, `.env.test`, `.env.ci` | dotenv settings: database logins and service settings per environment |
+| `.env`, `.env.test` | dotenv settings for development and the specs: database logins and service settings. Git ignores them; `bin/setup` makes them from the templates below. On the server, Capistrano links the server's own `.env`, with the production settings |
+| `.env.local`, `.env.*.local` | dotenv: personal overrides, which git ignores |
+| `.env.example`, `.env.test.example`, `.env.ci` | dotenv, committed: the templates of `.env` and `.env.test`, and CI's settings, which CI copies to `.env.test` |
 | `config/credentials/*.yml.enc` and `config/credentials/*.key` | Rails credentials (Sentry, Sidekiq, Skylight) and the keys that decrypt them |
 
 Claude Code denies them to its file tools (`permissions.deny`) and to sandboxed commands
@@ -93,8 +97,9 @@ Claude Code denies them to its file tools (`permissions.deny`) and to sandboxed 
 
 The history is public, so a secret that reaches it has leaked. `bin/leaks` stops one first: Betterleaks, pinned in
 the script and downloaded on first use, for what files say, and a list of names in the script (`config/master.key`,
-dotenv files, private keys, database dumps) for what they are called. `.env`, `.env.ci` and `.env.test` have been
-committed since 2015, so their names pass; Betterleaks still reads them.
+dotenv files, private keys, database dumps) for what they are called. Of the dotenv files, only the templates
+(`.env.example`, `.env.test.example`) and CI's `.env.ci` pass by name; Betterleaks still reads what they say.
+`.env` and `.env.test` were committed until 2026, and `.betterleaksignore` lists what their history held.
 
 | Where | When | What It Checks |
 | --- | --- | --- |
@@ -104,8 +109,8 @@ committed since 2015, so their names pass; Betterleaks still reads them.
 
 When it stops you:
 
-- **A real secret**: take it out, put it in the credentials or `.env.local`, and tell the user, who revokes it if it
-  was pushed.
+- **A real secret**: take it out, put it in the credentials or `.env`, and tell the user, who revokes it if it was
+  pushed.
 - **Not a secret** (a test password, a placeholder, a value in a recorded page): `betterleaks:allow` in a comment on
   its line, or, where no comment fits, its fingerprint in `.betterleaksignore` with the reason above it.
 - **Never skip the hooks.** `--no-verify`, `git commit -n` and changing `core.hooksPath` are blocked for agents, and
@@ -126,6 +131,8 @@ Brakeman and bundler-audit, and the ruleset on `main` requires a pull request an
    ```
 
    In Claude Code, switch the session into it with `EnterWorktree`. Run `bundle install` and `yarn install` there.
+   Git doesn't check out `.env` and `.env.test`: `bin/setup` makes them from their examples, or the user copies
+   theirs from the main checkout.
 2. **Commit** with the `conventional-commit` skill, staging files by name.
 3. **Push and open a pull request** when the user asks: `git push -u origin <branch>`, then `gh pr create` with a
    summary and the test plan (the commands you ran and their result).
