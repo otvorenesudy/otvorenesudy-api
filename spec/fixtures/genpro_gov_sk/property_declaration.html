@@ -1,0 +1,519 @@
+<!DOCTYPE html> 
+<html lang="sk">
+<head>
+		<title>Generálna prokuratúra - Majetkove priznania</title><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" >
+<meta http-equiv="X-UA-Compatible" content="IE=edge" ><link href="/css/master.css" media="screen" rel="stylesheet" type="text/css" >
+<script type="text/javascript" src="/js/jQuery/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/script.js"></script>
+<script type="text/javascript" src="/js/jquery.mmenu.js"></script>
+<script type="text/javascript" src="/js/jquery.mmenu.header.js"></script>
+<script type="text/javascript" src="/js/masonry.pkgd.js"></script><link rel="stylesheet" href="/css/jquery-ui.css" /><script src="/js/jQuery/jquery-ui-all.min.js" ></script>            <script>
+            $(function() {
+                        $( ".mobileAccordion" ).accordion({
+                           heightStyle: "content",
+                           collapsible: true
+                        });
+                      });
+                      
+                      // Edit to suit your needs.
+            var ADAPT_CONFIG = {
+              // Where is your CSS?
+              path: '/css/',
+              // false = Only run once, when page first loads.
+              // true = Change on window resize and page tilt.
+              callback: function(i, res){
+                            $.event.trigger({
+                                type: 'adapt',
+                                message: 'Window has adapted',
+                                time: new Date(),
+                                resolution: res
+                            });
+                        },    
+            
+              dynamic: true,
+              // First range entry is the minimum.
+              // Last range entry is the maximum.
+              // Separate ranges by "to" keyword.
+              range: [
+                '0px    to 980px  = mobile.min.css',
+                //'760px  to 980px  = 720.min.css',
+                '980px  to 1280px = 960.min.css',
+                '1280px to  1600px = 1200.min.css',
+                '1600px           = 1560.min.css'
+              ]
+            };
+            
+            $(document).ready(function(){
+                           
+                if ($(window).width() < 600) {                     
+                    $(".logo span").css({"width":180, "font-size":14, "line-height":'18px'});  
+                };
+                
+                $(window).resize(function(){
+                if ($(window).width() < 600) {                     
+                    $(".logo span").css({"width":180, "font-size":14, "line-height":'18px'});
+                }
+                else if ($(window).width() > 980) {                    
+                    $(".logo span").css({"font-size":24, "line-height":'26px',"width":260});
+                }
+                else {
+                        $(".logo span").css({"width":260, "font-size":20, "line-height":'24px'});
+                    }
+                })
+            
+                
+                if ($(window).width() < 460) {                     
+                    $(".logo span").css({"display":'none',});
+                };
+                $(window).resize(function(){
+                if ($(window).width() < 460) {                     
+                    $(".logo span").css({"display":'none',});
+                }
+                else {
+                        $(".logo").css({"width":'auto',});
+                        $(".logo span").css({"display":'inline-block',});
+                    }
+                })
+            });
+		</script><script src="/js/adapt.min.js" ></script>            <script>
+var mansoryExist = false;
+
+function mansonryBoxes() {
+    container = $('.masonryContainer');
+    
+    if ($(window).width() >= 980 && (!mansoryExist)) {
+        setTimeout(function(){
+            container.masonry({
+                itemSelector: '.item'
+            });
+            mansoryExist = true;
+        }, 500);
+    } else if ($(window).width() < 980 && mansoryExist) {
+        container.masonry('destroy');
+        mansoryExist = false;
+    } else if (mansoryExist){
+        container.masonry('reloadItems');
+    }
+}
+
+$(document).ready(function(){
+    if ($(window).width() > 980) {
+        setTimeout(mansonryBoxes, 500);
+    }
+
+
+$(window).on('adapt', function(e){
+       mansonryBoxes();
+       });
+});
+
+// scroll-to-top button show and hide
+jQuery(document).ready(function(){
+    jQuery(window).scroll(function(){
+        if (jQuery(this).scrollTop() > 100) {
+            jQuery('.scrollup').fadeIn();
+        } else {
+            jQuery('.scrollup').fadeOut();
+    }
+});
+// scroll-to-top animate
+jQuery('.scrollup').click(function(){
+    jQuery("html, body").animate({ scrollTop: 0 }, 600);
+        return false;
+    });
+});
+
+</script>	</head>
+	<body >
+	<noscript style="color:#fff" >Pre správne fungovanie stránky povoľte Javascript vo Vašom prehliadači.</noscript>
+
+	<div class="container_12" id="page">
+		<!-- begin HLAVICKA -->
+        <div class="grid_12 header">
+            <div class="menuTop">
+              <div class="languageBox"> <a href="/index/changelanguage/lang/en" title="English">English</a></div>
+              <ul>
+                
+                
+                
+                <li><a href="?gotext=1" title="textová verzia">textová verzia</a></li>
+                <li><a href="javascript:otvor('/mapa-stranok-2ea5.html');" title="mapa stránok - otvorí sa v novom okne">mapa stránok</a></li>
+                <!-- <li><a href="/index/changelanguage/lang/en" title="English">English</a></li> -->
+                <li class="iconRSS"><a href="/rss-127b.html" title="RSS">RSS</a></li>
+              </ul>
+            </div>
+            <a class="menu-mobile" href="#menu-mobile"></a> <a href="#language-mobile" class="language-mobile mobile">sk</a>
+            <div class="logo"> <a href="/" title="Domov" ><img src="/img/logo.png" alt="Logo Generálna prokuratúra"></a> <span>Generálna prokuratúra Slovenskej republiky</span> </div>
+            <div class="search">
+              <form action="/vyhladavanie-12a3.html" name="vyhladavanie">
+                <label for='q' style='display:none;'>Vyhladávanie</label><input type="text" placeholder="Vyhľadávanie" name="q" id="q"  value="">
+                <input type="button" onclick="document.forms.vyhladavanie.submit()" value=" " />
+              </form>
+            </div>
+            <div class="mobile" id="language-mobile">
+                <ul class="languageBoxMobile">
+                  <li><a class="active " title="Slovenský" href="/index/changelanguage/lang/sk">SK</a></li>
+                  <li><a class="" title="English" href="/index/changelanguage/lang/en">EN</a></li>
+                </ul>
+             </div>
+       </div><div id="menu-mobile" class="mobile" ><ul class="mainMenuMobile" >
+	 <li class="" >
+<a title="   Úvod   " href="/-uvod--2405.html">
+   Úvod   
+</a>
+    </li>
+	 <li class="" >
+<a title="Správy o činnosti" href="/spravy-o-cinnosti-12b7.html">
+Správy o činnosti
+</a>
+    </li>
+	 <li class="" >
+<a title="Štatistiky" href="/statistiky-12c1.html">
+Štatistiky
+</a>
+    </li>
+	 <li class="" >
+<a title="Príslušnosť prokuratúr" href="/prislusnost-prokuratur-2635.html">
+Príslušnosť prokuratúr
+</a>
+    </li>
+	 <li class="" >
+<a title="Register trestov" href="/register-trestov-12ad.html">
+Register trestov
+</a>
+    </li>
+	 <li class="" >
+<a title="Kontakty a úradné hodiny" href="/kontakty-a-uradne-hodiny-12cb.html">
+Kontakty a úradné hodiny
+</a>
+    </li>
+</ul><ul class="leftMenuMobile" >
+	 <li class="  on" >
+<a href="/prokuratura-sr-1e3d.html">
+Prokuratúra SR
+</a>
+    </li>
+	 <li class=" " >
+<a href="/rada-prokuratorov-2261.html">
+Rada prokurátorov
+</a>
+    </li>
+	 <li class=" " >
+<a href="/generalna-prokuratura-sr-1e47.html">
+Generálna prokuratúra SR
+</a>
+    </li>
+	 <li class=" " >
+<a href="/dokumenty-1e6f.html">
+Dokumenty
+</a>
+    </li>
+	 <li class=" " >
+<a href="/vyberove-konania-30ad.html">
+Výberové konania
+</a>
+    </li>
+	 <li class=" " >
+<a href="/verejne-obstaravanie-2eeb.html">
+Verejné obstarávanie
+</a>
+    </li>
+	 <li class=" " >
+<a href="/register-ponukaneho-majetku-statu-38cd.html">
+Register ponúkaného majetku štátu
+</a>
+    </li>
+	 <li class=" " >
+<a href="/objednavky-faktury-a-zmluvy-28dd.html">
+Objednávky, faktúry a zmluvy
+</a>
+    </li>
+	 <li class=" " >
+<a href="/informacie-pre-obcanov-1e5b.html">
+Informácie pre občanov
+</a>
+    </li>
+	 <li class=" " >
+<a href="/informacie-pre-novinarov-1e65.html">
+Informácie pre novinárov
+</a>
+    </li>
+	 <li class=" " >
+<a href="/legislativa-1e79.html">
+Legislatíva
+</a>
+    </li>
+	 <li class=" " >
+<a href="/ine-stranky-1e8d.html">
+Iné stránky
+</a>
+    </li>
+	 <li class=" " >
+<a href="/elektronicke-sluzby-gp-sr-3905.html">
+Elektronické služby GP SR
+</a>
+    </li>
+</ul></div><div class="grid_12 mainMenu" ><ul>
+	 <li class="" >
+<a title="   Úvod   " href="/-uvod--2405.html" >
+   Úvod   
+</a>
+    </li>
+	 <li class="" >
+<a title="Správy o činnosti" href="/spravy-o-cinnosti-12b7.html" >
+Správy o činnosti
+</a>
+    </li>
+	 <li class="" >
+<a title="Štatistiky" href="/statistiky-12c1.html" >
+Štatistiky
+</a>
+    </li>
+	 <li class="" >
+<a title="Príslušnosť prokuratúr" href="/prislusnost-prokuratur-2635.html" >
+Príslušnosť prokuratúr
+</a>
+    </li>
+	 <li class="" >
+<a title="Register trestov" href="/register-trestov-12ad.html" >
+Register trestov
+</a>
+    </li>
+	 <li class="" >
+<a title="Kontakty a úradné hodiny" href="/kontakty-a-uradne-hodiny-12cb.html" >
+Kontakty a úradné hodiny
+</a>
+    </li>
+</ul>            <script>
+            $(function() {
+            $('#menu-mobile').mmenu({
+                 header: {content: '<div class="searchMobile"><div><form method="get" action="#"><input name="q" type="text" autocomplete="off" placeholder="Vyhľadávanie"><input type="button" onclick="$(this).parent().submit();"></form></div></div>',
+                    add: true},
+                 slidingSubmenus: false,
+                 configuration: {
+                      pageNodetype: "div",
+                      }
+            });   
+    
+            $(".menu-mobile").click(function(){$(this).addClass("opened")});
+            $('#menu-mobile').on("close.mm", function(){$(".menu-mobile").removeClass("opened");});
+    
+            // Language menu
+            $('#language-mobile').mmenu({
+                 position: 'right',
+                 configuration: {
+                      pageNodetype: "div",
+                      }
+            });   
+    
+            $(".language-mobile").click(function(){$(this).addClass("opened")});
+            $('#language-mobile').on("close.mm", function(){$(".language-mobile").removeClass("opened");});
+    
+            $(document).on("adapt",function(event){
+                if (event.resolution >= 980) {
+                    $("#menu-mobile").trigger("close");
+                    $("#language-mobile").trigger("close");
+                }
+            });
+        });
+        </script></div><!-- begin LAVY STLPEC -->
+<div class="grid_3 sideBarIntro"><ul class="leftMenu" >
+	 <li class="  on" >
+<a href="/prokuratura-sr-1e3d.html">
+Prokuratúra SR
+</a>
+    </li>
+	 <li class=" " >
+<a href="/rada-prokuratorov-2261.html">
+Rada prokurátorov
+</a>
+    </li>
+	 <li class=" " >
+<a href="/generalna-prokuratura-sr-1e47.html">
+Generálna prokuratúra SR
+</a>
+    </li>
+	 <li class=" " >
+<a href="/dokumenty-1e6f.html">
+Dokumenty
+</a>
+    </li>
+	 <li class=" " >
+<a href="/vyberove-konania-30ad.html">
+Výberové konania
+</a>
+    </li>
+	 <li class=" " >
+<a href="/verejne-obstaravanie-2eeb.html">
+Verejné obstarávanie
+</a>
+    </li>
+	 <li class=" " >
+<a href="/register-ponukaneho-majetku-statu-38cd.html">
+Register ponúkaného majetku štátu
+</a>
+    </li>
+	 <li class=" " >
+<a href="/objednavky-faktury-a-zmluvy-28dd.html">
+Objednávky, faktúry a zmluvy
+</a>
+    </li>
+	 <li class=" " >
+<a href="/informacie-pre-obcanov-1e5b.html">
+Informácie pre občanov
+</a>
+    </li>
+	 <li class=" " >
+<a href="/informacie-pre-novinarov-1e65.html">
+Informácie pre novinárov
+</a>
+    </li>
+	 <li class=" " >
+<a href="/legislativa-1e79.html">
+Legislatíva
+</a>
+    </li>
+	 <li class=" " >
+<a href="/ine-stranky-1e8d.html">
+Iné stránky
+</a>
+    </li>
+	 <li class=" " >
+<a href="/elektronicke-sluzby-gp-sr-3905.html">
+Elektronické služby GP SR
+</a>
+    </li>
+</ul><div class="leftBox">
+	<h3>
+		Kontakty</h3>
+	<p class="addressBlue">
+		<strong>Generálna prokuratúra<br />
+		Slovenskej republiky</strong> Štúrova 2,<br />
+		812 85 Bratislava</p>
+	<p class="phoneBlue">
+		02/208 37 505<br />
+		595 32 505</p>
+	<p class="mailBlue">
+		<strong>Podateľňa</strong> <a href="mailto:GPSR@genpro.gov.sk">GPSR@genpro.gov.sk</a></p>
+	<p class="urlBlue">
+		<strong>e-podateľňa</strong> <a href="https://www.slovensko.sk/sk/lokator-sluzieb">https://www.slovensko.sk/sk/lokator-sluzieb</a></p>
+	<p class="phoneRed">
+		<strong>Protikorupčná linka</strong> 02/208 37 444</p>
+	<p class="mailRed">
+		<strong>Protikorupčný mail</strong> <a href="mailto:korupcia@genpro.gov.sk">korupcia@genpro.gov.sk</a></p>
+	<p class="phoneRed">
+		<strong>Linka pre týrané osoby</strong> 0800 300 700&nbsp;</p>
+	<p class="mailRed">
+		<strong>Týrané osoby</strong><a href="mailto:tyranie@genpro.gov.sk">tyranie@genpro.gov.sk</a></p>
+</div>
+<div class="leftBox mobileOFF">
+	<a href="/opis-elektronicke-sluzby-generalnej-prokuratury-slovenskej-republiky--38e1.html"><img alt="Operačný program informatizácia spoločnosti" src="//media.genpro.gov.sk/logo/opis.jpg" style="border-top: 0px solid; height: 47px; border-right: 0px solid; width: 173px; border-bottom: 0px solid; border-left: 0px solid" /></a><br />
+	<br />
+	<a href="http://www.ja-sr.sk/" target="_blank" title="odkaz na stránku Justičnej akadémie - otvorí sa v novom okne"><img alt="aktívny odkaz na Justičnú akadémiu"  class="okraj-okrovy" height="50" src="//media.genpro.gov.sk/logo/Justicna_akademia_01.jpg" width="169" /></a></div>
+<div class="leftBox mobileOFF">
+	<br />
+	<a href="https://www.slov-lex.sk/domov?p_p_id=49&amp;p_p_lifecycle=1&amp;p_p_state=normal&amp;p_p_mode=view&amp;_49_struts_action=%2Fmy_sites%2Fview&amp;_49_groupId=10184&amp;_49_privateLayout=false"><img alt="" src="//media.genpro.gov.sk/ikony/Slov-Lex.png" style="height: 70px; width: 200px" /></a><br />
+	<br />
+	<a href="/eurojust-27d9.html"><img alt="aktívny odkaz na Európsku jednotku pre súdnu spoluprácu (EUROJUST)" src="//media.genpro.gov.sk/logo/Eurojust.jpg" style="border-top: 1px solid; height: 111px; border-right: 1px solid; width: 171px; border-bottom: 1px solid; border-left: 1px solid" /></a><br />
+	<br />
+	<a href="/europska-justicna-siet-ejn-34c7.html"><img alt="aktívny odkaz na Európsku justičnú sieť" src="//media.genpro.gov.sk/logo/EJN.png" style="border-top: 1px solid; height: 81px; border-right: 1px solid; width: 170px; border-bottom: 1px solid; border-left: 1px solid" /></a><br />
+	<br />
+	<a href="https://e-justice.europa.eu/home.do?action=home&amp;lang=sk&amp;sufix=20" target="_blank" title="portál e-Justice o justičných systémoch krajín Európskej únie - otvorí sa v novom okne"><img alt="aktívny odkaz na portál e-Justice "  height="52" src="//media.genpro.gov.sk/logo/eJustice.jpg" style="height: 52px; width: 171px" width="171" /></a><br />
+	<br />
+	<a href="/olaf-1177.html"><img alt="OLAF" src="//media.genpro.gov.sk/logo/OLAF_logo.jpg" style="border-top: 1px solid; height: 56px; border-right: 1px solid; width: 170px; border-bottom: 1px solid; border-left: 1px solid" /></a><br />
+	<br />
+	<a href="/rada-europy-24e1.html" title="Rada Európy"><img alt="aktívny odkaz na Radu Európy"  height="50"  src="//media.genpro.gov.sk/logo/logo_RE1.jpg" style="height: 60px; width: 171px" width="171" /></a><br />
+	<br />
+	<a href="http://www.zodpovedne.sk/index.php" target="_blank" title="odkaz na stránku zodpovedne.sk - otvorí sa v novom okne"><img alt="aktívny odkaz na stránku Zodpovedne.sk - o rizikách internetovej a mobilnej komunikácie"  class="okraj-okrovy" height="38"  src="//media.genpro.gov.sk/logo/zodpovedne.jpg" width="169" /></a><br />
+	<br />
+	<a href="http://www.euroinfo.gov.sk/" target="_blank" title="odkaz na stránku Euro Iinfo - všetko o členstve v Európskej únii - otvorí sa v novom okne"><img alt="aktívny odkaz na Euro Iinfo - všetko o členstve v Európskej únii" class="okraj-okrovy" height="79" src="//media.genpro.gov.sk/logo/euroinfo.gif" style="height: 66px; width: 169px" width="169" /></a></div>
+</div><div class="contentIntro"><div class="grid_9 siteMap">/<a href='/prokuratura-sr-1e3d.html' >Prokuratúra SR</a>/<a href='/prokuratura-sr/majetkove-priznania-30a3.html' >Majetkove priznania</a></div><div class="grid_9 contentPage" ><a id="content" name="content"></a><h3 style="margin-bottom: 10px;">Majetkové priznanie prokurátora za rok 2011 a osvedčenie</h3>
+<div class="content">
+	<h3>Vandžurová Nehilová Beáta</h3>
+	<p>&nbsp;</p>
+	<h3>Zoznam nehnuteľností</h3>
+	<table class="table_01" >
+	    <caption>
+	        Zoznam nehnuteľností
+	    </caption>
+		<tr class="rowBlue_02" >	
+			<th>názov/popis</th>
+			<th>dôvod nadobudnutia</th>
+			<th>dátum nadobudnutia</th>
+		</tr>
+		<tr>	
+			<td>rodinný dom</td>
+			<td>úspory</td>
+			<td align="right">27. 1. 2010</td>
+		</tr>
+		<tr>	
+			<td>orná pôda</td>
+			<td>dedenie</td>
+			<td align="right">27. 6. 1997</td>
+		</tr>
+		<tr>	
+			<td>orná pôda</td>
+			<td>dedenie</td>
+			<td align="right">27. 6. 1997</td>
+		</tr>
+		<tr>	
+			<td>orná pôda a trvalé trávne porasty</td>
+			<td>dedenie</td>
+			<td align="right">27. 6. 1997</td>
+		</tr>
+		<tr>	
+			<td>záhrady, zastavané plochy a nádvoria</td>
+			<td>darovanie</td>
+			<td align="right">20. 1. 2004</td>
+		</tr>
+		<tr>	
+			<td>orná pôda a trvalé trávne porasty</td>
+			<td>dedenie</td>
+			<td align="right">27. 6. 1997</td>
+		</tr>
+		<tr>	
+			<td>orná pôda</td>
+			<td>dedenie</td>
+			<td align="right">27. 6. 1997</td>
+		</tr>
+	</table>
+	<p>&nbsp;</p>
+	<h3>Hnuteľné veci</h3>
+	<table class="table_01" >
+	    <caption>
+	        Hnuteľné veci
+	    </caption>
+		<tr class="rowBlue_02" >	
+			<th>popis majetku</th>
+			<th>dôvod nadobudnutia</th>
+			<th>dátum nadobudnutia</th>
+		</tr>
+		<tr>	
+			<td>osobné motorové vozidlo</td>
+			<td>kúpa, úspory</td>
+			<td align="right">28. 4. 2011</td>
+		</tr>
+	</table>
+	<p>&nbsp;</p>
+	<h3>Vyhlásenia</h3>
+	<ol>
+		<li>Vyhlasujem, že spĺňam podmienky osvedčenia podľa &sect; 27 ods. 1 zák. č. 154/2001 Z.z.</li>
+		<li>Vyhlasujem, že z činností podľa &sect; 27 ods. 2 zák. č. 154/2001 Z.z. mi neplynú príjmy a pôžitky.</li>
+	</ol>
+	<p>&nbsp;</p>
+	<a href="?" class="red">&lt;&lt; späť</a>
+</div>
+</div>
+</div><div class="grid_12 footer" ><p>
+	(c)2015 Správca obsahu: Generálna prokuratúra Slovenskej republiky: <a href="mailto:GPSR@genpro.gov.sk">GPSR@genpro.gov.sk</a>&nbsp;| Všetky práva vyhradené</p>
+<p>
+	Technický pervádzkovateľ: Generálna prokuratúra Slovenskej republiky: <a href="mailto:webmaster@genpro.gov.sk">webmaster@genpro.gov.sk</a> | <a href="/vyhlasenie-o-pristupnosti-1299.html">Vyhlásenie o prístupnosti</a></p>
+<p>
+	&nbsp;</p>
+</div>
+    </div>
+	<div class="scrollup" ></div>
+</body>
+</html>

@@ -225,7 +225,7 @@ RSpec.describe InfoSud::CourtMapper do
 
   describe '#information_center_note' do
     it 'maps information center note' do
-      expect(subject.information_center_note).to eql(nil)
+      expect(subject.information_center_note).to be(nil)
     end
   end
 
@@ -251,7 +251,7 @@ RSpec.describe InfoSud::CourtMapper do
 
   describe '#registry_center_note' do
     it 'maps registry center note' do
-      expect(subject.registry_center_note).to eql(nil)
+      expect(subject.registry_center_note).to be(nil)
     end
   end
 
@@ -265,7 +265,7 @@ RSpec.describe InfoSud::CourtMapper do
 
   describe '#business_registry_center_email' do
     it 'maps business registry center email' do
-      expect(subject.business_registry_center_email).to eql(nil)
+      expect(subject.business_registry_center_email).to be(nil)
     end
   end
 

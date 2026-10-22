@@ -67,7 +67,7 @@ RSpec.describe InfoSud::HearingMapper do
 
   describe '#selfjudge' do
     it 'maps self judge' do
-      expect(subject.selfjudge).to eql(true)
+      expect(subject.selfjudge).to be(true)
     end
   end
 

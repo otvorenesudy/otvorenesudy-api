@@ -1,34 +1,31 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
+# The welcome page's counts of decrees, judges and hearings, cached for 12 hours: counting millions of rows on every
+# visit would be slow.
 RSpec.describe WelcomePagePresenter do
-  subject { WelcomePagePresenter.new(cache: cache) }
+  subject(:presenter) { described_class.new(cache: ActiveSupport::Cache::MemoryStore.new) }
 
-  let(:cache) { double(:cache) }
+  it 'counts the decrees, judges and hearings' do
+    create_list(:decree, 2)
+    create_list(:judge, 3)
+    create(:hearing)
 
-  describe '#decrees_count' do
-    it 'caches decrees count' do
-      expect(cache).to receive(:fetch).with('decrees_count', expires_in: 12.hours).and_yield
-      expect(Decree).to receive(:count)
-
-      subject.decrees_count
-    end
+    expect([presenter.decrees_count, presenter.judges_count, presenter.hearings_count]).to eq([2, 3, 1])
   end
 
-  describe '#judges_count' do
-    it 'caches judges count' do
-      expect(cache).to receive(:fetch).with('judges_count', expires_in: 12.hours).and_yield
-      expect(Judge).to receive(:count)
+  it 'counts again only after 12 hours' do
+    counts = -> { [presenter.decrees_count, presenter.judges_count, presenter.hearings_count] }
+    counts.call
+    create(:decree)
+    create(:judge)
+    create(:hearing)
 
-      subject.judges_count
-    end
-  end
+    expect(counts.call).to eq([0, 0, 0])
 
-  describe '#hearings_count' do
-    it 'caches hearings count' do
-      expect(cache).to receive(:fetch).with('hearings_count', expires_in: 12.hours).and_yield
-      expect(Hearing).to receive(:count)
+    travel 12.hours + 1.second
 
-      subject.hearings_count
-    end
+    expect(counts.call).to eq([1, 1, 1])
   end
 end
