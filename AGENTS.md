@@ -113,9 +113,10 @@ When it stops you:
 
 ## Commits, Branches and Pull Requests
 
-**A push to `main` deploys to production** (`.github/workflows/main.yml`). Changes reach `main` only through a
-reviewed pull request; never push to `main`. `.github/workflows/security.yml` runs `bin/leaks`, Brakeman and
-bundler-audit, and the ruleset on `main` requires a pull request and its Secrets check.
+**Nothing deploys to production automatically for now**: the deploy job in `.github/workflows/main.yml` is off until
+the server runs the Rails 8 upgrade; deploy by hand with `bundle exec cap production deploy`. Changes reach `main`
+only through a reviewed pull request; never push to `main`. `.github/workflows/security.yml` runs `bin/leaks`,
+Brakeman and bundler-audit, and the ruleset on `main` requires a pull request and its Secrets check.
 
 1. **One worktree per change**, off the latest `main`, on a branch named with the `branch-naming` skill:
 

@@ -89,7 +89,9 @@ jobs:
   deploy:
     name: Deploy to Production
     needs: [test]
-    if: github.ref == 'refs/heads/main'
+    # Off until the production server runs the Rails 8 upgrade; deploy by hand with Capistrano meanwhile. To turn it
+    # back on: if: github.ref == 'refs/heads/main'
+    if: false
 
     runs-on: ubuntu-latest
 
