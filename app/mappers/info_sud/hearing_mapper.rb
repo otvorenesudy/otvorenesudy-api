@@ -2,9 +2,7 @@
 
 module InfoSud
   class HearingMapper
-    def initialize(data)
-      @data = data.deep_symbolize_keys
-    end
+    include InfoSud::Mapping
 
     def uri
       "https://obcan.justice.sk/infosud/-/infosud/i-detail/pojednavanie/#{@data[:guid]}"
@@ -41,6 +39,11 @@ module InfoSud
     def court
       InfoSud::Normalizer.normalize_court_name(@data[:sud_nazov])
     end
+
+    # InfoSud doesn't say which court and case a hearing came from.
+    def original_court; end
+
+    def original_case_number; end
 
     def type
       return 'Špecializovaného trestného súdu' if court == 'Špecializovaný trestný súd'
@@ -84,10 +87,7 @@ module InfoSud
     private
 
     def map_judges
-      # TODO: pass in only normalized and unprocessed value
-      names = @data[:sudca_meno] || []
-
-      names.map { |name| InfoSud::Normalizer.normalize_person_name(name) }
+      find_judges(@data[:sudca_meno] || [])
     end
   end
 end

@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe InfoSud::DecreeMapper do
-  subject(:mapper) { described_class.new(data) }
+  subject(:mapper) { described_class.new(build(:info_sud_decree, id: 1, data:)) }
 
   let(:data) do
     {
@@ -58,8 +58,10 @@ RSpec.describe InfoSud::DecreeMapper do
   end
 
   describe '#judges' do
-    it 'maps judges names' do
-      expect(mapper.judges).to eql(['JUDr. Miriam Štillová'])
+    it 'maps judges by name' do
+      judge = create(:judge, name: 'JUDr. Miriam Štillová')
+
+      expect(mapper.judges).to eq([judge])
     end
   end
 
@@ -77,7 +79,7 @@ RSpec.describe InfoSud::DecreeMapper do
 
   describe '#date' do
     it 'maps decree date' do
-      expect(mapper.date).to eql(Time.parse('2015-03-08T23:00:00Z'))
+      expect(mapper.date).to eq(Time.zone.parse('2015-03-09 00:00'))
     end
   end
 
@@ -122,9 +124,9 @@ RSpec.describe InfoSud::DecreeMapper do
     end
   end
 
-  describe '#text' do
-    it 'maps text from pdf document' do
-      expect(mapper.text).to eql('Fulltext')
+  describe '#pages' do
+    it 'maps the text of the document as its one page' do
+      expect(mapper.pages).to eq(['Fulltext'])
     end
   end
 

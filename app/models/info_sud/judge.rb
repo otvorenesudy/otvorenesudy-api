@@ -17,7 +17,7 @@ module InfoSud
     after_commit(on: %i[create update]) { ReconcileJudgeJob.perform_later(self) }
 
     def to_mapper
-      InfoSud::JudgeMapper.new(data)
+      InfoSud::JudgeMapper.new(self)
     end
   end
 end

@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe InfoSud::JudgeMapper do
-  subject(:mapper) { described_class.new(data) }
+  subject(:mapper) { described_class.new(build(:info_sud_judge, id: 1, data:)) }
 
   let(:data) do
     {

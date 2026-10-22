@@ -17,7 +17,7 @@ module InfoSud
     after_commit(on: %i[create update]) { ReconcileDecreeJob.perform_later(self) }
 
     def to_mapper
-      InfoSud::DecreeMapper.new(data)
+      InfoSud::DecreeMapper.new(self)
     end
   end
 end

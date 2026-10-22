@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe InfoSud::HearingMapper do
-  subject(:mapper) { described_class.new(data) }
+  subject(:mapper) { described_class.new(build(:info_sud_hearing, id: 1, data:)) }
 
   let(:data) do
     {
@@ -152,8 +152,10 @@ RSpec.describe InfoSud::HearingMapper do
   end
 
   describe '#judges' do
-    it 'maps judges' do
-      expect(mapper.judges).to eql(['JUDr. Margaréta Hlaváčková'])
+    let!(:judge) { create(:judge, name: 'JUDr. Margaréta Hlaváčková') }
+
+    it 'maps judges by name' do
+      expect(mapper.judges).to eq([judge])
       expect(mapper.chair_judges).to be_empty
     end
 
@@ -161,7 +163,7 @@ RSpec.describe InfoSud::HearingMapper do
       let(:data) { { 'sud_nazov' => 'Špecializovaný trestný súd', 'sudca_meno' => ['JUDr. Margaréta Hlaváčková'] } }
 
       it 'maps judges as chair' do
-        expect(mapper.chair_judges).to eql(['JUDr. Margaréta Hlaváčková'])
+        expect(mapper.chair_judges).to eq([judge])
         expect(mapper.judges).to be_empty
       end
     end

@@ -11,9 +11,7 @@ module InfoSud
       '06' => :active
     }.freeze
 
-    def initialize(data)
-      @data = data.symbolize_keys
-    end
+    include InfoSud::Mapping
 
     def uri
       "https://obcan.justice.sk/infosud/-/infosud/reg-detail/sudca/#{@data[:guid]}"
@@ -47,6 +45,15 @@ module InfoSud
 
     def note
       @data[:poznamka]
+    end
+
+    # InfoSud doesn't say who sits in the courts' judicial councils.
+    def judicial_council_chairman_court_names
+      []
+    end
+
+    def judicial_council_member_court_names
+      []
     end
   end
 end

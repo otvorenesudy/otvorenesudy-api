@@ -2,9 +2,7 @@
 
 module InfoSud
   class CourtMapper
-    def initialize(data)
-      @data = data.deep_symbolize_keys
-    end
+    include InfoSud::Mapping
 
     def uri
       "https://obcan.justice.sk/infosud/-/infosud/reg-detail/sud/#{@data[:guid]}"
@@ -106,6 +104,11 @@ module InfoSud
     def business_registry_center_note
       @data[:orsr][:note]
     end
+
+    # InfoSud doesn't publish these.
+    def data_protection_email; end
+
+    def other_contacts; end
 
     private
 

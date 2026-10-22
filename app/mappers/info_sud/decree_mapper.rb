@@ -27,9 +27,7 @@ module InfoSud
       'Opatrenie' => 'X'
     }.freeze
 
-    def initialize(data)
-      @data = data.deep_symbolize_keys
-    end
+    include InfoSud::Mapping
 
     def uri
       "https://obcan.justice.sk/infosud/-/infosud/i-detail/rozhodnutie/#{@data[:guid]}"
@@ -46,11 +44,11 @@ module InfoSud
     end
 
     def judges
-      Array.wrap(@data[:sudca_meno].presence).map { |name| InfoSud::Normalizer.normalize_person_name(name) }
+      find_judges(Array.wrap(@data[:sudca_meno].presence))
     end
 
     def date
-      Time.parse(@data[:datum_vydania_rozhodnutia]).utc if @data[:datum_vydania_rozhodnutia].present?
+      Time.zone.parse(@data[:datum_vydania_rozhodnutia]) if @data[:datum_vydania_rozhodnutia].present?
     end
 
     def file_number
@@ -90,8 +88,9 @@ module InfoSud
         end
     end
 
-    def text
-      @data[:dokument_fulltext].presence
+    # The dump holds the document's text, as one page.
+    def pages
+      Array.wrap(@data[:dokument_fulltext].presence)
     end
 
     def pdf_uri

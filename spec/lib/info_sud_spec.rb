@@ -1,27 +1,14 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-require 'zip'
 
 # InfoSud, obcan.justice.sk's former open data: zipped JSON dumps of courts, judges, hearings and decrees, downloaded
 # into tmp/downloads/info_sud, unpacked, and each record stored as published. Maintainers run it with rake info_sud:*.
 RSpec.describe InfoSud do
   let(:opendata_url) { 'https://obcan.justice.sk/opendata' }
 
-  def zip(*contents)
-    Zip::OutputStream.write_buffer do |archive|
-      contents.each_with_index do |content, index|
-        archive.put_next_entry("#{index}.json")
-        archive.write(content)
-      end
-    end.string
-  end
-
   def stub_dump(url, filename, *fixtures)
-    stub_request(:get, url).to_return(
-      body: zip(*fixtures.map { file_fixture("info_sud/#{it}.json").read }),
-      headers: { 'Content-Type' => 'application/zip', 'Content-Disposition' => %(attachment; filename="#{filename}") }
-    )
+    stub_info_sud_dump(url, filename, *fixtures.map { file_fixture("info_sud/#{it}.json").read })
   end
 
   def decree_dump_url(name)
