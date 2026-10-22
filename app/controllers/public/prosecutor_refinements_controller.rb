@@ -6,20 +6,30 @@ module Public
     before_action :restrict_allowed_origin
 
     def create
-      attributes = create_params.except(:prosecutors)
+      refinements = build_refinements
+      errors = refinement_errors(refinements)
 
-      refinements =
-        create_params[:prosecutors].map do |prosecutor|
-          Public::ProsecutorRefinement.create(attributes.merge(prosecutor: prosecutor, ip_address: request.remote_ip))
-        end
+      return render status: :unprocessable_content, json: { success: false, errors: } if errors.any?
 
-      invalid_refinement = refinements.find(&:invalid?)
-      render 422, errors: invalid_refinement.errors.full_messages if invalid_refinement
+      Public::ProsecutorRefinement.transaction { refinements.each(&:save!) }
 
       render 200
     end
 
     private
+
+    def build_refinements
+      attributes = create_params.except(:prosecutors).merge(ip_address: request.remote_ip)
+
+      Array(create_params[:prosecutors]).map { |prosecutor| Public::ProsecutorRefinement.new(attributes.merge(prosecutor:)) }
+    end
+
+    # Each refinement is saved, or none: what is wrong with any of them, or with the request.
+    def refinement_errors(refinements)
+      return ["Prosecutors can't be blank"] if refinements.empty?
+
+      refinements.reject(&:valid?).flat_map { it.errors.full_messages }.uniq
+    end
 
     def create_params
       params.permit(:name, :email, :office, prosecutors: [])

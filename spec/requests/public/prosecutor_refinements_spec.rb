@@ -28,13 +28,27 @@ RSpec.describe 'Prosecutor refinements' do
     expect(response.headers['Access-Control-Allow-Origin']).to eq('*')
   end
 
-  # The controller renders twice for an invalid refinement, which raises, as it always has.
-  it 'saves nothing for an invalid e-mail address, and fails', :error_pages do
+  it 'answers an invalid e-mail address with what is wrong, and saves nothing', :error_pages do
     post_refinements(params.merge(email: 'not an address'))
 
-    expect(response).to have_http_status(:internal_server_error)
-    expect(response.body).to eq('{"status":500,"error":"Internal Server Error"}')
+    expect(response).to have_http_status(:unprocessable_content)
+    expect(response.body).to eq('{"success":false,"errors":["Email is invalid"]}')
     expect(Public::ProsecutorRefinement.count).to eq(0)
+  end
+
+  it 'saves none of the refinements when one of them is invalid', :error_pages do
+    post_refinements(params.merge(prosecutors: ['Adam', '']))
+
+    expect(response).to have_http_status(:unprocessable_content)
+    expect(response.body).to eq(%({"success":false,"errors":["Prosecutor can't be blank"]}))
+    expect(Public::ProsecutorRefinement.count).to eq(0)
+  end
+
+  it 'answers a request without prosecutors with what is missing', :error_pages do
+    post_refinements(params.except(:prosecutors))
+
+    expect(response).to have_http_status(:unprocessable_content)
+    expect(response.body).to eq(%({"success":false,"errors":["Prosecutors can't be blank"]}))
   end
 
   it 'turns away an address that sent 30 refinements in the last 30 seconds' do
