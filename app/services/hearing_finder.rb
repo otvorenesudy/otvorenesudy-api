@@ -13,7 +13,7 @@ class HearingFinder
         name: mapper.court
       },
       judges: {
-        name: mapper.judges + mapper.chair_judges
+        id: (mapper.judges + mapper.chair_judges).map(&:id)
       }
     )
   end

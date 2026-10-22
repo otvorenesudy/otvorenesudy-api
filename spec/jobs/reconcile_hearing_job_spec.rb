@@ -82,6 +82,26 @@ RSpec.describe ReconcileHearingJob do
       expect(hearing.judges).to eq([judge])
     end
 
+    it 'updates the hearing otvorenesudy holds under another address, of the same court, time, file number and judge' do
+      existing = create(:hearing, uri: 'https://www.justice.gov.sk/old', court:, file_number: '5018200202',
+                                  date: Time.zone.parse('2019-11-13 10:20'))
+      create(:judging, hearing: existing, judge:)
+
+      import_civil(payload('civil_hearing'))
+
+      expect(Hearing.pluck(:id, :case_number)).to eq([[existing.id, 'ZA-31S/55/2018']])
+    end
+
+    it 'adds a hearing of the same court, time and file number that another judge heard' do
+      other = create(:hearing, uri: 'https://www.justice.gov.sk/old', court:, file_number: '5018200202',
+                               date: Time.zone.parse('2019-11-13 10:20'))
+      create(:judging, hearing: other, judge: create(:judge, name: 'JUDr. Ján Novák'))
+
+      import_civil(payload('civil_hearing'))
+
+      expect(Hearing.where.not(id: other.id).sole.case_number).to eq('ZA-31S/55/2018')
+    end
+
     it 'is updated, not added again, when the record changes, with its parties replaced' do
       import_civil(payload('civil_hearing'))
       import_civil(payload('civil_hearing').merge('miestnost' => '12', 'navrhovatelia' => []))
