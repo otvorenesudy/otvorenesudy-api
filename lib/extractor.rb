@@ -7,7 +7,7 @@ class Extractor
     directory = Rails.root.join('tmp', 'extracted', "extracted-#{Time.zone.now.to_i}")
     Dir.mkdir(directory)
     begin
-      `unzip '#{path}' -d #{directory}`
+      system('unzip', '-qq', path.to_s, '-d', directory.to_s)
       Dir[directory.join('*')].each do |filename|
         yield(File.read(filename))
       rescue StandardError
