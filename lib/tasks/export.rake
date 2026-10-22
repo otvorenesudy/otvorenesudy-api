@@ -91,25 +91,25 @@ namespace :export do
         eclis = proceeding ? proceeding.decrees.order(created_at: :asc).pluck(:ecli) : []
 
         data = {
-          "ecli": eclis.first,
-          "guid": nil,
-          "usek": hearing.section&.value,
-          "predmet": hearing.subject&.value,
-          "sud_typ": info_sud_court ? info_sud_court.data['typ'] : nil,
-          "poznamka": hearing.note,
-          "sud_guid": court_guid&.gsub('^sud_', ''),
-          "sud_kraj": info_sud_court ? info_sud_court.data['kraj'] : nil,
-          "miestnost": hearing.room,
-          "sud_nazov": info_sud_court ? info_sud_court.data['nazov'] : nil,
-          "sud_okres": info_sud_court ? info_sud_court.data['okres'] : nil,
-          "sudca_guid": judge_guids,
-          "sudca_meno": judges.map(&:name),
-          "forma_ukonu": hearing.form&.value,
-          "je_samosudca": hearing.selfjudge,
-          "spisova_znacka": hearing.case_number,
-          "datum_zapocatia": nil,
-          "datum_a_cas_pojednavania": hearing.date,
-          "identifikacne_cislo_spisu": hearing.file_number
+          ecli: eclis.first,
+          guid: nil,
+          usek: hearing.section&.value,
+          predmet: hearing.subject&.value,
+          sud_typ: info_sud_court ? info_sud_court.data['typ'] : nil,
+          poznamka: hearing.note,
+          sud_guid: court_guid&.gsub('^sud_', ''),
+          sud_kraj: info_sud_court ? info_sud_court.data['kraj'] : nil,
+          miestnost: hearing.room,
+          sud_nazov: info_sud_court ? info_sud_court.data['nazov'] : nil,
+          sud_okres: info_sud_court ? info_sud_court.data['okres'] : nil,
+          sudca_guid: judge_guids,
+          sudca_meno: judges.map(&:name),
+          forma_ukonu: hearing.form&.value,
+          je_samosudca: hearing.selfjudge,
+          spisova_znacka: hearing.case_number,
+          datum_zapocatia: nil,
+          datum_a_cas_pojednavania: hearing.date,
+          identifikacne_cislo_spisu: hearing.file_number
         }
 
         data["navrhovatel"] = hearing.proposers.map { HearingReconciler::RandomInitialsProvider.provide }
@@ -120,7 +120,7 @@ namespace :export do
           'justice_gov_sk_uri' => hearing.uri,
           'otvorenesudy_id' => hearing.id,
           "otvorenesudy_uri" => "https://otvorenesudy.sk/hearings/#{hearing.id}",
-          "ecli": eclis,
+          ecli: eclis,
         }
 
         data
@@ -177,7 +177,7 @@ namespace :export do
       # Compute stats
       stats['Empty Participants'] += 1 if names.empty?
       stats['No Court'] += 1 unless hearing['sud_guid']
-      stats['No Judges'] += 1 if hearing['sudca_guid']&.empty?
+      stats['No Judges'] += 1 if hearing['sudca_guid'] && hearing['sudca_guid'].empty?
 
       names.each do |name|
         all_names[name] ||= 0

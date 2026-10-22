@@ -89,8 +89,6 @@ module Legacy
         }.join ' '
     end
 
-    public
-
     def normalize_person_name(value, options = {})
       partition_person_name(value, options)[:value]
     end
@@ -106,7 +104,7 @@ module Legacy
       mixedcase = []
       flags = []
 
-      _, representantive = *value.match(/((\,\s+)?hovorca)?\s+KS\s+(v\s+)?(?<municipality>.+)\z/i)
+      _, representantive = *value.match(/(?:(?:\,\s+)?hovorca)?\s+KS\s+(?:v\s+)?(?<municipality>.+)\z/i)
 
       unless representantive.nil?
         flags << :representantive
@@ -123,9 +121,9 @@ module Legacy
         .each do |part|
           key = person_name_map_key(part)
 
-          if prefix = person_name_prefix_map[key]
+          if (prefix = person_name_prefix_map[key])
             prefixes << prefix
-          elsif suffix = person_name_suffix_map[key]
+          elsif (suffix = person_name_suffix_map[key])
             suffixes << suffix
           else
             part = part.strip

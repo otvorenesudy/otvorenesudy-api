@@ -32,8 +32,6 @@ module Formattable
     @formatted ||= {}
   end
 
-  public
-
   class Formatter
     attr_reader :default,
                 :directives,

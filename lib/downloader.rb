@@ -5,7 +5,7 @@ class Downloader
     10.times do |n|
       begin
         return Curl.get(url, params)
-      rescue Exception => e
+      rescue StandardError => e
         warn "Retrying download (#{e.message}) ... ##{n + 1}"
 
         sleep 5

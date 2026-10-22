@@ -11,9 +11,10 @@ class Api::Key < ApplicationRecord
   before_create :generate_key
 
   def generate_key
-    begin
+    loop do
       self.value = Generator.generate
-    end while self.class.exists? value: value
+      break unless self.class.exists?(value:)
+    end
   end
 
   class Generator

@@ -1,5 +1,3 @@
-inherit_from: .rubocop_todo.yml
-
 # RuboCop formats and lints the Ruby code: the community Ruby and Rails style guides plus the RSpec, FactoryBot,
 # Capybara and Performance cops, on their defaults. bin/lint runs it on the files a branch changes, and the format hook
 # runs `bin/lint --fix <file>` after every edit an agent makes. The deviations from the defaults are below, each with

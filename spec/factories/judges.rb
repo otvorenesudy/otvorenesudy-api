@@ -24,7 +24,7 @@ FactoryBot.define do
     source
 
     name { "#{prefix} #{first} #{middle} #{last}, #{suffix} #{addition}".strip.squeeze(' ') }
-    name_unprocessed { |n| name }
+    name_unprocessed { name }
 
     prefix { 'JUDr.' }
     first { 'Peter' }
