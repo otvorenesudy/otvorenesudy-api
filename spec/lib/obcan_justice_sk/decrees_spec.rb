@@ -24,6 +24,19 @@ RSpec.describe ObcanJusticeSk::Decrees do
       end
     end
 
+    # obcan.justice.sk numbers its pages from 1: asked for page 0, it says it answers page -1 and gives the first page.
+    it 'imports every decree once, from the first page to the last' do
+      stub_json("#{base_url}?size=1&page=0", list(2001))
+      { 0 => %w[a b], 1 => %w[a b], 2 => %w[c], 3 => %w[d], 4 => [] }.each do |page, guids|
+        stub_json("#{base_url}?size=1000&page=#{page}", list(2001, guids.map { { guid: it } }))
+      end
+
+      perform_enqueued_jobs(only: ObcanJusticeSk::ImportDecreesJob) { described_class.import }
+
+      expect(ObcanJusticeSk::ImportDecreeJob).to have_been_enqueued.exactly(4).times
+      %w[a b c d].each { expect(ObcanJusticeSk::ImportDecreeJob).to have_been_enqueued.with(it).once }
+    end
+
     it 'asks for the decrees indexed since a day' do
       stub_json("#{base_url}?size=1&page=0&indexDatumOd=2024-03-01", list(10))
 
