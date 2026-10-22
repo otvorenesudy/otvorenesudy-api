@@ -1,6 +1,6 @@
 # Open Courts API
 
-[![Build Status](https://github.com/otvorenesudy/otvorenesudy-api/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/otvorenesudy/otvorenesudy-api/actions?query=branch:main)
+[![Build Status](https://github.com/otvorenesudy/otvorenesudy-api/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/otvorenesudy/otvorenesudy-api/actions?query=branch:main)
 [![codecov](https://codecov.io/gh/otvorenesudy/otvorenesudy-api/branch/main/graph/badge.svg?token=S3S9NHz8vu)](https://codecov.io/gh/otvorenesudy/otvorenesudy-api)
 
 [![View performance data on Skylight](https://badges.skylight.io/status/YcoHMS8aa1P1.svg?token=VKdR-1FwByL-YIC2ld-L6ZYwQeoIasGRIW7YtQYFsaY)](https://www.skylight.io/app/applications/YcoHMS8aa1P1)

@@ -1,0 +1,146 @@
+# bin/test on every pull request and push to main: lint, every spec with coverage, and undercover on the changes. The
+# deploy job is off (if: false); nothing in any workflow deploys until it's turned back on.
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+
+    services:
+      postgres:
+        image: pgvector/pgvector:pg17
+        env:
+          POSTGRES_USER: opencourts
+          POSTGRES_PASSWORD: opencourts # betterleaks:allow -- the CI database container's own
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready --health-interval 5s --health-timeout 5s --health-retries 10
+
+      # Sidekiq's dashboard reads its queues from Redis, and the UpdateNotifier spec checks what lands in database 0.
+      redis:
+        image: redis:7
+        ports: ['6379:6379']
+        options: >-
+          --health-cmd "redis-cli ping" --health-interval 5s --health-timeout 5s --health-retries 10
+
+    # The logins of the database container above, not secrets.
+    env:
+      OPENCOURTS_DATABASE_USER: opencourts
+      OPENCOURTS_DATABASE_PASSWORD: opencourts # betterleaks:allow
+      OPENCOURTS_API_DATABASE_USER: opencourts
+      OPENCOURTS_API_DATABASE_PASSWORD: opencourts # betterleaks:allow
+      PGUSER: opencourts
+      PGPASSWORD: opencourts # betterleaks:allow
+      CI: 'true'
+      # A failed browser spec saves the page's HTML beside its screenshot in tmp/capybara.
+      RAILS_SYSTEM_TESTING_SCREENSHOT_HTML: '1'
+
+    steps:
+      - name: Check Out Repository
+        uses: actions/checkout@v4
+        with:
+          # undercover and bin/lint compare the branch with origin/main.
+          fetch-depth: 0
+          submodules: recursive
+
+      # Git ignores .env and .env.test: .env comes from its committed example, as bin/setup makes it, and .env.test
+      # from .env.ci, CI's settings for the test database. The job's env above wins over both: dotenv doesn't
+      # overwrite what is already set.
+      - name: Set Up dotenv Files
+        run: |
+          cp .env.example .env
+          cp .env.ci .env.test
+
+      # The native extensions of pg and curb, which bundle install builds.
+      - name: Install Required Packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libpq-dev libcurl4-openssl-dev
+
+      - name: Set Up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Set Up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .tool-versions
+          cache: npm
+
+      # Prettier, esbuild and the browser libraries bin/vendor --check compares the vendored files with.
+      - name: Install Node Packages
+        run: npm ci
+
+      - name: Run Tests
+        run: bin/test
+
+      - name: Upload Coverage Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage
+          path: coverage/
+          retention-days: 7
+
+      - name: Upload Failure Screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots
+          path: tmp/capybara/
+          retention-days: 7
+          if-no-files-found: ignore
+
+  deploy:
+    name: Deploy to Production
+    needs: [test]
+    # Off until the production server runs the Rails 8 upgrade; deploy by hand with Capistrano meanwhile. To turn it
+    # back on: if: github.ref == 'refs/heads/main'
+    if: false
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install SSH key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_KEY }}
+          name: github-actions
+          known_hosts: "..."
+          config: |
+            host otvorenesudy.sk
+              IdentityFile ~/.ssh/github-actions
+              IdentitiesOnly yes
+              ForwardAgent yes
+
+      - name: Adding Known Hosts
+        run: ssh-keyscan -H ${{ secrets.SSH_HOST }}
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          submodules: "true"
+
+      # The Ruby of .ruby-version, as on the server.
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Deploy
+        run: |
+          eval "$(ssh-agent -s)"
+          ssh-add ~/.ssh/github-actions
+          bundle exec cap production deploy deploy:restart sidekiq:restart
