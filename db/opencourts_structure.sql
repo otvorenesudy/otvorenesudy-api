@@ -1373,7 +1373,7 @@ CREATE TABLE public.judgements (
     decree_id integer NOT NULL,
     judge_id integer,
     judge_name_similarity numeric(3,2) NOT NULL,
-    judge_name_unprocessed character varying(255) NOT NULL,
+    judge_name_unprocessed character varying(255),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -1451,7 +1451,7 @@ CREATE TABLE public.judgings (
     hearing_id integer NOT NULL,
     judge_id integer,
     judge_name_similarity numeric(3,2) NOT NULL,
-    judge_name_unprocessed character varying(255) NOT NULL,
+    judge_name_unprocessed character varying(255),
     judge_chair boolean NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
@@ -4725,6 +4725,7 @@ CREATE UNIQUE INDEX unique_schema_migrations ON public.schema_migrations USING b
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
+('20240613170412'),
 ('20240516084658'),
 ('20240513145707'),
 ('20240504161043'),
