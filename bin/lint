@@ -1,0 +1,104 @@
+#!/usr/bin/env bash
+# Checks formatting and lint and exits non-zero on any problem. bin/test runs it first, and the PostToolUse hook in
+# .claude/settings.json runs `bin/lint --fix <file>` after every edit an agent makes.
+#
+#   *.rb, *.rake, Gemfile, ...   syntax_tree (.streerc), then RuboCop's Lint and Security cops (.rubocop.yml)
+#   *.js, *.scss, *.css          Prettier (.prettierrc)
+#
+# Without files it checks what this branch changed against origin/main: its commits, staged and unstaged edits, and
+# untracked files. Most of the code predates the formatters, so the whole tree would only report old code.
+#
+# Usage:
+#   bin/lint [file ...]          check the files (default: the branch's changes)
+#   bin/lint --fix [file ...]    format and autocorrect them, then report what is left
+#   bin/lint --regenerate-todo   record RuboCop's offenses in every Ruby file in .rubocop_todo.yml
+set -uo pipefail
+cd "$(dirname "$0")/.." || exit 1
+
+usage() {
+  sed -n '/^# Usage:/,/^[^#]/p' "$0" | sed -e '$d' -e 's/^# \{0,1\}//' >&2
+  exit 2
+}
+
+ruby_pattern='\.(rb|rake|ru|gemspec)$|(^|/)(Gemfile|Rakefile)$'
+script_pattern='\.(js|mjs|cjs|scss|css)$'
+# Generated or vendored files nobody formats by hand.
+skip_pattern='^(bin|config/credentials|data|log|ml|node_modules|public|tmp|vendor)/|^db/.*\.sql$'
+
+# RuboCop checks the code as the app's Ruby. Set here, it also skips RuboCop's search for the version in parent
+# directories, which the Claude Code sandbox can't read.
+RUBOCOP_TARGET_RUBY_VERSION=$(cut -d. -f1,2 .ruby-version)
+export RUBOCOP_TARGET_RUBY_VERSION
+
+# The files this branch changed against the merge base with origin/main (or main), and untracked files.
+changed_files() {
+  local base="" ref
+  for ref in origin/main main; do
+    base=$(git merge-base HEAD "$ref" 2>/dev/null) && break
+  done
+  git diff --name-only --diff-filter=d "${base:-HEAD}" 2>/dev/null
+  git ls-files --others --exclude-standard 2>/dev/null
+}
+
+fix=0
+case "${1:-}" in
+  --fix)
+    fix=1
+    shift
+    ;;
+  --regenerate-todo)
+    (($# == 1)) || usage
+    git ls-files | grep -E "$ruby_pattern" | grep -vE "$skip_pattern" |
+      xargs bundle exec rubocop --auto-gen-config --exclude-limit 10000 --no-offense-counts --no-auto-gen-timestamp \
+        --force-exclusion >/dev/null || exit 1
+    git diff --stat -- .rubocop_todo.yml
+    exit 0
+    ;;
+  -*) usage ;;
+esac
+
+if (($# > 0)); then
+  candidates=$(printf '%s\n' "$@")
+else
+  candidates=$(changed_files | sort -u)
+fi
+
+ruby=()
+scripts=()
+while IFS= read -r file; do
+  [[ -n "$file" && -f "$file" ]] || continue
+  relative=${file#"$PWD"/}
+  [[ "$relative" =~ $skip_pattern ]] && continue
+  if [[ "$relative" =~ $ruby_pattern ]]; then
+    ruby+=("$file")
+  elif [[ "$relative" =~ $script_pattern ]]; then
+    scripts+=("$file")
+  fi
+done <<<"$candidates"
+
+status=0
+
+if ((${#ruby[@]} > 0)); then
+  if ((fix)); then
+    bundle exec stree write "${ruby[@]}" >/dev/null || status=1
+    bundle exec rubocop --autocorrect --force-exclusion --format quiet "${ruby[@]}" >/dev/null 2>&1
+  elif ! output=$(bundle exec stree check "${ruby[@]}" 2>&1); then
+    echo "Not formatted by syntax_tree (bin/lint --fix formats them):" >&2
+    perl -ne 's/\e\[[0-9;]*m//g; print "  $1\n" if /^\[warn\] (.*)/' <<<"$output" >&2
+    status=1
+  fi
+  bundle exec rubocop --force-exclusion --format emacs "${ruby[@]}" || status=1
+fi
+
+if ((${#scripts[@]} > 0)); then
+  if [[ ! -x node_modules/.bin/prettier ]]; then
+    echo "Prettier is not installed. Run yarn install, then bin/lint again." >&2
+    status=1
+  elif ((fix)); then
+    node_modules/.bin/prettier --write --ignore-unknown --loglevel warn "${scripts[@]}" || status=1
+  else
+    node_modules/.bin/prettier --check --ignore-unknown --loglevel warn "${scripts[@]}" || status=1
+  fi
+fi
+
+exit "$status"

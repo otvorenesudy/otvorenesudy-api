@@ -38,3 +38,9 @@ ml/decree-embeddings/models/*
 !ml/decree-embeddings/models/.gitkeep
 ml/decree-embeddings/data/*
 !ml/decree-embeddings/data/.gitkeep
+
+./scripts
+
+# Claude Code: personal settings and agent worktrees
+/.claude/settings.local.json
+/.claude/worktrees/

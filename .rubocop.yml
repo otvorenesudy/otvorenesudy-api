@@ -1,0 +1,30 @@
+# RuboCop looks for bugs and unsafe calls only: its Lint and Security departments. syntax_tree (.streerc) formats the
+# code, so no layout or style cops run. bin/lint runs both on the files a branch changes.
+#
+# .rubocop_todo.yml lists the offenses that were already in the code when RuboCop was set up. Leave them alone unless
+# the change is about them; a file you fix comes off the list when you regenerate it:
+#   bin/lint --regenerate-todo
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  TargetRubyVersion: 3.3
+  NewCops: enable
+  DisabledByDefault: true
+  SuggestExtensions: false
+  CacheRootDirectory: tmp
+  Exclude:
+    - bin/**/*
+    - config/credentials/**/*
+    - data/**/*
+    - log/**/*
+    - ml/**/*
+    - node_modules/**/*
+    - public/**/*
+    - tmp/**/*
+    - vendor/**/*
+
+Lint:
+  Enabled: true
+
+Security:
+  Enabled: true

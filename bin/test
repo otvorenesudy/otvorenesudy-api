@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+# Decides whether a change is done: bin/lint on the branch's changes, then the RSpec suite against test databases
+# rebuilt from db/structure.sql and db/opencourts_structure.sql. Exits non-zero when either fails.
+#
+# Usage:
+#   bin/test               lint, then every spec
+#   bin/test <spec> ...    lint, then those specs (spec/models/judge_spec.rb, spec/models/judge_spec.rb:12)
+#
+# Needs PostgreSQL with pgvector on localhost (brew services start postgresql@17). The app reads its local
+# configuration while it boots (.env*, config/credentials), which the Claude Code sandbox hides, so Claude Code runs
+# bin/test outside the sandbox (sandbox.excludedCommands in .claude/settings.json).
+#
+# One run at a time on this machine: this app and otvorenesudy share the opencourts_test database, so a second run
+# of either waits for the first.
+set -uo pipefail
+cd "$(dirname "$0")/.." || exit 1
+
+lock=/tmp/otvorenesudy-bin-test.lock
+waited=0
+until mkdir "$lock" 2>/dev/null; do
+  if [[ ! -d "$lock" ]]; then
+    echo "bin/test: can't create $lock. Run bin/test outside the Claude Code sandbox." >&2
+    exit 1
+  fi
+  pid=$(cat "$lock/pid" 2>/dev/null) || pid=""
+  if [[ -n "$pid" ]] && ! kill -0 "$pid" 2>/dev/null; then
+    rm -rf "$lock"
+    continue
+  fi
+  ((waited++)) || echo "bin/test: waiting for the test run already going on this machine (pid ${pid:-?})" >&2
+  sleep 2
+done
+echo $$ >"$lock/pid"
+trap 'rm -rf "$lock"' EXIT
+
+status=0
+
+echo "==> lint"
+bin/lint || status=1
+
+echo "==> test databases"
+if ! pg_isready -q -h localhost; then
+  echo "PostgreSQL isn't running on localhost. Start it (brew services start postgresql@17), then run bin/test again." >&2
+  exit 1
+fi
+export RAILS_ENV=test
+# Each run boots its own Rails: Spring forks a long-lived one, which the macOS libpq crash below takes down.
+export DISABLE_SPRING=1
+# libpq's GSSAPI negotiation crashes forked Ruby processes on macOS; nothing here uses Kerberos.
+export PGGSSENCMODE=disable
+# otvorenesudy's bin/test rebuilds the shared opencourts_test database with Rails 3.2, which records no environment in
+# it, and Rails then refuses to purge it as possibly protected. Both are test databases, so skip that check.
+export DISABLE_DATABASE_ENVIRONMENT_CHECK=1
+if ! output=$(bin/rails db:create db:test:prepare 2>&1); then
+  printf '%s\n' "$output" >&2
+  echo "Couldn't prepare the test databases." >&2
+  exit 1
+fi
+
+echo "==> specs"
+bundle exec rspec --format progress "$@" || status=1
+
+exit "$status"

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby File.read(File.expand_path('../.ruby-version', __FILE__)).strip
+ruby File.read(File.expand_path('.ruby-version', __dir__)).strip
 
 gem 'rack'
 gem 'rails', '~> 7.1'
@@ -22,22 +22,22 @@ gem 'uglifier'
 gem 'webpacker', '6.0.0.rc.6'
 
 # Security
-gem 'bcrypt_pbkdf'
 gem 'bcrypt'
+gem 'bcrypt_pbkdf'
 gem 'ed25519'
 
 # Serializers
 gem 'active_model_serializers'
-gem 'oj_mimic_json'
 gem 'oj'
+gem 'oj_mimic_json'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS)
 # making cross-origin AJAX possible
 # gem 'rack-cors'
 
 # Async Processing
-gem 'sidekiq-limit_fetch'
 gem 'sidekiq'
+gem 'sidekiq-limit_fetch'
 
 # Configuration
 gem 'dotenv-rails'
@@ -62,9 +62,10 @@ gem 'matrix'
 gem 'mechanize'
 gem 'nkf'
 gem 'nokogiri'
+gem 'parallel'
 gem 'pdf-reader'
-gem 'roo-xls'
 gem 'roo'
+gem 'roo-xls'
 
 # Codeclimate
 gem 'simplecov', require: false, group: :test
@@ -80,8 +81,8 @@ group :development, :test do
   gem 'database_cleaner-active_record'
   gem 'factory_bot_rails'
   gem 'fuubar'
-  gem 'pry-rails'
   gem 'pry'
+  gem 'pry-rails'
   gem 'rails-controller-testing'
   gem 'rspec-rails'
   gem 'selenium-webdriver'
@@ -90,8 +91,8 @@ group :development, :test do
 end
 
 group :test do
-  gem 'webmock'
   gem 'puma'
+  gem 'webmock'
 end
 
 group :development do
@@ -101,16 +102,17 @@ group :development do
   gem 'web-console'
 
   # Deployment
+  gem 'capistrano'
   gem 'capistrano-bundler'
-  gem 'capistrano-git-with-submodules'
   gem 'capistrano-git'
+  gem 'capistrano-git-with-submodules'
   gem 'capistrano-passenger'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'capistrano-sidekiq'
-  gem 'capistrano'
 
   # Other
   gem 'bump', git: 'https://github.com/pavolzbell/bump.git'
-  gem 'rubocop'
+  gem 'rubocop', require: false
+  gem 'syntax_tree', require: false
 end
