@@ -2,8 +2,9 @@
 
 module Public
   class ProsecutorRefinementsController < Public::ApplicationController
-    before_action :verify_number_of_allowed_refinements
+    # The origin first, so the prosecutors' website can read every answer, a 429 too.
     before_action :restrict_allowed_origin
+    before_action :verify_number_of_allowed_refinements
 
     def create
       refinements = build_refinements
@@ -35,11 +36,12 @@ module Public
       params.permit(:name, :email, :office, prosecutors: [])
     end
 
+    # At most 30 refinements from an address in 30 seconds, counting the ones this request carries.
     def verify_number_of_allowed_refinements
       ip = request.remote_ip
-      refinements = Public::ProsecutorRefinement.where('created_at > ? AND ip_address = ?', 30.seconds.ago, ip)
+      recent = Public::ProsecutorRefinement.where('created_at > ? AND ip_address = ?', 30.seconds.ago, ip).count
 
-      head :too_many_requests if refinements.size >= 30
+      head :too_many_requests if recent + Array(create_params[:prosecutors]).size > 30
     end
 
     def restrict_allowed_origin

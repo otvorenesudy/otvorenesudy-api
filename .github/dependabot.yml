@@ -7,3 +7,9 @@ updates:
     directory: /
     schedule:
       interval: weekly
+
+  # The workflows pin each action to a commit, with its version in a comment; this moves both to new releases.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
