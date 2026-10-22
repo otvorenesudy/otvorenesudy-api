@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: info_sud_hearings
@@ -10,13 +12,13 @@
 #
 FactoryBot.define do
   factory :'info_sud/hearing', aliases: [:info_sud_hearing] do
-    sequence(:guid) { |n| n.to_s }
+    sequence(:guid, &:to_s)
 
-    data {
+    data do
       {
         guid: guid,
         identifikacne_cislo_spisu: '123456789'
       }
-    }
+    end
   end
 end

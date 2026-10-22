@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ReconcileHearingJob < ApplicationJob
   queue_as :reconcilers
 

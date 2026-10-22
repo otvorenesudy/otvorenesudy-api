@@ -1,35 +1,20 @@
-# == Schema Information
-#
-# Table name: api_keys
-#
-#  id         :integer          not null, primary key
-#  value      :string           not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#
+# frozen_string_literal: true
+
 require 'rails_helper'
 
+# An API key gets a random value when created, never one another key has.
 RSpec.describe Api::Key do
-  describe 'callbacks' do
-    describe '#generate_key' do
-      it 'generates key' do
-        allow(Api::Key::Generator).to receive(:generate).and_return('value')
+  it 'gets a random value' do
+    allow(SecureRandom).to receive(:hex).and_return('0123456789abcdef')
 
-        api_key = create :api_key
+    expect(create(:api_key).value).to eq('0123456789abcdef')
+  end
 
-        expect(api_key.value).to eql('value')
-      end
+  it 'draws again when the value belongs to another key' do
+    allow(SecureRandom).to receive(:hex).and_return('taken', 'taken', 'free')
 
-      context 'when key already exists' do
-        it 'tries to generate another one in a loop' do
-          allow(Api::Key::Generator).to receive(:generate).and_return('value', 'another value')
+    create(:api_key)
 
-          keys = 2.times.map { create :api_key }
-
-          expect(keys[0].value).to eql('value')
-          expect(keys[1].value).to eql('another value')
-        end
-      end
-    end
+    expect(create(:api_key).value).to eq('free')
   end
 end

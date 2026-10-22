@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ObcanJusticeSk
   module Decrees
     BASE_URL = 'https://obcan.justice.sk/pilot/api/ress-isu-service/v1/rozhodnutie'
@@ -30,7 +32,7 @@ module ObcanJusticeSk
           }
         }
       }
-    }
+    }.freeze
 
     JSON_SCHEMA = {
       type: :object,
@@ -173,7 +175,7 @@ module ObcanJusticeSk
         }
       },
       required: %i[guid formaRozhodnutia sud sudca spisovaZnacka datumVydania dokument updateDate]
-    }
+    }.freeze
 
     def self.import(since: nil)
       response = Curl.get(list_url(since: since, size: 1, page: 0))

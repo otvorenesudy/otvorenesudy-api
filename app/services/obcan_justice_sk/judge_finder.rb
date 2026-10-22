@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module ObcanJusticeSk
   class JudgeFinder
-    attr :name
+    attr_reader :name
 
     def self.find_by(name:, guid:)
       return ::Judge.find_by(name: name) unless guid

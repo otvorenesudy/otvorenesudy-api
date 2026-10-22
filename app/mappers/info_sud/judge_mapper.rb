@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module InfoSud
   class JudgeMapper
     ACTIVITY_MAP = {
@@ -7,11 +9,9 @@ module InfoSud
       '04' => :inactive,
       '05' => :active, # position changed, more in note (poznamka)
       '06' => :active
-    }
+    }.freeze
 
-    def initialize(data)
-      @data = data.symbolize_keys
-    end
+    include InfoSud::Mapping
 
     def uri
       "https://obcan.justice.sk/infosud/-/infosud/reg-detail/sudca/#{@data[:guid]}"
@@ -25,10 +25,8 @@ module InfoSud
       @data[:funkcia].try(:downcase)
     end
 
-    def active
-      return true if status == :active || status.nil?
-
-      false
+    def active?
+      status == :active || status.nil?
     end
 
     def status
@@ -47,6 +45,15 @@ module InfoSud
 
     def note
       @data[:poznamka]
+    end
+
+    # InfoSud doesn't say who sits in the courts' judicial councils.
+    def judicial_council_chairman_court_names
+      []
+    end
+
+    def judicial_council_member_court_names
+      []
     end
   end
 end

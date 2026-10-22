@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :info_sud do
   task import_hearings: :environment do
     InfoSud.import_hearings

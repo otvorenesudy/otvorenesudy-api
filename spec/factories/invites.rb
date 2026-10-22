@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: invites
@@ -10,6 +12,6 @@
 #
 FactoryBot.define do
   factory :invite do
-    sequence(:email) { |n| "example-#{n}@gmail.com"  }
+    sequence(:email) { |n| "example-#{n}@gmail.com" }
   end
 end

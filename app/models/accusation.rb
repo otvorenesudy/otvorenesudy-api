@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: accusations
@@ -12,6 +14,6 @@
 class Accusation < OpenCourts::ApplicationRecord
   belongs_to :defendant
 
-  has_many :paragraph_explanations, as: :explainable
+  has_many :paragraph_explanations, as: :explainable, dependent: nil
   has_many :paragraphs, through: :paragraph_explanations
 end

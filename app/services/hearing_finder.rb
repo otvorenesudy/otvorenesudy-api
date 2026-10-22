@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HearingFinder
   def self.find_by(mapper, relation: Hearing)
     return relation.find_by(uri: mapper.uri) if Hearing.exists?(uri: mapper.uri)
@@ -11,7 +13,7 @@ class HearingFinder
         name: mapper.court
       },
       judges: {
-        name: mapper.judges + mapper.chair_judges
+        id: (mapper.judges + mapper.chair_judges).map(&:id)
       }
     )
   end

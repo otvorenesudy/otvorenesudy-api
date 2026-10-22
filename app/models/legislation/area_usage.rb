@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: legislation_area_usages
@@ -8,7 +10,10 @@
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #
-class Legislation::AreaUsage < OpenCourts::ApplicationRecord
-  belongs_to :area, class_name: 'Legislation::Area', required: true, foreign_key: :legislation_area_id
-  belongs_to :decree, required: true
+class Legislation
+  class AreaUsage < OpenCourts::ApplicationRecord
+    belongs_to :area, class_name: 'Legislation::Area', optional: false, foreign_key: :legislation_area_id,
+                      inverse_of: false
+    belongs_to :decree, optional: false
+  end
 end

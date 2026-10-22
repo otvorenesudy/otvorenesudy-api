@@ -1,8 +1,8 @@
+# frozen_string_literal: true
+
 module InfoSud
   class CourtMapper
-    def initialize(data)
-      @data = data.deep_symbolize_keys
-    end
+    include InfoSud::Mapping
 
     def uri
       "https://obcan.justice.sk/infosud/-/infosud/reg-detail/sud/#{@data[:guid]}"
@@ -17,7 +17,7 @@ module InfoSud
     end
 
     def municipality
-      # TODO remove hotfix when municipality for court is fixed
+      # TODO: remove hotfix when municipality for court is fixed
       @data[:addr][:Municipality] || (name == 'Okresný súd Humenné' && 'Humenné')
     end
 
@@ -26,7 +26,7 @@ module InfoSud
     end
 
     def type
-      @data[:typ_sudu].split(' ').first
+      @data[:typ_sudu].split.first
     end
 
     def latitude
@@ -105,6 +105,11 @@ module InfoSud
       @data[:orsr][:note]
     end
 
+    # InfoSud doesn't publish these.
+    def data_protection_email; end
+
+    def other_contacts; end
+
     private
 
     def map_phones(phones, type: nil)
@@ -118,7 +123,7 @@ module InfoSud
     def map_office_hours(opening_hours)
       opening_hours[0..14]
         .each_slice(3)
-        .map { |hours| InfoSud::Normalizer.normalize_hours(hours.map(&:presence).compact.join(', ')).presence }
+        .map { |hours| InfoSud::Normalizer.normalize_hours(hours.filter_map(&:presence).join(', ')).presence }
     end
 
     def map_email(email)

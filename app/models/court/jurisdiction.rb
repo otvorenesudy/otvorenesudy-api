@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: court_jurisdictions
@@ -8,9 +10,12 @@
 #  created_at               :datetime         not null
 #  updated_at               :datetime         not null
 #
-class Court::Jurisdiction < OpenCourts::ApplicationRecord
-  belongs_to :proceeding_type, class_name: 'Court::ProceedingType', foreign_key: :court_proceeding_type_id
-  belongs_to :municipality
+class Court
+  class Jurisdiction < OpenCourts::ApplicationRecord
+    belongs_to :proceeding_type, class_name: 'Court::ProceedingType', foreign_key: :court_proceeding_type_id,
+                                 inverse_of: false
+    belongs_to :municipality
 
-  has_many :courts
+    has_many :courts, dependent: nil
+  end
 end

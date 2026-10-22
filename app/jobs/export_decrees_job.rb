@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ExportDecreesJob < ApplicationJob
   queue_as :exporters
 
@@ -14,7 +16,7 @@ class ExportDecreesJob < ApplicationJob
         :inexact_judgements,
         exact_judgements: [:judge],
         court: [:municipality],
-        proceeding: [hearings: %i[proposers defendants opponents]]
+        proceeding: [{ hearings: %i[proposers defendants opponents] }]
       ).where(id: from_id..to_id)
 
     File.open(File.join(path, "#{from_id}-#{to_id}.json"), 'w') do |f|
@@ -26,7 +28,7 @@ class ExportDecreesJob < ApplicationJob
   end
 
   def self.enqueue(location:)
-    directory = "api-decrees-#{Time.now.strftime('%Y%m%d%H%M')}"
+    directory = "api-decrees-#{Time.current.strftime('%Y%m%d%H%M')}"
     path = File.join(location, directory)
 
     FileUtils.mkdir_p(path)

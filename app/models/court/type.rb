@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: court_types
@@ -7,6 +9,8 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Court::Type < OpenCourts::ApplicationRecord
-  has_many :courts, foreign_key: :court_type_id
+class Court
+  class Type < OpenCourts::ApplicationRecord
+    has_many :courts, foreign_key: :court_type_id, dependent: nil, inverse_of: false
+  end
 end

@@ -1,11 +1,13 @@
-# The logins come from ENV, which dotenv loads from .env, and in the specs from .env.test first. Git ignores both:
-# bin/setup makes them from the committed .env.example and .env.test.example, CI uses .env.ci as .env.test, and the
-# server has its own .env, which Capistrano links into each release.
+# Two databases: this app's own, for the records as the sources publish them, and Open Courts', which otvorenesudy
+# owns and shares (its schema is db/opencourts_structure.sql here). The logins come from ENV, which dotenv loads from
+# .env, and in the specs from .env.test first. Git ignores both: bin/setup makes them from the committed .env.example
+# and .env.test.example, CI copies .env.ci to .env.test, and the server has its own .env, which Capistrano links into
+# each release.
 opencourts: &opencourts
   adapter: postgresql
   encoding: utf8
   pool: 300
-  host: localhost
+  host: <%= ENV.fetch('OPENCOURTS_DATABASE_HOST', 'localhost') %>
   username: <%= ENV['OPENCOURTS_DATABASE_USER'] %>
   password: <%= ENV['OPENCOURTS_DATABASE_PASSWORD'] %>
   migrations_paths: db/opencourts_migrate
@@ -14,7 +16,7 @@ defaults: &defaults
   adapter: postgresql
   encoding: utf8
   pool: 300
-  host: localhost
+  host: <%= ENV.fetch('OPENCOURTS_API_DATABASE_HOST', 'localhost') %>
   username: <%= ENV['OPENCOURTS_API_DATABASE_USER'] %>
   password: <%= ENV['OPENCOURTS_API_DATABASE_PASSWORD'] %>
 

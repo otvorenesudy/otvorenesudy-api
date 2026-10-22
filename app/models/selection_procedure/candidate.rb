@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: selection_procedure_candidates
@@ -22,7 +24,9 @@
 #  declaration_url           :string(2048)
 #  motivation_letter_url     :string(2048)
 #
-class SelectionProcedure::Candidate < OpenCourts::ApplicationRecord
-  belongs_to :procedure, class_name: 'SelectionProcedure', foreign_key: :selection_procedure_id
-  belongs_to :judge, optional: true
+class SelectionProcedure
+  class Candidate < OpenCourts::ApplicationRecord
+    belongs_to :procedure, class_name: 'SelectionProcedure', foreign_key: :selection_procedure_id, inverse_of: false
+    belongs_to :judge, optional: true
+  end
 end

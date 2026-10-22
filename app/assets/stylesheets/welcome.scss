@@ -1,10 +1,12 @@
-html, body {
+html,
+body {
   height: 100%;
   font-family: 'Open Sans', sans-serif !important;
   font-weight: 300 !important;
   margin: 0px;
 }
 
+// Bootstrap 4 alpha's jumbotron, which Bootstrap 5 no longer has, as the page used it.
 .jumbotron {
   @include linear-gradient(60deg, darken($base-color, 30%), lighten($base-color, 10%));
 
@@ -12,11 +14,13 @@ html, body {
   min-height: 720px;
   padding: 0px;
   position: relative;
+  margin-bottom: 2rem;
+  border-radius: $border-radius-lg;
 }
 
 .pattern {
   height: 100%;
-  background-image: image-url('cube.png');
+  background-image: url('cube.png');
   background-attachment: scroll;
   background-color: transparent;
   background-position: center center;
@@ -32,12 +36,20 @@ html, body {
     opacity: 0.3;
 
     &:hover {
-      opacity: 1.0;
+      opacity: 1;
     }
   }
 }
 
 ul.locales {
+  margin-left: -5px;
+
+  li {
+    display: inline-block;
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+
   li a {
     @include transition(all 0.8s ease);
 
@@ -46,8 +58,10 @@ ul.locales {
     font-weight: 300;
     opacity: 0.3;
 
-    &:hover, &.active, &:active {
-      opacity: 1.0;
+    &:hover,
+    &.active,
+    &:active {
+      opacity: 1;
       color: white;
       text-decoration: none;
     }
@@ -81,6 +95,9 @@ ul.locales {
 
   #see-invite {
     @include animation(fade-in-up, 1.1s, 0s);
+
+    // Bootstrap 4 alpha's large button line height
+    line-height: 1.3333333;
   }
 
   .invite-created {
@@ -92,7 +109,9 @@ ul.locales {
   input {
     border-color: lighten($base-color, 5%);
 
-    &.active, &:focus, &:active {
+    &.active,
+    &:focus,
+    &:active {
       border-color: lighten($base-color, 5%);
     }
 
@@ -123,7 +142,7 @@ ul.locales {
 .invite-created {
   @include animation(fade-in-down, 1.1s, 0s);
 
-  opacity: 1.0;
+  opacity: 1;
   text-align: center;
 }
 
@@ -141,7 +160,9 @@ ul.locales {
   margin-left: -70px;
   padding: 0px;
 
-  &:hover, &.active, &:focus {
+  &:hover,
+  &.active,
+  &:focus {
     color: $gray-lighter;
     text-decoration: none;
   }
@@ -157,7 +178,9 @@ section {
   margin-right: auto;
   text-align: center;
 
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     small {
       font-weight: $headings-font-weight;
       color: $gray-light;
@@ -192,8 +215,10 @@ section {
       max-height: 100%;
 
       @include grayscale;
-      @include highlight(.33s);
-      @include hover-focus-active { @include unfilter }
+      @include highlight(0.33s);
+      @include hover-focus-active {
+        @include unfilter;
+      }
     }
 
     .transparency-international {
@@ -204,11 +229,23 @@ section {
       margin-top: 1.75rem;
     }
   }
+
+  // Stacked on phones, the partners stay 2rem apart and 2rem below the heading, as when their margins collapsed.
+  @include media-breakpoint-down(md) {
+    .partner:first-child {
+      margin-top: 1.5rem;
+    }
+
+    .partner + .partner {
+      margin-top: 0;
+    }
+  }
 }
 
 footer {
   @extend .text-center;
-  @extend .text-muted;
+
+  color: $gray-light !important;
 
   padding-bottom: 20px;
 

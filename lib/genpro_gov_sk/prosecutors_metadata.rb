@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenproGovSk
   class ProsecutorsMetadata
     using UnicodeString
@@ -12,7 +14,7 @@ module GenproGovSk
     def self.metadata
       return @metadata if @metadata
 
-      @metadata = Hash.new
+      @metadata = {}
 
       CSV.foreach(Rails.root.join('data/prosecutors-metadata.csv'), col_sep: ',') do |row|
         name = Legacy::Normalizer.normalize_person_name(row[2], reverse: true)

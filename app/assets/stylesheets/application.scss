@@ -1,8 +1,25 @@
-// Libraries
+// Bootstrap 5 with our variables: its functions, our overrides, then its defaults for everything else
+@import 'bootstrap/functions';
 @import 'variables';
 @import 'bootstrap/variables';
-@import 'bootstrap';
-@import 'font-awesome';
+@import 'bootstrap/variables-dark';
+@import 'bootstrap/maps';
+@import 'bootstrap/mixins';
+@import 'bootstrap/utilities';
+
+@import 'bootstrap/root';
+@import 'bootstrap/reboot';
+@import 'bootstrap/type';
+@import 'bootstrap/images';
+@import 'bootstrap/containers';
+@import 'bootstrap/grid';
+@import 'bootstrap/forms';
+@import 'bootstrap/buttons';
+@import 'bootstrap/transitions';
+@import 'bootstrap/helpers';
+@import 'bootstrap/utilities/api';
+
+@import 'vendor/cookieconsent';
 
 // Utilities
 @import 'fixes';

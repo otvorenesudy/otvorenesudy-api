@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ObcanJusticeSk
   class CourtMapper
     attr_reader :court, :data
@@ -40,7 +42,7 @@ module ObcanJusticeSk
     end
 
     def type
-      data[:typSudu].split(' ').first
+      data[:typSudu].split.first
     end
 
     def latitude
@@ -108,9 +110,9 @@ module ObcanJusticeSk
     end
 
     def business_registry_center_phone
-      if data[:orsr] && data[:orsr][:telKontakty]
-        map_phones(data[:orsr][:telKontakty], type: 'label.codelist.tel_type.1')
-      end
+      return unless data[:orsr] && data[:orsr][:telKontakty]
+
+      map_phones(data[:orsr][:telKontakty], type: 'label.codelist.tel_type.1')
     end
 
     def business_registry_center_hours
@@ -129,7 +131,7 @@ module ObcanJusticeSk
       return if data[:kontaktneMiesta].blank?
 
       data[:kontaktneMiesta]
-        .map do |contact|
+        .filter_map do |contact|
           next if contact[:nazov].blank?
 
           {
@@ -140,15 +142,6 @@ module ObcanJusticeSk
             hours: contact[:otvaracieHodiny] ? map_office_hours(contact[:otvaracieHodiny]) : nil
           }
         end
-        .compact
-    end
-
-    def chairmen_of_judicial_council_guids
-      data[:srPredseda][:sudcovia].map { |e| "sudca_#{e[:id]}" } if data[:srPredseda] && data[:srPredseda][:sudcovia]
-    end
-
-    def members_of_judicial_council_guids
-      data[:srPredseda][:sudcovia].map { |e| "sudca_#{e[:id]}" } if data[:srPredseda] && data[:srPredseda][:sudcovia]
     end
 
     private
@@ -166,7 +159,7 @@ module ObcanJusticeSk
     def map_office_hours(opening_hours)
       opening_hours[0..14]
         .each_slice(3)
-        .map { |hours| ObcanJusticeSk::Normalizer.normalize_hours(hours.map(&:presence).compact.join(', ')).presence }
+        .map { |hours| ObcanJusticeSk::Normalizer.normalize_hours(hours.filter_map(&:presence).join(', ')).presence }
     end
 
     def map_email(email)

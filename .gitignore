@@ -18,6 +18,14 @@ Gemfile.lock.tags
 !/log/.keep
 !/tmp/.keep
 
+# Rails credentials' keys (production's encrypted file is committed). Each developer keeps their own development
+# credentials, from config/credentials/development.example; the tests and CI need none.
+/config/master.key
+/config/credentials/*.key
+/config/credentials/development.*
+!/config/credentials/development.example
+/config/credentials/test.*
+
 # dotenv: .env and .env.test are each checkout's own, made from the committed .env.example and .env.test.example
 # (bin/setup copies them); .env.local and .env.*.local hold personal overrides. CI uses the committed .env.ci as
 # .env.test, and the server keeps its own .env.
@@ -26,18 +34,11 @@ Gemfile.lock.tags
 /.env.*.local
 /.env.test
 
-/public/packs
-/public/packs-test
-/node_modules
-/yarn-error.log
-yarn-debug.log*
-.yarn-integrity
-
-/config/credentials/development.key
-
-/config/credentials/test.key
-
-/config/credentials/production.key
+# Node tooling (Prettier, esbuild, the libraries bin/vendor copies), Dart Sass builds and coverage reports
+/node_modules/
+/app/assets/builds/*
+!/app/assets/builds/.keep
+/coverage/
 
 __pycache__
 ml/decree-embeddings/models/*

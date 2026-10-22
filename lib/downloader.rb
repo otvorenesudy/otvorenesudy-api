@@ -1,18 +1,19 @@
+# frozen_string_literal: true
+
 class Downloader
-  def self.get(url)
+  # Tries ten times, waiting between the tries, before it gives up.
+  def self.get(url, wait: 5)
     params = extract_params(url)
 
     10.times do |n|
-      begin
-        return Curl.get(url, params)
-      rescue Exception => e
-        warn "Retrying download (#{e.message}) ... ##{n + 1}"
+      return Curl.get(url, params)
+    rescue StandardError => e
+      warn "Retrying download (#{e.message}) ... ##{n + 1}"
 
-        sleep 5
-      end
+      sleep wait
     end
 
-    raise StandardError.new("Failed to download #{url}")
+    raise StandardError, "Failed to download #{url}"
   end
 
   def self.extract_params(url)
@@ -20,6 +21,6 @@ class Downloader
 
     return {} unless match
 
-    Hash[match[1].split('&').map { |s| s.split('=') }]
+    match[1].split('&').to_h { |s| s.split('=') }
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: legislation_usages
@@ -8,7 +10,9 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
-class Legislation::Usage < OpenCourts::ApplicationRecord
-  belongs_to :legislation
-  belongs_to :decree
+class Legislation
+  class Usage < OpenCourts::ApplicationRecord
+    belongs_to :legislation
+    belongs_to :decree
+  end
 end

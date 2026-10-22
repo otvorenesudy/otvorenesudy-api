@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: paragraph_explanations
@@ -9,7 +11,9 @@
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #
-class Paragraph::Explanation < OpenCourts::ApplicationRecord
-  belongs_to :paragraph
-  belongs_to :explainable, polymorphic: true
+class Paragraph
+  class Explanation < OpenCourts::ApplicationRecord
+    belongs_to :paragraph
+    belongs_to :explainable, polymorphic: true
+  end
 end

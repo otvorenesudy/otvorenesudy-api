@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: hearing_sections
@@ -7,6 +9,8 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Hearing::Section < OpenCourts::ApplicationRecord
-  has_many :hearings, foreign_key: :hearing_section_id
+class Hearing
+  class Section < OpenCourts::ApplicationRecord
+    has_many :hearings, foreign_key: :hearing_section_id, dependent: nil, inverse_of: false
+  end
 end

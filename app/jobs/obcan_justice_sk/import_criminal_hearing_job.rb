@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ObcanJusticeSk
   class ImportCriminalHearingJob < ::ApplicationJob
     queue_as :obcan_justice_sk

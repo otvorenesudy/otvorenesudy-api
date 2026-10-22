@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: defendants
@@ -11,7 +13,7 @@
 #
 FactoryBot.define do
   factory :defendant do
-    association :hearing
+    hearing
 
     sequence(:name) { |n| "Defendant ##{n}" }
     sequence(:name_unprocessed) { |n| "Defendant ##{n}" }

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ObcanJusticeSk
   class CriminalHearings
     BASE_URL = 'https://api.justice.gov.sk/pojednavanie/trestne'
@@ -26,7 +28,7 @@ module ObcanJusticeSk
         }
       },
       required: %i[filteredCount data take]
-    }
+    }.freeze
 
     JSON_SCHEMA = {
       type: :object,
@@ -124,7 +126,7 @@ module ObcanJusticeSk
         }
       },
       required: %i[id typ datumPojednavania ics predmet samosudca spisovaZnacka sud ukonForma obzalovani usek]
-    }
+    }.freeze
 
     def self.import
       response = Curl.get(list_url(take: 1, skip: 0))
@@ -133,13 +135,10 @@ module ObcanJusticeSk
       validate_list_json!(json)
 
       take = 1000
-      pages = (json[:filteredCount] / take.to_f).ceil
 
-      (1..pages).each do |page|
-        skip = page * take
-        url = list_url(take: take, skip: skip)
-
-        ObcanJusticeSk::ImportCriminalHearingsJob.perform_later(url)
+      # skip is how many hearings to pass over, from 0; filteredCount is how many there are in all.
+      (0...json[:filteredCount]).step(take) do |skip|
+        ObcanJusticeSk::ImportCriminalHearingsJob.perform_later(list_url(take:, skip:))
       end
     end
 

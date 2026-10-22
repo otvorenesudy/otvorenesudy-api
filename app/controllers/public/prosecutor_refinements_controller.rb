@@ -1,35 +1,49 @@
-class Public::ProsecutorRefinementsController < Public::ApplicationController
-  before_action :verify_number_of_allowed_refinements
-  before_action :restrict_allowed_origin
+# frozen_string_literal: true
 
-  def create
-    attributes = create_params.except(:prosecutors)
+module Public
+  class ProsecutorRefinementsController < Public::ApplicationController
+    before_action :verify_number_of_allowed_refinements
+    before_action :restrict_allowed_origin
 
-    refinements =
-      create_params[:prosecutors].map do |prosecutor|
-        Public::ProsecutorRefinement.create(attributes.merge(prosecutor: prosecutor, ip_address: request.remote_ip))
-      end
+    def create
+      refinements = build_refinements
+      errors = refinement_errors(refinements)
 
-    invalid_refinement = refinements.find(&:invalid?)
-    render 422, errors: invalid_refinement.errors.full_messages if invalid_refinement
+      return render status: :unprocessable_content, json: { success: false, errors: } if errors.any?
 
-    render 200
-  end
+      Public::ProsecutorRefinement.transaction { refinements.each(&:save!) }
 
-  private
+      render 200
+    end
 
-  def create_params
-    params.permit(:name, :email, :office, prosecutors: [])
-  end
+    private
 
-  def verify_number_of_allowed_refinements
-    ip = request.remote_ip
-    refinements = Public::ProsecutorRefinement.where('created_at > ? AND ip_address = ?', 30.seconds.ago, ip)
+    def build_refinements
+      attributes = create_params.except(:prosecutors).merge(ip_address: request.remote_ip)
 
-    head 429 if refinements.size >= 30
-  end
+      Array(create_params[:prosecutors]).map { |prosecutor| Public::ProsecutorRefinement.new(attributes.merge(prosecutor:)) }
+    end
 
-  def restrict_allowed_origin
-    headers['Access-Control-Allow-Origin'] = Rails.env.production? ? 'https://prokuratori.otvorenesudy.sk' : '*'
+    # Each refinement is saved, or none: what is wrong with any of them, or with the request.
+    def refinement_errors(refinements)
+      return ["Prosecutors can't be blank"] if refinements.empty?
+
+      refinements.reject(&:valid?).flat_map { it.errors.full_messages }.uniq
+    end
+
+    def create_params
+      params.permit(:name, :email, :office, prosecutors: [])
+    end
+
+    def verify_number_of_allowed_refinements
+      ip = request.remote_ip
+      refinements = Public::ProsecutorRefinement.where('created_at > ? AND ip_address = ?', 30.seconds.ago, ip)
+
+      head :too_many_requests if refinements.size >= 30
+    end
+
+    def restrict_allowed_origin
+      headers['Access-Control-Allow-Origin'] = Rails.configuration.x.prosecutor_refinements_origin
+    end
   end
 end

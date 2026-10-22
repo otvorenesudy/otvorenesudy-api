@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: employments
@@ -14,8 +16,8 @@
 #
 FactoryBot.define do
   factory :employment do
-    association :judge
-    association :court
+    judge
+    court
 
     trait :active do
       active { true }

@@ -1,35 +1,39 @@
-class Api::DecreesController < Api::ApplicationController
-  include Api::Syncable
+# frozen_string_literal: true
 
-  def health
-    date = (Time.zone.now.monday? ? 3.days : 2.days).ago.beginning_of_day
+module Api
+  class DecreesController < Api::ApplicationController
+    include Api::Syncable
 
-    if Decree.where('updated_at >= ?', date).count > 0
-      render status: 200, json: { status: 'Success' }
-    else
-      render status: 422, json: { status: 'Failure' }
+    def health
+      date = (Time.zone.now.monday? ? 3.days : 2.days).ago.beginning_of_day
+
+      if Decree.where(updated_at: date..).any?
+        render status: :ok, json: { status: 'Success' }
+      else
+        render status: :unprocessable_content, json: { status: 'Failure' }
+      end
     end
-  end
 
-  protected
+    protected
 
-  def syncable_repository
-    Decree.includes(
-      :pages,
-      :court,
-      :form,
-      :legislation_areas,
-      :legislation_subareas,
-      :natures,
-      :legislations,
-      :inexact_judgements,
-      exact_judgements: [:judge],
-      court: [:municipality],
-      proceeding: [hearings: %i[proposers defendants opponents]]
-    )
-  end
+    def syncable_repository
+      Decree.includes(
+        :pages,
+        :court,
+        :form,
+        :legislation_areas,
+        :legislation_subareas,
+        :natures,
+        :legislations,
+        :inexact_judgements,
+        exact_judgements: [:judge],
+        court: [:municipality],
+        proceeding: [{ hearings: %i[proposers defendants opponents] }]
+      )
+    end
 
-  def next_sync_url(*args)
-    sync_api_decrees_url(*args)
+    def next_sync_url(*)
+      sync_api_decrees_url(*)
+    end
   end
 end

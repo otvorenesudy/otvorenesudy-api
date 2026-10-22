@@ -1,9 +1,9 @@
-require 'spec_helper'
-require 'info_sud'
-require_relative '../../../app/mappers/info_sud/hearing_mapper'
+# frozen_string_literal: true
+
+require 'rails_helper'
 
 RSpec.describe InfoSud::HearingMapper do
-  subject { InfoSud::HearingMapper.new(data) }
+  subject(:mapper) { described_class.new(build(:info_sud_hearing, id: 1, data:)) }
 
   let(:data) do
     {
@@ -35,7 +35,7 @@ RSpec.describe InfoSud::HearingMapper do
 
   describe '#uri' do
     it 'maps uri' do
-      expect(subject.uri).to eql(
+      expect(mapper.uri).to eql(
         'https://obcan.justice.sk/infosud/-/infosud/i-detail/pojednavanie/94fed4fd-af4a-42c3-8c21-788358207927'
       )
     end
@@ -43,49 +43,49 @@ RSpec.describe InfoSud::HearingMapper do
 
   describe '#case_number' do
     it 'maps case number' do
-      expect(subject.case_number).to eql('3T/9/2015')
+      expect(mapper.case_number).to eql('3T/9/2015')
     end
   end
 
   describe '#file_number' do
     it 'maps file number' do
-      expect(subject.file_number).to eql('7115010154')
+      expect(mapper.file_number).to eql('7115010154')
     end
   end
 
   describe '#date' do
     it 'maps utc date' do
-      expect(subject.date).to eql(Time.utc(2015, 12, 7, 12, 30))
+      expect(mapper.date).to eql(Time.utc(2015, 12, 7, 12, 30))
     end
   end
 
   describe '#room' do
     it 'maps room' do
-      expect(subject.room).to eql('135')
+      expect(mapper.room).to eql('135')
     end
   end
 
   describe '#selfjudge' do
     it 'maps self judge' do
-      expect(subject.selfjudge).to eql(true)
+      expect(mapper.selfjudge).to be(true)
     end
   end
 
   describe '#note' do
     it 'maps note' do
-      expect(subject.note).to eql('poznamka')
+      expect(mapper.note).to eql('poznamka')
     end
   end
 
   describe '#special_type' do
     it 'maps special type' do
-      expect(subject.special_type).to be_nil
+      expect(mapper.special_type).to be_nil
     end
   end
 
   describe '#court' do
     it 'maps court' do
-      expect(subject.court).to eql('Mestský súd Košice')
+      expect(mapper.court).to eql('Mestský súd Košice')
     end
   end
 
@@ -94,7 +94,7 @@ RSpec.describe InfoSud::HearingMapper do
       let(:data) { { 'sud_nazov' => 'Špecializovaný trestný súd' } }
 
       it 'maps type to special' do
-        expect(subject.type).to eql('Špecializovaného trestného súdu')
+        expect(mapper.type).to eql('Špecializovaného trestného súdu')
       end
     end
 
@@ -102,7 +102,7 @@ RSpec.describe InfoSud::HearingMapper do
       let(:data) { { 'usek' => 'T' } }
 
       it 'maps type to criminal' do
-        expect(subject.type).to eql('Trestné')
+        expect(mapper.type).to eql('Trestné')
       end
     end
 
@@ -110,59 +110,61 @@ RSpec.describe InfoSud::HearingMapper do
       let(:data) { { 'usek' => 'C' } }
 
       it 'maps type to civil' do
-        expect(subject.type).to eql('Civilné')
+        expect(mapper.type).to eql('Civilné')
       end
     end
   end
 
   describe '#section' do
     it 'maps section' do
-      expect(subject.section).to eql('T')
+      expect(mapper.section).to eql('T')
     end
   end
 
   describe '#subject' do
     it 'maps subject' do
-      expect(subject.subject).to eql('4Pv 461/14 - § 189 ods. 1 Tr. zák.')
+      expect(mapper.subject).to eql('4Pv 461/14 - § 189 ods. 1 Tr. zák.')
     end
   end
 
   describe '#form' do
     it 'maps form' do
-      expect(subject.form).to eql('Hlavné pojednávanie s rozhodnutím')
+      expect(mapper.form).to eql('Hlavné pojednávanie s rozhodnutím')
     end
   end
 
   describe '#proposers' do
     it 'maps proposers' do
-      expect(subject.proposers).to eql(['Peter Pan'])
+      expect(mapper.proposers).to eql(['Peter Pan'])
     end
   end
 
   describe '#opponents' do
     it 'maps opponents' do
-      expect(subject.opponents).to eql(['Peter Parker'])
+      expect(mapper.opponents).to eql(['Peter Parker'])
     end
   end
 
   describe '#defendants' do
     it 'maps defendants' do
-      expect(subject.defendants).to eql(['Peter Smith'])
+      expect(mapper.defendants).to eql(['Peter Smith'])
     end
   end
 
   describe '#judges' do
-    it 'maps judges' do
-      expect(subject.judges).to eql(['JUDr. Margaréta Hlaváčková'])
-      expect(subject.chair_judges).to be_empty
+    let!(:judge) { create(:judge, name: 'JUDr. Margaréta Hlaváčková') }
+
+    it 'maps judges by name' do
+      expect(mapper.judges).to eq([judge])
+      expect(mapper.chair_judges).to be_empty
     end
 
     context 'when court is specialized' do
       let(:data) { { 'sud_nazov' => 'Špecializovaný trestný súd', 'sudca_meno' => ['JUDr. Margaréta Hlaváčková'] } }
 
       it 'maps judges as chair' do
-        expect(subject.chair_judges).to eql(['JUDr. Margaréta Hlaváčková'])
-        expect(subject.judges).to be_empty
+        expect(mapper.chair_judges).to eq([judge])
+        expect(mapper.judges).to be_empty
       end
     end
   end

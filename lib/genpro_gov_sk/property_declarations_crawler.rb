@@ -1,10 +1,13 @@
+# frozen_string_literal: true
+
 module GenproGovSk
   class PropertyDeclarationsCrawler
     def self.crawl
       prosecutors = GenproGovSk::ProsecutorsCrawler.crawl
 
       prosecutors.map do |name|
-        first_name, last_name = name[:first], name.values_at(:middle, :last).compact.join(' ')
+        first_name = name[:first]
+        last_name = name.values_at(:middle, :last).compact.join(' ')
         metadata = GenproGovSk::ProsecutorsMetadata.of(name[:value]) || {}
 
         {
@@ -17,10 +20,10 @@ module GenproGovSk
     def self.crawl_for(first_name:, last_name:)
       agent = Mechanize.new
       page = agent.get('https://www.genpro.gov.sk/prokuratura-sr/majetkove-priznania-30a3.html')
-      list = page.form_with(name: 'uznesenia-form') { |form|
+      list = page.form_with(name: 'uznesenia-form') do |form|
         form.field_with(name: 'meno').value = first_name
         form.field_with(name: 'priezvisko').value = last_name
-      }.submit
+      end.submit
 
       links = Parser.parse(list.body)
 

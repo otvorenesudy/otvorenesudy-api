@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 module UnicodeString
   refine String do
     def strip
-      dup.tap { |string| string.strip! }
+      dup.tap(&:strip!)
     end
 
     def strip!

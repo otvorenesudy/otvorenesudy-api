@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: api_keys
@@ -7,18 +9,21 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Api::Key < ApplicationRecord
-  before_create :generate_key
+module Api
+  class Key < ApplicationRecord
+    before_create :generate_key
 
-  def generate_key
-    begin
-      self.value = Generator.generate
-    end while self.class.exists? value: value
-  end
+    def generate_key
+      loop do
+        self.value = Generator.generate
+        break unless self.class.exists?(value:)
+      end
+    end
 
-  class Generator
-    def self.generate
-      SecureRandom.hex
+    class Generator
+      def self.generate
+        SecureRandom.hex
+      end
     end
   end
 end

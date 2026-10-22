@@ -1,4 +1,4 @@
-# Place for ActiveModel::Serializer related settings
-# Make sure to use class, some tests use this config variable
+# frozen_string_literal: true
 
+# The API's JSON puts each record under its name: {"decree": {...}}, {"decrees": [...]}.
 ActiveModel::Serializer.config.adapter = ActiveModelSerializers::Adapter::Json

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: judges
@@ -21,18 +23,18 @@
 class Judge < OpenCourts::ApplicationRecord
   belongs_to :source
 
-  has_many :designations, class_name: 'Judge::Designation'
+  has_many :designations, class_name: 'Judge::Designation', dependent: nil
 
-  has_many :employments, autosave: true
+  has_many :employments, autosave: true, dependent: nil
   has_many :courts, through: :employments
   has_many :positions, through: :employments, source: :judge_position
 
-  has_many :judgings
+  has_many :judgings, dependent: nil
   has_many :hearings, through: :judgings
 
-  has_many :judgements
+  has_many :judgements, dependent: nil
   has_many :decrees, through: :judgements
 
-  has_many :selection_procedure_commissioners
-  has_many :selection_procedure_candidates
+  has_many :selection_procedure_commissioners, dependent: nil
+  has_many :selection_procedure_candidates, dependent: nil
 end

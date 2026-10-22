@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: info_sud_courts
@@ -15,7 +17,7 @@ module InfoSud
     after_commit(on: %i[create update]) { ReconcileCourtJob.perform_later(self) }
 
     def to_mapper
-      InfoSud::CourtMapper.new(self.data)
+      InfoSud::CourtMapper.new(self)
     end
   end
 end

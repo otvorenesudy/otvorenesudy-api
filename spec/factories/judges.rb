@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: judges
@@ -24,7 +26,7 @@ FactoryBot.define do
     source
 
     name { "#{prefix} #{first} #{middle} #{last}, #{suffix} #{addition}".strip.squeeze(' ') }
-    name_unprocessed { |n| name }
+    name_unprocessed { name }
 
     prefix { 'JUDr.' }
     first { 'Peter' }
@@ -36,7 +38,7 @@ FactoryBot.define do
 
     trait :with_employments do
       after :create do |judge|
-        (Random.rand(10) + 1).times.map { create :employment, :active, judge: judge }
+        Array.new(Random.rand(1..10)) { create(:employment, :active, judge: judge) }
       end
     end
   end

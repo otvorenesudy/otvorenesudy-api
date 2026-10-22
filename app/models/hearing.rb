@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: hearings
@@ -36,19 +38,21 @@ class Hearing < OpenCourts::ApplicationRecord
   belongs_to :court, optional: true
   belongs_to :original_court, class_name: :Court, optional: true
 
-  has_many :judgings
-  has_many :exact_judgings, -> { exact }, class_name: :Judging
-  has_many :inexact_judgings, -> { inexact }, class_name: :Judging
+  has_many :judgings, dependent: nil
+  has_many :exact_judgings, -> { exact }, class_name: :Judging, dependent: nil, inverse_of: false
+  has_many :inexact_judgings, -> { inexact }, class_name: :Judging, dependent: nil, inverse_of: false
   has_many :judges, through: :judgings
 
-  belongs_to :type, class_name: 'Hearing::Type', foreign_key: :hearing_type_id
-  belongs_to :section, class_name: 'Hearing::Section', foreign_key: :hearing_section_id, optional: true
-  belongs_to :subject, class_name: 'Hearing::Subject', foreign_key: :hearing_subject_id, optional: true
-  belongs_to :form, class_name: 'Hearing::Form', foreign_key: :hearing_form_id, optional: true
+  belongs_to :type, class_name: 'Hearing::Type', foreign_key: :hearing_type_id, inverse_of: false
+  belongs_to :section, class_name: 'Hearing::Section', foreign_key: :hearing_section_id, optional: true,
+                       inverse_of: false
+  belongs_to :subject, class_name: 'Hearing::Subject', foreign_key: :hearing_subject_id, optional: true,
+                       inverse_of: false
+  belongs_to :form, class_name: 'Hearing::Form', foreign_key: :hearing_form_id, optional: true, inverse_of: false
 
-  has_many :proposers
-  has_many :opponents
-  has_many :defendants
+  has_many :proposers, dependent: nil
+  has_many :opponents, dependent: nil
+  has_many :defendants, dependent: nil
 
   has_many :accusations, through: :defendants
 end

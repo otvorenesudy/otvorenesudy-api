@@ -1,17 +1,17 @@
+# frozen_string_literal: true
+
 class Extractor
   def self.extract(path)
-    Dir.mkdir(Rails.root.join('tmp', 'extracted')) unless Dir.exist?(Rails.root.join('tmp', 'extracted'))
+    FileUtils.mkdir_p(Rails.root.join('tmp/extracted'))
 
     directory = Rails.root.join('tmp', 'extracted', "extracted-#{Time.zone.now.to_i}")
     Dir.mkdir(directory)
     begin
-      `unzip '#{path}' -d #{directory}`
+      system('unzip', '-qq', path.to_s, '-d', directory.to_s)
       Dir[directory.join('*')].each do |filename|
-        begin
-          yield(File.read(filename))
-        rescue StandardError
-          nil
-        end
+        yield(File.read(filename))
+      rescue StandardError
+        nil
       end
     ensure
       FileUtils.rm_rf(directory)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Purgeable
   def purge!(relation_name, except: nil)
     relation = public_send(relation_name)

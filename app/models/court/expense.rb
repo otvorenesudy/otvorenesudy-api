@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: court_expenses
@@ -11,7 +13,9 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Court::Expense < OpenCourts::ApplicationRecord
-  belongs_to :source
-  belongs_to :court
+class Court
+  class Expense < OpenCourts::ApplicationRecord
+    belongs_to :source
+    belongs_to :court
+  end
 end

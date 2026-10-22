@@ -1,42 +1,39 @@
-require 'spec_helper'
-require 'obcan_justice_sk'
-require 'pdf_extractor'
-require 'sentry-ruby'
-require_relative '../../../app/mappers/obcan_justice_sk/decree_mapper'
-require_relative '../../../app/services/obcan_justice_sk/judge_finder'
+# frozen_string_literal: true
+
+require 'rails_helper'
 
 RSpec.describe ObcanJusticeSk::DecreeMapper do
-  subject { described_class.new(double(:decree, id: 1, class: double(:class, name: 'Decree'), data: data)) }
+  subject(:mapper) { described_class.new(build(:obcan_justice_sk_decree, id: 1, data:)) }
 
-  let(:data) { JSON.parse(fixture('obcan_justice_sk/mappers/decree.json').read) }
+  let(:data) { JSON.parse(file_fixture('obcan_justice_sk/mappers/decree.json').read) }
 
   describe '#source' do
     it 'maps source' do
-      expect(subject.source).to eql('JusticeGovSk')
+      expect(mapper.source).to eql('JusticeGovSk')
     end
   end
 
   describe '#source_class' do
     it 'maps source class' do
-      expect(subject.source_class).to eql('Decree')
+      expect(mapper.source_class).to eq('ObcanJusticeSk::Decree')
     end
   end
 
   describe '#source_class_id' do
     it 'maps source class id' do
-      expect(subject.source_class_id).to eql(1)
+      expect(mapper.source_class_id).to be(1)
     end
   end
 
   describe '#ecli' do
     it 'maps ecli' do
-      expect(subject.ecli).to eql('ECLI:SK:OSLC:2021:6120386527.2')
+      expect(mapper.ecli).to eql('ECLI:SK:OSLC:2021:6120386527.2')
     end
   end
 
   describe '#uri' do
     it 'maps uri' do
-      expect(subject.uri).to eql(
+      expect(mapper.uri).to eql(
         'https://www.justice.gov.sk/sudy-a-rozhodnutia/sudy/rozhodnutia/819aef78-bdd4-4855-b8ed-d936446d41a2:3855d4dc-1209-4ddf-8a63-34cb3349cede'
       )
     end
@@ -44,56 +41,52 @@ RSpec.describe ObcanJusticeSk::DecreeMapper do
 
   describe '#court' do
     it 'maps court name' do
-      expect(subject.court).to eql('Okresný súd Lučenec')
+      expect(mapper.court).to eql('Okresný súd Lučenec')
     end
   end
 
   describe '#judges' do
-    it 'maps judges' do
-      judge = double(:judge)
+    it 'maps judges by the id obcan.justice.sk gives them' do
+      raw = create(:obcan_justice_sk_judge, guid: data['sudca']['registreGuid'])
+      judge = create(:judge, source_class: 'ObcanJusticeSk::Judge', source_class_id: raw.id)
 
-      allow(ObcanJusticeSk::JudgeFinder).to receive(:find_by).with(
-        name: 'JUDr. Andrea Gabrielová',
-        guid: data['sudca']['registreGuid']
-      ).and_return(judge)
-
-      expect(subject.judges).to eql([judge])
+      expect(mapper.judges).to eq([judge])
     end
   end
 
   describe '#case_number' do
     it 'maps case number' do
-      expect(subject.case_number).to eql('17Csp/50/2021')
+      expect(mapper.case_number).to eql('17Csp/50/2021')
     end
   end
 
   describe '#file_number' do
     it 'maps file number' do
-      expect(subject.file_number).to eql('6120386527')
+      expect(mapper.file_number).to eql('6120386527')
     end
   end
 
   describe '#date' do
     it 'maps decree date' do
-      expect(subject.date).to eql(Time.parse('2021-05-27'))
+      expect(mapper.date).to eq(Date.new(2021, 5, 27))
     end
   end
 
   describe '#form' do
     it 'maps decree form' do
-      expect(subject.form).to eql('Rozsudok')
+      expect(mapper.form).to eql('Rozsudok')
     end
   end
 
   describe '#natures' do
     it 'maps decree natures' do
-      expect(subject.natures).to eql(['Prvostupňové nenapadnuté opravnými prostriedkami'])
+      expect(mapper.natures).to eql(['Prvostupňové nenapadnuté opravnými prostriedkami'])
     end
   end
 
   describe '#legislations' do
     it 'maps legislations' do
-      expect(subject.legislations).to eql(
+      expect(mapper.legislations).to eql(
         [
           { number: 40, value: '/SK/ZZ/1964/40', value_unprocessed: '/SK/ZZ/1964/40', year: 1964 },
           {
@@ -143,61 +136,59 @@ RSpec.describe ObcanJusticeSk::DecreeMapper do
 
   describe '#legislation_areas' do
     it 'maps legislation areas' do
-      expect(subject.legislation_areas).to eql(['Občianske právo'])
+      expect(mapper.legislation_areas).to eql(['Občianske právo'])
     end
   end
 
   describe '#legislation_subareas' do
     it 'maps legislatio subarea' do
-      expect(subject.legislation_subareas).to eql(['Spotrebiteľské zmluvy'])
+      expect(mapper.legislation_subareas).to eql(['Spotrebiteľské zmluvy'])
     end
   end
 
   describe '#pages' do
-    it 'maps pages from pdf document to text pages and caches pdf extractor response' do
-      allow(PdfExtractor).to receive(:extract_text_from_url)
-        .with(subject.pdf_uri, preserve_pages: true)
-        .and_return(['Fulltext'])
-        .once
+    before { allow(Sentry).to receive(:capture_exception) }
 
-      expect(subject.pages).to eql(['Fulltext'])
-      expect(subject.pages).to eql(['Fulltext'])
+    it 'maps the pages of the document to their text, fetching it once' do
+      stub_request(:get, mapper.pdf_uri).to_return(body: file_fixture('pdf/normal.pdf').binread)
+
+      expect([mapper.pages, mapper.pages]).to eq([['Dummy PDF file'], ['Dummy PDF file']])
+      expect(a_request(:get, mapper.pdf_uri)).to have_been_made.once
     end
 
-    context 'when pdf is not available' do
-      it 'returns empty array' do
-        error = StandardError.new()
+    context 'when the document is not available' do
+      it 'maps no pages, and reports the error' do
+        stub_request(:get, mapper.pdf_uri).to_timeout
 
-        allow(PdfExtractor).to receive(:extract_text_from_url).with(subject.pdf_uri, preserve_pages: true).and_raise(
-          error
-        )
-
-        expect(Sentry).to receive(:capture_exception).with(error).once
-
-        expect(subject.pages).to eql([])
+        expect(mapper.pages).to eq([])
+        expect(Sentry).to have_received(:capture_exception).with(an_instance_of(Curl::Err::TimeoutError))
       end
     end
 
-    context 'when pdf is empty' do
-      it 'returns empty array' do
-        allow(PdfExtractor).to receive(:extract_text_from_url).with(subject.pdf_uri, preserve_pages: true).and_return(
-          []
-        )
+    context 'when the document has no text' do
+      it 'maps no pages, and reports the decree' do
+        stub_request(:get, mapper.pdf_uri).to_return(body: file_fixture('pdf/ocr.pdf').binread)
 
-        expect(Sentry).to receive(:capture_exception) do |error|
-          error.message === 'Failed to extract text from PDF for Decree:1'
-        end
-
-        expect(subject.pages).to eql([])
+        expect(mapper.pages).to eq([])
+        expect(Sentry).to have_received(:capture_exception)
+          .with(having_attributes(message: 'Failed to extract text from PDF for ObcanJusticeSk::Decree:1'))
       end
     end
   end
 
   describe '#pdf_uri' do
     it 'maps uri to pdf' do
-      expect(subject.pdf_uri).to eql(
+      expect(mapper.pdf_uri).to eql(
         'https://obcan.justice.sk/content/public/item/3855d4dc-1209-4ddf-8a63-34cb3349cede'
       )
+    end
+  end
+
+  context 'with a record that gives no form' do
+    let(:data) { JSON.parse(file_fixture('obcan_justice_sk/mappers/decree.json').read).except('formaRozhodnutia') }
+
+    it 'maps no form code' do
+      expect(mapper.form_code).to be_nil
     end
   end
 end

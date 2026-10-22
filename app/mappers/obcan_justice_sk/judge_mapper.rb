@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module ObcanJusticeSk
   class JudgeMapper
-    attr :judge, :data
+    attr_reader :judge, :data
 
     ACTIVITY_MAP = {
       'label.sudca.aktivny' => :active,
@@ -9,7 +11,7 @@ module ObcanJusticeSk
       'label.sudca.prerusenie vykonu - poberatel' => :inactive,
       'label.sudca.prerusenie vykonu - ina funkce' => :inactive,
       'label.sudca.prerusenie vykonu' => :inactive
-    }
+    }.freeze
 
     def initialize(judge)
       @judge = judge
@@ -40,10 +42,8 @@ module ObcanJusticeSk
       data[:funkcia].try(:downcase) || 'sudca'
     end
 
-    def active
-      return true if status == :active
-
-      false
+    def active?
+      status == :active
     end
 
     def status

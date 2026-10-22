@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: legislation_areas
@@ -7,6 +9,8 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Legislation::AreaSerializer < ActiveModel::Serializer
-  attributes :value
+class Legislation
+  class AreaSerializer < ActiveModel::Serializer
+    attributes :value
+  end
 end

@@ -1,5 +1,9 @@
-class OpenCourts::ApplicationRecord < ActiveRecord::Base
-  self.abstract_class = true
+# frozen_string_literal: true
 
-  connects_to database: { writing: :opencourts, reading: :opencourts }
+module OpenCourts
+  class ApplicationRecord < ActiveRecord::Base
+    self.abstract_class = true
+
+    connects_to database: { writing: :opencourts, reading: :opencourts }
+  end
 end

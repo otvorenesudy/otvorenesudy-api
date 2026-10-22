@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module InfoSud
   class Importer
-    def self.import(data, parser: InfoSud::Parser, repository:)
+    def self.import(data, repository:, parser: InfoSud::Parser)
       records = parser.parse(data)
 
       records.each do |attributes|

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ObcanJusticeSk
   class CivilHearings
     BASE_URL = 'https://obcan.justice.sk/pilot/api/ress-isu-service/v1/obcianPojednavania'
@@ -33,7 +35,7 @@ module ObcanJusticeSk
         }
       },
       required: %i[numFound page size updateDate obcianPojednavaniaList]
-    }
+    }.freeze
 
     JSON_SCHEMA = {
       type: :object,
@@ -164,7 +166,7 @@ module ObcanJusticeSk
           updateDate
         ]
       }
-    }
+    }.freeze
 
     def self.import
       response = Curl.get(list_url(size: 1, page: 0))

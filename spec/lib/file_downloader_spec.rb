@@ -1,5 +1,6 @@
-require 'spec_helper'
-require 'file_downloader'
+# frozen_string_literal: true
+
+require 'rails_helper'
 
 RSpec.describe FileDownloader do
   describe '.download' do
@@ -8,9 +9,9 @@ RSpec.describe FileDownloader do
     it 'downloads file and yields the path', vcr: { cassette_name: 'example.pdf' } do
       path = '/tmp/file-downloader-tmp-file-0ee5cb2652ba9d08f28c952ee7b3778aeb70f78a029da3166a6e1007c6c01503'
 
-      expect { |block| FileDownloader.download(url, directory: '/tmp', &block) }.to yield_with_args(path)
+      expect { |block| described_class.download(url, directory: '/tmp', &block) }.to yield_with_args(path)
 
-      expect(File.exist?(path)).to eql(false)
+      expect(File.exist?(path)).to be(false)
     end
   end
 end

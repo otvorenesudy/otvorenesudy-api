@@ -1,36 +1,29 @@
-require 'spec_helper'
-require 'active_support/all'
-require_relative '../../app/services/import_manager'
+# frozen_string_literal: true
 
+require 'rails_helper'
+
+# Saves a source's record only when what it would save differs from what is stored, so an unchanged record doesn't
+# enqueue its reconciliation again.
 RSpec.describe ImportManager do
-  let(:record) { double(:record, attributes: { name: 'Peter', surname: 'Smith' }) }
-  let(:attributes) { { name: 'Peter', surname: 'Parker' } }
+  let(:invite) { create(:invite, email: 'peter@example.com', locale: 'sk') }
 
   describe '.import_or_update' do
-    context 'when attributes change' do
-      it 'updates record with attributes' do
-        expect(record).to receive(:update!).with(attributes)
+    it 'updates the record with attributes that changed' do
+      described_class.import_or_update(invite, attributes: { email: 'parker@example.com', locale: 'sk' })
 
-        ImportManager.import_or_update(record, attributes: attributes)
-      end
+      expect(invite.reload.email).to eq('parker@example.com')
     end
 
-    context 'without change' do
-      let(:attributes) { { name: 'Peter', surname: 'Smith' } }
-
-      it 'does not dispatch update for attributes' do
-        expect(record).not_to receive(:update!)
-
-        ImportManager.import_or_update(record, attributes: attributes)
-      end
+    it 'leaves the record alone when nothing changed' do
+      expect { described_class.import_or_update(invite, attributes: { email: 'peter@example.com', locale: 'sk' }) }
+        .not_to(change { invite.reload.updated_at })
     end
 
-    context 'when restricted attributes for update changes' do
-      it 'does not update record' do
-        expect(record).not_to receive(:update!)
+    it 'leaves the record alone when only attributes it must not update changed' do
+      described_class.import_or_update(invite, attributes: { email: 'parker@example.com', locale: 'sk' },
+                                               restricted_attributes_for_update: [:email])
 
-        ImportManager.import_or_update(record, attributes: attributes, restricted_attributes_for_update: [:surname])
-      end
+      expect(invite.reload.email).to eq('peter@example.com')
     end
   end
 end

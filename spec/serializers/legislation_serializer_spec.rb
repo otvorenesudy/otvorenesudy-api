@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: legislations
@@ -15,20 +17,34 @@
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #
+require 'rails_helper'
+
 RSpec.describe LegislationSerializer do
   let(:adapter) { ActiveModel::Serializer.config.adapter.new(serializer) }
-  let(:serializer) { described_class.new(legislation)  }
+  let(:serializer) { described_class.new(legislation) }
 
   describe '#external_url' do
     let(:legislation) { create(:legislation, value: 'Zakon 1 2 3', year: nil, number: nil) }
 
     context 'when metadata is present' do
-      let(:legislation) { create(:legislation, value: 'Zakon 1 2 3', paragraph: '5', number: 3, letter: 'A', year: 2011, section: 3)  }
+      let(:legislation) do
+        create(:legislation, value: 'Zakon 1 2 3', paragraph: '5', number: 3, letter: 'A', year: 2011, section: 3)
+      end
 
       it 'uses direct link to external legislation' do
         value = adapter.as_json[:legislation][:external_url]
 
         expect(value).to eql('http://www.zakonypreludi.sk/zz/2011-3#p5-3-A')
+      end
+    end
+
+    context 'with the act alone, without a paragraph, section or letter' do
+      let(:legislation) do
+        create(:legislation, value: 'Zakon 3/2011', number: 3, year: 2011, paragraph: nil, letter: nil)
+      end
+
+      it 'links to the act' do
+        expect(adapter.as_json[:legislation][:external_url]).to eq('http://www.zakonypreludi.sk/zz/2011-3#')
       end
     end
 

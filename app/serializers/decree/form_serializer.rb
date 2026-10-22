@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: decree_forms
@@ -8,6 +10,8 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Decree::FormSerializer < ActiveModel::Serializer
-  attributes :code, :value
+class Decree
+  class FormSerializer < ActiveModel::Serializer
+    attributes :code, :value
+  end
 end

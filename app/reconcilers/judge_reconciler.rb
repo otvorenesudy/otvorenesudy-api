@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class JudgeReconciler
   attr_reader :mapper, :judge
 
@@ -15,13 +17,13 @@ class JudgeReconciler
       reconcile_as_judicial_council_chairman
       reconcile_as_judicial_council_member
 
-      judge.save!
-      judge.touch
+      # Changed now, even when the source changed nothing: the sync API and otvorenesudy's index go by updated_at.
+      judge.update!(updated_at: Time.current)
     end
   end
 
   def reconcile_attributes
-    # TODO remove source, leave now for compatibility
+    # TODO: remove source, leave now for compatibility
     name = mapper.name
 
     judge.update!(
@@ -41,7 +43,7 @@ class JudgeReconciler
   end
 
   def reconcile_past_employments
-    judge.employments.update_all(active: false)
+    judge.employments.each { |employment| employment.update!(active: false) }
   end
 
   def reconcile_employment
@@ -52,7 +54,7 @@ class JudgeReconciler
 
     employment.update!(
       position: Judge::Position.find_or_create_by!(value: mapper.position),
-      active: mapper.active,
+      active: mapper.active?,
       status: mapper.status,
       note: mapper.note
     )
@@ -68,8 +70,6 @@ class JudgeReconciler
   end
 
   def reconcile_as_judicial_council_chairman
-    return unless mapper.try(:judicial_council_chairman_court_names)
-
     mapper.judicial_council_chairman_court_names.each do |court_name|
       court = Court.find_by!(name: court_name)
       employment = judge.employments.find_or_initialize_by(court: court)
@@ -79,8 +79,6 @@ class JudgeReconciler
   end
 
   def reconcile_as_judicial_council_member
-    return unless mapper.try(:judicial_council_member_court_names)
-
     mapper.judicial_council_member_court_names.each do |court_name|
       court = Court.find_by!(name: court_name)
       employment = judge.employments.find_or_initialize_by(court: court)

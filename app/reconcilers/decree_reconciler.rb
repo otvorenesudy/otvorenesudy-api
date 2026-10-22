@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DecreeReconciler
   include Skylight::Helpers
 
@@ -20,8 +22,8 @@ class DecreeReconciler
       reconcile_legislations
       reconcile_pages
 
-      decree.save!
-      decree.touch
+      # Changed now, even when the source changed nothing: the sync API and otvorenesudy's index go by updated_at.
+      decree.update!(updated_at: Time.current)
     end
   end
 
@@ -41,14 +43,10 @@ class DecreeReconciler
   end
 
   def reconcile_court
-    return unless mapper.court
-
     decree.court = Court.find_by!(name: mapper.court)
   end
 
   def reconcile_legislation_areas
-    return unless mapper.legislation_areas
-
     usages =
       mapper.legislation_areas.map do |value|
         area = Legislation::Area.find_or_create_by!(value: value)

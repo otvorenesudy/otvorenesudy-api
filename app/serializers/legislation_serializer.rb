@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: legislations
@@ -25,9 +27,9 @@ class LegislationSerializer < ActiveModel::Serializer
       url << '-' << object.section   if object.section
       url << '-' << object.letter    if object.letter
     else
-      url = 'http://www.zakonypreludi.sk/main/search.aspx?text=' + object.value
+      url = "http://www.zakonypreludi.sk/main/search.aspx?text=#{object.value}"
     end
 
-    return url
+    url
   end
 end

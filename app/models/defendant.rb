@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: defendants
@@ -12,5 +14,5 @@
 class Defendant < OpenCourts::ApplicationRecord
   belongs_to :hearing
 
-  has_many :accusations
+  has_many :accusations, dependent: nil
 end

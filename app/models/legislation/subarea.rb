@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: legislation_subareas
@@ -7,7 +9,10 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Legislation::Subarea < OpenCourts::ApplicationRecord
-  has_many :usages, class_name: 'Legislation::SubareaUsage', foreign_key: :legislation_subarea_id
-  has_many :decrees, through: :usages
+class Legislation
+  class Subarea < OpenCourts::ApplicationRecord
+    has_many :usages, class_name: 'Legislation::SubareaUsage', foreign_key: :legislation_subarea_id, dependent: nil,
+                      inverse_of: false
+    has_many :decrees, through: :usages
+  end
 end

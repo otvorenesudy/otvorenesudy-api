@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: judge_designations
@@ -11,8 +13,11 @@
 #  created_at                :datetime         not null
 #  updated_at                :datetime         not null
 #
-class Judge::Designation < OpenCourts::ApplicationRecord
-  belongs_to :source
-  belongs_to :judge
-  belongs_to :type, class_name: 'Judge::Designation::Type', foreign_key: :judge_designation_type_id, optional: true
+class Judge
+  class Designation < OpenCourts::ApplicationRecord
+    belongs_to :source
+    belongs_to :judge
+    belongs_to :type, class_name: 'Judge::Designation::Type', foreign_key: :judge_designation_type_id, optional: true,
+                      inverse_of: false
+  end
 end

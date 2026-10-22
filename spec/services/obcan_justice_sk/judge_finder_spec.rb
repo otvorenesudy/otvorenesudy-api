@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe ObcanJusticeSk::JudgeFinder do
@@ -8,25 +10,19 @@ RSpec.describe ObcanJusticeSk::JudgeFinder do
   describe '.find_by' do
     context 'when guid is present' do
       it 'finds judge by guid' do
-        judge = described_class.find_by(name: 'JUDr. Peter Pan, PhD.', guid: '123')
-
-        expect(judge).to eql(judge)
+        expect(described_class.find_by(name: 'JUDr. Peter Pan, PhD.', guid: '123')).to eq(judge)
       end
     end
 
     context 'when guid is not present' do
       it 'finds judge by name' do
-        judge = described_class.find_by(name: 'JUDr. Peter Smith', guid: nil)
-
-        expect(judge).to eql(other_judge)
+        expect(described_class.find_by(name: 'JUDr. Peter Smith', guid: nil)).to eq(other_judge)
       end
     end
 
     context 'when judge is not found' do
       it 'returns nil' do
-        judge = described_class.find_by(name: 'JUDr. Peter Plan', guid: nil)
-
-        expect(judge).to be_nil
+        expect(described_class.find_by(name: 'JUDr. Peter Plan', guid: nil)).to be_nil
       end
     end
   end

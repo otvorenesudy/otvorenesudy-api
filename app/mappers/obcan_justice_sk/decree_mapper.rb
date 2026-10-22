@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ObcanJusticeSk
   class DecreeMapper
     FORM_CODE_MAP = {
@@ -25,9 +27,9 @@ module ObcanJusticeSk
       'Uznesenie' => 'N',
       'Výzva' => 'X',
       'Zmenkový platobný rozkaz' => 'M'
-    }
+    }.freeze
 
-    attr :decree, :data
+    attr_reader :decree, :data
 
     def initialize(decree)
       @decree = decree
@@ -64,13 +66,13 @@ module ObcanJusticeSk
       return [] unless data[:sudca] && data[:sudca][:meno]
 
       name = ObcanJusticeSk::Normalizer.normalize_person_name(data[:sudca][:meno])
-      guid = data[:sudca][:registreGuid].match(/null/) ? nil : data[:sudca][:registreGuid]
+      guid = data[:sudca][:registreGuid].include?('null') ? nil : data[:sudca][:registreGuid]
 
       [ObcanJusticeSk::JudgeFinder.find_by(name: name, guid: guid)].compact
     end
 
     def date
-      Time.parse(data[:datumVydania]) if data[:datumVydania].present?
+      Date.parse(data[:datumVydania]) if data[:datumVydania].present?
     end
 
     def file_number
@@ -115,7 +117,7 @@ module ObcanJusticeSk
           pages = PdfExtractor.extract_text_from_url(pdf_uri, preserve_pages: true)
 
           if !pages || pages[0].blank?
-            raise ArgumentError.new("Failed to extract text from PDF for #{source_class}:#{source_class_id}")
+            raise ArgumentError, "Failed to extract text from PDF for #{source_class}:#{source_class_id}"
           end
 
           pages

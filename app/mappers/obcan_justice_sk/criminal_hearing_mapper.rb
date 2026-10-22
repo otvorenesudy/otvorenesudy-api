@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module ObcanJusticeSk
   class CriminalHearingMapper
-    attr :hearing, :data
+    attr_reader :hearing, :data
 
     def initialize(hearing)
       @hearing = hearing
@@ -74,7 +76,7 @@ module ObcanJusticeSk
     end
 
     def date
-      "#{data[:datumPojednavania]}".in_time_zone('Europe/Bratislava') if data[:datumPojednavania].present?
+      data[:datumPojednavania].to_s.in_time_zone('Europe/Bratislava') if data[:datumPojednavania].present?
     end
 
     def note
@@ -105,10 +107,9 @@ module ObcanJusticeSk
 
     def map_judges
       data[:sudcovia]
-        .map do |judge|
+        .filter_map do |judge|
           ObcanJusticeSk::JudgeFinder.find_by(name: ObcanJusticeSk::Normalizer.normalize_person_name(judge), guid: nil)
         end
-        .compact
     end
   end
 end

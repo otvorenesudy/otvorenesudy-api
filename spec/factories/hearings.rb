@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: hearings
@@ -31,10 +33,10 @@ FactoryBot.define do
   factory :hearing do
     uri
 
-    association :source
-    association :proceeding
-    association :type, factory: :hearing_type
-    association :court
+    source
+    proceeding
+    type factory: %i[hearing_type]
+    court
 
     trait :defendants do
       after :build do |hearing|

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: judge_designation_types
@@ -7,6 +9,10 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Judge::Designation::Type < OpenCourts::ApplicationRecord
-  has_many :designations, class_name: 'Judge::Designation'
+class Judge
+  class Designation
+    class Type < OpenCourts::ApplicationRecord
+      has_many :designations, class_name: 'Judge::Designation', dependent: nil
+    end
+  end
 end

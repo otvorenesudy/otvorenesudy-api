@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenproGovSk
   class PropertyDeclarationCrawler
     def self.crawl(url)
@@ -9,32 +11,34 @@ module GenproGovSk
     class Parser
       using UnicodeString
 
+      CONTENT = '#page > div.contentIntro > div.grid_9.contentPage'
+
       def self.parse(html)
         document = Nokogiri::HTML(html)
 
         {
-          year: document.at_css('#page > div.contentIntro > div.grid_9.contentPage > h3').text.match(/rok (\d+)/)[1].to_i,
-          lists: document.search('.table_01').map { |table|
+          year: document.at_css("#{CONTENT} > h3").text.match(/rok (\d+)/)[1].to_i,
+          lists: document.search('.table_01').map do |table|
             {
               category: table.at_css('caption').text.strip.presence,
               items: parse_items(table)
             }
-          },
+          end,
           incomes: parse_incomes(document),
-          statements: document.css('#page > div.contentIntro > div.grid_9.contentPage > div > ol > li').map { |li|
+          statements: document.css("#{CONTENT} > div > ol > li").filter_map do |li|
             li.text.strip.presence
-          }.compact
+          end
         }
       end
 
       def self.parse_items(table)
-        Table.parse(table, parser_factory: ->(heading) {
+        Table.parse(table, parser_factory: lambda { |heading|
           case heading
           when
             ['popis veci', 'dátum nadobudnutia'],
             ['Druh záväzku', 'Dátum nadobudnutia']
 
-            ->(row) {
+            lambda { |row|
               {
                 description: row.css('td')[0].text.strip.presence,
                 acquisition_date: row.css('td')[1].text.strip.presence
@@ -45,7 +49,7 @@ module GenproGovSk
             ['popis majetku', 'dôvod nadobudnutia', 'dátum nadobudnutia'],
             ['popis práva', 'právny dôvod nadobudnutia', 'dátum nadobudnutia']
 
-            ->(row) {
+            lambda { |row|
               {
                 description: row.css('td')[0].text.strip.presence,
                 acquisition_reason: row.css('td')[1].text.strip.presence,
@@ -61,9 +65,9 @@ module GenproGovSk
 
         return unless table
 
-        Table.parse(table, parser_factory: ->(heading) {
-          if heading == ['popis', 'príjmy']
-            ->(row) {
+        Table.parse(table, parser_factory: lambda { |heading|
+          if heading == %w[popis príjmy]
+            lambda { |row|
               {
                 description: row.css('td')[0].text.strip.presence,
                 value: row.css('td')[1].text.strip.presence
@@ -75,7 +79,7 @@ module GenproGovSk
 
       class Table
         def self.parse(table, parser_factory:)
-          heading = table.css('tr.rowBlue_02 th').map { |th| th.text.strip.presence }.compact
+          heading = table.css('tr.rowBlue_02 th').filter_map { |th| th.text.strip.presence }
           parser = parser_factory.call(heading)
 
           return warn("No parser for #{heading}") unless parser

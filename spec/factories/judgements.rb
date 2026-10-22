@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: judgements
@@ -12,7 +14,7 @@
 #
 FactoryBot.define do
   factory :judgement do
-    association :judge
+    judge
 
     judge_name_similarity { 1.0 }
     judge_name_unprocessed { 'unprocessed' }

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: paragraphs
@@ -10,5 +12,5 @@
 #  updated_at  :datetime         not null
 #
 class Paragraph < OpenCourts::ApplicationRecord
-  has_many :explanations, class_name: 'Paragraph::Explanation'
+  has_many :explanations, class_name: 'Paragraph::Explanation', dependent: nil
 end

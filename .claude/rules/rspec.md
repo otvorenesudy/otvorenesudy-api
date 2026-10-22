@@ -1,65 +1,83 @@
 ---
 paths:
-  - "spec/**/*.rb"
+  - "spec/**/*"
 ---
 
 # RSpec
 
 The process is the `acceptance-first` skill: scenarios first, an end-to-end spec per scenario that fails on its
-assertion, then the code. This is how to write those specs here, on **rspec-rails, FactoryBot, VCR with WebMock,
-Capybara and DatabaseCleaner**, against both real test databases. Run them with `bin/test <spec>`: it lints, prepares
-the primary and opencourts test databases and runs outside the Claude Code sandbox, which plain `bundle exec rspec`
-can't.
+assertion, then the code. This is how to write those specs here, on **rspec-rails 8, FactoryBot, Capybara (rack_test
+and headless Chrome through Selenium), WebMock and VCR**, against both real PostgreSQL databases. Run them with
+`bin/test <spec>`: it lints, prepares the primary and opencourts test databases and runs outside the Claude Code
+sandbox, which plain `bundle exec rspec` can't.
 
 ## Which Spec
 
 | Behavior | Spec | Directory |
 | --- | --- | --- |
-| An import end to end: source payload → raw record → reconciled Open Courts records | Feature spec driving `import_from!` or the import job, with the enqueued jobs run | `spec/features/` |
-| An API endpoint: status, JSON, the `Link` header, API key checks | Request spec | `spec/requests/` (new; the existing `spec/controllers/` are controller specs) |
-| The invite form on the welcome page | Feature spec, `js: true` | `spec/features/` |
-| Parsing a source's documents or responses, with many cases | Spec of the source module against fixtures | `spec/lib/<source>/` |
-| A mapping with many cases | Mapper spec against fixture payloads | `spec/mappers/<source>/` |
-| Validations, scopes, model logic with branches | Model spec | `spec/models/` |
+| A source's record becoming Open Courts records: a court, judge, hearing or decree written, updated, reindexed | The reconcile job, from the record as the import stores it (`import_from!` inside `perform_enqueued_jobs`) | `spec/jobs/` |
+| Talking to a source: requests, pages, validation, what gets stored | The source module, with the source's HTTP faked at the wire | `spec/lib/<source>/`, `spec/lib/<source>_spec.rb` |
+| An API endpoint: status, headers, the JSON byte for byte, the `Link` header, API keys | Request spec | `spec/requests/` |
+| The welcome page and its invite form | System spec; rack_test by default, `js: true` (headless Chrome) when it needs JavaScript | `spec/system/` |
+| A rake task: exports, consolidation | The task, with `perform_enqueued_jobs`; `type: :task` | `spec/tasks/` |
+| The handoff to otvorenesudy (`UpdateNotifier`) | What lands in otvorenesudy's `probe` queue in Redis | `spec/services/update_notifier_spec.rb` |
+| Logic with many branches: mappers, normalizers, finders | Mapper, library or service spec against fixture payloads | `spec/mappers/<source>/`, `spec/lib/`, `spec/services/` |
 
-Don't add a unit spec that repeats what an end-to-end spec proves. `spec/features/import_*_spec.rb` are still
-`pending`: an import scenario fills in the one for its record.
+Don't add a mapper, model or service spec that repeats what a job or request spec already proves.
 
 ## Fakes
 
-- Real models, both test databases, real mappers, finders and reconcilers, FactoryBot factories (raw source records
-  too: `create(:obcan_justice_sk_judge)`).
-- HTTP only at the wire: a VCR cassette (`vcr: { cassette_name: '...' }` metadata, recorded in `spec/fixtures/vcr/`) or
-  WebMock `stub_request`. No spec reaches a live site. Record a cassette only when the user asks, and check that it
-  holds no credentials before committing it.
-- Time: `Timecop.freeze` / `Timecop.travel`; the suite doesn't include ActiveSupport's time helpers.
-- Jobs: Sidekiq is faked (`Sidekiq::Testing.fake!`). Run ActiveJob work inside `perform_enqueued_jobs { ... }`
-  (`spec/support/active_job_helper.rb`), then assert the records it wrote; `active_job: { adapter: :test }` metadata
-  swaps the adapter for a spec that checks what was enqueued.
-- Never `allow_any_instance_of`, and never doubles of this app's own classes in feature or request specs. The doubles
-  in `spec/jobs/reconcile_*_job_spec.rb` and in the mapper specs predate this rule; don't copy them. A new mapper spec
-  builds its record with the factory and the fixture payload.
+- Real models, both databases, real mappers, finders and reconcilers, FactoryBot factories (the stored source records
+  too: `create(:obcan_justice_sk_judge)`). `create_lookups` (`spec/support/open_courts_lookups.rb`) adds the sources,
+  court and hearing types and decree forms a reconciler looks up.
+- Fake only what we don't own, at the edge:
+  - The sources' HTTP: `stub_request` (WebMock), or `stub_json(url, body)` and `source_fixture(name)`
+    (`spec/support/sources.rb`). The VCR cassettes in `spec/fixtures/vcr/` hold recorded pages; record a new one only
+    when the user asks, and check it holds no credentials. No spec reaches the network, and Chrome resolves only
+    localhost.
+  - Sentry: a spy, `allow(Sentry).to receive(:capture_exception)`, then `expect(Sentry).to have_received(...)`.
+  - The clock: `travel_to` / `freeze_time`. Randomness: stub the call that draws it (`SecureRandom.hex`).
+  - Jobs: run them with `perform_enqueued_jobs` and assert the records they wrote; `have_enqueued_job` only when
+    enqueueing is the behavior. Sidekiq is faked (`Sidekiq.testing!(:fake)`): read raw pushes from
+    `Sidekiq::Queues['probe']`, cleared before every example.
+- Never `allow_any_instance_of`, and never doubles or stubs of this app's own classes. A double of something we don't
+  own is verified (`instance_double`, `class_double`). RuboCop enforces both.
 
 ## Writing Them
 
-- `require 'rails_helper'`; `require 'spec_helper'` only for a spec of plain Ruby that doesn't boot Rails.
-- `RSpec.describe ClassName` for a class, with `described_class` inside; a string for a flow
-  (`RSpec.describe 'Import Decrees'`).
-- `describe '.class_method'` / `describe '#instance_method'`; `context 'when ...'` / `'with ...'` / `'without ...'` for
-  a situation; no more than three levels of nesting.
-- Example names state the outcome in the present tense, after the scenario: `it 'creates the judge once'`, never
-  `it 'should ...'`.
-- `let` for setup with descriptive names; a subject the examples refer to is named (`subject(:mapper) { ... }`).
-- Factories with parentheses: `create(:decree)`, `build(:judge)`. Keep them minimal and realistic in `spec/factories/`.
-- Fixtures: `fixture('obcan_justice_sk/...')` (`spec/support/fixture_helper.rb`) reads `spec/fixtures/`. Name a new
-  one after the source and what it holds, and keep only what the spec needs.
-- One behavior per example; several expectations are fine when they check that one behavior (the records an import
-  wrote).
-- Parse JSON once (`JSON.parse(response.body, symbolize_names: true)`) and compare whole structures.
-- Both databases are cleaned with DatabaseCleaner's deletion strategy after each example; there are no transactional
-  fixtures.
-- No `sleep`, no order dependence: the suite runs in random order.
+RuboCop runs the RSpec, FactoryBot and Capybara cops on every spec; these rules match them.
+
+- `require 'rails_helper'`. `RSpec.describe ClassName` for a class, with `described_class` inside; a string for a page
+  or flow (`RSpec.describe 'Decrees API'`). The directory sets the type.
+- `describe` names a method (`'.import'`, `'#judges'`) or an endpoint (`'GET /decrees/sync.json'`); `context` names a
+  situation and starts with `when`, `with` or `without`. At most three levels of nesting.
+- Example names state the outcome in the present tense, after the scenario:
+  `it 'updates the same decree when the record changes, dropping what it no longer lists'`, never `it 'should ...'`.
+- A subject the examples refer to is named: `subject(:mapper) { described_class.new(record) }`. At most five `let`s in
+  a group; `let!` only for a record that must exist before the example runs.
+- Factories with parentheses: `create(:decree)`, `build(:obcan_justice_sk_decree, data:)`. They live in
+  `spec/factories/`, minimal and realistic. Shared examples live in `spec/support/shared_examples/`.
+- Fixtures are read with `file_fixture('obcan_justice_sk/mappers/decree.json')` from `spec/fixtures/`. Name a new one
+  after the source and what it holds, and keep only what the spec needs.
+- A spec checks a small cluster of outcomes of one behavior (at most 5 expectations, 15 lines); compare whole
+  structures (`eq([[...], [...]])`, `have_attributes`) over many single checks. A system spec walks one scenario through
+  the page and has no such limit.
+- Examples run in a transaction on both databases; `after_commit` callbacks still run, so storing a record enqueues its
+  reconciliation.
+- No `sleep`, no dependence on order or on the time of day.
+
+## System Specs
+
+- rack_test by default; `js: true` for headless Chrome when the flow needs JavaScript. `bounds(element)` returns where
+  the browser drew an element, for scenarios about scrolling.
+- Drive the page like a visitor: `visit`, `fill_in`, `click_on`, by the visible label or text. Assert what they see with
+  Capybara's waiting matchers (`have_text`, `have_css`).
+- The cookie banner hides from browsers that say they're automated: `cookie_banner: true` gets a Chrome that doesn't.
+- `:error_pages` shows what callers see when something fails instead of raising into the spec.
+- A `js: true` example that fails prints the browser's console: read it before guessing.
 
 ## Never
 
-Skip, delete or loosen a failing spec to get green. If a spec is wrong, say which scenario it contradicts.
+- Skip, delete or loosen a failing spec to get green. If a spec is wrong, say which scenario it contradicts.
+- Filter application code out of coverage. A full `bin/test` fails below 95% of lines or 90% of branches, and
+  undercover reports every changed line no spec runs: cover them with specs.

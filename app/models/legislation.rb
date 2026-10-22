@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: legislations
@@ -16,12 +18,11 @@
 #  updated_at        :datetime         not null
 #
 class Legislation < OpenCourts::ApplicationRecord
-  has_many :usages, class_name: :Usage
+  has_many :usages, class_name: :Usage, dependent: nil
   has_many :decrees, through: :usages
 
-  has_many :paragraph_explanations, as: :explainable
+  has_many :paragraph_explanations, as: :explainable, dependent: nil
   has_many :paragraphs, through: :paragraph_explanations
 
-  def self.inheritance_column
-  end
+  def self.inheritance_column; end
 end
