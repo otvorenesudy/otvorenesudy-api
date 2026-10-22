@@ -18,7 +18,13 @@ Gemfile.lock.tags
 !/log/.keep
 !/tmp/.keep
 
-.env.local
+# dotenv: .env and .env.test are each checkout's own, made from the committed .env.example and .env.test.example
+# (bin/setup copies them); .env.local and .env.*.local hold personal overrides. CI uses the committed .env.ci as
+# .env.test, and the server keeps its own .env.
+/.env
+/.env.local
+/.env.*.local
+/.env.test
 
 /public/packs
 /public/packs-test

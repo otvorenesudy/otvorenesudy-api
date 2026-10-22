@@ -35,8 +35,12 @@ jobs:
         with:
           submodules: "true"
 
-      - name: Setup ENV File
-        run: mv .env.ci .env.test
+      # Git ignores .env and .env.test: .env comes from its committed example, as bin/setup makes it, and .env.test
+      # from .env.ci, CI's settings for the test database.
+      - name: Set Up dotenv Files
+        run: |
+          cp .env.example .env
+          cp .env.ci .env.test
 
       - name: Install Required Packages
         run: |

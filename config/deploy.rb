@@ -15,7 +15,7 @@ set :rbenv_ruby, File.read('.ruby-version').strip
 # Whenever
 set :whenever_identifier, -> { "#{fetch(:application)}-#{fetch(:stage)}" }
 
-# Links
+# Links. The server keeps its own dotenv file, with the production settings, in the shared directory; git ignores it.
 set :linked_files, fetch(:linked_files, []).push('.env', 'config/credentials/production.key')
 set :linked_dirs,
     fetch(:linked_dirs, []).push(
