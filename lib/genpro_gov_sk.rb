@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'oj'
 require 'roo'
 require 'roo-xls'
@@ -17,8 +19,6 @@ module GenproGovSk
   def self.export_property_declarations(path:)
     declarations = PropertyDeclarationsCrawler.crawl
 
-    File.open(path, 'w') do |file|
-      file.write(JSON.pretty_generate(declarations))
-    end
+    File.write(path, JSON.pretty_generate(declarations))
   end
 end

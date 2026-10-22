@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: decree_natures
@@ -7,6 +9,8 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Decree::NatureSerializer < ActiveModel::Serializer
-  attributes :value
+class Decree
+  class NatureSerializer < ActiveModel::Serializer
+    attributes :value
+  end
 end

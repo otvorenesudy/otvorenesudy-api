@@ -32,8 +32,12 @@ module OpenCourtsApi
     # A field with errors shows it by a class (the invite form's .error), not by a wrapping div.
     config.action_view.field_error_proc = proc { |html_tag, _instance| html_tag }
 
-    # The API's callers have always had U+2028 and U+2029 escaped in its JSON ( ), as Rails did before 8.1.
+    # The API's callers have always had U+2028 and U+2029 escaped in its JSON (as \u2028 and \u2029), as Rails did
+    # before 8.1.
     config.active_support.escape_js_separators_in_json = true
+
+    # Where the prosecutors' website sends its refinements from; anywhere outside production.
+    config.x.prosecutor_refinements_origin = '*'
 
     # The bootstrap gem is here for its SCSS. Its JavaScript, and popper_js's, are global bundles named like the modules
     # in vendor/javascript (bootstrap.js), and Propshaft serves the first file of a name: with the gems inside the app

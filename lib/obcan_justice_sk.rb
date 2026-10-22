@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'curl'
 require 'json-schema'
 require 'json'

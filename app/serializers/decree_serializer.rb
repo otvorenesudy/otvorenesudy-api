@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: decrees
@@ -41,7 +43,7 @@ class DecreeSerializer < ActiveModel::Serializer
   end
 
   def document_url
-    # TODO if merging with main application, change this to routes url
+    # TODO: if merging with main application, change this to routes url
     "http://otvorenesudy.sk/decrees/#{object.id}/document"
   end
 
@@ -59,28 +61,22 @@ class DecreeSerializer < ActiveModel::Serializer
 
   def proposers
     return [] unless object.proceeding
-    return [] unless object.proceeding.hearings.size > 0
+    return [] unless object.proceeding.hearings.size.positive?
 
-    proposers = object.proceeding.hearings.map(&:proposers).flatten.uniq(&:name)
-
-    return proposers
+    object.proceeding.hearings.map(&:proposers).flatten.uniq(&:name)
   end
 
   def defendants
     return [] unless object.proceeding
-    return [] unless object.proceeding.hearings.size > 0
+    return [] unless object.proceeding.hearings.size.positive?
 
-    defendants = object.proceeding.hearings.map(&:defendants).flatten.uniq(&:name)
-
-    return defendants
+    object.proceeding.hearings.map(&:defendants).flatten.uniq(&:name)
   end
 
   def opponents
     return [] unless object.proceeding
-    return [] unless object.proceeding.hearings.size > 0
+    return [] unless object.proceeding.hearings.size.positive?
 
-    opponents = object.proceeding.hearings.map(&:opponents).flatten.uniq(&:name)
-
-    return opponents
+    object.proceeding.hearings.map(&:opponents).flatten.uniq(&:name)
   end
 end

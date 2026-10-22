@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module InfoSud
   module Importable
     def filtered_attributes_for_import

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GenproGovSk
   class ProsecutorsCrawler
     def self.crawl
@@ -11,20 +13,20 @@ module GenproGovSk
     class Parser
       def self.parse_link(html)
         document = Nokogiri::HTML(html)
-        fragment = document.at_css('a[href^="/extdoc"]:contains("Menný zoznam prokurátorov Slovenskej republiky")')[:href]
+        link = document.at_css('a[href^="/extdoc"]:contains("Menný zoznam prokurátorov Slovenskej republiky")')
 
-        "https://www.genpro.gov.sk#{fragment}"
+        "https://www.genpro.gov.sk#{link[:href]}"
       end
 
       def self.parse_list(xls)
         path = "/tmp/prosecutors-list-#{SecureRandom.hex}"
 
-        File.open(path, 'wb') { |f| f.write(xls) }
+        File.binwrite(path, xls)
 
         sheet = Roo::Spreadsheet.open(path, extension: :xls).sheet(0)
-        names = (3..sheet.last_row).map { |n|
+        names = (3..sheet.last_row).map do |n|
           parse_name(sheet.row(n)[1])
-        }.uniq
+        end.uniq
 
         FileUtils.rm_r(path)
 

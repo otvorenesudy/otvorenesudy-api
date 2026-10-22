@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ReconcileDecreeJob < ApplicationJob
   queue_as :reconcilers
 

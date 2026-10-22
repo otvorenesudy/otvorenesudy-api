@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: judge_positions
@@ -7,7 +9,9 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Judge::Position < OpenCourts::ApplicationRecord
-  has_many :employments
-  has_many :judges, through: :employments
+class Judge
+  class Position < OpenCourts::ApplicationRecord
+    has_many :employments, dependent: nil
+    has_many :judges, through: :employments
+  end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: decree_pages
@@ -9,6 +11,8 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Decree::Page < OpenCourts::ApplicationRecord
-  belongs_to :decree, foreign_key: :decree_id
+class Decree
+  class Page < OpenCourts::ApplicationRecord
+    belongs_to :decree
+  end
 end

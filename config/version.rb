@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OpenCourtsApi
   module VERSION
     MAJOR = 1

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: proceedings
@@ -8,6 +10,6 @@
 #  updated_at  :datetime         not null
 #
 class Proceeding < OpenCourts::ApplicationRecord
-  has_many :hearings
-  has_many :decrees
+  has_many :hearings, dependent: nil
+  has_many :decrees, dependent: nil
 end

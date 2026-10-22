@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HearingReconciler
   attr_reader :hearing, :mapper
 
@@ -19,19 +21,15 @@ class HearingReconciler
       reconcile_opponents
       reconcile_defendants
 
-      hearing.save!
-      hearing.touch
+      # Changed now, even when the source changed nothing: the sync API and otvorenesudy's index go by updated_at.
+      hearing.update!(updated_at: Time.current)
     end
   end
 
   def reconcile_attributes
-    # TODO: remove source, leave now for compatibility
     hearing.update!(
-      uri: mapper.uri,
+      **source_attributes,
       type: Hearing::Type.find_by!(value: mapper.type),
-      source: Source.find_by!(module: mapper.source),
-      source_class: mapper.source_class,
-      source_class_id: mapper.source_class_id,
       case_number: mapper.case_number,
       original_case_number: mapper.original_case_number,
       file_number: mapper.file_number,
@@ -40,7 +38,7 @@ class HearingReconciler
       selfjudge: mapper.selfjudge,
       note: mapper.note,
       special_type: mapper.special_type,
-      anonymized_at: Time.now
+      anonymized_at: Time.current
     )
   end
 
@@ -66,7 +64,7 @@ class HearingReconciler
   end
 
   def reconcile_judges
-    reconciler = ->(judge, chair:) do
+    reconciler = lambda do |judge, chair:|
       judging = Judging.find_or_initialize_by(hearing: hearing, judge: judge)
 
       judging.update!(judge_chair: chair, judge_name_similarity: 1)
@@ -117,6 +115,18 @@ class HearingReconciler
       end
 
     hearing.purge!(:proposers, except: proposers)
+  end
+
+  private
+
+  # TODO: remove source, leave now for compatibility
+  def source_attributes
+    {
+      uri: mapper.uri,
+      source: Source.find_by!(module: mapper.source),
+      source_class: mapper.source_class,
+      source_class_id: mapper.source_class_id
+    }
   end
 
   class RandomInitialsProvider

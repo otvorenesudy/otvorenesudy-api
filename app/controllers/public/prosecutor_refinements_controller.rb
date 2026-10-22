@@ -1,35 +1,39 @@
-class Public::ProsecutorRefinementsController < Public::ApplicationController
-  before_action :verify_number_of_allowed_refinements
-  before_action :restrict_allowed_origin
+# frozen_string_literal: true
 
-  def create
-    attributes = create_params.except(:prosecutors)
+module Public
+  class ProsecutorRefinementsController < Public::ApplicationController
+    before_action :verify_number_of_allowed_refinements
+    before_action :restrict_allowed_origin
 
-    refinements =
-      create_params[:prosecutors].map do |prosecutor|
-        Public::ProsecutorRefinement.create(attributes.merge(prosecutor: prosecutor, ip_address: request.remote_ip))
-      end
+    def create
+      attributes = create_params.except(:prosecutors)
 
-    invalid_refinement = refinements.find(&:invalid?)
-    render 422, errors: invalid_refinement.errors.full_messages if invalid_refinement
+      refinements =
+        create_params[:prosecutors].map do |prosecutor|
+          Public::ProsecutorRefinement.create(attributes.merge(prosecutor: prosecutor, ip_address: request.remote_ip))
+        end
 
-    render 200
-  end
+      invalid_refinement = refinements.find(&:invalid?)
+      render 422, errors: invalid_refinement.errors.full_messages if invalid_refinement
 
-  private
+      render 200
+    end
 
-  def create_params
-    params.permit(:name, :email, :office, prosecutors: [])
-  end
+    private
 
-  def verify_number_of_allowed_refinements
-    ip = request.remote_ip
-    refinements = Public::ProsecutorRefinement.where('created_at > ? AND ip_address = ?', 30.seconds.ago, ip)
+    def create_params
+      params.permit(:name, :email, :office, prosecutors: [])
+    end
 
-    head 429 if refinements.size >= 30
-  end
+    def verify_number_of_allowed_refinements
+      ip = request.remote_ip
+      refinements = Public::ProsecutorRefinement.where('created_at > ? AND ip_address = ?', 30.seconds.ago, ip)
 
-  def restrict_allowed_origin
-    headers['Access-Control-Allow-Origin'] = Rails.env.production? ? 'https://prokuratori.otvorenesudy.sk' : '*'
+      head :too_many_requests if refinements.size >= 30
+    end
+
+    def restrict_allowed_origin
+      headers['Access-Control-Allow-Origin'] = Rails.configuration.x.prosecutor_refinements_origin
+    end
   end
 end

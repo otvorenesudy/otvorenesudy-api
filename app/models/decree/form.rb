@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: decree_forms
@@ -8,6 +10,8 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Decree::Form < OpenCourts::ApplicationRecord
-  has_many :decrees, foreign_key: :decree_form_id
+class Decree
+  class Form < OpenCourts::ApplicationRecord
+    has_many :decrees, foreign_key: :decree_form_id, dependent: nil, inverse_of: false
+  end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: courts
@@ -30,37 +32,31 @@
 #  other_contacts_json         :text
 #
 class Court < OpenCourts::ApplicationRecord
-  include Formattable
-
   belongs_to :source, autosave: true
 
-  belongs_to :type, class_name: 'Court::Type', foreign_key: :court_type_id, autosave: true
+  belongs_to :type, class_name: 'Court::Type', foreign_key: :court_type_id, autosave: true, inverse_of: false
 
-  has_many :employments
+  has_many :employments, dependent: nil
   has_many :judges, -> { uniq }, through: :employments
 
-  has_many :hearings
-  has_many :decrees
+  has_many :hearings, dependent: nil
+  has_many :decrees, dependent: nil
 
   belongs_to :jurisdiction, class_name: 'Court::Jurisdiction', optional: true, autosave: true
   belongs_to :municipality, autosave: true
 
-  has_many :offices, class_name: 'Court::Office'
+  has_many :offices, class_name: 'Court::Office', dependent: nil
 
   belongs_to :information_center, class_name: 'Court::Office', optional: true, autosave: true
   belongs_to :registry_center, class_name: 'Court::Office', optional: true, autosave: true
   belongs_to :business_registry_center, class_name: 'Court::Office', optional: true, autosave: true
 
-  has_many :expenses, class_name: 'Court::Expense'
+  has_many :expenses, class_name: 'Court::Expense', dependent: nil
 
-  has_many :selection_procedures
+  has_many :selection_procedures, dependent: nil
 
-  formattable :address, default: '%s, %z %m', remove: /\,\s*\z/ do |court|
-    {
-      '%s' => court.street,
-      '%z' => court.municipality.zipcode,
-      '%m' => court.municipality.name,
-      '%c' => 'Slovenská republika'
-    }
+  # On one line, as the API gives it: "Záhradnícka 10, 812 44 Bratislava".
+  def address
+    "#{street}, #{municipality.zipcode} #{municipality.name}".sub(/,\s*\z/, '').squeeze(' ').strip
   end
 end

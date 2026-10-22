@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: municipalities
@@ -9,6 +11,6 @@
 #  updated_at :datetime         not null
 #
 class Municipality < OpenCourts::ApplicationRecord
-  has_many :courts
-  has_many :court_jurisdictions
+  has_many :courts, dependent: nil
+  has_many :court_jurisdictions, dependent: nil
 end

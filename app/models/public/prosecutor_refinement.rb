@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: public_prosecutor_refinements
@@ -11,10 +13,12 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Public::ProsecutorRefinement < ApplicationRecord
-  validates :email, presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
-  validates :ip_address, presence: true
-  validates :name, presence: true
-  validates :prosecutor, presence: true
-  validates :office, presence: true
+module Public
+  class ProsecutorRefinement < ApplicationRecord
+    validates :email, presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
+    validates :ip_address, presence: true
+    validates :name, presence: true
+    validates :prosecutor, presence: true
+    validates :office, presence: true
+  end
 end

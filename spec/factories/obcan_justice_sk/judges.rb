@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: obcan_justice_sk_judges
@@ -12,7 +14,7 @@
 #
 FactoryBot.define do
   factory :'obcan_justice_sk/judge', aliases: [:obcan_justice_sk_judge] do
-    sequence(:guid) { |n| n.to_s }
+    sequence(:guid, &:to_s)
     sequence(:uri) { |n| "https://obcan.justice.sk/judges/#{n}" }
 
     data { { 'registreGuid' => guid, 'meno' => 'Example Judge' } }

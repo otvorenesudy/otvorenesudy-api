@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module Legacy
   module String
     refine ::String do
       # The string in UTF-8, as ActiveSupport::Multibyte::Chars (mb_chars, gone in Rails 8.2) made it.
-      def utf8
+      def utf_8
         encoding == Encoding::UTF_8 ? self : dup.force_encoding(Encoding::UTF_8)
       end
 
@@ -13,25 +15,9 @@ module Legacy
       end
 
       def ascii
-        return self if self.ascii_only?
+        return self if ascii_only?
 
-        self.utf8.unicode_normalize(:nfkd).bytes.map { |b| (0x00..0x7F).include?(b) ? b.chr : '' }.join
-      end
-
-      def downcase_first
-        self.sub(/^\D{0,1}/) { |c| c.downcase }
-      end
-
-      def downcase_first!
-        self.sub!(/^\D{0,1}/) { |c| c.downcase }
-      end
-
-      def upcase_first
-        self.sub(/^\D{0,1}/) { |c| c.upcase }
-      end
-
-      def upcase_first!
-        self.sub!(/^\D{0,1}/) { |c| c.upcase }
+        utf_8.unicode_normalize(:nfkd).bytes.map { |b| (0x00..0x7F).cover?(b) ? b.chr : '' }.join
       end
     end
   end

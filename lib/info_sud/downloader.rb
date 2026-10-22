@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module InfoSud
   class Downloader
     def self.download_file(url)

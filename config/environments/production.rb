@@ -24,6 +24,8 @@ Rails.application.configure do
 
   config.cache_store = :mem_cache_store
 
+  config.x.prosecutor_refinements_origin = 'https://prokuratori.otvorenesudy.sk'
+
   config.i18n.fallbacks = true
 
   config.active_support.report_deprecations = false

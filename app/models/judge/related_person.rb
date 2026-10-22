@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: judge_related_people
@@ -11,8 +13,10 @@
 #  created_at                    :datetime         not null
 #  updated_at                    :datetime         not null
 #
-class Judge::RelatedPerson < OpenCourts::ApplicationRecord
-  belongs_to :property_declaration,
-             class_name: 'Judge::Property::Declaration',
-             foreign_key: :judge_property_declaration_id
+class Judge
+  class RelatedPerson < OpenCourts::ApplicationRecord
+    belongs_to :property_declaration,
+               class_name: 'Judge::Property::Declaration',
+               foreign_key: :judge_property_declaration_id, inverse_of: false
+  end
 end

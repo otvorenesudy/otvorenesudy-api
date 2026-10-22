@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Use this file to easily define all of your cron jobs.
 #
 # It's helpful, but not entirely necessary to understand cron before proceeding.
@@ -22,7 +24,9 @@
 set :output, 'log/cron.log'
 
 every :day, at: '10 pm' do
-  runner 'ExceptionHandler.run { system("OPENCOURTS_DATABASE_NAME=opencourts_production python3 ml/decree-embeddings/embed.py") }'
+  embed = 'OPENCOURTS_DATABASE_NAME=opencourts_production python3 ml/decree-embeddings/embed.py'
+
+  runner %(ExceptionHandler.run { system("#{embed}") })
 end
 
 every :day, at: '3:00 am' do

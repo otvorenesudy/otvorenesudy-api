@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module ObcanJusticeSk
   module Normalizer
-    # TODO implement normalizations
+    # TODO: implement normalizations
     # TODO remove dependency on Legacy::Normalizer
 
     def self.normalize_court_name(value)

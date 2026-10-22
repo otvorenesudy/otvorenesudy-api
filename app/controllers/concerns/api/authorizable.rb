@@ -1,15 +1,19 @@
-module Api::Authorizable
-  extend ActiveSupport::Concern
+# frozen_string_literal: true
 
-  included do
-    before_action :check_api_key
-  end
+module Api
+  module Authorizable
+    extend ActiveSupport::Concern
 
-  private
+    included do
+      before_action :check_api_key
+    end
 
-  def check_api_key
-    unless Api::Key.exists? value: params[:api_key]
-      render status: 401, json: { success: false, errors: ['Invalid API Key'] }
+    private
+
+    def check_api_key
+      return if Api::Key.exists? value: params[:api_key]
+
+      render status: :unauthorized, json: { success: false, errors: ['Invalid API Key'] }
     end
   end
 end

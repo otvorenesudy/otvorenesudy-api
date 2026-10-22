@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: courts
@@ -33,9 +35,9 @@ FactoryBot.define do
   factory :court do
     uri
 
-    association :source
-    association :municipality
-    association :type, factory: :court_type
+    source
+    municipality
+    type factory: %i[court_type]
 
     sequence(:name) { |n| "Court #{n}" }
 
@@ -43,7 +45,7 @@ FactoryBot.define do
 
     trait :with_employments do
       after :create do |court|
-        (Random.rand(10) + 1).times.map { create :employment, :active, judge: court }
+        Array.new(Random.rand(1..10)) { create(:employment, :active, judge: court) }
       end
     end
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: obcan_justice_sk_courts
@@ -18,10 +20,6 @@ module ObcanJusticeSk
 
     def to_mapper
       ObcanJusticeSk::CourtMapper.new(self)
-    end
-
-    def name
-      data['nazov'] if data.present?
     end
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module InfoSud
   class DecreeMapper
     FORM_CODE_MAP = {
@@ -23,7 +25,7 @@ module InfoSud
       'Čiastočný rozsudok' => 'X',
       'Medzitýmny rozsudok' => 'X',
       'Opatrenie' => 'X'
-    }
+    }.freeze
 
     def initialize(data)
       @data = data.deep_symbolize_keys
@@ -48,7 +50,7 @@ module InfoSud
     end
 
     def date
-      Time.parse(@data[:datum_vydania_rozhodnutia]) if @data[:datum_vydania_rozhodnutia].present?
+      Time.parse(@data[:datum_vydania_rozhodnutia]).utc if @data[:datum_vydania_rozhodnutia].present?
     end
 
     def file_number
@@ -64,7 +66,7 @@ module InfoSud
     end
 
     def form_code
-      # TODO redundant, remove from schema
+      # TODO: redundant, remove from schema
       FORM_CODE_MAP[form] if form
     end
 

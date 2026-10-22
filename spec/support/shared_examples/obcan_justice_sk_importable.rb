@@ -1,10 +1,10 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
 RSpec.shared_examples_for ObcanJusticeSk::Importable do
   let(:record) { described_class.find_by(guid: attributes[:guid]) }
   let(:uri) { 'https://example.com' }
-  let(:attributes) { { guid: '1', category: { attribute: [id: '1', name: 'Example'] } } }
-  let(:updated_attributes) { attributes.merge!(category: { attribute: [id: '2', name: 'Example'] }) }
+  let(:attributes) { { guid: '1', category: { attribute: [{ id: '1', name: 'Example' }] } } }
+  let(:updated_attributes) { attributes.merge!(category: { attribute: [{ id: '2', name: 'Example' }] }) }
 
   describe '.import_from' do
     it 'imports record by attributes' do
@@ -39,7 +39,9 @@ RSpec.shared_examples_for ObcanJusticeSk::Importable do
         it 'does not update record' do
           time = 30.minutes.ago
 
-          travel_to(time, with_usec: true) { described_class.import_from!(guid: attributes[:guid], uri: uri, data: attributes) }
+          travel_to(time, with_usec: true) do
+            described_class.import_from!(guid: attributes[:guid], uri: uri, data: attributes)
+          end
 
           described_class.import_from!(guid: attributes[:guid], uri: uri, data: attributes)
 

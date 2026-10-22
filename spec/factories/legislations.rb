@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: legislations
@@ -19,7 +21,7 @@ FactoryBot.define do
   factory :legislation do
     sequence(:number) { |n| n }
     sequence(:paragraph) { |n| n }
-    sequence(:letter) { |n| "#{n}" }
+    sequence(:letter, &:to_s)
     sequence(:year) { |n| n }
     sequence(:value) { |n| "Value ##{n}" }
     sequence(:value_unprocessed) { |n| "Unprocessed Value ##{n}" }

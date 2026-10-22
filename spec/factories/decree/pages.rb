@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: decree_pages
@@ -11,7 +13,7 @@
 #
 FactoryBot.define do
   factory :'decree/page', aliases: [:decree_page] do
-    association :decree
+    decree
 
     sequence(:number) { |n| n }
 

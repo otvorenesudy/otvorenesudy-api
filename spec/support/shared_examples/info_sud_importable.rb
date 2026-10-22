@@ -1,9 +1,9 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
 RSpec.shared_examples_for InfoSud::Importable do
   let(:record) { described_class.find_by(guid: attributes[:guid]) }
-  let(:attributes) { { guid: '1', category: { attribute: [id: '1', name: 'Example'] } } }
-  let(:updated_attributes) { attributes.merge!(category: { attribute: [id: '2', name: 'Example'] }) }
+  let(:attributes) { { guid: '1', category: { attribute: [{ id: '1', name: 'Example' }] } } }
+  let(:updated_attributes) { attributes.merge!(category: { attribute: [{ id: '2', name: 'Example' }] }) }
 
   describe '.import_from' do
     it 'imports record by attributes' do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: judge_property_ownership_forms
@@ -7,8 +9,13 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Judge::Property::OwnershipForm < OpenCourts::ApplicationRecord
-  has_many :properties, class_name: 'Judge::Property', foreign_key: :judge_property_id
+class Judge
+  class Property
+    class OwnershipForm < OpenCourts::ApplicationRecord
+      has_many :properties, class_name: 'Judge::Property', foreign_key: :judge_property_id, dependent: nil,
+                            inverse_of: false
 
-  validates :value, presence: true
+      validates :value, presence: true
+    end
+  end
 end

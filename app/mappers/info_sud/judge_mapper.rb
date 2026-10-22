@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module InfoSud
   class JudgeMapper
     ACTIVITY_MAP = {
@@ -7,7 +9,7 @@ module InfoSud
       '04' => :inactive,
       '05' => :active, # position changed, more in note (poznamka)
       '06' => :active
-    }
+    }.freeze
 
     def initialize(data)
       @data = data.symbolize_keys
@@ -25,10 +27,8 @@ module InfoSud
       @data[:funkcia].try(:downcase)
     end
 
-    def active
-      return true if status == :active || status.nil?
-
-      false
+    def active?
+      status == :active || status.nil?
     end
 
     def status

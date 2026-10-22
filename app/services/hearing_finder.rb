@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HearingFinder
   def self.find_by(mapper, relation: Hearing)
     return relation.find_by(uri: mapper.uri) if Hearing.exists?(uri: mapper.uri)

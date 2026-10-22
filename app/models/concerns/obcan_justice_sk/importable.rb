@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ObcanJusticeSk
   module Importable
     def import_from!(guid:, uri:, data:)

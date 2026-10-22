@@ -1,15 +1,19 @@
-class Api::ApplicationController < ActionController::API
-  include ActionController::MimeResponds
-  include ActionController::ImplicitRender
-  include Api::Authorizable
+# frozen_string_literal: true
 
-  rescue_from ActiveRecord::RecordNotFound do
-    render status: 404, json: { success: false, errors: ['Resource does not exist.'] }
-  end
+module Api
+  class ApplicationController < ActionController::API
+    include ActionController::MimeResponds
+    include ActionController::ImplicitRender
+    include Api::Authorizable
 
-  protected
+    rescue_from ActiveRecord::RecordNotFound do
+      render status: :not_found, json: { success: false, errors: ['Resource does not exist.'] }
+    end
 
-  def serialization_scope
-    self
+    protected
+
+    def serialization_scope
+      self
+    end
   end
 end

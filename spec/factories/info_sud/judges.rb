@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: info_sud_judges
@@ -10,13 +12,13 @@
 #
 FactoryBot.define do
   factory :'info_sud/judge', aliases: [:info_sud_judge] do
-    sequence(:guid) { |n| n.to_s }
+    sequence(:guid, &:to_s)
 
-    data {
+    data do
       {
         guid: guid,
         meno: 'Example Judge'
       }
-    }
+    end
   end
 end

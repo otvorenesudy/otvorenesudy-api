@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module InfoSud
   class HearingMapper
     def initialize(data)
@@ -17,7 +19,7 @@ module InfoSud
     end
 
     def date
-      Time.parse(@data[:datum_a_cas_pojednavania])
+      Time.parse(@data[:datum_a_cas_pojednavania]).utc
     end
 
     def room
@@ -33,7 +35,7 @@ module InfoSud
     end
 
     def special_type
-      # TODO legacy attribute in new dataset, consider
+      # TODO: legacy attribute in new dataset, consider
     end
 
     def court

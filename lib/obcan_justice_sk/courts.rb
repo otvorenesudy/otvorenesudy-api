@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ObcanJusticeSk
   module Courts
     BASE_URL = 'https://obcan.justice.sk/pilot/api/ress-isu-service/v1/sud'
@@ -33,7 +35,7 @@ module ObcanJusticeSk
         }
       },
       required: %i[numFound page size updateDate sudList]
-    }
+    }.freeze
 
     JSON_SCHEMA = {
       type: :object,
@@ -382,7 +384,7 @@ module ObcanJusticeSk
         ukonceny_string
         skratka_string
       ]
-    }
+    }.freeze
 
     def self.import
       response = Curl.get(list_url)

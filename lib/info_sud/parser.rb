@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module InfoSud
   class Parser
     def self.parse(content)

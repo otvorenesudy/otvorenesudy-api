@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CourtReconciler
   attr_reader :mapper, :court
 
@@ -15,31 +17,13 @@ class CourtReconciler
       reconcile_registry_center
       reconcile_business_registry_center
 
-      court.save!
-      court.touch
+      # Changed now, even when the source changed nothing: the sync API and otvorenesudy's index go by updated_at.
+      court.update!(updated_at: Time.current)
     end
   end
 
   def reconcile_attributes
-    # TODO remove source, leave now for compatibility
-    court.assign_attributes(
-      uri: mapper.uri,
-      source: Source.find_by!(module: mapper.source),
-      source_class: mapper.source_class,
-      source_class_id: mapper.source_class_id,
-      name: mapper.name,
-      street: mapper.street,
-      phone: mapper.phone,
-      fax: mapper.fax,
-      media_person: mapper.media_person,
-      media_phone: mapper.media_phone,
-      data_protection_email: mapper.data_protection_email,
-      latitude: mapper.latitude,
-      longitude: mapper.longitude,
-      acronym: mapper.acronym,
-      other_contacts_json:
-        mapper.respond_to?(:other_contacts) && mapper.other_contacts.present? ? JSON.dump(mapper.other_contacts) : nil
-    )
+    court.assign_attributes(**source_attributes, **contact_attributes, other_contacts_json:)
   end
 
   def reconcile_type
@@ -106,6 +90,35 @@ class CourtReconciler
   end
 
   private
+
+  # TODO: remove source, leave now for compatibility
+  def source_attributes
+    {
+      uri: mapper.uri,
+      source: Source.find_by!(module: mapper.source),
+      source_class: mapper.source_class,
+      source_class_id: mapper.source_class_id
+    }
+  end
+
+  def contact_attributes
+    {
+      name: mapper.name,
+      street: mapper.street,
+      phone: mapper.phone,
+      fax: mapper.fax,
+      media_person: mapper.media_person,
+      media_phone: mapper.media_phone,
+      data_protection_email: mapper.data_protection_email,
+      latitude: mapper.latitude,
+      longitude: mapper.longitude,
+      acronym: mapper.acronym
+    }
+  end
+
+  def other_contacts_json
+    JSON.dump(mapper.other_contacts) if mapper.other_contacts.present?
+  end
 
   def build_office(name, attributes)
     return unless attributes.compact.any?

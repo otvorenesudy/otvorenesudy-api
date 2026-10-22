@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module ObcanJusticeSk
   class CivilHearingMapper
-    attr :hearing, :data
+    attr_reader :hearing, :data
 
     def initialize(hearing)
       @hearing = hearing
@@ -28,16 +30,15 @@ module ObcanJusticeSk
     end
 
     def judges
-      return [] unless data[:sudca].present?
+      return [] if data[:sudca].blank?
 
       data[:sudca]
-        .map do |e|
+        .filter_map do |e|
           name = ObcanJusticeSk::Normalizer.normalize_person_name(e[:meno])
-          guid = e[:registreGuid].match(/null/) ? nil : e[:registreGuid]
+          guid = e[:registreGuid].include?('null') ? nil : e[:registreGuid]
 
           ObcanJusticeSk::JudgeFinder.find_by(name: name, guid: guid)
         end
-        .compact if data[:sudca]
     end
 
     def court
@@ -81,7 +82,7 @@ module ObcanJusticeSk
       time = data[:casPojednavania].presence
 
       return nil if !date && !time
-      return Time.parse("#{date} 00:00 +0000") unless time
+      return Time.parse("#{date} 00:00 +0000").utc unless time
 
       "#{date} #{time}".in_time_zone('Europe/Bratislava')
     end
@@ -91,15 +92,15 @@ module ObcanJusticeSk
     end
 
     def proposers
-      return [] unless data[:navrhovatelia].present?
+      return [] if data[:navrhovatelia].blank?
 
-      data[:navrhovatelia].map { |e| e[:meno] }
+      data[:navrhovatelia].pluck(:meno)
     end
 
     def opponents
-      return [] unless data[:odporcovia].present?
+      return [] if data[:odporcovia].blank?
 
-      data[:odporcovia].map { |e| e[:meno] }
+      data[:odporcovia].pluck(:meno)
     end
 
     def defendants

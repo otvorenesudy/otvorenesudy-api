@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: decrees
@@ -25,34 +27,34 @@ class Decree < OpenCourts::ApplicationRecord
 
   belongs_to :source
 
-  # TODO consider this required in future
+  # TODO: consider this required in future
   belongs_to :proceeding, optional: true
   belongs_to :court, optional: true
 
-  has_many :judgements
-  has_many :exact_judgements, -> { exact }, class_name: :Judgement
-  has_many :inexact_judgements, -> { inexact }, class_name: :Judgement
+  has_many :judgements, dependent: nil
+  has_many :exact_judgements, -> { exact }, class_name: :Judgement, dependent: nil, inverse_of: false
+  has_many :inexact_judgements, -> { inexact }, class_name: :Judgement, dependent: nil, inverse_of: false
   has_many :judges, through: :judgements
 
-  belongs_to :form, class_name: 'Decree::Form', foreign_key: :decree_form_id
+  belongs_to :form, class_name: 'Decree::Form', foreign_key: :decree_form_id, inverse_of: false
 
-  has_many :naturalizations, class_name: 'Decree::Naturalization'
+  has_many :naturalizations, class_name: 'Decree::Naturalization', dependent: nil
   has_many :natures, class_name: 'Decree::Nature', through: :naturalizations
 
-  has_many :legislation_area_usages, class_name: 'Legislation::AreaUsage'
+  has_many :legislation_area_usages, class_name: 'Legislation::AreaUsage', dependent: nil
   has_many :legislation_areas, class_name: 'Legislation::Area', through: :legislation_area_usages, source: :area
 
-  has_many :legislation_subarea_usages, class_name: 'Legislation::SubareaUsage'
+  has_many :legislation_subarea_usages, class_name: 'Legislation::SubareaUsage', dependent: nil
   has_many :legislation_subareas,
            class_name: 'Legislation::Subarea',
            through: :legislation_subarea_usages,
            source: :subarea
 
-  has_many :legislation_usages, class_name: 'Legislation::Usage'
+  has_many :legislation_usages, class_name: 'Legislation::Usage', dependent: nil
   has_many :legislations, through: :legislation_usages
 
   has_many :paragraph_explanations, class_name: 'Paragraph::Explanation', through: :legislations
   has_many :paragraphs, through: :paragraph_explanations
 
-  has_many :pages, class_name: 'Decree::Page'
+  has_many :pages, class_name: 'Decree::Page', dependent: nil
 end

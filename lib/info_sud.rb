@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'oj'
 require 'mechanize'
 require 'legacy'
@@ -38,12 +40,12 @@ module InfoSud
   def self.import_decrees
     urls =
       Nokogiri
-        .HTML(Curl.get('https://obcan.justice.sk/opendata').body_str)
-        .css('a')
-        .map { |e| e['href'] }
-        .select { |e| e.match(/p_p_resource_id=isu_sr.+_json.zip/) }
+      .HTML(Curl.get('https://obcan.justice.sk/opendata').body_str)
+      .css('a')
+      .map { |e| e['href'] }
+      .select { |e| e.match(/p_p_resource_id=isu_sr.+_json.zip/) }
 
-    urls = ENV['INFO_SUD_IMPORT_ALL_DECREES'].present? ? urls : urls.last(6)
+    urls = urls.last(6) if ENV['INFO_SUD_IMPORT_ALL_DECREES'].blank?
 
     urls.each do |url|
       path = InfoSud::Downloader.download_file(url)

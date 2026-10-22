@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: info_sud_hearings
@@ -15,7 +17,7 @@ module InfoSud
     after_commit(on: %i[create update]) { ReconcileHearingJob.perform_later(self) }
 
     def to_mapper
-      InfoSud::HearingMapper.new(self.data)
+      InfoSud::HearingMapper.new(data)
     end
   end
 end

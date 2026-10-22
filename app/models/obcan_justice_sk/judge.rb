@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: obcan_justice_sk_judges
@@ -33,10 +35,10 @@ module ObcanJusticeSk
     private
 
     def sanitized_short_guid_for_json_path_queries
-      short_guid = data['registreGuid'].gsub(/\Asudca_/, '')
+      short_guid = data['registreGuid'].delete_prefix('sudca_')
       sanitized_short_guid = ApplicationRecord.connection.quote_string(short_guid)
 
-      Arel.sql(%Q["#{sanitized_short_guid}"])
+      Arel.sql(%("#{sanitized_short_guid}"))
     end
   end
 end

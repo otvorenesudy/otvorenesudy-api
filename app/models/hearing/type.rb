@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: hearing_types
@@ -7,6 +9,8 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Hearing::Type < OpenCourts::ApplicationRecord
-  has_many :hearings, foreign_key: :hearing_type_id
+class Hearing
+  class Type < OpenCourts::ApplicationRecord
+    has_many :hearings, foreign_key: :hearing_type_id, dependent: nil, inverse_of: false
+  end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: decree_naturalizations
@@ -10,7 +12,7 @@
 #
 FactoryBot.define do
   factory :'decree/naturalization', aliases: [:decree_naturalization] do
-    association :decree
-    association :nature, factory: :decree_nature
+    decree
+    nature factory: %i[decree_nature]
   end
 end

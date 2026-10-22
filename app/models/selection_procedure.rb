@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: selection_procedures
@@ -26,6 +28,6 @@ class SelectionProcedure < OpenCourts::ApplicationRecord
 
   belongs_to :court, optional: true
 
-  has_many :candidates, class_name: 'SelectionProcedure::Candidate'
-  has_many :commissioners, class_name: 'SelectionProcedure::Commissioner'
+  has_many :candidates, class_name: 'SelectionProcedure::Candidate', dependent: nil
+  has_many :commissioners, class_name: 'SelectionProcedure::Commissioner', dependent: nil
 end

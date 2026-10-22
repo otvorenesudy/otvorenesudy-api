@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: legislation_usages
@@ -10,7 +12,7 @@
 #
 FactoryBot.define do
   factory :'legislation/usage', aliases: [:legislation_usage] do
-    association :legislation
-    association :decree
+    legislation
+    decree
   end
 end

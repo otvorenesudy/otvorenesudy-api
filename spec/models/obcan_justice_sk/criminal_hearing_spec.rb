@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: obcan_justice_sk_criminal_hearings
@@ -11,9 +13,8 @@
 #  updated_at :datetime         not null
 #
 require 'rails_helper'
-require 'models/concerns/obcan_justice_sk/importable_spec'
 
-RSpec.describe ObcanJusticeSk::CriminalHearing, active_job: { adapter: :test } do
+RSpec.describe ObcanJusticeSk::CriminalHearing do
   it_behaves_like ObcanJusticeSk::Importable
 
   describe 'before save' do

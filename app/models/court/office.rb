@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: court_offices
@@ -16,7 +18,9 @@
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #
-class Court::Office < OpenCourts::ApplicationRecord
-  belongs_to :court
-  belongs_to :type, class_name: 'Court::Office::Type', foreign_key: :court_office_type_id
+class Court
+  class Office < OpenCourts::ApplicationRecord
+    belongs_to :court
+    belongs_to :type, class_name: 'Court::Office::Type', foreign_key: :court_office_type_id, inverse_of: false
+  end
 end
