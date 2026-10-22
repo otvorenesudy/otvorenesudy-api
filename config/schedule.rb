@@ -26,7 +26,8 @@ set :output, 'log/cron.log'
 every :day, at: '10 pm' do
   embed = 'OPENCOURTS_DATABASE_NAME=opencourts_production python3 ml/decree-embeddings/embed.py'
 
-  runner %(ExceptionHandler.run { system("#{embed}") })
+  # exception: true, so a failed run raises and ExceptionHandler reports it to Sentry; system only returns false.
+  runner %(ExceptionHandler.run { system("#{embed}", exception: true) })
 end
 
 every :day, at: '3:00 am' do

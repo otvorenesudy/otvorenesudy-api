@@ -91,5 +91,20 @@ RSpec.describe InfoSud do
                                         source_class_id: InfoSud::Decree.sole.id)
       expect([decree.form.value, decree.pages.pluck(:text)]).to eq(['Uznesenie', ['Fulltext #1']])
     end
+
+    it 'writes a decree whose record names no court, without a court, and asks otvorenesudy to reindex it' do
+      create(:decree_form, value: 'Uznesenie', code: 'N')
+      url = 'https://obcan.justice.sk/opendata?p_p_id=isuopendata_WAR_isufront&p_p_resource_id=isu_sr_2015_json.zip'
+      stub_request(:get, 'https://obcan.justice.sk/opendata').to_return(body: %(<a href="#{url}">2015</a>))
+      dump = JSON.parse(dump_of('decrees', '8db35214-01e6-4ed9-bf10-02f41884dec2:a0ab01fc-955b-4c8b-a3f0-975fe178edeb'))
+      dump['data'].first['sud_nazov'] = ''
+
+      import(dump.to_json, url:, filename: 'isu_sr_2015_json.zip') { described_class.import_decrees }
+
+      decree = Decree.sole
+
+      expect(decree).to have_attributes(court: nil, ecli: 'ECLI:SK:OSRV:2015:7813210471.2')
+      expect(Sidekiq::Queues['probe'].pluck('args')).to eq([['Decree', decree.id]])
+    end
   end
 end

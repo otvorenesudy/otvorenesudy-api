@@ -42,7 +42,10 @@ class DecreeReconciler
     )
   end
 
+  # Some of InfoSud's records name no court; their decrees are written without one.
   def reconcile_court
+    return unless mapper.court
+
     decree.court = Court.find_by!(name: mapper.court)
   end
 

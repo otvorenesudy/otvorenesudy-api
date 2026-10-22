@@ -59,6 +59,27 @@ RSpec.describe 'Prosecutor refinements' do
     expect(Public::ProsecutorRefinement.count).to eq(30)
   end
 
+  it 'turns away a single request carrying more than 30 refinements, and saves none of them' do
+    post_refinements(params.merge(prosecutors: Array.new(31) { |n| "Prosecutor #{n}" }))
+
+    expect(response).to have_http_status(:too_many_requests)
+    expect(Public::ProsecutorRefinement.count).to eq(0)
+  end
+
+  it 'turns away a request that would take an address past 30 refinements in 30 seconds' do
+    post_refinements(params.merge(prosecutors: Array.new(20) { |n| "Prosecutor #{n}" }))
+    post_refinements(params.merge(prosecutors: Array.new(11) { |n| "Another #{n}" }))
+
+    expect(response).to have_http_status(:too_many_requests)
+    expect(Public::ProsecutorRefinement.count).to eq(20)
+  end
+
+  it 'lets the site that sent them read that it was turned away' do
+    post_refinements(params.merge(prosecutors: Array.new(31) { |n| "Prosecutor #{n}" }))
+
+    expect(response.headers['Access-Control-Allow-Origin']).to eq('*')
+  end
+
   it 'takes refinements from another address meanwhile' do
     post_refinements(params.merge(prosecutors: Array.new(30) { |n| "Prosecutor #{n}" }))
     post_refinements(params, ip: '203.0.113.8')

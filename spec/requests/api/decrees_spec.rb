@@ -151,6 +151,20 @@ RSpec.describe 'Decrees API' do
       expect(response.headers['Link']).to be_nil
     end
 
+    it 'answers a time it cannot read with what is wrong, rather than with no decrees' do
+      get "/decrees/sync.json?api_key=#{api_key}&since=yesterday"
+
+      expect(response).to have_http_status(:bad_request)
+      expect(response.body).to eq('{"success":false,"errors":["Invalid since: yesterday"]}')
+    end
+
+    it 'answers a date that cannot exist with what is wrong' do
+      get "/decrees/sync.json?api_key=#{api_key}&since=2024-13-01"
+
+      expect(response).to have_http_status(:bad_request)
+      expect(response.body).to eq('{"success":false,"errors":["Invalid since: 2024-13-01"]}')
+    end
+
     it 'returns the same decrees as the decree endpoint does' do
       get "/decrees/sync.json?api_key=#{api_key}"
       listed = json[:decrees].first
