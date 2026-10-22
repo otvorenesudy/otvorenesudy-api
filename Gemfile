@@ -115,4 +115,8 @@ group :development do
   gem 'bump', git: 'https://github.com/pavolzbell/bump.git'
   gem 'rubocop', require: false
   gem 'syntax_tree', require: false
+
+  # Security
+  gem 'brakeman', require: false
+  gem 'bundler-audit', require: false
 end
