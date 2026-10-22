@@ -67,6 +67,12 @@ RSpec.describe ReconcileJudgeJob do
     expect(employments).to eq([['Najvyšší súd Slovenskej republiky', 'sudca', true]])
   end
 
+  it 'employs the judge only at the court they are assigned to when the record names no court of theirs' do
+    import(payload.merge('sud' => { 'registreGuid' => nil, 'nazov' => nil }))
+
+    expect(employments).to eq([['Krajský súd Nitra', 'sudca', true]])
+  end
+
   it 'employs the judge as the chairman of the judicial council of a court that lists them so' do
     bratislava = create(:court, name: 'Mestský súd Bratislava I')
     import_court_with_council('srPredseda')

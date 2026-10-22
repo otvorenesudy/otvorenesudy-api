@@ -40,7 +40,7 @@ RSpec.describe ObcanJusticeSk::JudgeMapper do
 
   describe '#status' do
     it 'maps status' do
-      expect(mapper.active).to be_truthy
+      expect(mapper.active?).to be(true)
     end
   end
 

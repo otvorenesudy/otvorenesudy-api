@@ -176,4 +176,15 @@ RSpec.describe ObcanJusticeSk::CivilHearingMapper do
       end
     end
   end
+
+  context 'with a record that gives no judge, court or time' do
+    let(:data) do
+      JSON.parse(file_fixture('obcan_justice_sk/mappers/civil_hearing.json').read)
+          .except('sudca', 'sud', 'datumPojednavania', 'casPojednavania')
+    end
+
+    it 'maps no judges, and no court or date' do
+      expect([mapper.judges, mapper.court, mapper.date]).to eq([[], nil, nil])
+    end
+  end
 end

@@ -174,4 +174,15 @@ RSpec.describe ObcanJusticeSk::CriminalHearingMapper do
       expect(mapper.defendants).to eq(['A. B.'])
     end
   end
+
+  context 'with a record that gives no court, form, date or type' do
+    let(:data) do
+      JSON.parse(file_fixture('obcan_justice_sk/mappers/criminal_hearing.json').read)
+          .except('sud', 'ukonForma', 'datumPojednavania', 'typ')
+    end
+
+    it 'maps none of them' do
+      expect([mapper.court, mapper.form, mapper.date, mapper.special_type]).to all(be_nil)
+    end
+  end
 end

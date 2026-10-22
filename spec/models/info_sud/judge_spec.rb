@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: info_sud_judges
@@ -8,11 +10,19 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-require 'spec_helper'
-require 'models/concerns/info_sud/importable_spec'
 
-RSpec.describe InfoSud::Judge, active_job: { adapter: :test } do
+require 'rails_helper'
+
+RSpec.describe InfoSud::Judge do
   it_behaves_like InfoSud::Importable
+
+  describe '#to_mapper' do
+    it 'maps the record with the InfoSud mapper' do
+      record = build(:info_sud_judge, data: { 'guid' => '1' })
+
+      expect(record.to_mapper.uri).to eq('https://obcan.justice.sk/infosud/-/infosud/reg-detail/sudca/1')
+    end
+  end
 
   describe 'after save' do
     let(:record) { build(:info_sud_judge) }

@@ -68,7 +68,7 @@ RSpec.describe ObcanJusticeSk::DecreeMapper do
 
   describe '#date' do
     it 'maps decree date' do
-      expect(mapper.date).to eql(Time.parse('2021-05-27'))
+      expect(mapper.date).to eq(Date.new(2021, 5, 27))
     end
   end
 
@@ -181,6 +181,14 @@ RSpec.describe ObcanJusticeSk::DecreeMapper do
       expect(mapper.pdf_uri).to eql(
         'https://obcan.justice.sk/content/public/item/3855d4dc-1209-4ddf-8a63-34cb3349cede'
       )
+    end
+  end
+
+  context 'with a record that gives no form' do
+    let(:data) { JSON.parse(file_fixture('obcan_justice_sk/mappers/decree.json').read).except('formaRozhodnutia') }
+
+    it 'maps no form code' do
+      expect(mapper.form_code).to be_nil
     end
   end
 end

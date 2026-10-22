@@ -58,6 +58,12 @@ RSpec.describe ReconcileHearingJob do
       expect(Sidekiq::Queues['probe'].pluck('args')).to eq([['Hearing', hearing.id]])
     end
 
+    it 'is written without a subject when the record gives none' do
+      import_civil(payload('civil_hearing').except('predmet'))
+
+      expect(hearing.subject).to be_nil
+    end
+
     it 'is held at midnight when the record gives its day alone' do
       import_civil(payload('civil_hearing').except('casPojednavania'))
 

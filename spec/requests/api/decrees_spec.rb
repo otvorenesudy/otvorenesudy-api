@@ -80,6 +80,15 @@ RSpec.describe 'Decrees API' do
       expect(response.body).to eq(file_fixture('api/decree.json').read.chomp)
     end
 
+    it 'lists no parties for a decree outside any proceeding' do
+      decree = create(:decree, proceeding: nil)
+
+      get "/decrees/#{decree.id}.json?api_key=#{api_key}"
+
+      expect(json[:decree].slice(:proposers, :opponents,
+                                 :defendants)).to eq(proposers: [], opponents: [], defendants: [])
+    end
+
     it 'says a decree that does not exist does not exist' do
       get "/decrees/20000001.json?api_key=#{api_key}"
 

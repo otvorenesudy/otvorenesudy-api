@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: obcan_justice_sk_civil_hearings
@@ -11,9 +13,8 @@
 #  updated_at :datetime         not null
 #
 require 'rails_helper'
-require 'models/concerns/obcan_justice_sk/importable_spec'
 
-RSpec.describe ObcanJusticeSk::CivilHearing, active_job: { adapter: :test } do
+RSpec.describe ObcanJusticeSk::CivilHearing do
   it_behaves_like ObcanJusticeSk::Importable
 
   describe 'before save' do
@@ -40,6 +41,14 @@ RSpec.describe ObcanJusticeSk::CivilHearing, active_job: { adapter: :test } do
 
       expect(record.data['navrhovatelia'][0]['meno']).to match(/^[A-Z]\. [A-Z]\.$/)
       expect(record.data['odporcovia'][0]['meno']).to match(/^[A-Z]\. [A-Z]\.$/)
+    end
+  end
+
+  describe 'before save, with no data' do
+    it 'saves the record as it is' do
+      record = build(:obcan_justice_sk_civil_hearing, data: {})
+
+      expect { record.save! }.not_to(change { record.data })
     end
   end
 

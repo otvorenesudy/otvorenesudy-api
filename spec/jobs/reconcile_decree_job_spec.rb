@@ -56,6 +56,25 @@ RSpec.describe ReconcileDecreeJob do
     )
   end
 
+  it 'writes a decree whose record gives no date, file number, judge or areas of law' do
+    import(payload.except('datumVydania', 'identifikacneCislo', 'sudca', 'oblast', 'podOblast'))
+
+    expect(decree).to have_attributes(date: nil, file_number: nil, proceeding: nil)
+    expect([decree.judges, decree.legislation_areas, decree.legislation_subareas]).to all(be_empty)
+  end
+
+  it 'keeps the areas of law of a decree whose record gives no subareas' do
+    import(payload.except('podOblast'))
+
+    expect([decree.legislation_areas.pluck(:value), decree.legislation_subareas]).to eq([['Občianske právo'], []])
+  end
+
+  it 'finds the judge by name when the record has no id for them' do
+    import(payload.merge('sudca' => payload['sudca'].merge('registreGuid' => 'sudca_null')))
+
+    expect(decree.judges).to eq([judge])
+  end
+
   it 'keeps the text of each page of the document' do
     import(payload)
 

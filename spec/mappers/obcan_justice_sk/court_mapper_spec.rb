@@ -180,7 +180,7 @@ RSpec.describe ObcanJusticeSk::CourtMapper do
       expect(mapper.information_center_note).to eq(
         "Informačné centrum:\n\nMedená 22:                  02 888 11 650 \n" \
         "Námestie Biely kríž 7:  02 888 13 200                            \n     " \
-        "Účastníci konania, strany sporu a ich zástupcovia môžu požiadať o nahliadnutie do súdneho spisu " \
+        'Účastníci konania, strany sporu a ich zástupcovia môžu požiadať o nahliadnutie do súdneho spisu ' \
         "osobne v informačnom centre súdu alebo telefonicky:\n" \
         "Nám. Biely kríž, tel. čísla: 02/888 13 200, 02/888 13 201.\n\n" \
         "e-mailom na adrese:  podatelnaMSBA3@justice.sk.\n"
@@ -198,7 +198,8 @@ RSpec.describe ObcanJusticeSk::CourtMapper do
     it 'maps business registry center note' do
       expect(mapper.business_registry_center_note).to eq(
         "Obchodný úsek MS BA III, Medená 22, 811 02 Bratislava\n\n" \
-        "                                                        \nSkrátené úradné hodiny:\n" \
+        "#{' ' * 56}" \
+        "\nSkrátené úradné hodiny:\n" \
         "Dňa       28.03.2024        od 08:00 hod. do 12:00 hod.\n" \
         "Dňa \t23.12.2024\tod 08:00 hod. do 12:00 hod.\n" \
         "Dňa \t31.12.2024\tod 08:00 hod. do 12:00 hod.\n"
@@ -223,6 +224,31 @@ RSpec.describe ObcanJusticeSk::CourtMapper do
 
     it 'maps data protection email' do
       expect(mapper.data_protection_email).to eq('ochrana.osobnych.udajov.KSBB@justice.sk')
+    end
+  end
+
+  context 'with a court that names no media contact, information center or data protection e-mail' do
+    let(:data) do
+      court = JSON.parse(file_fixture('obcan_justice_sk/mappers/court.json').read)
+
+      court.except('infoCentrum', 'ochranaOsobnychUdajov').merge('media' => court['media'].except('osoba'))
+    end
+
+    it 'maps none of them' do
+      expect([mapper.media_person, mapper.information_center_phone, mapper.data_protection_email]).to all(be_nil)
+    end
+  end
+
+  context 'with a contact place that gives no opening hours' do
+    let(:data) do
+      JSON.parse(file_fixture('obcan_justice_sk/mappers/court.json').read)
+          .merge('kontaktneMiesta' => [{ 'nazov' => 'Probačný a mediačný úradník', 'poznamka' => 'Mgr. Peter Tóth' }])
+    end
+
+    it 'maps the place without hours' do
+      expect(mapper.other_contacts).to eq(
+        [{ name: 'Probačný a mediačný úradník', note: 'Mgr. Peter Tóth', phone: nil, email: nil, hours: nil }]
+      )
     end
   end
 end

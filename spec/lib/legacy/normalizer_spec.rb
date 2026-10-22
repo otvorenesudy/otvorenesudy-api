@@ -30,7 +30,8 @@ RSpec.describe Legacy::Normalizer do
         'Okresný súd Bratislava lll' => 'Mestský súd Bratislava III',
         'Okresný súd Bratislava 2' => 'Mestský súd Bratislava II',
         'Okresný súd Bratislava 4' => 'Mestský súd Bratislava IV',
-        'Okresný súd Bratislava 5' => 'Okresný súd Bratislava V'
+        'Okresný súd Bratislava 5' => 'Okresný súd Bratislava V',
+        'Generálna prokuratúra SR' => 'Generálna Prokuratúra Slovenskej republiky'
       }
 
       expect(names.keys.index_with { |name| described_class.normalize_court_name(name) }).to eq(names)
@@ -209,6 +210,12 @@ RSpec.describe Legacy::Normalizer do
       }
 
       expect(partitions(names)).to eq(expected)
+    end
+
+    it 'leaves the seat out of the role of a spokesperson at a court other than in Trenčín or Trnava' do
+      expect(described_class.partition_person_name('JUDr. Ján Novák, hovorca KS v Bratislave')).to include(
+        value: 'JUDr. Ján Novák, hovorca krajského súdu v ', role: 'Hovorca krajského súdu v '
+      )
     end
 
     it 'reads names written surname first, the given name last, when told to reverse them' do

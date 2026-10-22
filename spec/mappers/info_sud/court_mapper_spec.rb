@@ -1,9 +1,9 @@
-require 'spec_helper'
-require 'info_sud'
-require_relative '../../../app/mappers/info_sud/court_mapper'
+# frozen_string_literal: true
+
+require 'rails_helper'
 
 RSpec.describe InfoSud::CourtMapper do
-  subject { InfoSud::CourtMapper.new(data) }
+  subject(:mapper) { described_class.new(data) }
 
   let(:data) do
     {
@@ -135,103 +135,103 @@ RSpec.describe InfoSud::CourtMapper do
 
   describe '#uri' do
     it 'maps uri from guid' do
-      expect(subject.uri).to eql('https://obcan.justice.sk/infosud/-/infosud/reg-detail/sud/sud_102')
+      expect(mapper.uri).to eql('https://obcan.justice.sk/infosud/-/infosud/reg-detail/sud/sud_102')
     end
   end
 
   describe '#name' do
     it 'maps name' do
-      expect(subject.name).to eql('Mestský súd Bratislava I')
+      expect(mapper.name).to eql('Mestský súd Bratislava I')
     end
   end
 
   describe '#street' do
     it 'maps street and building number' do
-      expect(subject.street).to eql('Záhradnícka 10')
+      expect(mapper.street).to eql('Záhradnícka 10')
     end
   end
 
   describe '#municipality' do
     it 'maps municipality name' do
-      expect(subject.municipality).to eql('Bratislava I')
+      expect(mapper.municipality).to eql('Bratislava I')
     end
   end
 
   describe '#zipcode' do
     it 'maps zipcode' do
-      expect(subject.zipcode).to eql('812 44')
+      expect(mapper.zipcode).to eql('812 44')
     end
   end
 
   describe '#type' do
     it 'maps type' do
-      expect(subject.type).to eql('Okresný')
+      expect(mapper.type).to eql('Okresný')
     end
   end
 
   describe '#latitude' do
     it 'maps latitude' do
-      expect(subject.latitude).to eql('48.152538')
+      expect(mapper.latitude).to eql('48.152538')
     end
   end
 
   describe '#longitude' do
     it 'maps longitude' do
-      expect(subject.longitude).to eql('17.122962')
+      expect(mapper.longitude).to eql('17.122962')
     end
   end
 
   describe '#phone' do
     it 'maps phone' do
-      expect(subject.phone).to eql('+421288810111')
+      expect(mapper.phone).to eql('+421288810111')
     end
   end
 
   describe '#fax' do
     it 'maps fax number' do
-      expect(subject.fax).to eql('+421288811191')
+      expect(mapper.fax).to eql('+421288811191')
     end
   end
 
   describe '#media_person' do
     it 'maps media person' do
-      expect(subject.media_person).to eql('Mgr. Pavol Adamčiak')
+      expect(mapper.media_person).to eql('Mgr. Pavol Adamčiak')
     end
   end
 
   describe '#media_phone' do
     it 'maps media phone' do
-      expect(subject.media_phone).to eql('0903 424 263, 02/50 118 417')
+      expect(mapper.media_phone).to eql('0903 424 263, 02/50 118 417')
     end
   end
 
   describe '#acronym' do
     it 'maps acronym' do
-      expect(subject.acronym).to eql('OSBA1')
+      expect(mapper.acronym).to eql('OSBA1')
     end
   end
 
   describe '#information_center_email' do
     it 'maps information center email' do
-      expect(subject.information_center_email).to eql('podatelnaosba1@justice.sk')
+      expect(mapper.information_center_email).to eql('podatelnaosba1@justice.sk')
     end
   end
 
   describe '#information_center_phone' do
     it 'maps information center phone' do
-      expect(subject.information_center_phone).to eql('02/88 811 200')
+      expect(mapper.information_center_phone).to eql('02/88 811 200')
     end
   end
 
   describe '#information_center_note' do
     it 'maps information center note' do
-      expect(subject.information_center_note).to be(nil)
+      expect(mapper.information_center_note).to be_nil
     end
   end
 
   describe '#information_center_opening_hours' do
     it 'maps information center opening hours' do
-      expect(subject.information_center_hours).to eql(
+      expect(mapper.information_center_hours).to eql(
         ['8:00 - 15:00', '8:00 - 15:00', '8:00 - 15:00', '8:00 - 15:00', '8:00 - 14:00']
       )
     end
@@ -239,25 +239,25 @@ RSpec.describe InfoSud::CourtMapper do
 
   describe '#registry_center_email' do
     it 'maps registry center email' do
-      expect(subject.registry_center_email).to eql('podatelnaosba1@justice.sk')
+      expect(mapper.registry_center_email).to eql('podatelnaosba1@justice.sk')
     end
   end
 
   describe '#registry_center_phone' do
     it 'maps registry center phone' do
-      expect(subject.registry_center_phone).to eql('02/88 811 180, fax 02/88 811 192')
+      expect(mapper.registry_center_phone).to eql('02/88 811 180, fax 02/88 811 192')
     end
   end
 
   describe '#registry_center_note' do
     it 'maps registry center note' do
-      expect(subject.registry_center_note).to be(nil)
+      expect(mapper.registry_center_note).to be_nil
     end
   end
 
   describe '#registry_center_opening_hours' do
     it 'maps registry center opening hours' do
-      expect(subject.registry_center_hours).to eql(
+      expect(mapper.registry_center_hours).to eql(
         ['8:00 - 15:30', '8:00 - 15:30', '8:00 - 15:30', '8:00 - 15:30', '8:00 - 15:00']
       )
     end
@@ -265,13 +265,13 @@ RSpec.describe InfoSud::CourtMapper do
 
   describe '#business_registry_center_email' do
     it 'maps business registry center email' do
-      expect(subject.business_registry_center_email).to be(nil)
+      expect(mapper.business_registry_center_email).to be_nil
     end
   end
 
   describe '#business_registry_center_phone' do
     it 'maps business registry center phone' do
-      expect(subject.business_registry_center_phone).to eql(
+      expect(mapper.business_registry_center_phone).to eql(
         '02/50 118 340, 02/50 118 356, 02/50 118 181, 02/50 118 421'
       )
     end
@@ -279,15 +279,23 @@ RSpec.describe InfoSud::CourtMapper do
 
   describe '#business_registry_center_note' do
     it 'maps business registry center note' do
-      expect(subject.business_registry_center_note).to eql('prestávka v práci PO - ŠT: 12:00 - 13:00')
+      expect(mapper.business_registry_center_note).to eql('prestávka v práci PO - ŠT: 12:00 - 13:00')
     end
   end
 
   describe '#business_registry_center_opening_hours' do
     it 'maps business registry center opening hours' do
-      expect(subject.business_registry_center_hours).to eql(
+      expect(mapper.business_registry_center_hours).to eql(
         ['8:00 - 15:00', '8:00 - 15:00', '8:00 - 15:00', '8:00 - 15:00', '8:00 - 12:00']
       )
+    end
+  end
+
+  context 'with a court that names no media contact and gives no phones' do
+    let(:data) { { 'media_name' => nil, 'tel' => [] } }
+
+    it 'maps neither' do
+      expect([mapper.media_person, mapper.phone]).to all(be_nil)
     end
   end
 end
