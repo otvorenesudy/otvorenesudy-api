@@ -1,3 +1,5 @@
+# A record by id, and every record in pages of 100 by when it changed, with a Link header to the next page. The JSON
+# escapes <, > and & (\u003c), as Rails did before 8.1 and callers have always had it (escape: true).
 module Api::Syncable
   extend ActiveSupport::Concern
 
@@ -5,7 +7,7 @@ module Api::Syncable
     @record = syncable_repository.find(params[:id])
 
     respond_to do |format|
-      format.json { render json: @record }
+      format.json { render json: @record, escape: true }
     end
   end
 
@@ -23,7 +25,7 @@ module Api::Syncable
     end
 
     respond_to do |format|
-      format.json { render json: @records }
+      format.json { render json: @records, escape: true }
     end
   end
 end

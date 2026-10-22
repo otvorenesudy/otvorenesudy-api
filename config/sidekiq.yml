@@ -1,11 +1,12 @@
+---
 :concurrency: 25
 :pidfile: tmp/pids/sidekiq.pid
-:production:
-  :concurrency: 25
 :queues:
-  - [exporters]
-  - [reconcilers]
-  - [justice_gov_sk_pages]
-  - [obcan_justice_sk]
-:limits:
-  reconcilers: 5
+  - exporters
+  - obcan_justice_sk
+# At most 5 reconcilers at a time: they lock the records they write.
+:capsules:
+  :reconcilers:
+    :concurrency: 5
+    :queues:
+      - reconcilers

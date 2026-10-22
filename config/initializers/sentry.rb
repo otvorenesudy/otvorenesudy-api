@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 Sentry.init do |config|
   config.dsn = Rails.application.credentials.dig(:sentry, :dsn)
-  config.breadcrumbs_logger = %i[active_support_logger http_logger]
+  config.enabled_environments = %w[production]
 
-  # Set traces_sample_rate to 1.0 to capture 100%
-  # of transactions for performance monitoring.
-  # We recommend adjusting this value in production.
-  config.traces_sample_rate = 1.0
+  config.breadcrumbs_logger = %i[active_support_logger http_logger]
+  config.send_default_pii = false
+  config.traces_sample_rate = Rails.application.credentials.dig(:sentry, :traces_sample_rate) || 0.1
 end

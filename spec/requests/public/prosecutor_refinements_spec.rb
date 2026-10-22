@@ -8,7 +8,7 @@ RSpec.describe 'Prosecutor refinements' do
 
   def post_refinements(body, ip: '203.0.113.7')
     post '/public/prosecutor_refinements.json', params: body.to_json,
-                                               headers: { 'CONTENT_TYPE' => 'application/json', 'REMOTE_ADDR' => ip }
+                                                headers: { 'CONTENT_TYPE' => 'application/json', 'REMOTE_ADDR' => ip }
   end
 
   it 'saves a refinement for each prosecutor, with the sender and their address' do
@@ -16,10 +16,10 @@ RSpec.describe 'Prosecutor refinements' do
 
     expect(response).to have_http_status(:ok)
     expect(response.body).to eq(' ')
-    expect(Public::ProsecutorRefinement.order(:prosecutor).pluck(:prosecutor, :name, :email, :office, :ip_address)).to eq(
-      [['Adam', 'Ján Novák', 'jan@example.com', 'OP Bratislava I', '203.0.113.7'],
-       ['Eva', 'Ján Novák', 'jan@example.com', 'OP Bratislava I', '203.0.113.7']]
-    )
+    sent = ['Ján Novák', 'jan@example.com', 'OP Bratislava I', '203.0.113.7']
+
+    expect(Public::ProsecutorRefinement.order(:prosecutor).pluck(:prosecutor, :name, :email, :office, :ip_address))
+      .to eq([['Adam', *sent], ['Eva', *sent]])
   end
 
   it 'allows any site to send them outside production' do

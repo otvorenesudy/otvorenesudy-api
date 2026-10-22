@@ -8,7 +8,7 @@ RSpec.describe ObcanJusticeSk::CriminalHearingMapper do
     described_class.new(double(:criminal_hearing, id: 1, class: double(:class, name: 'CriminalHearing'), data: data))
   end
 
-  let(:data) { JSON.parse(fixture('obcan_justice_sk/mappers/criminal_hearing.json').read) }
+  let(:data) { JSON.parse(file_fixture('obcan_justice_sk/mappers/criminal_hearing.json').read) }
 
   describe '#uri' do
     it 'maps uri from guid' do
@@ -158,7 +158,7 @@ RSpec.describe ObcanJusticeSk::CriminalHearingMapper do
   end
 
   context 'as hearing for special criminal court' do
-    let(:data) { JSON.parse(fixture('obcan_justice_sk/mappers/special_criminal_hearing.json').read) }
+    let(:data) { JSON.parse(file_fixture('obcan_justice_sk/mappers/special_criminal_hearing.json').read) }
 
     describe '#court' do
       describe '#type' do

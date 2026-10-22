@@ -1,8 +1,19 @@
-@mixin highlight($time: .25s) {
-  opacity: .5;
+// Bootstrap 4 alpha's: the hover, focus and active states at once.
+@mixin hover-focus-active {
+  &:hover,
+  &:focus,
+  &:active {
+    @content;
+  }
+}
+
+@mixin highlight($time: 0.25s) {
+  opacity: 0.5;
 
   @include transition(all $time ease);
-  @include hover-focus-active { opacity: 1.0 }
+  @include hover-focus-active {
+    opacity: 1;
+  }
 }
 
 @mixin grayscale {
@@ -13,15 +24,15 @@
 }
 
 @mixin unfilter {
-  -webkit-filter: grayscale(0.0);
+  -webkit-filter: grayscale(0);
   filter: none;
 }
 
 @mixin transition($transition...) {
-  -moz-transition:    $transition;
-  -o-transition:      $transition;
+  -moz-transition: $transition;
+  -o-transition: $transition;
   -webkit-transition: $transition;
-  transition:         $transition;
+  transition: $transition;
 }
 
 @mixin linear-gradient($angle, $from, $to) {
@@ -32,9 +43,9 @@
   background-repeat: repeat-x;
 
   background-image: -webkit-linear-gradient($angle, $from, $to); // Safari 5.1+, Chrome 10+
-  background-image:    -moz-linear-gradient($angle, $from, $to); // Firefox 3.6+
-  background-image:      -o-linear-gradient($angle, $from, $to); // Opera 11.10
-  background-image:         linear-gradient($angle, $from, $to); // Standard, Internet Explorer 10
+  background-image: -moz-linear-gradient($angle, $from, $to); // Firefox 3.6+
+  background-image: -o-linear-gradient($angle, $from, $to); // Opera 11.10
+  background-image: linear-gradient($angle, $from, $to); // Standard, Internet Explorer 10
 }
 
 @mixin animation($name, $time, $delay) {

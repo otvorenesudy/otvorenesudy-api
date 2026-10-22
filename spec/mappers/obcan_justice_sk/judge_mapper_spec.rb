@@ -6,7 +6,7 @@ require_relative '../../../app/mappers/obcan_justice_sk/court_mapper'
 RSpec.describe ObcanJusticeSk::JudgeMapper do
   subject { described_class.new(double(:jduge, id: 1, data: data)) }
 
-  let(:data) { JSON.parse(fixture('obcan_justice_sk/mappers/judge.json').read) }
+  let(:data) { JSON.parse(file_fixture('obcan_justice_sk/mappers/judge.json').read) }
 
   describe '#uri' do
     it 'maps uri from guid' do

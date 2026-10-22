@@ -8,9 +8,12 @@ RSpec.describe 'Sidekiq dashboard' do
     ActionController::HttpAuthentication::Basic.encode_credentials('admin', password)
   end
 
+  # The credentials are configuration we don't own here: the tests have none, so the password is given.
   before do
-    allow(Rails.application.credentials).to receive(:dig).and_call_original
-    allow(Rails.application.credentials).to receive(:dig).with(:sidekiq, :password).and_return('dashboard password') # betterleaks:allow
+    credentials = Rails.application.credentials
+
+    allow(credentials).to receive(:dig).and_call_original
+    allow(credentials).to receive(:dig).with(:sidekiq, :password).and_return('dashboard password') # betterleaks:allow
   end
 
   it 'asks for the password' do

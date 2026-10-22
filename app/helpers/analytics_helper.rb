@@ -1,11 +1,11 @@
+# frozen_string_literal: true
+
+# Data attributes of a tracked event (data-track-category, -action, -label), each part's words joined and lowercased.
 module AnalyticsHelper
-  def analytics_attributes(category, action, label = nil, options = {})
-    category = category.to_s.downcase
+  def track(category, action, label = nil, options = {})
+    category, action, label = [category, action, label].map { |part| Array.wrap(part).join(' - ').downcase }
+    data = { 'track-category': category, 'track-action': action, 'track-label': label }
 
-    action, label = *[action, label].map { |s| Array.wrap(s).map(&:to_s).join(' - ').downcase }
-
-    data = { :'track-category' => category, :'track-action' => action, :'track-label' => label }
-
-    options.deep_merge data: data.reject { |_, value| value.blank? }
+    options.deep_merge(data: data.compact_blank)
   end
 end

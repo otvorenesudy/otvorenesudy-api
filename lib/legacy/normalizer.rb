@@ -84,7 +84,7 @@ module Legacy
           when /\A(a|v|nad|pre|súd|okolie|trestný|republiky)\z/i
             word.downcase
           else
-            word.titlecase
+            word.capitalize_words
           end
         }.join ' '
     end
@@ -139,9 +139,9 @@ module Legacy
               end
             else
               if part.upcase == part
-                uppercase << part.split(/\-/).map(&:titlecase).join(' - ')
+                uppercase << part.split(/\-/).map(&:capitalize_words).join(' - ')
               else
-                mixedcase << part.split(/\-/).map(&:titlecase).join(' - ')
+                mixedcase << part.split(/\-/).map(&:capitalize_words).join(' - ')
               end
             end
           end

@@ -5,7 +5,7 @@
         <%= image_tag 'logo.svg' %>
       </a>
 
-      <ul class="locales list-inline pull-right">
+      <ul class="locales list-inline float-end">
         <li><%= link_to 'SK', l: :sk %></li>
         <li><%= link_to 'EN', l: :en %></li>
       </ul>
@@ -21,10 +21,10 @@
           <%= t('.description') %>
         </h2>
 
-        <%= link_to t('.see_invite_form'), '#', analytics_attributes(:invites, :'see-invite').merge(id: 'see-invite', class: 'btn btn-primary btn-lg') %>
+        <%= link_to t('.see_invite_form'), '#invite', track(:invites, :'see-invite', nil, id: 'see-invite', class: 'btn btn-primary btn-lg', data: { controller: 'scroll', action: 'scroll#go', scroll_selector_value: '#invite', scroll_focus_value: '#invite_email' }) %>
       </div>
 
-      <%= link_to '#', analytics_attributes(:invites, :'see-more').merge(id: 'see-more') do %>
+      <%= link_to '#title', track(:invites, :'see-more', nil, id: 'see-more', data: { controller: 'scroll', action: 'scroll#go', scroll_selector_value: '.content', scroll_offset_value: 32 }) do %>
         <%= t('.see_more') %><br/>
 
         <i class="fa fa-chevron-down"></i>
@@ -161,7 +161,7 @@
 <footer>
   <div class="container">
     <section id="invite">
-      <%= render partial: 'invite_form' %>
+      <%= render 'welcome/invite_form', invite: @invite %>
     </section>
 
     <section id="contact">

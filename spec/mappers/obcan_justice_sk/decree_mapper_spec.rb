@@ -8,7 +8,7 @@ require_relative '../../../app/services/obcan_justice_sk/judge_finder'
 RSpec.describe ObcanJusticeSk::DecreeMapper do
   subject { described_class.new(double(:decree, id: 1, class: double(:class, name: 'Decree'), data: data)) }
 
-  let(:data) { JSON.parse(fixture('obcan_justice_sk/mappers/decree.json').read) }
+  let(:data) { JSON.parse(file_fixture('obcan_justice_sk/mappers/decree.json').read) }
 
   describe '#source' do
     it 'maps source' do

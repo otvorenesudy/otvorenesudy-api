@@ -40,7 +40,7 @@ RSpec.describe HearingReconciler do
 
   describe '#reconcile_attributes' do
     it 'reconciles attributes' do
-      Timecop.freeze do
+      freeze_time do
         allow(Source).to receive(:find_by!).with(module: 'JusticeGovSk') { source }
         allow(Hearing::Type).to receive(:find_by!).with(value: 'Trestné') { :type }
 

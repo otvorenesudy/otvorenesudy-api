@@ -3,7 +3,7 @@ require 'info_sud'
 
 RSpec.describe InfoSud::Importer do
   describe '.import' do
-    let(:data) { fixture('info_sud/example.json').read }
+    let(:data) { file_fixture('info_sud/example.json').read }
     let(:parser) { double(:parser) }
     let(:repository) { double(:repository) }
 

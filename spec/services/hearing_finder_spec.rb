@@ -11,7 +11,7 @@ RSpec.describe HearingFinder do
 
     context 'when hearing is not saved with uri' do
       it 'finds hearing by unique attribute combination' do
-        Timecop.freeze do
+        freeze_time do
           hearing = create(:hearing, uri: 'other uri', date: 2.days.ago, file_number: '12345', court: create(:court, name: 'Sud'))
           attributes = double(uri: 'uri', date: 2.days.ago, file_number: '12345', court: 'Sud',  judges: ['Peter Pan'], chair_judges: [])
 

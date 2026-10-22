@@ -13,7 +13,10 @@ RSpec.describe UpdateNotifier do
   before { Sidekiq::Queues.clear_all }
 
   it 'asks otvorenesudy to reindex each kind of record it indexes, by its model name and id' do
-    court, judge, decree, hearing = create(:court), create(:judge), create(:decree), create(:hearing)
+    court = create(:court)
+    judge = create(:judge)
+    decree = create(:decree)
+    hearing = create(:hearing)
 
     [court, judge, decree, hearing].each { |record| described_class.notify(record) }
 
@@ -36,12 +39,13 @@ RSpec.describe UpdateNotifier do
     end
 
     it 'pushes the job into the probe queue of Redis database 0, where otvorenesudy takes it from' do
-      Sidekiq::Testing.disable! { described_class.notify(court) }
+      Sidekiq.testing!(:disable) { described_class.notify(court) }
 
       payloads = redis.call('LRANGE', 'queue:probe', 0, -1).map { |payload| JSON.parse(payload) }
 
       expect(payloads).to include(
-        a_hash_including('class' => 'UpdateRepositoryJob', 'queue' => 'probe', 'args' => ['Court', court.id], 'retry' => true)
+        a_hash_including('class' => 'UpdateRepositoryJob', 'queue' => 'probe', 'args' => ['Court', court.id],
+                         'retry' => true)
       )
       expect(redis.call('SISMEMBER', 'queues', 'probe')).to eq(1)
     end

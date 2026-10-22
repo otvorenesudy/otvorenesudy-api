@@ -5,7 +5,7 @@ require_relative '../../../app/mappers/obcan_justice_sk/court_mapper'
 RSpec.describe ObcanJusticeSk::CourtMapper do
   subject { described_class.new(double(:court, id: 1, data: data)) }
 
-  let(:data) { JSON.parse(fixture('obcan_justice_sk/mappers/court.json').read) }
+  let(:data) { JSON.parse(file_fixture('obcan_justice_sk/mappers/court.json').read) }
 
   describe '#uri' do
     it 'maps uri from guid' do
@@ -174,7 +174,7 @@ RSpec.describe ObcanJusticeSk::CourtMapper do
   end
 
   context 'for court with business registry center' do
-    let(:data) { JSON.parse(fixture('obcan_justice_sk/mappers/court_with_orsr.json').read) }
+    let(:data) { JSON.parse(file_fixture('obcan_justice_sk/mappers/court_with_orsr.json').read) }
 
     describe '#information_center_note' do
       it 'maps information center note' do
@@ -222,7 +222,7 @@ RSpec.describe ObcanJusticeSk::CourtMapper do
   end
 
   context 'for court with data protection email' do
-    let(:data) { JSON.parse(fixture('obcan_justice_sk/mappers/court_with_data_protection.json').read) }
+    let(:data) { JSON.parse(file_fixture('obcan_justice_sk/mappers/court_with_data_protection.json').read) }
 
     describe '#data_protection_email' do
       it 'maps data protection email' do

@@ -1,53 +1,52 @@
-require File.expand_path('../boot', __FILE__)
+# frozen_string_literal: true
+
+require_relative 'boot'
 
 require 'rails'
-
-# Pick the frameworks you want:
+require 'active_model/railtie'
+require 'active_job/railtie'
+require 'active_record/railtie'
 require 'action_controller/railtie'
 require 'action_mailer/railtie'
 require 'action_view/railtie'
-require 'active_job/railtie'
-require 'active_model/railtie'
-require 'active_record/railtie'
 
-# Require the gems listed in Gemfile, including any gems
-# you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
 module OpenCourtsApi
   class Application < Rails::Application
-    # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.1
+    config.load_defaults 8.1
 
-    # Autoload paths
     config.autoload_lib(ignore: %w[assets tasks])
 
-    # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
-    # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     config.time_zone = 'Europe/Bratislava'
 
-    # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
-    # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
+    config.i18n.available_locales = %i[sk en]
     config.i18n.default_locale = :sk
+    config.i18n.load_path += Rails.root.glob('config/locales/**/*.yml')
 
-    # Load all locales
-    config.i18n.load_path += Dir[Rails.root.join 'config', 'locales', '**', '*.{rb,yml}']
+    # db/structure.sql and db/opencourts_structure.sql: the schemas have pgvector columns that schema.rb can't express.
+    config.active_record.schema_format = :sql
 
-    # Don't generate system test files
-    config.generators.system_tests = nil
-
-    # ActiveJob
     config.active_job.queue_adapter = :sidekiq
 
-    # Skylight
+    # A field with errors shows it by a class (the invite form's .error), not by a wrapping div.
+    config.action_view.field_error_proc = proc { |html_tag, _instance| html_tag }
+
+    # The API's callers have always had U+2028 and U+2029 escaped in its JSON ( ), as Rails did before 8.1.
+    config.active_support.escape_js_separators_in_json = true
+
+    # The bootstrap gem is here for its SCSS. Its JavaScript, and popper_js's, are global bundles named like the modules
+    # in vendor/javascript (bootstrap.js), and Propshaft serves the first file of a name: with the gems inside the app
+    # (vendor/bundle, as in CI), that was the gem's.
+    config.assets.excluded_paths += %w[bootstrap popper_js].map do |name|
+      Pathname(Gem.loaded_specs.fetch(name).full_gem_path).join('assets/javascripts')
+    end
+
     config.skylight.probes << 'active_job'
 
-    # Schema Format
-    config.active_record.schema_format = :sql
+    config.generators do |generate|
+      generate.test_framework :rspec
+      generate.system_tests nil
+    end
   end
 end
-
-require 'info_sud'
-require 'obcan_justice_sk'
-require 'pdf_extractor'
-require 'exception_handler'

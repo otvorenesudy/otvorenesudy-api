@@ -1,10 +1,57 @@
+// The welcome page was drawn with Bootstrap 4.0.0-alpha.2; these keep its sizes and colors on Bootstrap 5.
+
 $base-color: #483578;
-$link-color: $base-color !default;
-$btn-primary-bg: lighten($base-color, 15%) !default;
+
+// Bootstrap 4 alpha's colors and sizes, by their old names
+$gray-dark: #373a3c;
+$gray-light: #818a91;
+$gray-lighter: #eceeef;
+$brand-danger: #d9534f;
+$font-size-h1: 2.5rem;
+$font-size-h2: 2rem;
+$font-size-h5: 1.25rem;
+$spacer-y: 1rem;
+
+$primary: lighten($base-color, 15%);
+$body-color: $gray-dark;
+$link-color: $base-color;
+$link-decoration: none;
+$link-hover-color: darken($link-color, 15%);
+$link-hover-decoration: underline;
 
 $enable-rounded: true;
 $enable-shadows: false;
 $enable-gradients: false;
 $enable-transitions: true;
+// Fixed heading sizes, as before: no responsive font sizes.
+$enable-rfs: false;
 
-$headings-font-weight: 300 !important;
+$grid-breakpoints: (
+  xs: 0,
+  sm: 544px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+);
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 940px,
+  xl: 1140px,
+);
+$grid-gutter-width: 1.875rem;
+
+$headings-font-weight: 300;
+$headings-line-height: 1.1;
+$small-font-size: 80%;
+
+$hr-color: #000;
+$hr-opacity: 0.1;
+
+$border-radius: 0.25rem;
+$border-radius-sm: 0.2rem;
+$border-radius-lg: 0.3rem;
+$input-placeholder-color: #999;
+$btn-padding-x: 1rem;
+$btn-padding-y-lg: 0.75rem;
+$btn-padding-x-lg: 1.25rem;

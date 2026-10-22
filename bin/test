@@ -1,15 +1,20 @@
 #!/usr/bin/env bash
-# Decides whether a change is done: bin/lint on the branch's changes, then the RSpec suite against test databases
-# rebuilt from db/structure.sql and db/opencourts_structure.sql. Exits non-zero when either fails.
+# Decides whether a change is done: bin/lint on the branch's changes, bin/vendor --check on the vendored browser
+# libraries (they must be what package.json's versions make), then the RSpec suite against test databases rebuilt from
+# db/structure.sql and db/opencourts_structure.sql. A full run (no arguments) also measures coverage: SimpleCov fails it
+# below 95% of lines or 90% of branches, and undercover fails it for any method this branch changed that no spec runs.
+# Exits non-zero when any of them fails.
 #
 # Usage:
-#   bin/test               lint, then every spec
-#   bin/test <spec> ...    lint, then those specs (spec/models/judge_spec.rb, spec/models/judge_spec.rb:12)
+#   bin/test               lint, then every spec, with coverage
+#   bin/test <spec> ...    lint, then those specs (spec/requests/api/decrees_spec.rb, spec/system/welcome_spec.rb:12)
 #
-# Needs PostgreSQL with pgvector on localhost (brew services start postgresql@17), and .env.test and .env, which git
-# ignores and bin/setup makes from their committed examples. The app reads them and config/credentials while it boots,
-# and the Claude Code sandbox hides them, so Claude Code runs bin/test outside the sandbox (sandbox.excludedCommands in
-# .claude/settings.json).
+# Needs PostgreSQL with pgvector on localhost (brew services start postgresql@17) and Redis on localhost:6379 (brew
+# services start redis), where the UpdateNotifier spec checks what lands in otvorenesudy's queue. The app reads
+# .env.test and .env, which git ignores and bin/setup makes from their committed examples (CI copies .env.ci to
+# .env.test); the tests and CI need no credentials. Claude Code runs bin/test outside its sandbox
+# (sandbox.excludedCommands in .claude/settings.json): the sandbox hides the dotenv files the app reads while it boots,
+# and the machine-wide lock below lives in /tmp.
 #
 # One run at a time on this machine: this app and otvorenesudy share the opencourts_test database, so a second run
 # of either waits for the first.
@@ -39,18 +44,19 @@ status=0
 echo "==> lint"
 bin/lint || status=1
 
+echo "==> vendored libraries"
+bin/vendor --check || status=1
+
 echo "==> test databases"
 if ! pg_isready -q -h localhost; then
   echo "PostgreSQL isn't running on localhost. Start it (brew services start postgresql@17), then run bin/test again." >&2
   exit 1
 fi
 export RAILS_ENV=test
-# Each run boots its own Rails: Spring forks a long-lived one, which the macOS libpq crash below takes down.
-export DISABLE_SPRING=1
 # libpq's GSSAPI negotiation crashes forked Ruby processes on macOS; nothing here uses Kerberos.
 export PGGSSENCMODE=disable
-# otvorenesudy's bin/test rebuilds the shared opencourts_test database with Rails 3.2, which records no environment in
-# it, and Rails then refuses to purge it as possibly protected. Both are test databases, so skip that check.
+# otvorenesudy's bin/test rebuilds the shared opencourts_test database too; Rails may find another app's environment
+# recorded in it and refuse to purge it as possibly protected. Both are test databases, so skip that check.
 export DISABLE_DATABASE_ENVIRONMENT_CHECK=1
 if ! output=$(bin/rails db:create db:test:prepare 2>&1); then
   printf '%s\n' "$output" >&2
@@ -58,7 +64,22 @@ if ! output=$(bin/rails db:create db:test:prepare 2>&1); then
   exit 1
 fi
 
+echo "==> stylesheets"
+if ! output=$(bin/rails dartsass:build 2>&1); then
+  printf '%s\n' "$output" >&2
+  echo "Couldn't build the stylesheets." >&2
+  exit 1
+fi
+
 echo "==> specs"
-bundle exec rspec --format progress "$@" || status=1
+if (($# == 0)); then
+  export COVERAGE=1
+  bundle exec rspec --format progress || status=1
+
+  echo "==> undercover"
+  bundle exec undercover --compare origin/main || status=1
+else
+  bundle exec rspec --format progress "$@" || status=1
+fi
 
 exit "$status"

@@ -39,7 +39,7 @@ RSpec.shared_examples_for ObcanJusticeSk::Importable do
         it 'does not update record' do
           time = 30.minutes.ago
 
-          Timecop.freeze(time) { described_class.import_from!(guid: attributes[:guid], uri: uri, data: attributes) }
+          travel_to(time, with_usec: true) { described_class.import_from!(guid: attributes[:guid], uri: uri, data: attributes) }
 
           described_class.import_from!(guid: attributes[:guid], uri: uri, data: attributes)
 

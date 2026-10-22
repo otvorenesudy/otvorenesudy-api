@@ -14,58 +14,70 @@ RSpec.describe 'Decrees API' do
   def create_full_decree
     municipality = create(:municipality, name: 'Bratislava', zipcode: '812 44')
     court = create(:court, id: 1_000_001, name: 'Okresný súd Bratislava I', street: 'Záhradnícka 10', municipality:)
-    proceeding = create(:proceeding)
-    decree = create(
-      :decree,
-      id: 1_000_002, uri: 'https://obcan.justice.sk/infosud/-/infosud/i-detail/rozhodnutie/abc', case_number: '1C/12/2023',
-      file_number: '1123456789', ecli: 'ECLI:SK:OSBA1:2024:1123456789.1', date: Date.new(2024, 3, 1), court:, proceeding:,
-      form: create(:decree_form, value: 'Rozsudok', code: 'V')
-    )
+    decree = create(:decree, id: 1_000_002, court:, **decree_attributes)
 
+    create_pages_and_judgements(decree)
+    create_classification(decree)
+    create_parties(decree)
+
+    decree
+  end
+
+  def decree_attributes
+    {
+      uri: 'https://obcan.justice.sk/infosud/-/infosud/i-detail/rozhodnutie/abc',
+      case_number: '1C/12/2023',
+      file_number: '1123456789',
+      ecli: 'ECLI:SK:OSBA1:2024:1123456789.1',
+      date: Date.new(2024, 3, 1),
+      form: create(:decree_form, value: 'Rozsudok', code: 'V')
+    }
+  end
+
+  # Its text needs escaping in JSON; one judge matched exactly, and the same name twice inexactly.
+  def create_pages_and_judgements(decree)
     create(:decree_page, decree:, number: 1, text: "Rozsudok v mene Slovenskej republiky <b>Š & \"ť\"</b> 'á' ")
     create(:decree_page, decree:, number: 2, text: "riadok\u2028ďalší > koniec")
 
     create(:judgement, decree:, judge: create(:judge, id: 1_000_003, last: 'Nováková'), judge_name_similarity: 1.0)
     create(:judgement, decree:, judge: nil, judge_name_similarity: 0.8, judge_name_unprocessed: 'JUDr. Kralik')
     create(:judgement, decree:, judge: nil, judge_name_similarity: 0.7, judge_name_unprocessed: 'JUDr. Kralik')
+  end
 
+  # A nature, legal areas, and two laws: one with its number, year and paragraph, one known only by its name.
+  def create_classification(decree)
     create(:decree_naturalization, decree:, nature: create(:decree_nature, value: 'Konečné'))
     create(:legislation_area_usage, decree:, area: create(:legislation_area, value: 'Občianske právo'))
     create(:legislation_subarea_usage, decree:, subarea: create(:legislation_subarea, value: 'Nájom'))
 
-    create(
-      :legislation_usage,
-      decree:,
-      legislation: create(:legislation, name: 'Občiansky zákonník', value: '40/1964 Zb. § 663', value_unprocessed: '§ 663',
-                                         type: 'Zákon', year: 1964, number: 40, paragraph: '663', section: '1', letter: 'a')
-    )
-    create(
-      :legislation_usage,
-      decree:,
-      legislation: create(:legislation, name: nil, value: 'Ústava SR', value_unprocessed: 'Ústava', type: nil, year: nil,
-                                         number: nil, paragraph: nil, section: nil, letter: nil)
-    )
+    [
+      { name: 'Občiansky zákonník', value: '40/1964 Zb. § 663', value_unprocessed: '§ 663', type: 'Zákon', year: 1964,
+        number: 40, paragraph: '663', section: '1', letter: 'a' },
+      { name: nil, value: 'Ústava SR', value_unprocessed: 'Ústava', type: nil, year: nil, number: nil, paragraph: nil,
+        section: nil, letter: nil }
+    ].each { |attributes| create(:legislation_usage, decree:, legislation: create(:legislation, **attributes)) }
+  end
 
+  # Two hearings of the decree's proceeding, sharing a proposer and a defendant.
+  def create_parties(decree)
     [%w[Proposer Opponent Defendant], %w[Proposer Opponent2 Defendant]].each do |names|
-      hearing = create(:hearing, proceeding:, court:)
+      hearing = create(:hearing, proceeding: decree.proceeding, court: decree.court)
 
       create(:proposer, hearing:, name: names[0])
       create(:opponent, hearing:, name: names[1])
       create(:defendant, hearing:, name: names[2])
     end
-
-    decree
   end
 
   describe 'GET /decrees/:id.json' do
     it 'returns the decree with everything about it, as it always has' do
-      Timecop.freeze(Time.zone.parse('2024-03-05 14:30:15.123456')) { create_full_decree }
+      travel_to(Time.zone.parse('2024-03-05 14:30:15.123456'), with_usec: true) { create_full_decree }
 
       get "/decrees/1000002.json?api_key=#{api_key}"
 
       expect(response).to have_http_status(:ok)
       expect(response.media_type).to eq('application/json')
-      expect(response.body).to eq(fixture('api/decree.json').read.chomp)
+      expect(response.body).to eq(file_fixture('api/decree.json').read.chomp)
     end
 
     it 'says a decree that does not exist does not exist' do
@@ -163,14 +175,14 @@ RSpec.describe 'Decrees API' do
 
       get "/decrees/health.json?api_key=#{api_key}"
 
-      expect(response).to have_http_status(:unprocessable_entity)
+      expect(response).to have_http_status(:unprocessable_content)
       expect(response.body).to eq('{"status":"Failure"}')
     end
 
     it 'allows three days on a Monday, after the weekend' do
       create(:decree, updated_at: Time.zone.parse('2019-01-18 06:00'))
 
-      Timecop.travel(Time.zone.parse('2019-01-21 00:00')) { get "/decrees/health.json?api_key=#{api_key}" }
+      travel_to(Time.zone.parse('2019-01-21 00:00')) { get "/decrees/health.json?api_key=#{api_key}" }
 
       expect(response).to have_http_status(:ok)
     end
@@ -178,9 +190,9 @@ RSpec.describe 'Decrees API' do
     it 'reports failure on a Monday when nothing changed for more than three days' do
       create(:decree, updated_at: Time.zone.parse('2019-01-17 06:00'))
 
-      Timecop.travel(Time.zone.parse('2019-01-21 00:00')) { get "/decrees/health.json?api_key=#{api_key}" }
+      travel_to(Time.zone.parse('2019-01-21 00:00')) { get "/decrees/health.json?api_key=#{api_key}" }
 
-      expect(response).to have_http_status(:unprocessable_entity)
+      expect(response).to have_http_status(:unprocessable_content)
     end
 
     it 'refuses a caller without a valid API key' do

@@ -11,9 +11,15 @@ RSpec.configure do |config|
     driven_by :rack_test
   end
 
-  config.before(type: :system, js: true) do
-    driven_by :selenium, using: :headless_chrome, screen_size: [1400, 1000] do |options|
+  # vanilla-cookieconsent hides its banner from browsers that say they're automated (navigator.webdriver): the
+  # :cookie_banner examples get a Chrome that doesn't, in a session of its own.
+  config.before(type: :system, js: true) do |example|
+    visitor = example.metadata[:cookie_banner]
+
+    driven_by :selenium, using: :headless_chrome, screen_size: [1400, 1000],
+                         options: { name: visitor ? :selenium_visitor : :selenium } do |options|
       options.add_argument('--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE 127.0.0.1, EXCLUDE localhost')
+      options.add_argument('--disable-blink-features=AutomationControlled') if visitor
       options.add_option('goog:loggingPrefs', { browser: 'ALL' })
     end
   end
@@ -37,6 +43,11 @@ module LayoutHelpers
 
   def viewport_height
     page.evaluate_script('window.innerHeight')
+  end
+
+  # Waits until the block is true, as Capybara's matchers wait for the page; a script may still be loading.
+  def eventually
+    page.document.synchronize { yield || raise(Capybara::ExpectationNotMet, 'not yet') }
   end
 
   # Waits for a smooth scroll to end with the element's top where the block wants it.
