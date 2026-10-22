@@ -93,11 +93,9 @@
         "codeload.github.com",
         "*.githubusercontent.com",
         "registry.npmjs.org",
-        "registry.yarnpkg.com",
         "obcan.justice.sk",
         "www.justice.gov.sk",
-        "www.genpro.gov.sk",
-        "www.sudnarada.gov.sk"
+        "www.genpro.gov.sk"
       ]
     }
   },

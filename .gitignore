@@ -18,6 +18,14 @@ Gemfile.lock.tags
 !/log/.keep
 !/tmp/.keep
 
+# Rails credentials' keys (production's encrypted file is committed). Each developer keeps their own development
+# credentials, from config/credentials/development.example; the tests and CI need none.
+/config/master.key
+/config/credentials/*.key
+/config/credentials/development.*
+!/config/credentials/development.example
+/config/credentials/test.*
+
 # dotenv: .env and .env.test are each checkout's own, made from the committed .env.example and .env.test.example
 # (bin/setup copies them); .env.local and .env.*.local hold personal overrides. CI uses the committed .env.ci as
 # .env.test, and the server keeps its own .env.
@@ -31,12 +39,6 @@ Gemfile.lock.tags
 /app/assets/builds/*
 !/app/assets/builds/.keep
 /coverage/
-
-/config/credentials/development.key
-
-/config/credentials/test.key
-
-/config/credentials/production.key
 
 __pycache__
 ml/decree-embeddings/models/*
