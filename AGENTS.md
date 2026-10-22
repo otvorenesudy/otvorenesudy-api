@@ -2,9 +2,10 @@
 
 The importers and HTTP API of [Open Courts](https://otvorenesudy.sk) (Otvorené súdy), a public-interest project that
 publishes data about Slovak courts, judges, hearings and decrees. This app crawls the state's public sources
-(obcan.justice.sk, InfoSud, genpro.gov.sk), reconciles what they publish into the Open Courts database, and serves it
-as JSON at `api.otvorenesudy.sk`. Rails 8.1, Ruby 4.0, PostgreSQL with pgvector, Sidekiq; the one page, the welcome
-page with its invite form, is Propshaft, importmap, Turbo, Stimulus and Bootstrap 5.
+(obcan.justice.sk, api.justice.gov.sk for criminal hearings, InfoSud, genpro.gov.sk), reconciles what they publish
+into the Open Courts database, and serves it as JSON at `api.otvorenesudy.sk`. Rails 8.1, Ruby 4.0, PostgreSQL with
+pgvector, Sidekiq; the one page, the welcome page with its invite form, is Propshaft, importmap, Turbo, Stimulus and
+Bootstrap 5.
 
 | Repository | What It Is | How It Relates |
 | --- | --- | --- |

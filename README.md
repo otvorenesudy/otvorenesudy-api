@@ -8,9 +8,9 @@
 [![View performance data on Skylight](https://badges.skylight.io/problem/YcoHMS8aa1P1.svg?token=VKdR-1FwByL-YIC2ld-L6ZYwQeoIasGRIW7YtQYFsaY)](https://www.skylight.io/app/applications/YcoHMS8aa1P1)
 
 The importers and JSON API of [Open Courts](https://github.com/otvorenesudy) (Otvorené súdy). It crawls the state's
-public sources (obcan.justice.sk, InfoSud, genpro.gov.sk), reconciles what they publish into the Open Courts database
-that [otvorenesudy](https://github.com/otvorenesudy/otvorenesudy) shows, asks otvorenesudy to reindex what changed,
-and serves the decrees as JSON at `api.otvorenesudy.sk`.
+public sources (obcan.justice.sk, api.justice.gov.sk for criminal hearings, InfoSud, genpro.gov.sk), reconciles what
+they publish into the Open Courts database that [otvorenesudy](https://github.com/otvorenesudy/otvorenesudy) shows,
+asks otvorenesudy to reindex what changed, and serves the decrees as JSON at `api.otvorenesudy.sk`.
 
 ## Requirements
 
