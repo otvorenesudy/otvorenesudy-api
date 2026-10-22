@@ -1,0 +1,39 @@
+# Betterleaks findings that were reviewed and kept, by fingerprint (commit:file:rule:line, or file:rule:line for one
+# not committed yet). bin/leaks passes this file to Betterleaks. Every entry has its reason above it; a real secret is
+# removed and revoked, not listed here.
+#
+# Everything below was in the history before bin/leaks existed, reviewed on 2026-10-22. The history is public, so the
+# real secrets among them must be revoked wherever they are still valid.
+
+# Real: secret_key_base values in config/secrets.yml and .env (2015). Production must not use them.
+f1e419f37e4a7aa36671e1c8c758888770642bb8:config/secrets.yml:generic-api-key:14
+f1e419f37e4a7aa36671e1c8c758888770642bb8:config/secrets.yml:generic-api-key:17
+0ed683cf68664d4eb75e6afb7b649c2dd511be6b:.env:generic-api-key:6
+2fc46f82ddb361ab65d06f2deda09678a91af7a7:.env:generic-api-key:6
+
+# Possibly real: a password in .env (2016).
+aac2715d7d2fc18d83635e2cb428259c7d6ac340:.env:generic-password:10
+
+# Real: a token in the Travis CI configuration (2015).
+a3ccc643b91edbce520e569e8514261104ab3a34:.travis.yml:generic-api-key:23
+
+# Not secrets: the example connection URL in Rails' database.yml template, and placeholder passwords in the sample.
+f1e419f37e4a7aa36671e1c8c758888770642bb8:config/database.yml:generic-credential-uri:74
+6802296a5cae0a255f15f9024b35e86e4c3bb7a2:config/database.yml.sample:generic-password:7
+6802296a5cae0a255f15f9024b35e86e4c3bb7a2:config/database.yml.sample:generic-password:15
+6802296a5cae0a255f15f9024b35e86e4c3bb7a2:config/database.yml.sample:generic-password:23
+
+# Not secrets: the password of the test database, which exists only in CI's service container.
+8add491058495219340c2ae983ec896d9d9a01b6:.env.ci:generic-password:2
+8add491058495219340c2ae983ec896d9d9a01b6:.env.ci:generic-password:4
+8add491058495219340c2ae983ec896d9d9a01b6:.github/workflows/ci.yml:generic-password:18
+
+# Not secrets: values in pages recorded from justice.gov.sk and genpro.gov.sk (the sites' own key= parameters and
+# random strings that look like tokens).
+f54a835fa6ecb60c86889f721ccde63b30f18e06:spec/fixtures/vcr/justice_gov_sk/court_with_more_vice_chairmen.yml:generic-api-key:499
+816aca5a8f4291ae86509c74d4bc6a0cb400c94d:spec/fixtures/vcr/justice_gov_sk/court_with_more_vice_chairmen.yml:generic-api-key:499
+c7b40ac868ce90c3df104a2e9c5b8b95ed35615f:spec/fixtures/vcr/justice_gov_sk/court_with_more_vice_chairmen.yml:generic-api-key:499
+c7b40ac868ce90c3df104a2e9c5b8b95ed35615f:spec/fixtures/vcr/justice_gov_sk/court_with_no_media_phone_number.yml:generic-api-key:482
+816aca5a8f4291ae86509c74d4bc6a0cb400c94d:spec/fixtures/vcr/justice_gov_sk/court_without_contact.yml:generic-api-key:478
+6ed86bb44eb414fe7177007be301bba214f69b6c:spec/fixtures/vcr/genpro_gov_sk/prosecutors_list.yml:square-access-token:971
+6ed86bb44eb414fe7177007be301bba214f69b6c:spec/fixtures/vcr/genpro_gov_sk/prosecutors_list.yml:square-access-token:2005

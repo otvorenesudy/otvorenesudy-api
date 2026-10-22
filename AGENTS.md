@@ -42,6 +42,9 @@ bin/test                     # lint, then every spec; must be green before you a
 bin/test spec/models/judge_spec.rb:12   # lint, then those specs
 bin/lint                     # syntax_tree, RuboCop and Prettier on the files this branch changed
 bin/lint --fix <file>        # format and autocorrect a file (the edit hook does this for you)
+bin/leaks                    # secrets in the files and the history (the git hooks check each commit and push)
+bin/brakeman                 # vulnerabilities in the code
+bin/bundler-audit            # gems with known vulnerabilities
 bin/rails server             # the app on localhost:3000
 bundle exec sidekiq -C config/sidekiq.yml
 ```
@@ -86,10 +89,33 @@ Claude Code denies them to its file tools (`permissions.deny`) and to sandboxed 
 (`sandbox.filesystem.denyRead`), and a hook blocks shell commands that name them. `config/database.yml` and
 `config/skylight.yml` only refer to ENV and credentials, and are fine to read.
 
+### Keeping Secrets Out of Git
+
+The history is public, so a secret that reaches it has leaked. `bin/leaks` stops one first: Betterleaks, pinned in
+the script and downloaded on first use, for what files say, and a list of names in the script (`config/master.key`,
+dotenv files, private keys, database dumps) for what they are called. `.env`, `.env.ci` and `.env.test` have been
+committed since 2015, so their names pass; Betterleaks still reads them.
+
+| Where | When | What It Checks |
+| --- | --- | --- |
+| `.githooks/pre-commit`, `.githooks/pre-push` | Every commit and push, once `bin/leaks --install` has run (`bin/setup` and every Claude Code session run it) | The staged changes; the commits being pushed |
+| `.claude/hooks/scan-for-leaks.sh` | Before every file an agent writes | The new text and the file's name |
+| `.github/workflows/security.yml` | Every pull request and push to `main` | The files at HEAD and every commit before it; the ruleset on `main` requires this Secrets check |
+
+When it stops you:
+
+- **A real secret**: take it out, put it in the credentials or `.env.local`, and tell the user, who revokes it if it
+  was pushed.
+- **Not a secret** (a test password, a placeholder, a value in a recorded page): `betterleaks:allow` in a comment on
+  its line, or, where no comment fits, its fingerprint in `.betterleaksignore` with the reason above it.
+- **Never skip the hooks.** `--no-verify`, `git commit -n` and changing `core.hooksPath` are blocked for agents, and
+  CI scans the whole history anyway.
+
 ## Commits, Branches and Pull Requests
 
 **A push to `main` deploys to production** (`.github/workflows/main.yml`). Changes reach `main` only through a
-reviewed pull request; never push to `main`.
+reviewed pull request; never push to `main`. `.github/workflows/security.yml` runs `bin/leaks`, Brakeman and
+bundler-audit, and the ruleset on `main` requires a pull request and its Secrets check.
 
 1. **One worktree per change**, off the latest `main`, on a branch named with the `branch-naming` skill:
 
@@ -116,8 +142,8 @@ Claude Code reads `CLAUDE.md`, which imports this file. Other agents read this f
 | Rules, loaded by path | `.claude/rules/*.md` |
 | Skills | `.claude/skills/*/SKILL.md` |
 | Permissions, sandbox, hooks | `.claude/settings.json`; personal overrides in `.claude/settings.local.json` (not committed) |
-| Hooks | `.claude/hooks/block-sensitive-files.sh` (before shell commands), `.claude/hooks/format.sh` (after edits) |
+| Hooks | `bin/leaks --install` (at session start); `.claude/hooks/block-sensitive-files.sh` and `block-hook-bypass.sh` (before shell commands); `scan-for-leaks.sh` (before edits); `format.sh` (after edits) |
 
-The settings deny the secrets above, allow `bin/lint` and `bin/test` without asking, ask before `cap` and pushes to
-`main`, keep the sandbox's network to package registries, GitHub and the data sources, and run only `bin/test` outside
-the sandbox. No test covers the agent setup: when you change it, try it in a session.
+The settings deny the secrets above, allow `bin/leaks`, `bin/lint` and `bin/test` without asking, ask before `cap`
+and pushes to `main`, keep the sandbox's network to package registries, GitHub and the data sources, and run only
+`bin/test` outside the sandbox. No test covers the agent setup: when you change it, try it in a session.

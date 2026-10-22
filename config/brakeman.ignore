@@ -1,0 +1,51 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "SQL Injection",
+      "warning_code": 0,
+      "fingerprint": "39bf7d628ec82f0f34069f0fce308cc0c386ac2263d49851a4508da3468e87d9",
+      "check_name": "SQL",
+      "message": "Possible SQL injection",
+      "file": "app/models/obcan_justice_sk/judge.rb",
+      "line": 25,
+      "link": "https://brakemanscanner.org/docs/warning_types/sql_injection/",
+      "code": "ObcanJusticeSk::Court.where(\"data @@ '$.srPredseda.sudcovia[*].id == #{sanitized_short_guid_for_json_path_queries}'\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "ObcanJusticeSk::Judge",
+        "method": "courts_as_judicial_council_chairman"
+      },
+      "user_input": "sanitized_short_guid_for_json_path_queries",
+      "confidence": "Medium",
+      "cwe_id": [
+        89
+      ],
+      "note": "Not SQL injection: the judge GUID from obcan.justice.sk is escaped with quote_string, so it stays inside the string literal; at worst an odd GUID changes which courts the JSON path matches."
+    },
+    {
+      "warning_type": "SQL Injection",
+      "warning_code": 0,
+      "fingerprint": "8214e653e123c75f03b75ab113304922a3762395fc67b5a2dc56f5e171ba82ea",
+      "check_name": "SQL",
+      "message": "Possible SQL injection",
+      "file": "app/models/obcan_justice_sk/judge.rb",
+      "line": 30,
+      "link": "https://brakemanscanner.org/docs/warning_types/sql_injection/",
+      "code": "ObcanJusticeSk::Court.where(\"data @@ '$.srClen.sudcovia[*].id == #{sanitized_short_guid_for_json_path_queries}'\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "ObcanJusticeSk::Judge",
+        "method": "courts_as_judicial_council_member"
+      },
+      "user_input": "sanitized_short_guid_for_json_path_queries",
+      "confidence": "Medium",
+      "cwe_id": [
+        89
+      ],
+      "note": "Not SQL injection: the judge GUID from obcan.justice.sk is escaped with quote_string, so it stays inside the string literal; at worst an odd GUID changes which courts the JSON path matches."
+    }
+  ],
+  "brakeman_version": "8.1.0"
+}
