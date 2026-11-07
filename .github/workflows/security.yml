@@ -49,7 +49,7 @@ jobs:
           sudo apt-get install -y --no-install-recommends libpq-dev libssl-dev libcurl4 libcurl4-openssl-dev
 
       - name: Set Up Ruby
-        uses: ruby/setup-ruby@e1bd6146574da5e0795075b5319b300edb30c5b0 # v1
+        uses: ruby/setup-ruby@de492cf36cbab201753d720ce4f4e336cd688c94 # v1
         with:
           bundler-cache: true
 
@@ -72,7 +72,7 @@ jobs:
           sudo apt-get install -y --no-install-recommends libpq-dev libssl-dev libcurl4 libcurl4-openssl-dev
 
       - name: Set Up Ruby
-        uses: ruby/setup-ruby@e1bd6146574da5e0795075b5319b300edb30c5b0 # v1
+        uses: ruby/setup-ruby@de492cf36cbab201753d720ce4f4e336cd688c94 # v1
         with:
           bundler-cache: true
 
